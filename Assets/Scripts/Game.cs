@@ -21,14 +21,14 @@ public class Game : MonoBehaviour
     public BigDouble Drills;
     public BigDouble DrillPrice;
     public bool HasPlayed;
-    public bool PostProcessing;
-    public bool PerformanceMode;
     public bool ResearchFactory;
+    public bool Music;
+    public bool Sounds;
+    public float LastSavedGameVersion;
+    public float GameVersion;
 
     // game objects
     [Header("Game Objects")]
-    public GameObject pp_normal;
-    public GameObject pp_performance;
     public GameObject RelaunchRequiredScreen;
     public GameObject Drill_Model;
     public GameObject Drill_Partical;
@@ -37,6 +37,8 @@ public class Game : MonoBehaviour
     // scripts
     [Header("Scripts")]
     public OfflineManager offlineManager;
+    public AdvancedQualitySettings ad;
+    public SoundManager soundManager;
 
     // text
     [Header("Text")]
@@ -46,14 +48,7 @@ public class Game : MonoBehaviour
     public TMP_Text Shop_Drill;
 
     // performance mode stuff
-    [Header("Performance Mode")]
-    public GameObject Trees;
-    public UnityEngine.Rendering.Universal.UniversalAdditionalCameraData GameCamera_AdditionalData;
-    public GameObject Cookie_Performance;
-    public GameObject Cookie_Normal;
-    public GameObject Research_Factory_Normal;
-    public GameObject AmbientParticals;
-    public GameObject Research_Factory_Particals;
+    
 
     // stats
     [Header("Stats")]
@@ -68,15 +63,29 @@ public class Game : MonoBehaviour
     [Header("Animations")]
     public Animator Fade;
 
+    // audio
+    [Header("Audio")]
+    private GameObject MusicSource;
+    private GameObject SoundSource;
+    public int nothinghereyet;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        SoundAssign();
         LoadPlayer();
         if (HasPlayed == false)
         {
-            PostProcessing = true;
             HasPlayed = true;
+            Music = true;
+            Sounds = true;
+            ad.TextureQuality = 0;
+            ad.Trees = true;
+            ad.Particals = true;
+            ad.Lighting = true;
+            ad.PostProcessing = true;
+            ad.VSync = false;
             ResetData();
         }
         offlineManager.LoadOfflineTime();
@@ -84,6 +93,14 @@ public class Game : MonoBehaviour
         StartCoroutine(Tick());
         RelaunchRequiredScreen.SetActive(false);
         CheckPrices();
+        LastSavedGameVersion = GameVersion;
+    }
+
+    void SoundAssign()
+    {
+        soundManager = GameObject.FindGameObjectWithTag("audio").GetComponent<SoundManager>();
+        MusicSource = GameObject.FindGameObjectWithTag("music");
+        SoundSource = GameObject.FindGameObjectWithTag("sound");
     }
 
     void CheckPrices()
@@ -123,7 +140,7 @@ public class Game : MonoBehaviour
     public void SavePlayer()
     {
         offlineManager.SaveTime();
-        SaveSystem.SavePlayer(this, offlineManager);
+        SaveSystem.SavePlayer(this, offlineManager, ad);
     }
 
     public void LoadPlayer()
@@ -137,8 +154,6 @@ public class Game : MonoBehaviour
         CPS = data.CPS;
         TimePlayed = data.TimePlayed;
         HasPlayed = data.HasPlayed;
-        PostProcessing = data.PostProcessing;
-        PerformanceMode = data.PerformanceMode;
         Autoclickers = data.Autoclickers;
         Doublecookies = data.Doublecookies;
         AutoclickerPrice = data.AutoclickerPrice;
@@ -148,6 +163,16 @@ public class Game : MonoBehaviour
         ResearchFactory = data.ResearchFactory;
         offlineManager.offlineProgressCheck = data.offlineProgressCheck;
         offlineManager.OfflineTime = data.OfflineTime;
+        ad.PostProcessing = data.PostProcessing;
+        ad.Particals = data.Particals;
+        ad.Lighting = data.Lighting;
+        ad.Trees = data.Trees;
+        ad.VSync = data.VSync;
+        ad.TextureQuality = data.TextureQuality;
+        LastSavedGameVersion = data.LastSavedGameVersion;
+        Sounds = data.Sounds;
+        Music = data.Music;
+        ad.Fog = data.Fog;
     }
 
     public void ResetData()
@@ -183,19 +208,21 @@ public class Game : MonoBehaviour
         SavePlayer();
     }
 
-    public void PostProcessToggle(bool Toggle)
-    {
-        PostProcessing = Toggle;
-    }
-
-    public void PerformanceModeToggle(bool Toggle)
-    {
-        PerformanceMode = Toggle;
-    }
-
     public void Reload()
     {
+        Debug.Log("Reloading..");
+        Resources.UnloadUnusedAssets();
         StartCoroutine(ReloadWait());
+    }
+
+    public void SoundToggle(bool Toggle)
+    {
+        Sounds = Toggle;
+    }
+
+    public void MusicToggle(bool Toggle)
+    {
+        Music = Toggle;
     }
 
     IEnumerator ReloadWait()
@@ -258,54 +285,44 @@ public class Game : MonoBehaviour
         Shop_Autoclicker.text = "Autoclicker (" + AutoclickerPrice + " Cookies";
         Shop_Doublecookie.text = "Doublecookie (" + DoublecookiePrice + " Cookies";
         Shop_Drill.text = "Drill (" + DrillPrice + " Cookies";
-        if (PostProcessing)
-        {
-            pp_normal.SetActive(true);
-            pp_performance.SetActive(false);
-        }
-        else
-        {
-            pp_normal.SetActive(false);
-            pp_performance.SetActive(true);
-        }
 
         // performance mode
-        if (PerformanceMode)
-        {
-            Trees.SetActive(false);
-            GameCamera_AdditionalData.SetRenderer(0);
-            QualitySettings.SetQualityLevel(0);
-            Cookie_Normal.SetActive(false);
-            Cookie_Performance.SetActive(true);
-            AmbientParticals.SetActive(false);
-        }
-        else
-        {
-            Trees.SetActive(true);
-            GameCamera_AdditionalData.SetRenderer(1);
-            QualitySettings.SetQualityLevel(1);
-            Cookie_Normal.SetActive(true);
-            Cookie_Performance.SetActive(false);
-            AmbientParticals.SetActive(true);
-        }
+        // if (PerformanceMode)
+        // {
+        //     Trees.SetActive(false);
+        //     GameCamera_AdditionalData.SetRenderer(0);
+        //     QualitySettings.SetQualityLevel(0);
+        //     Cookie_Normal.SetActive(false);
+        //     Cookie_Performance.SetActive(true);
+        //     AmbientParticals.SetActive(false);
+        // }
+        // else
+        // {
+        //     Trees.SetActive(true);
+        //     GameCamera_AdditionalData.SetRenderer(1);
+        //     QualitySettings.SetQualityLevel(1);
+        //     Cookie_Normal.SetActive(true);
+        //     Cookie_Performance.SetActive(false);
+        //     AmbientParticals.SetActive(true);
+        // }
 
-        if (ResearchFactory)
-        {
-            Research_Factory_Normal.SetActive(true);
-            if (PerformanceMode)
-            {
-                Research_Factory_Particals.SetActive(false);
-            }
-            else
-            {
-                Research_Factory_Particals.SetActive(true);
-            }
-        }
-        else
-        {
-            Research_Factory_Normal.SetActive(false);
-            Research_Factory_Particals.SetActive(false);
-        }
+        // if (ResearchFactory)
+        // {
+        //     Research_Factory_Normal.SetActive(true);
+        //     if (PerformanceMode)
+        //     {
+        //         Research_Factory_Particals.SetActive(false);
+        //     }
+        //     else
+        //     {
+        //         Research_Factory_Particals.SetActive(true);
+        //     }
+        // }
+        // else
+        // {
+        //     Research_Factory_Normal.SetActive(false);
+        //     Research_Factory_Particals.SetActive(false);
+        // }
 
         // drill
         if (Drills >= 1)
@@ -326,6 +343,10 @@ public class Game : MonoBehaviour
         Stats_Drills.text = "Drills: " + Drills;
         Stats_CPC.text = "Cookies Per Click: " + CPC;
         Stats_CPS.text = "Cookies Per Second: " + CPS;
+
+        // music & sounds
+        MusicSource.SetActive(Music);
+        SoundSource.SetActive(Sounds);
 
         // reload
         if (Input.GetKey(KeyCode.Tab) && Input.GetKey(KeyCode.R))

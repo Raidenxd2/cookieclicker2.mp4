@@ -16,23 +16,31 @@ public class PlayerData
     public BigDouble Drills;
     public BigDouble DrillPrice;
     public bool HasPlayed;
-    public bool PostProcessing;
-    public bool PerformanceMode;
     public bool ResearchFactory;
+    public bool Music;
+    public bool Sounds;
+    public float LastSavedGameVersion;
 
     // Offline
     public bool offlineProgressCheck;
     public string OfflineTime;
 
-    public PlayerData (Game ga, OfflineManager om)
+    // Advanced Quality Settings
+    public bool PostProcessing;
+    public bool Particals;
+    public bool Lighting;
+    public bool Trees;
+    public bool VSync;
+    public bool Fog;
+    public int TextureQuality;
+
+    public PlayerData (Game ga, OfflineManager om, AdvancedQualitySettings ad)
     {
         Cookies = ga.Cookies;
         CPS = ga.CPS;
         CPC = ga.CPC;
         TimePlayed = ga.TimePlayed;
         HasPlayed = ga.HasPlayed;
-        PostProcessing = ga.PostProcessing;
-        PerformanceMode = ga.PerformanceMode;
         Autoclickers = ga.Autoclickers;
         Doublecookies = ga.Doublecookies;
         AutoclickerPrice = ga.AutoclickerPrice;
@@ -42,5 +50,15 @@ public class PlayerData
         ResearchFactory = ga.ResearchFactory;
         offlineProgressCheck = om.offlineProgressCheck;
         OfflineTime = om.OfflineTime;
+        PostProcessing = ad.PostProcessing;
+        Particals = ad.Particals;
+        Lighting = ad.Lighting;
+        Trees = ad.Trees;
+        VSync = ad.VSync;
+        TextureQuality = ad.TextureQuality;
+        LastSavedGameVersion = ga.LastSavedGameVersion;
+        Music = ga.Music;
+        Sounds = ga.Sounds;
+        Fog = ad.Fog;
     }
 }

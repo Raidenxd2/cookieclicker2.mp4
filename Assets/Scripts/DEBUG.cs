@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using TMPro;
 using BreakInfinity;
 using IngameDebugConsole;
@@ -7,14 +8,25 @@ public class DEBUG : MonoBehaviour
 {
 
     public TMP_Text FPSText;
+    public TMP_Text RendererText;
     public TMP_InputField CookiesInput;
     public Game game;
     public GameObject DEBUGScreen;
+    public int FPS;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(FPSDisplay());
+        Debug.Log("Current Renderer: " + SystemInfo.graphicsDeviceType);
+    }
+
+    IEnumerator FPSDisplay()
+    {
+        yield return new WaitForSeconds(1);
+        FPS = (int)(1f / Time.unscaledDeltaTime);
+        FPSText.text = FPS.ToString("FPS: " + "0");
+        StartCoroutine(FPSDisplay());
     }
 
     public void ShowDebugConsole()
@@ -39,12 +51,34 @@ public class DEBUG : MonoBehaviour
         CookiesInput.text = "" + game.Cookies;
     }
 
+    public void AbortCrash()
+    {
+        UnityEngine.Diagnostics.Utils.ForceCrash(UnityEngine.Diagnostics.ForcedCrashCategory.Abort);
+    }
+
+    public void AccessViolationCrash()
+    {
+        UnityEngine.Diagnostics.Utils.ForceCrash(UnityEngine.Diagnostics.ForcedCrashCategory.AccessViolation);
+    }
+
+    public void FatalErrorCrash()
+    {
+        UnityEngine.Diagnostics.Utils.ForceCrash(UnityEngine.Diagnostics.ForcedCrashCategory.FatalError);
+    }
+
+    public void MonoAbortCrash()
+    {
+        UnityEngine.Diagnostics.Utils.ForceCrash(UnityEngine.Diagnostics.ForcedCrashCategory.MonoAbort);
+    }
+
+    public void PureVirtualFunctionCrash()
+    {
+        UnityEngine.Diagnostics.Utils.ForceCrash(UnityEngine.Diagnostics.ForcedCrashCategory.PureVirtualFunction);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (DEBUGScreen.activeSelf)
-        {
-            FPSText.text = "FPS: " + 1.0f / Time.deltaTime;
-        }
+        RendererText.text = "Current Renderer: " + SystemInfo.graphicsDeviceType;
     }
 }

@@ -8,14 +8,14 @@ public static class SaveSystem
     
 
 
-    public static void SavePlayer (Game ga, OfflineManager om)
+    public static void SavePlayer (Game ga, OfflineManager om, AdvancedQualitySettings ad)
     {
         BinaryFormatter formatter = new BinaryFormatter();
 
         string path = Application.persistentDataPath + "/cookie2";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        PlayerData data = new PlayerData(ga, om);
+        PlayerData data = new PlayerData(ga, om, ad);
 
         formatter.Serialize(stream, data);
         stream.Close();

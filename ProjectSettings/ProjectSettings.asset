@@ -49,7 +49,7 @@ PlayerSettings:
   m_StereoRenderingPath: 0
   m_ActiveColorSpace: 0
   m_MTRendering: 1
-  mipStripping: 0
+  mipStripping: 1
   numberOfMipsStripped: 0
   m_StackTraceTypes: 010000000100000001000000010000000100000001000000
   iosShowActivityIndicatorOnLoading: -1
@@ -134,8 +134,17 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: Beta V1
-  preloadedAssets: []
+  bundleVersion: Beta V2
+  preloadedAssets:
+  - {fileID: 8300000, guid: 9f741f8f75d460a44bf205db8fc4792b, type: 3}
+  - {fileID: 919132149155446097, guid: 29becf1d36a65f743b1efa3ac07973e8, type: 3}
+  - {fileID: 919132149155446097, guid: a3fcbebada04c564fbe3cdc0688af674, type: 3}
+  - {fileID: 2100000, guid: 4e4d547a2b3655740bea9d9053dd6a3e, type: 2}
+  - {fileID: 2100000, guid: 85d84364d0e1816468a9c59e652f2868, type: 2}
+  - {fileID: 919132149155446097, guid: 6bc4a1d9e35f4484b80d90b88282dbc7, type: 3}
+  - {fileID: 2100000, guid: 6b33899375b68bb43a5c9d610bc786b0, type: 2}
+  - {fileID: 919132149155446097, guid: 5d36ad97681b2b144be9ce54286501e2, type: 3}
+  - {fileID: 919132149155446097, guid: 2b1cebf43637d954fa394f5cbb4a3c04, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -162,7 +171,7 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 2
   AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -264,7 +273,7 @@ PlayerSettings:
     height: 180
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
-  chromeosInputEmulation: 1
+  chromeosInputEmulation: 0
   AndroidMinifyWithR8: 0
   AndroidMinifyRelease: 0
   AndroidMinifyDebug: 0
@@ -274,7 +283,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 17aa03e7b14893e4da7e24fb0fa291b5, type: 3}
+      m_Icon: {fileID: 2800000, guid: 6f04b757338fa5c4e80de459f011e344, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -390,6 +399,9 @@ PlayerSettings:
   - m_BuildTarget: LinuxStandaloneSupport
     m_APIs: 1100000015000000
     m_Automatic: 1
+  - m_BuildTarget: AndroidPlayer
+    m_APIs: 150000000b00000008000000
+    m_Automatic: 0
   m_BuildTargetVRSettings: []
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
