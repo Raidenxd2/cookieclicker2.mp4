@@ -13,6 +13,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     public bool Trees;
     public bool VSync;
     public bool Fog;
+    public bool Textures;
     public int TextureQuality;
     public float RenderQuality;
     public GameObject pp_normal;
@@ -29,6 +30,22 @@ public class AdvancedQualitySettings : MonoBehaviour
     public GameObject Research_Factory_Normal;
     public GameObject ParticalsReal;
 
+    int boolToInt(bool val)
+    {
+        if (val)
+            return 1;
+        else
+            return 0;
+    }
+
+    bool intToBool(int val)
+    {
+        if (val != 0)
+            return true;
+        else   
+            return false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,31 +55,43 @@ public class AdvancedQualitySettings : MonoBehaviour
     public void PostProcessToggle(bool Toggle)
     {
         PostProcessing = Toggle;
+        PlayerPrefs.SetInt("GRAPHICS_PostProcessing", boolToInt(Toggle));
     }
 
     public void LightingToggle(bool Toggle)
     {
         Lighting = Toggle;
+        PlayerPrefs.SetInt("GRAPHICS_Lighting", boolToInt(Toggle));
     }
 
     public void ParticalsToggle(bool Toggle)
     {
         Particals = Toggle;
+        PlayerPrefs.SetInt("GRAPHICS_Particles", boolToInt(Toggle));
     }
 
     public void TreesToggle(bool Toggle)
     {
         Trees = Toggle;
+        PlayerPrefs.SetInt("GRAPHICS_Trees", boolToInt(Toggle));
     }
 
     public void VSyncToggle(bool Toggle)
     {
         VSync = Toggle;
+        PlayerPrefs.SetInt("GRAPHICS_VSync", boolToInt(Toggle));
     }
     
     public void FogToggle(bool Toggle)
     {
         Fog = Toggle;
+        PlayerPrefs.SetInt("GRAPHICS_Fog", boolToInt(Toggle));
+    }
+
+    public void TexturesToggle(bool Toggle)
+    {
+        Textures = Toggle;
+        PlayerPrefs.SetInt("GRAPHICS_Textures", boolToInt(Toggle));
     }
 
     public void RenderQualityChange()
@@ -73,6 +102,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     public void GraphicsPresetChanged(int value)
     {
         Debug.Log(value);
+        PlayerPrefs.SetInt("GRAPHICS_TextureQuality", value);
         if (value == 0)
         {
             TextureQuality = 0;
@@ -89,6 +119,33 @@ public class AdvancedQualitySettings : MonoBehaviour
         {
             TextureQuality = 3;
         }
+    }
+
+    public void SaveGraphics()
+    {
+        PlayerPrefs.Save();
+        Debug.Log("Saved Graphics Options");
+    }
+
+    public void LoadGraphics()
+    {
+        var ppTemp = PlayerPrefs.GetInt("GRAPHICS_PostProcessing");
+        var LightingTemp = PlayerPrefs.GetInt("GRAPHICS_Lighting");
+        var ParticlesTemp = PlayerPrefs.GetInt("GRAPHICS_Particles");
+        var TreesTemp = PlayerPrefs.GetInt("GRAPHICS_Trees");
+        var VSyncTemp = PlayerPrefs.GetInt("GRAPHICS_VSync");
+        var FogTemp = PlayerPrefs.GetInt("GRAPHICS_Fog");
+        var TextureQualityTemp = PlayerPrefs.GetInt("GRAPHICS_TextureQuality");
+        var TexturesTemp = PlayerPrefs.GetInt("GRAPHICS_Textures");
+        PostProcessing = intToBool(ppTemp);
+        Lighting = intToBool(LightingTemp);
+        Particals = intToBool(ParticlesTemp);
+        Trees = intToBool(TreesTemp);
+        VSync = intToBool(VSyncTemp);
+        Fog = intToBool(FogTemp);
+        TextureQuality = TextureQualityTemp;
+        Textures = intToBool(TexturesTemp);
+        Debug.Log("Loaded Graphics Options");
     }
 
     // Update is called once per frame

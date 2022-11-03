@@ -140,6 +140,7 @@ public class Game : MonoBehaviour
     public void SavePlayer()
     {
         offlineManager.SaveTime();
+        ad.SaveGraphics();
         SaveSystem.SavePlayer(this, offlineManager, ad);
     }
 
@@ -148,6 +149,8 @@ public class Game : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
 
         SaveSystem.LoadPlayer();
+
+        ad.LoadGraphics();
 
         Cookies = data.Cookies;
         CPC = data.CPC;
@@ -163,16 +166,16 @@ public class Game : MonoBehaviour
         ResearchFactory = data.ResearchFactory;
         offlineManager.offlineProgressCheck = data.offlineProgressCheck;
         offlineManager.OfflineTime = data.OfflineTime;
-        ad.PostProcessing = data.PostProcessing;
-        ad.Particals = data.Particals;
-        ad.Lighting = data.Lighting;
-        ad.Trees = data.Trees;
-        ad.VSync = data.VSync;
-        ad.TextureQuality = data.TextureQuality;
+        // ad.PostProcessing = data.PostProcessing;
+        // ad.Particals = data.Particals;
+        // ad.Lighting = data.Lighting;
+        // ad.Trees = data.Trees;
+        // ad.VSync = data.VSync;
+        // ad.TextureQuality = data.TextureQuality;
         LastSavedGameVersion = data.LastSavedGameVersion;
         Sounds = data.Sounds;
         Music = data.Music;
-        ad.Fog = data.Fog;
+        // ad.Fog = data.Fog;
     }
 
     public void ResetData()
@@ -205,6 +208,7 @@ public class Game : MonoBehaviour
 
     void OnApplicationQuit()
     {
+        ad.SaveGraphics();
         SavePlayer();
     }
 
@@ -275,6 +279,14 @@ public class Game : MonoBehaviour
         else
         {
             NECDialog.SetActive(true);
+        }
+    }
+
+    public void OpenHelp()
+    {
+        if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+        {
+            Application.OpenURL(Application.dataPath + "/StreamingAssets/help/graphicsapi/index.html");
         }
     }
 
