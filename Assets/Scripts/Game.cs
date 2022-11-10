@@ -73,7 +73,6 @@ public class Game : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SoundAssign();
         LoadPlayer();
         if (HasPlayed == false)
         {
@@ -94,6 +93,14 @@ public class Game : MonoBehaviour
         RelaunchRequiredScreen.SetActive(false);
         CheckPrices();
         LastSavedGameVersion = GameVersion;
+        try
+        {
+            SoundAssign();
+        }
+        catch
+        {
+            Debug.LogError("Could not assign audio. Did you load from the Init scene?");
+        }
     }
 
     void SoundAssign()

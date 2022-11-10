@@ -14,6 +14,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     public bool VSync;
     public bool Fog;
     public bool Textures;
+    public bool AO;
     public int TextureQuality;
     public float RenderQuality;
     public GameObject pp_normal;
@@ -21,6 +22,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     public TMP_Text RenderQualityText;
     public TMP_InputField RenderQualityInput;
     public QualityWrapper qualityWrapper;
+    public SwitchRendererFeature switchRendererFeature;
 
     [Header("Performance Mode")]
     public GameObject TreesReal;
@@ -99,6 +101,12 @@ public class AdvancedQualitySettings : MonoBehaviour
         RenderQuality = float.Parse(RenderQualityInput.text);
     }
 
+    public void AOToggle(bool Toggle)
+    {
+        AO = Toggle;
+        PlayerPrefs.SetInt("GRAPHICS_AO", boolToInt(Toggle));
+    }
+
     public void GraphicsPresetChanged(int value)
     {
         Debug.Log(value);
@@ -137,6 +145,7 @@ public class AdvancedQualitySettings : MonoBehaviour
         var FogTemp = PlayerPrefs.GetInt("GRAPHICS_Fog");
         var TextureQualityTemp = PlayerPrefs.GetInt("GRAPHICS_TextureQuality");
         var TexturesTemp = PlayerPrefs.GetInt("GRAPHICS_Textures");
+        var AOTemp = PlayerPrefs.GetInt("GRAPHICS_AO");
         PostProcessing = intToBool(ppTemp);
         Lighting = intToBool(LightingTemp);
         Particals = intToBool(ParticlesTemp);
@@ -145,6 +154,7 @@ public class AdvancedQualitySettings : MonoBehaviour
         Fog = intToBool(FogTemp);
         TextureQuality = TextureQualityTemp;
         Textures = intToBool(TexturesTemp);
+        AO = intToBool(AOTemp);
         Debug.Log("Loaded Graphics Options");
     }
 
@@ -207,6 +217,9 @@ public class AdvancedQualitySettings : MonoBehaviour
         RenderQualityText.text = RenderQuality + "x";
 
         qualityWrapper.SetRenderScale(RenderQuality);
+
+        switchRendererFeature.set(AO);
+        
         
     }
 }
