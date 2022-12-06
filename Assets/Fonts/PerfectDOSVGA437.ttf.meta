@@ -8,15 +8,15 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Perfect DOS VGA 437
   fontNames:
   - Perfect DOS VGA 437
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 74a5091d8707f334b9a5c31ef71a64ba, type: 3}
   customCharacters: 
   fontRenderingMode: 2
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1
   userData: 
-  assetBundleName: 
+  assetBundleName: fonts
   assetBundleVariant: 

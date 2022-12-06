@@ -15,6 +15,8 @@ public class PlayerData
     public BigDouble DoublecookiePrice;
     public BigDouble Drills;
     public BigDouble DrillPrice;
+    public BigDouble Grandmas;
+    public BigDouble GrandmaPrice;
     public bool HasPlayed;
     public bool ResearchFactory;
     public bool Music;
@@ -60,5 +62,7 @@ public class PlayerData
         Music = ga.Music;
         Sounds = ga.Sounds;
         Fog = ad.Fog;
+        Grandmas = ga.Grandmas;
+        GrandmaPrice = ga.GrandmaPrice;
     }
 }

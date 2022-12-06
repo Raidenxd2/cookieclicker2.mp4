@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using System.IO;
 using BreakInfinity;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -20,6 +22,8 @@ public class Game : MonoBehaviour
     public BigDouble AutoclickerPrice;
     public BigDouble Drills;
     public BigDouble DrillPrice;
+    public BigDouble Grandmas;
+    public BigDouble GrandmaPrice;
     public bool HasPlayed;
     public bool ResearchFactory;
     public bool Music;
@@ -33,12 +37,16 @@ public class Game : MonoBehaviour
     public GameObject Drill_Model;
     public GameObject Drill_Partical;
     public GameObject NECDialog;
+    public GameObject SDIE;
+    public GameObject SDUE;
+    public GameObject NoNetworkScreen;
 
     // scripts
     [Header("Scripts")]
     public OfflineManager offlineManager;
     public AdvancedQualitySettings ad;
     public SoundManager soundManager;
+    public Notification notification;
 
     // text
     [Header("Text")]
@@ -46,6 +54,9 @@ public class Game : MonoBehaviour
     public TMP_Text Shop_Autoclicker;
     public TMP_Text Shop_Doublecookie;
     public TMP_Text Shop_Drill;
+    public TMP_Text ErrorText;
+    public TMP_Text SmallErrorText;
+    public TMP_Text Shop_Grandma;
 
     // performance mode stuff
     
@@ -58,6 +69,7 @@ public class Game : MonoBehaviour
     public TMP_Text Stats_Drills;
     public TMP_Text Stats_CPS;
     public TMP_Text Stats_CPC;
+    public TMP_Text Stats_Grandmas;
 
     // animations
     [Header("Animations")]
@@ -67,8 +79,20 @@ public class Game : MonoBehaviour
     [Header("Audio")]
     private GameObject MusicSource;
     private GameObject SoundSource;
-    public int nothinghereyet;
+    public AudioClip[] Musics;
 
+    public Camera gameCamera;
+    public UnityEngine.Rendering.Volume CVDFilter;
+    public UnityEngine.Rendering.VolumeProfile CBNormal;
+    public UnityEngine.Rendering.VolumeProfile CBProtanopia;
+    public UnityEngine.Rendering.VolumeProfile CBProtanomaly;
+    public UnityEngine.Rendering.VolumeProfile CBDeuteranopia;
+    public UnityEngine.Rendering.VolumeProfile CBDeuteranomaly;
+    public UnityEngine.Rendering.VolumeProfile CBTritanopia;
+    public UnityEngine.Rendering.VolumeProfile CBTritanomaly;
+    public UnityEngine.Rendering.VolumeProfile CBAchromatopsia;
+    public UnityEngine.Rendering.VolumeProfile CBAchromatomaly;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -112,20 +136,25 @@ public class Game : MonoBehaviour
 
     void CheckPrices()
     {
-        if (AutoclickerPrice <= 25)
+        if (AutoclickerPrice < 25)
         {
             Autoclickers = 0;
             AutoclickerPrice = 25;
         }
-        if (DoublecookiePrice <= 50)
+        if (DoublecookiePrice < 50)
         {
             Doublecookies = 0;
             DoublecookiePrice = 50;
         }
-        if (DrillPrice <= 100)
+        if (DrillPrice < 100)
         {
             Drills = 0;
             DrillPrice = 100;
+        }
+        if (GrandmaPrice < 150)
+        {
+            Grandmas = 0;
+            GrandmaPrice = 150;
         }
     }
 
@@ -133,6 +162,7 @@ public class Game : MonoBehaviour
     {
         yield return new WaitForSeconds(60);
         SavePlayer();
+        SoundAssign();
         StartCoroutine(AutoSave());
     }
 
@@ -153,9 +183,9 @@ public class Game : MonoBehaviour
 
     public void LoadPlayer()
     {
-        PlayerData data = SaveSystem.LoadPlayer();
+        PlayerData data = SaveSystem.LoadPlayer(this);
 
-        SaveSystem.LoadPlayer();
+        SaveSystem.LoadPlayer(this);
 
         ad.LoadGraphics();
 
@@ -183,6 +213,8 @@ public class Game : MonoBehaviour
         Sounds = data.Sounds;
         Music = data.Music;
         // ad.Fog = data.Fog;
+        Grandmas = data.Grandmas;
+        GrandmaPrice = data.GrandmaPrice;
     }
 
     public void ResetData()
@@ -198,6 +230,8 @@ public class Game : MonoBehaviour
         AutoclickerPrice = 0;
         DoublecookiePrice = 0;
         DrillPrice = 0;
+        Grandmas = 0;
+        GrandmaPrice = 0;
         SavePlayer();
         Debug.Log("Reset Data. Now reloading...");
         Reload();
@@ -222,7 +256,6 @@ public class Game : MonoBehaviour
     public void Reload()
     {
         Debug.Log("Reloading..");
-        Resources.UnloadUnusedAssets();
         StartCoroutine(ReloadWait());
     }
 
@@ -240,7 +273,7 @@ public class Game : MonoBehaviour
     {
         Fade.Play("FadeIn");
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("Reload");
+        SceneManager.LoadScene("Init");
     }
 
     public void BuyAutoclicker()
@@ -289,6 +322,21 @@ public class Game : MonoBehaviour
         }
     }
 
+    public void BuyGrandma()
+    {
+        if (Cookies >= GrandmaPrice)
+        {
+            Cookies -= GrandmaPrice;
+            GrandmaPrice += 150;
+            Grandmas += 1;
+            CPS += 4;
+        }
+        else
+        {
+            NECDialog.SetActive(true);
+        }
+    }
+
     public void OpenHelp()
     {
         if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
@@ -297,13 +345,100 @@ public class Game : MonoBehaviour
         }
     }
 
+    public void OpenCreditsLink(int num)
+    {
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            NoNetworkScreen.SetActive(true);
+            return;
+        }
+        switch (num)
+        {
+            
+            case 1:
+                Application.OpenURL("https://raidenxd2.github.io/fonts/Roboto/LICENSE.txt");
+                break;
+            case 2:
+                Application.OpenURL("https://raidenxd2.github.io/cookieclicker2.mp4/Music.txt");
+                break;
+            case 3:
+                Application.OpenURL("https://github.com/tomc128/urp-kawase-blur");
+                break;
+            
+        }
+    }
+
+    public void ChangeCameraBGColor(String color)
+    {
+        switch (color)
+        {
+            case "normal":
+                gameCamera.backgroundColor = new Color32(53, 67, 89, 255);
+                break;
+            case "space":
+                gameCamera.backgroundColor = new Color(0, 0, 0, 255);
+                break;
+
+        }
+
+
+    }
+
+    public void ChangeColorBlindNessMode(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                CVDFilter.profile = CBNormal;
+                break;
+            case 1:
+                CVDFilter.profile = CBProtanopia;
+                break;
+            case 2:
+                CVDFilter.profile = CBProtanomaly;
+                break;
+            case 3:
+                CVDFilter.profile = CBDeuteranopia;
+                break;
+            case 4:
+                CVDFilter.profile = CBDeuteranomaly;
+                break;
+            case 5:
+                CVDFilter.profile = CBTritanopia;
+                break;
+            case 6:
+                CVDFilter.profile = CBTritanomaly;
+                break;
+            case 7:
+                CVDFilter.profile = CBAchromatopsia;
+                break;
+            case 8:
+                CVDFilter.profile = CBAchromatomaly;
+                break;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
+        try
+        {
+            var musicisplaying = MusicSource.GetComponent<AudioSource>();
+            if (!musicisplaying.isPlaying)
+            {
+                SoundManager.Instance.RandomMusic(Musics);
+            }
+        }
+        catch(Exception ex)
+        {
+            Debug.LogError("Could not assign music or play music" + ex);
+            SoundAssign();
+        }
         CookiesText.text = "Cookies: " + Cookies;
         Shop_Autoclicker.text = "Autoclicker (" + AutoclickerPrice + " Cookies";
         Shop_Doublecookie.text = "Doublecookie (" + DoublecookiePrice + " Cookies";
         Shop_Drill.text = "Drill (" + DrillPrice + " Cookies";
+        Shop_Grandma.text = "Grandma (" + GrandmaPrice + " Cookies";
 
         // performance mode
         // if (PerformanceMode)
@@ -362,10 +497,12 @@ public class Game : MonoBehaviour
         Stats_Drills.text = "Drills: " + Drills;
         Stats_CPC.text = "Cookies Per Click: " + CPC;
         Stats_CPS.text = "Cookies Per Second: " + CPS;
+        Stats_Grandmas.text = "Grandmas: " + Grandmas;
 
         // music & sounds
         MusicSource.SetActive(Music);
         SoundSource.SetActive(Sounds);
+        
 
         // reload
         if (Input.GetKey(KeyCode.Tab) && Input.GetKey(KeyCode.R))
@@ -374,4 +511,26 @@ public class Game : MonoBehaviour
             Reload();
         }
     }
+
+    string error;
+
+    void OnEnable()
+    {
+        Application.logMessageReceived += HandleLog;
+    }
+
+    void OnDisable()
+    {
+        Application.logMessageReceived -= HandleLog;
+    }
+
+    void HandleLog(string logString, string stackTrace, LogType type)
+    {
+        
+        if (type == LogType.Error || type == LogType.Exception || type == LogType.Assert)
+        {
+            notification.ShowNotification("(" + type + ") " + logString + " " + stackTrace, "" + type);
+        }   
+    }
+
 }

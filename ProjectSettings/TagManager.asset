@@ -8,6 +8,7 @@ TagManager:
   - audio
   - music
   - sound
+  - Screen
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - pp
   - audio
-  - 
+  - DontRender
   - 
   - 
   - 

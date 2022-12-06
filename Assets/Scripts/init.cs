@@ -4,9 +4,11 @@ using UnityEngine.SceneManagement;
 public class init : MonoBehaviour
 {
     public GameObject DDOL;
+    public SceneLoader sceneLoader;
     void Start()
     {
+        Resources.UnloadUnusedAssets();
         DontDestroyOnLoad(DDOL);
-        SceneManager.LoadScene("Game");
+        sceneLoader.LoadScene(1);
     }
 }

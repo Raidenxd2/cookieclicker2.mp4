@@ -26,20 +26,23 @@ public class ResearchFactory : MonoBehaviour
     public int BigCookieDuration;
     public TMP_Text BigCookieText;
     public bool BigCookieUnlocked;
+    public bool BigCookieResearching;
     public TMP_Text ResearchPointsText;
 
     void Start()
     {
         ResearchPoints = 1;
+        BigCookieDuration = 0;
         StartCoroutine(Tick());
     }
 
     IEnumerator Tick()
     {
         yield return new WaitForSeconds(1);
-        if (BigCookieDuration >= 0)
+        if (BigCookieDuration > -1 || BigCookieResearching == true)
         {
             BigCookieDuration -= 1;
+            
         }
         StartCoroutine(Tick());
     }
@@ -104,6 +107,7 @@ public class ResearchFactory : MonoBehaviour
         if (ResearchPoints >= 1)
         {
             BigCookieDuration = 30;
+            BigCookieResearching = true;
         }
     }
 
@@ -121,11 +125,11 @@ public class ResearchFactory : MonoBehaviour
             BuyBTN.SetActive(true);
             UnlockedUI.SetActive(false);
         }
-        if (BigCookieDuration <= 0)
+        if (BigCookieDuration < 0 || BigCookieResearching == true)
         {
             BigCookieUnlocked = true;
         }
         BigCookieText.text = BigCookieDuration + "s remaining";
-        ResearchPointsText.text = "" + ResearchPoints;
+        ResearchPointsText.text = "Points: " + ResearchPoints;
     }
 }

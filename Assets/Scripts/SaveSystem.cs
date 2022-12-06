@@ -21,17 +21,34 @@ public static class SaveSystem
         stream.Close();
     }
 
-    public static PlayerData LoadPlayer()
+    public static PlayerData LoadPlayer(Game ga)
     {
         string path = Application.persistentDataPath + "/cookie2";
         if (File.Exists(path))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
+            try
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(path, FileMode.Open);
 
-            PlayerData data = formatter.Deserialize(stream) as PlayerData;
-            stream.Close();
-            return data;
+                PlayerData data = formatter.Deserialize(stream) as PlayerData;
+                stream.Close();
+                return data;
+            }
+            // catch(IOException ex)
+            // {
+            //     ga.SaveDataErrorIO(ex);
+            //     ga.SDIE.SetActive(true);
+            //     ga.ErrorText.text = "" + ex;
+            //     return null;
+            // }
+            catch(Exception ex)
+            {
+                ga.SDIE.SetActive(true);
+                ga.SmallErrorText.text = "" + ex.Message;
+                ga.ErrorText.text = "" + ex;
+                return null;
+            }
         }
         else
         {
