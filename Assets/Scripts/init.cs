@@ -9,6 +9,5 @@ public class init : MonoBehaviour
     {
         Resources.UnloadUnusedAssets();
         DontDestroyOnLoad(DDOL);
-        sceneLoader.LoadScene(1);
     }
 }

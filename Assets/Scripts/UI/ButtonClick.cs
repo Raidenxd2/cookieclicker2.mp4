@@ -12,13 +12,30 @@ public class ButtonClick : MonoBehaviour
 
     void Awake()
     {
-        button = gameObject.GetComponent<Button>();
         soundManager = GameObject.FindGameObjectWithTag("audio").GetComponent<SoundManager>();
-        button.onClick.AddListener(PlaySoundOnClick);
+        try
+        {
+            button = gameObject.GetComponent<Button>();
+            soundManager = GameObject.FindGameObjectWithTag("audio").GetComponent<SoundManager>();
+            button.onClick.AddListener(PlaySoundOnClick);
+        }
+        catch
+        {
+
+        }
+        
     }
 
-    void PlaySoundOnClick()
+    void OnEnable()
     {
-        soundManager.Play(UIClick);
+        soundManager = GameObject.FindGameObjectWithTag("audio").GetComponent<SoundManager>();
+    }
+
+    
+
+    public void PlaySoundOnClick()
+    {
+        //soundManager.Play(UIClick);
+        SoundManager.Instance.Play(UIClick);
     }
 }

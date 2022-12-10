@@ -1,0 +1,8 @@
+{
+    "mod_name": "Shop Item Example",
+    "mod_version": "1.0.0",
+    "shop_item_name": "Shop Item",
+    "shop_item_cps": 5,
+    "shop_item_cpc": 2,
+    "shop_item_price": 200
+}

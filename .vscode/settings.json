@@ -1,4 +1,4 @@
-﻿{
+{
     "files.exclude":
     {
         "**/.DS_Store":true,
@@ -48,8 +48,45 @@
         "library/":true,
         "obj/":true,
         "Obj/":true,
-        "ProjectSettings/":true,
+        "ProjectSettings/":false,
         "temp/":true,
         "Temp/":true
+    },
+    "workbench.colorCustomizations": 
+    {
+        "activityBar.foreground": "#26ff00",
+        "activityBarBadge.background": "#0077ff",
+        "activityBar.background": "#000000",
+        "editor.background": "#000000",
+        "sideBar.background": "#000000",
+        "menu.background": "#080808",
+        "welcomePage.background": "#000000",
+        "tab.hoverBackground": "#080808",
+        "tab.inactiveBackground": "#000000",
+        "tab.activeBackground": "#080808",
+        "banner.background": "#000000",
+        "terminal.background": "#000000",
+        "panel.background": "#000000",
+        "sideBar.border": "#080808",
+        "sideBar.foreground":"#ffffff",
+        "sideBarSectionHeader.background": "#000000",
+        "menu.selectionBackground": "#080808",
+        "list.hoverBackground": "#080808",
+        "list.focusBackground": "#080808",
+        "list.activeSelectionBackground": "#080808",
+        "titleBar.activeBackground": "#000000",
+        "titleBar.activeForeground": "#ffffff",
+        "titleBar.inactiveBackground": "#080808",
+        "titleBar.inactiveForeground": "#ffffff",
+        "statusBar.background": "#000000",
+        "statusBar.foreground": "#ffffff",
+        "breadcrumb.background": "#000000",
+        "breadcrumb.foreground": "#ffffff",
+        "breadcrumb.activeSelectionForeground": "#ffffff",
+        "breadcrumb.focusForeground": "#dfdfdf",
+        "breadcrumbPicker.background": "#080808",
+        "tab.activeForeground": "#ffffff",
+        "tab.inactiveForeground": "#b0b0b0",
+        "editorGroupHeader.tabsBackground": "#000000"
     }
 }

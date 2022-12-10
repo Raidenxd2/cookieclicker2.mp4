@@ -1,0 +1,96 @@
+ManifestFileVersion: 0
+CRC: 3015449156
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: aa89e026b9667f2d9386e1a6eadeefa0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 036d57c6f998c4b68d8bb3888e8d3910
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
+Assets:
+- Assets/Fonts/Source Sans Pro/SourceSansPro-Regular SDF.asset
+- Assets/Fonts/PerfectDOSVGA437 SDF.asset
+- Assets/Fonts/DejaVuSans/checkmark.asset
+- Assets/Fonts/Roboto/TMP/Roboto-MediumItalic SDF.asset
+- Assets/Fonts/Roboto/Roboto-LightItalic.ttf
+- Assets/Fonts/AccessibilityFonts/Times New Roman/TIMES.TTF
+- Assets/Fonts/Source Sans Pro/SourceSansPro-SemiBold.ttf
+- Assets/Fonts/Source Sans Pro/SourceSansPro-ExtraLight.ttf
+- Assets/Fonts/AccessibilityFonts/Times New Roman/TIMES SDF.asset
+- Assets/Fonts/Roboto/LICENSE.txt
+- Assets/Fonts/AccessibilityFonts/Times New Roman/TIMESBI.TTF
+- Assets/Fonts/gameFont.asset
+- Assets/Fonts/DejaVuSans/DejaVuSans.ttf
+- Assets/Fonts/Source Sans Pro/SourceSansPro-Italic.ttf
+- Assets/Fonts/Source Sans Pro/SourceSansPro-Black.ttf
+- Assets/Fonts/AccessibilityFonts/Times New Roman/TIMESI.TTF
+- Assets/Fonts/Source Sans Pro/SourceSansPro-BlackItalic.ttf
+- Assets/Fonts/Roboto/TMP/Roboto-BlackItalic SDF.asset
+- Assets/Fonts/Source Sans Pro/OFL.txt
+- Assets/Fonts/Roboto/Roboto-BoldItalic.ttf
+- Assets/Fonts/PerfectDOSVGA437.ttf
+- Assets/Fonts/Roboto/Roboto-Black.ttf
+- Assets/Fonts/Roboto/TMP/Roboto-Italic SDF.asset
+- Assets/Fonts/Source Sans Pro/SourceSansPro-Light.ttf
+- Assets/Fonts/Source Sans Pro/SourceSansPro-SemiBoldItalic.ttf
+- Assets/Fonts/Roboto/Roboto-MediumItalic.ttf
+- Assets/Fonts/Roboto/TMP/Roboto-LightItalic SDF.asset
+- Assets/Fonts/Roboto/Roboto-Medium.ttf
+- Assets/Fonts/Roboto/TMP/Roboto-BoldItalic SDF.asset
+- Assets/Fonts/Source Sans Pro/SourceSansPro-Regular.ttf
+- Assets/Fonts/Roboto/Roboto-Italic.ttf
+- Assets/Fonts/Roboto/Roboto-ThinItalic.ttf
+- Assets/Fonts/Roboto/Roboto-Thin.ttf
+- Assets/Fonts/Source Sans Pro/SourceSansPro-BoldItalic.ttf
+- Assets/Fonts/Source Sans Pro/SourceSansPro-ExtraLightItalic.ttf
+- Assets/Fonts/Roboto/Roboto-Bold.ttf
+- Assets/Fonts/Roboto/TMP/Roboto-Bold SDF.asset
+- Assets/Fonts/Source Sans Pro/SourceSansPro-Bold.ttf
+- Assets/Fonts/AccessibilityFonts/Times New Roman/TIMESBD.TTF
+- Assets/Fonts/Roboto/TMP/Roboto-Thin SDF.asset
+- Assets/Fonts/Roboto/Roboto-Light.ttf
+- Assets/Fonts/Roboto/TMP/Roboto-Medium SDF.asset
+- Assets/Fonts/Source Sans Pro/SourceSansPro-LightItalic.ttf
+- Assets/Fonts/Roboto/Roboto-Regular.ttf
+- Assets/Fonts/Roboto/TMP/Roboto-ThinItalic SDF.asset
+- Assets/Fonts/Roboto/Roboto-BlackItalic.ttf
+- Assets/Fonts/Roboto/TMP/Roboto-Black SDF.asset
+- Assets/Fonts/Roboto/TMP/Roboto-Light SDF.asset
+Dependencies: []

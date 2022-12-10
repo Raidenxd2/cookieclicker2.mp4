@@ -6,6 +6,8 @@ using System.IO;
 using BreakInfinity;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class Game : MonoBehaviour
 {
@@ -92,6 +94,9 @@ public class Game : MonoBehaviour
     public UnityEngine.Rendering.VolumeProfile CBTritanomaly;
     public UnityEngine.Rendering.VolumeProfile CBAchromatopsia;
     public UnityEngine.Rendering.VolumeProfile CBAchromatomaly;
+
+    [Header("addresables")]
+    [SerializeField] private List<AssetReference> _audioReferences;
     
 
     // Start is called before the first frame update
@@ -426,7 +431,12 @@ public class Game : MonoBehaviour
             var musicisplaying = MusicSource.GetComponent<AudioSource>();
             if (!musicisplaying.isPlaying)
             {
-                SoundManager.Instance.RandomMusic(Musics);
+                int randomIndex = UnityEngine.Random.Range(0, 7);
+                Debug.Log(_audioReferences[randomIndex]);
+                AsyncOperationHandle<AudioClip> asyncOperationHandle = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[randomIndex]);
+
+                asyncOperationHandle.Completed += AsyncOperationHandle_Completed;
+                
             }
         }
         catch(Exception ex)
@@ -435,10 +445,10 @@ public class Game : MonoBehaviour
             SoundAssign();
         }
         CookiesText.text = "Cookies: " + Cookies;
-        Shop_Autoclicker.text = "Autoclicker (" + AutoclickerPrice + " Cookies";
-        Shop_Doublecookie.text = "Doublecookie (" + DoublecookiePrice + " Cookies";
-        Shop_Drill.text = "Drill (" + DrillPrice + " Cookies";
-        Shop_Grandma.text = "Grandma (" + GrandmaPrice + " Cookies";
+        Shop_Autoclicker.text = "Autoclicker (" + AutoclickerPrice + " Cookies)";
+        Shop_Doublecookie.text = "Doublecookie (" + DoublecookiePrice + " Cookies)";
+        Shop_Drill.text = "Drill (" + DrillPrice + " Cookies)";
+        Shop_Grandma.text = "Grandma (" + GrandmaPrice + " Cookies)";
 
         // performance mode
         // if (PerformanceMode)
@@ -531,6 +541,18 @@ public class Game : MonoBehaviour
         {
             notification.ShowNotification("(" + type + ") " + logString + " " + stackTrace, "" + type);
         }   
+    }
+
+    private void AsyncOperationHandle_Completed(AsyncOperationHandle<AudioClip> asyncOperationHandle)
+    {
+        if (asyncOperationHandle.Status == AsyncOperationStatus.Succeeded)
+        {
+            SoundManager.Instance.RandomMusic(asyncOperationHandle.Result);
+        }
+        else
+        {
+            Debug.LogError("Failed to load audio clip");
+        }
     }
 
 }

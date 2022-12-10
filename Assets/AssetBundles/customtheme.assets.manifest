@@ -1,0 +1,70 @@
+ManifestFileVersion: 0
+CRC: 2137157335
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: afb227474c42e7f63bc9628f37025ed8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e7338896b129e2769f7c1e164b9ff447
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 89
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 75b04ca65078e7c489fec4414cfd9568, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9599a722846ab664c87d5c1d11e7087a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1792507ad4f81e74cbf591bf0b35f00a, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 192
+  Script: {instanceID: 0}
+- Class: 215
+  Script: {instanceID: 0}
+- Class: 363
+  Script: {instanceID: 0}
+- Class: 850595691
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: PrefabLightmapData/LightInfo
+- AssemblyName: Assembly-CSharp
+  ClassName: PrefabLightmapData/RendererInfo
+Assets:
+- Assets/ThemeTemplate/customTheme/ReflectionProbe-0.exr
+- Assets/ThemeTemplate/Materials/Green.mat
+- Assets/ThemeTemplate/customTheme/OcclusionCullingData.asset
+- Assets/ThemeTemplate/---customTheme---.prefab
+- Assets/ThemeTemplate/customTheme/Lightmap-0_comp_light.exr
+- Assets/ThemeTemplate/customTheme/Lightmap-0_comp_dir.png
+- Assets/ThemeTemplate/customTheme/customThemeLightingSettings.lighting
+- Assets/ThemeTemplate/customTheme/ReflectionProbe-1.exr
+- Assets/ThemeTemplate/Materials/CubeGlow.mat
+- Assets/ThemeTemplate/customTheme/Lightmap-1_comp_dir.png
+- Assets/ThemeTemplate/cookie_beta.fbx
+- Assets/ThemeTemplate/customTheme/Lightmap-1_comp_light.exr
+Dependencies: []
