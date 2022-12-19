@@ -42,7 +42,8 @@ public class BetaContent : MonoBehaviour
                 ModsBTN.SetActive(true);
             }
         }
-        sceneLoader.LoadScene(1);
+        //sceneLoader.LoadScene(1);
+        StartCoroutine(sceneLoader.LoadScene(1));
     }
 
     // Update is called once per frame

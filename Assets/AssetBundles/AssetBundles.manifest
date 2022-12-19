@@ -1,10 +1,10 @@
 ManifestFileVersion: 0
-CRC: 1810027553
+CRC: 1214280640
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: fonts
       Dependencies: {}
     Info_1:
-      Name: customtheme.assets
+      Name: customtheme
       Dependencies: {}

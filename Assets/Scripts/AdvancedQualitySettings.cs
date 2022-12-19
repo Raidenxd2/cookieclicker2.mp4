@@ -51,7 +51,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RenderQuality = 1;
+        //RenderQuality = 1;
     }
 
     public void PostProcessToggle(bool Toggle)
@@ -99,6 +99,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     public void RenderQualityChange()
     {
         RenderQuality = float.Parse(RenderQualityInput.text);
+        PlayerPrefs.SetFloat("GRAPHICS_RenderQuality", RenderQuality);
     }
 
     public void AOToggle(bool Toggle)
@@ -129,6 +130,18 @@ public class AdvancedQualitySettings : MonoBehaviour
         }
     }
 
+    public void GraphicsAPIChanged(int value)
+    {
+        Debug.Log(value);
+        PlayerPrefs.SetInt("GRAPHICS_GraphicsAPI", value);
+        switch (value)
+        {
+            case 0:
+                
+                break;
+        }
+    }
+
     public void SaveGraphics()
     {
         PlayerPrefs.Save();
@@ -155,6 +168,7 @@ public class AdvancedQualitySettings : MonoBehaviour
         TextureQuality = TextureQualityTemp;
         Textures = intToBool(TexturesTemp);
         AO = intToBool(AOTemp);
+        RenderQuality = PlayerPrefs.GetFloat("GRAPHICS_RenderQuality", 1);
         Debug.Log("Loaded Graphics Options");
     }
 

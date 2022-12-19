@@ -10,6 +10,14 @@ public class Cookieclicker2mp4ThemeManager
     [MenuItem("Cookieclicker2.mp4 Theme Manager/Create Theme")]
     static void BuildAllAssetBundles()
     {
+        Debug.Log("Building lightmaps...");
+        EditorApplication.ExecuteMenuItem("Cookieclicker2.mp4 Theme Manager/Bake Prefab lightmap data");
+        EditorApplication.ExecuteMenuItem("Cookieclicker2.mp4 Theme Manager/Build AssetBundle");
+    }
+
+    [MenuItem("Cookieclicker2.mp4 Theme Manager/Build AssetBundle")]
+    static void BuildAssetBundle()
+    {
         string assetBundleDirectory = "Assets/AssetBundles";
         if (!Directory.Exists(assetBundleDirectory))
         {
@@ -18,22 +26,12 @@ public class Cookieclicker2mp4ThemeManager
         try
         {
             BuildPipeline.BuildAssetBundles(assetBundleDirectory, BuildAssetBundleOptions.None, EditorUserBuildSettings.activeBuildTarget);
-            // DirectoryInfo d = new DirectoryInfo(assetBundleDirectory);
-            // File.Delete("Assets/AssetBundles/AssetBundles");
-            // foreach (var file in d.GetFiles("*.manifest"))
-            // {
-            //     file.Delete();
-            // }
-            // foreach (var file in d.GetFiles("*.manifest.meta"))
-            // {
-            //     file.Delete();
-            // }
             AssetDatabase.Refresh();
-            Debug.Log("<b>✔️ SUCCESSFULLY BUILDED ASSETBUNDLES ✔️</b>");
+            Debug.Log("Built Theme");
         }
         catch(Exception e)
         {
-            Debug.LogError("AN ERROR OCCURED WHILE BUILDING THE ASSETBUNDLES!\n" + e.ToString());
+            Debug.LogError("Error occured while building theme:\n" + e.ToString());
         }
     }
 }
