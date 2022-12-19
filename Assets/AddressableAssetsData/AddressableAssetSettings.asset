@@ -47,6 +47,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9e1f08dd116a3a1469365cd06c185c2b, type: 2}
   - {fileID: 11400000, guid: 65f457846b28cfd4da463c7b97387371, type: 2}
   - {fileID: 11400000, guid: 506df71ed55a76843a8bc4778c0459db, type: 2}
+  - {fileID: 11400000, guid: d923a18e89a853647adc0f22c488412a, type: 2}
+  - {fileID: 11400000, guid: 7c2cc6c98eae3f445a421a646a156236, type: 2}
+  - {fileID: 11400000, guid: 2c56e74564ab7124ea922556a8f1efe2, type: 2}
+  - {fileID: 11400000, guid: 7d2386ca51f38b44380665b180df8cce, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -65,9 +69,9 @@ MonoBehaviour:
       - m_Id: 25429aa845e5eff4893ee60fb409988c
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: 4e6646e3f189a7846b33545516748d4b
-        m_Value: ServerData/[BuildTarget]
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
       - m_Id: 4a9f52f1b5b66794fa0b096476def18c
-        m_Value: http://[PrivateIpAddress]:[HostingServicePort]
+        m_Value: https://drive.google.com/uc?export=download&id=10R_2wEtpBJYcZe4vubLIHvCu8rDv6y4z
     m_ProfileEntryNames:
     - m_Id: 50aaf528fb0dbaa4f825d28853c6736f
       m_Name: BuildTarget
@@ -88,6 +92,10 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Locale
+    - Locale-en
+    - Preload
+    - Locale-es
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 606e47460085f7e4cb46a8813fb33f3e, type: 2}

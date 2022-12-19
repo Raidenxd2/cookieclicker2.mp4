@@ -10,10 +10,13 @@ public class ModManager : MonoBehaviour
 
     public GameObject ShopButton;
     public GameObject StatsItem;
+    public GameObject ThemeButton;
     public RectTransform ShopContent;
     public RectTransform StatsContent;
+    public RectTransform ThemeContent;
     public ShopButtonMod shopButtonMod;
     public StatsItemMod statsItemMod;
+    public ThemeItemMod themeItemMod;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +26,22 @@ public class ModManager : MonoBehaviour
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/localmod");
         }
+        //LoadTestAssetBundle();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadTestAssetBundle()
     {
-        
+        var myLoadedAssetBundle = AssetBundle.LoadFromFile(Application.dataPath + "/AssetBundles/customtheme.assets");
+        if (myLoadedAssetBundle == null)
+        {
+            Debug.Log("Failed to load AssetBundle!");
+            return;
+        }
+
+        var prefab = myLoadedAssetBundle.LoadAsset<GameObject>("---customTheme---.prefab");
+        Instantiate(prefab);
+
+        myLoadedAssetBundle.Unload(false);
     }
 
     public void GetMods()
@@ -46,22 +59,25 @@ public class ModManager : MonoBehaviour
                     string path = dir + "/mod.json";
                     StreamReader reader = new StreamReader(path); 
                     var modJsonData = JsonConvert.DeserializeObject<ModJsonData>(reader.ReadToEnd());
-                    Debug.Log(modJsonData.mod_name);
-                    Debug.Log(modJsonData.mod_version);
-                    Debug.Log(modJsonData.shop_item_cpc);
-                    Debug.Log(modJsonData.shop_item_cps);
-                    Debug.Log(modJsonData.shop_item_name);
-                    Debug.Log(modJsonData.shop_item_price);
-                    shopButtonMod.ShopItemName = modJsonData.shop_item_name;
-                    shopButtonMod.ShopItemPrice = modJsonData.shop_item_price;
-                    shopButtonMod.ShopItemCPS = modJsonData.shop_item_cps;
-                    shopButtonMod.ShopItemCPC = modJsonData.shop_item_cpc;
-                    shopButtonMod.ShopItemOldPrice = modJsonData.shop_item_price;
-                    statsItemMod.ShopItemName = modJsonData.shop_item_name;
-                    statsItemMod.ShopItemAmount = 0;
-
-                    Instantiate(ShopButton, ShopContent);
-                    Instantiate(StatsItem, StatsContent);
+                    if (modJsonData.mod_type == "Theme")
+                    {
+                        themeItemMod.AssetBundlePath = dir;
+                        themeItemMod.ThemeItemName = modJsonData.theme_name;
+                       Instantiate(ThemeButton, ThemeContent);
+                    }
+                    else
+                    {
+                        shopButtonMod.ShopItemName = modJsonData.shop_item_name;
+                        shopButtonMod.ShopItemPrice = modJsonData.shop_item_price;
+                        shopButtonMod.ShopItemCPS = modJsonData.shop_item_cps;
+                        shopButtonMod.ShopItemCPC = modJsonData.shop_item_cpc;
+                        shopButtonMod.ShopItemOldPrice = modJsonData.shop_item_price;
+                        statsItemMod.ShopItemName = modJsonData.shop_item_name;
+                        statsItemMod.ShopItemAmount = 0;
+                        Instantiate(ShopButton, ShopContent);
+                        Instantiate(StatsItem, StatsContent);
+                    }
+                    
                     reader.Close();
                 }
             }
@@ -73,22 +89,25 @@ public class ModManager : MonoBehaviour
             string path = dir + "/mod.json";
             StreamReader reader = new StreamReader(path); 
             var modJsonData = JsonConvert.DeserializeObject<ModJsonData>(reader.ReadToEnd());
-            Debug.Log(modJsonData.mod_name);
-            Debug.Log(modJsonData.mod_version);
-            Debug.Log(modJsonData.shop_item_cpc);
-            Debug.Log(modJsonData.shop_item_cps);
-            Debug.Log(modJsonData.shop_item_name);
-            Debug.Log(modJsonData.shop_item_price);
-            shopButtonMod.ShopItemName = modJsonData.shop_item_name;
-            shopButtonMod.ShopItemPrice = modJsonData.shop_item_price;
-            shopButtonMod.ShopItemCPS = modJsonData.shop_item_cps;
-            shopButtonMod.ShopItemCPC = modJsonData.shop_item_cpc;
-            shopButtonMod.ShopItemOldPrice = modJsonData.shop_item_price;
-            statsItemMod.ShopItemName = modJsonData.shop_item_name;
-            statsItemMod.ShopItemAmount = 0;
+            if (modJsonData.mod_type == "Theme")
+            {
+                themeItemMod.AssetBundlePath = dir;
+                themeItemMod.ThemeItemName = modJsonData.theme_name;
+                Instantiate(ThemeButton, ThemeContent);
+            }
+            else
+            {
+                shopButtonMod.ShopItemName = modJsonData.shop_item_name;
+                shopButtonMod.ShopItemPrice = modJsonData.shop_item_price;
+                shopButtonMod.ShopItemCPS = modJsonData.shop_item_cps;
+                shopButtonMod.ShopItemCPC = modJsonData.shop_item_cpc;
+                shopButtonMod.ShopItemOldPrice = modJsonData.shop_item_price;
+                statsItemMod.ShopItemName = modJsonData.shop_item_name;
+                statsItemMod.ShopItemAmount = 0;
+                Instantiate(ShopButton, ShopContent);
+                Instantiate(StatsItem, StatsContent);
+            }
 
-            Instantiate(ShopButton, ShopContent);
-            Instantiate(StatsItem, StatsContent);
             reader.Close();
         }
     }

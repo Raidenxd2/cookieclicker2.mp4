@@ -32,11 +32,12 @@ public class Update : MonoBehaviour
     {
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
         {
-            DownloadUpdate();
+            Application.OpenURL("https://raidenxd2.itch.io/cookieclicker2mp4#download");
         }
         else
         {
             Application.OpenURL("https://raidenxd2.itch.io/cookieclicker2mp4#download");
+            //DownloadUpdate();
         }
     }
 

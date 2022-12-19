@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2137157335
+CRC: 1421673633
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: afb227474c42e7f63bc9628f37025ed8
+    Hash: e2146b726de019b91624f82340179777
   TypeTreeHash:
     serializedVersion: 2
-    Hash: e7338896b129e2769f7c1e164b9ff447
+    Hash: bdf71cd36794dbfaff0563eb2dce3d39
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -32,13 +32,13 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: 11500000, guid: 1792507ad4f81e74cbf591bf0b35f00a, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 75b04ca65078e7c489fec4414cfd9568, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 9599a722846ab664c87d5c1d11e7087a, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 1792507ad4f81e74cbf591bf0b35f00a, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 192
@@ -65,6 +65,6 @@ Assets:
 - Assets/ThemeTemplate/customTheme/ReflectionProbe-1.exr
 - Assets/ThemeTemplate/Materials/CubeGlow.mat
 - Assets/ThemeTemplate/customTheme/Lightmap-1_comp_dir.png
-- Assets/ThemeTemplate/cookie_beta.fbx
+- Assets/ThemeTemplate/Models/cookie_beta.fbx
 - Assets/ThemeTemplate/customTheme/Lightmap-1_comp_light.exr
 Dependencies: []

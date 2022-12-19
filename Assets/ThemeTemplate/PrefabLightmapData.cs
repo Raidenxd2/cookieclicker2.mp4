@@ -158,7 +158,7 @@ public class PrefabLightmapData : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    [UnityEditor.MenuItem("Assets/Bake Prefab Lightmaps")]
+    [UnityEditor.MenuItem("Cookieclicker2.mp4 Theme Manager/Bake Prefab lightmap data")]
     static void GenerateLightmapInfo()
     {
         if (UnityEditor.Lightmapping.giWorkflowMode != UnityEditor.Lightmapping.GIWorkflowMode.OnDemand)

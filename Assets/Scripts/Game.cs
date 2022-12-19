@@ -8,6 +8,9 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.UI;
+using Logger = LoggerSystem.Logger;
+using LoggerSystem;
 
 public class Game : MonoBehaviour
 {
@@ -97,11 +100,26 @@ public class Game : MonoBehaviour
 
     [Header("addresables")]
     [SerializeField] private List<AssetReference> _audioReferences;
+
+    [Header("BetaContent")]
+    public GameObject BetaContentWarningScreen;
+    public GameObject BetaContentScreen;
+    public Toggle[] BetaContentToggles;
+    public GameObject ScreenshotOptionsBTN;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        Logger.Log("aaa", LogTypes.Normal);
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            ScreenshotOptionsBTN.SetActive(false);
+        }
+        else
+        {
+            ScreenshotOptionsBTN.SetActive(true);
+        }
         LoadPlayer();
         if (HasPlayed == false)
         {
@@ -130,6 +148,8 @@ public class Game : MonoBehaviour
         {
             Debug.LogError("Could not assign audio. Did you load from the Init scene?");
         }
+        BetaContentToggles[0].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_EnableSideBar", BetaContentToggles[0].isOn);});
+        BetaContentToggles[1].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_Mods", BetaContentToggles[1].isOn);});
     }
 
     void SoundAssign()
@@ -361,7 +381,7 @@ public class Game : MonoBehaviour
         {
             
             case 1:
-                Application.OpenURL("https://raidenxd2.github.io/fonts/Roboto/LICENSE.txt");
+                Application.OpenURL("https://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web");
                 break;
             case 2:
                 Application.OpenURL("https://raidenxd2.github.io/cookieclicker2.mp4/Music.txt");
@@ -420,6 +440,86 @@ public class Game : MonoBehaviour
             case 8:
                 CVDFilter.profile = CBAchromatomaly;
                 break;
+        }
+    }
+
+    public void ChangeMusic(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                AsyncOperationHandle<AudioClip> asyncOperationHandle = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[0]);
+                asyncOperationHandle.Completed += AsyncOperationHandle_Completed;
+                break;
+            case 1:
+                AsyncOperationHandle<AudioClip> asyncOperationHandle2 = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[1]);
+                asyncOperationHandle2.Completed += AsyncOperationHandle_Completed;
+                break;
+            case 2:
+                AsyncOperationHandle<AudioClip> asyncOperationHandle3 = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[2]);
+                asyncOperationHandle3.Completed += AsyncOperationHandle_Completed;
+                break;
+            case 3:
+                AsyncOperationHandle<AudioClip> asyncOperationHandle4 = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[3]);
+                asyncOperationHandle4.Completed += AsyncOperationHandle_Completed;
+                break;
+            case 4:
+                AsyncOperationHandle<AudioClip> asyncOperationHandle5 = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[4]);
+                asyncOperationHandle5.Completed += AsyncOperationHandle_Completed;
+                break;
+            case 5:
+                AsyncOperationHandle<AudioClip> asyncOperationHandle6 = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[5]);
+                asyncOperationHandle6.Completed += AsyncOperationHandle_Completed;
+                break;
+            case 6:
+                AsyncOperationHandle<AudioClip> asyncOperationHandle7 = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[6]);
+                asyncOperationHandle7.Completed += AsyncOperationHandle_Completed;
+                break;
+            case 7:
+                AsyncOperationHandle<AudioClip> asyncOperationHandle8 = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[7]);
+                asyncOperationHandle8.Completed += AsyncOperationHandle_Completed;
+                break;
+        }
+    }
+
+    public void EnableBetaContent()
+    {
+        PlayerPrefs.SetInt("BetaContent", 1);
+        BetaContentScreen.SetActive(true);
+        BetaContentWarningScreen.SetActive(false);
+    }
+
+    public void DisableBetaContent()
+    {
+        PlayerPrefs.SetInt("BetaContent", 0);
+        PlayerPrefs.SetInt("BETA_EnableSideBar", 0);
+        PlayerPrefs.SetInt("BETA_Mods", 0);
+        SavePlayer();
+        Reload();
+    }
+
+    public void ChangeBetaContentFeatureValue(string name, bool toggle)
+    {
+        switch (toggle)
+        {
+            case false:
+                PlayerPrefs.SetInt(name, 0);
+                break;
+            case true:
+                PlayerPrefs.SetInt(name, 1);
+                break;
+        }
+    }
+
+    public void ShowBetaContentWindow()
+    {
+        if (PlayerPrefs.GetInt("BetaContent", 0) == 1)
+        {
+            BetaContentScreen.SetActive(true);
+        }
+        else
+        {
+            BetaContentWarningScreen.SetActive(true);
         }
     }
 
@@ -510,8 +610,26 @@ public class Game : MonoBehaviour
         Stats_Grandmas.text = "Grandmas: " + Grandmas;
 
         // music & sounds
-        MusicSource.SetActive(Music);
-        SoundSource.SetActive(Sounds);
+        var musicSource = MusicSource.GetComponent<AudioSource>();
+        var soundsSource = SoundSource.GetComponent<AudioSource>();
+        if (Music == false)
+        {
+            musicSource.volume = 0;
+        }
+        else
+        {
+            musicSource.volume = 1;
+        }
+        if (Sounds == false)
+        {
+            soundsSource.volume = 0;
+        }
+        else
+        {
+            soundsSource.volume = 1;
+        }
+        // MusicSource.SetActive(Music);
+        // SoundSource.SetActive(Sounds);
         
 
         // reload
@@ -539,6 +657,7 @@ public class Game : MonoBehaviour
         
         if (type == LogType.Error || type == LogType.Exception || type == LogType.Assert)
         {
+            Logger.Log("(" + type + ") " + logString + " " + stackTrace + "" + type, LogTypes.Error);
             notification.ShowNotification("(" + type + ") " + logString + " " + stackTrace, "" + type);
         }   
     }
@@ -551,7 +670,7 @@ public class Game : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Failed to load audio clip");
+            Logger.Log("Failed to load audio clip", LogTypes.Error);
         }
     }
 

@@ -9,6 +9,8 @@ TagManager:
   - music
   - sound
   - Screen
+  - HideInBuild
+  - ShowInBuild
   layers:
   - Default
   - TransparentFX

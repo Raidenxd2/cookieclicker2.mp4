@@ -18,7 +18,7 @@ MonoBehaviour:
     requestCacheLimitKB: 0
   iosConfiguration:
     logLevel: 0
-    userPortal: 0
+    userPortal: 6
     requestCacheLimitKB: 0
   standaloneConfiguration:
     logLevel: 0
