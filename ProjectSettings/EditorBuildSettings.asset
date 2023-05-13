@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Reload.unity
     guid: b55643e215a96a945aa04c546eed6332
+  - enabled: 1
+    path: Assets/Scenes/devexpire.unity
+    guid: 5bb7e4a6a4282f14089a04bc676212be
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 9e02dac3f60ffc64cbaab0fe6484bdd5, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 5a6050f4d65b99340992ab87fbbe1f03, type: 2}

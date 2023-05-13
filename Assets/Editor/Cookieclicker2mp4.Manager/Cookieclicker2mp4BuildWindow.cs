@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System.IO;
 
 public class Cookieclicker2mp4BuildWindow : EditorWindow
 {
@@ -13,6 +14,13 @@ public class Cookieclicker2mp4BuildWindow : EditorWindow
     public static void ShowWindow()
     {
         GetWindow<Cookieclicker2mp4BuildWindow>("Build Game");
+    }
+
+    [MenuItem("Cookieclicker2.mp4/Reload Project")]
+    public static void ReloadProject()
+    {
+        EditorUtility.DisplayProgressBar("Please wait...", "", 0);
+        EditorApplication.OpenProject(Directory.GetCurrentDirectory());
     }
 
 

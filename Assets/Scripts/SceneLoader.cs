@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using Logger = LoggerSystem.Logger;
 using LoggerSystem;
+using System;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -16,63 +17,31 @@ public class SceneLoader : MonoBehaviour
     public GameObject FailedToLoadGameScreen;
     int error;
 
-    public IEnumerator LoadScene(int sceneIndex)
-    {
-        try
-        {
-            StartCoroutine(LoadAsynchronously(sceneIndex));
-        }
-        catch (System.Exception ex)
-        {
-            FailedToLoadGameScreen.SetActive(true);
-            ErrorInfo.text = "" + ex;
-            Logger.Log("" + ex, LogTypes.Exception);
-            error = 1;
-        }
-
-        if (error == 1)
-        {
-            yield return new WaitForSeconds(30);
-            Application.Quit();
-        }
-        
-    }
-
     public void ButtonLoad()
     {
-        StartCoroutine(LoadScene(1));
+        SceneManager.LoadScene(1);
     }
 
-    IEnumerator LoadAsynchronously(int sceneIndex)
+    public IEnumerator LoadAsynchronously(int sceneIndex)
     {
         yield return new WaitForSeconds(0.2f);
-        try
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+        while (!operation.isDone)
         {
-            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
-            while (!operation.isDone)
-            {
-                float progress = Mathf.Clamp01(operation.progress / .9f);
-                slider.value = progress;
-                progressText.text = progress * 100f + "%";
-                Debug.Log(progress);
-            }
-        }
-        catch (System.Exception ex)
-        {
-            FailedToLoadGameScreen.SetActive(true);
-            ErrorInfo.text = "" + ex;
-            Logger.Log("" + ex, LogTypes.Exception);
-            error = 1;
-        }
-
-        if (error == 1)
-        {
-            yield return new WaitForSeconds(30);
-            Application.Quit();
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            slider.value = progress;
+            progressText.text = progress * 100f + "%";
+            Logger.Log("Progress: " + progress, LogTypes.Normal);
         }
         yield return null;
-        
+    }
 
-        
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    public void Reload()
+    {
+        SceneManager.LoadScene(0);
     }
 }

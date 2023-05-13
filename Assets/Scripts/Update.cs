@@ -25,20 +25,20 @@ public class Update : MonoBehaviour
 
     void Start()
     {
-        CheckForUpdatesGet();
+        // CheckForUpdatesGet();
     }
 
     public void GotoDownload()
     {
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
-        {
-            Application.OpenURL("https://raidenxd2.itch.io/cookieclicker2mp4#download");
-        }
-        else
-        {
-            Application.OpenURL("https://raidenxd2.itch.io/cookieclicker2mp4#download");
-            //DownloadUpdate();
-        }
+        // if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        // {
+        //     Application.OpenURL("https://raidenxd2.itch.io/cookieclicker2mp4#download");
+        // }
+        // else
+        // {
+        //     Application.OpenURL("https://raidenxd2.itch.io/cookieclicker2mp4#download");
+        //     //DownloadUpdate();
+        // }
     }
 
     public void DownloadUpdate()
@@ -50,7 +50,7 @@ public class Update : MonoBehaviour
 
     public void CheckForUpdatesGet()
     {
-        StartCoroutine(GetRequest("https://itch.io/api/1/x/wharf/latest?target=raidenxd2/cookieclicker2mp4&channel_name=win-32"));
+        // StartCoroutine(GetRequest("https://itch.io/api/1/x/wharf/latest?target=raidenxd2/cookieclicker2mp4&channel_name=win-32"));
     }
 
     public void InstallUpdate()

@@ -45,10 +45,6 @@ MonoBehaviour:
     m_Address: Audio/Music/Lancefield_-_Infinite_Sorrows.mp3
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: df508231622af674eb26b5968de170eb
-    m_Address: Audio/Music/Oh God Not This Game Again.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 9f7a032adbfd10746a0a6cf1583a8907
     m_Address: Audio/Music/Pamgaea.mp3
     m_ReadOnly: 0

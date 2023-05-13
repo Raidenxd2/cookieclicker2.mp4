@@ -11,6 +11,10 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 using Logger = LoggerSystem.Logger;
 using LoggerSystem;
+#if UNITY_ANDROID
+using GooglePlayGames;
+#endif
+using UnityEngine.Purchasing;
 
 public class Game : MonoBehaviour
 {
@@ -52,16 +56,24 @@ public class Game : MonoBehaviour
     public AdvancedQualitySettings ad;
     public SoundManager soundManager;
     public Notification notification;
+    public FPSLimiter fpsLimiter;
+#if UNITY_ANDROID
+    public GooglePlayGamesManager GPGM;
+#endif
+    public AdsManager adsManager;
 
     // text
     [Header("Text")]
     public TMP_Text CookiesText;
+    public TMP_Text BSMCookiesText;
     public TMP_Text Shop_Autoclicker;
     public TMP_Text Shop_Doublecookie;
     public TMP_Text Shop_Drill;
     public TMP_Text ErrorText;
     public TMP_Text SmallErrorText;
     public TMP_Text Shop_Grandma;
+    public TMP_Text VersionText;
+    public TMP_Text Shop_AdText;
 
     // performance mode stuff
     
@@ -106,12 +118,36 @@ public class Game : MonoBehaviour
     public GameObject BetaContentScreen;
     public Toggle[] BetaContentToggles;
     public GameObject ScreenshotOptionsBTN;
-    
+    public GameObject RegisteredBTN;
+
+    [Header("IAP")]
+    public GameObject StarterBundleBTN;
+    public bool StarterBundleBought;
+
+    [Header("Ads")]
+    public int Clicks;
+    public TMP_Text DebugClicks;
+
+    [Header("Particles")]
+    public GameObject CookieVFX;
+    public GameObject CookieGains;
+    public Transform CookieVFXSpot;
+    public Transform CookieGainsSpot;
 
     // Start is called before the first frame update
     void Start()
     {
-        Logger.Log("aaa", LogTypes.Normal);
+
+        // PlayCloudDataManager.Instance.SaveToCloud(Application.persistentDataPath + "/cookie2");
+#if UNITY_ANDROID
+        PlayCloudDataManager.Instance.LoadFromCloud(delegate (string s) {
+            File.WriteAllText(Application.persistentDataPath + "/cookie2_fromgoogle", s);
+        });
+
+        IAPManager.Instance.game = this;
+#endif
+        VersionText.text = "v" + Application.version + "-" + Application.platform + " (" + Application.unityVersion + ")";
+        // IAPManager.Instance.Initialize();
         if (Application.platform == RuntimePlatform.Android)
         {
             ScreenshotOptionsBTN.SetActive(false);
@@ -119,6 +155,14 @@ public class Game : MonoBehaviour
         else
         {
             ScreenshotOptionsBTN.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("HasPlayed", 0) == 0)
+        {
+            ad.SetDefaults();
+            SavePlayer();
+            PlayerPrefs.SetInt("HasPlayed", 1);
+            PlayerPrefs.Save();
+            Reload();
         }
         LoadPlayer();
         if (HasPlayed == false)
@@ -146,11 +190,69 @@ public class Game : MonoBehaviour
         }
         catch
         {
-            Debug.LogError("Could not assign audio. Did you load from the Init scene?");
+            Logger.Log("Could not assign audio. Did you load from the Init scene?", LogTypes.Error);
         }
+        ad.LoadGraphics();
+        // Logger.Log(IAPManager.Instance.IsInitialized.ToString(), LogTypes.Normal);
+        // if (IAPManager.Instance.IsInitialized)
+        // {
+        //     CheckIfUserRegistered();
+        // }
         BetaContentToggles[0].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_EnableSideBar", BetaContentToggles[0].isOn);});
         BetaContentToggles[1].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_Mods", BetaContentToggles[1].isOn);});
+        BetaContentToggles[2].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_FPSLIMIT", BetaContentToggles[2].isOn);});
+        BetaContentToggles[3].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_CookieMonster", BetaContentToggles[3].isOn);});
+        if (StarterBundleBought)
+        {
+            StarterBundleBTN.SetActive(false);
+        }
     }
+
+    public void HideStarterBundleButton()
+    {
+        StarterBundleBTN.SetActive(false);
+    }
+
+    public void OnPurchaseComplete(Product product)
+    {
+        Time.timeScale = 1f;
+        Logger.Log(product.definition.id + " Should have added Cookies now.", LogTypes.Normal);
+        if(product.definition.id == "com.raiden.cookieclicker2.mp4.cookies_50000")
+	    {
+	    	Cookies += 50000;
+	    }
+        if(product.definition.id == "com.raiden.cookieclicker2.mp4.cookies_100000")
+        {
+            Cookies += 100000;
+        }
+    }
+
+    public void OnPurchaseClicked(string productId) 
+    {
+#if UNITY_ANDROID
+        IAPManager.Instance.OnPurchaseClicked(productId);
+#endif
+    }
+
+    public void OnPurchaseFailed(Product product, PurchaseFailureReason purchaseFailureReason)
+    {
+        Time.timeScale = 1f;
+        Logger.Log(product.transactionID + " failed " + purchaseFailureReason, LogTypes.Error);
+    }
+
+    public void PurchaseItem(string ID)
+    {
+        // IAPManager.Instance.Purchase(ID, () => Time.timeScale = 0f);
+    }
+
+    void CheckIfUserRegistered()
+    {
+        // if(IAPManager.Instance.IsNonConsumablePurchased( "early_registration_reward" ) )
+	    // {
+		//     RegisteredBTN.SetActive(true);
+	    // }
+    }
+
 
     void SoundAssign()
     {
@@ -201,9 +303,31 @@ public class Game : MonoBehaviour
 
     public void SavePlayer()
     {
+        PlayerPrefs.Save();
         offlineManager.SaveTime();
         ad.SaveGraphics();
         SaveSystem.SavePlayer(this, offlineManager, ad);
+#if UNITY_ANDROID
+        if (PlayGamesPlatform.Instance.localUser.authenticated)
+        {
+            try
+            {
+                GPGM.SetLeaderboardValue(Cookies, "CgkIleno69UVEAIQAg");
+                GPGM.SetLeaderboardValue(CPS, "CgkIleno69UVEAIQBQ");
+                GPGM.SetLeaderboardValue(CPC, "CgkIleno69UVEAIQBg");
+                GPGM.IncreseAchievement("CgkIleno69UVEAIQAw", (Int32) Autoclickers);
+                GPGM.IncreseAchievement("CgkIleno69UVEAIQBA", (Int32) Doublecookies);
+                GPGM.IncreseAchievement("CgkIleno69UVEAIQBw", (Int32) Drills);
+                GPGM.IncreseAchievement("CgkIleno69UVEAIQCA", (Int32) Grandmas);
+            }
+            catch
+            {
+                // do nothing
+            }
+            
+        }
+        PlayCloudDataManager.Instance.SaveToCloud(Application.persistentDataPath + "/cookie2");
+#endif
     }
 
     public void LoadPlayer()
@@ -228,18 +352,13 @@ public class Game : MonoBehaviour
         ResearchFactory = data.ResearchFactory;
         offlineManager.offlineProgressCheck = data.offlineProgressCheck;
         offlineManager.OfflineTime = data.OfflineTime;
-        // ad.PostProcessing = data.PostProcessing;
-        // ad.Particals = data.Particals;
-        // ad.Lighting = data.Lighting;
-        // ad.Trees = data.Trees;
-        // ad.VSync = data.VSync;
-        // ad.TextureQuality = data.TextureQuality;
         LastSavedGameVersion = data.LastSavedGameVersion;
         Sounds = data.Sounds;
         Music = data.Music;
-        // ad.Fog = data.Fog;
         Grandmas = data.Grandmas;
         GrandmaPrice = data.GrandmaPrice;
+        StarterBundleBought = data.StarterBundleBought;
+        Clicks = data.Clicks;
     }
 
     public void ResetData()
@@ -257,6 +376,8 @@ public class Game : MonoBehaviour
         DrillPrice = 0;
         Grandmas = 0;
         GrandmaPrice = 0;
+        StarterBundleBought = false;
+        Clicks = 0;
         SavePlayer();
         Debug.Log("Reset Data. Now reloading...");
         Reload();
@@ -265,6 +386,24 @@ public class Game : MonoBehaviour
     public void BakeCookie()
     {
         Cookies += CPC;
+        Clicks += 1;
+        Instantiate(CookieGains, CookieGainsSpot);
+        Instantiate(CookieVFX, CookieVFXSpot);
+        if (Clicks >= 250)
+        {
+            Clicks = 0;
+            adsManager.ShowAd();
+        }
+#if UNITY_ANDROID
+        try
+        {
+            GPGM.GiveAchievement("CgkIleno69UVEAIQAQ");
+        }
+        catch
+        {
+            Logger.Log("Could not give Google Play achievement.", LogTypes.Error);
+        }
+#endif
     }
 
     public void QuitGame()
@@ -359,14 +498,6 @@ public class Game : MonoBehaviour
         else
         {
             NECDialog.SetActive(true);
-        }
-    }
-
-    public void OpenHelp()
-    {
-        if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
-        {
-            Application.OpenURL(Application.dataPath + "/StreamingAssets/help/graphicsapi/index.html");
         }
     }
 
@@ -494,6 +625,7 @@ public class Game : MonoBehaviour
         PlayerPrefs.SetInt("BetaContent", 0);
         PlayerPrefs.SetInt("BETA_EnableSideBar", 0);
         PlayerPrefs.SetInt("BETA_Mods", 0);
+        PlayerPrefs.SetInt("BETA_FPSLIMIT", 0);
         SavePlayer();
         Reload();
     }
@@ -523,6 +655,33 @@ public class Game : MonoBehaviour
         }
     }
 
+    public void EnterBSM()
+    {
+        Application.targetFrameRate = 10;
+    }
+
+    public void ExitBSM()
+    {
+        if (fpsLimiter.FpsLimit)
+        {
+            fpsLimiter.SetMaxFPS();
+        }
+        else
+        {
+            Application.targetFrameRate = 999999999;
+        }
+    }
+
+    public void EntermodioScreen()
+    {
+        gameCamera.transform.rotation = new Quaternion(0, 0, 0, 0);
+    }
+
+    public void ExitmodioScreen()
+    {
+        gameCamera.transform.rotation = new Quaternion(30, 0, 0, 0);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -541,34 +700,15 @@ public class Game : MonoBehaviour
         }
         catch(Exception ex)
         {
-            Debug.LogError("Could not assign music or play music" + ex);
+            Logger.Log("Could not assign music or play music" + ex, LogTypes.Error);
             SoundAssign();
         }
         CookiesText.text = "Cookies: " + Cookies;
+        BSMCookiesText.text = "Cookies: " + Cookies;
         Shop_Autoclicker.text = "Autoclicker (" + AutoclickerPrice + " Cookies)";
         Shop_Doublecookie.text = "Doublecookie (" + DoublecookiePrice + " Cookies)";
         Shop_Drill.text = "Drill (" + DrillPrice + " Cookies)";
         Shop_Grandma.text = "Grandma (" + GrandmaPrice + " Cookies)";
-
-        // performance mode
-        // if (PerformanceMode)
-        // {
-        //     Trees.SetActive(false);
-        //     GameCamera_AdditionalData.SetRenderer(0);
-        //     QualitySettings.SetQualityLevel(0);
-        //     Cookie_Normal.SetActive(false);
-        //     Cookie_Performance.SetActive(true);
-        //     AmbientParticals.SetActive(false);
-        // }
-        // else
-        // {
-        //     Trees.SetActive(true);
-        //     GameCamera_AdditionalData.SetRenderer(1);
-        //     QualitySettings.SetQualityLevel(1);
-        //     Cookie_Normal.SetActive(true);
-        //     Cookie_Performance.SetActive(false);
-        //     AmbientParticals.SetActive(true);
-        // }
 
         // if (ResearchFactory)
         // {
@@ -630,37 +770,70 @@ public class Game : MonoBehaviour
         }
         // MusicSource.SetActive(Music);
         // SoundSource.SetActive(Sounds);
-        
-
-        // reload
-        if (Input.GetKey(KeyCode.Tab) && Input.GetKey(KeyCode.R))
+        DebugClicks.text = "Clicks (500 for ad): " + Clicks;
+        if (CPS >= 0 && CPS <= 10)
         {
-            SavePlayer();
-            Reload();
+            Shop_AdText.text = "Watch AD for 10000 Cookies";
+        }
+        else if (CPS >= 10 && CPS <= 20)
+        {
+            Shop_AdText.text = "Watch AD for 20000 Cookies";
+        }
+        else if (CPS >= 20 && CPS <= 30)
+        {
+            Shop_AdText.text = "Watch AD for 30000 Cookies";
+        }
+        else if (CPS >= 30 && CPS <= 40)
+        {
+            Shop_AdText.text = "Watch AD for 40000 Cookies";
+        }
+        else if (CPS >= 40 && CPS <= 50)
+        {
+            Shop_AdText.text = "Watch AD for 50000 Cookies";
+        }
+        else if (CPS >= 50 && CPS <= 60)
+        {
+            Shop_AdText.text = "Watch AD for 60000 Cookies";
+        }
+        else if (CPS >= 60 && CPS <= 70)
+        {
+            Shop_AdText.text = "Watch AD for 70000 Cookies";
+        }
+        else if (CPS >= 70 && CPS <= 80)
+        {
+            Shop_AdText.text = "Watch AD for 80000 Cookies";
+        }
+        else if (CPS >= 80 && CPS <= 90)
+        {
+            Shop_AdText.text = "Watch AD for 90000 Cookies";
+        }
+        else if (CPS >= 90)
+        {
+            Shop_AdText.text = "Watch AD for 100000 Cookies";
         }
     }
 
-    string error;
+    // string error;
 
-    void OnEnable()
-    {
-        Application.logMessageReceived += HandleLog;
-    }
+    // void OnEnable()
+    // {
+    //     Application.logMessageReceived += HandleLog;
+    // }
 
-    void OnDisable()
-    {
-        Application.logMessageReceived -= HandleLog;
-    }
+    // void OnDisable()
+    // {
+    //     Application.logMessageReceived -= HandleLog;
+    // }
 
-    void HandleLog(string logString, string stackTrace, LogType type)
-    {
+    // void HandleLog(string logString, string stackTrace, LogType type)
+    // {
         
-        if (type == LogType.Error || type == LogType.Exception || type == LogType.Assert)
-        {
-            Logger.Log("(" + type + ") " + logString + " " + stackTrace + "" + type, LogTypes.Error);
-            notification.ShowNotification("(" + type + ") " + logString + " " + stackTrace, "" + type);
-        }   
-    }
+    //     if (type == LogType.Error || type == LogType.Exception || type == LogType.Assert)
+    //     {
+    //         Logger.Log("(" + type + ") " + logString + " " + stackTrace + "" + type, LogTypes.Error);
+    //         notification.ShowNotification("(" + type + ") " + logString + " " + stackTrace, "" + type);
+    //     }   
+    // }
 
     private void AsyncOperationHandle_Completed(AsyncOperationHandle<AudioClip> asyncOperationHandle)
     {

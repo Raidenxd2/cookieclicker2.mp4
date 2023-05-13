@@ -18,12 +18,16 @@ public class LocaleManager : MonoBehaviour
                 PlayerPrefs.SetInt("locale", 0);
                 break;
             case 1:
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[1];
+                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[2];
                 PlayerPrefs.SetInt("locale", 1);
                 break;
             case 2:
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[2];
+                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[3];
                 PlayerPrefs.SetInt("locale", 2);
+                break;
+            case 3:
+                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[1];
+                PlayerPrefs.SetInt("locale", 3);
                 break;
         }
     }
@@ -37,6 +41,7 @@ public class LocaleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         currentLoacle = PlayerPrefs.GetInt("locale", 0);
-        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[currentLoacle];
+        ChangeLanguage(currentLoacle);
+        // LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[currentLoacle];
     }
 }

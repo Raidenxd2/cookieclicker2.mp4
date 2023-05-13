@@ -172,6 +172,46 @@ public class AdvancedQualitySettings : MonoBehaviour
         Debug.Log("Loaded Graphics Options");
     }
 
+    public void SetDefaults()
+    {
+        if (Application.isMobilePlatform)
+        {
+            PostProcessing = false;
+            Lighting = true;
+            Particals = true;
+            Trees = true;
+            VSync = true;
+            Fog = false;
+            TextureQuality = 2;
+            Textures = true;
+            AO = false;
+            RenderQuality = 0.5f;
+        }
+        else
+        {
+            PostProcessing = true;
+            Lighting = true;
+            Particals = true;
+            Trees = true;
+            VSync = true;
+            Fog = true;
+            TextureQuality = 0;
+            Textures = true;
+            AO = false;
+            RenderQuality = 1f;
+        }
+        PlayerPrefs.SetInt("GRAPHICS_PostProcessing", boolToInt(PostProcessing));
+        PlayerPrefs.SetInt("GRAPHICS_Lighting", boolToInt(Lighting));
+        PlayerPrefs.SetInt("GRAPHICS_Particles", boolToInt(Particals));
+        PlayerPrefs.SetInt("GRAPHICS_Trees", boolToInt(Trees));
+        PlayerPrefs.SetInt("GRAPHICS_VSync", boolToInt(VSync));
+        PlayerPrefs.SetInt("GRAPHICS_Fog", boolToInt(Fog));
+        PlayerPrefs.SetInt("GRAPHICS_TextureQuality", TextureQuality);
+        PlayerPrefs.SetInt("GRAPHICS_Textures", boolToInt(Textures));
+        PlayerPrefs.SetInt("GRAPHICS_AO", boolToInt(AO));
+        PlayerPrefs.SetFloat("GRAPHICS_RenderQuality", RenderQuality);
+    }
+
     // Update is called once per frame
     void Update()
     {

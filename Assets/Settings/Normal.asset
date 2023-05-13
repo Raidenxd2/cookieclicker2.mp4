@@ -20,9 +20,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 424799608f7334c24bf367e4bbfa7f9a, type: 2}
   - {fileID: 11400000, guid: f6f2ff7458698aa45a03c3d2d581f377, type: 2}
   m_DefaultRendererIndex: 1
-  m_RequireDepthTexture: 0
+  m_RequireDepthTexture: 1
   m_RequireOpaqueTexture: 1
-  m_OpaqueDownsampling: 1
+  m_OpaqueDownsampling: 0
   m_SupportsTerrainHoles: 0
   m_StoreActionsOptimization: 0
   m_SupportsHDR: 1
@@ -43,14 +43,15 @@ MonoBehaviour:
   m_AdditionalLightsShadowResolutionTierHigh: 2048
   m_ReflectionProbeBlending: 0
   m_ReflectionProbeBoxProjection: 0
-  m_ShadowDistance: 0
-  m_ShadowCascadeCount: 1
+  m_ShadowDistance: 94.94
+  m_ShadowCascadeCount: 4
   m_Cascade2Split: 0.25
   m_Cascade3Split: {x: 0.1, y: 0.3}
   m_Cascade4Split: {x: 0.35509396, y: 0.6310584, z: 0.8575668}
   m_CascadeBorder: 0
   m_ShadowDepthBias: 0
   m_ShadowNormalBias: 0
+  m_AnyShadowsSupported: 1
   m_SoftShadowsSupported: 0
   m_ConservativeEnclosingSphere: 0
   m_NumIterationsEnclosingSphere: 64

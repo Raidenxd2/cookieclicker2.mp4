@@ -279,9 +279,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 35763009331200
-    m_Localized: "Para obtener un c\xF3digo de guardado, vaya a la sala ^Cookieclicker.mp4\r\nluego
-      vaya a la subsala \"SaveCodeGenerator\" luego presione el bot\xF3n para generar
-      el c\xF3digo\r\nentonces ponlo aqu\xED"
+    m_Localized: "Pour obtenir un code de sauvegarde, rendez-vous dans la salle ^Cookieclicker.mp4\r\npuis
+      allez dans la sous-salle \"SaveCodeGenerator\" puis appuyez sur le bouton pour
+      g\xE9n\xE9rer le code\r\nalors mettez-le ici"
     m_Metadata:
       m_Items: []
   - m_Id: 35818470612992
@@ -373,7 +373,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 40445249298432
-    m_Localized: Licencia Source Sans Pro (OFL)
+    m_Localized: SIL OPEN FONT LICENSE
     m_Metadata:
       m_Items: []
   - m_Id: 40550794764288
@@ -492,6 +492,84 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1067371644559360
     m_Localized: "El juego ahora se cerrar\xE1 en 30 segundos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5701317239492608
+    m_Localized: "Modo de ahorro de bater\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5827650568716288
+    m_Localized: Acceso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5827705644122112
+    m_Localized: logros
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5827744323993600
+    m_Localized: "Tabla de clasificaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5838013796319232
+    m_Localized: "Cerrar sesi\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6422385197568000
+    m_Localized: Juegos de Google Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6422453581500416
+    m_Localized: "Error al iniciar sesi\xF3n en Google Play."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6436239344390144
+    m_Localized: tienda de galletas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7613911591862272
+    m_Localized: Mira AD por 10000 Cookies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8740648484651008
+    m_Localized: Paquete de inicio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8740677802835968
+    m_Localized: "Comprar el paquete de inicio te da:\r\n***SOLO UNA VEZ***\r\n150000
+      galletas\r\n10 abuelas\r\n10 galletas dobles\r\n10 clics autom\xE1ticos\r\n5
+      ejercicios\r\n\r\n\xBFQuieres comprar el paquete de inicio?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9057636776398848
+    m_Localized: Tema antiguo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9835760787116032
+    m_Localized: No Translation For Spanish.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9835806983180288
+    m_Localized: No Translation For Spanish.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9836071333384192
+    m_Localized: No Translation For Spanish.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21043291899285504
+    m_Localized: "Limite FPS cuando no est\xE9 enfocado"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21043978339078144
+    m_Localized: Contenido beta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21044715785801728
+    m_Localized: "franc\xE9s (fr)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21378433280888832
+    m_Localized: Habilitar el Monstruo de las Galletas
     m_Metadata:
       m_Items: []
   references:

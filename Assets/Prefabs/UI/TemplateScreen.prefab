@@ -163,8 +163,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Title
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 129072d30a2579e409ff44d1d618f470, type: 2}
-  m_sharedMaterial: {fileID: 1004643323882666325, guid: 129072d30a2579e409ff44d1d618f470, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 97756a796a6d007408af39a643993837, type: 2}
+  m_sharedMaterial: {fileID: -316361601276165158, guid: 97756a796a6d007408af39a643993837, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 104.55
+  m_fontSize: 97.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -298,8 +298,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: INFO GOES HERE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cde9d39732ea3524898d7986bfd5d09a, type: 2}
-  m_sharedMaterial: {fileID: 1377157552198173372, guid: cde9d39732ea3524898d7986bfd5d09a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e92e3add251e23f43971c7230066aa3e, type: 2}
+  m_sharedMaterial: {fileID: -473840801986087895, guid: e92e3add251e23f43971c7230066aa3e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -692,6 +692,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5952271189429548486, guid: 0b25b8d29c5ffac4395ecbad5f0f5583, type: 3}
+      propertyPath: m_fontSize
+      value: 83
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952271189429548486, guid: 0b25b8d29c5ffac4395ecbad5f0f5583, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e92e3add251e23f43971c7230066aa3e, type: 2}
+    - target: {fileID: 5952271189429548486, guid: 0b25b8d29c5ffac4395ecbad5f0f5583, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -473840801986087895, guid: e92e3add251e23f43971c7230066aa3e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b25b8d29c5ffac4395ecbad5f0f5583, type: 3}
 --- !u!224 &106894221669091936 stripped
