@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using BreakInfinity;
 using IngameDebugConsole;
+using Tayx.Graphy;
 
 public class DEBUG : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class DEBUG : MonoBehaviour
     {
         StartCoroutine(FPSDisplay());
         Debug.Log("Current Renderer: " + SystemInfo.graphicsDeviceType);
+        GraphyManager.Instance.Disable();
     }
 
     IEnumerator FPSDisplay()
@@ -74,6 +76,12 @@ public class DEBUG : MonoBehaviour
     public void PureVirtualFunctionCrash()
     {
         UnityEngine.Diagnostics.Utils.ForceCrash(UnityEngine.Diagnostics.ForcedCrashCategory.PureVirtualFunction);
+    }
+
+    public void ShowGraphy()
+    {
+        var fps = GraphyManager.Instance.CurrentFPS;
+        GraphyManager.Instance.Enable();
     }
 
     // Update is called once per frame

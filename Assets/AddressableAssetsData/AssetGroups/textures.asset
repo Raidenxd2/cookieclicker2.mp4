@@ -41,52 +41,8 @@ MonoBehaviour:
     m_Address: Textures/loading_grayscale.png
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7274dd14d684c8442ab13944c28b36e1
-    m_Address: Textures/Circle.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 5fdae670bcafde44cbeb35860c7d8c7a
-    m_Address: Textures/TreeRender.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 82259905df3225243840c9eee5fd6ba2
     m_Address: Textures/Cookie.psd
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e0bd0f050d6043b439ceeda719eca360
-    m_Address: Textures/gradient.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 018105a8ed27cb349996da73fdc7511e
-    m_Address: Textures/HexagonFlatTop.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e1fe5a10f8c5a1c47bc55dbb1398b2cf
-    m_Address: Textures/Capsule.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: d223323d648f9324cbae9a184539ad8a
-    m_Address: Textures/test.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 6090f9ae9c86f2f45b6ff5dd2db9b201
-    m_Address: Textures/Wood049/Wood049_Albedo.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: f0cca8231b7c0b248945a84af1d0abd2
-    m_Address: Textures/Wood049/Wood049_Roughness.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 6832b79532893ae4dba1eda9eaf041ab
-    m_Address: Textures/Wood049/Wood049_Displacement.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: f9caf2faec792994694c9791890bc474
-    m_Address: Textures/Wood049/Wood049_NormalDX.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 2d67e693aa13dd8428f53551d0891403
-    m_Address: Textures/Wood049/Wood049_NormalGL.jpg
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 116f6e2dc76c6fb4fa426ed4f40b94fe
@@ -111,26 +67,6 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 9d3756eb89a31ad4f99569241d670979
     m_Address: Textures/tiled_wall/clean/tiled_wall_clean_normal.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 41a03ec386f23e643a8711dc1d9f055c
-    m_Address: Textures/PaintedPlaster017/PaintedPlaster017_Albedo.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 00c5d4dd81d557a49b213742b70dc268
-    m_Address: Textures/PaintedPlaster017/PaintedPlaster017_NormalGL.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 94953e211057f35478656fa3d0208b0e
-    m_Address: Textures/PaintedPlaster017/PaintedPlaster017_NormalDX.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e756a4f8ba30f2e4bb89e1c467c6bfa4
-    m_Address: Textures/PaintedPlaster017/PaintedPlaster017_Displacement.jpg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 291fbfc1fd333a2489501c559d646f3b
-    m_Address: Textures/PaintedPlaster017/PaintedPlaster017_Roughness.jpg
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 32b0f800044dd414eb9852400c5a082a
@@ -235,6 +171,50 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: f72b7fdcb4008e447ad36a358d822606
     m_Address: Textures/Bark012/Bark012_NormalGL.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2e8acf6e5621ee64fa6d6745099ffd20
+    m_Address: Assets/Textures/GoogleAssets/10Autoclickers.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: df299fe456676c84da8e6d709d89e327
+    m_Address: Assets/Textures/GoogleAssets/10Doublecookies.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cff529d4eaf68534cb0f6a5e68758763
+    m_Address: Assets/Textures/GoogleAssets/BakeFirstCookie.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4dee685f109b6a7409ccbdb4719c9813
+    m_Address: Assets/Textures/GoogleAssets/click.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4d1c57676cd9034418a035b43de93db8
+    m_Address: Assets/Textures/GoogleAssets/clock.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 506e5f1e6078f5241b1c6ebcc24e0efc
+    m_Address: Assets/Textures/GoogleAssets/CookiesLeaderboard.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cf4bde7daf7c8a94eab2ac10a2976f0e
+    m_Address: Assets/Textures/GoogleAssets/CPCLeaderboard.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 98cb9050b97e6f74aaca1925fb52a6ee
+    m_Address: Assets/Textures/GoogleAssets/CPSLeaderboard.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a944d596dd6d0de449bc07e4eba19653
+    m_Address: Assets/Textures/GoogleAssets/EarlyRegister.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bf5312a7a14fc2e4eb318af630b4f95c
+    m_Address: Assets/Textures/GoogleAssets/FeatureGraphic.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 585e7254e9877ff4fb46c0ca50a44972
+    m_Address: Assets/Textures/svgtopng/Google_Play_Games_icon_full-color.png
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

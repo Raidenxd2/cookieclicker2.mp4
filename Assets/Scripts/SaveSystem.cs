@@ -52,7 +52,7 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("Save file not found in " + path);
+            Debug.LogException(new FileLoadException());
             return null;
         }
     }

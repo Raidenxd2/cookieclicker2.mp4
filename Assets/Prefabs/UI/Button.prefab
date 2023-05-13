@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5952271188643753473}
   - component: {fileID: 5952271188643753486}
   - component: {fileID: 7894372729601128515}
+  - component: {fileID: 8997930958828077222}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.24705882, g: 0.4862745, b: 0.6, a: 1}
+  m_Color: {r: 0.23964705, g: 0.47168627, b: 0.582, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -148,6 +149,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIClick: {fileID: 8300000, guid: 9f741f8f75d460a44bf205db8fc4792b, type: 3}
+--- !u!95 &8997930958828077222
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5952271188643753484}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1274d4023e775c348aefc7224814bd55, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &5952271189429548484
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,15 +237,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cde9d39732ea3524898d7986bfd5d09a, type: 2}
-  m_sharedMaterial: {fileID: 1377157552198173372, guid: cde9d39732ea3524898d7986bfd5d09a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e92e3add251e23f43971c7230066aa3e, type: 2}
+  m_sharedMaterial: {fileID: -473840801986087895, guid: e92e3add251e23f43971c7230066aa3e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

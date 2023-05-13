@@ -22,6 +22,8 @@ public class PlayerData
     public bool Music;
     public bool Sounds;
     public float LastSavedGameVersion;
+    public bool StarterBundleBought;
+    public int Clicks;
 
     // Offline
     public bool offlineProgressCheck;
@@ -64,5 +66,7 @@ public class PlayerData
         Fog = ad.Fog;
         Grandmas = ga.Grandmas;
         GrandmaPrice = ga.GrandmaPrice;
+        StarterBundleBought = ga.StarterBundleBought;
+        Clicks = ga.Clicks;
     }
 }

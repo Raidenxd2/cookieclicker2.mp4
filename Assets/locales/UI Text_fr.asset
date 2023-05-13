@@ -1,0 +1,580 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI Text_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: ab574aa97b8f08a4089ea8b506a20c54, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 21043291899285504
+    m_Localized: Limiter le FPS lorsqu'il n'est pas mis au point
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21043978339078144
+    m_Localized: "Contenu b\xEAta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21044715785801728
+    m_Localized: "fran\xE7ais (fr)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83856171008
+    m_Localized: "Th\xE8mes"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 145017511936
+    m_Localized: "Cr\xE9dits"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 160733569024
+    m_Localized: "Accessibilit\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2673423654912
+    m_Localized: Choix
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2694319677440
+    m_Localized: Boutique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2697087918080
+    m_Localized: Statistiques
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3309573742592
+    m_Localized: Chargement...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3821438214144
+    m_Localized: "Le contenu b\xEAta peut \xEAtre interrompu, modifi\xE9 ou interrompre
+      votre sauvegarde \xE0 tout moment."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3993245294592
+    m_Localized: D'ACCORD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3697395867648
+    m_Localized: AVERTISSEMENT!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8853357305856
+    m_Localized: "Erreur d'enregistrement des donn\xE9es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8969480806400
+    m_Localized: "Une erreur s'est produite lors du chargement du fichier de sauvegarde\_:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9171402989568
+    m_Localized: Recommencez
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9420158771200
+    m_Localized: Continuer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9457601323008
+    m_Localized: Plus d'informations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9554519105536
+    m_Localized: "Si vous continuez, toutes les donn\xE9es seront EFFAC\xC9ES."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10470915809280
+    m_Localized: Dos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9861785427968
+    m_Localized: Aider
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10556009848832
+    m_Localized: Plus d'informations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11434464878592
+    m_Localized: "Violation de partage sur le chemin\_: le fichier de sauvegarde
+      est corrompu.\r\nL'acc\xE8s au chemin \"PATH\" est refus\xE9\_: l'acc\xE8s
+      au fichier de sauvegarde a \xE9t\xE9 refus\xE9. Veuillez v\xE9rifier les autorisations
+      sur le fichier."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12300076949504
+    m_Localized: "RELANCE N\xC9CESSAIRE"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12347069931520
+    m_Localized: "Enregistrer le fichier cr\xE9\xE9.\r\nVeuillez relancer le jeu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12417584570368
+    m_Localized: "Arr\xEAter"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15313051033600
+    m_Localized: Progression hors ligne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15401689260032
+    m_Localized: "Vous \xEAtes hors ligne depuis\_:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15488058368000
+    m_Localized: "Vous avez \xE9t\xE9 r\xE9compens\xE9 :"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16318115323904
+    m_Localized: Choix
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16348926681088
+    m_Localized: Sauvegarder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16370523152384
+    m_Localized: Charger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16389607235584
+    m_Localized: "Param\xE8tres de qualit\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16429755113472
+    m_Localized: "Param\xE8tres de capture d'\xE9cran"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16463863193600
+    m_Localized: Salle de jeux Enregistrer Importer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16719891898368
+    m_Localized: Recharger le jeu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16695841759232
+    m_Localized: Mods
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16761679749120
+    m_Localized: "R\xE9initialiser les donn\xE9es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16807724818432
+    m_Localized: Musique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16782286364672
+    m_Localized: Son
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17850076471296
+    m_Localized: Question
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17888940892160
+    m_Localized: "Voulez-vous vraiment r\xE9initialiser les donn\xE9es\_?\r\nATTENTION\_:
+      CELA R\xC9INITIALISERA TOUT."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17947132665856
+    m_Localized: Non
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17963507228672
+    m_Localized: Oui
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26447313346560
+    m_Localized: Post-traitement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26495241658368
+    m_Localized: "\xC9clairage"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26524375293952
+    m_Localized: Des arbres
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26544814137344
+    m_Localized: Particules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26595489718272
+    m_Localized: VSync
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26622060634112
+    m_Localized: Brouillard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26645217386496
+    m_Localized: Textures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26676318150656
+    m_Localized: "Occlusion ambiante de l'espace de l'\xE9cran"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27057014153216
+    m_Localized: "La qualit\xE9 de texture"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27164400918528
+    m_Localized: "Qualit\xE9 de rendu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27214296358912
+    m_Localized: Changement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27240833720320
+    m_Localized: "REMARQUE\_: Le param\xE8tre de qualit\xE9 de rendu ne peut pas
+      \xEAtre enregistr\xE9."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27860231757824
+    m_Localized: "Param\xE8tres de qualit\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34076039290880
+    m_Localized: "Options de capture d'\xE9cran"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34078715256832
+    m_Localized: "Conseil\_: Vous pouvez appuyer sur F12 pour prendre une capture
+      d'\xE9cran."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34366876524544
+    m_Localized: '(Pris en charge sur : Windows, Mac OS et Linux)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34443477098496
+    m_Localized: "Qualit\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34486405799936
+    m_Localized: "Notifications dans les captures d'\xE9cran"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34547839770624
+    m_Localized: "Supprimer les captures d'\xE9cran"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35242550730752
+    m_Localized: "SUPPRIMER LES CAPTURES D'\xC9CRAN"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35287182319616
+    m_Localized: "AVERTISSEMENT!\r\nLa suppression de vos captures d'\xE9cran\r\nSUPPRIMEZ-LES
+      TOUS."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35725591945216
+    m_Localized: Salle de jeux Enregistrer Importer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35763009331200
+    m_Localized: "Para obtener un c\xF3digo de guardado, vaya a la sala ^Cookieclicker.mp4\r\nluego
+      vaya a la subsala \"SaveCodeGenerator\" luego presione el bot\xF3n para generar
+      el c\xF3digo\r\nentonces ponlo aqu\xED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35818470612992
+    m_Localized: Importer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36339386392576
+    m_Localized: Profil de la salle de jeux
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36382604500992
+    m_Localized: "Ces informations sont-elles correctes\_?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36857164832768
+    m_Localized: "Avertissements:\r\n1. LES DONN\xC9ES SERONT R\xC9INITIALIS\xC9ES\r\n2.
+      Le syst\xE8me Rebirth est diff\xE9rent dans la version Rec Room\r\n4. Les renaissances
+      ne sont pas mises en \u0153uvre\r\n\r\nVoulez-vous continuer?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37251479740416
+    m_Localized: Message d'interdiction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37282391760896
+    m_Localized: "Erreur:\r\nBanni de l'API (accounts.rec.net)\r\nErreur HTTP : 403\r\nEnvoyez
+      un ticket \xE0 https://recroom.zendesk.com/hc/en-us/requests pour d\xE9bloquer
+      votre IP."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37723288608768
+    m_Localized: Boutique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37951928508416
+    m_Localized: Statistiques
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38170544021504
+    m_Localized: Erreur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38208854794240
+    m_Localized: "Pas assez de biscuits\_!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38498303713280
+    m_Localized: "Lecteur vid\xE9o (non pris en charge sur mobile)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38523318542336
+    m_Localized: Non merci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38846909095936
+    m_Localized: "RECHARGER N\xC9CESSAIRE"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38890404028416
+    m_Localized: "L'activation/la d\xE9sactivation des textures n\xE9cessitait un
+      rechargement du jeu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39169753063424
+    m_Localized: "Th\xE8mes"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39186068905984
+    m_Localized: "S\xE9lectionnez un th\xE8me\_:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39197460635648
+    m_Localized: "Th\xE8me de la for\xEAt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39211171815424
+    m_Localized: "Th\xE8me de l'espace"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39821447241728
+    m_Localized: "Mise \xE0 jour disponible"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39888992313344
+    m_Localized: "Une nouvelle mise \xE0 jour est disponible, voulez-vous la t\xE9l\xE9charger
+      ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40418649022464
+    m_Localized: "Cr\xE9dits"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40550794764288
+    m_Localized: Musique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41341001637888
+    m_Localized: "Connexion r\xE9seau requise"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41412892008448
+    m_Localized: "Une connexion r\xE9seau est n\xE9cessaire pour y acc\xE9der."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41766140485632
+    m_Localized: "Accessibilit\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41820125372416
+    m_Localized: Daltonisme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41871862112256
+    m_Localized: Langue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42175408087040
+    m_Localized: "Avertissement de th\xE8me personnalis\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42218743635968
+    m_Localized: "Si vous utilisiez un th\xE8me personnalis\xE9, veuillez recharger."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42751990669312
+    m_Localized: "Le contenu b\xEAta peut \xEAtre modifi\xE9, cass\xE9 ou casser
+      votre fichier de sauvegarde\r\n\r\nVoulez-vous activer le contenu b\xEAta\_?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43167746859008
+    m_Localized: "Contenu b\xEAta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43218086895616
+    m_Localized: "Un rechargement est n\xE9cessaire pour activer/d\xE9sactiver le
+      contenu b\xEAta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43279676055552
+    m_Localized: "Barre lat\xE9rale"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43315780624384
+    m_Localized: Mods
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43976131846144
+    m_Localized: "Barre lat\xE9rale"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43660564996096
+    m_Localized: "D\xE9sactiver le contenu b\xEAta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47768164343808
+    m_Localized: Juke-box
+    m_Metadata:
+      m_Items: []
+  - m_Id: 59091170336768
+    m_Localized: 1.0.0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 280637872775168
+    m_Localized: Cookieclicker2.mp4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 665311182823424
+    m_Localized: API graphique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696892345786368
+    m_Localized: Anglais (fr)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697180578357248
+    m_Localized: Espagnol (es)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 699628915236864
+    m_Localized: Pseudo (Pseudo-Local(pseudo))
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1037116854738944
+    m_Localized: Haut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1037121254563840
+    m_Localized: Moyen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1037121959206912
+    m_Localized: Faible
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1037125956378624
+    m_Localized: "Tr\xE8s lent"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1066150825271296
+    m_Localized: "\xC9chec du chargement du jeu\_:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1067371644559360
+    m_Localized: Le jeu va maintenant quitter dans 30 secondes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5701317239492608
+    m_Localized: "Mode \xE9conomiseur de batterie"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5827650568716288
+    m_Localized: Connexion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5827705644122112
+    m_Localized: "R\xE9alisations"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5827744323993600
+    m_Localized: Classement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5838013796319232
+    m_Localized: "Se d\xE9connecter"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6422385197568000
+    m_Localized: "Jeux Google\_Play"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6422453581500416
+    m_Localized: "\xC9chec de la connexion \xE0 Google Play."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6436239344390144
+    m_Localized: Magasin de cookies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7613911591862272
+    m_Localized: Regarder l'annonce pour 10000 cookies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8740648484651008
+    m_Localized: "Pack de d\xE9marrage"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8740677802835968
+    m_Localized: "L'achat du Starter Bundle vous donne :\r\n***UNE FOIS SEULEMENT***\r\n150000
+      Biscuits\r\n10 mamies\r\n10 doubles cookies\r\n10\_Cliqueurs automatiques\r\n5
+      exercices\r\n\r\nSouhaitez-vous acheter le pack de d\xE9marrage\_?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9057636776398848
+    m_Localized: "Ancien th\xE8me"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9835760787116032
+    m_Localized: "T\xE9l\xE9charger les donn\xE9es\_?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9835806983180288
+    m_Localized: "Voulez-vous t\xE9l\xE9charger des fichiers audio\_?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9836071333384192
+    m_Localized: "T\xE9l\xE9chargement des donn\xE9es... Si rien ne se passe, relancez
+      le jeu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40445249298432
+    m_Localized: SIL OPEN FONT LICENSE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40589231366144
+    m_Localized: urp-kawase-blur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21378433280888832
+    m_Localized: Activer Cookie Monster
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

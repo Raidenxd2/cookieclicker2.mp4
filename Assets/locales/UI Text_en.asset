@@ -288,7 +288,7 @@ MonoBehaviour:
     m_Localized: 'In order to get a save code, go to the room ^Cookieclicker.mp4
 
       then
-      go to the subroom "SaveCodeGenerator" then press the button tot generate the
+      go to the subroom "SaveCodeGenerator" then press the button to generate the
       code
 
       then put it into here'
@@ -358,7 +358,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 38498303713280
-    m_Localized: Video Player
+    m_Localized: Video Player (not supported on mobile)
     m_Metadata:
       m_Items: []
   - m_Id: 38846909095936
@@ -398,7 +398,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 40445249298432
-    m_Localized: Source Sans Pro License (OFL)
+    m_Localized: SIL OPEN FONT LICENSE
     m_Metadata:
       m_Items: []
   - m_Id: 40550794764288
@@ -519,6 +519,99 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1067371644559360
     m_Localized: Game will now quit in 30 seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5701317239492608
+    m_Localized: Battery Saver Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5827650568716288
+    m_Localized: Login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5827705644122112
+    m_Localized: Achievements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5827744323993600
+    m_Localized: Leaderboard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5838013796319232
+    m_Localized: Logout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6422385197568000
+    m_Localized: Google Play Games
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6422453581500416
+    m_Localized: Failed to login to Google Play.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6436239344390144
+    m_Localized: Cookie Store
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7613911591862272
+    m_Localized: Watch AD for 10000 Cookies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8740648484651008
+    m_Localized: Starter Bundle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8740677802835968
+    m_Localized: 'Buying the Starter Bundle gives you:
+
+      ***ONE TIME ONLY***
+
+      150000
+      Cookies
+
+      10 Grandmas
+
+      10 Doublecookies
+
+      10 Autoclickers
+
+      5
+      Drills
+
+
+      Do you want to purchase the Starter Bundle?'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9057636776398848
+    m_Localized: Old Theme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9835760787116032
+    m_Localized: Download Data?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9835806983180288
+    m_Localized: Do you want to download audio files?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9836071333384192
+    m_Localized: Downloading Data... If nothing happens, relaunch the game.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21043291899285504
+    m_Localized: Limit FPS when not focused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21043978339078144
+    m_Localized: Beta Content
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21044715785801728
+    m_Localized: French (fr)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21378433280888832
+    m_Localized: Enable Cookie Monster
     m_Metadata:
       m_Items: []
   references:

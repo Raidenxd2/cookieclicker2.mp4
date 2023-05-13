@@ -46,3 +46,7 @@ Logs/AssetImportWorker0.log
 Logs/AssetImportWorker1-prev.log
 Logs/AssetImportWorker1.log
 Logs/Packages-Update.log
+
+# Other
+RecRoomTheme/
+AssetBundles/

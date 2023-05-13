@@ -475,6 +475,82 @@ MonoBehaviour:
     m_Key: FAILEDTOLOADGAME_GAMEQUIT
     m_Metadata:
       m_Items: []
+  - m_Id: 5701317239492608
+    m_Key: OPTIONS_BSM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5827650568716288
+    m_Key: LOGIN_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5827705644122112
+    m_Key: ACHIEVEMENTS_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5827744323993600
+    m_Key: LEADERBOARD_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5838013796319232
+    m_Key: LOGOUT_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6422385197568000
+    m_Key: GPG_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6422453581500416
+    m_Key: GPGFAILED_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6436239344390144
+    m_Key: COOKIESTORE_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7613911591862272
+    m_Key: ADBTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8740648484651008
+    m_Key: SB_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8740677802835968
+    m_Key: SB_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9057636776398848
+    m_Key: THEMES_OLD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9835760787116032
+    m_Key: DOWNLOADDATASCREEN_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9835806983180288
+    m_Key: DOWNLOADDATASCREEN_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9836071333384192
+    m_Key: DOWNLOADINGDATASCREEN_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21043291899285504
+    m_Key: BETACONTENT_FPSLIMIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21043978339078144
+    m_Key: BETACONTENT_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21044715785801728
+    m_Key: LANGUAGE_FRENCH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21378433280888832
+    m_Key: BETACONTENT_COOKIEMONSTER
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

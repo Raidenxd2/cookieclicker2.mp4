@@ -13,9 +13,12 @@ scopes = {
 	"last_search.DD5CDD96" = "h:"
 	"OpenInspectorPreview.DD5CDD96" = "0"
 	"currentGroup.DD5CDD96" = "scene"
-	"last_search.B655092D" = "st:FAILED"
+	"last_search.B655092D" = "st:betacontent"
 	"OpenInspectorPreview.B655092D" = "0"
 	"currentGroup.B655092D" = "all"
+	"last_search.DD5CDDE4" = "tmp"
+	"OpenInspectorPreview.DD5CDDE4" = "0"
+	"currentGroup.DD5CDDE4" = "scene"
 }
 providers = {
 	adb = {
@@ -97,6 +100,9 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"t:t"
+	"?"
+	"ref:231418:"
 ]
 searchItemFavorites = [
 ]

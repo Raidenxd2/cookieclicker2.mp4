@@ -61,9 +61,17 @@ public class ModManager : MonoBehaviour
                     var modJsonData = JsonConvert.DeserializeObject<ModJsonData>(reader.ReadToEnd());
                     if (modJsonData.mod_type == "Theme")
                     {
+                        LoggerSystem.Logger.Log(modJsonData.theme_customsky_enabled, LoggerSystem.LogTypes.Normal);
+                        LoggerSystem.Logger.Log(modJsonData.theme_customsky_name, LoggerSystem.LogTypes.Normal);
                         themeItemMod.AssetBundlePath = dir;
                         themeItemMod.ThemeItemName = modJsonData.theme_name;
-                       Instantiate(ThemeButton, ThemeContent);
+                        themeItemMod.ThemeSkyboxName = modJsonData.theme_customsky_name;
+                        themeItemMod.ThemeSkybox =  modJsonData.theme_customsky_enabled;
+                        themeItemMod.android_support = modJsonData.android_support;
+                        themeItemMod.windows_support = modJsonData.windows_support;
+                        themeItemMod.mac_support = modJsonData.mac_support;
+                        themeItemMod.linux_support = modJsonData.linux_support;
+                        Instantiate(ThemeButton, ThemeContent);
                     }
                     else
                     {
@@ -91,8 +99,16 @@ public class ModManager : MonoBehaviour
             var modJsonData = JsonConvert.DeserializeObject<ModJsonData>(reader.ReadToEnd());
             if (modJsonData.mod_type == "Theme")
             {
+                LoggerSystem.Logger.Log(modJsonData.theme_customsky_enabled, LoggerSystem.LogTypes.Normal);
+                LoggerSystem.Logger.Log(modJsonData.theme_customsky_name, LoggerSystem.LogTypes.Normal);
                 themeItemMod.AssetBundlePath = dir;
                 themeItemMod.ThemeItemName = modJsonData.theme_name;
+                themeItemMod.ThemeSkyboxName = modJsonData.theme_customsky_name;
+                themeItemMod.ThemeSkybox = modJsonData.theme_customsky_enabled;
+                themeItemMod.android_support = modJsonData.android_support;
+                themeItemMod.windows_support = modJsonData.windows_support;
+                themeItemMod.mac_support = modJsonData.mac_support;
+                themeItemMod.linux_support = modJsonData.linux_support;
                 Instantiate(ThemeButton, ThemeContent);
             }
             else
