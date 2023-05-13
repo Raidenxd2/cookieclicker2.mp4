@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_ANDROID
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
+#endif
 using UnityEngine;
 using LoggerSystem;
 using BreakInfinity;
+#if UNITY_ANDROID
 using GooglePlayGames.BasicApi.SavedGame;
+#endif
 using System;
 
+#if UNITY_ANDROID
 public class GooglePlayGamesManager : MonoBehaviour
 {
 
@@ -121,3 +126,4 @@ public class GooglePlayGamesManager : MonoBehaviour
         
     }
 }
+#endif

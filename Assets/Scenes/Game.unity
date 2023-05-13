@@ -6189,6 +6189,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cursor
       objectReference: {fileID: 0}
+    - target: {fileID: 6046767383154903759, guid: 6db5dc1949e9ac9428234a723992be3e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6db5dc1949e9ac9428234a723992be3e, type: 3}
 --- !u!224 &138977878 stripped
@@ -9834,6 +9838,9 @@ MonoBehaviour:
   productId: com.raiden.cookieclicker2.mp4.cookies_50000
   buttonType: 0
   consumePurchase: 1
+  onTransactionsRestored:
+    m_PersistentCalls:
+      m_Calls: []
   onPurchaseComplete:
     m_PersistentCalls:
       m_Calls:
@@ -13197,7 +13204,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.95
+  m_fontSize: 88
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -37199,6 +37206,9 @@ MonoBehaviour:
   productId: com.raiden.cookieclicker2.mp4.cookies_50000
   buttonType: 0
   consumePurchase: 1
+  onTransactionsRestored:
+    m_PersistentCalls:
+      m_Calls: []
   onPurchaseComplete:
     m_PersistentCalls:
       m_Calls:
@@ -70274,6 +70284,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumePurchase: 1
   dontDestroyOnLoad: 0
+  onProductsFetched:
+    m_PersistentCalls:
+      m_Calls: []
   onPurchaseComplete:
     m_PersistentCalls:
       m_Calls:
@@ -86062,6 +86075,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1613221771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88911,7 +88925,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 78.15
+  m_fontSize: 54.05
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -106505,6 +106519,9 @@ MonoBehaviour:
   productId: com.raiden.cookieclicker2.mp4.cookies_50000
   buttonType: 0
   consumePurchase: 1
+  onTransactionsRestored:
+    m_PersistentCalls:
+      m_Calls: []
   onPurchaseComplete:
     m_PersistentCalls:
       m_Calls:
@@ -109434,6 +109451,9 @@ MonoBehaviour:
   productId: com.raiden.cookieclicker2.mp4.cookies_50000
   buttonType: 0
   consumePurchase: 1
+  onTransactionsRestored:
+    m_PersistentCalls:
+      m_Calls: []
   onPurchaseComplete:
     m_PersistentCalls:
       m_Calls:
@@ -116919,6 +116939,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!225 &2043084231
 CanvasGroup:
   m_ObjectHideFlags: 0

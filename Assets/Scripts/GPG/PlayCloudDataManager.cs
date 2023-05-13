@@ -4,15 +4,19 @@ using UnityEngine;
 using System;
 using System.Collections;
 //gpg
+#if UNITY_ANDROID
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using GooglePlayGames.BasicApi.SavedGame;
+#endif
 //for encoding
 using System.Text;
 //for extra save ui
 using UnityEngine.SocialPlatforms;
 //for text, remove
 using UnityEngine.UI;
+
+#if UNITY_ANDROID
 public class PlayCloudDataManager : MonoBehaviour
 {
 
@@ -216,3 +220,4 @@ public class PlayCloudDataManager : MonoBehaviour
         return Encoding.UTF8.GetString(bytes);
     }
 }
+#endif
