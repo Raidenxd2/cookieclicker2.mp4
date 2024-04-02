@@ -63,7 +63,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8969480806400
-    m_Localized: 'An error occured when loading the save file:'
+    m_Localized: 'An error occurred when loading the save file:'
     m_Metadata:
       m_Items: []
   - m_Id: 9171402989568
@@ -99,7 +99,7 @@ MonoBehaviour:
 
       Access
       to the path "PATH" is denied: Access was denied to the save file. Please check
-      permisions on the file.'
+      permissions on the file.'
     m_Metadata:
       m_Items: []
   - m_Id: 12300076949504
@@ -161,7 +161,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 16761679749120
-    m_Localized: Reset Data
+    m_Localized: Reset save file
     m_Metadata:
       m_Items: []
   - m_Id: 16782286364672
@@ -177,10 +177,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17888940892160
-    m_Localized: 'Are you sure you want to reset data?
+    m_Localized: 'Are you sure you want to reset your save file?
 
-      WARNING: THIS WILL
-      RESET EVERYTHING.'
+      WARNING:
+      THIS WILL RESET EVERYTHING.'
     m_Metadata:
       m_Items: []
   - m_Id: 17947132665856
@@ -252,7 +252,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34366876524544
-    m_Localized: '(Supported on: Windows, Mac OS, and Linux)'
+    m_Localized: '(Supported on: Windows, Mac OS, Linux, and Android (requires keyboard)
+      )'
     m_Metadata:
       m_Items: []
   - m_Id: 34443477098496
@@ -366,7 +367,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 38890404028416
-    m_Localized: Changing the textures on/off required game reload.
+    m_Localized: Changing the textures on/off requires a game reload.
     m_Metadata:
       m_Items: []
   - m_Id: 39169753063424
@@ -612,6 +613,83 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 21378433280888832
     m_Localized: Enable Cookie Monster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 165978788776914944
+    m_Localized: HDR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166605031994044416
+    m_Localized: Save Management
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606202485878784
+    m_Localized: Reset Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606409164402688
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606786911809536
+    m_Localized: Reset without Starter Bundle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606814397083648
+    m_Localized: Reset with Starter Bundle (if owned)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167047962857058304
+    m_Localized: Import Data
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167047964228595712
+    m_Localized: Export Data
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167052430117974016
+    m_Localized: 'WARNING: Importing data from a file WILL reset your existing save
+      file.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167061826088742912
+    m_Localized: Japanese (ja)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167076722826293248
+    m_Localized: Research Factory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356780145029120
+    m_Localized: Research
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356840152936448
+    m_Localized: Enter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356816211849216
+    m_Localized: Research Factory is locked.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167357168852152320
+    m_Localized: Unlock (20000 Cookies)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167358762515705856
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167714459552067584
+    m_Localized: Save Data Warning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171891393479585792
+    m_Localized: Age Block
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171891396071665664
+    m_Localized: Your current age setting has blocked this content.
     m_Metadata:
       m_Items: []
   references:

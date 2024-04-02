@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 #if UNITY_ANDROID
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
@@ -7,19 +5,30 @@ using GooglePlayGames.BasicApi;
 using UnityEngine;
 using LoggerSystem;
 using BreakInfinity;
-#if UNITY_ANDROID
-using GooglePlayGames.BasicApi.SavedGame;
-#endif
-using System;
 
 #if UNITY_ANDROID
 public class GooglePlayGamesManager : MonoBehaviour
 {
-
     public GameObject GPGLoggingIn;
     public GameObject GPGFailedToLogIn;
     public GameObject GPGButton;
     public bool LoggedInToGPG;
+
+    public string Token;
+
+    public static GooglePlayGamesManager instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,20 +42,21 @@ public class GooglePlayGamesManager : MonoBehaviour
         if (!Application.isMobilePlatform)
         {
             // GPGButton.SetActive(false);
-            LoggerSystem.Logger.Log("Google Play Games isnt supported on this platform. (Not signing in)", LogTypes.Error);
+            LogSystem.Log("Google Play Games isnt supported on this platform. (Not signing in)", LogTypes.Error);
             return;
         }
       if (status == SignInStatus.Success) {
+
+        PlayGamesPlatform.Instance.RequestServerSideAccess(true, code => {
+            Token = code;
+        });
         // Continue with Play Games Services
         LoggedInToGPG = true;
-        GPGLoggingIn.SetActive(false);
       } else {
         // Disable your integration with Play Games Services or show a login button
         // to ask users to sign-in. Clicking it should call
         // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
         LoggedInToGPG = false;
-        GPGLoggingIn.SetActive(false);
-        GPGFailedToLogIn.SetActive(true);
       }
     }
 
@@ -57,11 +67,11 @@ public class GooglePlayGamesManager : MonoBehaviour
             PlayGamesPlatform.Instance.ReportProgress(ID, 100.0f, (bool success) => {
                 if (success == true)
                 {
-                    LoggerSystem.Logger.Log("Gave Achievement.", LogTypes.Normal);
+                    LogSystem.Log("Gave Achievement.");
                 }
                 else
                 {
-                    LoggerSystem.Logger.Log("Failed to give Achievement.", LogTypes.Error);
+                    LogSystem.Log("Failed to give Achievement.", LogTypes.Error);
                 }
             });
         }
@@ -74,11 +84,11 @@ public class GooglePlayGamesManager : MonoBehaviour
             PlayGamesPlatform.Instance.IncrementAchievement(ID,val, (bool success) => {
                 if (success == true)
                 {
-                    LoggerSystem.Logger.Log("Set Achievement value.", LogTypes.Normal);
+                    LogSystem.Log("Set Achievement value.");
                 }
                 else
                 {
-                    LoggerSystem.Logger.Log("Failed to set Achievement value.", LogTypes.Error);
+                    LogSystem.Log("Failed to set Achievement value.", LogTypes.Error);
                 }
             });
         }
@@ -90,11 +100,11 @@ public class GooglePlayGamesManager : MonoBehaviour
         PlayGamesPlatform.Instance.ReportScore((long) val, ID, (bool success) => {
             if (success == true)
             {
-                LoggerSystem.Logger.Log("Set leaderboard value.", LogTypes.Normal);
+                LogSystem.Log("Set leaderboard value.");
             }
             else
             {
-                LoggerSystem.Logger.Log("Failed to set leaderboard value.", LogTypes.Error);
+                LogSystem.Log("Failed to set leaderboard value.", LogTypes.Error);
             }
         });
     }
@@ -112,18 +122,6 @@ public class GooglePlayGamesManager : MonoBehaviour
     public void LoginManual()
     {
         PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication);
-    }
-
-    public void Logout()
-    {
-        
-    }
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
 #endif

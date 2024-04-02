@@ -171,7 +171,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 16761679749120
-    m_Localized: "R\xE9initialiser les donn\xE9es"
+    m_Localized: "R\xE9initialiser le fichier de sauvegarde"
     m_Metadata:
       m_Items: []
   - m_Id: 16807724818432
@@ -187,8 +187,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17888940892160
-    m_Localized: "Voulez-vous vraiment r\xE9initialiser les donn\xE9es\_?\r\nATTENTION\_:
-      CELA R\xC9INITIALISERA TOUT."
+    m_Localized: "\xCAtes-vous s\xFBr de vouloir r\xE9initialiser votre fichier de
+      sauvegarde\_?\r\nAVERTISSEMENT\_: CELA R\xC9INITIALISERA TOUT."
     m_Metadata:
       m_Items: []
   - m_Id: 17947132665856
@@ -262,7 +262,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34366876524544
-    m_Localized: '(Pris en charge sur : Windows, Mac OS et Linux)'
+    m_Localized: "(Pris en charge sur\_: Windows, Mac OS, Linux et Android (n\xE9cessite
+      un clavier))"
     m_Metadata:
       m_Items: []
   - m_Id: 34443477098496
@@ -353,8 +354,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 38890404028416
-    m_Localized: "L'activation/la d\xE9sactivation des textures n\xE9cessitait un
-      rechargement du jeu."
+    m_Localized: "L'activation/d\xE9sactivation des textures n\xE9cessite un rechargement
+      du jeu."
     m_Metadata:
       m_Items: []
   - m_Id: 39169753063424
@@ -465,7 +466,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 696892345786368
-    m_Localized: Anglais (fr)
+    m_Localized: Anglais (en)
     m_Metadata:
       m_Items: []
   - m_Id: 697180578357248
@@ -573,6 +574,83 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 21378433280888832
     m_Localized: Activer Cookie Monster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 165978788776914944
+    m_Localized: HDR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166605031994044416
+    m_Localized: Gestion des sauvegardes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167061826088742912
+    m_Localized: Japonais (ja)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606202485878784
+    m_Localized: "Options de r\xE9initialisation"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606409164402688
+    m_Localized: Annuler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606786911809536
+    m_Localized: "R\xE9initialisation sans l'ensemble de d\xE9part"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606814397083648
+    m_Localized: "Remise \xE0 z\xE9ro avec l'ensemble de d\xE9part (si vous le poss\xE9dez)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167047962857058304
+    m_Localized: "Importer des donn\xE9es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167047964228595712
+    m_Localized: "Exportation de donn\xE9es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167052430117974016
+    m_Localized: "AVERTISSEMENT : L'importation de donn\xE9es \xE0 partir d'un fichier
+      r\xE9initialisera votre fichier de sauvegarde existant."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167076722826293248
+    m_Localized: Usine de recherche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356780145029120
+    m_Localized: Recherche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356816211849216
+    m_Localized: "L'usine de recherche est verrouill\xE9e."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356840152936448
+    m_Localized: Entrer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167357168852152320
+    m_Localized: "D\xE9bloquer (20000 cookies)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167358762515705856
+    m_Localized: Sortie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167714459552067584
+    m_Localized: "Avertissement de sauvegarde des donn\xE9es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171891393479585792
+    m_Localized: "Bloc d'\xE2ge"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171891396071665664
+    m_Localized: "Votre \xE2ge actuel a bloqu\xE9 ce contenu."
     m_Metadata:
       m_Items: []
   references:

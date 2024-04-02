@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering.Universal;
+using LoggerSystem;
 
 public class AdvancedQualitySettings : MonoBehaviour
 {
-
     public bool PostProcessing;
     public bool Particals;
     public bool Lighting;
@@ -15,6 +13,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     public bool Fog;
     public bool Textures;
     public bool AO;
+    public bool HDR;
     public int TextureQuality;
     public float RenderQuality;
     public GameObject pp_normal;
@@ -23,6 +22,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     public TMP_InputField RenderQualityInput;
     public QualityWrapper qualityWrapper;
     public SwitchRendererFeature switchRendererFeature;
+    [SerializeField] private UniversalRenderPipelineAsset asset;
 
     [Header("Performance Mode")]
     public GameObject TreesReal;
@@ -46,12 +46,6 @@ public class AdvancedQualitySettings : MonoBehaviour
             return true;
         else   
             return false;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //RenderQuality = 1;
     }
 
     public void PostProcessToggle(bool Toggle)
@@ -108,9 +102,15 @@ public class AdvancedQualitySettings : MonoBehaviour
         PlayerPrefs.SetInt("GRAPHICS_AO", boolToInt(Toggle));
     }
 
+    public void HDRToggle(bool Toggle)
+    {
+        HDR = Toggle;
+        PlayerPrefs.SetInt("GRAPHICS_HDR", boolToInt(Toggle));
+    }
+
     public void GraphicsPresetChanged(int value)
     {
-        Debug.Log(value);
+        LogSystem.Log(value.ToString());
         PlayerPrefs.SetInt("GRAPHICS_TextureQuality", value);
         if (value == 0)
         {
@@ -132,7 +132,7 @@ public class AdvancedQualitySettings : MonoBehaviour
 
     public void GraphicsAPIChanged(int value)
     {
-        Debug.Log(value);
+        LogSystem.Log(value.ToString());
         PlayerPrefs.SetInt("GRAPHICS_GraphicsAPI", value);
         switch (value)
         {
@@ -145,7 +145,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     public void SaveGraphics()
     {
         PlayerPrefs.Save();
-        Debug.Log("Saved Graphics Options");
+        LogSystem.Log("Saved Graphics Options");
     }
 
     public void LoadGraphics()
@@ -159,6 +159,7 @@ public class AdvancedQualitySettings : MonoBehaviour
         var TextureQualityTemp = PlayerPrefs.GetInt("GRAPHICS_TextureQuality");
         var TexturesTemp = PlayerPrefs.GetInt("GRAPHICS_Textures");
         var AOTemp = PlayerPrefs.GetInt("GRAPHICS_AO");
+        var HDRTemp = PlayerPrefs.GetInt("GRAPHICS_HDR");
         PostProcessing = intToBool(ppTemp);
         Lighting = intToBool(LightingTemp);
         Particals = intToBool(ParticlesTemp);
@@ -168,8 +169,9 @@ public class AdvancedQualitySettings : MonoBehaviour
         TextureQuality = TextureQualityTemp;
         Textures = intToBool(TexturesTemp);
         AO = intToBool(AOTemp);
+        HDR = intToBool(HDRTemp);
         RenderQuality = PlayerPrefs.GetFloat("GRAPHICS_RenderQuality", 1);
-        Debug.Log("Loaded Graphics Options");
+        LogSystem.Log("Loaded Graphics Options");
     }
 
     public void SetDefaults()
@@ -180,12 +182,13 @@ public class AdvancedQualitySettings : MonoBehaviour
             Lighting = true;
             Particals = true;
             Trees = true;
-            VSync = true;
-            Fog = false;
-            TextureQuality = 2;
+            VSync = false;
+            Fog = true;
+            TextureQuality = 0;
             Textures = true;
             AO = false;
-            RenderQuality = 0.5f;
+            HDR = false;
+            RenderQuality = 0.75f;
         }
         else
         {
@@ -198,6 +201,7 @@ public class AdvancedQualitySettings : MonoBehaviour
             TextureQuality = 0;
             Textures = true;
             AO = false;
+            HDR = true;
             RenderQuality = 1f;
         }
         PlayerPrefs.SetInt("GRAPHICS_PostProcessing", boolToInt(PostProcessing));
@@ -209,6 +213,7 @@ public class AdvancedQualitySettings : MonoBehaviour
         PlayerPrefs.SetInt("GRAPHICS_TextureQuality", TextureQuality);
         PlayerPrefs.SetInt("GRAPHICS_Textures", boolToInt(Textures));
         PlayerPrefs.SetInt("GRAPHICS_AO", boolToInt(AO));
+        PlayerPrefs.SetInt("GRAPHICS_HDR", boolToInt(HDR));
         PlayerPrefs.SetFloat("GRAPHICS_RenderQuality", RenderQuality);
     }
 
@@ -218,12 +223,10 @@ public class AdvancedQualitySettings : MonoBehaviour
         if (PostProcessing)
         {
             pp_normal.SetActive(true);
-            pp_performance.SetActive(false);
         }
         else
         {
             pp_normal.SetActive(false);
-            pp_performance.SetActive(true);
         }
         if (Lighting)
         {
@@ -266,14 +269,12 @@ public class AdvancedQualitySettings : MonoBehaviour
             RenderSettings.fog = false;
         }
 
-        QualitySettings.masterTextureLimit = TextureQuality;
+        QualitySettings.globalTextureMipmapLimit = TextureQuality;
 
         RenderQualityText.text = RenderQuality + "x";
 
         qualityWrapper.SetRenderScale(RenderQuality);
 
         switchRendererFeature.set(AO);
-        
-        
     }
 }

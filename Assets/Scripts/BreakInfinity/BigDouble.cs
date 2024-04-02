@@ -596,7 +596,12 @@ namespace BreakInfinity
         {
             public static string FormatBigDouble(BigDouble value, string format, IFormatProvider formatProvider)
             {
-                if (IsNaN(value)) return "NaN";
+                // modify start
+
+                // if (IsNaN(value)) return "NaN";
+
+                // modify end
+
                 if (value.Exponent >= ExpLimit) return value.Mantissa > 0 ? "Infinity" : "-Infinity";
 
                 int formatDigits;
@@ -651,15 +656,15 @@ namespace BreakInfinity
 
                 var format = places > 0 ? $"G{places}" : "G";
                 if (value.Exponent < 21 && value.Exponent > -7)
-                    return value.ToDouble().ToString(format, new CultureInfo("en-US"));
+                    return value.ToDouble().ToString(format, staticCultureInfo);
 
                 return value.Mantissa.ToString("F2")
-                       + "e" + value.Exponent.ToString(new CultureInfo("en-US"));
+                       + "e" + value.Exponent.ToString(staticCultureInfo);
             }
 
             private static string ToFixed(double value, int places)
             {
-                return value.ToString($"F{places}", new CultureInfo("en-US"));
+                return value.ToString($"F{places}", staticCultureInfo);
             }
 
             private static string FormatExponential(BigDouble value, int places)
@@ -678,6 +683,8 @@ namespace BreakInfinity
                        + value.Exponent;
             }
 
+            private static CultureInfo staticCultureInfo = new("en-US");
+
             private static string FormatFixed(BigDouble value, int places)
             {
                 if (places < 0) places = MaxSignificantDigits;
@@ -691,7 +698,7 @@ namespace BreakInfinity
                 if (value.Exponent >= MaxSignificantDigits)
                     // TODO: StringBuilder-optimizable
                     return value.Mantissa
-                               .ToString(new CultureInfo("en-US"))
+                               .ToString(staticCultureInfo)
                                .Replace(".", "")
                                .PadRight((int) value.Exponent + 1, '0')
                            + (places > 0 ? ".".PadRight(places + 1, '0') : "");

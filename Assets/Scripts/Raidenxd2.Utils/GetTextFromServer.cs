@@ -3,10 +3,10 @@ using System.IO;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Networking;
+using LoggerSystem;
 
 public class GetTextFromServer : MonoBehaviour
 {
-
     public string URL;
     public int Item;
     public TMP_Text Text;
@@ -18,13 +18,9 @@ public class GetTextFromServer : MonoBehaviour
         if (CacheFile.DownloadedFile)
         {
             var data = File.ReadAllText(Application.persistentDataPath + "/Cache/CookieStore.txt");
-            LoggerSystem.Logger.Log(data, LoggerSystem.LogTypes.Normal);
+            LogSystem.Log(data);
             var dataSplit = data.Split(",");
             Text.text = dataSplit[Item];
-        }
-        else
-        {
-            // StartCoroutine(GetText(URL));
         }
     }
 
@@ -41,7 +37,6 @@ public class GetTextFromServer : MonoBehaviour
             {
                 Text.SetText(ErrorText + www.error);
                 yield break;
-                //UnityEngine.Debug.LogError(www.error);
             }
             if (www.responseCode == 404)
             {
@@ -61,7 +56,7 @@ public class GetTextFromServer : MonoBehaviour
             else
             {
                 var data = www.downloadHandler.text;
-                LoggerSystem.Logger.Log("Data from server: " + data, LoggerSystem.LogTypes.Normal);
+                LogSystem.Log("Data from server: " + data);
                 var dataSplit = data.Split(",");
                 Text.text = dataSplit[Item];
             }

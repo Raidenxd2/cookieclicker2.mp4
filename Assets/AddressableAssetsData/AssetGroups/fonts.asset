@@ -10,24 +10,56 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: fonts
+  m_Name: Fonts
   m_EditorClassIdentifier: 
-  m_GroupName: fonts
+  m_GroupName: Fonts
   m_Data:
     m_SerializedData: []
-  m_GUID: 13d2f2b31662b174aa3f879f44b7cc7a
+  m_GUID: dac3443347cf7df49b12d2f59a0f09f5
   m_SerializeEntries:
-  - m_GUID: 4c1677d74b2b96c4784f21b60629a25f
-    m_Address: Assets/Fonts/Source Sans Pro/SourceSansPro-Bold.ttf
+  - m_GUID: 97756a796a6d007408af39a643993837
+    m_Address: Assets/Fonts/Source Sans Pro/SourceSansPro-Bold SDF.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e92e3add251e23f43971c7230066aa3e
+    m_Address: Assets/Fonts/Source Sans Pro/SourceSansPro-Regular SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9365f1b5c8f3033409acda93e69baeca
+    m_Address: Assets/Fonts/Noto Sans Japanese/NotoSansJP-Bold SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab9b5c568549c5a46add3ec486cad980
+    m_Address: Assets/Fonts/Noto Sans Japanese/NotoSansJP-Regular SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2210824cb6753c04a8c1a36dbc374ba3
     m_Address: Assets/Fonts/Source Sans Pro/SourceSansPro-Regular.ttf
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2146eff5482b4824988e3f7c085d71a5
+    m_Address: Assets/Fonts/Noto Sans Japanese/NotoSansJP-Bold.ttf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7768aa798ee418a43b58232c7d704154
+    m_Address: Assets/Fonts/Noto Sans Japanese/NotoSansJP-Regular.ttf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c1677d74b2b96c4784f21b60629a25f
+    m_Address: Assets/Fonts/Source Sans Pro/SourceSansPro-Bold.ttf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9bd8c6dc482bf244fa3a69cd62f55319, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 878f44191c097304cbd2ff490dcb0db6, type: 2}
-    - {fileID: 11400000, guid: 41ba83a121e46be4e95ffc45eb1bcc2e, type: 2}
+    - {fileID: 11400000, guid: 77787bfcf6107694eb413ece495e81e0, type: 2}
+    - {fileID: 11400000, guid: 6531b2ea82adb2f43a77c67b64c51341, type: 2}

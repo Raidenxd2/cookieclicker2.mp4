@@ -5,13 +5,20 @@ using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Security;
 
 #if UNITY_ANDROID
-public class IAPManager : ModIOBrowser.Implementation.Singleton<IAPManager>, IStoreListener
+public class IAPManager : MonoBehaviour, IStoreListener
 {
 	private IStoreController controller;
     private IExtensionProvider extensions;
     public Game game;
+    public static IAPManager Instance;
 
-    public IAPManager () 
+    private void Awake()
+    {
+        Instance = this;
+        InitializeIAP();
+    }
+
+    public void InitializeIAP() 
     {
         game = GameObject.FindGameObjectWithTag("Game").GetComponent<Game>();
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
@@ -28,10 +35,10 @@ public class IAPManager : ModIOBrowser.Implementation.Singleton<IAPManager>, ISt
         builder.AddProduct("com.raiden.cookieclicker2.mp4.starter_bundle", ProductType.Consumable, new IDs
         {
            {"com.raiden.cookieclicker2.mp4.starter_bundle", GooglePlay.Name},
-           {"com.raiden.cookieclicker2.mp4.starter_bundle", MacAppStore.Name} 
+           {"com.raiden.cookieclicker2.mp4.starter_bundle", MacAppStore.Name}
         });
 
-        UnityPurchasing.Initialize (this, builder);
+        UnityPurchasing.Initialize(this, builder);
     }
 
     /// <summary>
@@ -112,6 +119,12 @@ public class IAPManager : ModIOBrowser.Implementation.Singleton<IAPManager>, ISt
     public void OnInitializeFailed(InitializationFailureReason error, string message)
     {
         throw new NotImplementedException();
+    }
+
+    public bool CheckIfUserOwnsStarterBundle()
+    {
+        var starterBundle = controller.products.WithID("com.raiden.cookieclicker2.mp4.starter_bundle");
+        return starterBundle != null && starterBundle.hasReceipt;
     }
 }
 #endif

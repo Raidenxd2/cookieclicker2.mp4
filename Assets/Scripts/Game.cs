@@ -1,16 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using System;
 using UnityEngine;
-using System.IO;
 using BreakInfinity;
 using TMPro;
 using UnityEngine.SceneManagement;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
-using Logger = LoggerSystem.Logger;
 using LoggerSystem;
+using UnityEngine.AddressableAssets;
+using Unity.Services.CloudSave;
+using Unity.Services.Authentication;
+
 #if UNITY_ANDROID
 using GooglePlayGames;
 #endif
@@ -33,6 +32,8 @@ public class Game : MonoBehaviour
     public BigDouble DrillPrice;
     public BigDouble Grandmas;
     public BigDouble GrandmaPrice;
+    public BigDouble CookieFactorys;
+    public BigDouble CookieFactoryPrice;
     public bool HasPlayed;
     public bool ResearchFactory;
     public bool Music;
@@ -47,8 +48,9 @@ public class Game : MonoBehaviour
     public GameObject Drill_Partical;
     public GameObject NECDialog;
     public GameObject SDIE;
-    public GameObject SDUE;
     public GameObject NoNetworkScreen;
+    public GameObject SaveDataWarningScreen;
+    public GameObject TexturesChangedScreen;
 
     // scripts
     [Header("Scripts")]
@@ -56,16 +58,10 @@ public class Game : MonoBehaviour
     public AdvancedQualitySettings ad;
     public SoundManager soundManager;
     public Notification notification;
-    public FPSLimiter fpsLimiter;
-#if UNITY_ANDROID
-    public GooglePlayGamesManager GPGM;
-#endif
-    public AdsManager adsManager;
 
     // text
     [Header("Text")]
     public TMP_Text CookiesText;
-    public TMP_Text BSMCookiesText;
     public TMP_Text Shop_Autoclicker;
     public TMP_Text Shop_Doublecookie;
     public TMP_Text Shop_Drill;
@@ -73,10 +69,11 @@ public class Game : MonoBehaviour
     public TMP_Text SmallErrorText;
     public TMP_Text Shop_Grandma;
     public TMP_Text VersionText;
-    public TMP_Text Shop_AdText;
+    public TMP_Text Shop_CookieFactory;
+    public TMP_Text SaveDataWarningInfo;
 
-    // performance mode stuff
-    
+    [Header("Buttons")]
+    public Button SaveDataWarningYesButton;
 
     // stats
     [Header("Stats")]
@@ -87,6 +84,7 @@ public class Game : MonoBehaviour
     public TMP_Text Stats_CPS;
     public TMP_Text Stats_CPC;
     public TMP_Text Stats_Grandmas;
+    public TMP_Text Stats_CookieFactorys;
 
     // animations
     [Header("Animations")]
@@ -96,7 +94,9 @@ public class Game : MonoBehaviour
     [Header("Audio")]
     private GameObject MusicSource;
     private GameObject SoundSource;
-    public AudioClip[] Musics;
+
+    private AudioSource MusicAudioSource;
+    private AudioSource SoundAudioSource;
 
     public Camera gameCamera;
     public UnityEngine.Rendering.Volume CVDFilter;
@@ -109,9 +109,6 @@ public class Game : MonoBehaviour
     public UnityEngine.Rendering.VolumeProfile CBTritanomaly;
     public UnityEngine.Rendering.VolumeProfile CBAchromatopsia;
     public UnityEngine.Rendering.VolumeProfile CBAchromatomaly;
-
-    [Header("addresables")]
-    [SerializeField] private List<AssetReference> _audioReferences;
 
     [Header("BetaContent")]
     public GameObject BetaContentWarningScreen;
@@ -134,20 +131,20 @@ public class Game : MonoBehaviour
     public Transform CookieVFXSpot;
     public Transform CookieGainsSpot;
 
+    [Header("Research Factory")]
+    public GameObject Research_Factory_Normal;
+    public GameObject Research_Factory_Particals;
+    public ResearchFactory researchFactory;
+
     // Start is called before the first frame update
     void Start()
     {
-
-        // PlayCloudDataManager.Instance.SaveToCloud(Application.persistentDataPath + "/cookie2");
 #if UNITY_ANDROID
-        PlayCloudDataManager.Instance.LoadFromCloud(delegate (string s) {
-            File.WriteAllText(Application.persistentDataPath + "/cookie2_fromgoogle", s);
-        });
-
         IAPManager.Instance.game = this;
 #endif
+
         VersionText.text = "v" + Application.version + "-" + Application.platform + " (" + Application.unityVersion + ")";
-        // IAPManager.Instance.Initialize();
+        
         if (Application.platform == RuntimePlatform.Android)
         {
             ScreenshotOptionsBTN.SetActive(false);
@@ -190,22 +187,20 @@ public class Game : MonoBehaviour
         }
         catch
         {
-            Logger.Log("Could not assign audio. Did you load from the Init scene?", LogTypes.Error);
+            LogSystem.Log("Could not assign audio. Did you load from the Init scene?", LogTypes.Error);
         }
         ad.LoadGraphics();
-        // Logger.Log(IAPManager.Instance.IsInitialized.ToString(), LogTypes.Normal);
-        // if (IAPManager.Instance.IsInitialized)
-        // {
-        //     CheckIfUserRegistered();
-        // }
+        
         BetaContentToggles[0].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_EnableSideBar", BetaContentToggles[0].isOn);});
         BetaContentToggles[1].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_Mods", BetaContentToggles[1].isOn);});
-        BetaContentToggles[2].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_FPSLIMIT", BetaContentToggles[2].isOn);});
-        BetaContentToggles[3].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_CookieMonster", BetaContentToggles[3].isOn);});
+        BetaContentToggles[4].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_ResearchFactory", BetaContentToggles[4].isOn);});
         if (StarterBundleBought)
         {
             StarterBundleBTN.SetActive(false);
         }
+
+        MusicAudioSource = MusicSource.GetComponent<AudioSource>();
+        SoundAudioSource = SoundSource.GetComponent<AudioSource>();
     }
 
     public void HideStarterBundleButton()
@@ -216,7 +211,7 @@ public class Game : MonoBehaviour
     public void OnPurchaseComplete(Product product)
     {
         Time.timeScale = 1f;
-        Logger.Log(product.definition.id + " Should have added Cookies now.", LogTypes.Normal);
+        LogSystem.Log(product.definition.id + " Should have added Cookies now.", LogTypes.Normal);
         if(product.definition.id == "com.raiden.cookieclicker2.mp4.cookies_50000")
 	    {
 	    	Cookies += 50000;
@@ -237,22 +232,8 @@ public class Game : MonoBehaviour
     public void OnPurchaseFailed(Product product, PurchaseFailureReason purchaseFailureReason)
     {
         Time.timeScale = 1f;
-        Logger.Log(product.transactionID + " failed " + purchaseFailureReason, LogTypes.Error);
+        LogSystem.Log(product.transactionID + " failed " + purchaseFailureReason, LogTypes.Error);
     }
-
-    public void PurchaseItem(string ID)
-    {
-        // IAPManager.Instance.Purchase(ID, () => Time.timeScale = 0f);
-    }
-
-    void CheckIfUserRegistered()
-    {
-        // if(IAPManager.Instance.IsNonConsumablePurchased( "early_registration_reward" ) )
-	    // {
-		//     RegisteredBTN.SetActive(true);
-	    // }
-    }
-
 
     void SoundAssign()
     {
@@ -283,6 +264,11 @@ public class Game : MonoBehaviour
             Grandmas = 0;
             GrandmaPrice = 150;
         }
+        if (CookieFactoryPrice < 320)
+        {
+            CookieFactorys = 0;
+            CookieFactoryPrice = 320;
+        }
     }
 
     IEnumerator AutoSave()
@@ -301,32 +287,37 @@ public class Game : MonoBehaviour
         StartCoroutine(Tick());
     }
 
-    public void SavePlayer()
+    public async void SavePlayer()
     {
         PlayerPrefs.Save();
         offlineManager.SaveTime();
         ad.SaveGraphics();
-        SaveSystem.SavePlayer(this, offlineManager, ad);
+        SaveSystem.SavePlayer(this, offlineManager, ad, researchFactory);
 #if UNITY_ANDROID
         if (PlayGamesPlatform.Instance.localUser.authenticated)
         {
             try
             {
-                GPGM.SetLeaderboardValue(Cookies, "CgkIleno69UVEAIQAg");
-                GPGM.SetLeaderboardValue(CPS, "CgkIleno69UVEAIQBQ");
-                GPGM.SetLeaderboardValue(CPC, "CgkIleno69UVEAIQBg");
-                GPGM.IncreseAchievement("CgkIleno69UVEAIQAw", (Int32) Autoclickers);
-                GPGM.IncreseAchievement("CgkIleno69UVEAIQBA", (Int32) Doublecookies);
-                GPGM.IncreseAchievement("CgkIleno69UVEAIQBw", (Int32) Drills);
-                GPGM.IncreseAchievement("CgkIleno69UVEAIQCA", (Int32) Grandmas);
+                GooglePlayGamesManager.instance.SetLeaderboardValue(Cookies, "CgkIleno69UVEAIQAg");
+                GooglePlayGamesManager.instance.SetLeaderboardValue(CPS, "CgkIleno69UVEAIQBQ");
+                GooglePlayGamesManager.instance.SetLeaderboardValue(CPC, "CgkIleno69UVEAIQBg");
+                GooglePlayGamesManager.instance.IncreseAchievement("CgkIleno69UVEAIQAw", (Int32) Autoclickers);
+                GooglePlayGamesManager.instance.IncreseAchievement("CgkIleno69UVEAIQBA", (Int32) Doublecookies);
+                GooglePlayGamesManager.instance.IncreseAchievement("CgkIleno69UVEAIQBw", (Int32) Drills);
+                GooglePlayGamesManager.instance.IncreseAchievement("CgkIleno69UVEAIQCA", (Int32) Grandmas);
+                GooglePlayGamesManager.instance.IncreseAchievement("CgkIleno69UVEAIQCQ", (Int32) CookieFactorys);
             }
-            catch
+            catch (Exception ex)
             {
-                // do nothing
+                LogSystem.Log(ex.ToString(), LogTypes.Exception);
             }
-            
         }
-        PlayCloudDataManager.Instance.SaveToCloud(Application.persistentDataPath + "/cookie2");
+
+        if (AuthenticationService.Instance.IsSignedIn)
+        {
+            byte[] file = System.IO.File.ReadAllBytes(Application.persistentDataPath + "/cookie2");
+            await CloudSaveService.Instance.Files.Player.SaveAsync("cookie2", file);
+        }
 #endif
     }
 
@@ -359,6 +350,24 @@ public class Game : MonoBehaviour
         GrandmaPrice = data.GrandmaPrice;
         StarterBundleBought = data.StarterBundleBought;
         Clicks = data.Clicks;
+        CookieFactorys = data.CookieFactorys;
+        CookieFactoryPrice = data.CookieFactoryPrice;
+
+        researchFactory.ResearchPoints = data.ResearchPoints;
+        researchFactory.BigCookieResearched = data.BigCookieResearched;
+
+        researchFactory.LoadResearchFactory();
+
+        CheckResearchFactory();
+        CheckDrill();
+
+        if (PlayerPrefs.GetInt("GRAPHICS_Textures") == 0)
+        {
+            SaveDataWarningScreen.SetActive(true);
+            SaveDataWarningInfo.text = "You have Textures turned off, but this option has been removed. It is recommended that you turn it on.";
+            SaveDataWarningYesButton.onClick.AddListener(() => ad.TexturesToggle(true));
+            SaveDataWarningYesButton.onClick.AddListener(() => TexturesChangedScreen.SetActive(true));
+        }
     }
 
     public void ResetData()
@@ -376,11 +385,77 @@ public class Game : MonoBehaviour
         DrillPrice = 0;
         Grandmas = 0;
         GrandmaPrice = 0;
-        StarterBundleBought = false;
         Clicks = 0;
+        CookieFactorys = 0;
+        CookieFactoryPrice = 0;
+
+        researchFactory.ResearchPoints = 1;
+        researchFactory.BigCookieUnlocked = false;
+        researchFactory.BigCookieResearched = false;
+
         SavePlayer();
-        Debug.Log("Reset Data. Now reloading...");
+        LogSystem.Log("Reset Data. Now reloading...");
         Reload();
+    }
+
+    public void ResetDataWithStarterBundle()
+    {
+        #if UNITY_ANDROID
+        if (StarterBundleBought || IAPManager.Instance.CheckIfUserOwnsStarterBundle())
+        {
+            Cookies = 150000;
+            CPS = 0;
+            CPC = 1;
+            TimePlayed = 0;
+            Autoclickers = 0;
+            Doublecookies = 0;
+            ResearchFactory = false;
+            Drills = 0;
+            AutoclickerPrice = 0;
+            DoublecookiePrice = 0;
+            DrillPrice = 0;
+            Grandmas = 0;
+            GrandmaPrice = 0;
+            Clicks = 0;
+            CookieFactorys = 0;
+            CookieFactoryPrice = 0;
+
+            researchFactory.ResearchPoints = 1;
+            researchFactory.BigCookieUnlocked = false;
+            researchFactory.BigCookieResearched = false;
+
+            var oldCookies = Cookies;
+            Cookies = 9999999999999;
+
+            StarterBundleBought = true;
+            for (int i = 0; i < 10; i++)
+            {
+                BuyGrandma();
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                BuyDoublecookie();
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                BuyAutoclicker();
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                BuyDrill();
+            }
+
+            Cookies = oldCookies;
+
+            SavePlayer();
+            LogSystem.Log("Reset Data. Now reloading...");
+            Reload();
+        }
+        else
+        {
+            notification.ShowNotification("You don't own the starter bundle, so you can't reset with it.", "Error");
+        }
+        #endif
     }
 
     public void BakeCookie()
@@ -389,19 +464,14 @@ public class Game : MonoBehaviour
         Clicks += 1;
         Instantiate(CookieGains, CookieGainsSpot);
         Instantiate(CookieVFX, CookieVFXSpot);
-        if (Clicks >= 250)
-        {
-            Clicks = 0;
-            adsManager.ShowAd();
-        }
 #if UNITY_ANDROID
         try
         {
-            GPGM.GiveAchievement("CgkIleno69UVEAIQAQ");
+            GooglePlayGamesManager.instance.GiveAchievement("CgkIleno69UVEAIQAQ");
         }
         catch
         {
-            Logger.Log("Could not give Google Play achievement.", LogTypes.Error);
+            LogSystem.Log("Could not give Google Play achievement.", LogTypes.Error);
         }
 #endif
     }
@@ -419,7 +489,7 @@ public class Game : MonoBehaviour
 
     public void Reload()
     {
-        Debug.Log("Reloading..");
+        LogSystem.Log("Reloading..");
         StartCoroutine(ReloadWait());
     }
 
@@ -437,7 +507,17 @@ public class Game : MonoBehaviour
     {
         Fade.Play("FadeIn");
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("Init");
+
+        LogSystem.Log("Loading Init scene and unloading the Game scene.", LogTypes.Normal);
+
+        Addressables.UnloadSceneAsync(AddressableHandles.instance.gameSceneHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+
+        AddressableHandles.instance.initSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.initSceneRef, LoadSceneMode.Single);
+
+        while (!AddressableHandles.instance.initSceneHandle.IsDone)
+        {
+            yield return null;
+        }
     }
 
     public void BuyAutoclicker()
@@ -479,6 +559,8 @@ public class Game : MonoBehaviour
             Drills += 1;
             CPC += 2;
             CPS += 2;
+
+            CheckDrill();
         }
         else
         {
@@ -494,6 +576,22 @@ public class Game : MonoBehaviour
             GrandmaPrice += 150;
             Grandmas += 1;
             CPS += 4;
+        }
+        else
+        {
+            NECDialog.SetActive(true);
+        }
+    }
+
+    public void BuyCookieFactory()
+    {
+        if (Cookies >= CookieFactoryPrice)
+        {
+            Cookies -= CookieFactoryPrice;
+            CookieFactoryPrice += 320;
+            CookieFactorys++;
+            CPS += 8;
+            CPC += 4;
         }
         else
         {
@@ -524,7 +622,8 @@ public class Game : MonoBehaviour
         }
     }
 
-    public void ChangeCameraBGColor(String color)
+    // This no longer works because the camera is using the skybox.
+    public void ChangeCameraBGColor(string color)
     {
         switch (color)
         {
@@ -534,10 +633,7 @@ public class Game : MonoBehaviour
             case "space":
                 gameCamera.backgroundColor = new Color(0, 0, 0, 255);
                 break;
-
         }
-
-
     }
 
     public void ChangeColorBlindNessMode(int index)
@@ -574,45 +670,6 @@ public class Game : MonoBehaviour
         }
     }
 
-    public void ChangeMusic(int index)
-    {
-        switch (index)
-        {
-            case 0:
-                AsyncOperationHandle<AudioClip> asyncOperationHandle = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[0]);
-                asyncOperationHandle.Completed += AsyncOperationHandle_Completed;
-                break;
-            case 1:
-                AsyncOperationHandle<AudioClip> asyncOperationHandle2 = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[1]);
-                asyncOperationHandle2.Completed += AsyncOperationHandle_Completed;
-                break;
-            case 2:
-                AsyncOperationHandle<AudioClip> asyncOperationHandle3 = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[2]);
-                asyncOperationHandle3.Completed += AsyncOperationHandle_Completed;
-                break;
-            case 3:
-                AsyncOperationHandle<AudioClip> asyncOperationHandle4 = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[3]);
-                asyncOperationHandle4.Completed += AsyncOperationHandle_Completed;
-                break;
-            case 4:
-                AsyncOperationHandle<AudioClip> asyncOperationHandle5 = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[4]);
-                asyncOperationHandle5.Completed += AsyncOperationHandle_Completed;
-                break;
-            case 5:
-                AsyncOperationHandle<AudioClip> asyncOperationHandle6 = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[5]);
-                asyncOperationHandle6.Completed += AsyncOperationHandle_Completed;
-                break;
-            case 6:
-                AsyncOperationHandle<AudioClip> asyncOperationHandle7 = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[6]);
-                asyncOperationHandle7.Completed += AsyncOperationHandle_Completed;
-                break;
-            case 7:
-                AsyncOperationHandle<AudioClip> asyncOperationHandle8 = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[7]);
-                asyncOperationHandle8.Completed += AsyncOperationHandle_Completed;
-                break;
-        }
-    }
-
     public void EnableBetaContent()
     {
         PlayerPrefs.SetInt("BetaContent", 1);
@@ -626,6 +683,8 @@ public class Game : MonoBehaviour
         PlayerPrefs.SetInt("BETA_EnableSideBar", 0);
         PlayerPrefs.SetInt("BETA_Mods", 0);
         PlayerPrefs.SetInt("BETA_FPSLIMIT", 0);
+        PlayerPrefs.SetInt("BETA_CookieMonster", 0);
+        PlayerPrefs.SetInt("BETA_ResearchFactory", 0);
         SavePlayer();
         Reload();
     }
@@ -655,23 +714,6 @@ public class Game : MonoBehaviour
         }
     }
 
-    public void EnterBSM()
-    {
-        Application.targetFrameRate = 10;
-    }
-
-    public void ExitBSM()
-    {
-        if (fpsLimiter.FpsLimit)
-        {
-            fpsLimiter.SetMaxFPS();
-        }
-        else
-        {
-            Application.targetFrameRate = 999999999;
-        }
-    }
-
     public void EntermodioScreen()
     {
         gameCamera.transform.rotation = new Quaternion(0, 0, 0, 0);
@@ -682,53 +724,22 @@ public class Game : MonoBehaviour
         gameCamera.transform.rotation = new Quaternion(30, 0, 0, 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CheckResearchFactory()
     {
-        try
+        if (ResearchFactory)
         {
-            var musicisplaying = MusicSource.GetComponent<AudioSource>();
-            if (!musicisplaying.isPlaying)
-            {
-                int randomIndex = UnityEngine.Random.Range(0, 7);
-                Debug.Log(_audioReferences[randomIndex]);
-                AsyncOperationHandle<AudioClip> asyncOperationHandle = Addressables.LoadAssetAsync<AudioClip>(_audioReferences[randomIndex]);
-
-                asyncOperationHandle.Completed += AsyncOperationHandle_Completed;
-                
-            }
+            Research_Factory_Normal.SetActive(true);
+            Research_Factory_Particals.SetActive(true);
         }
-        catch(Exception ex)
+        else
         {
-            Logger.Log("Could not assign music or play music" + ex, LogTypes.Error);
-            SoundAssign();
+            Research_Factory_Normal.SetActive(false);
+            Research_Factory_Particals.SetActive(false);
         }
-        CookiesText.text = "Cookies: " + Cookies;
-        BSMCookiesText.text = "Cookies: " + Cookies;
-        Shop_Autoclicker.text = "Autoclicker (" + AutoclickerPrice + " Cookies)";
-        Shop_Doublecookie.text = "Doublecookie (" + DoublecookiePrice + " Cookies)";
-        Shop_Drill.text = "Drill (" + DrillPrice + " Cookies)";
-        Shop_Grandma.text = "Grandma (" + GrandmaPrice + " Cookies)";
+    }
 
-        // if (ResearchFactory)
-        // {
-        //     Research_Factory_Normal.SetActive(true);
-        //     if (PerformanceMode)
-        //     {
-        //         Research_Factory_Particals.SetActive(false);
-        //     }
-        //     else
-        //     {
-        //         Research_Factory_Particals.SetActive(true);
-        //     }
-        // }
-        // else
-        // {
-        //     Research_Factory_Normal.SetActive(false);
-        //     Research_Factory_Particals.SetActive(false);
-        // }
-
-        // drill
+    private void CheckDrill()
+    {
         if (Drills >= 1)
         {
             Drill_Model.SetActive(true);
@@ -739,6 +750,17 @@ public class Game : MonoBehaviour
             Drill_Model.SetActive(false);
             Drill_Partical.SetActive(false);
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        CookiesText.text = "Cookies: " + Cookies;
+        Shop_Autoclicker.text = "Autoclicker (" + AutoclickerPrice + " Cookies)";
+        Shop_Doublecookie.text = "Doublecookie (" + DoublecookiePrice + " Cookies)";
+        Shop_Drill.text = "Drill (" + DrillPrice + " Cookies)";
+        Shop_Grandma.text = "Grandma (" + GrandmaPrice + " Cookies)";
+        Shop_CookieFactory.text = "Cookie Factory (" + CookieFactoryPrice + " Cookies)";
 
         // stats
         Stats_Cookies.text = "Cookies: " + Cookies;
@@ -748,103 +770,24 @@ public class Game : MonoBehaviour
         Stats_CPC.text = "Cookies Per Click: " + CPC;
         Stats_CPS.text = "Cookies Per Second: " + CPS;
         Stats_Grandmas.text = "Grandmas: " + Grandmas;
+        Stats_CookieFactorys.text = "Cookie Factorys: " + CookieFactorys;
 
         // music & sounds
-        var musicSource = MusicSource.GetComponent<AudioSource>();
-        var soundsSource = SoundSource.GetComponent<AudioSource>();
         if (Music == false)
         {
-            musicSource.volume = 0;
+            MusicAudioSource.volume = 0;
         }
         else
         {
-            musicSource.volume = 1;
+            MusicAudioSource.volume = 1;
         }
         if (Sounds == false)
         {
-            soundsSource.volume = 0;
+            SoundAudioSource.volume = 0;
         }
         else
         {
-            soundsSource.volume = 1;
-        }
-        // MusicSource.SetActive(Music);
-        // SoundSource.SetActive(Sounds);
-        DebugClicks.text = "Clicks (500 for ad): " + Clicks;
-        if (CPS >= 0 && CPS <= 10)
-        {
-            Shop_AdText.text = "Watch AD for 10000 Cookies";
-        }
-        else if (CPS >= 10 && CPS <= 20)
-        {
-            Shop_AdText.text = "Watch AD for 20000 Cookies";
-        }
-        else if (CPS >= 20 && CPS <= 30)
-        {
-            Shop_AdText.text = "Watch AD for 30000 Cookies";
-        }
-        else if (CPS >= 30 && CPS <= 40)
-        {
-            Shop_AdText.text = "Watch AD for 40000 Cookies";
-        }
-        else if (CPS >= 40 && CPS <= 50)
-        {
-            Shop_AdText.text = "Watch AD for 50000 Cookies";
-        }
-        else if (CPS >= 50 && CPS <= 60)
-        {
-            Shop_AdText.text = "Watch AD for 60000 Cookies";
-        }
-        else if (CPS >= 60 && CPS <= 70)
-        {
-            Shop_AdText.text = "Watch AD for 70000 Cookies";
-        }
-        else if (CPS >= 70 && CPS <= 80)
-        {
-            Shop_AdText.text = "Watch AD for 80000 Cookies";
-        }
-        else if (CPS >= 80 && CPS <= 90)
-        {
-            Shop_AdText.text = "Watch AD for 90000 Cookies";
-        }
-        else if (CPS >= 90)
-        {
-            Shop_AdText.text = "Watch AD for 100000 Cookies";
+            SoundAudioSource.volume = 1;
         }
     }
-
-    // string error;
-
-    // void OnEnable()
-    // {
-    //     Application.logMessageReceived += HandleLog;
-    // }
-
-    // void OnDisable()
-    // {
-    //     Application.logMessageReceived -= HandleLog;
-    // }
-
-    // void HandleLog(string logString, string stackTrace, LogType type)
-    // {
-        
-    //     if (type == LogType.Error || type == LogType.Exception || type == LogType.Assert)
-    //     {
-    //         Logger.Log("(" + type + ") " + logString + " " + stackTrace + "" + type, LogTypes.Error);
-    //         notification.ShowNotification("(" + type + ") " + logString + " " + stackTrace, "" + type);
-    //     }   
-    // }
-
-    private void AsyncOperationHandle_Completed(AsyncOperationHandle<AudioClip> asyncOperationHandle)
-    {
-        if (asyncOperationHandle.Status == AsyncOperationStatus.Succeeded)
-        {
-            SoundManager.Instance.RandomMusic(asyncOperationHandle.Result);
-        }
-        else
-        {
-            Logger.Log("Failed to load audio clip", LogTypes.Error);
-        }
-    }
-
 }

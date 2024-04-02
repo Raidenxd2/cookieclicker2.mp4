@@ -1,0 +1,9 @@
+V1.1.2:
+Added new Achievement: 10 Cookie Factorys
+Removed Beta Content feature: Limit FPS when not focused
+Removed Battery Saver Mode
+Removed theme "Old Theme"
+Removed Beta Content warning on startup
+Improved performance
+Improved memory usage
+Cloud save support

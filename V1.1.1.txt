@@ -1,0 +1,8 @@
+V1.1.1:
+Added new shop item "Cookie Factory"
+New Save Management option
+Fixed where the music would stop
+Fixed some minor bugs
+New Beta Content feature "Research Factory"
+New translation "Japanese"
+Removed "Textures" quality setting

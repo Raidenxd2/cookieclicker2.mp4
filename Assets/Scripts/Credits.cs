@@ -1,12 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Networking;
 
 public class Credits : MonoBehaviour
 {
-
     public GameObject WebTextScreen;
     public GameObject DownloadedTextScroll;
     public TMP_Text DownloadedText;
@@ -37,7 +35,6 @@ public class Credits : MonoBehaviour
                 DownloadedTextScroll.SetActive(true);
                 DownloadedText.SetText(ErrorText + www.error);
                 yield break;
-                //UnityEngine.Debug.LogError(www.error);
             }
             if (www.responseCode == 404)
             {

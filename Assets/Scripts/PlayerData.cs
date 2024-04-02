@@ -17,6 +17,8 @@ public class PlayerData
     public BigDouble DrillPrice;
     public BigDouble Grandmas;
     public BigDouble GrandmaPrice;
+    public BigDouble CookieFactorys;
+    public BigDouble CookieFactoryPrice;
     public bool HasPlayed;
     public bool ResearchFactory;
     public bool Music;
@@ -38,7 +40,11 @@ public class PlayerData
     public bool Fog;
     public int TextureQuality;
 
-    public PlayerData (Game ga, OfflineManager om, AdvancedQualitySettings ad)
+    // Research Factory
+    public BigDouble ResearchPoints;
+    public bool BigCookieResearched;
+
+    public PlayerData (Game ga, OfflineManager om, AdvancedQualitySettings ad, ResearchFactory rf)
     {
         Cookies = ga.Cookies;
         CPS = ga.CPS;
@@ -68,5 +74,10 @@ public class PlayerData
         GrandmaPrice = ga.GrandmaPrice;
         StarterBundleBought = ga.StarterBundleBought;
         Clicks = ga.Clicks;
+        CookieFactorys = ga.CookieFactorys;
+        CookieFactoryPrice = ga.CookieFactoryPrice;
+
+        ResearchPoints = rf.ResearchPoints;
+        BigCookieResearched = rf.BigCookieResearched;
     }
 }
