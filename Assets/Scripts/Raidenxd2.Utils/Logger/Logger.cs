@@ -1,17 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
-using UnityEngine;
 using Debug = UnityEngine.Debug;
 
 namespace LoggerSystem
 {
-    public class Logger : MonoBehaviour
+    public static class LogSystem
     {
-
-        public static void Log(string text, LogTypes logTypes)
+        [Conditional("ENABLE_LOG")]
+        public static void Log(string text, LogTypes logTypes = LogTypes.Normal)
         {
-            StackFrame frame = new StackFrame(1, true);
+            StackFrame frame = new(1, true);
             var method = frame.GetMethod().Name;
             var fileName = frame.GetFileName();
             var lineNumber = frame.GetFileLineNumber();
@@ -69,5 +66,3 @@ namespace LoggerSystem
         Assertion
     }
 }
-
-

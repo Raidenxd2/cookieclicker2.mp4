@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using LoggerSystem;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
  
@@ -55,24 +54,12 @@ public class QualityWrapper : MonoBehaviour
         VerifyCachedRenderPipeline ();
         if (CachedRenderPipeline == null)
         {
-            Debug.LogError ("[QualityWrapper](SetMSAA): Current Pipeline is null");
+            LogSystem.Log("[QualityWrapper](SetMSAA): Current Pipeline is null", LogTypes.Error);
             return;
         }
  
         CachedRenderPipeline.msaaSampleCount = (int) msaaQuality;
     }
- 
-    // public void SetVSync (VSyncCount vSyncCount)
-    // {
-    //     VerifyCachedRenderPipeline ();
-    //     if (CachedRenderPipeline == null)
-    //     {
-    //         Debug.LogError ("[QualityWrapper](SetVSync): Current Pipeline is null");
-    //         return;
-    //     }
- 
-    //     QualitySettings.vSyncCount = (int) vSyncCount;
-    // }
  
     public void IncreaseRenderScale (float _amount)
     {
@@ -91,7 +78,7 @@ public class QualityWrapper : MonoBehaviour
         VerifyCachedRenderPipeline ();
         if (CachedRenderPipeline == null)
         {
-            Debug.LogError ("[QualityWrapper](SetRenderScale): Current Pipeline is null");
+            LogSystem.Log("[QualityWrapper](SetRenderScale): Current Pipeline is null", LogTypes.Error);
             return;
         }
  
@@ -108,5 +95,4 @@ public class QualityWrapper : MonoBehaviour
             m_cachedRenderPipeline = (UniversalRenderPipelineAsset) QualitySettings.renderPipeline;
         }
     }
- 
 }

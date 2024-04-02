@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 using TMPro;
+using LoggerSystem;
 
 public class ThemeItemMod : MonoBehaviour
 {
-
     public string ThemeItemName;
     public string AssetBundlePath;
     public string ThemeSkybox;
@@ -34,49 +31,49 @@ public class ThemeItemMod : MonoBehaviour
 
         if (Application.platform == RuntimePlatform.Android && android_support == "true")
         {
-            LoggerSystem.Logger.Log("Android Theme", LoggerSystem.LogTypes.Normal);
+            LogSystem.Log("Android Theme");
             myLoadedAssetBundle = AssetBundle.LoadFromFile(AssetBundlePath + "/customTheme_Android.assets");
         }
 
         if (Application.platform == RuntimePlatform.WindowsPlayer && windows_support == "true")
         {
-            LoggerSystem.Logger.Log("Windows Theme", LoggerSystem.LogTypes.Normal);
+            LogSystem.Log("Windows Theme");
             myLoadedAssetBundle = AssetBundle.LoadFromFile(AssetBundlePath + "/customTheme_Windows.assets");
         }
 
         if (Application.platform == RuntimePlatform.WindowsEditor && windows_support == "true")
         {
-            LoggerSystem.Logger.Log("Windows Theme", LoggerSystem.LogTypes.Normal);
+            LogSystem.Log("Windows Theme");
             myLoadedAssetBundle = AssetBundle.LoadFromFile(AssetBundlePath + "/customTheme_Windows.assets");
         }
 
         if (Application.platform == RuntimePlatform.LinuxPlayer && linux_support == "true")
         {
-            LoggerSystem.Logger.Log("Linux Theme", LoggerSystem.LogTypes.Normal);
+            LogSystem.Log("Linux Theme");
             myLoadedAssetBundle = AssetBundle.LoadFromFile(AssetBundlePath + "/customTheme_Linux.assets");
         }
 
         if (Application.platform == RuntimePlatform.OSXPlayer && mac_support == "true")
         {
-            LoggerSystem.Logger.Log("OSX Theme", LoggerSystem.LogTypes.Normal);
+            LogSystem.Log("OSX Theme");
             myLoadedAssetBundle = AssetBundle.LoadFromFile(AssetBundlePath + "/customTheme_Mac.assets");
         }
         
         if (myLoadedAssetBundle == null)
         {
-            Debug.LogError("Failed to load AssetBundle!");
+            LogSystem.Log("Failed to load AssetBundle!", LogTypes.Error);
             return;
         }
 
         var prefab = myLoadedAssetBundle.LoadAsset<GameObject>("---customTheme---.prefab");
         Instantiate(prefab);
-        LoggerSystem.Logger.Log(ThemeSkybox, LoggerSystem.LogTypes.Normal);
-        LoggerSystem.Logger.Log(ThemeSkyboxName, LoggerSystem.LogTypes.Normal);
+        LogSystem.Log(ThemeSkybox);
+        LogSystem.Log(ThemeSkyboxName);
         if (ThemeSkybox == "true" || ThemeSkybox == "True")
         {
             var customSkybox = myLoadedAssetBundle.LoadAsset<Material>(ThemeSkyboxName);
             RenderSettings.skybox = customSkybox;
-            LoggerSystem.Logger.Log("should have set custom skybox", LoggerSystem.LogTypes.Normal);
+            LogSystem.Log("should have set custom skybox");
         }
 
         myLoadedAssetBundle.Unload(false);

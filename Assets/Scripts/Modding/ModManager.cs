@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
 using ModIO;
+using LoggerSystem;
 
 public class ModManager : MonoBehaviour
 {
-
     public GameObject ShopButton;
     public GameObject StatsItem;
     public GameObject ThemeButton;
@@ -18,6 +16,8 @@ public class ModManager : MonoBehaviour
     public StatsItemMod statsItemMod;
     public ThemeItemMod themeItemMod;
 
+    [SerializeField] private GameObject BlockedScreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +26,6 @@ public class ModManager : MonoBehaviour
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/localmod");
         }
-        //LoadTestAssetBundle();
     }
 
     public void LoadTestAssetBundle()
@@ -34,7 +33,7 @@ public class ModManager : MonoBehaviour
         var myLoadedAssetBundle = AssetBundle.LoadFromFile(Application.dataPath + "/AssetBundles/customtheme.assets");
         if (myLoadedAssetBundle == null)
         {
-            Debug.Log("Failed to load AssetBundle!");
+            LogSystem.Log("Failed to load AssetBundle!", LogTypes.Error);
             return;
         }
 
@@ -55,14 +54,14 @@ public class ModManager : MonoBehaviour
                 if (mod.status == SubscribedModStatus.Installed)
                 {
                     string dir = mod.directory;
-                    Debug.Log(dir);
+                    LogSystem.Log(dir);
                     string path = dir + "/mod.json";
                     StreamReader reader = new StreamReader(path); 
                     var modJsonData = JsonConvert.DeserializeObject<ModJsonData>(reader.ReadToEnd());
                     if (modJsonData.mod_type == "Theme")
                     {
-                        LoggerSystem.Logger.Log(modJsonData.theme_customsky_enabled, LoggerSystem.LogTypes.Normal);
-                        LoggerSystem.Logger.Log(modJsonData.theme_customsky_name, LoggerSystem.LogTypes.Normal);
+                        LogSystem.Log(modJsonData.theme_customsky_enabled);
+                        LogSystem.Log(modJsonData.theme_customsky_name);
                         themeItemMod.AssetBundlePath = dir;
                         themeItemMod.ThemeItemName = modJsonData.theme_name;
                         themeItemMod.ThemeSkyboxName = modJsonData.theme_customsky_name;
@@ -93,14 +92,14 @@ public class ModManager : MonoBehaviour
         if (File.Exists(Application.persistentDataPath + "/localmod/mod.json"))
         {
             string dir = Application.persistentDataPath + "/localmod";
-            Debug.Log(dir);
+            LogSystem.Log(dir);
             string path = dir + "/mod.json";
             StreamReader reader = new StreamReader(path); 
             var modJsonData = JsonConvert.DeserializeObject<ModJsonData>(reader.ReadToEnd());
             if (modJsonData.mod_type == "Theme")
             {
-                LoggerSystem.Logger.Log(modJsonData.theme_customsky_enabled, LoggerSystem.LogTypes.Normal);
-                LoggerSystem.Logger.Log(modJsonData.theme_customsky_name, LoggerSystem.LogTypes.Normal);
+                LogSystem.Log(modJsonData.theme_customsky_enabled);
+                LogSystem.Log(modJsonData.theme_customsky_name);
                 themeItemMod.AssetBundlePath = dir;
                 themeItemMod.ThemeItemName = modJsonData.theme_name;
                 themeItemMod.ThemeSkyboxName = modJsonData.theme_customsky_name;
@@ -130,6 +129,11 @@ public class ModManager : MonoBehaviour
 
     public void Open()
     {
+        if (PlayerPrefs.GetInt("Age", 0) == 0)
+        {
+            BlockedScreen.SetActive(true);
+            return;
+        }
         ModIOBrowser.Browser.OpenBrowser(null);
     }
 }

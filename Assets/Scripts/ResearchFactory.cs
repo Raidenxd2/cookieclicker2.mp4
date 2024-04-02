@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using BreakInfinity;
@@ -20,18 +19,23 @@ public class ResearchFactory : MonoBehaviour
     public GameObject ResearchScreen;
     public Transform GameCamera;
     public Transform MainScene;
-    public Transform UnityIsSoFuckingStupidItHurts;
+    public Transform WhatWasThisNamed;
     public Animator Fade;
-    public BigDouble ResearchPoints;
     public int BigCookieDuration;
     public TMP_Text BigCookieText;
     public bool BigCookieUnlocked;
     public bool BigCookieResearching;
     public TMP_Text ResearchPointsText;
+    [SerializeField] private Transform CookieTransform;
+    [SerializeField] private Notification notification;
+
+    [Header("Variables")]
+    public BigDouble ResearchPoints;
+    public bool BigCookieResearched;
 
     void Start()
     {
-        ResearchPoints = 1;
+        // ResearchPoints = 1;
         BigCookieDuration = 0;
         StartCoroutine(Tick());
     }
@@ -39,11 +43,12 @@ public class ResearchFactory : MonoBehaviour
     IEnumerator Tick()
     {
         yield return new WaitForSeconds(1);
-        if (BigCookieDuration > -1 || BigCookieResearching == true)
+        
+        if (BigCookieDuration > -1 && BigCookieResearching == true)
         {
             BigCookieDuration -= 1;
-            
         }
+
         StartCoroutine(Tick());
     }
 
@@ -52,6 +57,10 @@ public class ResearchFactory : MonoBehaviour
         if (game.Cookies >= 20000)
         {
             game.ResearchFactory = true;
+            game.Cookies -= 20000;
+
+            game.CheckResearchFactory();
+            CheckIfUserOwnsResearchFactory();
         }
         else
         {
@@ -61,30 +70,28 @@ public class ResearchFactory : MonoBehaviour
 
     public void EnterScienceFactory()
     {
-        StartCoroutine(FadeSHIT1());
+        StartCoroutine(Fade1());
     }
 
     public void ExitScienceFactory()
     {
-        StartCoroutine(FadeSHIT2());
+        StartCoroutine(Fade2());
     }
 
-    IEnumerator FadeSHIT1()
+    IEnumerator Fade1()
     {
         Fade.Play("FadeIn");
         yield return new WaitForSeconds(1);
-        GameCamera.position = UnityIsSoFuckingStupidItHurts.position;
-        GameCamera.rotation = UnityIsSoFuckingStupidItHurts.rotation;
+        GameCamera.SetPositionAndRotation(WhatWasThisNamed.position, WhatWasThisNamed.rotation);
         FinishEnter();
         Fade.Play("FadeOut");
     }
 
-    IEnumerator FadeSHIT2()
+    IEnumerator Fade2()
     {
         Fade.Play("FadeIn");
         yield return new WaitForSeconds(1);
-        GameCamera.position = MainScene.position;
-        GameCamera.rotation = MainScene.rotation;
+        GameCamera.SetPositionAndRotation(MainScene.position, MainScene.rotation);
         FinishExit();
         Fade.Play("FadeOut");
     }
@@ -108,10 +115,21 @@ public class ResearchFactory : MonoBehaviour
         {
             BigCookieDuration = 30;
             BigCookieResearching = true;
+            ResearchPoints -= 1;
         }
     }
 
-    void Update()
+    public void LoadResearchFactory()
+    {
+        if (BigCookieResearched)
+        {
+            CookieTransform.localScale = new Vector3(600, 600, 600);
+        }
+
+        CheckIfUserOwnsResearchFactory();
+    }
+
+    public void CheckIfUserOwnsResearchFactory()
     {
         if (game.ResearchFactory)
         {
@@ -125,10 +143,25 @@ public class ResearchFactory : MonoBehaviour
             BuyBTN.SetActive(true);
             UnlockedUI.SetActive(false);
         }
-        if (BigCookieDuration < 0 || BigCookieResearching == true)
+    }
+
+    void Update()
+    {
+        if (BigCookieDuration < 0 && BigCookieResearching == true)
         {
             BigCookieUnlocked = true;
+            BigCookieResearched = true;
+            BigCookieResearching = false;
+            BigCookieDuration = 0;
+
+            game.CPC += 10;
+            game.CPS += 10;
+
+            CookieTransform.localScale = new Vector3(600, 600, 600);
+
+            notification.ShowNotification("Big Cookie researched!", "Research");
         }
+
         BigCookieText.text = BigCookieDuration + "s remaining";
         ResearchPointsText.text = "Points: " + ResearchPoints;
     }

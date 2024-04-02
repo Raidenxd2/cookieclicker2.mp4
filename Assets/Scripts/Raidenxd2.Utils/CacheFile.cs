@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.IO;
+using LoggerSystem;
 
 public class CacheFile : MonoBehaviour
 {
@@ -23,24 +24,24 @@ public class CacheFile : MonoBehaviour
 
     void Start()
     {
-        LoggerSystem.Logger.Log(" ", LoggerSystem.LogTypes.Normal);
+        LogSystem.Log(" ");
         if (Directory.Exists(Application.persistentDataPath + "/Cache") == false)
         {
-            LoggerSystem.Logger.Log("Creating Cache directory...", LoggerSystem.LogTypes.Normal);
+            LogSystem.Log("Creating Cache directory...");
             Directory.CreateDirectory(Application.persistentDataPath + "/Cache");
         }
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
-            LoggerSystem.Logger.Log("No internet connection!", LoggerSystem.LogTypes.Error);
+            LogSystem.Log("No internet connection!", LogTypes.Error);
             if (!File.Exists(Application.persistentDataPath + "/Cache/CookieStore.txt"))
             {
-                LoggerSystem.Logger.Log("No cache file!", LoggerSystem.LogTypes.Error);
+                LogSystem.Log("No cache file!", LogTypes.Error);
                 return;
             }
             DownloadedFile = true;
             return;
         }
-        LoggerSystem.Logger.Log("Creating new Cache file...", LoggerSystem.LogTypes.Normal);
+        LogSystem.Log("Creating new Cache file...");
         File.Delete(Application.persistentDataPath + "/Cache/CookieStore.txt");
         StartCoroutine(GetText(URL));
     }
@@ -55,8 +56,8 @@ public class CacheFile : MonoBehaviour
                 yield return null;
             }
             var data = www.downloadHandler.text;
-            LoggerSystem.Logger.Log("Data from server: " + data, LoggerSystem.LogTypes.Normal);
-            // File.Create(Application.persistentDataPath + "/Cache/CookieStore.txt");
+            LogSystem.Log("Data from server: " + data);
+            
             File.WriteAllText(Application.persistentDataPath + "/Cache/CookieStore.txt", www.downloadHandler.text);
             DownloadedFile = true;
         }

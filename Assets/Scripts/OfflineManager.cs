@@ -2,10 +2,10 @@ using System;
 using UnityEngine;
 using TMPro;
 using BreakInfinity;
+using LoggerSystem;
 
 public class OfflineManager : MonoBehaviour
 {
-
     public TMP_Text TimeAway;
     public TMP_Text CookiesGained;
 
@@ -21,7 +21,7 @@ public class OfflineManager : MonoBehaviour
 
     public void LoadOfflineTime()
     {
-        Debug.Log("offlineProgressCheck: " + offlineProgressCheck);
+        LogSystem.Log("offlineProgressCheck: " + offlineProgressCheck);
         if (offlineProgressCheck)
         {
             var tempOfflineTime = Convert.ToInt64(OfflineTime);
@@ -40,15 +40,15 @@ public class OfflineManager : MonoBehaviour
             CookiesGained.text = CookiesGain + " Cookies";
 
             //debug
-            Debug.Log("cookies gained from offline: " + CookiesGain);
-            Debug.Log("Offline Time: " + offlineTime);
-            Debug.Log("CPS: " + game.CPS);
+            LogSystem.Log("cookies gained from offline: " + CookiesGain);
+            LogSystem.Log("Offline Time: " + offlineTime);
+            LogSystem.Log("CPS: " + game.CPS);
         }
     }
 
     public void SaveTime()
     {
-        OfflineTime = System.DateTime.Now.ToBinary().ToString();
+        OfflineTime = DateTime.Now.ToBinary().ToString();
         offlineProgressCheck = true;
     }
 }

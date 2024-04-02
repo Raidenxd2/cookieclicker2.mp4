@@ -1,15 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
 using BreakInfinity;
+using LoggerSystem;
 
 public class SaveCodeImporter : MonoBehaviour
 {
-
     public TMP_InputField saveInput;
     public Image RRProfileImage;
     public GameObject RRProfileScreen;
@@ -31,11 +30,11 @@ public class SaveCodeImporter : MonoBehaviour
     IEnumerator saveImport()
     {
         variables = saveInput.text.Split(',');
-        //https://accounts.rec.net/account?username=raidenxd2
-        Debug.Log("Save code data");
+        
+        LogSystem.Log("Save code data");
         for (int i = 0; i < variables.Length; i++)
         {
-            Debug.Log(variables[i]);
+            LogSystem.Log(variables[i]);
         }
         try
         {
@@ -44,7 +43,7 @@ public class SaveCodeImporter : MonoBehaviour
         catch
         {
             RRProfileScreen.SetActive(true);
-            Debug.LogError("Could not fetch data from the Rec Room servers");
+            LogSystem.Log("Could not fetch data from the Rec Room servers", LogTypes.Error);
         }
         yield return new WaitForSeconds(1);
         if (HTTPError != 403)
@@ -52,8 +51,8 @@ public class SaveCodeImporter : MonoBehaviour
             try
             {
                 var test = JsonConvert.DeserializeObject<RRProfile>(RRProfileJSON);
-                Debug.Log(test.username);
-                Debug.Log(RRProfileJSON);
+                LogSystem.Log(test.username);
+                LogSystem.Log(RRProfileJSON);
                 RRProfileJR.SetActive(test.isJunior);
                 RRProfileName.text = "@" + test.username;
                 RRProfileDisplayName.text = test.displayName;
@@ -63,15 +62,14 @@ public class SaveCodeImporter : MonoBehaviour
             catch
             {
                 RRProfileScreen.SetActive(true);
-                Debug.LogError("Could not fetch data from the Rec Room servers");
+                LogSystem.Log("Could not fetch data from the Rec Room servers", LogTypes.Error);
             }
         }
-        
     }
 
     public void SetDataValues()
     {
-        Debug.Log(variables[1]);
+        LogSystem.Log(variables[1]);
         game.Cookies = BigDouble.Parse(variables[1]);
         game.CPS = BigDouble.Parse(variables[2]);
         game.CPC = BigDouble.Parse(variables[3]);
@@ -102,12 +100,12 @@ public class SaveCodeImporter : MonoBehaviour
             }
             if (www.result == UnityWebRequest.Result.ConnectionError)
             {
-                UnityEngine.Debug.LogError(www.error);
+                LogSystem.Log(www.error, LogTypes.Error);
             }
             if (www.responseCode == 403)
             {
                 ApiBanned.SetActive(true);
-                Debug.LogError("IP is banned from the API (" + www.error + ")");
+                LogSystem.Log("IP is banned from the API (" + www.error + ")", LogTypes.Error);
                 HTTPError = 403;
             }
             else

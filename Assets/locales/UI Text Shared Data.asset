@@ -551,6 +551,84 @@ MonoBehaviour:
     m_Key: BETACONTENT_COOKIEMONSTER
     m_Metadata:
       m_Items: []
+  - m_Id: 165978788776914944
+    m_Key: QUALITYSETTINGS_HDRTOGGLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166605031994044416
+    m_Key: OPTIONS_SAVEMANAGEMENT_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606202485878784
+    m_Key: RESETOPTIONS_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606409164402688
+    m_Key: CANCEL_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606786911809536
+    m_Key: RESETNOSTARTERBUNDLE_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606814397083648
+    m_Key: RESETWITHSTARTERBUNDLE_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167047962857058304
+    m_Key: IMPORTDATA_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167047964228595712
+    m_Key: EXPORTDATA_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167052430117974016
+    m_Key: IMPORTDATAWARNING_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167061826088742912
+    m_Key: LANGUAGE_JAPANESE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167076722826293248
+    m_Key: BETACONTENT_RESEARCHFACTORY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356780145029120
+    m_Key: RESEARCH_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356816211849216
+    m_Key: RESEARCH_LOCKED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356840152936448
+    m_Key: RESEARCH_ENTER_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167357168852152320
+    m_Key: RESEARCH_UNLOCK_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167358762515705856
+    m_Key: 'EXIT_BTN
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167714459552067584
+    m_Key: SDWS_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171891393479585792
+    m_Key: AGEBLOCK_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171891396071665664
+    m_Key: AGEBLOCK_INFO
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

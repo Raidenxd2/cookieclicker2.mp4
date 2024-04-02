@@ -9,7 +9,5 @@ public class ChangeMatColor : MonoBehaviour
     {
         var renderer = gameObject.GetComponent<Renderer>();
         renderer.material.color = color;
-        Debug.Log("Set Color to: " + renderer.material.color);
-        Debug.Log("" + color);
     }
 }

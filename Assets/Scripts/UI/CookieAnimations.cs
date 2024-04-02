@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CookieAnimations : MonoBehaviour
 {
-
     public LeanTweenType inType;
     public LeanTweenType outType;
     public float Time;

@@ -160,7 +160,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 16761679749120
-    m_Localized: Reiniciar datos
+    m_Localized: Restablecer archivo guardado
     m_Metadata:
       m_Items: []
   - m_Id: 16782286364672
@@ -176,8 +176,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 17888940892160
-    m_Localized: "\xBFEst\xE1 seguro de que desea restablecer los datos?\r\nADVERTENCIA:
-      ESTO RESTABLECER\xC1 TODO."
+    m_Localized: "\xBFEst\xE1s seguro de que deseas restablecer tu archivo guardado?\r\nADVERTENCIA:
+      ESTO REINICIAR\xC1 TODO."
     m_Metadata:
       m_Items: []
   - m_Id: 17947132665856
@@ -250,7 +250,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34366876524544
-    m_Localized: '(Compatible con: Windows, Mac OS y Linux)'
+    m_Localized: '(Compatible con: Windows, Mac OS, Linux y Android (requiere teclado))'
     m_Metadata:
       m_Items: []
   - m_Id: 34443477098496
@@ -341,7 +341,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 38890404028416
-    m_Localized: Cambiar las texturas on/off requiere recargar el juego.
+    m_Localized: Para activar o desactivar las texturas es necesario recargar el
+      juego.
     m_Metadata:
       m_Items: []
   - m_Id: 39169753063424
@@ -570,6 +571,83 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 21378433280888832
     m_Localized: Habilitar el Monstruo de las Galletas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 165978788776914944
+    m_Localized: HDR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166605031994044416
+    m_Localized: "Guardar gesti\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167052430117974016
+    m_Localized: "ADVERTENCIA: Importar datos desde un archivo REINICIAR\xC1 su archivo
+      de guardado existente."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606202485878784
+    m_Localized: Restablecer opciones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606409164402688
+    m_Localized: Cancelar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606786911809536
+    m_Localized: Reinicio sin paquete de inicio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606814397083648
+    m_Localized: Reinicio con Starter Bundle (si se posee)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167047962857058304
+    m_Localized: Importar datos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167047964228595712
+    m_Localized: Exportar datos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167061826088742912
+    m_Localized: "Japon\xE9s (ja)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167076722826293248
+    m_Localized: "F\xE1brica de investigaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356780145029120
+    m_Localized: "Investigaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356816211849216
+    m_Localized: "La f\xE1brica de investigaci\xF3n est\xE1 cerrada."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356840152936448
+    m_Localized: Entre en
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167357168852152320
+    m_Localized: Desbloquear (20000 Cookies)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167358762515705856
+    m_Localized: Salida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167714459552067584
+    m_Localized: Aviso de guardar datos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171891393479585792
+    m_Localized: "Bloc d'\xE2ge"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171891396071665664
+    m_Localized: "Tu configuraci\xF3n de edad actual ha bloqueado este contenido."
     m_Metadata:
       m_Items: []
   references:

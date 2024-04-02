@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class ShopButtonMod : MonoBehaviour
 {
-
     public TMP_Text ShopItemNameText;
     public string ShopItemName;
     public int ShopItemPrice;
@@ -18,12 +15,6 @@ public class ShopButtonMod : MonoBehaviour
 
     void OnEnable()
     {
-        // Debug.Log(modJsonData.shop_item_cpc);
-        // Debug.Log(modJsonData.shop_item_cps);
-        // Debug.Log(modJsonData.shop_item_name);
-        // Debug.Log(modJsonData.shop_item_price);
-        // Debug.Log(modJsonData.shop_item_save);
-        
         ShopItemAmount = PlayerPrefs.GetInt("MOD_" + ShopItemName + "_Amount", 0);
         ShopItemPrice = PlayerPrefs.GetInt("MOD_" + ShopItemName + "_Price", ShopItemOldPrice);
     }

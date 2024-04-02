@@ -1,21 +1,19 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using LoggerSystem;
 using UnityEngine;
 
 public static class SaveSystem
 {
-    
-
-
-    public static void SavePlayer (Game ga, OfflineManager om, AdvancedQualitySettings ad)
+    public static void SavePlayer (Game ga, OfflineManager om, AdvancedQualitySettings ad, ResearchFactory rf)
     {
         BinaryFormatter formatter = new BinaryFormatter();
 
         string path = Application.persistentDataPath + "/cookie2";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        PlayerData data = new PlayerData(ga, om, ad);
+        PlayerData data = new(ga, om, ad, rf);
 
         formatter.Serialize(stream, data);
         stream.Close();
@@ -35,13 +33,6 @@ public static class SaveSystem
                 stream.Close();
                 return data;
             }
-            // catch(IOException ex)
-            // {
-            //     ga.SaveDataErrorIO(ex);
-            //     ga.SDIE.SetActive(true);
-            //     ga.ErrorText.text = "" + ex;
-            //     return null;
-            // }
             catch(Exception ex)
             {
                 ga.SDIE.SetActive(true);
@@ -52,10 +43,8 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogException(new FileLoadException());
+            LogSystem.Log(new FileLoadException().ToString(), LogTypes.Exception);
             return null;
         }
     }
-
-
 }

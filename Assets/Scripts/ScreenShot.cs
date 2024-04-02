@@ -1,11 +1,11 @@
-﻿ using UnityEngine;
- using System.Collections;
- using System.IO;
- using TMPro;
- 
+﻿using UnityEngine;
+using System.IO;
+using TMPro;
+using LoggerSystem;
+using UnityEngine.InputSystem;
+
 public class ScreenShot : MonoBehaviour 
 {
-     
     public string filePath;
     public Notification notification;
     public int ScreenshotQuality;
@@ -13,19 +13,22 @@ public class ScreenShot : MonoBehaviour
     public bool NotificationsInScreenshots;
     public GameObject Nnotification;
 
+    private PlayerInput playerInput;
+
     void Start()
     {
+        playerInput = GameObject.Find("PlayerInput").GetComponent<PlayerInput>();
+
         try
         {
             if (!Directory.Exists(Application.persistentDataPath + filePath))
             {
                 Directory.CreateDirectory(Application.persistentDataPath + filePath);
             }
- 
         }
         catch (IOException ex)
         {
-            Debug.LogError(ex.Message);
+            LogSystem.Log(ex.Message, LogTypes.Exception);
             notification.ShowNotification(ex.Message, "Error");
         }
     }
@@ -39,7 +42,7 @@ public class ScreenShot : MonoBehaviour
         }
         catch (IOException ex)
         {
-            Debug.LogError(ex.Message);
+            LogSystem.Log(ex.Message, LogTypes.Exception);
             notification.ShowNotification(ex.Message, "Error");
         }
     }
@@ -51,7 +54,7 @@ public class ScreenShot : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.F12))
+        if (playerInput.actions["Screenshot"].WasPressedThisFrame())
         {
             TakeScreenshot();
         }
@@ -59,7 +62,6 @@ public class ScreenShot : MonoBehaviour
 
     public void TakeScreenshot()
     {
-        //string fileName = "screenshot" + Random.Range(0, 500000) + ".png";
         string datetime = System.DateTime.Now.ToString("MM-dd-yyyy hh;mm;ss");
 
         if (NotificationsInScreenshots)
@@ -80,10 +82,9 @@ public class ScreenShot : MonoBehaviour
         string StringConvert;
         int IntConvert;
         StringConvert = newValue.ToString("0");
-        //int.TryParse(StringConvert, out IntConvert);
+        
         IntConvert = int.Parse(StringConvert);
         ScreenshotQuality = IntConvert;
         ScreenshotQualityText.text = IntConvert + "x";
     }
-     
 }
