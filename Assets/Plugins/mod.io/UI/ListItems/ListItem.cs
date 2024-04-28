@@ -30,7 +30,9 @@ namespace ModIOBrowser.Implementation
 
 		public ColorScheme scheme;
 
-		void Awake()
+        [HideInInspector] public ModProfile profile;
+
+		protected virtual void Awake()
 		{
 			LastCreatedListItem = this;
 		}
@@ -88,18 +90,22 @@ namespace ModIOBrowser.Implementation
 		}
 
 		public virtual void Select() { }
+        public virtual void DeSelect() { }
 		public virtual void PlaceholderSetup() { isPlaceholder = true; }
 		public virtual void Setup() { isPlaceholder = false; }
 		public virtual void Setup(string title) { isPlaceholder = false; }
+		public virtual void Setup(RevenueType revenueType) { isPlaceholder = false; }
 		public virtual void Setup(string tagName, string tagCategory) { isPlaceholder = false; }
-		public virtual void Setup(ModProfile profile) { isPlaceholder = false; }
+		public virtual void Setup(ModProfile modProfile) { isPlaceholder = false; }
 		public virtual void Setup(SubscribedMod mod) { isPlaceholder = false; }
 		public virtual void Setup(InstalledMod profile) { isPlaceholder = false; }
-		public virtual void Setup(ModProfile profile, bool subscriptionStatus, string progressStatus) { isPlaceholder = false; }
+		public virtual void Setup(CollectionProfile profile) { isPlaceholder = false; }
+		public virtual void Setup(ModProfile modProfile, bool subscriptionStatus, string progressStatus) { isPlaceholder = false; }
 		public virtual void Setup(Action onClick) { isPlaceholder = false; }
 		public virtual void Setup(string title, Action onClick) { isPlaceholder = false; }
+        public virtual void Refresh() { this.Setup(profile); }
 
-		public void RedrawRectTransform()
+        public void RedrawRectTransform()
 		{
 			LayoutRebuilder.ForceRebuildLayoutImmediate(transform as RectTransform);
 		}
@@ -140,7 +146,8 @@ namespace ModIOBrowser.Implementation
 			}
 
 			// if no list item was found create a new one
-			Instantiate(prefab, parent);
+			Instantiate(prefab).transform.SetParent(parent);
+			LastCreatedListItem.transform.localScale = Vector3.one;
 			ListItems[type].Add(LastCreatedListItem);
 
 			LastCreatedListItem.SetColorScheme(scheme);
@@ -186,7 +193,7 @@ namespace ModIOBrowser.Implementation
 		public static void CleanupMissingReferencesInListItemGroup<T>()
 		{
 			List<ListItem> validItems = new List<ListItem>();
-			
+
 			Type type = typeof(T);
 
 			if(ListItems.ContainsKey(type))

@@ -1,56 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ModIO.Implementation.API.Requests
 {
-    internal static class AddModfile
+    static class AddModFile
     {
-        // public struct ResponseSchema
-        // {
-        //     // (NOTE): mod.io returns a ModfileObject as the schema.
-        //     // This schema will only be used if the server schema changes or gets expanded on
-        // }
-
-        public static readonly RequestConfig Template =
-            new RequestConfig { requireAuthToken = true, canCacheResponse = false,
-                                requestResponseType = WebRequestResponseType.Text,
-                                requestMethodType = WebRequestMethodType.POST,
-                                ignoreTimeout = true };
-
-        public static string URL(ModfileDetails details, byte[] filedata, out WWWForm form)
+        public static async Task<WebRequestConfig> Request(ModfileDetails details, Stream stream)
         {
-            // TODO @Steve change filedata to FileStream so we don't double up on memory when
-            // using form.AddBinaryData
+            var id = details?.modId?.id ?? new ModId(0);
 
-            // get the id from optional
-            long id = details.modId == null ? new ModId(0) : details.modId.Value.id;
-
-            // MD5
-            string md5 = IOUtil.GenerateMD5(filedata);
-
-            List<KeyValuePair<string, string>> kvps = new List<KeyValuePair<string, string>>();
-
-            kvps.Add(new KeyValuePair<string, string>("version", details.version));
-            kvps.Add(new KeyValuePair<string, string>("changelog", details.changelog));
-            kvps.Add(new KeyValuePair<string, string>("filehash", md5));
-            kvps.Add(new KeyValuePair<string, string>("metadata_blob", details.metadata));
-
-            form = new WWWForm();
-
-            foreach(var kvp in kvps)
+            var request = new WebRequestConfig()
             {
-                if(!string.IsNullOrWhiteSpace(kvp.Key) && !string.IsNullOrWhiteSpace(kvp.Value))
-                {
-                    form.AddField(kvp.Key, kvp.Value);
-                }
+                Url = Url(id),
+                RequestMethodType = "POST",
+                ShouldRequestTimeout = false,
+                ForceIsUpload = true
+            };
+
+            if(stream != null && stream.Length > 0)
+            {
+                if (stream.CanSeek)
+                    stream.Position = 0;
+                var result = new byte[stream.Length];
+                var pos = await stream.ReadAsync(result, 0, (int)stream.Length, new CancellationToken());
+                request.AddField("filehash", IOUtil.GenerateMD5(result));
+                request.AddField("filedata", $"{id}_modfile.zip", result);
             }
 
-            // Add filedata data
-            form.AddBinaryData("filedata", filedata, $"{id}_modfile.zip", null);
+            if(!string.IsNullOrEmpty(details.version))
+                request.AddField("version", details.version);
 
-            return $"{Settings.server.serverURL}{@"/games/"}"
-                   + $"{Settings.server.gameId}{@"/mods/"}{id}{@"/files"}?";
+            if(!string.IsNullOrEmpty(details.changelog))
+                request.AddField("changelog", details.changelog);
+
+            if(!string.IsNullOrEmpty(details.metadata))
+                request.AddField("metadata_blob", details.metadata);
+
+            if(!string.IsNullOrEmpty(details.uploadId))
+                request.AddField("upload_id", details.uploadId);
+
+            request.AddField("active", details.active);
+
+            if (details.platforms != null)
+            {
+                foreach (string p in details.platforms)
+                    if (!string.IsNullOrWhiteSpace(p))
+                        request.AddField("platforms[]", p);
+            }
+
+            return request;
         }
+
+        public static string Url(long id)=>$"{Settings.server.serverURL}{@"/games/"}{Settings.server.gameId}{@"/mods/"}{id}{@"/files"}?";
+
     }
 }

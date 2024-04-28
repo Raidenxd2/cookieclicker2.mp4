@@ -1,5 +1,8 @@
-﻿using System;
+﻿#if UNITY_2019_4_OR_NEWER
 using UnityEngine;
+#else
+using System;
+#endif
 
 namespace ModIO.Implementation
 {
@@ -7,19 +10,11 @@ namespace ModIO.Implementation
     /// <summary>
     /// This class is responsible for outputting all of the logs that pertain to the ModIO Plugin
     /// </summary>
-    internal static class Logger
+    public static class Logger
     {
         internal const string ModioLogPrefix = "[mod.io]";
 
         static LogMessageDelegate LogDelegate = UnityLogDelegate;
-
-        private static LogToPC _logToPC;
-        internal static LogToPC LogToPC
-        {
-            get {
-                return _logToPC = _logToPC ?? new LogToPC();
-            }
-        }
 
         internal static void SetLoggingDelegate(LogMessageDelegate loggingDelegate)
         {
@@ -38,9 +33,10 @@ namespace ModIO.Implementation
             {
                 return;
             }
-            
+
             switch(logLevel)
             {
+#if UNITY_2019_4_OR_NEWER
                 case LogLevel.Error:
                     Debug.LogWarning(logMessage);
                     break;
@@ -48,11 +44,21 @@ namespace ModIO.Implementation
                     Debug.LogWarning(logMessage);
                     break;
                 case LogLevel.Message:
-                    Debug.Log(logMessage);
-                    break;
                 case LogLevel.Verbose:
                     Debug.Log(logMessage);
                     break;
+#else
+                case LogLevel.Error:
+                    Console.WriteLine($"[ERROR] {logMessage}");
+                    break;
+                case LogLevel.Warning:
+                    Console.WriteLine($"[WARNING] {logMessage}");
+                    break;
+                case LogLevel.Message:
+                case LogLevel.Verbose:
+                    Console.WriteLine(logMessage);
+                    break;
+#endif
             }
         }
 
@@ -62,34 +68,14 @@ namespace ModIO.Implementation
             {
                 return (int)level > (int)Settings.build.logLevel;
             }
-            
+
             return true;
         }
 
-        internal static void Log(LogLevel logLevel, string logMessage, bool attemptLogToPc = true)
+        public static void Log(LogLevel logLevel, string logMessage)
         {
             logMessage = $"{ModioLogPrefix} {logMessage}";
             LogDelegate?.Invoke(logLevel, logMessage);
-
-#if UNITY_STANDALONE || UNITY_EDITOR
-            if(attemptLogToPc)
-            {
-                try
-                {
-                    LogToPC.Log(logLevel, logMessage);
-                }
-                catch(Exception ex)
-                {
-                    Log(LogLevel.Error, "Error trying to write a message to pc "
-                                               + "log. Halting log to pc functionality for this "
-                                               + $"session. Exception: {ex}.", false);
-                    LogDelegate?.Invoke(logLevel, "Error trying to write a "
-                                                         + "message to pc log. Halting log to pc"
-                                                         + " functionality for this session. "
-                                                         + $"Exception: {ex}.");
-                }
-            }            
-#endif
         }
     }
 }

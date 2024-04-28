@@ -1,13 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using ModIO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace ModIOBrowser.Implementation
 {
-    public class ModListRow : MonoBehaviour, ISelectHandler
+    public class ModListRow : MonoBehaviour
     {
         [Header("UI Elements")]
         [SerializeField] GameObject ErrorPanel;
@@ -16,20 +18,24 @@ namespace ModIOBrowser.Implementation
         [SerializeField] GameObject MainSelectableHighlights;
         [SerializeField] GameObject ModListItemPrefab;
         [SerializeField] Transform ModListItemContainer;
-        
+        [SerializeField] TMP_Text headerText;
+
         [Header("Selectables")]
-        [SerializeField] Selectable AboveSelection;
-        [SerializeField] Selectable BelowSelection;
-            
+        public Selectable Selectable;
+        public Selectable AboveSelection;
+        public Selectable BelowSelection;
+
         internal static Vector2 currentSelectedPosition = Vector2.zero;
         List<ListItem> items = new List<ListItem>();
         SearchFilter lastUsedFilter;
 
-        public void OnSelect(BaseEventData eventData)
+        Translation headerTextTranslation = null;
+
+        public void OnRowSelected()
         {
             StartCoroutine(OnSelectFrameDelay());
         }
-        
+
         /// <summary>
         /// This is a workaround for unity not working when using .Select() inside of OnSelect()
         /// </summary>
@@ -46,7 +52,7 @@ namespace ModIOBrowser.Implementation
         public void SelectFromPosition(Vector2 position)
         {
             // TODO write something to re-select an item when load finished and it's already selected
-            
+
             if(ErrorPanel.activeSelf)
             {
                 // error already active? keep selection
@@ -75,7 +81,7 @@ namespace ModIOBrowser.Implementation
                 }
                 else
                 {
-                    Browser.SelectSelectable(closestItem.selectable);
+                    InputNavigation.Instance.Select(closestItem.selectable);
                 }
             }
         }
@@ -86,21 +92,26 @@ namespace ModIOBrowser.Implementation
         /// <param name="right">the direction of the swipe</param>
         public void SwipeRow(bool right)
         {
-            
+
             // Rect rect = row.rect;
             // Vector2 v = row.position;
 
             ListItem listItemToSnapTo = null;
             float posX = 0;
-            
+            var width = this.RowPanel.GetComponent<RectTransform>().rect.width;
+
             // find the left most item that is partially offscreen
             foreach(var item in items)
             {
                 if(item.transform is RectTransform rectTransform)
                 {
                     float radius = rectTransform.sizeDelta.x / 2f;
-                    float edgePosition = right ? rectTransform.position.x + radius : rectTransform.position.x - radius;
-                    
+                    float offset = this.ModListItemContainer.GetComponent<RectTransform>().anchoredPosition.x;
+
+                    //Anchored position will give the location of the item, then we add to get the right edge or subtract to get the left edge, then we must
+                    //add an offset to determine if the current position is visible
+                    float edgePosition = right ? rectTransform.anchoredPosition.x + radius + offset : rectTransform.anchoredPosition.x - radius + offset;
+
                     // Check if this list item is off the left side of the screen
                     if(!right && edgePosition < 0)
                     {
@@ -111,7 +122,7 @@ namespace ModIOBrowser.Implementation
                             listItemToSnapTo = item;
                         }
                     }
-                    else if(right && edgePosition > Screen.width)
+                    else if(right && edgePosition > width)
                     {
                         // make sure it's closer than other (if any) item we've found
                         if (edgePosition < posX || posX == 0)
@@ -123,8 +134,8 @@ namespace ModIOBrowser.Implementation
                 }
             }
 
-            listItemToSnapTo?.viewportRestraint?.CheckSelectionHorizontalVisibility();            
-            Browser.SelectSelectable(listItemToSnapTo?.selectable);
+            listItemToSnapTo?.viewportRestraint?.CheckSelectionHorizontalVisibility();
+            InputNavigation.Instance.Select(listItemToSnapTo?.selectable);
         }
 
         /// <summary>
@@ -134,6 +145,7 @@ namespace ModIOBrowser.Implementation
         /// <param name="filter"></param>
         public void AttemptToPopulateRowWithMods(SearchFilter filter)
         {
+            SetHeaderText(filter.SortBy);
             lastUsedFilter = filter;
             ErrorPanel.SetActive(false);
             RowPanel.SetActive(false);
@@ -142,18 +154,57 @@ namespace ModIOBrowser.Implementation
             ModIOUnity.GetMods(filter, GetModsResponse);
         }
 
+        private void SetHeaderText(SortModsBy sortModsBy)
+        {
+            string header = String.Empty;
+            switch(sortModsBy)
+            {
+                case SortModsBy.Name:
+                    header = "Alphabetical";
+                    break;
+                case SortModsBy.Price:
+                    header = "Price";
+                    break;
+                case SortModsBy.Rating:
+                    header = "Highest rated";
+                    break;
+                case SortModsBy.Popular:
+                    header = "Most popular";
+                    break;
+                case SortModsBy.Downloads:
+                    header = "Trending";
+                    break;
+                case SortModsBy.Subscribers:
+                    header = "Most Subscribed";
+                    break;
+                case SortModsBy.DateSubmitted:
+                    header = "Recently added";
+                    break;
+                default:
+                    header = "Unknown Sort Parameter";
+                    break;
+            }
+            headerText.text = header;
+            Translation.Get(headerTextTranslation, headerText.text, headerText);
+        }
+
         public void RetryGetMods()
         {
             AttemptToPopulateRowWithMods(lastUsedFilter);
         }
 
-        void GetModsResponse(Result result, ModPage page)
+        void GetModsResponse(ResultAnd<ModPage> response)
         {
-            LoadingPanel.SetActive(false);
-            
-            if(result.Succeeded())
+            if(!Browser.IsOpen)
             {
-                PopulateRowFromModPage(page);
+                return;
+            }
+
+            LoadingPanel.SetActive(false);
+
+            if(response.result.Succeeded())
+            {
+                PopulateRowFromModPage(response.value);
             }
             else
             {
@@ -168,32 +219,32 @@ namespace ModIOBrowser.Implementation
             RowPanel.SetActive(true);
             MainSelectableHighlights.SetActive(false);
             items.Clear();
-            
+
             // TODO Set the items that can fit on screen
             // TODO
 
             ListItem lastItem = null;
-            
+
             foreach(ModProfile mod in page.modProfiles)
             {
-                ListItem li = ListItem.GetListItem<BrowserModListItem>(ModListItemPrefab, ModListItemContainer, Browser.Instance.colorScheme);
+                ListItem li = ListItem.GetListItem<HomeModListItem>(ModListItemPrefab, ModListItemContainer, SharedUi.colorScheme);
                 li.Setup(mod);
                 li.SetViewportRestraint(ModListItemContainer as RectTransform, null);
-                Browser.Instance.AddModListItemToRowDictionaryCache(li, ModListItemContainer.gameObject);
+                Home.Instance.AddModListItemToRowDictionaryCache(li, ModListItemContainer.gameObject);
 
                 // get left nav
                 Selectable leftSelectable = null;
-                
+
                 // setup last item onRight navigation to this item
                 if(lastItem != null)
                 {
                     Navigation lastNavigation = lastItem.selectable.navigation;
                     lastNavigation.selectOnRight = li.selectable;
                     lastItem.selectable.navigation = lastNavigation;
-                    
+
                     leftSelectable = lastItem.selectable;
                 }
-                
+
                 // setup navigation
                 Navigation navigation = new Navigation
                 {
@@ -205,13 +256,13 @@ namespace ModIOBrowser.Implementation
                 li.selectable.navigation = navigation;
 
                 lastItem = li;
-                
+
                 items.Add(li);
             }
         }
-        
+
         // TODO sweep left/right methods
-        
+
         // TODO Add the final item for 'see more' option
     }
 }

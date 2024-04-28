@@ -1,6 +1,4 @@
-﻿
-using System;
-using ResultCode = ModIO.Implementation.ResultCode;
+﻿using ResultCode = ModIO.Implementation.ResultCode;
 
 namespace ModIO
 {
@@ -16,11 +14,17 @@ namespace ModIO
         internal uint code_api;
 
 #endregion // Internal Implementation
-        
+
         /// <summary>
         /// A string message explaining the result error code in more detail (If one exists).
         /// </summary>
         public string message => ResultCode.GetErrorCodeMeaning(code);
+
+        /// <summary>
+        /// The error code for the result.
+        /// 0 = Success
+        /// </summary>
+        public uint errorCode => code;
 
         public bool Succeeded()
         {
@@ -79,5 +83,8 @@ namespace ModIO
             return this.code == ResultCode.IO_InsufficientStorage;
         }
 
+        public bool IsRateLimited() =>
+            code == ResultCode.RESTAPI_RateLimitExceededGlobal
+            || code == ResultCode.RESTAPI_RateLimitExceededEndpoint;
     }
 }

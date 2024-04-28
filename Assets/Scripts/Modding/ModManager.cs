@@ -134,6 +134,6 @@ public class ModManager : MonoBehaviour
             BlockedScreen.SetActive(true);
             return;
         }
-        ModIOBrowser.Browser.OpenBrowser(null);
+        ModIOBrowser.Browser.Open(null);;
     }
 }

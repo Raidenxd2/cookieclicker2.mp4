@@ -1,4 +1,4 @@
-﻿using JetBrains.Annotations;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace ModIO
@@ -16,13 +16,13 @@ namespace ModIO
         /// <summary>
         /// Make sure to set this field when submitting a request to Edit a Mod Profile
         /// </summary>
-        [CanBeNull]
+        /// <remarks>Can be null</remarks>
         public ModId? modId;
 
         /// <summary>
         /// Whether this mod will appear as public or hidden.
         /// </summary>
-        [CanBeNull]
+        /// <remarks>Can be null</remarks>
         public bool? visible;
 
         /// <summary>
@@ -31,19 +31,32 @@ namespace ModIO
         /// you supply a high resolution image with a 16 / 9 ratio. mod.io will use this image to
         /// make three thumbnails for the dimensions 320x180, 640x360 and 1280x720
         /// </summary>
-        [CanBeNull]
+        /// <remarks>Can be null if using EditModProfile</remarks>
+        /// <seealso cref="ModIOUnity.EditModProfile"/>
+#if UNITY_2019_4_OR_NEWER
         public Texture2D logo;
+#else
+        public byte[] logo;
+#endif
 
         /// <summary>
         /// Image files that will be included in the mod profile details.
         /// </summary>
-        [CanBeNull]
+        /// <remarks>Can be null</remarks>
+#if UNITY_2019_4_OR_NEWER
         public Texture2D[] images;
+#else
+        public List<byte[]> images;
+#endif
+
+        /// <summary>(Optional) If set, <see cref="images"/> are named according to this array.</summary>
+        public string[] imagesNames;
 
         /// <summary>
         /// Name of your mod
         /// </summary>
-        [CanBeNull]
+        /// <remarks>Can be null if using EditModProfile</remarks>
+        /// <seealso cref="ModIOUnity.EditModProfile"/>
         public string name;
 
         /// <summary>
@@ -51,7 +64,7 @@ namespace ModIO
         /// If no name_id is specified the <see cref="name"/> will be used. For example: 'Stellaris
         /// Shader Mod' will become 'stellaris-shader-mod'. Cannot exceed 80 characters
         /// </summary>
-        [CanBeNull]
+        /// <remarks>Can be null</remarks>
         public string name_id;
 
         /// <summary>
@@ -59,35 +72,36 @@ namespace ModIO
         /// Cannot exceed 250 characters.
         /// </summary>
         /// <remarks>This field must be assigned when submitting a new Mod Profile</remarks>
-        [CanBeNull]
+        /// <remarks>Can be null if using EditModProfile</remarks>
+        /// <seealso cref="ModIOUnity.EditModProfile"/>
         public string summary;
 
         /// <summary>
         /// Detailed description for your mod, which can include details such as 'About', 'Features',
         /// 'Install Instructions', 'FAQ', etc. HTML supported and encouraged
         /// </summary>
-        [CanBeNull]
+        /// <remarks>Can be null</remarks>
         public string description;
 
         /// <summary>
         /// Official homepage for your mod. Must be a valid URL
         /// </summary>
-        [CanBeNull]
+        /// <remarks>Can be null</remarks>
         public string homepage_url;
 
         /// <summary>
         /// This will create a cap on the number of subscribers for this mod. Set to 0 to allow
         /// for infinite subscribers.
         /// </summary>
-        [CanBeNull]
-        public int? maxSubscribers;
+        /// <remarks>Can be null</remarks>
+        public int? stock;
 
         /// <summary>
         /// This is a Bitwise enum so you can assign multiple values
         /// </summary>
-        /// <seealso cref="ContentWarnings"/>
-        [CanBeNull]
-        public ContentWarnings? contentWarning;
+        /// <seealso cref="MaturityOptions"/>
+        /// <remarks>Can be null</remarks>
+        public MaturityOptions? maturityOptions;
 
         /// <summary>
         /// Your own custom metadata that can be uploaded with the mod profile. (This is for the
@@ -95,14 +109,68 @@ namespace ModIO
         /// </summary>
         /// <seealso cref="ModfileDetails"/>
         /// <remarks>the metadata has a maximum size of 50,000 characters.</remarks>
-        [CanBeNull]
+        /// <remarks>Can be null</remarks>
         public string metadata;
 
         /// <summary>
         /// The tags this mod profile has. Only tags that are supported by the parent game can be
-        /// applied. (Invalid tags will be ignored)
+        /// applied. An empty array will clear all tags, use <c>null</c> for no change. (Invalid tags will be ignored)
         /// </summary>
-        [CanBeNull]
+        /// <remarks>Can be null</remarks>
         public string[] tags;
+
+        /// <summary>
+        ///	Select which interactions players can have with your mod.
+        /// 0 = None
+        /// 1 = Ability to comment (default)
+        /// ? = Add the options you want together, to enable multiple options
+        /// </summary>
+        /// <remarks>Can be null</remarks>
+        public CommunityOptions? communityOptions = CommunityOptions.AllowCommenting;
+
+        /// <summary>
+        /// The price of the mod
+        ///
+        /// NOTE: The value of this field will be ignored if the parent game's queue is enabled
+        /// (see CurationOption in Game Object)
+        /// </summary>
+        /// <remarks>Can be null</remarks>
+        public int? price;
+
+        /// <summary>
+        /// Monetization options enabled by the mod creator.
+        /// You must set the team before setting monetization to live.
+        /// In order for a marketplace mod to go live both <see cref="MonetizationOption.Enabled"/> and <see cref="MonetizationOption.Live"/> need to be set.
+        ///
+        /// NOTE: The value of this field will be ignored if the parent game's queue is enabled
+        /// (see CurationOption in Game Object)
+        /// </summary>
+        /// <remarks>Can be null</remarks>
+        public MonetizationOption? monetizationOptions;
+
+        internal byte[] GetLogo()
+        {
+#if UNITY_2019_4_OR_NEWER
+                // If a Texture2D type is not set to 'Sprite (2D or UI)' it will get flagged
+                // by cloudflare as suspicious and be rejected. This will return a 403
+                return logo.EncodeToPNG();
+#else
+                return logo;
+#endif
+        }
+
+        internal List<byte[]> GetGalleryImages()
+        {
+#if UNITY_2019_4_OR_NEWER
+            List<byte[]> gallery = new List<byte[]>();
+            foreach(var texture in images)
+            {
+                gallery.Add(texture.EncodeToPNG());
+            }
+            return gallery;
+#else
+                return images;
+#endif
+        }
     }
 }

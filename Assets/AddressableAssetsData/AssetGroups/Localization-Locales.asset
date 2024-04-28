@@ -29,12 +29,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 71fe430cb7962d14ba2d7d46322b6ec5
-    m_Address: Pseudo-Locale(pseudo)
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 117c6574dc809b34fabfe0639ede92a4
     m_Address: French (fr)
     m_ReadOnly: 1

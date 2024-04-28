@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -46,7 +48,7 @@ namespace ModIO.Implementation
                 data = Encoding.UTF8.GetBytes(dataString);
             }
             catch (Exception e)
-            {   
+            {
                 Logger.Log(LogLevel.Error, $"Failed to serialize jsonObject. Exception: {e.Message}");
                 data = null;
             }
@@ -55,6 +57,7 @@ namespace ModIO.Implementation
         }
 
         /// <summary>Parse PNG/JPG data as image.</summary>
+#if UNITY_2019_4_OR_NEWER
         public static bool TryParseImageData(byte[] data, out Texture2D texture, out Result result)
         {
             if(data == null || data.Length == 0)
@@ -86,31 +89,15 @@ namespace ModIO.Implementation
 
             return (result.Succeeded());
         }
-
-        /// <summary>Encodes the texture as PNG data.</summary>
-        public static byte[] GeneratePNGData(Texture2D texture)
+#endif
+        /// <summary>Generates an MD5 hash for a given byte array.</summary>
+        public static string GenerateMD5(Stream data)
         {
-            byte[] data = null;
-
-            if(texture == null)
+            using(var md5 = System.Security.Cryptography.MD5.Create())
             {
-                data = null;
-
-                Logger.Log(LogLevel.Verbose,
-                           ":INTERNAL: Attempted to generate PNG data for NULL texture.");
+                byte[] hash = md5.ComputeHash(data);
+                return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
             }
-            else
-            {
-                data = ImageConversion.EncodeToPNG(texture);
-
-                if(data == null)
-                {
-                    Logger.Log(LogLevel.Verbose,
-                               ":INTERNAL: Failed to encode texture as PNG data.");
-                }
-            }
-
-            return data;
         }
 
         /// <summary>Generates an MD5 hash for a given byte array.</summary>
@@ -124,33 +111,50 @@ namespace ModIO.Implementation
         }
 
         /// <summary>Generates an MD5 hash from a given stream.</summary>
-        public static async Task<string> GenerateArchiveMD5Async(string filepath)
+        public static async Task<string> GenerateArchiveMD5(string filepath)
         {
-            string fileHash = string.Empty;
-            
-            using(var stream = DataStorage.OpenArchiveReadStream(filepath, out Result result))
+            using ModIOFileStream stream = DataStorage.OpenArchiveReadStream(filepath, out Result result);
+            return result.Succeeded() ? await GenerateMD5Async(stream) : string.Empty;
+        }
+
+        /// <summary>Asynchronously generates an MD5 hash from a given stream.</summary>
+        public static async Task<string> GenerateMD5Async(Stream stream)
+        {
+            // TODO: Add cancel support
+
+            Stopwatch stopwatch = Stopwatch.StartNew();
+
+            byte[] buffer = new byte[1024 * 1024]; // 1MB
+            int bytesRead;
+
+            using MD5 md5 = MD5.Create();
+
+            while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length)) > 0)
             {
-                if(!result.Succeeded())
-                {
-                    return string.Empty;
-                }
-                ResultAnd<string> hashResult = await IOUtil.GenerateMD5Async(stream);
-                fileHash = hashResult.value;
+                md5.TransformBlock(buffer, 0, bytesRead, null, 0);
+
+                if (stopwatch.ElapsedMilliseconds < 15)
+                    continue;
+
+                await Task.Yield();
+                stopwatch.Restart();
             }
-            return fileHash;
+            md5.TransformFinalBlock(buffer, 0, 0);
+
+            stopwatch.Stop();
+
+            return BitConverter.ToString(md5.Hash).Replace("-", "").ToLowerInvariant();
         }
 
         /// <summary>Generates an MD5 hash for a given stream.</summary>
-        public static async Task<ResultAnd<string>> GenerateMD5Async(Stream stream)
+        public static Result GenerateMD5(Stream stream, out string MD5)
         {
-            // TODO @Jackson, why is this here?
-            await Task.Delay(1); // ???
-
             using(var md5 = System.Security.Cryptography.MD5.Create())
             {
                 byte[] hash = md5.ComputeHash(stream);
                 string hashString = BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
-                return ResultAnd.Create(ResultCode.Success, hashString);
+                MD5 = hashString;
+                return ResultBuilder.Success;
             }
         }
 
@@ -181,17 +185,17 @@ namespace ModIO.Implementation
         {
             // replace spaces with dashes
             string cleanedName = filename.Replace(" ", "-");
-            
+
             // trim - and . from ends of string
             char[] invalidToTrim = {'-','.'};
             cleanedName = cleanedName.Trim(invalidToTrim);
-            
+
             // completely remove any invalid characters
             foreach(char c in Path.GetInvalidFileNameChars())
             {
                 cleanedName = cleanedName.Replace(c.ToString(), "");
             }
-            
+
             return cleanedName;
         }
     }

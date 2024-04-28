@@ -1,6 +1,11 @@
 {
     "name": "modio.UnityPlugin",
-    "references": [],
+    "rootNamespace": "",
+    "references": [
+        "NintendoSDK",
+        "Unity.PSN.PS5.Runtime",
+        "Unity.GameCore"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

@@ -20,13 +20,22 @@ namespace ModIO.Implementation.Platform
         /// <summary>Reads an entire file asynchronously.</summary>
         Task<ResultAnd<byte[]>> ReadFileAsync(string filePath);
 
+        /// <summary>Reads an entire file synchronously.</summary>
+        ResultAnd<byte[]> ReadFile(string filePath);
+
         /// <summary>Writes an entire file asynchronously.</summary>
         Task<Result> WriteFileAsync(string filePath, byte[] data);
+
+        /// <summary>Writes an entire file synchronously.</summary>
+        Result WriteFile(string filePath, byte[] data);
 
         // Task<Result> DeleteFileAsync(string filePath);
 
         /// <summary>Deletes a directory and its contents recursively.</summary>
         Result DeleteDirectory(string directoryPath);
+
+        /// <summary>Deletes a file at the given path.</summary>
+        Result DeleteFile(string filePath);
 
         /// <summary> Moves a directory to a new filepath (Can also be used to rename) </summary>
         Result MoveDirectory(string directoryPath, string newDirectoryPath);
@@ -38,7 +47,7 @@ namespace ModIO.Implementation.Platform
         bool FileExists(string filePath);
 
         /// <summary>Gets the size and hash of a file.</summary>
-        Task<ResultAnd<(long fileSize, string fileHash)>> GetFileSizeAndHash(string filePath);
+        Result GetFileSizeAndHash(string filePath, out long fileWithSize, out string fileHash);
 
         /// <summary>Determines whether a directory exists.</summary>
         bool DirectoryExists(string directoryPath);
@@ -47,6 +56,6 @@ namespace ModIO.Implementation.Platform
         ResultAnd<List<string>> ListAllFiles(string directoryPath);
 
         /// <summary>Gets the remaining amount of space available to write for this data service </summary>
-        bool IsThereEnoughDiskSpaceFor(long numberOfBytes);
+        Task<bool> IsThereEnoughDiskSpaceFor(long numberOfBytes);
     }
 }

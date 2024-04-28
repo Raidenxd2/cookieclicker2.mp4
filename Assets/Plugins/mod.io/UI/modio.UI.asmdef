@@ -1,8 +1,13 @@
 {
     "name": "modio.UI",
+    "rootNamespace": "",
     "references": [
         "modio.UnityPlugin",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "Unity.GameCore",
+        "NintendoSDK",
+        "Unity.PSN.PS5.Runtime",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

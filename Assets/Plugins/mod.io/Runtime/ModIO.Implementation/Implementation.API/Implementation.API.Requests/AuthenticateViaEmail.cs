@@ -1,28 +1,20 @@
-﻿
-using UnityEngine;
-
-namespace ModIO.Implementation.API.Requests
+﻿namespace ModIO.Implementation.API.Requests
 {
+
     internal static class AuthenticateViaEmail
     {
-        public struct ResponseSchema
+        public static WebRequestConfig Request(string emailaddress)
         {
-            public long code;
-            public string message;
-        }
+            var request = new WebRequestConfig()
+            {
+                Url = $"{Settings.server.serverURL}{@"/oauth/emailrequest"}?",
+                RequestMethodType = "POST",
+                DontUseAuthToken = true
+            };
+            
+            request.AddField("email", emailaddress);
 
-        internal static RequestConfig Template =
-            new RequestConfig { canCacheResponse = true, requireAuthToken = false,
-                                  requestMethodType = WebRequestMethodType.POST,
-                                  requestResponseType = WebRequestResponseType.Text };
-
-        public static string URL(string emailaddress, out WWWForm form)
-        {
-            form = new WWWForm();
-            form.AddField("api_key", Settings.server.gameKey);
-            form.AddField("email", emailaddress);
-
-            return $"{Settings.server.serverURL}{@"/oauth/emailrequest"}?";
+            return request;
         }
     }
 }

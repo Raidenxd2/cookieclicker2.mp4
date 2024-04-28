@@ -20,6 +20,10 @@ namespace ModIOBrowser.Implementation
         public SearchResultListItem listItemToReplicate;
         public SearchResultListItem lastListItemToReplicate;
 
+#pragma warning disable 0649 //it is allocated
+        private Translation subscribeButtonTextTranslation;
+#pragma warning restore 0649
+
         [SerializeField] SubscribedProgressTab progressTab;
 
         void LateUpdate()
@@ -29,7 +33,7 @@ namespace ModIOBrowser.Implementation
                 MimicProgressBar();
             }
         }
-        
+
         // Mimics the look of a SearchResultListItem
         public void Setup(SearchResultListItem listItem)
         {
@@ -50,17 +54,17 @@ namespace ModIOBrowser.Implementation
             loadingIcon.SetActive(listItemToReplicate.loadingIcon.activeSelf);
             animator.Play("Inflate");
             SetSubscribeButtonText();
-            
+
             MimicProgressBar();
-            
+
             // Set if the list item is still waiting for the image to download. The action will
             // get invoked when the download finishes.
             listItemToReplicate.imageLoaded = ReloadImage;
-            
+
             image.sprite = listItemToReplicate.image.sprite;
             title.text = listItemToReplicate.title.text;
         }
-        
+
         void MimicProgressBar()
         {
             if (listItemToReplicate != null)
@@ -71,19 +75,19 @@ namespace ModIOBrowser.Implementation
 
         public void SubscribeButton()
         {
-            if(Browser.IsSubscribed(listItemToReplicate.profile.id))
+            if(Collection.Instance.IsSubscribed(listItemToReplicate.profile.id))
             {
                 // We are pre-emptively changing the text here to make the UI feel more responsive
-                subscribeButtonText.text = "Subscribe";
-                Browser.UnsubscribeFromModEvent(listItemToReplicate.profile, UpdateSubscribeButton);
+                Translation.Get(subscribeButtonTextTranslation, "Unsubscribe", subscribeButtonText);
+                Mods.UnsubscribeFromEvent(listItemToReplicate.profile, UpdateSubscribeButton);
             }
             else
             {
                 // We are pre-emptively changing the text here to make the UI feel more responsive
-                subscribeButtonText.text = "Unsubscribe";
-                Browser.SubscribeToModEvent(listItemToReplicate.profile, UpdateSubscribeButton);
+                Translation.Get(subscribeButtonTextTranslation, "Subscribe", subscribeButtonText);
+                Mods.SubscribeToEvent(listItemToReplicate.profile, UpdateSubscribeButton);
             }
-            
+
             LayoutRebuilder.ForceRebuildLayoutImmediate(subscribeButtonText.transform.parent as RectTransform);
         }
 
@@ -91,49 +95,49 @@ namespace ModIOBrowser.Implementation
         {
             listItemToReplicate?.OpenModDetailsForThisProfile();
         }
-        
+
         public void ShowMoreOptions()
         {
             List<ContextMenuOption> options = new List<ContextMenuOption>();
 
-            //TODO If not subscribed add force uninstall and subscribe options 
+            //TODO If not subscribed add force uninstall and subscribe options
 
             // Add Vote up option to context menu
             options.Add(new ContextMenuOption
             {
-                name = "Vote up",
+                nameTranslationReference = "Vote up",
                 action = delegate
                 {
-                    ModIOUnity.RateMod(listItemToReplicate.profile.id, ModRating.Positive, delegate { });
-                    Browser.Instance.CloseContextMenu();
+                    Home.RateMod(listItemToReplicate.profile.id, ModRating.Positive);
+                    ModioContextMenu.Instance.Close();
                 }
             });
 
             // Add Vote up option to context menu
             options.Add(new ContextMenuOption
             {
-                name = "Vote down",
+                nameTranslationReference = "Vote down",
                 action = delegate
                 {
-                    ModIOUnity.RateMod(listItemToReplicate.profile.id, ModRating.Negative, delegate { });
-                    Browser.Instance.CloseContextMenu();
+                    Home.RateMod(listItemToReplicate.profile.id, ModRating.Negative);
+                    ModioContextMenu.Instance.Close();
                 }
             });
 
             // Add Report option to context menu
             options.Add(new ContextMenuOption
             {
-                name = "Report",
+                nameTranslationReference = "Report",
                 action = delegate
                 {
                     // TODO open report menu
-                    Browser.Instance.CloseContextMenu();
-                    Browser.Instance.OpenReportPanel(listItemToReplicate.profile, listItemToReplicate.selectable);
+                    ModioContextMenu.Instance.Close();
+                    Reporting.Instance.Open(listItemToReplicate.profile, listItemToReplicate.selectable);
                 }
             });
 
             // Open context menu
-            Browser.Instance.OpenContextMenu(contextMenuPosition, options, listItemToReplicate.selectable);
+            ModioContextMenu.Instance.Open(contextMenuPosition, options, listItemToReplicate.selectable);
         }
 
         public void UpdateSubscribeButton()
@@ -144,14 +148,18 @@ namespace ModIOBrowser.Implementation
         public void SetSubscribeButtonText()
         {
             listItemToReplicate?.progressTab?.Setup(listItemToReplicate.profile);
-            
-            if(Browser.IsSubscribed(listItemToReplicate.profile.id))
+
+            if(!Collection.Instance.IsPurchased(listItemToReplicate.profile))
             {
-                subscribeButtonText.text = "Unsubscribe";
-            } 
-            else 
+                Translation.Get(subscribeButtonTextTranslation, "Buy Now", subscribeButtonText);
+            }
+            else if(Collection.Instance.IsSubscribed(listItemToReplicate.profile.id))
             {
-                subscribeButtonText.text = "Subscribe";
+                Translation.Get(subscribeButtonTextTranslation, "Unsubscribe", subscribeButtonText);
+            }
+            else
+            {
+                Translation.Get(subscribeButtonTextTranslation, "Subscribe", subscribeButtonText);
             }
         }
 
@@ -161,12 +169,12 @@ namespace ModIOBrowser.Implementation
             failedToLoadIcon.SetActive(listItemToReplicate.failedToLoadIcon.activeSelf);
             loadingIcon.SetActive(listItemToReplicate.loadingIcon.activeSelf);
         }
-        
+
         public void OnPointerExit(PointerEventData eventData)
         {
-            if (!Browser.Instance.contextMenu.activeSelf)
+            if (!ModioContextMenu.Instance.ContextMenu.activeSelf)
             {
-                Browser.DeselectUiGameObject();
+                InputNavigation.Instance.DeselectUiGameObject();
                 gameObject.SetActive(false);
             }
         }

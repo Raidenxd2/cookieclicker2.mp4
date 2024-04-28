@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using ModIO.Implementation.API.Objects;
 using ModIO.Implementation.Platform;
-using UnityEngine;
+using ModIO.Util;
 
 namespace ModIO.Implementation
 {
@@ -12,11 +13,11 @@ namespace ModIO.Implementation
     {
         // TODO Revisit this later, as most of it's benefits are now met with the mutex. Maybe expand this to more generic tasks or for ModManagement
         internal static TaskQueueRunner taskRunner = new TaskQueueRunner(1, true, PlatformConfiguration.SynchronizedDataJobs);
-        
+
         static Mutex FileWriteMutex = new Mutex();
-        
+
         public static Mutex GetFileWriteMutex() => FileWriteMutex;
-        
+
 #region Data Services
 
         /// <summary>Persistent data storage service.</summary>
@@ -34,20 +35,34 @@ namespace ModIO.Implementation
 
         const string UserDataFilePath = "user.json";
 
+        public static string GetUploadFilePath(long modId)
+        {
+            string fileName = $"{modId}_" + DateTime.UtcNow.ToString("yyyy-MM-dd_HH-mm-ss") + ".zip";
+            const string uploadDirectoryName = "Upload";
+            return Path.Combine(temp.RootDirectory, uploadDirectoryName, fileName);
+        }
+
         /// <summary>Writes the user data to disk.</summary>
-        public static async Task<Result> SaveUserData()
+        public static async Task<Result> SaveUserDataAsync()
         {
             byte[] userDataJSON = IOUtil.GenerateUTF8JSONData(UserData.instance);
 
-            return await taskRunner.AddTask(TaskPriority.HIGH, 1, 
-                async () => await user.WriteFileAsync($@"{user.RootDirectory}/{UserDataFilePath}", userDataJSON));
+            return await user.WriteFileAsync($@"{user.RootDirectory}/{UserDataFilePath}", userDataJSON);
+        }
+
+        /// <summary>Writes the user data to disk.</summary>
+        public static Result SaveUserData()
+        {
+            byte[] userDataJSON = IOUtil.GenerateUTF8JSONData(UserData.instance);
+
+            return user.WriteFile($@"{user.RootDirectory}/{UserDataFilePath}", userDataJSON);
         }
 
         /// <summary>Reads the user data from disk.</summary>
-        public static async Task<Result> LoadUserData()
-        {            
-            var userDataReadTask = await taskRunner.AddTask(TaskPriority.HIGH, 1,
-                async () => await user.ReadFileAsync($@"{user.RootDirectory}/{UserDataFilePath}"));
+        public static async Task<Result> LoadUserDataAsync()
+        {
+            var userDataReadTask =
+                await user.ReadFileAsync($@"{user.RootDirectory}/{UserDataFilePath}");
             Result result = userDataReadTask.result;
 
             if(result.Succeeded()
@@ -57,6 +72,24 @@ namespace ModIO.Implementation
             }
 
             return result;
+        }
+
+        /// <summary>Reads the user data from disk.</summary>
+        public static Result LoadUserData()
+        {
+            var userDataRead = user.ReadFile($@"{user.RootDirectory}/{UserDataFilePath}");
+
+            if(userDataRead.result.Succeeded()
+               && IOUtil.TryParseUTF8JSONData(userDataRead.value, out UserData userData, out userDataRead.result))
+            {
+                UserData.instance = userData;
+            }
+            else
+            {
+                UserData.instance = new UserData();
+            }
+
+            return ResultBuilder.Success;
         }
 
 #endregion // User IO
@@ -70,7 +103,7 @@ namespace ModIO.Implementation
             {
                 Logger.Log(
                     LogLevel.Verbose,
-                    ":INTERNAL: Attempted to generated a file path for a NULL/Empty image URL.");
+                    ":INTERNAL: Attempted to generate a file path for a NULL/Empty image URL.");
                 return null;
             }
 
@@ -84,62 +117,56 @@ namespace ModIO.Implementation
         }
 
         /// <summary>Stores an image to the temporary cache.</summary>
-        public static async Task<Result> StoreImage(DownloadReference imageURL, Texture2D texture)
+        public static Result DeleteStoredImage(string imageURL)
         {
             // - generate file path -
-            string filePath = GenerateImageCacheFilePath(imageURL.url);
+            string filePath = GenerateImageCacheFilePath(imageURL);
             if(filePath == null)
             {
                 return ResultBuilder.Create(ResultCode.Internal_InvalidParameter);
             }
 
-            // - process image -
-            byte[] pngData = IOUtil.GeneratePNGData(texture);
-            if(pngData == null)
-            {
-                return ResultBuilder.Create(ResultCode.Internal_InvalidParameter);
-            }
-            
-            // - store -            
-            Result result = await taskRunner.AddTask(TaskPriority.HIGH, 1, 
-                async () => await temp.WriteFileAsync(filePath, pngData));
-            
+            Result result = temp.DeleteFile(imageURL);
+
             return result;
         }
 
+        public static ResultAnd<ModIOFileStream> GetImageFileReadStream(string imageURL)
+        {
+            ModIOFileStream stream = temp.OpenReadStream(GenerateImageCacheFilePath(imageURL), out Result result);
+            return ResultAnd.Create(result, stream);
+        }
+
+        public static ResultAnd<ModIOFileStream> GetImageFileWriteStream(string imageURL)
+        {
+            ModIOFileStream stream = temp.OpenWriteStream(GenerateImageCacheFilePath(imageURL), out Result result);
+            return ResultAnd.Create(result, stream);
+        }
+
         /// <summary>Attempts to retrieve an image from the temporary cache.</summary>
-        public static async Task<ResultAnd<Texture2D>> TryRetrieveImage(DownloadReference imageURL)
+        public static async Task<ResultAnd<byte[]>> TryRetrieveImageBytes(string imageURL)
         {
             // - generate file path -
-            string filePath = GenerateImageCacheFilePath(imageURL.url);
+            string filePath = GenerateImageCacheFilePath(imageURL);
             if(filePath == null)
             {
-                return ResultAnd.Create<Texture2D>(ResultCode.Internal_InvalidParameter, null);
+                return ResultAnd.Create<byte[]>(ResultCode.Internal_InvalidParameter, null);
             }
 
             // - read -
-            ResultAnd<byte[]> readResult = await taskRunner.AddTask(TaskPriority.HIGH, 1, 
+            ResultAnd<byte[]> readResult = await taskRunner.AddTask(TaskPriority.HIGH, 1,
                 async () => await temp.ReadFileAsync(filePath));
-            
+
             if(!readResult.result.Succeeded())
             {
-                return ResultAnd.Create<Texture2D>(readResult.result, null);
-            }
-
-            // - parse -
-            Result parseResult;
-            Texture2D texture;
-
-            if(!IOUtil.TryParseImageData(readResult.value, out texture, out parseResult))
-            {
-                return ResultAnd.Create<Texture2D>(parseResult, null);
+                return ResultAnd.Create<byte[]>(readResult.result, null);
             }
 
             // - success -
-            return ResultAnd.Create(ResultCode.Success, texture);
+            return ResultAnd.Create(ResultCode.Success, readResult.value);
         }
 
-#endregion // Mod Browsing
+        #endregion // Mod Browsing
 
 #region Mod Management
 
@@ -159,7 +186,7 @@ namespace ModIO.Implementation
         /// <summary>Generates the path for an installation directory.</summary>
         public static string GenerateModfileDetailsDirectoryPath(string directory)
         {
-            Debug.Log("Not Implemented Yet");
+            Logger.Log(LogLevel.Verbose, "Not Implemented Yet");
             return directory;
         }
 
@@ -197,6 +224,14 @@ namespace ModIO.Implementation
         public static bool TryDeleteModfileArchive(long modId, long modfileId, out Result result)
         {
             result = ResultBuilder.Success;
+            //path is a path to a file
+            var filePath = GenerateModfileArchiveFilePath(modId, modfileId);
+            if(temp.FileExists(filePath))
+            {
+                result = temp.DeleteFile(filePath);
+                return result.Succeeded();
+            }
+
             return true;
         }
 
@@ -227,7 +262,7 @@ namespace ModIO.Implementation
             try
             {
                 result = persistent.DeleteDirectory(installDirPath);
-                
+
                 if(result.Succeeded()
                    && persistent.TryCreateParentDirectory(installDirPath))
                 {
@@ -261,26 +296,24 @@ namespace ModIO.Implementation
         }
 
         /// <summary>Tests to see if a modfile archive exists and matches the given info.</summary>
-        public static async Task<ResultAnd<string>> GetModfileArchivePathIfValid(
+        public static ResultAnd<string> GetModfileArchivePathIfValid(
             long modId, long modfileId, long expectedSize, string expectedHash)
         {
             string filePath = GenerateModfileArchiveFilePath(modId, modfileId);
 
-            ResultAnd<(long fileSize, string fileHash)> sizeAndHashResult =
-                await taskRunner.AddTask(TaskPriority.HIGH, 1, 
-                    async () => await temp.GetFileSizeAndHash(filePath));
+            Result result = temp.GetFileSizeAndHash(filePath, out long fileSize, out string fileHash);
 
-            if(!sizeAndHashResult.result.Succeeded())
+            if(!result.Succeeded())
             {
-                return ResultAnd.Create<string>(sizeAndHashResult.result, null);
+                return ResultAnd.Create<string>(result, null);
             }
 
-            if(expectedSize != sizeAndHashResult.value.fileSize)
+            if(expectedSize != fileSize)
             {
                 return ResultAnd.Create<string>(ResultCode.Internal_FileSizeMismatch, null);
             }
 
-            if(expectedHash != sizeAndHashResult.value.fileHash)
+            if(expectedHash != fileHash)
             {
                 return ResultAnd.Create<string>(ResultCode.Internal_FileHashMismatch, null);
             }
@@ -301,12 +334,12 @@ namespace ModIO.Implementation
             string filePath = GenerateSystemRegistryFilePath();
             byte[] data = IOUtil.GenerateUTF8JSONData(registry);
 
-            return await taskRunner.AddTask(TaskPriority.HIGH, 1, 
+            return await taskRunner.AddTask(TaskPriority.HIGH, 1,
                 async () => await persistent.WriteFileAsync(filePath, data));
         }
 
         /// <summary>Reads the ModCollectionRegistry from disk.</summary>
-        public static async Task<ResultAnd<ModCollectionRegistry>> LoadSystemRegistry()
+        public static async Task<ResultAnd<ModCollectionRegistry>> LoadSystemRegistryAsync()
         {
             string filePath = GenerateSystemRegistryFilePath();
 
@@ -316,8 +349,7 @@ namespace ModIO.Implementation
                 return ResultAnd.Create(ResultBuilder.Success, new ModCollectionRegistry());
             }
 
-            ResultAnd<byte[]> readResult = await taskRunner.AddTask(TaskPriority.HIGH, 1, 
-                async () => await persistent.ReadFileAsync(filePath));
+            ResultAnd<byte[]> readResult = await persistent.ReadFileAsync(filePath);
 
             Result result = readResult.result;
             ModCollectionRegistry registry = null;
@@ -330,17 +362,31 @@ namespace ModIO.Implementation
             return ResultAnd.Create(result, registry);
         }
 
-        public static async Task<Result> SaveGameTags(GameTagOptionObject[] gameTags)
+        /// <summary>Reads the ModCollectionRegistry from disk.</summary>
+        public static ResultAnd<ModCollectionRegistry> LoadSystemRegistry()
         {
-            await Task.Delay(1);
+            string filePath = GenerateSystemRegistryFilePath();
 
-            // TODO @Jackson
-            Debug.LogWarning("Not Implemented Yet");
-            return ResultBuilder.Success;
+            if(!persistent.FileExists(filePath))
+            {
+                // Registry hasn't been created yet, returning new object
+                return ResultAnd.Create(ResultBuilder.Success, new ModCollectionRegistry());
+            }
+
+            ResultAnd<byte[]> readResult = persistent.ReadFile(filePath);
+
+            Result result = readResult.result;
+            ModCollectionRegistry registry = null;
+
+            if(result.Succeeded())
+            {
+                IOUtil.TryParseUTF8JSONData(readResult.value, out registry, out result);
+            }
+
+            return ResultAnd.Create(result, registry);
         }
-        
-        public static ModIOFileStream OpenArchiveReadStream(string filePath,
-                                                            out Result result)
+
+        public static ModIOFileStream OpenArchiveReadStream(string filePath, out Result result)
         {
             return temp.OpenReadStream(filePath, out result);
         }
@@ -350,6 +396,7 @@ namespace ModIO.Implementation
                                                             out Result result)
         {
             string filePath = GenerateModfileArchiveFilePath(modId, modfileId);
+
             return OpenArchiveReadStream(filePath, out result);
         }
 
@@ -379,29 +426,6 @@ namespace ModIO.Implementation
         {
             IDataService dataService = persistent;
 
-#if UNITY_EDITOR
-            // // Note from Steve: I dont see what the point of this is?
-            // EditorDataService pds = (EditorDataService)DataStorage.persistent;
-            // EditorDataService tds = (EditorDataService)DataStorage.temp;
-            // EditorDataService uds = (EditorDataService)DataStorage.user;
-            //
-            // if(pds.CanHandlePath(directoryPath))
-            // {
-            //     dataService = pds;
-            // }
-            // else if(tds.CanHandlePath(directoryPath))
-            // {
-            //     dataService = tds;
-            // }
-            // else if(uds.CanHandlePath(directoryPath))
-            // {
-            //     dataService = uds;
-            // }
-            dataService = persistent;
-#elif UNITY_STANDALONE || UNITY_GAMECORE
-            dataService = DataStorage.persistent;
-#endif // UNITY_EDITOR
-
             List<string> fileList = null;
             uint resultCode = (dataService != null ? ResultCode.Success
                                                    : ResultCode.IO_DataServiceForPathNotFound);
@@ -411,8 +435,6 @@ namespace ModIO.Implementation
                 ResultAnd<List<string>> filesResult = dataService.ListAllFiles(directoryPath);
                 resultCode = filesResult.result.code;
                 fileList = filesResult.value;
-                // Logger.Log(LogLevel.Error, $"Failed list all files. Result:
-                // [{filesResult.result.code};{filesResult.result.code_api}]");
             }
 
             if(resultCode == ResultCode.Success)

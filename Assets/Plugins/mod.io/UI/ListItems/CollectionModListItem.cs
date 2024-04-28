@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using ModIO.Util;
 
 namespace ModIOBrowser.Implementation
 {
@@ -14,6 +15,8 @@ namespace ModIOBrowser.Implementation
     /// </summary>
     internal class CollectionModListItem : ListItem, ISelectHandler, IDeselectHandler
     {
+        new CollectionProfile profile;
+
         [SerializeField] Button listItemButton;
         [SerializeField] Image image;
         [SerializeField] GameObject imageBackground;
@@ -32,9 +35,19 @@ namespace ModIOBrowser.Implementation
         [SerializeField] GameObject errorInstalling;
         [SerializeField] TMP_Text errorInstallingText;
         [SerializeField] Transform contextMenuPosition;
+        [SerializeField] MultiTargetToggle enabledOrDisabledToggle;
+        ViewportRestraint togglesViewportRestraint;
+        [SerializeField] GameObject disabledBlackOverlay;
         public Action imageLoaded;
         RectTransform rectTransform;
-        internal ModProfile profile;
+
+#pragma warning disable 0649 //they are allocated
+        Translation subscriptionStatusTranslation = null;
+        Translation installStatusTranslation = null;
+        Translation progressBarTextTranslation = null;
+        Translation otherSubscribersTextTranslation = null;
+        Translation errorInstallingTextTranslation = null;
+#pragma warning restore 0649
 
         internal static Dictionary<ModId, CollectionModListItem> listItems = new Dictionary<ModId, CollectionModListItem>();
 
@@ -51,14 +64,14 @@ namespace ModIOBrowser.Implementation
 
         public void OnSelect(BaseEventData eventData)
         {
-            Browser.Instance.currentSelectedCollectionListItem = this;
+            Collection.Instance.currentSelectedCollectionListItem = this;
         }
 
         public void OnDeselect(BaseEventData eventData)
         {
-            if(Browser.Instance.currentSelectedCollectionListItem == this)
+            if(Collection.Instance.currentSelectedCollectionListItem == this)
             {
-                Browser.Instance.currentSelectedCollectionListItem = null;
+                Collection.Instance.currentSelectedCollectionListItem = null;
             }
         }
 #endregion
@@ -72,69 +85,210 @@ namespace ModIOBrowser.Implementation
             title.text = string.Empty;
             //downloads.text = string.Empty;
         }
-        
+
         public override void Select()
         {
-            Browser.SelectSelectable(listItemButton);
+            InputNavigation.Instance.Select(listItemButton);
         }
 
         public override void SetViewportRestraint(RectTransform content, RectTransform viewport)
         {
             base.SetViewportRestraint(content, viewport);
 
+            // We add a viewport restraint to the toggle as well
+            if(togglesViewportRestraint == null)
+            {
+                togglesViewportRestraint = enabledOrDisabledToggle.gameObject.AddComponent<ViewportRestraint>();
+            }
+            togglesViewportRestraint.DefaultViewportContainer = content;
+            togglesViewportRestraint.Viewport = viewport;
+
+            togglesViewportRestraint.PercentPaddingVertical = 0.35f;
             viewportRestraint.PercentPaddingVertical = 0.35f;
         }
 
-        public override void Setup(InstalledMod profile)
-        {
-            base.Setup();
-            this.profile = profile.modProfile;
-            subscriptionStatus.text = "Installed";
-            subscriptionStatus.color = scheme.LightGrey1;
-            installStatus.text = "Installed";
-            otherSubscribersText.text = $"{profile.subscribedUsers.Count} other users";
-            otherSubscribersText.transform.parent.gameObject.SetActive(true);
-            unsubscribeButton.gameObject.SetActive(false);
-            progressBar.SetActive(false);
-            Hydrate();
-        }
-
-        public override void Setup(ModProfile profile, bool subscriptionStatus, string installationStatus)
+        public override void Setup(CollectionProfile profile)
         {
             base.Setup();
             this.profile = profile;
-            this.subscriptionStatus.text = subscriptionStatus ? "Subscribed" : "Unsubscribed";
-            this.subscriptionStatus.color = subscriptionStatus ? scheme.Green : scheme.LightGrey1;
-            if(installationStatus == "Problem occurred")
+
+            // Enabled or Disabled Toggle
+            SetupEnableDisableToggle();
+
+            // Subscribed or Number of subscribers text
+            SetupSubscribedStatusText();
+
+            // Installed / Downloading text
+            SetupInstallationStatusText();
+
+            // Set explicit navigation between toggle and the list item button itself
+            SetupNavigationBetweenToggleAndListItem();
+
+            // Deactivate button if not subscribed
+            unsubscribeButton.gameObject.SetActive(profile.subscribed);
+
+            // Always set the progress bar to off by default
+            progressBar.SetActive(false);
+
+            Hydrate();
+        }
+
+#endregion
+        void SetupSubscribedStatusText()
+        {
+            if(profile.subscribed)
+            {
+                Translation.Get(subscriptionStatusTranslation, "Subscribed", subscriptionStatus);
+                subscriptionStatus.color = scheme.PositiveAccent;
+            }
+            else
+            {
+                Translation.Get(subscriptionStatusTranslation, "Installed", subscriptionStatus);
+                subscriptionStatus.color = scheme.Inactive1;
+
+                Translation.Get(otherSubscribersTextTranslation, "{subcount} other users", otherSubscribersText, $"{profile.subscribers}");
+            }
+            otherSubscribersText.transform.parent.gameObject.SetActive(!profile.subscribed);
+        }
+
+        void SetupEnableDisableToggle()
+        {
+            if (profile.subscribed)
+            {
+                enabledOrDisabledToggle.onValueChanged.RemoveAllListeners();
+                enabledOrDisabledToggle.isOn = profile.enabled;
+                enabledOrDisabledToggle.interactable = true;
+                enabledOrDisabledToggle.onValueChanged.AddListener(ToggleModEnabled);
+            }
+            else
+            {
+                enabledOrDisabledToggle.interactable = false;
+            }
+            enabledOrDisabledToggle.DoStateTransition();
+        }
+
+        void SetupNavigationBetweenToggleAndListItem()
+        {
+            Navigation navigation = listItemButton.navigation;
+            navigation.selectOnLeft = enabledOrDisabledToggle.interactable ? enabledOrDisabledToggle : null;
+            listItemButton.navigation = navigation;
+
+            navigation = enabledOrDisabledToggle.navigation;
+            navigation.selectOnRight = listItemButton;
+            enabledOrDisabledToggle.navigation = navigation;
+        }
+
+        void ToggleModEnabled(bool enabled)
+        {
+            if(enabled)
+            {
+                EnableMod();
+            }
+            else
+            {
+                DisabledMod();
+            }
+
+            SetDisabledStateOverlay();
+            enabledOrDisabledToggle.DoStateTransition();
+        }
+
+        /// <summary>
+        /// This should only be used for the very top item in the list to move onto the
+        /// 'Check for updates' button, for example
+        /// </summary>
+        /// <param name="above">the button above</param>
+        public void SetNavigationAbove(Selectable above)
+        {
+            Navigation navigation = listItemButton.navigation;
+            navigation.selectOnUp = above;
+            listItemButton.navigation = navigation;
+
+            navigation = enabledOrDisabledToggle.navigation;
+            navigation.selectOnUp = above;
+            enabledOrDisabledToggle.navigation = navigation;
+        }
+
+        public void ConnectNavigationToItemBelow(CollectionModListItem below)
+        {
+            // Set navigation down to the item beneath this one
+            Navigation navigation = listItemButton.navigation;
+            navigation.selectOnDown = below.listItemButton;
+            listItemButton.navigation = navigation;
+
+            navigation = enabledOrDisabledToggle.navigation;
+            navigation.selectOnDown = below.enabledOrDisabledToggle.interactable
+                ? (Selectable)below.enabledOrDisabledToggle : below.listItemButton;
+            enabledOrDisabledToggle.navigation = navigation;
+
+            // Set navigation up for the item beneath this one
+            navigation = below.listItemButton.navigation;
+            navigation.selectOnUp = listItemButton;
+            below.listItemButton.navigation = navigation;
+
+            navigation = below.enabledOrDisabledToggle.navigation;
+            navigation.selectOnUp = enabledOrDisabledToggle.interactable
+                ? (Selectable)enabledOrDisabledToggle : listItemButton;
+            below.enabledOrDisabledToggle.navigation = navigation;
+        }
+
+        void EnableMod()
+        {
+            if(ModIOUnity.EnableMod(profile.modProfile.id))
+            {
+                profile.enabled = true;
+            }
+        }
+
+        void DisabledMod()
+        {
+            if(ModIOUnity.DisableMod(profile.modProfile.id))
+            {
+                profile.enabled = false;
+            }
+        }
+
+        void SetupInstallationStatusText()
+        {
+            // If not subscribed
+            if(!profile.subscribed)
+            {
+                Translation.Get(installStatusTranslation, "Installed", installStatus);
+                return;
+            }
+
+            // If subscribed
+            if(profile.installationStatus == "Problem occurred")
             {
                 installStatus.gameObject.SetActive(false);
                 errorInstalling.SetActive(true);
-                errorInstallingText.text = 
-                        Browser.Instance.notEnoughSpaceForTheseMods.Contains(profile.id)
-                            ? "Full storage" : "Error";
-            } 
+
+                if(Collection.Instance.notEnoughSpaceForTheseMods.Contains(profile.modProfile.id))
+                {
+                    Translation.Get(errorInstallingTextTranslation, "Full storage", errorInstallingText);
+                }
+                else
+                {
+                    Translation.Get(errorInstallingTextTranslation, "Error", errorInstallingText);
+                }
+            }
             else
             {
                 installStatus.gameObject.SetActive(true);
                 errorInstalling.SetActive(false);
-                installStatus.text = installationStatus;
+                Translation.Get(installStatusTranslation, profile.installationStatus, installStatus);
             }
-            unsubscribeButton.gameObject.SetActive(true);
-            progressBar.SetActive(false);
-            otherSubscribersText.transform.parent.gameObject.SetActive(false);
-            Hydrate();
         }
-#endregion
 
         void AddToStaticDictionaryCache()
         {
-            if(listItems.ContainsKey(profile.id))
+            if(listItems.ContainsKey(profile.modProfile.id))
             {
-                listItems[profile.id] = this;
+                listItems[profile.modProfile.id] = this;
             }
             else
             {
-                listItems.Add(profile.id, this);
+                listItems.Add(profile.modProfile.id, this);
             }
         }
 
@@ -143,11 +297,12 @@ namespace ModIOBrowser.Implementation
             AddToStaticDictionaryCache();
             failedToLoadLogo.SetActive(false);
             imageBackground.gameObject.SetActive(false);
-            title.text = profile.name;
-            fileSize.text = Utility.GenerateHumanReadableStringForBytes(profile.archiveFileSize);
-            ModIOUnity.DownloadTexture(profile.logoImage_320x180, SetIcon);
+            title.text = profile.modProfile.name;
+            fileSize.text = Utility.GenerateHumanReadableStringForBytes(profile.modProfile.archiveFileSize);
+            ModIOUnity.DownloadTexture(profile.modProfile.logoImage320x180, SetIcon);
             gameObject.SetActive(true);
             transform.SetAsLastSibling();
+            SetDisabledStateOverlay();
             RedrawRectTransform();
         }
 
@@ -157,14 +312,14 @@ namespace ModIOBrowser.Implementation
             {
                 return;
             }
-            Browser.Instance.OpenModDetailsPanel(profile, Browser.Instance.OpenModCollection);
+            Details.Instance.Open(profile.modProfile, Collection.Instance.Open);
         }
 
         void RemoveFromStaticDictionaryCache()
         {
-            if(listItems.ContainsKey(profile.id))
+            if(listItems.ContainsKey(profile.modProfile.id))
             {
-                listItems.Remove(profile.id);
+                listItems.Remove(profile.modProfile.id);
             }
         }
 
@@ -172,8 +327,11 @@ namespace ModIOBrowser.Implementation
         {
             if(textureAnd.result.Succeeded() && textureAnd.value != null)
             {
-                imageBackground.gameObject.SetActive(true);
-                image.sprite = Sprite.Create(textureAnd.value, new Rect(Vector2.zero, new Vector2(textureAnd.value.width, textureAnd.value.height)), Vector2.zero);
+                QueueRunner.Instance.AddSpriteCreation(textureAnd.value, sprite =>
+                {
+                    imageBackground.gameObject.SetActive(true);
+                    image.sprite = sprite;
+                });
             }
             else
             {
@@ -182,53 +340,97 @@ namespace ModIOBrowser.Implementation
             imageLoaded?.Invoke();
         }
 
+        /// <summary>
+        /// Turns the black overlay on or off depending on the state
+        /// </summary>
+        void SetDisabledStateOverlay() => disabledBlackOverlay.SetActive(profile.subscribed && !profile.enabled);
+
+
         public void ShowMoreOptions()
         {
             List<ContextMenuOption> options = new List<ContextMenuOption>();
 
-            //TODO If not subscribed add force uninstall and subscribe options 
+            //TODO If not subscribed add force uninstall and subscribe options
 
             // Add Vote up option to context menu
             options.Add(new ContextMenuOption
             {
-                name = "Vote up",
+                nameTranslationReference = "Vote up",
                 action = delegate
                 {
-                    ModIOUnity.RateMod(profile.id, ModRating.Positive, delegate { });
-                    Browser.Instance.CloseContextMenu();
+                    ModIOUnity.RateMod(profile.modProfile.id, ModRating.Positive, delegate { });
+                    ModioContextMenu.Instance.Close();
                 }
             });
 
             // Add Vote up option to context menu
             options.Add(new ContextMenuOption
             {
-                name = "Vote down",
+                nameTranslationReference = "Vote down",
                 action = delegate
                 {
-                    ModIOUnity.RateMod(profile.id, ModRating.Negative, delegate { });
-                    Browser.Instance.CloseContextMenu();
+                    ModIOUnity.RateMod(profile.modProfile.id, ModRating.Negative, delegate { });
+                    ModioContextMenu.Instance.Close();
                 }
             });
 
             // Add Report option to context menu
             options.Add(new ContextMenuOption
             {
-                name = "Report",
+                nameTranslationReference = "Report",
                 action = delegate
                 {
-                    Browser.Instance.CloseContextMenu();
-                    Browser.Instance.OpenReportPanel(profile, selectable);
+                    ModioContextMenu.Instance.Close();
+                    Reporting.Instance.Open(profile.modProfile, selectable);
                 }
             });
 
+            if (!profile.subscribed)
+            {
+                // Add Uninstall option to context menu
+                options.Add(new ContextMenuOption
+                {
+                    nameTranslationReference = "Uninstall",
+                    action = delegate
+                    {
+                        ModioContextMenu.Instance.Close();
+                        ForceUninstall();
+                    }
+                });
+            }
+
             // Open context menu
-            Browser.Instance.OpenContextMenu(contextMenuPosition, options, listItemButton);
+            ModioContextMenu.Instance.Open(contextMenuPosition, options, listItemButton);
+        }
+
+        void ForceUninstall()
+        {
+            Result result = ModIOUnity.ForceUninstallMod(profile.modProfile.id);
+            if(result.Succeeded())
+            {
+                Notifications.Instance.AddNotificationToQueue(new Notifications.QueuedNotice
+                {
+                    title = "Uninstalled",
+                    description = $"Uninstalled the mod '{profile.modProfile.name}'",
+                    positiveAccent = true
+                });
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                Notifications.Instance.AddNotificationToQueue(new Notifications.QueuedNotice
+                {
+                    title = "Failed to uninstall",
+                    description = $"Failed to uninstall the mod '{profile.modProfile.name}'",
+                    positiveAccent = false
+                });
+            }
         }
 
         public void UnsubscribeButton()
         {
             // TODO add 'subscribe' alternate for installed mods
-            Browser.Instance.OpenUninstallConfirmation(profile);
+            Collection.Instance.OpenUninstallConfirmation(profile.modProfile);
         }
 
         internal void UpdateStatus(ModManagementEventType updatedStatus)
@@ -241,40 +443,40 @@ namespace ModIOBrowser.Implementation
             switch(updatedStatus)
             {
                 case ModManagementEventType.InstallStarted:
-                    installStatus.text = "Installing";
+                    Translation.Get(installStatusTranslation, "Installing", installStatus);
                     break;
                 case ModManagementEventType.Installed:
-                    installStatus.text = "Installed";
+                    Translation.Get(installStatusTranslation, "Installed", installStatus);
                     break;
                 case ModManagementEventType.InstallFailed:
                     installStatus.gameObject.SetActive(false);
                     errorInstalling.SetActive(true);
                     break;
                 case ModManagementEventType.DownloadStarted:
-                    installStatus.text = "Downloading";
+                    Translation.Get(installStatusTranslation, "Downloading", installStatus);
                     break;
                 case ModManagementEventType.Downloaded:
-                    installStatus.text = "Ready to install";
+                    Translation.Get(installStatusTranslation, "Ready to install", installStatus);
                     break;
                 case ModManagementEventType.DownloadFailed:
                     installStatus.gameObject.SetActive(false);
                     errorInstalling.SetActive(true);
                     break;
                 case ModManagementEventType.UninstallStarted:
-                    installStatus.text = "Uninstalling";
+                    Translation.Get(installStatusTranslation, "Uninstalling", installStatus);
                     break;
                 case ModManagementEventType.Uninstalled:
-                    installStatus.text = "Uninstalled";
+                    Translation.Get(installStatusTranslation, "Uninstalled", installStatus);
                     break;
                 case ModManagementEventType.UninstallFailed:
                     installStatus.gameObject.SetActive(false);
                     errorInstalling.SetActive(true);
                     break;
                 case ModManagementEventType.UpdateStarted:
-                    installStatus.text = "Updating";
+                    Translation.Get(installStatusTranslation, "Updating", installStatus);
                     break;
                 case ModManagementEventType.Updated:
-                    installStatus.text = "Installed";
+                    Translation.Get(installStatusTranslation, "Updated", installStatus);
                     break;
                 case ModManagementEventType.UpdateFailed:
                     installStatus.gameObject.SetActive(false);
@@ -292,13 +494,13 @@ namespace ModIOBrowser.Implementation
             }
 
             progressBarFill.fillAmount = handle.Progress;
-            
+
             switch(handle.OperationType)
             {
                 case ModManagementOperationType.None_AlreadyInstalled:
                     progressBar.SetActive(false);
                     installStatus.gameObject.SetActive(true);
-                    installStatus.text = "Installed";
+                    Translation.Get(installStatusTranslation, "Installed", installStatus);
                     break;
                 case ModManagementOperationType.None_ErrorOcurred:
                     progressBar.SetActive(false);
@@ -308,25 +510,26 @@ namespace ModIOBrowser.Implementation
                 case ModManagementOperationType.Install:
                     progressBar.SetActive(true);
                     installStatus.gameObject.SetActive(false);
+
                     progressBarPercentageText.text = $"{(int)(handle.Progress * 100)}%";
-                    progressBarText.text = $"Installing...";
+                    Translation.Get(progressBarTextTranslation, "Installing...", progressBarText);
                     break;
                 case ModManagementOperationType.Download:
                     progressBar.SetActive(true);
                     installStatus.gameObject.SetActive(false);
                     progressBarPercentageText.text = $"{(int)(handle.Progress * 100)}%";
-                    progressBarText.text = $"Downloading...";
+                    Translation.Get(progressBarTextTranslation, "Downloading...", progressBarText);
                     break;
                 case ModManagementOperationType.Uninstall:
                     progressBar.SetActive(false);
                     installStatus.gameObject.SetActive(true);
-                    installStatus.text = "Uninstalling";
+                    Translation.Get(progressBarTextTranslation, "Uninstalling", progressBarText);
                     break;
                 case ModManagementOperationType.Update:
                     progressBar.SetActive(true);
                     installStatus.gameObject.SetActive(false);
                     progressBarPercentageText.text = $"{(int)(handle.Progress * 100)}%";
-                    progressBarText.text = $"Updating...";
+                    Translation.Get(progressBarTextTranslation, "Updating...", progressBarText);
                     break;
             }
         }
