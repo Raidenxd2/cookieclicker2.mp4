@@ -1,63 +1,106 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using ModIOBrowser;
 using ModIOBrowser.Implementation;
+using TMPro;
+using ModIO.Implementation;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ExampleTitleScene : MonoBehaviour
+#if UNITY_PS5 || UNITY_PS4
+using Sony.NP;
+using PSNSample;
+#endif
+
+namespace Plugins.mod.io.UI.Examples
 {
-    [SerializeField] Selectable DefaultSelection;
 
-    public string verticalControllerInput = "Vertical";
-    public List<string> mouseInput = new List<string>();
-
-    void Start()
+    public class ExampleTitleScene : MonoBehaviour
     {
-        OpenTitle();
-    }
+        [SerializeField] Selectable DefaultSelection;
+        [SerializeField] private ExampleSettingsPanel exampleSettingsPanel;
+        public string verticalControllerInput = "Vertical";
+        public List<string> mouseInput = new List<string>();
+        public MultiTargetDropdown languageSelectionDropdown;
 
-    public void OpenMods()
-    {
-        // Assign the 'GoBackToTitleScene' method as the onClose method so we can maintain a focused
-        // selectable highlight if we're on controller
-        ModIOBrowser.Browser.Instance.gameObject.SetActive(true);
-        ModIOBrowser.Browser.OpenBrowser(OpenTitle);
-        gameObject.transform.parent.gameObject.SetActive(false);
-    }
-
-    public void OpenTitle()
-    {
-        ModIOBrowser.Browser.Instance.gameObject.SetActive(false);
-        gameObject.transform.parent.gameObject.SetActive(true);
-        DefaultSelection.Select();
-    }
-
-    public void Quit()
-    {
-        Application.Quit();
-    }
-
-    public void DeselectOtherTitles()
-    {
-        EventSystem.current.SetSelectedGameObject(null);
-    }
-
-    private void Update()
-    {
-        if(Input.GetAxis(verticalControllerInput) != 0f)
+        void Start()
         {
-            //Hide mouse
-            Cursor.lockState = CursorLockMode.Locked;
+            OpenTitle();
 
-            if(EventSystem.current.currentSelectedGameObject == null)
-            {
-                DefaultSelection.Select();
-            }
+            languageSelectionDropdown.gameObject.SetActive(false);
+            StartCoroutine(SetupTranslationDropDown());
         }
-        else if(mouseInput.Any(x => Input.GetAxis(x) != 0))
+
+        IEnumerator SetupTranslationDropDown()
         {
-            Cursor.lockState = CursorLockMode.None;
+            while(!TranslationManager.SingletonIsInstantiated())
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+
+            languageSelectionDropdown.gameObject.SetActive(true);
+            languageSelectionDropdown.ClearOptions();
+
+            languageSelectionDropdown.AddOptions(Enum.GetNames(typeof(TranslatedLanguages))
+                .Select(x => new TMP_Dropdown.OptionData(x.ToString()))
+                .ToList());
+
+            languageSelectionDropdown.value = (int)TranslationManager.Instance.SelectedLanguage;
+        }
+
+        public void OnTranslationDropdownChange()
+        {
+            TranslationManager.Instance.ChangeLanguage((TranslatedLanguages)languageSelectionDropdown.value);
+        }
+
+        public void OpenMods()
+        {
+            //Browser is now opened via BrowserSpawnIn.SpawnIn, also connected to the button which activates this
+            gameObject.transform.parent.gameObject.SetActive(false);
+        }
+
+        public void OpenSettings()
+        {
+            exampleSettingsPanel.ActivatePanel(true);
+        }
+
+        public void OpenTitle()
+        {
+            //Browser.Instance.gameObject needs to stay on so that translations, glyphsettings etc
+            //can initialize
+            gameObject.transform.parent.gameObject.SetActive(true);
+            DefaultSelection.Select();
+        }
+
+        public void Quit()
+        {
+            Application.Quit();
+        }
+
+        public void DeselectOtherTitles()
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+
+        private void Update()
+        {
+            if(Input.GetAxis(verticalControllerInput) != 0f)
+            {
+                //Hide mouse
+                Cursor.lockState = CursorLockMode.Locked;
+
+                if(EventSystem.current.currentSelectedGameObject == null)
+                {
+                    DefaultSelection.Select();
+                }
+            }
+            else if(mouseInput.Any(x => Input.GetAxis(x) != 0))
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
     }
 }

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using ModIO.Implementation.API.Objects;
+using ModIO.Implementation.API.Requests;
+using ModIO.Implementation.Wss.Messages;
+using ModIO.Implementation.Wss.Messages.Objects;
 using Newtonsoft.Json.Utilities;
 using UnityEngine;
- 
+
 namespace ModIO.Implementation.API
 {
 	/// <summary>
@@ -45,6 +48,28 @@ namespace ModIO.Implementation.API
 			AotHelper.EnsureList<KeyValuePair<string, string>>();
 			AotHelper.EnsureList<ModStats>();
 			AotHelper.EnsureList<DateTime>();
+			AotHelper.EnsureList<RatingObject>();
+			AotHelper.EnsureList<ModDependenciesObject>();
+			AotHelper.EnsureList<GameMonetizationTeamObject>();
+			AotHelper.EnsureList<MonetizationTeamAccountsObject>();
+
+            // Marketplace and IAP
+            AotHelper.EnsureList<EntitlementObject>();
+            AotHelper.EnsureList<EntitlementWalletObject>();
+            AotHelper.EnsureList<EntitlementDetailsObject>();
+            AotHelper.EnsureList<WalletObject>();
+            AotHelper.EnsureList<CheckoutProcessObject>();
+
+			// Wss messages
+			AotHelper.EnsureList<WssMessage>();
+			AotHelper.EnsureList<WssMessages>();
+
+			// Wss objects
+			AotHelper.EnsureList<WssLoginSuccess>();
+			AotHelper.EnsureList<WssErrorObject>();
+			AotHelper.EnsureList<WssDeviceLoginRequest>();
+			AotHelper.EnsureList<WssDeviceLoginResponse>();
+
 		}
 	}
 }

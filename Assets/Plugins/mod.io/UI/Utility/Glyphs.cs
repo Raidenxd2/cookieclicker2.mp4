@@ -1,102 +1,64 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using ModIO.Util;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace ModIOBrowser.Implementation
 {
+    class MessageGlyphUpdate : ISimpleMessage { }
 
-    class Glyphs : SimpleMonoSingleton<Glyphs>
-    {        
-        public enum GlyphPlatforms
-        {
-            PC,
-            XBOX,
-            PLAYSTATION_4,
-            PLAYSTATION_5,
-            NINTENDO_SWITCH
-        }
-
-        public enum Glyph
-        {            
-            //Playstation / Switch / Xbox:
-
-            //X / B / A
-            ACTION_BUTTONS_BOTTOM,
-
-            //Square / Y / X
-            ACTION_BUTTONS_LEFT,
-
-            //Circle / A / B
-            ACTION_BUTTONS_RIGHT,
-
-            //Triangle / X / Y
-            ACTION_BUTTONS_UP,
-
-            //This is an image of the button which the glyph resides on
-            ACTION_BUTTONS_BACKGROUND,
-
-            //L1 / L / LB
-            LB,
-            LB_Background,
-
-            //R1 / R / RB
-            RB,
-            RB_Background,
-
-            //L2 / LZ / LT
-            LT,
-            LT_Background,
-
-            //R2 / RZ / RT
-            RT,
-            RT_Background,
-
-            //Burger / + / Burger
-            MENU,
-            MENU_Background,
-
-            RightStick,
-            RightStickBackground
-        }
-
-        public ColorScheme colorScheme;
-        public GlyphPlatforms platformType;
+    class Glyphs : SelfInstancingMonoSingleton<Glyphs>
+    {
+        private ColorScheme colorScheme;
+        public GlyphPlatforms PlatformType { get; internal set; }
 
         public Color glyphColorFallback;
         public Sprite fallbackSprite;
         public Color fallbackColor = Color.white;
 
-        [NonSerialized]
-        public bool ready = false;
-
-
-        protected override void Awake()
-        {
-            base.Awake();
-        }
-
+        private bool hasStarted = false;
+        
         private void Start()
         {
-            if(colorScheme == null)
+            colorScheme = SharedUi.colorScheme;
+            if(this.PlatformType == default)
+                ChangeGlyphs(SharedUi.settings.GlyphPlatform);
+        }
+
+        public void SetColor(ColorSetterType colorSetter, Action<Color> setter)
+        {
+            StartCoroutine(InternalSetColor(colorSetter, setter));
+        }
+
+        private IEnumerator InternalSetColor(ColorSetterType colorSetter, Action<Color> setter)
+        {
+            while(!hasStarted)
             {
-                colorScheme = Browser.Instance.colorScheme;                
+                yield return new WaitForEndOfFrame();
             }
 
-            ready = true;
+            setter(GetColor(colorSetter));
         }
 
         public Color GetColor(ColorSetterType colorSetter)
         {
             Color color = colorScheme.GetSchemeColor(colorSetter);
-
-            if(color == default(Color))
-            {
-                color = fallbackColor;
-            }
-
-            return color;
+            return color == default(Color) ? fallbackColor : color;
         }
+
+        public void ChangeGlyphs(GlyphPlatforms platform)
+        {
+            PlatformType = platform;
+            SimpleMessageHub.Instance.Publish(new MessageGlyphUpdate());
+        }
+
+        public void ChangeToPc() => ChangeGlyphs(GlyphPlatforms.PC);
+        public void ChangeToXbox() => ChangeGlyphs(GlyphPlatforms.XBOX);
+        public void ChangeToNintendoSwitch() => ChangeGlyphs(GlyphPlatforms.NINTENDO_SWITCH);
+        public void ChangeToPs4() => ChangeGlyphs(GlyphPlatforms.PLAYSTATION_4);
+        public void ChangeToPs5() => ChangeGlyphs(GlyphPlatforms.PLAYSTATION_5);
     }
 }

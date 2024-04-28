@@ -19,14 +19,15 @@ namespace ModIOBrowser.Implementation
         public RectTransform DefaultViewportContainer;
         public RectTransform HorizontalViewportContainer;
 
-
+#pragma warning disable 0649
+        //This variable is infact allocated!
         static IEnumerator HorizontalTransitionCoroutine;
-        static IEnumerator VerticalTransitionCoroutine;
+#pragma warning restore 0649
 
         public void OnSelect(BaseEventData eventData)
         {
             // This may be true when using mouse and keyboard
-            if(Browser.mouseNavigation)
+            if(InputNavigation.Instance.mouseNavigation)
             {
                 return;
             }
@@ -58,7 +59,7 @@ namespace ModIOBrowser.Implementation
             RectTransform rt = transform as RectTransform;
             RectTransformOverlap rto = new RectTransformOverlap(rt);
 
-            RectTransformOverlap viewport = new RectTransformOverlap(Viewport ?? Browser.Instance.BrowserPanel.transform as RectTransform);
+            RectTransformOverlap viewport = new RectTransformOverlap(Viewport ?? Home.Instance.BrowserPanel.transform as RectTransform);
 
             if(rto.IsOutsideOfRectX(viewport, PercentPaddingHorizontal))
             {
@@ -83,7 +84,7 @@ namespace ModIOBrowser.Implementation
             RectTransform rt = transform as RectTransform;
             RectTransformOverlap rto = new RectTransformOverlap(rt);
 
-            RectTransformOverlap viewport = new RectTransformOverlap(Viewport ?? Browser.Instance.BrowserPanel.transform as RectTransform);
+            RectTransformOverlap viewport = new RectTransformOverlap(Viewport ?? Home.Instance.BrowserPanel.transform as RectTransform);
 
             if(rto.IsOutsideOfRectY(viewport, PercentPaddingVertical))
             {

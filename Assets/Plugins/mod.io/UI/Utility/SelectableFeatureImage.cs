@@ -11,22 +11,18 @@ namespace ModIOBrowser.Implementation
         {
             if(eventData.moveDir == MoveDirection.Left)
             {
-                Browser.Instance.PageFeaturedRowLeft();
+                Home.Instance.PageFeaturedRow(false);
             }
             else if(eventData.moveDir == MoveDirection.Right)
             {
-                Browser.Instance.PageFeaturedRowRight();
+                Home.Instance.PageFeaturedRow(true);
             }
         }
 
         public void OnSelect(BaseEventData eventData)
-        {
-            //ScrollRectViewHandler.CheckSelectionVerticalVisibility(transform as RectTransform);
-            Browser.Instance.isFeaturedItemSelected = true;
-        }
+            => Home.Instance.FeaturedItemSelect(true);
+
         public void OnDeselect(BaseEventData eventData)
-        {
-            Browser.Instance.isFeaturedItemSelected = false;
-        }
+            => Home.Instance.FeaturedItemSelect(false);
     }
 }

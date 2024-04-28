@@ -1,1 +1,0 @@
-playerName[0],Cookies[1],CPS[2],CPC[3],Autoclickers[4],AutoclickerPrice[5],Doublecookies[6],DoublecookiePrice[7],Grandmas[8],GrandmaPrice[9],Rebirths[10]

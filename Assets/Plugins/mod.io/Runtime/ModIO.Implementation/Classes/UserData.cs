@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using ModIO.Implementation.API;
 using ModIO.Implementation.API.Objects;
+using ModIO.Implementation.Wss.Messages.Objects;
 
 namespace ModIO.Implementation
 {
@@ -18,6 +19,8 @@ namespace ModIO.Implementation
         /// <summary>OAuthToken assigned to the user.</summary>
         public string oAuthToken;
 
+        public AuthenticationServiceProvider currentServiceProvider = AuthenticationServiceProvider.None;
+
         public long oAuthExpiryDate;
 
         /// <summary>Has the token been rejected.</summary>
@@ -32,6 +35,8 @@ namespace ModIO.Implementation
         /// </summary>
         public UserObject userObject;
 
+        public string rootLocalStoragePath;
+
 #endregion // Fields
 
         /// <summary>Convenience wrapper for determining if a valid token is in use.</summary>
@@ -40,27 +45,38 @@ namespace ModIO.Implementation
             return (!string.IsNullOrEmpty(oAuthToken) && !oAuthTokenWasRejected);
         }
 
-        public async Task SetUserObject(UserObject user)
+        public void SetUserObject(UserObject user)
         {
             userObject = user;
             ModCollectionManager.AddUserToRegistry(user);
-            await DataStorage.SaveUserData();
+            DataStorage.SaveUserData();
         }
 
-        public async Task ClearUser()
+        public void ClearUser()
         {
             userObject = default;
             ClearAuthenticatedSession();
-            await DataStorage.SaveUserData();
+            DataStorage.SaveUserData();
         }
 
         /// <summary>Convenience wrapper that sets OAuthToken and clears rejected flag.</summary>
-        public async Task SetOAuthToken(AccessTokenObject newToken)
+        public void SetOAuthToken(AccessTokenObject newToken, AuthenticationServiceProvider serviceProvider)
+        {
+            ResponseCache.ClearCache();
+            currentServiceProvider = serviceProvider;
+            oAuthToken = newToken.access_token;
+            oAuthExpiryDate = newToken.date_expires;
+            oAuthTokenWasRejected = false;
+            DataStorage.SaveUserData();
+        }
+
+        /// <summary>Convenience wrapper that sets OAuthToken and clears rejected flag.</summary>
+        public void SetOAuthToken(WssLoginSuccess newToken)
         {
             oAuthToken = newToken.access_token;
             oAuthExpiryDate = newToken.date_expires;
             oAuthTokenWasRejected = false;
-            await DataStorage.SaveUserData();
+            DataStorage.SaveUserData();
         }
 
         public void SetOAuthTokenAsRejected()

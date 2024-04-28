@@ -1,24 +1,17 @@
-﻿using System;
+﻿using ModIO.Implementation.API.Objects;
 
 namespace ModIO.Implementation.API.Requests
 {
+
     internal static class GetMod
     {
-        // public struct ResponseSchema
-        // {
-        //     // (NOTE): mod.io returns a ModObject as the schema.
-        //     // This schema will only be used if the server schema changes or gets expanded on
-        // }
-
-        public static readonly RequestConfig Template =
-            new RequestConfig { requireAuthToken = false, canCacheResponse = true,
-                                  requestResponseType = WebRequestResponseType.Text,
-                                  requestMethodType = WebRequestMethodType.GET };
-
-        public static string URL(long modId)
+        public static WebRequestConfig<ModObject> Request(long modId)
         {
-            return $"{Settings.server.serverURL}{@"/games/"}"
-                   + $"{Settings.server.gameId}{@"/mods/"}{modId}?";
+            return new WebRequestConfig<ModObject>()
+            {
+                Url = $"{Settings.server.serverURL}{@"/games/"}{Settings.server.gameId}{@"/mods/"}{modId}?",
+                RequestMethodType = "GET"
+            };
         }
     }
 }

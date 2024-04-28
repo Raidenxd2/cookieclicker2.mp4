@@ -2,7 +2,6 @@
 using System.IO;
 using System.Threading.Tasks;
 using ICSharpCode.SharpZipLib.Zip;
-using JetBrains.Annotations;
 using UnityEngine;
 
 namespace ModIO.Implementation
@@ -13,19 +12,14 @@ namespace ModIO.Implementation
     /// </summary>
     internal class ExtractOperation : IModIOZipOperation
     {
-        Task<Result> operation;
-
-        public Task Operation => operation;
-
         public bool cancel;
         public long modId;
         public long fileId;
         public ProgressHandle progressHandle;
 
-        float currentEntryProgress;
+        Task IModIOZipOperation.GetOperation() => null;
 
-        public ExtractOperation(long modId, long fileId,
-                                [CanBeNull] ProgressHandle progressHandle = null)
+        public ExtractOperation(long modId, long fileId,  ProgressHandle progressHandle = null)
         {
             this.modId = modId;
             this.fileId = fileId;
@@ -34,8 +28,8 @@ namespace ModIO.Implementation
 
         public async Task<Result> Extract()
         {
-            return await DataStorage.taskRunner.AddTask(TaskPriority.HIGH, 1, 
-                async () => await ExtractAll());
+            return await DataStorage.taskRunner.AddTask(TaskPriority.HIGH, 1,
+                async () => await ExtractAll(), true);
         }
 
         // ---------[ Interface ]---------
@@ -43,22 +37,29 @@ namespace ModIO.Implementation
         async Task<Result> ExtractAll()
         {
             Logger.Log(LogLevel.Verbose, $"EXTRACTING [{modId}_{fileId}]");
-
-            Result result = ResultBuilder.Unknown;
-
+            
+            // First we need to check that we have enough disk space to complete this operation
+            Result result = await IsThereEnoughSpaceForExtracting();
+            if(!result.Succeeded())
+            {
+                return result;
+            }
+                
             using(Stream fileStream = DataStorage.OpenArchiveReadStream(modId, fileId, out result))
             {
                 if(result.Succeeded())
                 {
-                    long max = fileStream.Length;
-
                     try
                     {
+                        long max = fileStream.Length;
+
                         using(ZipInputStream stream = new ZipInputStream(fileStream))
                         {
-                            stream.IsStreamOwner = false;
-                            
                             ZipEntry entry;
+
+
+                            stream.IsStreamOwner = false;
+
                             while((entry = stream.GetNextEntry()) != null)
                             {
                                 if(!string.IsNullOrEmpty(entry.Name))
@@ -75,12 +76,13 @@ namespace ModIO.Implementation
                                     {
                                         continue;
                                     }
+
                                     using(Stream streamWriter =
                                         DataStorage.OpenArchiveEntryOutputStream(entry.Name,
                                             out result))
                                     {
                                         if(result.Succeeded())
-                                        {                                            
+                                        {
                                             int size;
                                             byte[] data = new byte[1048760]; // 1 MiB buffer size
                                             while(true)
@@ -93,7 +95,7 @@ namespace ModIO.Implementation
                                                     break;
                                                 }
 
-                                                // These don't need to be async as it's already running 
+                                                // These don't need to be async as it's already running
                                                 // on another thread (consider testing this on larger
                                                 // mods, eg 5 GiB size mods)
 
@@ -137,27 +139,32 @@ namespace ModIO.Implementation
             //-----------------------------------------------------------------------------------//
             //                            MOVE FINISHED EXTRACTION
             //-----------------------------------------------------------------------------------//
-            try
+            if (!cancel)
             {
-                result = DataStorage.MakeInstallationFromExtractionDirectory(modId, fileId);
-                if(!result.Succeeded())
+                try
                 {
+                    result = DataStorage.MakeInstallationFromExtractionDirectory(modId, fileId);
+                    if(!result.Succeeded())
+                    {
+                        cancel = true;
+                    }
+                }
+                catch(Exception e)
+                {
+                    Logger.Log(LogLevel.Error,
+                        $"Unhandled exception extracting file. MODFILE [{modId}_{fileId}. Exception: {e.Message}");
                     cancel = true;
                 }
             }
-            catch(Exception e)
-            {
-                Logger.Log(LogLevel.Error,
-                    $"Unhandled exception extracting file. MODFILE [{modId}_{fileId}. Exception: {e.Message}");
-                cancel = true;
-            }
 
+            //--------------------------------------------------------------------------------------
+            // FINISH and/or CLEANUP
+            
             if(cancel)
             {
                 return CancelAndCleanup(result);
             }
-            
-            // End
+
             Logger.Log(LogLevel.Verbose,
                        $"EXTRACTED RESULT [{result.code}] MODFILE [{modId}_{fileId}]");
             return result;
@@ -176,20 +183,71 @@ namespace ModIO.Implementation
                 // If result wasn't assigned, we have been cancelled
                 result = ResultBuilder.Create(ResultCode.Internal_OperationCancelled);
             }
-            
+
             return result;
         }
 
+        async Task<Result> IsThereEnoughSpaceForExtracting()
+        {
+            // Get the extracted size first
+            using(Stream fileStream = DataStorage.OpenArchiveReadStream(modId, fileId, out Result result))
+            {
+                if(result.Succeeded())
+                {
+                    try
+                    {
+                        using(ZipInputStream stream = new ZipInputStream(fileStream))
+                        {
+                            long uncompressedSize = 0;
+                            ZipEntry entry;
+
+                            while((entry = stream.GetNextEntry()) != null)
+                            {
+                                if(entry.Size == -1)
+                                {
+                                    Logger.Log(LogLevel.Verbose, $"Size Unknown for file in zip ({entry.Name}).");
+                                }
+                                else
+                                {
+                                    uncompressedSize += entry.Size;
+                                }
+                            }
+
+                            // We may need to check for both temp and persistent because we extract
+                            // into the temp directory and then we move the file to persistent when
+                            // we confirm the md5 is correct
+                            if(!await DataStorage.persistent.IsThereEnoughDiskSpaceFor(uncompressedSize)
+                               || !await DataStorage.temp.IsThereEnoughDiskSpaceFor(uncompressedSize))
+                            {
+                                return ResultBuilder.Create(ResultCode.IO_InsufficientStorage);
+                            }
+
+                            return ResultBuilder.Success;
+                        }
+                    }
+                    catch(Exception e)
+                    {
+                        Logger.Log(LogLevel.Error,
+                            $"Unhandled exception trying to read archive's extract size. MODFILE [{modId}_{fileId}. Exception: {e.Message}");
+                        return ResultBuilder.Create(ResultCode.IO_FileCouldNotBeRead);
+                    }
+                }
+                Logger.Log(LogLevel.Error,
+                    $"Unable to read archive file. MODFILE [{modId}_{fileId}. Result: [{result.code}]{ResultCode.GetErrorCodeMeaning(result.code)}");
+                return ResultBuilder.Create(ResultCode.IO_FileCouldNotBeRead);
+            }
+        }
+
         // Implemented from IModIOZipOperation interface
-        public void Cancel()
+        void IModIOZipOperation.Cancel()
         {
             cancel = true;
         }
 
-        // Implemented from IDisposable interface
         public void Dispose()
         {
-            operation?.Dispose();
+
         }
+
     }
 }

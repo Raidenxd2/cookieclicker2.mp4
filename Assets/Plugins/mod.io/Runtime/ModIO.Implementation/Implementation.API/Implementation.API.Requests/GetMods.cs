@@ -1,58 +1,25 @@
-﻿using JetBrains.Annotations;
-using ModIO.Implementation.API.Objects;
-using Newtonsoft.Json;
+﻿using ModIO.Implementation.API.Objects;
 
 namespace ModIO.Implementation.API.Requests
 {
     internal static class GetMods
     {
         [System.Serializable]
-        internal class ResponseSchema // TODO see PaginatingRequest<T> and then inherit here
+        public class ResponseSchema : PaginatedResponse<ModObject> { }
+
+        public static WebRequestConfig RequestPaginated(SearchFilter searchFilter)
         {
-            // TODO(@jackson): Investigate other methods of ensuring we deserialize the correct type
-            // Having a Required property helps us to ensure we dont parse the wrong Type T when we
-            // ProcessResponse in RESTAPI.cs
-            [JsonProperty(Required = Required.Always)]
-            internal ModObject[] data;
-
-            [JsonProperty]
-            internal int result_count;
-            [JsonProperty]
-            internal int result_offset;
-            [JsonProperty]
-            internal int result_limit;
-            [JsonProperty]
-            internal int result_total;
-        }
-
-        public static readonly RequestConfig Template =
-            new RequestConfig { requireAuthToken = false, canCacheResponse = true,
-                                  requestResponseType = WebRequestResponseType.Text,
-                                  requestMethodType = WebRequestMethodType.GET };
-
-        public static string URL_Unpaginated([CanBeNull] SearchFilter searchFilter = null)
-        {
-            // Convert filter into string
-            string filter = string.Empty;
-            if(searchFilter != null)
+            var request = new WebRequestConfig
             {
-                filter = FilterUtil.ConvertToURL(searchFilter);
-            }
-
-            return $"{Settings.server.serverURL}{@"/games/"}{Settings.server.gameId}{@"/mods"}?{filter}";
+                Url = PaginatedURL(searchFilter),
+                RequestMethodType = "GET"
+            };
+            
+            return request;
         }
 
-        public static string URL_Paginated([CanBeNull] SearchFilter searchFilter = null)
-        {
-            // Convert filter into string
-            string filter = string.Empty;
-            if(searchFilter != null)
-            {
-                filter = FilterUtil.ConvertToURL(searchFilter);
-                filter = FilterUtil.AddPagination(searchFilter, filter);
-            }
-
-            return $"{Settings.server.serverURL}{@"/games/"}{Settings.server.gameId}{@"/mods"}?{filter}";
-        }
+        static string Url => $"{Settings.server.serverURL}{@"/games/"}{Settings.server.gameId}{@"/mods"}?";
+        public static string UnpaginatedURL(SearchFilter filter) => $"{Url}{FilterUtil.ConvertToURL(filter)}";
+        public static string PaginatedURL(SearchFilter filter) => FilterUtil.AddPagination(filter, UnpaginatedURL(filter));
     }
 }

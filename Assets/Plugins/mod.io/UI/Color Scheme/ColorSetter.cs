@@ -4,10 +4,19 @@ using UnityEngine.UI;
 
 namespace ModIOBrowser
 {
-	internal class ColorSetter : MonoBehaviour
+
+    internal class ColorSetter : MonoBehaviour
 	{
 		public ColorSetterType type;
 		MultiTargetButton button;
+
+		void OnEnable()
+		{
+            if(SharedUi.colorScheme != null)
+            {
+                Refresh(SharedUi.colorScheme);
+            }			
+		}
 
 		void SetGraphicColor(Color color)
 		{
@@ -58,7 +67,8 @@ namespace ModIOBrowser
 					break;
 			}
  #if UNITY_EDITOR
-			EditorUtility.SetDirty(this);
+			if (!Application.isEditor)
+				EditorUtility.SetDirty(this);
  #endif
 		}
 	}

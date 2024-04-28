@@ -1,11 +1,11 @@
 ﻿using System.Collections;
+using ModIO.Util;
 using UnityEngine;
 
 namespace ModIOBrowser.Implementation
 {
-    class CoroutineRunner : SimpleMonoSingleton<CoroutineRunner>
+    class CoroutineRunner : SelfInstancingMonoSingleton<CoroutineRunner>
     {
-        public Coroutine Run(IEnumerator coroutine)
-            => StartCoroutine(coroutine);        
+        public Coroutine Run(IEnumerator coroutine) => StartCoroutine(coroutine);        
     }
 }

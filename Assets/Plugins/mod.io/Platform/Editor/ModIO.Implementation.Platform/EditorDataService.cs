@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -13,11 +12,18 @@ namespace ModIO.Implementation.Platform
     /// <summary>Editor implementation of the data services.</summary>
     internal class EditorDataService : IUserDataService, IPersistentDataService, ITempDataService
     {
-        /// <summary>Root directory for all data services.</summary>
-        public readonly static string GlobalRootDirectory =
-            $@"{Application.persistentDataPath}/mod.io";
+        /// <summary>Root directory for persistent data.</summary>
+        public static readonly string PersistentDataRootDirectory =
+        $"{Application.persistentDataPath}/mod.io";
 
-#region Data
+        /// <summary>Root directory for User Specific data.</summary>
+        public readonly static string UserRootDirectory =
+            $"{Application.persistentDataPath}/UserData/mod.io";
+
+        /// <summary>Root directory for Temporary data.</summary>
+        public readonly static string TempRootDirectory = Application.temporaryCachePath;
+
+        #region Data
 
         /// <summary>Root directory for the data service.</summary>
         string rootDir;
@@ -34,12 +40,12 @@ namespace ModIO.Implementation.Platform
 
 #region Initialization
 
-        /// <summary>Init as IUserDataService.</summary>
-        async Task<Result> IUserDataService.InitializeAsync(string userProfileIdentifier,
-                                                            long gameId, BuildSettings settings)
+/// <summary>Init as IUserDataService.</summary>
+        Result IUserDataService.Initialize(string userProfileIdentifier,
+            long gameId, BuildSettings settings)
         {
             rootDir =
-                $"{GlobalRootDirectory}/{gameId.ToString("00000")}/users/{userProfileIdentifier}";
+                $"{UserRootDirectory}/{gameId.ToString("00000")}/users/{userProfileIdentifier}";
 
             Logger.Log(LogLevel.Verbose, "Initialized EditorUserDataService: " + rootDir);
 
@@ -47,11 +53,11 @@ namespace ModIO.Implementation.Platform
         }
 
         /// <summary>Init as IPersistentDataService.</summary>
-        async Task<Result> IPersistentDataService.InitializeAsync(long gameId,
-                                                                  BuildSettings settings)
+        Result IPersistentDataService.Initialize(long gameId,
+            BuildSettings settings)
         {
             rootDir =
-                $"{GlobalRootDirectory}/{gameId.ToString("00000")}/data";
+                $"{PersistentDataRootDirectory}/{gameId.ToString("00000")}/data";
 
             Logger.Log(LogLevel.Verbose, "Initialized EditorPersistentDataService: " + rootDir);
 
@@ -59,10 +65,10 @@ namespace ModIO.Implementation.Platform
         }
 
         /// <summary>Init as ITempDataService.</summary>
-        async Task<Result> ITempDataService.InitializeAsync(long gameId, BuildSettings settings)
+        Result ITempDataService.Initialize(long gameId, BuildSettings settings)
         {
             rootDir =
-                $"{GlobalRootDirectory}/{gameId.ToString("00000")}/temp";
+                $"{TempRootDirectory}/{gameId.ToString("00000")}/temp";
 
             Logger.Log(LogLevel.Verbose, "Initialized EditorTempDataService: " + rootDir);
 
@@ -76,41 +82,48 @@ namespace ModIO.Implementation.Platform
         /// <summary>Opens a file stream for reading.</summary>
         public ModIOFileStream OpenReadStream(string filePath, out Result result)
         {
-            // DebugUtil.AssertPathValid(filePath, rootDir);
             return SystemIOWrapper.OpenReadStream(filePath, out result);
         }
 
         /// <summary>Opens a file stream for writing.</summary>
         public ModIOFileStream OpenWriteStream(string filePath, out Result result)
         {
-            // DebugUtil.AssertPathValid(filePath, rootDir);
             return SystemIOWrapper.OpenWriteStream(filePath, out result);
         }
 
         /// <summary>Reads an entire file asynchronously.</summary>
         public async Task<ResultAnd<byte[]>> ReadFileAsync(string filePath)
         {
-            // DebugUtil.AssertPathValid(filePath, rootDir);
             return await SystemIOWrapper.ReadFileAsync(filePath);
+        }
+
+        /// <summary>Reads an entire file asynchronously.</summary>
+        public ResultAnd<byte[]> ReadFile(string filePath)
+        {
+            return SystemIOWrapper.ReadFile(filePath);
         }
 
         /// <summary>Writes an entire file asynchronously.</summary>
         public async Task<Result> WriteFileAsync(string filePath, byte[] data)
         {
-            // DebugUtil.AssertPathValid(filePath, rootDir);
             return await SystemIOWrapper.WriteFileAsync(filePath, data);
         }
 
-        /// <summary>Deletes a file.</summary>
-        public async Task<Result> DeleteFileAsync(string filePath)
+        /// <summary>Writes an entire file asynchronously.</summary>
+        public Result WriteFile(string filePath, byte[] data)
         {
-            throw new NotImplementedException();
+            return SystemIOWrapper.WriteFile(filePath, data);
+        }
+
+        /// <summary>Deletes a file.</summary>
+        public Result DeleteFile(string filePath)
+        {
+            return SystemIOWrapper.DeleteFileGetResult(filePath);
         }
 
         /// <summary>Deletes a directory and its contents recursively.</summary>
         public Result DeleteDirectory(string directoryPath)
         {
-            // DebugUtil.AssertPathValid(directoryPath, rootDir);
             return SystemIOWrapper.DeleteDirectory(directoryPath);
         }
 
@@ -118,13 +131,13 @@ namespace ModIO.Implementation.Platform
         {
             return SystemIOWrapper.MoveDirectory(directoryPath, newDirectoryPath);
         }
-        
+
         public bool TryCreateParentDirectory(string path)
         {
             return SystemIOWrapper.TryCreateParentDirectory(path, out Result _);
         }
 
-        public bool IsThereEnoughDiskSpaceFor(long bytes)
+        public async Task<bool> IsThereEnoughDiskSpaceFor(long bytes)
         {
             // Not implemented for this platform
             return true;
@@ -137,7 +150,6 @@ namespace ModIO.Implementation.Platform
         /// <summary>Determines whether a file exists.</summary>
         public bool FileExists(string filePath)
         {
-            // DebugUtil.AssertPathValid(filePath, rootDir);
             return SystemIOWrapper.FileExists(filePath, out Result r);
         }
 
@@ -148,17 +160,15 @@ namespace ModIO.Implementation.Platform
         }
 
         /// <summary>Gets the size and hash of a file.</summary>
-        public async Task<ResultAnd<(long fileSize, string fileHash)>> GetFileSizeAndHash(
-            string filePath)
+        public Result GetFileSizeAndHash(
+            string filePath, out long fileSize, out string fileHash)
         {
-            // DebugUtil.AssertPathValid(filePath, rootDir);
-            return await SystemIOWrapper.GetFileSizeAndHash(filePath);
+            return SystemIOWrapper.GetFileSizeAndHash(filePath, out fileSize, out fileHash);
         }
 
         /// <summary>Determines whether a directory exists.</summary>
         public bool DirectoryExists(string directoryPath)
         {
-            // DebugUtil.AssertPathValid(directoryPath, rootDir);
             return SystemIOWrapper.DirectoryExists(directoryPath);
         }
 

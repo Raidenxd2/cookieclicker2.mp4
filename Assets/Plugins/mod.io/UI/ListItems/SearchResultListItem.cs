@@ -23,7 +23,6 @@ namespace ModIOBrowser.Implementation
         public GameObject loadingIcon;
         public GameObject failedToLoadIcon;
         public Action imageLoaded;
-        public ModProfile profile;
         public SubscribedProgressTab progressTab;
 
         internal static Dictionary<ModId, SearchResultListItem> listItems = new Dictionary<ModId, SearchResultListItem>();
@@ -35,7 +34,7 @@ namespace ModIOBrowser.Implementation
             {
                 return;
             }
-            Browser.Instance.OpenModDetailsPanel(profile, Browser.Instance.OpenSearchResultsWithoutRefreshing);
+            Details.Instance.Open(profile, SearchResults.Instance.OpenWithoutRefreshing);
         }
 
         void AddToStaticDictionaryCache()
@@ -63,7 +62,7 @@ namespace ModIOBrowser.Implementation
         {
             RemoveFromStaticDictionaryCache();
         }
-        
+
         public void OnSelect(BaseEventData eventData)
         {
             SelectionOverlayHandler.Instance.MoveSelection(this);
@@ -77,15 +76,15 @@ namespace ModIOBrowser.Implementation
         public void OnPointerEnter(PointerEventData eventData)
         {
             // When using mouse we want to disable the viewport restraint from moving the screen
-            Browser.mouseNavigation = true;
-            
+            InputNavigation.Instance.mouseNavigation = true;
+
             EventSystem.current.SetSelectedGameObject(null);
-            Browser.SelectSelectable(selectable, true);
+            InputNavigation.Instance.Select(selectable, true);
         }
 #endregion // MonoBehaviour
 
 #region Overrides
-        
+
         public override void PlaceholderSetup()
         {
             base.PlaceholderSetup();
@@ -96,19 +95,19 @@ namespace ModIOBrowser.Implementation
             gameObject.SetActive(true);
         }
 
-        public override void Setup(ModProfile profile)
+        public override void Setup(ModProfile modProfile)
         {
             base.Setup();
-            this.profile = profile;
+            this.profile = modProfile;
             image.color = Color.clear;
             loadingIcon.SetActive(true);
             failedToLoadIcon.SetActive(false);
-            title.text = profile.name;
+            title.text = modProfile.name;
             //downloads.text = GenerateHumanReadableString(profile.stats.downloadsTotal);
-            ModIOUnity.DownloadTexture(profile.logoImage_320x180, SetIcon);
+            ModIOUnity.DownloadTexture(modProfile.logoImage320x180, SetIcon);
             gameObject.SetActive(true);
 
-            progressTab.Setup(profile);
+            progressTab.Setup(modProfile);
 
             AddToStaticDictionaryCache();
         }
@@ -116,12 +115,12 @@ namespace ModIOBrowser.Implementation
         public override void SetViewportRestraint(RectTransform content, RectTransform viewport)
         {
             base.SetViewportRestraint(content, viewport);
-            
+
             viewportRestraint.PercentPaddingVertical = 0.3f;
         }
-        
+
 #endregion // Overrides
-        
+
         public void SetAsLastRowItem()
         {
             viewportRestraint.PercentPaddingVertical = 0.375f;
@@ -131,10 +130,12 @@ namespace ModIOBrowser.Implementation
         {
             if(textureAnd.result.Succeeded() && textureAnd.value != null)
             {
-                image.sprite = Sprite.Create(textureAnd.value, 
-                    new Rect(Vector2.zero, new Vector2(textureAnd.value.width, textureAnd.value.height)), Vector2.zero);
-                image.color = Color.white;
-                loadingIcon.SetActive(false);
+                QueueRunner.Instance.AddSpriteCreation(textureAnd.value, sprite =>
+                {
+                    image.sprite = sprite;
+                    image.color = Color.white;
+                    loadingIcon.SetActive(false);
+                });
             }
             else
             {

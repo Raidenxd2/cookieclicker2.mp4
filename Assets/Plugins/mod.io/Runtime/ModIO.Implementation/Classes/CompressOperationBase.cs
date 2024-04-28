@@ -2,7 +2,6 @@
 using System.IO;
 using System.Threading.Tasks;
 using ICSharpCode.SharpZipLib.Zip;
-using JetBrains.Annotations;
 
 namespace ModIO.Implementation
 {
@@ -19,12 +18,7 @@ namespace ModIO.Implementation
             this.progressHandle = progressHandle;
         }
 
-        public Task Operation
-        {
-            get {
-                return _operation;
-            }
-        }
+        public Task GetOperation() => _operation;
 
         public virtual void Cancel() { }
 
@@ -33,25 +27,25 @@ namespace ModIO.Implementation
             _operation?.Dispose();
         }
 
-        public virtual Task<ResultAnd<MemoryStream>> Compress()
+        public virtual Task<Result> Compress(Stream stream)
         {
             throw new NotImplementedException();
         }
 
-        protected async Task CompressStream(string entryName, Stream fileStream, ZipOutputStream zipStream)
+        protected async Task CompressStream(string entryName, Stream stream, ZipOutputStream zipStream)
         {
             ZipEntry newEntry = new ZipEntry(entryName);
- 
+
             zipStream.PutNextEntry(newEntry);
 
-            int size;
-            long max = fileStream.Length;
+            long max = stream.Length;
             byte[] data = new byte[4096];
-            while(true)
+            stream.Position = 0;
+            while(stream.Position < stream.Length)
             {
                 // TODO @Jackson ensure ReadAsync and WriteAsync are
                 // implemented on all filestream wrappers
-                size = await fileStream.ReadAsync(data, 0, data.Length);
+                int size = await stream.ReadAsync(data, 0, data.Length);
                 if(size > 0)
                 {
                     await zipStream.WriteAsync(data, 0, size);
@@ -71,16 +65,16 @@ namespace ModIO.Implementation
         }
 
 
-        protected ResultAnd<MemoryStream> Abort(ResultAnd<MemoryStream> resultAnd, [CanBeNull] string details)
+        protected Result Abort(Result result, string details)
         {
             Logger.Log(LogLevel.Verbose,
-               $"FAILED COMPRESSION [{resultAnd.result.code}] {details}");
+               $"FAILED COMPRESSION [{result.code}] {details}");
 
-            resultAnd.result = sizeLimitReached
+            result = sizeLimitReached
                                    ? ResultBuilder.Create(ResultCode.IO_FileSizeTooLarge)
                                    : ResultBuilder.Create(ResultCode.Internal_OperationCancelled);
 
-            return resultAnd;
+            return result;
         }
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using ModIO.Util;
 
 namespace ModIOBrowser.Implementation
 {
@@ -18,16 +19,15 @@ namespace ModIOBrowser.Implementation
         [SerializeField] GameObject loadingIcon;
         [SerializeField] GameObject failedToLoadIcon;
         [SerializeField] GameObject failedToLoadMod;
-        public ModProfile profile;
 
         public static DownloadQueueListItem currentDownloadQueueListItem;
 
         // TODO @Steve this may have to be hooked up for mouse & keyboard support
         public void OpenModDetailsForThisProfile()
         {
-            Browser.Instance.OpenModDetailsPanel(profile, delegate { Browser.Instance.OpenDownloadQueuePanel(); });
+            Details.Instance.Open(profile, delegate { DownloadQueue.Instance.OpenDownloadQueuePanel(); });
         }
-        
+
 #region Overrides
         public override void SetViewportRestraint(RectTransform content, RectTransform viewport)
         {
@@ -45,8 +45,8 @@ namespace ModIOBrowser.Implementation
             gameObject.SetActive(true);
             failedToLoadIcon.SetActive(false);
             loadingIcon.SetActive(true);
-            ModIOUnity.DownloadTexture(mod.modProfile.logoImage_320x180, SetIcon);
-            
+            ModIOUnity.DownloadTexture(mod.modProfile.logoImage320x180, SetIcon);
+
             LayoutRebuilder.ForceRebuildLayoutImmediate(modName.transform.parent as RectTransform);
         }
 #endregion // Overrides
@@ -55,8 +55,11 @@ namespace ModIOBrowser.Implementation
         {
             if(textureAnd.result.Succeeded() && textureAnd.value != null)
             {
-                modLogo.color = Color.white;
-                modLogo.sprite = Sprite.Create(textureAnd.value, new Rect(Vector2.zero, new Vector2(textureAnd.value.width, textureAnd.value.height)), Vector2.zero);
+                QueueRunner.Instance.AddSpriteCreation(textureAnd.value, sprite =>
+                {
+                    modLogo.color = Color.white;
+                    modLogo.sprite = sprite;
+                });
             }
             else
             {
@@ -64,11 +67,11 @@ namespace ModIOBrowser.Implementation
             }
             loadingIcon.SetActive(false);
         }
-        
+
         public void Unsubscribe()
         {
-            Browser.UnsubscribeFromModEvent(profile);
-            Browser.Instance.RefreshDownloadHistoryPanel();
+            Mods.UnsubscribeFromEvent(profile);
+            DownloadQueue.Instance.RefreshDownloadHistoryPanel();
         }
 
         public void OnDeselect(BaseEventData eventData)

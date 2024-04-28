@@ -1,17 +1,18 @@
-﻿using System;
-using ModIO.Implementation.API.Requests;
+﻿using ModIO.Implementation.API.Requests;
 
 namespace ModIO.Implementation
 {
     /// <summary>
     /// Filter Utility methods
-    /// </summary>    
+    /// </summary>
     internal static class FilterUtil
     {
         public static string ConvertToURL(SearchFilter searchFilter)
         {
             // TODO change this to a StringBuilder
             string url = string.Empty;
+            if (searchFilter == null) return url;
+
             string ascendingOrDescending =
                 searchFilter.isSortAscending ? Filtering.Ascending : Filtering.Descending;
             // Set Filtering Order
@@ -19,6 +20,9 @@ namespace ModIO.Implementation
             {
                 case SortModsBy.Name:
                     url += $"&{ascendingOrDescending}name";
+                    break;
+                case SortModsBy.Price:
+                    url += $"&{ascendingOrDescending}price";
                     break;
                 case SortModsBy.Rating:
                     url += $"&{ascendingOrDescending}rating";
@@ -36,16 +40,18 @@ namespace ModIO.Implementation
                     url += $"&{ascendingOrDescending}id";
                     break;
             }
-            // Add Search Phrases
-            foreach(string phrase in searchFilter.searchPhrases)
+
+            if (searchFilter.searchPhrases != null)
             {
-                if(!string.IsNullOrWhiteSpace(phrase))
+                // Add Search Phrases
+                foreach(var s in searchFilter.searchPhrases.Values)
                 {
-                    url += $"&{Filtering.FullTextSearch}{phrase}";
+                    url += s;
                 }
             }
+
             // add tags to filter
-            if(searchFilter.tags.Count > 0)
+            if(searchFilter.tags != null && searchFilter.tags.Count > 0)
             {
                 url += "&tags=";
                 foreach(string tag in searchFilter.tags)
@@ -53,6 +59,26 @@ namespace ModIO.Implementation
                     url += $"{tag},";
                 }
                 url = url.Trim(',');
+            }
+            // add users we are looking for
+            if(searchFilter.users != null && searchFilter.users.Count > 0)
+            {
+                url += "&submitted_by=";
+                foreach(long user in searchFilter.users)
+                {
+                    url += $"{user},";
+                }
+                url = url.Trim(',');
+            }
+            if(!searchFilter.showMatureContent)
+            {
+                url += "&maturity_option=0";
+            }
+
+            // marketplace revenue type
+            if(searchFilter.revenueType != RevenueType.Free)
+            {
+                url += $"&revenue_type={(int)searchFilter.revenueType}";
             }
 
             return url;

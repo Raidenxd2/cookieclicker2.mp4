@@ -52,11 +52,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: dbb85430b976df949b006d3ac7e39f92
-    m_Address: Assets/Textures/UIAtlas.spriteatlas
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dfe76e5753fb3214482cbe9896f1c8a6
     m_Address: Assets/Animations/Loading.anim
     m_ReadOnly: 0

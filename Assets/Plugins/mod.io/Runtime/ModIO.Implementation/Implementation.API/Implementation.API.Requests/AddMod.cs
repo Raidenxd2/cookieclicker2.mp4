@@ -1,68 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
+using System;
+using System.Diagnostics;
 
 namespace ModIO.Implementation.API.Requests
 {
-    internal static class AddMod
+    static class AddMod
     {
-        // public struct ResponseSchema
-        // {
-        //     // (NOTE): mod.io returns a ModObject as the schema.
-        //     // This schema will only be used if the server schema changes or gets expanded on
-        // }
-
-        public static readonly RequestConfig Template =
-            new RequestConfig { requireAuthToken = true,
-                                canCacheResponse = false,
-                                requestResponseType = WebRequestResponseType.Text,
-                                requestMethodType = WebRequestMethodType.POST,
-                                ignoreTimeout = true };
-
-        public static string URL(ModProfileDetails details, out WWWForm form)
+        public static WebRequestConfig Request(ModProfileDetails details)
         {
-            List<KeyValuePair<string, string>> kvps = new List<KeyValuePair<string, string>>();
-
-            kvps.Add(
-                new KeyValuePair<string, string>("visible", details.visible == false ? "0" : "1"));
-            kvps.Add(new KeyValuePair<string, string>("name", details.name));
-            kvps.Add(new KeyValuePair<string, string>("summary", details.summary));
-            kvps.Add(new KeyValuePair<string, string>("description", details.description));
-            kvps.Add(new KeyValuePair<string, string>("name_id", details.name_id));
-            kvps.Add(new KeyValuePair<string, string>("homepage_url", details.homepage_url));
-            kvps.Add(new KeyValuePair<string, string>("stock", details.maxSubscribers.ToString()));
-            kvps.Add(new KeyValuePair<string, string>("maturity_option",
-                                                      details.contentWarning.ToString()));
-            kvps.Add(new KeyValuePair<string, string>("metadata_blob", details.metadata));
-
-            if(details.tags != null)
+            var request = new WebRequestConfig()
             {
-                int count = 0;
-                foreach(string tag in details.tags)
+                Url = $"{Settings.server.serverURL}{@"/games/"}{Settings.server.gameId}{@"/mods"}?",
+                RequestMethodType = "POST",
+                ShouldRequestTimeout = false,
+            };
+
+            request.AddField("visible", details.visible == false ? "0" : "1");
+            request.AddField("name", details.name);
+            request.AddField("summary", details.summary);
+            request.AddField("description", details.description);
+            request.AddField("name_id", details.name_id);
+            request.AddField("homepage_url", details.homepage_url);
+            request.AddField("stock", details.stock.ToString());
+            request.AddField("metadata_blob", details.metadata);
+
+            if (details.maturityOptions != null)
+                request.AddField("maturity_option", ((int)details.maturityOptions).ToString());
+
+            if (details.communityOptions != null)
+                request.AddField("community_options", ((int)details.communityOptions).ToString());
+
+            if (details.price != null)
+                request.AddField("price", ((int)details.price).ToString());
+
+            if (details.tags != null)
+            {
+                for (int i = 0; i < details.tags.Length; i++)
                 {
-                    kvps.Add(new KeyValuePair<string, string>($"tags[{count}]", tag));
-                    count++;
+                    request.AddField($"tags[{i}]", details.tags[i]);
                 }
             }
 
-            form = new WWWForm();
+            if (details.logo != null)
+                request.AddField("logo", "logo.png", details.GetLogo());
 
-            foreach(var kvp in kvps)
-            {
-                if(!string.IsNullOrWhiteSpace(kvp.Key) && !string.IsNullOrWhiteSpace(kvp.Value))
-                {
-                    form.AddField(kvp.Key, kvp.Value);
-                }
-            }
-
-            // Add logo
-            if(details.logo != null)
-            {
-                form.AddBinaryData("logo", details.logo.EncodeToPNG(), "logo.png", null);
-            }
-
-            return $"{Settings.server.serverURL}{@"/games/"}"
-                   + $"{Settings.server.gameId}{@"/mods"}?";
+            return request;
         }
     }
 }

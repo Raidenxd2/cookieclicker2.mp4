@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using ICSharpCode.SharpZipLib.Zip;
-using JetBrains.Annotations;
 
 namespace ModIO.Implementation
 {
@@ -11,7 +9,7 @@ namespace ModIO.Implementation
     {
         public IEnumerable<byte[]> data;
 
-        public CompressOperationMultiple(IEnumerable<byte[]> compressed, [CanBeNull] ProgressHandle progressHandle)
+        public CompressOperationMultiple(IEnumerable<byte[]> compressed, ProgressHandle progressHandle)
             : base(progressHandle)
         {
             this.data = compressed;
@@ -22,35 +20,37 @@ namespace ModIO.Implementation
             cancel = true;
         }
 
-        public override async Task<ResultAnd<MemoryStream>> Compress()
+        public override async Task<Result> Compress(Stream stream)
         {
-            ResultAnd<MemoryStream> resultAnd = new ResultAnd<MemoryStream>();
-            resultAnd.value = new MemoryStream();
+            Result result = ResultBuilder.Unknown;
 
-            using(ZipOutputStream zipStream = new ZipOutputStream(resultAnd.value))
+            int count = 0;
+
+            using(ZipOutputStream zipStream = new ZipOutputStream(stream))
             {
                 zipStream.SetLevel(3);
 
                 foreach(var bytes in data)
                 {
-                    string entryName = Guid.NewGuid().ToString();
+                    string entryName = $"image_{count}.png";
+                    count++;
 
-                    MemoryStream memoryStream = new MemoryStream();
-                    memoryStream.Write(bytes, 0, bytes.Length);
-
-                    await CompressStream(entryName, memoryStream, zipStream);
+                    using(Stream memoryStream = new MemoryStream())
+                    {
+                        await memoryStream.WriteAsync(bytes, 0, bytes.Length);
+                        await CompressStream(entryName, memoryStream, zipStream);
+                    }
 
                     if(cancel || ModIOUnityImplementation.shuttingDown)
                     {
-                        return Abort(resultAnd, $"Aborting while zipping images.");
+                        return Abort(result, $"Aborting while zipping images.");
                     }
                 }
 
                 zipStream.IsStreamOwner = false;
             }
 
-            resultAnd.result = ResultBuilder.Success;
-            return resultAnd;
+            return ResultBuilder.Success;
         }
     }
 }
