@@ -1,3 +1,4 @@
+#if UNITY_ANDROID
 using UnityEngine;
 
 public class GooglePlayGamesManagerGameScene : MonoBehaviour
@@ -17,3 +18,4 @@ public class GooglePlayGamesManagerGameScene : MonoBehaviour
         GooglePlayGamesManager.instance.ViewAchievements();
     }
 }
+#endif

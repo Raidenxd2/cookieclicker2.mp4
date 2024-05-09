@@ -612,9 +612,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 167358762515705856
-    m_Key: 'EXIT_BTN
-
-'
+    m_Key: EXIT_BTN
     m_Metadata:
       m_Items: []
   - m_Id: 167714459552067584
@@ -627,6 +625,26 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 171891396071665664
     m_Key: AGEBLOCK_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185542321738887168
+    m_Key: PCONLY_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185542777273856000
+    m_Key: PCONLY_FULLSCREEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185543356721147904
+    m_Key: PCONLY_WINDOWMODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185543417295286272
+    m_Key: PCONLY_RESOULTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185560684687011840
+    m_Key: PCONLY_AA
     m_Metadata:
       m_Items: []
   m_Metadata:

@@ -1,0 +1,58 @@
+PC V1.2.1:
+
+NOTE: Mac versions of the game are currently NOT supported as of V1.2.1 since I cant build IL2CPP players for Mac on Windows.
+
+The PC version of this game hasn't been updated in a while, so heres all of the update notes from V1.1.0 (the first update) to V1.2.1 (current)
+
+V1.1.0
+Upgrade to Unity 2022.3.20
+Optimizations
+Bug-fixes
+Smaller size
+Higher quality lighting
+Higher quality textures
+Default quality settings have been made better
+French localization
+Ads have been removed
+Removed song "Funni"
+Make Graphy not show on startup
+Test IAP again
+Remove a Beta Content feature
+Remove "Watch AD for 10000 Cookies" button from the Shop
+Remove "Rec Room Save Import" button from the Options menu because it no longer works
+Add Quit Button again
+Rendering should be faster
+Fix lighting on trees
+Higher quality lighting
+Reduce Bloom intensity
+Increase texture quality
+Better loading screen
+Default quality settings have been made better
+Optimized the Cookie model
+Improved lighting on the Cookie object
+
+V1.1.1
+Added new shop item "Cookie Factory"
+New Save Management option
+Fixed where the music would stop
+Fixed some minor bugs
+New Beta Content feature "Research Factory"
+New translation "Japanese"
+Removed "Textures" quality setting
+
+V1.2.0
+Removed Beta Content feature: Limit FPS when not focused
+Removed Battery Saver Mode
+Removed theme "Old Theme"
+Removed Beta Content warning on startup
+Improved performance
+Improved memory usage
+Cloud save support
+
+V1.2.1
+Upgraded to Unity 2022.3.25f1
+Rendering optimizations
+Lighting improvements for Cookie and Drill
+Improved localization system
+Fixed window animations
+Removed language "Pseudo"
