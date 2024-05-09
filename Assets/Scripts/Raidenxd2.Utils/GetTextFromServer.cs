@@ -17,7 +17,7 @@ public class GetTextFromServer : MonoBehaviour
     {
         if (CacheFile.DownloadedFile)
         {
-            var data = File.ReadAllText(Application.persistentDataPath + "/Cache/CookieStore.txt");
+            var data = File.ReadAllText(Application.temporaryCachePath + "/Cache/CookieStore.txt");
             LogSystem.Log(data);
             var dataSplit = data.Split(",");
             Text.text = dataSplit[Item];

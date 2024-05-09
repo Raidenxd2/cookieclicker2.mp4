@@ -692,6 +692,26 @@ MonoBehaviour:
     m_Localized: Your current age setting has blocked this content.
     m_Metadata:
       m_Items: []
+  - m_Id: 185542321738887168
+    m_Localized: PC Only Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185542777273856000
+    m_Localized: Fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185543356721147904
+    m_Localized: Window Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185543417295286272
+    m_Localized: Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185560684687011840
+    m_Localized: Anti-Aliasing (MSAA)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

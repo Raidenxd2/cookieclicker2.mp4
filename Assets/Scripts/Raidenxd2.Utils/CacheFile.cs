@@ -25,15 +25,22 @@ public class CacheFile : MonoBehaviour
     void Start()
     {
         LogSystem.Log(" ");
-        if (Directory.Exists(Application.persistentDataPath + "/Cache") == false)
+
+        if (Directory.Exists(Application.persistentDataPath + "/Cache"))
+        {
+            LogSystem.Log("Old Cache folder found, deleting.");
+            Directory.Delete(Application.persistentDataPath + "/Cache", true);
+        }
+
+        if (Directory.Exists(Application.temporaryCachePath + "/Cache") == false)
         {
             LogSystem.Log("Creating Cache directory...");
-            Directory.CreateDirectory(Application.persistentDataPath + "/Cache");
+            Directory.CreateDirectory(Application.temporaryCachePath + "/Cache");
         }
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
             LogSystem.Log("No internet connection!", LogTypes.Error);
-            if (!File.Exists(Application.persistentDataPath + "/Cache/CookieStore.txt"))
+            if (!File.Exists(Application.temporaryCachePath + "/Cache/CookieStore.txt"))
             {
                 LogSystem.Log("No cache file!", LogTypes.Error);
                 return;
@@ -42,7 +49,7 @@ public class CacheFile : MonoBehaviour
             return;
         }
         LogSystem.Log("Creating new Cache file...");
-        File.Delete(Application.persistentDataPath + "/Cache/CookieStore.txt");
+        File.Delete(Application.temporaryCachePath + "/Cache/CookieStore.txt");
         StartCoroutine(GetText(URL));
     }
 
@@ -58,7 +65,7 @@ public class CacheFile : MonoBehaviour
             var data = www.downloadHandler.text;
             LogSystem.Log("Data from server: " + data);
             
-            File.WriteAllText(Application.persistentDataPath + "/Cache/CookieStore.txt", www.downloadHandler.text);
+            File.WriteAllText(Application.temporaryCachePath + "/Cache/CookieStore.txt", www.downloadHandler.text);
             DownloadedFile = true;
         }
     }

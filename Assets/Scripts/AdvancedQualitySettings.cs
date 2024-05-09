@@ -52,60 +52,80 @@ public class AdvancedQualitySettings : MonoBehaviour
     {
         PostProcessing = Toggle;
         PlayerPrefs.SetInt("GRAPHICS_PostProcessing", boolToInt(Toggle));
+
+        UpdateSettings();
     }
 
     public void LightingToggle(bool Toggle)
     {
         Lighting = Toggle;
         PlayerPrefs.SetInt("GRAPHICS_Lighting", boolToInt(Toggle));
+
+        UpdateSettings();
     }
 
     public void ParticalsToggle(bool Toggle)
     {
         Particals = Toggle;
         PlayerPrefs.SetInt("GRAPHICS_Particles", boolToInt(Toggle));
+
+        UpdateSettings();
     }
 
     public void TreesToggle(bool Toggle)
     {
         Trees = Toggle;
         PlayerPrefs.SetInt("GRAPHICS_Trees", boolToInt(Toggle));
+
+        UpdateSettings();
     }
 
     public void VSyncToggle(bool Toggle)
     {
         VSync = Toggle;
         PlayerPrefs.SetInt("GRAPHICS_VSync", boolToInt(Toggle));
+
+        UpdateSettings();
     }
     
     public void FogToggle(bool Toggle)
     {
         Fog = Toggle;
         PlayerPrefs.SetInt("GRAPHICS_Fog", boolToInt(Toggle));
+
+        UpdateSettings();
     }
 
     public void TexturesToggle(bool Toggle)
     {
         Textures = Toggle;
         PlayerPrefs.SetInt("GRAPHICS_Textures", boolToInt(Toggle));
+
+        UpdateSettings();
     }
 
     public void RenderQualityChange()
     {
         RenderQuality = float.Parse(RenderQualityInput.text);
         PlayerPrefs.SetFloat("GRAPHICS_RenderQuality", RenderQuality);
+
+        UpdateSettings();
     }
 
     public void AOToggle(bool Toggle)
     {
         AO = Toggle;
         PlayerPrefs.SetInt("GRAPHICS_AO", boolToInt(Toggle));
+
+        UpdateSettings();
     }
 
     public void HDRToggle(bool Toggle)
     {
         HDR = Toggle;
         PlayerPrefs.SetInt("GRAPHICS_HDR", boolToInt(Toggle));
+
+        UpdateSettings();
     }
 
     public void GraphicsPresetChanged(int value)
@@ -128,6 +148,8 @@ public class AdvancedQualitySettings : MonoBehaviour
         {
             TextureQuality = 3;
         }
+
+        UpdateSettings();
     }
 
     public void GraphicsAPIChanged(int value)
@@ -171,6 +193,9 @@ public class AdvancedQualitySettings : MonoBehaviour
         AO = intToBool(AOTemp);
         HDR = intToBool(HDRTemp);
         RenderQuality = PlayerPrefs.GetFloat("GRAPHICS_RenderQuality", 1);
+
+        UpdateSettings();
+
         LogSystem.Log("Loaded Graphics Options");
     }
 
@@ -215,18 +240,25 @@ public class AdvancedQualitySettings : MonoBehaviour
         PlayerPrefs.SetInt("GRAPHICS_AO", boolToInt(AO));
         PlayerPrefs.SetInt("GRAPHICS_HDR", boolToInt(HDR));
         PlayerPrefs.SetFloat("GRAPHICS_RenderQuality", RenderQuality);
+
+        UpdateSettings();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateSettings()
     {
         if (PostProcessing)
         {
             pp_normal.SetActive(true);
+            #if UNITY_ANDROID
+            GameCamera_AdditionalData.renderPostProcessing = true;
+            #endif
         }
         else
         {
             pp_normal.SetActive(false);
+            #if UNITY_ANDROID
+            GameCamera_AdditionalData.renderPostProcessing = false;
+            #endif
         }
         if (Lighting)
         {

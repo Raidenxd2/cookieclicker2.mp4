@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2afbc485eda37784b9339ee9edb65471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inType: 27
-  outType: 26
+  inEase: 27
+  outEase: 26
   Time: 0.4
 --- !u!1 &106894220619524469
 GameObject:
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 146.05
+  m_fontSize: 154.13
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

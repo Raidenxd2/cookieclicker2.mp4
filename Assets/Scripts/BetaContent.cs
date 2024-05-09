@@ -88,6 +88,7 @@ public class BetaContent : MonoBehaviour
         infoText.text = "Initializing Unity Gaming Services...";
         await UnityServices.InitializeAsync();
 
+        #if UNITY_ANDROID
         infoText.text = "Signing in...";
 
         try
@@ -159,6 +160,7 @@ public class BetaContent : MonoBehaviour
                 LogSystem.Log("Failed to check if user played the game before.\n" + ex.ToString(), LogTypes.Exception);
             }
         }
+        #endif
 
         infoText.text = "Loading Game...";
         StartCoroutine(LoadGameScene());

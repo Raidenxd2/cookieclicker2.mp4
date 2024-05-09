@@ -1,31 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class WindowAnimations : MonoBehaviour
 {
-
-    public LeanTweenType inType;
-    public LeanTweenType outType;
+    public Ease inEase;
+    public Ease outEase;
     public float Time;
 
     //shows the window
     void OnEnable()
     {
-        LeanTween.scale(gameObject, new Vector3(1, 1, 1), Time).setEase(inType);
-        LeanTween.rotateX(gameObject, 30, Time).setEase(inType);
+        transform.localScale = new Vector3(0, 0, 0);
+        transform.localRotation = Quaternion.Euler(-90, 0, 0);
+
+        transform.DOScale(new Vector3(1, 1, 1), Time).SetEase(inEase);
+        transform.DORotate(new Vector3(30, 0, 0), Time).SetEase(inEase);
     }
 
     //hides the window
     public void HideWindow()
     {
-        LeanTween.scale(gameObject, new Vector3(0, 0, 0), Time).setEase(outType).setOnComplete(HideWindow2);
-        LeanTween.rotateX(gameObject, -90, Time).setEase(outType);
-    }
-
-    //LEAN TWEEN WONT LET ME SETACTIVE IN THE THING
-    public void HideWindow2()
-    {
-        gameObject.SetActive(false);
+        transform.DOScale(new Vector3(0, 0, 0), Time).SetEase(outEase).onComplete = () => gameObject.SetActive(false);
+        transform.DORotate(new Vector3(-90, 0, 0), Time).SetEase(outEase);
     }
 }

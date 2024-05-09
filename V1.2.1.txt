@@ -1,4 +1,8 @@
 V1.2.1:
 Upgraded to Unity 2022.3.25f1
-Performance Optmizations
+Rendering optimizations
+Lighting improvements for Cookie and Drill
+Improved localization system
+Fixed window animations
+You can now clear temp files
 Removed language "Pseudo"
