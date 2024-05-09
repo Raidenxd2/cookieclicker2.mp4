@@ -4,9 +4,7 @@ apply plugin: 'com.android.library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
-    implementation 'com.google.android.libraries.play.games:inputmapping:1.1.0-beta' // Assets/com.google.android.libraries.play.games.inputmapping-1.1.0-beta/Editor/Dependencies.xml:3
     implementation 'com.google.games:gpgs-plugin-support:0.11.01' // Assets/GooglePlayGames/com.google.play.games/Editor/GooglePlayGamesPluginDependencies.xml:11
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.61' // Assets/com.google.android.libraries.play.games.inputmapping-1.1.0-beta/Editor/Dependencies.xml:4
 // Android Resolver Dependencies End
 **DEPS**}
 
