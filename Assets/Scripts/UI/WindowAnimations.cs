@@ -1,4 +1,4 @@
-using DG.Tweening;
+using PrimeTween;
 using UnityEngine;
 
 public class WindowAnimations : MonoBehaviour
@@ -20,7 +20,7 @@ public class WindowAnimations : MonoBehaviour
     //hides the window
     public void HideWindow()
     {
-        transform.DOScale(new Vector3(0, 0, 0), Time).SetEase(outEase).onComplete = () => gameObject.SetActive(false);
+        transform.DOScale(new Vector3(0, 0, 0), Time).SetEase(outEase).OnComplete(() => gameObject.SetActive(false));
         transform.DORotate(new Vector3(-90, 0, 0), Time).SetEase(outEase);
     }
 }

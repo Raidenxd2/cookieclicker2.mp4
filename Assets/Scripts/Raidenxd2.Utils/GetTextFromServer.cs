@@ -1,9 +1,6 @@
-using System.Collections;
 using System.IO;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Networking;
-using LoggerSystem;
 
 public class GetTextFromServer : MonoBehaviour
 {
@@ -18,48 +15,8 @@ public class GetTextFromServer : MonoBehaviour
         if (CacheFile.DownloadedFile)
         {
             var data = File.ReadAllText(Application.temporaryCachePath + "/Cache/CookieStore.txt");
-            LogSystem.Log(data);
             var dataSplit = data.Split(",");
             Text.text = dataSplit[Item];
-        }
-    }
-
-    IEnumerator GetText(string url)
-    {
-        using (UnityWebRequest www = UnityWebRequest.Get(url))
-        {
-            AsyncOperation operation = www.SendWebRequest();
-            while (!operation.isDone)
-            {
-                yield return null;
-            }
-            if (www.result == UnityWebRequest.Result.ConnectionError)
-            {
-                Text.SetText(ErrorText + www.error);
-                yield break;
-            }
-            if (www.responseCode == 404)
-            {
-                Text.SetText(ErrorText + www.error);
-                yield break;
-            }
-            if (www.responseCode == 500)
-            {
-                Text.SetText(ErrorText + www.error);
-                yield break;
-            }
-            if (www.responseCode == 403)
-            {
-                Text.SetText(ErrorText + www.error);
-                yield break;
-            }
-            else
-            {
-                var data = www.downloadHandler.text;
-                LogSystem.Log("Data from server: " + data);
-                var dataSplit = data.Split(",");
-                Text.text = dataSplit[Item];
-            }
         }
     }
 }

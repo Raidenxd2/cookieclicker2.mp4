@@ -26,13 +26,13 @@ namespace Cookieclicker2mp4Google
 public static class GPGSIds
 {
         public const string achievement_10_autoclickers = "CgkIleno69UVEAIQAw"; // <GPGSID>
-        public const string leaderboard_cps = "CgkIleno69UVEAIQBQ"; // <GPGSID>
         public const string leaderboard_cookies = "CgkIleno69UVEAIQAg"; // <GPGSID>
         public const string achievement_10_drills = "CgkIleno69UVEAIQBw"; // <GPGSID>
         public const string achievement_bake_a_cookie = "CgkIleno69UVEAIQAQ"; // <GPGSID>
         public const string achievement_10_grandmas = "CgkIleno69UVEAIQCA"; // <GPGSID>
         public const string achievement_10_cookie_factorys = "CgkIleno69UVEAIQCQ"; // <GPGSID>
-        public const string leaderboard_cpc = "CgkIleno69UVEAIQBg"; // <GPGSID>
+        public const string leaderboard_cookies_per_second = "CgkIleno69UVEAIQBQ"; // <GPGSID>
+        public const string leaderboard_cookies_per_click = "CgkIleno69UVEAIQBg"; // <GPGSID>
         public const string achievement_10_doublecookies = "CgkIleno69UVEAIQBA"; // <GPGSID>
 
 }

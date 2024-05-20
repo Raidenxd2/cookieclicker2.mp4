@@ -647,6 +647,98 @@ MonoBehaviour:
     m_Key: PCONLY_AA
     m_Metadata:
       m_Items: []
+  - m_Id: 187364344928677888
+    m_Key: SAVEDATAWARNING_TEXTURES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 187364375354159104
+    m_Key: SAVEDATAWARNING_LIGHTING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188093104086855680
+    m_Key: CLOUDSAVEENABLE_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188093175771705344
+    m_Key: CLOUDSAVEENABLE_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188231376385617920
+    m_Key: CLOUDSAVEBTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188232584512942080
+    m_Key: ENABLECLOUDSAVEBTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188232634009923584
+    m_Key: DISABLECLOUDSAVEBTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188232685461450752
+    m_Key: DELETECLOUDDATABTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188369631588397056
+    m_Key: DELETECLOUDDATA_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377289905156096
+    m_Key: DELETECLOUDDATA_CLOUDSAVEDISABLEDERROR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377352886824960
+    m_Key: DELETECLOUDDATA_PREPARING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377390446817280
+    m_Key: DELETECLOUDDATA_DELETINGALLKEYS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377436508663808
+    m_Key: DELETECLOUDDATA_DELETINGFILEFROMCLOUD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377506733895680
+    m_Key: DELETECLOUDDATA_DELETINGACCOUNT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377601906847744
+    m_Key: DELETECLOUDDATA_DELETEDATASUCCESS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377662745227264
+    m_Key: DELETECLOUDDATA_FAILEDTODELETE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377726909689856
+    m_Key: CLOUDDATA_ENABLEDCLOUDSAVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377748703293440
+    m_Key: CLOUDDATA_DISABLEDCLOUDSAVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188380235057344512
+    m_Key: CLOUDSAVEWARNING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188436096396046336
+    m_Key: GETPLAYERID_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188436499728707584
+    m_Key: VISITDATADELETIONWEBSITE_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188436996317523968
+    m_Key: PLAYERID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188437138454097920
+    m_Key: COPYTOCLIPBOARD_BTN
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

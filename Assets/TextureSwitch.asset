@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48149402ff4ef7d4898d5a6506ffee28, type: 3}
+  m_Name: TextureSwitch
+  m_EditorClassIdentifier: 
+  TextureSwitches:
+  - texture: {fileID: 2800000, guid: fe40312956f4cdb4d89793e2b8042539, type: 3}
+    textureFormatGPGPC: 12
+    textureFormatAndroid: 53
+    textureSizeGPGPC: 2048
+    textureSizeAndroid: 1024
+    GenerateMipmapGPGPC: 1
+    GenerateMipmapAndroid: 0
+  - texture: {fileID: 2800000, guid: 17f2218b6a95f9149ab80bd43df2bf5c, type: 3}
+    textureFormatGPGPC: 12
+    textureFormatAndroid: 50
+    textureSizeGPGPC: 2048
+    textureSizeAndroid: 512
+    GenerateMipmapGPGPC: 0
+    GenerateMipmapAndroid: 0
+  - texture: {fileID: 2800000, guid: 77374713e95ed3c48a5f3d80c54caf5c, type: 3}
+    textureFormatGPGPC: 12
+    textureFormatAndroid: 50
+    textureSizeGPGPC: 2048
+    textureSizeAndroid: 512
+    GenerateMipmapGPGPC: 1
+    GenerateMipmapAndroid: 1
+  - texture: {fileID: 2800000, guid: f72b7fdcb4008e447ad36a358d822606, type: 3}
+    textureFormatGPGPC: 12
+    textureFormatAndroid: 50
+    textureSizeGPGPC: 2048
+    textureSizeAndroid: 512
+    GenerateMipmapGPGPC: 1
+    GenerateMipmapAndroid: 1
+  - texture: {fileID: 2800000, guid: bc1067b960772dc41b14d4220d1070cd, type: 3}
+    textureFormatGPGPC: 12
+    textureFormatAndroid: 51
+    textureSizeGPGPC: 2048
+    textureSizeAndroid: 512
+    GenerateMipmapGPGPC: 1
+    GenerateMipmapAndroid: 1
+  - texture: {fileID: 2800000, guid: da2a2712183551247a227161e4bc4c41, type: 3}
+    textureFormatGPGPC: 12
+    textureFormatAndroid: 51
+    textureSizeGPGPC: 2048
+    textureSizeAndroid: 512
+    GenerateMipmapGPGPC: 1
+    GenerateMipmapAndroid: 0
+  - texture: {fileID: 2800000, guid: 1a4f3b2ecde7ac0429f5aa2f561bdbbc, type: 3}
+    textureFormatGPGPC: 12
+    textureFormatAndroid: 51
+    textureSizeGPGPC: 2048
+    textureSizeAndroid: 1024
+    GenerateMipmapGPGPC: 1
+    GenerateMipmapAndroid: 0

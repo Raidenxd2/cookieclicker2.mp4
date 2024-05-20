@@ -1,0 +1,5 @@
+V1.2.3:
+Upgraded to Unity 2022.3.29f1
+Upgrade packages.
+Added popup on first startup to Enable/Disable Cloud Save.
+Added Cloud Save options to Save Management, this allows you to enable/disable Cloud Save and delete Cloud Save data.

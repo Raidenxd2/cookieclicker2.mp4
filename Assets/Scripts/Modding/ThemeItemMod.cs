@@ -73,7 +73,6 @@ public class ThemeItemMod : MonoBehaviour
         {
             var customSkybox = myLoadedAssetBundle.LoadAsset<Material>(ThemeSkyboxName);
             RenderSettings.skybox = customSkybox;
-            LogSystem.Log("should have set custom skybox");
         }
 
         myLoadedAssetBundle.Unload(false);

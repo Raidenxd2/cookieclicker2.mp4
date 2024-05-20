@@ -17,11 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 10c45030885310a4394d137239647cfd
   m_SerializeEntries:
-  - m_GUID: 6b44f3429ec62a145a3f00cd353caab0
-    m_Address: Assets/Prefabs/Dev/Graphy.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: afdc51c45b5ea3943ab899d867fbf6c1
     m_Address: Assets/Prefabs/Dev/IngameDebugConsole.prefab
     m_ReadOnly: 0
