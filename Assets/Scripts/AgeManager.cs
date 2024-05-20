@@ -12,7 +12,9 @@ public class AgeManager : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("SetAge", 0) == 0)
         {
-            ageScreen.SetActive(true);
+            PlayerPrefs.SetInt("SetAge", 1);
+            PlayerPrefs.SetInt("Age", 1);
+            // ageScreen.SetActive(true);
         }
     }
 

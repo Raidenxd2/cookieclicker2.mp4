@@ -1,0 +1,7 @@
+V1.2.2:
+Fix UI issues in the Research menu.
+Fix UI issues in the Save Management menu.
+Improved quality for the Drill.
+Removed "Lighting" quality setting as turning it off lowers performance
+Performance optimizations.
+Localization updates.

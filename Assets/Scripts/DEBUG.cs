@@ -4,7 +4,6 @@ using System.Collections;
 using TMPro;
 using BreakInfinity;
 using IngameDebugConsole;
-using Tayx.Graphy;
 using LoggerSystem;
 
 public class DEBUG : MonoBehaviour
@@ -23,7 +22,6 @@ public class DEBUG : MonoBehaviour
     {
         StartCoroutine(FPSDisplay());
         LogSystem.Log("Current Renderer: " + SystemInfo.graphicsDeviceType);
-        GraphyManager.Instance.Disable();
         RendererText.text = "Current Renderer: " + SystemInfo.graphicsDeviceType;
     }
 
@@ -55,12 +53,6 @@ public class DEBUG : MonoBehaviour
     public void LoadCookies()
     {
         CookiesInput.text = "" + game.Cookies;
-    }
-
-    public void ShowGraphy()
-    {
-        var fps = GraphyManager.Instance.CurrentFPS;
-        GraphyManager.Instance.Enable();
     }
 
     public void HideTerrain()

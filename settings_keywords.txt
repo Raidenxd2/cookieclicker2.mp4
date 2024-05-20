@@ -1,0 +1,781 @@
+Input System Package
+Cloud Save
+ShaderGraph
+URP Global Settings
+    rendering layers (3d)
+    strip debug variants
+    strip unused post processing variants
+    strip unused variants
+    strip screen coord override variants
+In-App Purchasing
+    purchasing
+    in-app
+    purchase
+    revenue
+    platforms
+    Google Play
+    public key
+    receipt
+    obfuscator
+    catalog
+Authentication
+Environments
+Localization
+Burst AOT Settings
+    
+    Enables burst compilation for the selected platform.
+    Enables all optimizations for the currently selected platform.
+    Generates debug information for the Burst-compiled code, irrespective of if Development Mode is ticked. This can be used to generate symbols for release builds for platforms that need it.
+    Choose which kind of debug information you want present in builds with debug information enabled.
+    Enabling this option will disable cross compilation support for desktops, and will require platform specific tools for Windows/Linux/Mac - use only if you encounter problems with the burst builtin solution.
+    Use this to specify the set of target architectures to support for the currently selected platform.
+    Use this to specify the target architectures to support for the currently selected platform.
+    Choose what optimization setting to compile Burst code for.
+    Burst warnings to disable (separated by ;).
+Services
+    organization
+    project
+    unlink
+    members
+    dashboard
+    id
+UI Builder
+Scene Template
+    unity
+    editor
+    scene
+    clone
+    template
+Script Execution Order
+    add scripts to the custom order and drag them to reorder.
+
+scripts in the custom order can execute before or after the default time and are executed from top to bottom. all other scripts execute at the default time in the order they are loaded.
+
+(changing the order of a script may modify the meta data for more than one script.)
+    
+    default time
+Memory Settings
+    changing memory setup values can cause severe performance degradation.
+    changing the memory setup for editor will update the projectsettings/boot.config file. this file is loaded at editor startup, so will take effect at next startup.
+    main allocators
+    main allocator
+    main thread block size
+    shared thread block size
+    gfx allocator
+    other allocators
+    file cache block size
+    type tree block size
+    fast per thread temporary allocators
+    job worker block size
+    background job worker block size
+    preload block size
+    audio worker block size
+    cloud worker block size
+    gfx thread block size
+    gi baking block size
+    navmesh worker block size
+    fast thread shared temporary allocators
+    job allocator block size
+    background job allocator block size
+    job allocator block sizes on low memory platform
+    shared bucket allocator
+    bucket allocator granularity
+    bucket allocator bucketcount
+    bucket allocator block size
+    bucket allocator block count
+    profiler allocators
+    profiler block size
+    editor profiler block size
+    shared profiler bucket allocator
+    editor
+    players
+Quality
+    
+    add quality level
+    global mipmap limit
+    mipmap limit groups
+    identify textures
+    duplicate group
+    rename group
+    texture streaming
+    memory budget
+    renderers per frame
+    add all cameras
+    max level reduction
+    max io requests
+    soft particles require either the deferred shading rendering path or cameras that render depth textures.
+    billboards face camera position
+    use legacy details distribution
+    vsync count
+    realtime gi cpu usage
+    lod bias
+    maximum lod level
+    lod cross fade
+    detected platforms with textures that never use their highest resolution mips. enable texture mipmap stripping in the player settings to reduce the package size of those platforms.
+    time slice
+    buffer size
+    persistent buffer
+    unity has detected that you are using an upload buffer size of {0} mb with the '{1}' setting enabled. if you have issues with excessive memory usage, you may need to reduce the upload buffer size or disable the '{1}' setting. memory fragmentation can occur if you choose the latter option.
+    pixel error
+    base map dist.
+    detail density scale
+    detail distance
+    tree distance
+    billboard start
+    fade length
+    max mesh trees
+    render pipeline asset
+    Current Quality
+    Quality Settings
+    Size
+    Mobile
+    Name
+    Pixel Light Count
+    Shadows
+    Shadow Resolution
+    Shadow Projection
+    Shadow Cascades
+    Shadow Distance
+    Shadow Near Plane Offset
+    Shadow Cascade 2 Split
+    Shadow Cascade 4 Split
+    X
+    Y
+    Z
+    Shadowmask Mode
+    Skin Weights
+    Global Texture Mipmap Limit
+    Texture Mipmap Limit Settings
+    Anisotropic Textures
+    Anti Aliasing
+    Soft Particles
+    Realtime Reflection Probes
+    Billboards Face Camera Position
+    Use Legacy Detail Distribution
+    V Sync Count
+    Realtime GICPU Usage
+    Lod Bias
+    Maximum LOD Level
+    Enable LOD Cross Fade
+    Streaming Mipmaps Active
+    Streaming Mipmaps Add All Cameras
+    Streaming Mipmaps Memory Budget
+    Streaming Mipmaps Renderers Per Frame
+    Streaming Mipmaps Max Level Reduction
+    Streaming Mipmaps Max File IO Requests
+    Particle Raycast Budget
+    Async Upload Time Slice
+    Async Upload Buffer Size
+    Async Upload Persistent Buffer
+    Resolution Scaling Fixed DPI Factor
+    Custom Render Pipeline
+    Terrain Quality Overrides
+    Terrain Pixel Error
+    Terrain Detail Density Scale
+    Terrain Basemap Distance
+    Terrain Detail Distance
+    Terrain Tree Distance
+    Terrain Billboard Start
+    Terrain Fade Length
+    Terrain Max Trees
+    Excluded Target Platforms
+    Element 0
+    GPGPC
+    Element 1
+    PC
+    Texture Mipmap Limit Group Names
+    Per Platform Default Quality
+    Android
+    First
+    Second
+    GameCoreScarlett
+    GameCoreXboxOne
+    Lumin
+    Nintendo Switch
+    PS4
+    PS5
+    Server
+    Stadia
+    Standalone
+    WebGL
+    Windows Store Apps
+    XboxOne
+    iPhone
+    tvOS
+Input Manager
+    Axes
+    Size
+    Horizontal
+    Name
+    Descriptive Name
+    Descriptive Negative Name
+    Negative Button
+    Positive Button
+    Alt Negative Button
+    Alt Positive Button
+    Gravity
+    Dead
+    Sensitivity
+    Snap
+    Invert
+    Type
+    Axis
+    Joy Num
+    Vertical
+    Fire1
+    Fire2
+    Fire3
+    Jump
+    Mouse X
+    Mouse Y
+    Mouse ScrollWheel
+    Submit
+    Cancel
+    Enable Debug Button 1
+    Enable Debug Button 2
+    Debug Reset
+    Debug Next
+    Debug Previous
+    Debug Validate
+    Debug Persistent
+    Debug Multiplier
+    Debug Horizontal
+    Debug Vertical
+    Use Physical Keys
+Package Manager
+    enable
+    preview
+    package
+    scoped
+    registries
+    registry
+    dependencies
+Player
+    frame timing stats are supported in webgl 2 only. uncheck 'automatic graphics api' if it is set and remove the webgl 1 api.
+    high quality lightmap encoding requires webgl 2. navigate to 'webgl player settings', uncheck 'automatic graphics api' if it is set and remove the webgl 1 api.
+    high quality hdr cubemap encoding requires webgl 2. navigate to 'webgl player settings', uncheck 'automatic graphics api' if it is set and remove the webgl 1 api.
+    linear colorspace requires opengl es 3.0 or vulkan, remove opengl es 2 api from the list. blit type for non-srp projects must be always blit or auto.
+    linear colorspace requires webgl 2, uncheck 'automatic graphics api' to remove webgl 1 api. warning: if dxt srgb is not supported by the browser, texture will be decompressed
+    linear colorspace requires metal api only. uncheck 'automatic graphics api' and remove opengl es 2/3 apis.
+    linear colorspace is not supported with opengl es 2.0, uncheck 'automatic graphics api' to remove opengl es 2 api
+    reordering the list will switch editor to the first available platform
+    opengl is not supported on apple silicon chips. metal will be used on devices with apple silicon chips instead.
+    * shared setting between multiple platforms.
+    cursor hotspot
+    default cursor
+    vertex compression*
+    resolution and presentation
+    resolution
+    orientation
+    allowed orientations for auto rotation
+    multitasking support
+    status bar
+    standalone player options
+    debugging and crash reporting
+    debugging
+    crash reporting
+    other settings
+    rendering
+    vulkan settings
+    identification
+    mac app store options
+    configuration
+    mac configuration
+    optimization
+    stack trace*
+    legacy
+    publishing settings
+    shader settings
+    shader variant loading settings
+    default chunk size (mb)*
+    default chunk count*
+    override
+    chunk size (mb)
+    chunk count
+    prebake collision meshes*
+    enable dedicated server optimizations
+    keep loaded shaders alive*
+    preloaded assets*
+    strip engine code*
+    script call optimization*
+    enable internal profiler* (deprecated)
+    optimize mesh data*
+    strict shader variant matching*
+    texture mipmap stripping*
+    frame timing stats
+    opengl: profiler gpu recorders
+    on opengl, frame timing stats may disable profiler gpu recorders and the gpu profiler.
+    on opengl, frame timing stats may disable the gpu profiler.
+    on opengl, profiler gpu recorders may disable the gpu profiler.
+    use animated autorotation
+    default screen width
+    default screen height
+    mac retina support
+    run in background*
+    default orientation*
+    portrait
+    portrait upside down
+    landscape right
+    landscape left
+    requires fullscreen
+    status bar hidden
+    status bar style
+    mac app store validation
+    category
+    supported url schemes*
+    fullscreen mode 
+    exclusive fullscreen
+    fullscreen window
+    maximized window
+    windowed
+    enabled (deprecated)
+    hidden by default (deprecated)
+    the display resolution dialog has been deprecated and will be removed in a future version.
+    visible in background
+    allow fullscreen switch*
+    use dxgi flip model swapchain for d3d11
+    disabling dxgi flip model swapchain will result in unity falling back to the slower and less efficient bitblt model. see documentation for more information.
+    use 32-bit display buffer*
+    disable depth and stencil*
+    render over native ui*
+    show loading indicator
+    on .net unhandledexception*
+    log obj-c uncaught exceptions*
+    enable crashreport api*
+    color space*
+    msaa fallback
+    color gamut*
+    color gamut for mac*
+    force hard shadows on metal*
+    metal api validation*
+    metal write-only backbuffer
+    memoryless depth
+    srgb write mode*
+    number of swapchain buffers*
+    acquire swapchain image late as possible*
+    recycle command buffers*
+    multithreaded rendering*
+    static batching
+    dynamic batching
+    sprite batching threshold
+    graphics jobs
+    graphics jobs (experimental)
+    graphics jobs mode
+    invalid characters have been removed from the application identifier.
+    the application identifier must follow the convention 'com.yourcompanyname.yourproductname' and must contain only alphanumeric and hyphen characters.
+    the package name must follow the convention 'com.yourcompanyname.yourproductname' and must contain only alphanumeric and underscore characters. each segment must start with an alphabetical character.
+    build
+    ios developer team id
+    use on-demand resources*
+    use incremental gc
+    accelerometer frequency*
+    camera usage description*
+    location usage description*
+    microphone usage description*
+    bluetooth usage description*
+    mute other audio sources*
+    prepare ios for recording
+    force ios speakers when recording
+    requires persistent wifi*
+    allow downloads over http*
+    plain text http connections are not secure and can make your application vulnerable to attacks.
+    audio input from bluetooth microphones is not supported when mute other audio sources and prepare ios for recording are both off.
+    aot compilation options*
+    require es3.1
+    require es3.1+aep
+    require es3.2
+    gpu compute skinning*
+    scripting define symbols
+    additional compiler arguments
+    apply
+    revert
+    copy defines
+    suppress common warnings
+    scripting backend
+    managed stripping level
+    c++ compiler configuration
+    il2cpp code generation
+    mono
+    il2cpp
+    coreclr
+    default
+    disabled
+    minimal
+    low
+    medium
+    high
+    api compatibility level*
+    .net 2.0
+    .net 2.0 subset
+    .net 4.x
+    .net standard 2.0
+    .net framework
+    .net standard 2.1
+    script compilation
+    allow 'unsafe' code
+    use deterministic compilation
+    active input handling*
+    normal map encoding
+    lightmap encoding
+    hdr cubemap encoding
+    lightmap streaming
+    streaming priority
+    the lightmap encoding scheme you have selected requires opengl es 3.0 or vulkan. navigate to 'android player settings' > 'rendering' and disable the opengl es 2 api.
+    the hdr cubemap encoding scheme you have selected requires opengl es 3.0 or vulkan. navigate to 'android player settings' > 'rendering' and disable the opengl es 2 api.
+    clamp blendshapes (deprecated)*
+    virtual texturing (experimental)*
+    the current target platform does not support virtual texturing. to build for this platform, uncheck enable virtual texturing.
+    the target graphics api does not support virtual texturing. to target compatible graphics apis, uncheck 'auto graphics api', and remove opengl es 2/3 and openglcore.
+    the target windows graphics api does not support virtual texturing. to target compatible graphics apis, uncheck 'auto graphics api for windows', and remove opengl es 2/3 and openglcore.
+    the target mac graphics api does not support virtual texturing. to target compatible graphics apis, uncheck 'auto graphics api for mac', and remove openglcore.
+    the target linux graphics api does not support virtual texturing. to target compatible graphics apis, uncheck 'auto graphics api for linux', and remove openglcore.
+    shader precision model*
+    360 stereo capture*
+    force srgb blit
+    not applicable for this platform.
+    load/store action debug mode
+    editor only
+    allow hdr display output*
+    use hdr display output*
+    the active render pipeline does not have hdr enabled. enable hdr in the render pipeline asset to see the changes.
+Physics
+    Gravity
+    X
+    Y
+    Z
+    Default Material
+    Bounce Threshold
+    Default Max Depenetration Velocity
+    Sleep Threshold
+    Default Contact Offset
+    Default Solver Iterations
+    Default Solver Velocity Iterations
+    Queries Hit Backfaces
+    Queries Hit Triggers
+    Enable Adaptive Force
+    Cloth Inter Collision Distance
+    Cloth Inter Collision Stiffness
+    Contacts Generation
+    Simulation Mode
+    Auto Sync Transforms
+    Reuse Collision Callbacks
+    Invoke Collision Callbacks
+    Cloth Inter Collision Settings Toggle
+    Cloth Gravity
+    Contact Pairs Mode
+    Broadphase Type
+    World Bounds
+    Center
+    Extent
+    World Subdivisions
+    Friction Type
+    Enable Enhanced Determinism
+    Enable Unified Heightmaps
+    Improved Patch Friction
+    Solver Type
+    Default Max Angular Speed
+    Fast Motion Threshold
+Preset Manager
+    preset management
+Time
+    fixed timestep
+    maximum allowed timestep
+    time scale
+    maximum particle timestep
+Graphics
+    open editor...
+    close editor
+    tier settings
+    built-in shader settings
+    shader stripping
+    shader loading
+    log shader compilation
+    renderer light probe selection
+    camera settings
+    scriptable render pipeline settings
+    scriptable render pipeline
+    culling settings
+    camera-relative culling
+    lights
+    shadows
+    
+    use defaults
+    standard shader
+    rendering
+    standard shader quality
+    reflection probes box projection
+    reflection probes blending
+    detail normal map
+    cascaded shadows
+    prefer 32-bit shadow maps
+    enable semitransparent shadows
+    enable light probe proxy volume
+    rendering path
+    use hdr
+    hdr mode
+    realtime global illumination cpu usage
+    deferred
+    deferred reflections
+    screen space shadows
+    depth normals
+    motion vectors
+    light halo
+    lens flare
+    platform shader settings
+    shader preloading
+    lightmap modes
+    baked non-directional
+    baked directional
+    baked shadowmask
+    baked subtractive
+    realtime non-directional
+    realtime directional
+    import from current scene
+    fog modes
+    linear
+    exponential
+    exponential squared
+    instancing variants
+    batchrenderergroup variants
+    save to asset...
+    clear
+    Deferred
+    Mode
+    Shader
+    Deferred Reflections
+    Screen Space Shadows
+    Depth Normals
+    Motion Vectors
+    Light Halo
+    Lens Flare
+    Video Shaders Include Mode
+    Always Included Shaders
+    Size
+    Element 0
+    Element 1
+    Element 2
+    Element 3
+    Element 4
+    Element 5
+    Preloaded Shaders
+    Preload Shaders Batch Time Limit
+    Sprites Default Material
+    Custom Render Pipeline
+    Transparency Sort Mode
+    Transparency Sort Axis
+    X
+    Y
+    Z
+    Default Rendering Path
+    Default Mobile Rendering Path
+    Tier Settings
+    Lightmap Stripping
+    Fog Stripping
+    Instancing Stripping
+    Brg Stripping
+    Lightmap Keep Plain
+    Lightmap Keep Dir Combined
+    Lightmap Keep Dynamic Plain
+    Lightmap Keep Dynamic Dir Combined
+    Lightmap Keep Shadow Mask
+    Lightmap Keep Subtractive
+    Fog Keep Linear
+    Fog Keep Exp
+    Fog Keep Exp 2
+    Albedo Swatch Infos
+    Lights Use Linear Intensity
+    Lights Use Color Temperature
+    Default Rendering Layer Mask
+    Log When Shader Is Compiled
+    SRP Default Settings
+    UnityEngine.Rendering.Universal.UniversalRenderPipeline
+    First
+    Second
+    Light Probe Outside Hull Strategy
+    Camera Relative Light Culling
+    Camera Relative Shadow Culling
+Adaptive Performance
+Audio
+    global volume
+    volume rolloff scale
+    doppler factor
+    default speaker mode
+    system sample rate
+    dsp buffer size
+    max virtual voices
+    max real voices
+    spatializer plugin
+    ambisonic decoder plugin
+    disable unity audio
+    virtualize effects
+    enable output suspension (editor only)
+    the requested buffer size ({0}) has been overridden to {1} by the operating system
+Editor
+    unity remote
+    device
+    compression
+    resolution
+    joystick source
+    mode
+    parallel import
+    learn more...
+    override desired worker count
+    desired import worker count
+    standby import worker count
+    idle import worker shutdown delay
+    cache server (project specific)
+    asset pipeline
+    remove unused artifacts on restart
+    ip address
+    namespace prefix
+    download
+    upload
+    tls/ssl
+    authentication (using unity id)
+    user
+    password
+    content validation
+    download batch size
+    asset serialization
+    force serialize references on one line
+    default behaviour mode
+    graphics
+    show lightmap resolution overlay
+    use legacy light probe sample counts
+    enable baked cookies support
+    enable enlighten for baked gi (legacy)
+    sprite packer
+    max spriteatlas cache size (gb)
+    c# project generation
+    additional extensions to include
+    root namespace
+    texture compressors
+    bc7 compressor
+    etc compressor
+    fast
+    normal
+    best
+    line endings for new scripts
+    streaming settings
+    enable texture streaming in play mode
+    enable texture streaming in edit mode
+    load texture data on demand
+    shader compilation
+    asynchronous shader compilation
+    prefab mode
+    allow auto save
+    editing environments
+    regular environment
+    ui environment
+    enter play mode settings
+    enter play mode options
+    reload domain
+    reload scene
+    numbering scheme
+    inspector
+    use imgui default inspector
+    game object naming
+    game object digits
+    space before number in asset names
+Version Control
+    mode
+    log level
+    automatic add
+    smart merge
+    connect
+    reconnect
+    work offline
+    async status
+    show failed checkouts
+    overwrite failed checkout assets
+    overlay icons
+    project window
+    hierarchy window
+    other windows
+    password
+    username
+    server
+Tags and Layers
+    tags
+    sorting layers
+    layers
+XR Plugin Management
+Physics 2D
+    Gravity
+    X
+    Y
+    Default Material
+    Velocity Iterations
+    Position Iterations
+    Velocity Threshold
+    Max Linear Correction
+    Max Angular Correction
+    Max Translation Speed
+    Max Rotation Speed
+    Baumgarte Scale
+    Baumgarte Time Of Impact Scale
+    Time To Sleep
+    Linear Sleep Tolerance
+    Angular Sleep Tolerance
+    Default Contact Offset
+    Job Options
+    Use Multithreading
+    Use Consistency Sorting
+    Interpolation Poses Per Job
+    New Contacts Per Job
+    Collide Contacts Per Job
+    Clear Flags Per Job
+    Clear Body Forces Per Job
+    Sync Discrete Fixtures Per Job
+    Sync Continuous Fixtures Per Job
+    Find Nearest Contacts Per Job
+    Update Trigger Contacts Per Job
+    Island Solver Cost Threshold
+    Island Solver Body Cost Scale
+    Island Solver Contact Cost Scale
+    Island Solver Joint Cost Scale
+    Island Solver Bodies Per Job
+    Island Solver Contacts Per Job
+    Simulation Mode
+    Queries Hit Triggers
+    Queries Start In Colliders
+    Callbacks On Disable
+    Reuse Collision Callbacks
+    Auto Sync Transforms
+    Gizmo Options
+TextMesh Pro
+Settings
+    default font asset
+    path:        resources/
+    fallback font assets
+    fallback font assets list
+    fallback material settings
+    match material presets
+    text container default settings
+    textmeshpro
+    textmeshpro ui
+    enable raycast target
+    auto size text container
+    is object scale static
+    text component default settings
+    default font size
+    text auto size ratios
+    min
+    max
+    word wrapping
+    kerning
+    extra padding
+    tint all sprites
+    parse escape sequence
+    dynamic font system settings
+    get font features at runtime
+    dynamic atlas texture group
+    missing character unicode
+    disable warnings
+    default sprite asset
+    missing sprite unicode
+    ios emoji support
+    default style sheet
+    color gradient presets
+    line breaking for asian languages
+    korean language options

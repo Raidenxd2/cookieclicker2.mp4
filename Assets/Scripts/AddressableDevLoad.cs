@@ -8,7 +8,6 @@ using LoggerSystem;
 public class AddressableDevLoad : MonoBehaviour
 {
     [SerializeField] private AssetReference debugConsoleRef;
-    [SerializeField] private AssetReference graphyRef;
 
     private IEnumerator Start()
     {
@@ -19,15 +18,6 @@ public class AddressableDevLoad : MonoBehaviour
         {
             Instantiate(debugConsoleHandle.Result);
             LogSystem.Log("Instantiated Debug Console");
-        }
-
-        AsyncOperationHandle<GameObject> graphyHandle = Addressables.LoadAssetAsync<GameObject>(graphyRef);
-        yield return graphyHandle;
-
-        if (graphyHandle.Status == AsyncOperationStatus.Succeeded)
-        {
-            Instantiate(graphyHandle.Result);
-            LogSystem.Log("Instantiated Graphy");
         }
     }
 }

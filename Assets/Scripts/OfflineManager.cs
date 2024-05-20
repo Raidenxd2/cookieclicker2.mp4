@@ -21,7 +21,6 @@ public class OfflineManager : MonoBehaviour
 
     public void LoadOfflineTime()
     {
-        LogSystem.Log("offlineProgressCheck: " + offlineProgressCheck);
         if (offlineProgressCheck)
         {
             var tempOfflineTime = Convert.ToInt64(OfflineTime);
@@ -38,11 +37,6 @@ public class OfflineManager : MonoBehaviour
             BigDouble CookiesGain = ((int)offlineTime) * game.CPS;
             game.Cookies += CookiesGain;
             CookiesGained.text = CookiesGain + " Cookies";
-
-            //debug
-            LogSystem.Log("cookies gained from offline: " + CookiesGain);
-            LogSystem.Log("Offline Time: " + offlineTime);
-            LogSystem.Log("CPS: " + game.CPS);
         }
     }
 

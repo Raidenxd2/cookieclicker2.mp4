@@ -9,6 +9,8 @@ using LoggerSystem;
 using UnityEngine.AddressableAssets;
 using Unity.Services.CloudSave;
 using Unity.Services.Authentication;
+using UnityEngine.Localization;
+
 
 #if UNITY_ANDROID
 using GooglePlayGames;
@@ -123,7 +125,6 @@ public class Game : MonoBehaviour
 
     [Header("Ads")]
     public int Clicks;
-    public TMP_Text DebugClicks;
 
     [Header("Particles")]
     public GameObject CookieVFX;
@@ -135,6 +136,10 @@ public class Game : MonoBehaviour
     public GameObject Research_Factory_Normal;
     public GameObject Research_Factory_Particals;
     public ResearchFactory researchFactory;
+
+    [Header("Localization")]
+    public LocalizedString SaveDataWarningTexturesText;
+    public LocalizedString SaveDataWarningLightingText;
 
     // Start is called before the first frame update
     void Start()
@@ -313,6 +318,11 @@ public class Game : MonoBehaviour
             }
         }
 
+        if (PlayerPrefs.GetInt("EnableCloudSave", 0) == 2)
+        {
+            return;
+        }
+
         if (AuthenticationService.Instance.IsSignedIn)
         {
             byte[] file = System.IO.File.ReadAllBytes(Application.persistentDataPath + "/cookie2");
@@ -364,9 +374,17 @@ public class Game : MonoBehaviour
         if (PlayerPrefs.GetInt("GRAPHICS_Textures") == 0)
         {
             SaveDataWarningScreen.SetActive(true);
-            SaveDataWarningInfo.text = "You have Textures turned off, but this option has been removed. It is recommended that you turn it on.";
+            SaveDataWarningInfo.text = SaveDataWarningTexturesText.GetLocalizedString();
             SaveDataWarningYesButton.onClick.AddListener(() => ad.TexturesToggle(true));
             SaveDataWarningYesButton.onClick.AddListener(() => TexturesChangedScreen.SetActive(true));
+        }
+
+        
+        if (PlayerPrefs.GetInt("GRAPHICS_Lighting") == 0)
+        {
+            SaveDataWarningScreen.SetActive(true);
+            SaveDataWarningInfo.text = SaveDataWarningLightingText.GetLocalizedString();
+            SaveDataWarningYesButton.onClick.AddListener(() => ad.LightingToggle(true));
         }
     }
 
@@ -622,7 +640,6 @@ public class Game : MonoBehaviour
         }
     }
 
-    // This no longer works because the camera is using the skybox.
     public void ChangeCameraBGColor(string color)
     {
         switch (color)

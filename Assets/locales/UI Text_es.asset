@@ -650,6 +650,126 @@ MonoBehaviour:
     m_Localized: "Tu configuraci\xF3n de edad actual ha bloqueado este contenido."
     m_Metadata:
       m_Items: []
+  - m_Id: 185542321738887168
+    m_Localized: "Configuraci\xF3n s\xF3lo para PC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185542777273856000
+    m_Localized: Pantalla completa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185543356721147904
+    m_Localized: Modo ventana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185543417295286272
+    m_Localized: "Resoluci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185560684687011840
+    m_Localized: Antialiasing (MSAA)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 187364344928677888
+    m_Localized: "Tienes las Texturas desactivadas, pero esta opci\xF3n ha sido eliminada.
+      Se recomienda activarla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 187364375354159104
+    m_Localized: "Tiene la iluminaci\xF3n desactivada, pero esta opci\xF3n se ha
+      eliminado. Se recomienda activarla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188093104086855680
+    m_Localized: Activar Guardar en la nube
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188093175771705344
+    m_Localized: "\xBFQuieres activar Guardar en la nube?\nGuardar en la nube te
+      permite sincronizar los datos guardados entre dispositivos.\n\nPuedes gestionar
+      las opciones de Guardar en la nube yendo a Opciones > Gesti\xF3n de guardados
+      > Guardar en la nube...."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188231376385617920
+    m_Localized: Guardar en la nube...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188232584512942080
+    m_Localized: Activar Guardar en la nube
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188232634009923584
+    m_Localized: Desactivar Guardar en la nube
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188232685461450752
+    m_Localized: Borrar datos guardados en la nube
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188369631588397056
+    m_Localized: "\xBFEst\xE1s seguro de que quieres borrar tus datos guardados de
+      la nube?\n\nEsto desactivar\xE1 Guardar en la nube y borrar\xE1 <color=red>TODOS</color>
+      los datos de la nube"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377289905156096
+    m_Localized: Tienes desactivado Guardar en la nube.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377352886824960
+    m_Localized: Preparando...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377390446817280
+    m_Localized: Borrar todas las llaves...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377436508663808
+    m_Localized: Borrar archivo de la nube...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377506733895680
+    m_Localized: Borrar cuenta...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377601906847744
+    m_Localized: "Eliminados con \xE9xito todos los datos de la nube."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377662745227264
+    m_Localized: No se han podido eliminar todos los datos de la nube.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377726909689856
+    m_Localized: Activado Guardar en la nube.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188377748703293440
+    m_Localized: Desactivado Guardar en la nube.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188380235057344512
+    m_Localized: "<color=yellow>Advertencia: Tendr\xE1s que recargar el juego al
+      activar/desactivar Guardar en la nube.</color>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188437138454097920
+    m_Localized: Copiar al portapapeles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188436996317523968
+    m_Localized: 'ID de jugador: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188436499728707584
+    m_Localized: "Visite el sitio web de supresi\xF3n de datos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188436096396046336
+    m_Localized: Obtener ID de jugador
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

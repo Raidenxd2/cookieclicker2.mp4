@@ -14,9 +14,6 @@ public class PreInitScene : MonoBehaviour
 
         AddressableHandles.instance.initSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.initSceneRef, UnityEngine.SceneManagement.LoadSceneMode.Single);
 
-        while (!AddressableHandles.instance.initSceneHandle.IsDone)
-        {
-            yield return null;
-        }
+        yield return null;
     }
 }

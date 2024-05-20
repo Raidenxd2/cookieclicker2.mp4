@@ -26,7 +26,7 @@ public class AdvancedQualitySettings : MonoBehaviour
 
     [Header("Performance Mode")]
     public GameObject TreesReal;
-    public UnityEngine.Rendering.Universal.UniversalAdditionalCameraData GameCamera_AdditionalData;
+    public UniversalAdditionalCameraData GameCamera_AdditionalData;
     public GameObject Cookie_Performance;
     public GameObject Cookie_Normal;
     public GameObject Research_Factory_Normal;
@@ -152,18 +152,6 @@ public class AdvancedQualitySettings : MonoBehaviour
         UpdateSettings();
     }
 
-    public void GraphicsAPIChanged(int value)
-    {
-        LogSystem.Log(value.ToString());
-        PlayerPrefs.SetInt("GRAPHICS_GraphicsAPI", value);
-        switch (value)
-        {
-            case 0:
-                
-                break;
-        }
-    }
-
     public void SaveGraphics()
     {
         PlayerPrefs.Save();
@@ -201,21 +189,8 @@ public class AdvancedQualitySettings : MonoBehaviour
 
     public void SetDefaults()
     {
-        if (Application.isMobilePlatform)
-        {
-            PostProcessing = false;
-            Lighting = true;
-            Particals = true;
-            Trees = true;
-            VSync = false;
-            Fog = true;
-            TextureQuality = 0;
-            Textures = true;
-            AO = false;
-            HDR = false;
-            RenderQuality = 0.75f;
-        }
-        else
+        #if UNITY_ANDROID
+        if (IsGPGPC.instance.isPC)
         {
             PostProcessing = true;
             Lighting = true;
@@ -229,6 +204,37 @@ public class AdvancedQualitySettings : MonoBehaviour
             HDR = true;
             RenderQuality = 1f;
         }
+        
+        if (Application.isMobilePlatform && !IsGPGPC.instance.isPC)
+        {
+            PostProcessing = false;
+            Lighting = true;
+            Particals = true;
+            Trees = true;
+            VSync = false;
+            Fog = true;
+            TextureQuality = 0;
+            Textures = true;
+            AO = false;
+            HDR = false;
+            RenderQuality = 0.75f;
+        }
+        #endif
+
+        #if UNITY_STANDALONE
+        PostProcessing = true;
+        Lighting = true;
+        Particals = true;
+        Trees = true;
+        VSync = true;
+        Fog = true;
+        TextureQuality = 0;
+        Textures = true;
+        AO = false;
+        HDR = true;
+        RenderQuality = 1f;
+        #endif
+
         PlayerPrefs.SetInt("GRAPHICS_PostProcessing", boolToInt(PostProcessing));
         PlayerPrefs.SetInt("GRAPHICS_Lighting", boolToInt(Lighting));
         PlayerPrefs.SetInt("GRAPHICS_Particles", boolToInt(Particals));
@@ -259,14 +265,6 @@ public class AdvancedQualitySettings : MonoBehaviour
             #if UNITY_ANDROID
             GameCamera_AdditionalData.renderPostProcessing = false;
             #endif
-        }
-        if (Lighting)
-        {
-            GameCamera_AdditionalData.SetRenderer(1);
-        }
-        else
-        {
-            GameCamera_AdditionalData.SetRenderer(0);
         }
         if (Particals)
         {
@@ -308,5 +306,10 @@ public class AdvancedQualitySettings : MonoBehaviour
         qualityWrapper.SetRenderScale(RenderQuality);
 
         switchRendererFeature.set(AO);
+
+        if (IsGPGPC.instance.isPC)
+        {
+            Application.targetFrameRate = 60;
+        }
     }
 }

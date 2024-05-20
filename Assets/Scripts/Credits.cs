@@ -34,25 +34,6 @@ public class Credits : MonoBehaviour
             {
                 DownloadedTextScroll.SetActive(true);
                 DownloadedText.SetText(ErrorText + www.error);
-                yield break;
-            }
-            if (www.responseCode == 404)
-            {
-                DownloadedTextScroll.SetActive(true);
-                DownloadedText.SetText(ErrorText + www.error);
-                yield break;
-            }
-            if (www.responseCode == 500)
-            {
-                DownloadedTextScroll.SetActive(true);
-                DownloadedText.SetText(ErrorText + www.error);
-                yield break;
-            }
-            if (www.responseCode == 403)
-            {
-                DownloadedTextScroll.SetActive(true);
-                DownloadedText.SetText(ErrorText + www.error);
-                yield break;
             }
             else
             {

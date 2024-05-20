@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Purchasing;
-using UnityEngine.Purchasing.Security;
 
 #if UNITY_ANDROID
 public class IAPManager : MonoBehaviour, IStoreListener

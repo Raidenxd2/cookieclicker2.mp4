@@ -1,4 +1,4 @@
-using DG.Tweening;
+using PrimeTween;
 using UnityEngine;
 
 public class CookieAnimations : MonoBehaviour
@@ -9,7 +9,7 @@ public class CookieAnimations : MonoBehaviour
 
     public void GoDown()
     {
-        transform.DOLocalMoveY(-0.20f, Time).SetEase(inEase).onComplete = () => GoUp();
+        transform.DOLocalMoveY(-0.20f, Time).SetEase(inEase).OnComplete(() => GoUp());
     }
 
     public void GoUp()
