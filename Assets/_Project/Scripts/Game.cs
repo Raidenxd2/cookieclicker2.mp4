@@ -60,6 +60,7 @@ public class Game : MonoBehaviour
     public AdvancedQualitySettings ad;
     public SoundManager soundManager;
     public Notification notification;
+    public AddressableLightmaps al;
 
     // text
     [Header("Text")]
@@ -206,6 +207,8 @@ public class Game : MonoBehaviour
 
         MusicAudioSource = MusicSource.GetComponent<AudioSource>();
         SoundAudioSource = SoundSource.GetComponent<AudioSource>();
+
+        al.InitAddressableLightmaps();
     }
 
     public void HideStarterBundleButton()
@@ -508,6 +511,9 @@ public class Game : MonoBehaviour
     public void Reload()
     {
         LogSystem.Log("Reloading..");
+
+        al.UnloadLightmaps();
+
         StartCoroutine(ReloadWait());
     }
 

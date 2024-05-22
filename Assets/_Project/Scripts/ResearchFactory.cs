@@ -7,6 +7,7 @@ public class ResearchFactory : MonoBehaviour
 {
 
     public Game game;
+    public AddressableLightmaps al;
     public GameObject NECDialog;
     public Animator CameraAnimation;
 
@@ -61,6 +62,8 @@ public class ResearchFactory : MonoBehaviour
 
             game.CheckResearchFactory();
             CheckIfUserOwnsResearchFactory();
+
+            al.InitAddressableLightmaps();
         }
         else
         {

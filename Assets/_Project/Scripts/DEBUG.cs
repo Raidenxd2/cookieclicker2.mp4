@@ -14,12 +14,15 @@ public class DEBUG : MonoBehaviour
     public Game game;
     public GameObject DEBUGScreen;
     public GameObject TerrainObject;
-    public int FPS;
+    public int FramesPerSec;
     public TMP_InputField FPSInput;
+    public GameObject DEBUGButton;
 
     // Start is called before the first frame update
     void Start()
     {
+        DEBUGButton.SetActive(true);
+
         StartCoroutine(FPSDisplay());
         LogSystem.Log("Current Renderer: " + SystemInfo.graphicsDeviceType);
         RendererText.text = "Current Renderer: " + SystemInfo.graphicsDeviceType;
@@ -27,9 +30,17 @@ public class DEBUG : MonoBehaviour
 
     IEnumerator FPSDisplay()
     {
-        yield return new WaitForSeconds(1);
-        FPS = (int)(1f / Time.unscaledDeltaTime);
-        FPSText.text = FPS.ToString("FPS: " + "0");
+        int lastFrameCount = Time.frameCount;
+        float lastTime = Time.realtimeSinceStartup;
+        yield return new WaitForSeconds(1f);
+ 
+        float timeSpan = Time.realtimeSinceStartup - lastTime;
+        int frameCount = Time.frameCount - lastFrameCount;
+ 
+        FramesPerSec = Mathf.RoundToInt(frameCount / timeSpan);
+
+        FPSText.text = "FPS: " + FramesPerSec.ToString();
+
         StartCoroutine(FPSDisplay());
     }
 
