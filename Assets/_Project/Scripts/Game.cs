@@ -12,8 +12,6 @@ using Unity.Services.Authentication;
 using UnityEngine.Localization;
 using Cookieclicker2mp4Google;
 
-
-
 #if UNITY_ANDROID
 using GooglePlayGames;
 #endif
@@ -104,16 +102,6 @@ public class Game : MonoBehaviour
     private AudioSource SoundAudioSource;
 
     public Camera gameCamera;
-    public UnityEngine.Rendering.Volume CVDFilter;
-    public UnityEngine.Rendering.VolumeProfile CBNormal;
-    public UnityEngine.Rendering.VolumeProfile CBProtanopia;
-    public UnityEngine.Rendering.VolumeProfile CBProtanomaly;
-    public UnityEngine.Rendering.VolumeProfile CBDeuteranopia;
-    public UnityEngine.Rendering.VolumeProfile CBDeuteranomaly;
-    public UnityEngine.Rendering.VolumeProfile CBTritanopia;
-    public UnityEngine.Rendering.VolumeProfile CBTritanomaly;
-    public UnityEngine.Rendering.VolumeProfile CBAchromatopsia;
-    public UnityEngine.Rendering.VolumeProfile CBAchromatomaly;
 
     [Header("BetaContent")]
     public GameObject BetaContentWarningScreen;
@@ -664,40 +652,6 @@ public class Game : MonoBehaviour
                 break;
             case "space":
                 gameCamera.backgroundColor = new Color(0, 0, 0, 255);
-                break;
-        }
-    }
-
-    public void ChangeColorBlindNessMode(int index)
-    {
-        switch (index)
-        {
-            case 0:
-                CVDFilter.profile = CBNormal;
-                break;
-            case 1:
-                CVDFilter.profile = CBProtanopia;
-                break;
-            case 2:
-                CVDFilter.profile = CBProtanomaly;
-                break;
-            case 3:
-                CVDFilter.profile = CBDeuteranopia;
-                break;
-            case 4:
-                CVDFilter.profile = CBDeuteranomaly;
-                break;
-            case 5:
-                CVDFilter.profile = CBTritanopia;
-                break;
-            case 6:
-                CVDFilter.profile = CBTritanomaly;
-                break;
-            case 7:
-                CVDFilter.profile = CBAchromatopsia;
-                break;
-            case 8:
-                CVDFilter.profile = CBAchromatomaly;
                 break;
         }
     }

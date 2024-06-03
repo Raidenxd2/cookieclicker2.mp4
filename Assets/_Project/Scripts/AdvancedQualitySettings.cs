@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.Rendering.Universal;
 using LoggerSystem;
 
 public class AdvancedQualitySettings : MonoBehaviour
@@ -20,13 +19,10 @@ public class AdvancedQualitySettings : MonoBehaviour
     public GameObject pp_performance;
     public TMP_Text RenderQualityText;
     public TMP_InputField RenderQualityInput;
-    public QualityWrapper qualityWrapper;
-    public SwitchRendererFeature switchRendererFeature;
-    [SerializeField] private UniversalRenderPipelineAsset asset;
 
     [Header("Performance Mode")]
     public GameObject TreesReal;
-    public UniversalAdditionalCameraData GameCamera_AdditionalData;
+    public Camera GameCamera;
     public GameObject Cookie_Performance;
     public GameObject Cookie_Normal;
     public GameObject Research_Factory_Normal;
@@ -256,14 +252,14 @@ public class AdvancedQualitySettings : MonoBehaviour
         {
             pp_normal.SetActive(true);
             #if UNITY_ANDROID
-            GameCamera_AdditionalData.renderPostProcessing = true;
+            // GameCamera.p = true;
             #endif
         }
         else
         {
             pp_normal.SetActive(false);
             #if UNITY_ANDROID
-            GameCamera_AdditionalData.renderPostProcessing = false;
+            // GameCamera_AdditionalData.renderPostProcessing = false;
             #endif
         }
         if (Particals)
@@ -303,9 +299,9 @@ public class AdvancedQualitySettings : MonoBehaviour
 
         RenderQualityText.text = RenderQuality + "x";
 
-        qualityWrapper.SetRenderScale(RenderQuality);
+        // qualityWrapper.SetRenderScale(RenderQuality);
 
-        switchRendererFeature.set(AO);
+        // switchRendererFeature.set(AO);
 
         #if UNITY_ANDROID
         if (IsGPGPC.instance.isPC)

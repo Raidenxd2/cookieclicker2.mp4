@@ -1,11 +1,9 @@
 using LoggerSystem;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class GPGPG_Init : MonoBehaviour
 {
     private static bool IsInitialized;
-    [SerializeField] private UniversalRenderPipelineAsset URPAsset;
 
     private void Start()
     {
@@ -20,7 +18,7 @@ public class GPGPG_Init : MonoBehaviour
             IsInitialized = true;
 
             QualitySettings.anisotropicFiltering = AnisotropicFiltering.ForceEnable;
-            URPAsset.msaaSampleCount = 4;
+            QualitySettings.antiAliasing = 4;
         
             Application.targetFrameRate = 60;
         }
