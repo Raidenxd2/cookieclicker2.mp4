@@ -46,13 +46,13 @@ namespace SuperUnityBuild.Generated
 
     public static class BuildConstants
     {
-        public static readonly DateTime buildDate = new DateTime(638518146965964130);
-        public const string version = "1.2.4-Beta1";
-        public const ReleaseType releaseType = ReleaseType.Development;
-        public const Platform platform = Platform.Android;
+        public static readonly DateTime buildDate = new DateTime(638520123076764195);
+        public const string version = "1.2.4-PublicRelease";
+        public const ReleaseType releaseType = ReleaseType.Release;
+        public const Platform platform = Platform.Linux;
         public const ScriptingBackend scriptingBackend = ScriptingBackend.IL2CPP;
-        public const Architecture architecture = Architecture.Android;
-        public const Distribution distribution = Distribution.Android_Development;
+        public const Architecture architecture = Architecture.Linux_x64;
+        public const Distribution distribution = Distribution.itch_io_Linux_Release;
     }
 }
 

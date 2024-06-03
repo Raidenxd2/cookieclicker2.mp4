@@ -107,6 +107,7 @@ QualitySettings:
     excludedTargetPlatforms:
     - Server
     - Standalone
+    - Android
   - serializedVersion: 3
     name: PC
     pixelLightCount: 4

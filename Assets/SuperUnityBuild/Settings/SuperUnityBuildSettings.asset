@@ -19,8 +19,8 @@ MonoBehaviour:
     constantsFileLocation: Assets\SuperUnityBuild
   _productParameters:
     buildCounter: 0
-    buildVersion: 1.2.4-Beta1
-    versionTemplate: 1.2.4-Beta1
+    buildVersion: 1.2.5-Beta1
+    versionTemplate: 1.2.5-Beta1
     autoGenerate: 0
     syncWithPlayerSettings: 1
   _releaseTypeList:
@@ -49,6 +49,18 @@ MonoBehaviour:
         releaseScenes:
         - fileGUID: 29d86263e0870b549b51848c4b9989bd
           sceneActive: 1
+    - typeName: Release with logs
+      bundleIdentifier: com.raiden.Cookieclicker2.mp4
+      companyName: raiden
+      productName: Cookieclicker2.mp4
+      syncAppNameWithProduct: 1
+      appBuildName: Cookieclicker2.mp4
+      buildOptions: 8
+      customDefines: PROBUILDER_EXPERIMENTAL_FEATURES;PRIME_TWEEN_DOTWEEN_ADAPTER;ENABLE_LOG;SAVE_LOG
+      sceneList:
+        releaseScenes:
+        - fileGUID: 29d86263e0870b549b51848c4b9989bd
+          sceneActive: 1
   _platformList:
     platforms:
     - {fileID: 6041734730177460267}
@@ -58,11 +70,11 @@ MonoBehaviour:
     - {fileID: 7473680393143074931}
   _projectConfigurations:
     configSet:
-      _Buckets: ffffffff09000000ffffffffffffffff060000002300000014000000ffffffffffffffff16000000ffffffffffffffffffffffffffffffffffffffffffffffff0f000000ffffffff03000000ffffffffffffffff25000000ffffffff050000001d000000ffffffffffffffff1200000004000000ffffffffffffffff20000000ffffffff18000000ffffffffffffffffffffffffffffffff170000000d000000ffffffff24000000ffffffff02000000ffffffff21000000ffffffff1c000000ffffffffffffffff1b000000ffffffff22000000ffffffffffffffff0b000000ffffffffffffffff0a000000ffffffffffffffffffffffffffffffff1e000000ffffffffffffffffffffffffffffffffffffffff00000000ffffffffffffffffffffffff19000000ffffffffffffffffffffffff13000000ffffffff1f00000001000000ffffffffffffffffffffffffffffffffffffffff0c0000000700000008000000
-      _HashCodes: 8e247061784c2c1991454713865fe165a370785d7ce2050053b5ba3a15bf8a53ea10ca7f71c76776959b630cf665e40829c6d86083c479523c1481386870132df15e3a406271f95ea767614942e0f471e804987683277241aae44441ad3d730fd4ae5e3ced64316def107300fadfe86db3f3dc63fbe3f1137a64f009878a7279510e9f5954be58098887c937134e5c09fe3787562d6dfd48000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-      _Next: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0e000000ffffffffffffffff10000000ffffffff15000000ffffffffffffffffffffffff11000000ffffffffffffffffffffffff1a000000ffffffffffffffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-      _Count: 38
-      _Version: 38
+      _Buckets: ffffffff090000002c000000ffffffff060000002300000014000000ffffffffffffffff1600000033000000ffffffffffffffffffffffff380000002e00000030000000ffffffff03000000ffffffffffffffff2d000000ffffffff050000001d000000ffffffff340000001200000004000000ffffffff2a00000028000000ffffffff2b000000ffffffff3500000032000000ffffffff2900000026000000ffffffff24000000ffffffff02000000ffffffff21000000ffffffff1c000000ffffffffffffffff1b000000ffffffff22000000ffffffffffffffff0b000000ffffffffffffffff0a000000ffffffffffffffffffffffffffffffff37000000ffffffffffffffffffffffffffffffff2f00000000000000ffffffffffffffffffffffff19000000ffffffff36000000ffffffff13000000ffffffff1f00000001000000ffffffffffffffffffffffffffffffffffffffff0c0000000700000008000000
+      _HashCodes: 8e247061784c2c1991454713865fe165a370785d7ce2050053b5ba3a15bf8a53ea10ca7f71c76776959b630cf665e40829c6d86083c479523c1481386870132df15e3a406271f95ea767614942e0f471e804987683277241aae44441ad3d730fd4ae5e3ced64316def107300fadfe86db3f3dc63fbe3f1137a64f009878a7279510e9f5954be58098887c937134e5c09fe3787562d6dfd481949e621c9036f79aed46e016f825e0aa48a6c10c7471849ec07183a223ee55d41a3e24afebb652616683212c11ddb2e2a25d010e0826b4747ff116d296c69229e034416c593d859cc5719670000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+      _Next: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0e000000ffffffffffffffff10000000ffffffff15000000ffffffffffffffffffffffff11000000ffffffffffffffffffffffff1a000000ffffffffffffffff0d000000250000002000000017000000ffffffff18000000ffffffff27000000ffffffffffffffff0f000000ffffffffffffffffffffffffffffffff31000000ffffffff1e000000ffffffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+      _Count: 57
+      _Version: 57
       _FreeList: -1
       _FreeCount: 0
       _Keys:
@@ -108,25 +120,29 @@ MonoBehaviour:
       - Release/Linux/Linux x64
       - Release/Linux
       - Release
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
-      - 
+      - Release with logs/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,AAB,Single
+        Binary,22,34,Debugging)/IL2CPP/Android Google Release
+      - Release with logs/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,AAB,Single
+        Binary,22,34,Debugging)/IL2CPP
+      - Release with logs/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,AAB,Single
+        Binary,22,34,Debugging)
+      - Release with logs/Android/Android (ARM64+X86_64,Generic,App,APK,Single Binary,22,34,Debugging)/IL2CPP/Android
+        Development
+      - Release with logs/Android/Android (ARM64+X86_64,Generic,App,APK,Single Binary,22,34,Debugging)/IL2CPP
+      - Release with logs/Android/Android (ARM64+X86_64,Generic,App,APK,Single Binary,22,34,Debugging)
+      - Release with logs/Android
+      - Release with logs/PC/Windows x86 (App)/IL2CPP/itch.io Windows Release
+      - Release with logs/PC/Windows x86 (App)/IL2CPP
+      - Release with logs/PC/Windows x86 (App)
+      - Release with logs/PC/Windows x64 (App)/IL2CPP/itch.io Windows Release
+      - Release with logs/PC/Windows x64 (App)/IL2CPP
+      - Release with logs/PC/Windows x64 (App)
+      - Release with logs/PC
+      - Release with logs/Linux/Linux x64/IL2CPP/itch.io Linux Release
+      - Release with logs/Linux/Linux x64/IL2CPP
+      - Release with logs/Linux/Linux x64
+      - Release with logs/Linux
+      - Release with logs
       - 
       - 
       - 
@@ -170,7 +186,7 @@ MonoBehaviour:
         childKeys:
         - Development/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,AAB,Single
           Binary,22,34,Debugging)/IL2CPP
-      - enabled: 1
+      - enabled: 0
         childKeys: []
       - enabled: 1
         childKeys:
@@ -262,7 +278,7 @@ MonoBehaviour:
         childKeys:
         - Release/PC/Windows x86 (App)
         - Release/PC/Windows x64 (App)
-      - enabled: 0
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
@@ -278,44 +294,68 @@ MonoBehaviour:
         - Release/Android
         - Release/PC
         - Release/Linux
-      - enabled: 1
+      - enabled: 0
         childKeys: []
       - enabled: 1
+        childKeys:
+        - Release with logs/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,AAB,Single
+          Binary,22,34,Debugging)/IL2CPP/Android Google Release
+      - enabled: 1
+        childKeys:
+        - Release with logs/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,AAB,Single
+          Binary,22,34,Debugging)/IL2CPP
+      - enabled: 0
         childKeys: []
       - enabled: 1
+        childKeys:
+        - Release with logs/Android/Android (ARM64+X86_64,Generic,App,APK,Single
+          Binary,22,34,Debugging)/IL2CPP/Android Development
+      - enabled: 1
+        childKeys:
+        - Release with logs/Android/Android (ARM64+X86_64,Generic,App,APK,Single
+          Binary,22,34,Debugging)/IL2CPP
+      - enabled: 1
+        childKeys:
+        - Release with logs/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,AAB,Single
+          Binary,22,34,Debugging)
+        - Release with logs/Android/Android (ARM64+X86_64,Generic,App,APK,Single
+          Binary,22,34,Debugging)
+      - enabled: 0
         childKeys: []
       - enabled: 1
+        childKeys:
+        - Release with logs/PC/Windows x86 (App)/IL2CPP/itch.io Windows Release
+      - enabled: 1
+        childKeys:
+        - Release with logs/PC/Windows x86 (App)/IL2CPP
+      - enabled: 0
         childKeys: []
       - enabled: 1
+        childKeys:
+        - Release with logs/PC/Windows x64 (App)/IL2CPP/itch.io Windows Release
+      - enabled: 1
+        childKeys:
+        - Release with logs/PC/Windows x64 (App)/IL2CPP
+      - enabled: 1
+        childKeys:
+        - Release with logs/PC/Windows x86 (App)
+        - Release with logs/PC/Windows x64 (App)
+      - enabled: 0
         childKeys: []
       - enabled: 1
-        childKeys: []
+        childKeys:
+        - Release with logs/Linux/Linux x64/IL2CPP/itch.io Linux Release
       - enabled: 1
-        childKeys: []
+        childKeys:
+        - Release with logs/Linux/Linux x64/IL2CPP
       - enabled: 1
-        childKeys: []
+        childKeys:
+        - Release with logs/Linux/Linux x64
       - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
+        childKeys:
+        - Release with logs/Android
+        - Release with logs/PC
+        - Release with logs/Linux
       - enabled: 1
         childKeys: []
       - enabled: 1
@@ -385,7 +425,7 @@ MonoBehaviour:
     showBuildInfo: 0
     hideDisabled: 0
     treeView: 0
-    selectedKeyChain: 
+    selectedKeyChain: Release/Linux/Linux x64/IL2CPP/itch.io Linux Release
   _preBuildActions:
     buildActions:
     - {fileID: 8740057897878208988}
@@ -577,7 +617,7 @@ MonoBehaviour:
   - target: 13
     name: Android
     enabled: 1
-    binaryNameFormat: '{0}.apk'
+    binaryNameFormat: '{0}.aab'
   variants:
   - variantName: Device Type
     selectedIndex: -1

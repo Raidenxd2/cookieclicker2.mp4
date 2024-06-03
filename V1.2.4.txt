@@ -1,0 +1,8 @@
+V1.2.4:
+Improved lighting when the Research Factory is unlocked.
+Fixed particles not appearing for the Research Factory.
+Added achievement for unlocking the Research Factory.
+
+PC:
+Starting with V1.2.4, all version text will now be {VERSION}-PublicRelease instead of {VERSION}-PublicRelease-{PC or Google}
+Improved graphics.

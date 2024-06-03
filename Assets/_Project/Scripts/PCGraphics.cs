@@ -8,6 +8,7 @@ public class PCGraphics : MonoBehaviour
 
     [SerializeField] private GameObject CookieStoreButton;
     [SerializeField] private GameObject PCOnlySettingsButton;
+    [SerializeField] private GameObject CloudSaveBTN;
 
     private void Start()
     {
@@ -15,6 +16,7 @@ public class PCGraphics : MonoBehaviour
         cameraData.renderPostProcessing = true;
 
         CookieStoreButton.SetActive(false);
+        CloudSaveBTN.SetActive(false);
         PCOnlySettingsButton.SetActive(true);
     }
 }

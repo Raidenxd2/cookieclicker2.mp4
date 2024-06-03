@@ -773,6 +773,11 @@ MonoBehaviour:
     m_Localized: Copier dans le presse-papiers
     m_Metadata:
       m_Items: []
+  - m_Id: 190959236602933248
+    m_Localized: "Vous devez \xEAtre connect\xE9 \xE0 Google Play Games pour pouvoir
+      utiliser Cloud Save.\nVoulez-vous vous connecter maintenant ?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

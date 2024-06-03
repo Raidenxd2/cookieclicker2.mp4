@@ -11,11 +11,19 @@ using Unity.Services.Authentication;
 using System;
 using System.Collections.Generic;
 using Unity.Services.CloudSave;
+using System.Threading.Tasks;
+
+
+#if UNITY_ANDROID
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+#endif
 
 public class BetaContent : MonoBehaviour
 {
     public GameObject BetaContentWarning;
     public GameObject EnableCloudSaveScreen;
+    public GameObject GPGSignInScreen;
     public GameObject SideBar;
     public GameObject ModsBTN;
     public GameObject ResearchFactoryButton;
@@ -23,6 +31,13 @@ public class BetaContent : MonoBehaviour
     public Image ProgressBar;
     public TMP_Text progressText;
     public TMP_Text infoText;
+
+    public static BetaContent instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -67,18 +82,26 @@ public class BetaContent : MonoBehaviour
         }
         catch (Exception ex)
         {
-            File.WriteAllText(Application.temporaryCachePath + "/BetaContentInitFail.txt", ex.StackTrace + "\n" + ex.Message);
+            File.WriteAllText(Application.temporaryCachePath + "/BetaContentInitFail.txt", ex.ToString());
             LoadScene();
         }
     }
 
     public void LoadScene()
     {
+        #if UNITY_ANDROID
         if (PlayerPrefs.GetInt("EnableCloudSave", 0) == 0)
         {
             EnableCloudSaveScreen.SetActive(true);
             return;
         }
+
+        if (PlayerPrefs.GetInt("EnableCloudSave", 0) == 1 && !GooglePlayGamesManager.instance.LoggedInToGPG)
+        {
+            GPGSignInScreen.SetActive(true);
+            return;
+        }
+        #endif
 
         LoadSceneAsync();
     }
@@ -97,12 +120,45 @@ public class BetaContent : MonoBehaviour
         LoadScene();
     }
 
+    #if UNITY_ANDROID
+    public void SignInToGPG()
+    {
+        PlayGamesPlatform.Instance.ManuallyAuthenticate(LoadScene);
+    }
+
+    private void LoadScene(SignInStatus status)
+    {
+        if (status == SignInStatus.Success)
+        {
+            GooglePlayGamesManager.instance.LoggedInToGPG = true;
+
+            PlayGamesPlatform.Instance.RequestServerSideAccess(true, code => {
+                GooglePlayGamesManager.instance.Token = code;
+            });
+
+            LoadScene();
+        }
+        else
+        {
+            LoadScene();
+        }
+    }
+
+    public void DontSignInToGPG()
+    {
+        LoadSceneAsync();
+    }
+    #endif
+
     private async void LoadSceneAsync()
     {
         if (PlayerPrefs.GetInt("EnableCloudSave", 0) == 1)
         {
             infoText.text = "Initializing Unity Gaming Services...";
             await UnityServices.InitializeAsync();
+
+            infoText.text = "Signing in...";
+            await Task.Delay(2000);
 
             #if UNITY_ANDROID
             infoText.text = "Signing in...";
@@ -196,7 +252,7 @@ public class BetaContent : MonoBehaviour
 
         while (!AddressableHandles.instance.gameSceneHandle.IsDone)
         {
-            float progressValue = Mathf.Clamp01(AddressableHandles.instance.gameSceneHandle.PercentComplete / 0.9f);
+            float progressValue = Mathf.Clamp01(AddressableHandles.instance.gameSceneHandle.PercentComplete);
             ProgressBar.fillAmount = progressValue;
             progressText.text = progressValue * 100f + "%";
 

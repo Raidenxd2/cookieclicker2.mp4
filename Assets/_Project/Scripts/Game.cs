@@ -10,6 +10,8 @@ using UnityEngine.AddressableAssets;
 using Unity.Services.CloudSave;
 using Unity.Services.Authentication;
 using UnityEngine.Localization;
+using Cookieclicker2mp4Google;
+
 
 
 #if UNITY_ANDROID
@@ -209,6 +211,13 @@ public class Game : MonoBehaviour
         SoundAudioSource = SoundSource.GetComponent<AudioSource>();
 
         al.InitAddressableLightmaps();
+
+        #if UNITY_ANDROID
+        if (ResearchFactory)
+        {
+            GooglePlayGamesManager.instance.GiveAchievement(GPGSIds.achievement_unlock_the_research_factory);
+        }
+        #endif
     }
 
     public void HideStarterBundleButton()
@@ -306,14 +315,14 @@ public class Game : MonoBehaviour
         {
             try
             {
-                GooglePlayGamesManager.instance.SetLeaderboardValue(Cookies, "CgkIleno69UVEAIQAg");
-                GooglePlayGamesManager.instance.SetLeaderboardValue(CPS, "CgkIleno69UVEAIQBQ");
-                GooglePlayGamesManager.instance.SetLeaderboardValue(CPC, "CgkIleno69UVEAIQBg");
-                GooglePlayGamesManager.instance.IncreseAchievement("CgkIleno69UVEAIQAw", (Int32) Autoclickers);
-                GooglePlayGamesManager.instance.IncreseAchievement("CgkIleno69UVEAIQBA", (Int32) Doublecookies);
-                GooglePlayGamesManager.instance.IncreseAchievement("CgkIleno69UVEAIQBw", (Int32) Drills);
-                GooglePlayGamesManager.instance.IncreseAchievement("CgkIleno69UVEAIQCA", (Int32) Grandmas);
-                GooglePlayGamesManager.instance.IncreseAchievement("CgkIleno69UVEAIQCQ", (Int32) CookieFactorys);
+                GooglePlayGamesManager.instance.SetLeaderboardValue(Cookies, GPGSIds.leaderboard_cookies);
+                GooglePlayGamesManager.instance.SetLeaderboardValue(CPS, GPGSIds.leaderboard_cookies_per_second);
+                GooglePlayGamesManager.instance.SetLeaderboardValue(CPC, GPGSIds.leaderboard_cookies_per_click);
+                GooglePlayGamesManager.instance.IncreseAchievement(GPGSIds.achievement_10_autoclickers, (Int32) Autoclickers);
+                GooglePlayGamesManager.instance.IncreseAchievement(GPGSIds.achievement_10_doublecookies, (Int32) Doublecookies);
+                GooglePlayGamesManager.instance.IncreseAchievement(GPGSIds.achievement_10_drills, (Int32) Drills);
+                GooglePlayGamesManager.instance.IncreseAchievement(GPGSIds.achievement_10_grandmas, (Int32) Grandmas);
+                GooglePlayGamesManager.instance.IncreseAchievement(GPGSIds.achievement_10_cookie_factorys, (Int32) CookieFactorys);
             }
             catch (Exception ex)
             {
@@ -488,7 +497,7 @@ public class Game : MonoBehaviour
 #if UNITY_ANDROID
         try
         {
-            GooglePlayGamesManager.instance.GiveAchievement("CgkIleno69UVEAIQAQ");
+            GooglePlayGamesManager.instance.GiveAchievement(GPGSIds.achievement_bake_a_cookie);
         }
         catch
         {
