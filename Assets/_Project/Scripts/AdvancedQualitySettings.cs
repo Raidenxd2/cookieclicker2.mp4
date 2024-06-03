@@ -307,9 +307,11 @@ public class AdvancedQualitySettings : MonoBehaviour
 
         switchRendererFeature.set(AO);
 
+        #if UNITY_ANDROID
         if (IsGPGPC.instance.isPC)
         {
             Application.targetFrameRate = 60;
         }
+        #endif
     }
 }

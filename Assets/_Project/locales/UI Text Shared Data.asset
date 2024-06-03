@@ -739,6 +739,10 @@ MonoBehaviour:
     m_Key: COPYTOCLIPBOARD_BTN
     m_Metadata:
       m_Items: []
+  - m_Id: 190959236602933248
+    m_Key: GPG_SIGNINPROMPT
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

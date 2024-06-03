@@ -770,6 +770,11 @@ MonoBehaviour:
     m_Localized: Obtener ID de jugador
     m_Metadata:
       m_Items: []
+  - m_Id: 190959236602933248
+    m_Localized: "Debes iniciar sesi\xF3n en Google Play Games para poder utilizar
+      Guardar en la nube.\nQuieres iniciar sesi\xF3n ahora?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

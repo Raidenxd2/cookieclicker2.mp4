@@ -818,6 +818,13 @@ MonoBehaviour:
     m_Localized: Copy to Clipboard
     m_Metadata:
       m_Items: []
+  - m_Id: 190959236602933248
+    m_Localized: 'You must be signed in to Google Play Games in order to use Cloud
+      Save.
+
+      Do you want to sign in now?'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

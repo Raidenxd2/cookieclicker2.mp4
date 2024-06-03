@@ -1,0 +1,14 @@
+{
+    "name": "Cookie2.Render.CameraCapture",
+    "rootNamespace": "Cookie2.Render.CameraCapture",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

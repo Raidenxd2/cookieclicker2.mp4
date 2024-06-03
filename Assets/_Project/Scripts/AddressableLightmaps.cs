@@ -50,6 +50,9 @@ public class AddressableLightmaps : MonoBehaviour
 
     public void UnloadLightmaps()
     {
-        Addressables.Release(rflHandle);
+        if (rflHandle.IsValid())
+        {
+            Addressables.Release(rflHandle);
+        }
     }
 }
