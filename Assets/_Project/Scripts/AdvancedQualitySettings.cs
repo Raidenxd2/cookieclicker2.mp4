@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using LoggerSystem;
+using UnityEngine.Rendering.PostProcessing;
 
 public class AdvancedQualitySettings : MonoBehaviour
 {
@@ -15,17 +16,13 @@ public class AdvancedQualitySettings : MonoBehaviour
     public bool HDR;
     public int TextureQuality;
     public float RenderQuality;
-    public GameObject pp_normal;
-    public GameObject pp_performance;
+    public PostProcessLayer pp_normal;
     public TMP_Text RenderQualityText;
     public TMP_InputField RenderQualityInput;
 
     [Header("Performance Mode")]
     public GameObject TreesReal;
     public Camera GameCamera;
-    public GameObject Cookie_Performance;
-    public GameObject Cookie_Normal;
-    public GameObject Research_Factory_Normal;
     public GameObject ParticalsReal;
 
     int boolToInt(bool val)
@@ -250,17 +247,11 @@ public class AdvancedQualitySettings : MonoBehaviour
     {
         if (PostProcessing)
         {
-            pp_normal.SetActive(true);
-            #if UNITY_ANDROID
-            // GameCamera.p = true;
-            #endif
+            pp_normal.enabled = true;
         }
         else
         {
-            pp_normal.SetActive(false);
-            #if UNITY_ANDROID
-            // GameCamera_AdditionalData.renderPostProcessing = false;
-            #endif
+            pp_normal.enabled = false;
         }
         if (Particals)
         {

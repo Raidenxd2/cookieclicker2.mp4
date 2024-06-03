@@ -62,21 +62,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f6f2ff7458698aa45a03c3d2d581f377
-    m_Address: Assets/_Project/Settings/Renderer3D_Mobile.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 681886c5eb7344803b6206f758bf0b1c
-    m_Address: Assets/_Project/Settings/Mobile.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 496df53322986e04ea038886ad78d00c
-    m_Address: Assets/_Project/Settings/CustomPostProcessData.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9bd8c6dc482bf244fa3a69cd62f55319, type: 2}
   m_SchemaSet:
