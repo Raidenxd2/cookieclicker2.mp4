@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 using BreakInfinity;
-using IngameDebugConsole;
 using LoggerSystem;
 
 public class DEBUG : MonoBehaviour
@@ -42,11 +41,6 @@ public class DEBUG : MonoBehaviour
         FPSText.text = "FPS: " + FramesPerSec.ToString();
 
         StartCoroutine(FPSDisplay());
-    }
-
-    public void ShowDebugConsole()
-    {
-        DebugLogManager.Instance.ShowLogWindow();
     }
 
     public void UpdateCookies()
