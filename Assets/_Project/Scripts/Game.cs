@@ -197,8 +197,7 @@ public class Game : MonoBehaviour
         ad.LoadGraphics();
         
         BetaContentToggles[0].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_EnableSideBar", BetaContentToggles[0].isOn);});
-        BetaContentToggles[1].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_Mods", BetaContentToggles[1].isOn);});
-        BetaContentToggles[4].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_ResearchFactory", BetaContentToggles[4].isOn);});
+        BetaContentToggles[1].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_ResearchFactory", BetaContentToggles[4].isOn);});
         if (StarterBundleBought)
         {
             StarterBundleBTN.SetActive(false);
