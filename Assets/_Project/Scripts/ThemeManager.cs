@@ -58,22 +58,22 @@ public class ThemeManager : MonoBehaviour
 
         ContentLoading.SetActive(true);
 
+        if (CurrentThemePrefab != null)
+        {
+            try
+            {
+                Destroy(CurrentThemePrefab);
+                Addressables.Release(CurrentThemePrefabHandle);
+            }
+            catch
+            {
+                notification.ShowNotification("Failed to unload previous theme.", "Themes");
+            }
+        }
+
         if (AssetPackName == "default")
         {
             LogSystem.Log("Default theme selected.");
-
-            if (CurrentThemePrefab != null)
-            {
-                try
-                {
-                    Destroy(CurrentThemePrefab);
-                    Addressables.Release(CurrentThemePrefabHandle);
-                }
-                catch
-                {
-                    notification.ShowNotification("Failed to unload previous theme.", "Themes");
-                }
-            }
 
             DefaultTheme.SetActive(true);
             ContentLoading.SetActive(false);
