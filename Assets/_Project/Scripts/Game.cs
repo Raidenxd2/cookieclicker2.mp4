@@ -61,6 +61,7 @@ public class Game : MonoBehaviour
     public SoundManager soundManager;
     public Notification notification;
     public AddressableLightmaps al;
+    public BetaContent bc;
 
     // text
     [Header("Text")]
@@ -197,7 +198,7 @@ public class Game : MonoBehaviour
         ad.LoadGraphics();
         
         BetaContentToggles[0].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_EnableSideBar", BetaContentToggles[0].isOn);});
-        BetaContentToggles[1].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_ResearchFactory", BetaContentToggles[4].isOn);});
+        BetaContentToggles[1].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_ResearchFactory", BetaContentToggles[1].isOn);});
         if (StarterBundleBought)
         {
             StarterBundleBTN.SetActive(false);
@@ -701,19 +702,21 @@ public class Game : MonoBehaviour
     {
         PlayerPrefs.SetInt("BetaContent", 1);
         BetaContentScreen.SetActive(true);
-        BetaContentWarningScreen.SetActive(false);
+        BetaContentWarningScreen.GetComponent<WindowAnimations>().HideWindow();
     }
 
     public void DisableBetaContent()
     {
-        PlayerPrefs.SetInt("BetaContent", 0);
         PlayerPrefs.SetInt("BETA_EnableSideBar", 0);
         PlayerPrefs.SetInt("BETA_Mods", 0);
         PlayerPrefs.SetInt("BETA_FPSLIMIT", 0);
         PlayerPrefs.SetInt("BETA_CookieMonster", 0);
         PlayerPrefs.SetInt("BETA_ResearchFactory", 0);
-        SavePlayer();
-        Reload();
+
+        bc.UpdateBetaContent();
+        BetaContentScreen.GetComponent<WindowAnimations>().HideWindow();
+
+        PlayerPrefs.SetInt("BetaContent", 0);
     }
 
     public void ChangeBetaContentFeatureValue(string name, bool toggle)
@@ -722,9 +725,11 @@ public class Game : MonoBehaviour
         {
             case false:
                 PlayerPrefs.SetInt(name, 0);
+                bc.UpdateBetaContent();
                 break;
             case true:
                 PlayerPrefs.SetInt(name, 1);
+                bc.UpdateBetaContent();
                 break;
         }
     }
