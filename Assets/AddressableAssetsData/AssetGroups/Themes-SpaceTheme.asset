@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Themes-SpaceTheme
+  m_EditorClassIdentifier: 
+  m_GroupName: Themes-SpaceTheme
+  m_Data:
+    m_SerializedData: []
+  m_GUID: e9d388072d7f2d54ea0734618b810fb9
+  m_SerializeEntries:
+  - m_GUID: 5cfee934aadb04946879bf58aa306e45
+    m_Address: Assets/_Project/Themes/content/SpaceTheme/SpaceScene.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9bd8c6dc482bf244fa3a69cd62f55319, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 14128ccd25f507646b6cc78726941502, type: 2}
+    - {fileID: 11400000, guid: a962efc6c9a331a44bc18269c76eb3f8, type: 2}
