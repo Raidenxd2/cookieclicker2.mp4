@@ -27,6 +27,9 @@ public class BetaContent : MonoBehaviour
     public GameObject SideBar;
     public GameObject ModsBTN;
     public GameObject ResearchFactoryButton;
+    public GameObject ErrorScreen;
+
+    public TMP_Text ErrorText;
 
     public Image ProgressBar;
     public TMP_Text progressText;
@@ -241,6 +244,7 @@ public class BetaContent : MonoBehaviour
         
 
         infoText.text = "Loading Game...";
+
         StartCoroutine(LoadGameScene());
     }
 
@@ -250,6 +254,12 @@ public class BetaContent : MonoBehaviour
 
         AddressableHandles.instance.gameSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.gameSceneRef, LoadSceneMode.Single);
 
+        if (AddressableHandles.instance.gameSceneHandle.OperationException != null)
+        {
+            ErrorScreen.SetActive(true);
+            ErrorText.text = "Game failed to load\n" + AddressableHandles.instance.gameSceneHandle.OperationException.ToString();
+        }
+
         while (!AddressableHandles.instance.gameSceneHandle.IsDone)
         {
             float progressValue = Mathf.Clamp01(AddressableHandles.instance.gameSceneHandle.PercentComplete);
@@ -258,5 +268,10 @@ public class BetaContent : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
