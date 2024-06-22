@@ -747,6 +747,18 @@ MonoBehaviour:
     m_Key: INIT_ERRORTITLE
     m_Metadata:
       m_Items: []
+  - m_Id: 202211336331243520
+    m_Key: ASSETPACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202211337438539776
+    m_Key: ASSETPACK_DOWNLOADREQUIRED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202211338101239808
+    m_Key: ASSETPACK_DOWNLOADING
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

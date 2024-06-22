@@ -828,6 +828,23 @@ MonoBehaviour:
     m_Localized: Error
     m_Metadata:
       m_Items: []
+  - m_Id: 202211336331243520
+    m_Localized: Asset Pack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202211337438539776
+    m_Localized: 'You must download an Asset Pack in order to use this theme.
+
+      Do
+      you want to download it?
+
+      (Wi-Fi recommended)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202211338101239808
+    m_Localized: Downloading Asset Pack...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
