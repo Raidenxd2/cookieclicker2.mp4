@@ -47,14 +47,12 @@ public class Game : MonoBehaviour
 
     // game objects
     [Header("Game Objects")]
-    public GameObject RelaunchRequiredScreen;
     public GameObject Drill_Model;
     public GameObject Drill_Partical;
     public GameObject NECDialog;
     public GameObject SDIE;
     public GameObject NoNetworkScreen;
     public GameObject SaveDataWarningScreen;
-    public GameObject TexturesChangedScreen;
 
     // scripts
     [Header("Scripts")]
@@ -186,7 +184,6 @@ public class Game : MonoBehaviour
         offlineManager.LoadOfflineTime();
         StartCoroutine(AutoSave());
         StartCoroutine(Tick());
-        RelaunchRequiredScreen.SetActive(false);
         CheckPrices();
         LastSavedGameVersion = GameVersion;
         try
@@ -388,7 +385,6 @@ public class Game : MonoBehaviour
             SaveDataWarningScreen.SetActive(true);
             SaveDataWarningInfo.text = SaveDataWarningTexturesText.GetLocalizedString();
             SaveDataWarningYesButton.onClick.AddListener(() => ad.TexturesToggle(true));
-            SaveDataWarningYesButton.onClick.AddListener(() => TexturesChangedScreen.SetActive(true));
         }
 
         
