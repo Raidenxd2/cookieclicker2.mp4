@@ -9,6 +9,7 @@ namespace SuperUnityBuild.Generated
         None,
         Development,
         Release,
+        Release_with_logs,
     }
 
     public enum Platform
@@ -46,13 +47,13 @@ namespace SuperUnityBuild.Generated
 
     public static class BuildConstants
     {
-        public static readonly DateTime buildDate = new DateTime(638520123076764195);
-        public const string version = "1.2.4-PublicRelease";
+        public static readonly DateTime buildDate = new DateTime(638532140330973156);
+        public const string version = "1.2.5-PublicRelease";
         public const ReleaseType releaseType = ReleaseType.Release;
-        public const Platform platform = Platform.Linux;
+        public const Platform platform = Platform.PC;
         public const ScriptingBackend scriptingBackend = ScriptingBackend.IL2CPP;
-        public const Architecture architecture = Architecture.Linux_x64;
-        public const Distribution distribution = Distribution.itch_io_Linux_Release;
+        public const Architecture architecture = Architecture.Windows_x86;
+        public const Distribution distribution = Distribution.itch_io_Windows_Release;
     }
 }
 

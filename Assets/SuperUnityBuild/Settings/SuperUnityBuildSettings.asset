@@ -19,8 +19,8 @@ MonoBehaviour:
     constantsFileLocation: Assets\SuperUnityBuild
   _productParameters:
     buildCounter: 0
-    buildVersion: 1.2.5-Beta1
-    versionTemplate: 1.2.5-Beta1
+    buildVersion: 1.2.5-PublicRelease
+    versionTemplate: 1.2.5-PublicRelease
     autoGenerate: 0
     syncWithPlayerSettings: 1
   _releaseTypeList:
@@ -258,7 +258,7 @@ MonoBehaviour:
         childKeys:
         - Release/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,AAB,Single Binary,22,34,Debugging)
         - Release/Android/Android (ARM64+X86_64,Generic,App,APK,Single Binary,22,34,Debugging)
-      - enabled: 0
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
@@ -266,7 +266,7 @@ MonoBehaviour:
       - enabled: 1
         childKeys:
         - Release/PC/Windows x86 (App)/IL2CPP
-      - enabled: 0
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
@@ -425,7 +425,7 @@ MonoBehaviour:
     showBuildInfo: 0
     hideDisabled: 0
     treeView: 0
-    selectedKeyChain: Release/Linux/Linux x64/IL2CPP/itch.io Linux Release
+    selectedKeyChain: Release/PC/Windows x64 (App)/IL2CPP/itch.io Windows Release
   _preBuildActions:
     buildActions:
     - {fileID: 8740057897878208988}

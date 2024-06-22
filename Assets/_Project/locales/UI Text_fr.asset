@@ -262,8 +262,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34366876524544
-    m_Localized: "(Pris en charge sur\_: Windows, Mac OS, Linux et Android (n\xE9cessite
-      un clavier))"
+    m_Localized: '(compatible avec : Windows et Linux)'
     m_Metadata:
       m_Items: []
   - m_Id: 34443477098496
@@ -776,6 +775,10 @@ MonoBehaviour:
   - m_Id: 190959236602933248
     m_Localized: "Vous devez \xEAtre connect\xE9 \xE0 Google Play Games pour pouvoir
       utiliser Cloud Save.\nVoulez-vous vous connecter maintenant ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 195960503595184128
+    m_Localized: Erreur
     m_Metadata:
       m_Items: []
   references:

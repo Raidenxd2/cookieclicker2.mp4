@@ -250,7 +250,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34366876524544
-    m_Localized: '(Compatible con: Windows, Mac OS, Linux y Android (requiere teclado))'
+    m_Localized: '(Compatible con: Windows y Linux)'
     m_Metadata:
       m_Items: []
   - m_Id: 34443477098496
@@ -773,6 +773,10 @@ MonoBehaviour:
   - m_Id: 190959236602933248
     m_Localized: "Debes iniciar sesi\xF3n en Google Play Games para poder utilizar
       Guardar en la nube.\nQuieres iniciar sesi\xF3n ahora?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 195960503595184128
+    m_Localized: Error
     m_Metadata:
       m_Items: []
   references:

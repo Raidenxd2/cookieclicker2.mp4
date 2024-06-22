@@ -2,7 +2,9 @@
     "name": "Cookie2.Render.CameraCapture",
     "rootNamespace": "Cookie2.Render.CameraCapture",
     "references": [],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

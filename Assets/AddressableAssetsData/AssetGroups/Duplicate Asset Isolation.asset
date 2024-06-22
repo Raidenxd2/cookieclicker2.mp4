@@ -32,11 +32,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1274d4023e775c348aefc7224814bd55
-    m_Address: Assets/Animations/Button/Button.controller
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a9a2aa327a8d30c45a14abc15d60312b
     m_Address: Assets/Animations/Loading.controller
     m_ReadOnly: 0
