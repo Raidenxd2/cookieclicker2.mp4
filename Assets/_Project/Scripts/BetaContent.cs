@@ -69,10 +69,6 @@ public class BetaContent : MonoBehaviour
                 {
                     SideBar.SetActive(true);
                 }
-                if (PlayerPrefs.GetInt("BETA_Mods", 0) == 1)
-                {
-                    ModsBTN.SetActive(true);
-                }
                 if (PlayerPrefs.GetInt("BETA_ResearchFactory", 0) == 1)
                 {
                     ResearchFactoryButton.SetActive(true);
