@@ -16093,6 +16093,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 106894221135080655, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 106894221389762985, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_fontSize
       value: 83
@@ -84036,6 +84040,7 @@ MonoBehaviour:
   soundManager: {fileID: 0}
   notification: {fileID: 1120771770}
   al: {fileID: 816785819}
+  bc: {fileID: 290554229}
   CookiesText: {fileID: 1537137052}
   Shop_Autoclicker: {fileID: 1033384404}
   Shop_Doublecookie: {fileID: 711381718}

@@ -63,17 +63,7 @@ public class BetaContent : MonoBehaviour
             {
                 BetaContentWarning.SetActive(true);
             }
-            if (PlayerPrefs.GetInt("BetaContent", 0) == 1 && scene.name != "Init")
-            {
-                if (PlayerPrefs.GetInt("BETA_EnableSideBar", 0) == 1)
-                {
-                    SideBar.SetActive(true);
-                }
-                if (PlayerPrefs.GetInt("BETA_ResearchFactory", 0) == 1)
-                {
-                    ResearchFactoryButton.SetActive(true);
-                }
-            }
+            UpdateBetaContent();
             if (scene.name != "Game")
             {
                 LoadScene();
@@ -83,6 +73,29 @@ public class BetaContent : MonoBehaviour
         {
             File.WriteAllText(Application.temporaryCachePath + "/BetaContentInitFail.txt", ex.ToString());
             LoadScene();
+        }
+    }
+
+    public void UpdateBetaContent()
+    {
+        if (PlayerPrefs.GetInt("BetaContent", 0) == 1 && SceneManager.GetActiveScene().name != "Init")
+        {
+            if (PlayerPrefs.GetInt("BETA_EnableSideBar", 0) == 1)
+            {
+                SideBar.SetActive(true);
+            }
+            else
+            {
+                SideBar.SetActive(false);
+            }
+            if (PlayerPrefs.GetInt("BETA_ResearchFactory", 0) == 1)
+            {
+                ResearchFactoryButton.SetActive(true);
+            }
+            else
+            {
+                ResearchFactoryButton.SetActive(false);
+            }
         }
     }
 
