@@ -112,6 +112,11 @@ public class VideoSettings : MonoBehaviour
                 break;
 
             case 2:
+                if (!Screen.fullScreen)
+                {
+                    break;
+                }
+
                 Screen.SetResolution(resolution.width, resolution.height, FullScreenMode.Windowed);
                 break;
         }
