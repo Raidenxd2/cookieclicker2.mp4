@@ -33,3 +33,4 @@ MonoBehaviour:
     m_Schemas:
     - {fileID: 11400000, guid: 2c231f7cb128f874a9c1c2a369cb050a, type: 2}
     - {fileID: 11400000, guid: abff33bb39783374c8e304d60fcb6e15, type: 2}
+    - {fileID: 11400000, guid: c2343200d19ca5a4eae0556ab5ad1b87, type: 2}
