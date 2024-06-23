@@ -109,7 +109,13 @@ public class ThemeManager : MonoBehaviour
 
             ContentLoading.SetActive(false);
         }
-        else
+        else if (aps.states[0].status == AndroidAssetPackStatus.Unknown)
+        {
+            LogSystem.Log("AssetPack " + AssetPackName + " isn't available for this application.")
+
+            notification.ShowNotification("Failed to check Asset Pack status because the app wasn't installed through Google Play.");
+        }
+        else if (aps.states[0].status == AndroidAssetPackStatus.NotInstalled)
         {
             LogSystem.Log("AssetPack " + AssetPackName + " isn't downloaded.");
 
