@@ -252,7 +252,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34366876524544
-    m_Localized: '(Supported on: Windows, and Linux)'
+    m_Localized: '(Supported on: Windows and Linux)'
     m_Metadata:
       m_Items: []
   - m_Id: 34443477098496
