@@ -15,5 +15,5 @@ MonoBehaviour:
   m_CustomAssetPacks:
   - AssetPackName: InstallTimeContent
     DeliveryType: 1
-  - AssetPackName: OnDemandContent
+  - AssetPackName: SpaceTheme
     DeliveryType: 3
