@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpaceTheme
   m_EditorClassIdentifier: 
   ThemeName: Space
-  AssetPackName: OnDemandContent
+  AssetPackName: SpaceTheme
   ThemePrefabRef:
     m_AssetGUID: 5cfee934aadb04946879bf58aa306e45
     m_SubObjectName: 
