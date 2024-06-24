@@ -128,10 +128,6 @@ MonoBehaviour:
     m_Localized: "\u30B9\u30AF\u30EA\u30FC\u30F3\u30B7\u30E7\u30C3\u30C8\u8A2D\u5B9A"
     m_Metadata:
       m_Items: []
-  - m_Id: 16695841759232
-    m_Localized: "\u6539\u9020"
-    m_Metadata:
-      m_Items: []
   - m_Id: 16719891898368
     m_Localized: "\u30EA\u30ED\u30FC\u30C9\u30B2\u30FC\u30E0"
     m_Metadata:

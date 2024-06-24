@@ -111,9 +111,9 @@ public class ThemeManager : MonoBehaviour
         }
         else if (aps.states[0].status == AndroidAssetPackStatus.Unknown)
         {
-            LogSystem.Log("AssetPack " + AssetPackName + " isn't available for this application.")
+            LogSystem.Log("AssetPack " + AssetPackName + " isn't available for this application.");
 
-            notification.ShowNotification("Failed to check Asset Pack status because the app wasn't installed through Google Play.");
+            notification.ShowNotification("Failed to check Asset Pack status because the app wasn't installed through Google Play.", "Themes");
         }
         else if (aps.states[0].status == AndroidAssetPackStatus.NotInstalled)
         {
@@ -134,7 +134,7 @@ public class ThemeManager : MonoBehaviour
 
             GlobalDark.gameObject.SetActive(true);
             AssetPackDownloadRequiredScreen.SetActive(true);
-            AssetPackSizeText.text = aps.size.ToString();
+            AssetPackSizeText.text = "Size: " + aps.size.ToString() + " KB";
         }
         #else
         LogSystem.Log("Non Android platform, loading Theme.");

@@ -123,10 +123,6 @@ MonoBehaviour:
     m_Key: SCREENSHOTSETTINGS_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 16695841759232
-    m_Key: MODS_BTN
-    m_Metadata:
-      m_Items: []
   - m_Id: 16719891898368
     m_Key: RELOADGAME_BTN
     m_Metadata:

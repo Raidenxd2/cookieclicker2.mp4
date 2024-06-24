@@ -1,7 +1,7 @@
 apply plugin: 'com.android.asset-pack'
 
 assetPack {
-	packName = "OnDemandContent"
+	packName = "SpaceTheme"
 	dynamicDelivery {
 		deliveryType = "on-demand"
 	}
