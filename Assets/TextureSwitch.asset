@@ -27,20 +27,6 @@ MonoBehaviour:
     textureSizeAndroid: 512
     GenerateMipmapGPGPC: 0
     GenerateMipmapAndroid: 0
-  - texture: {fileID: 2800000, guid: 77374713e95ed3c48a5f3d80c54caf5c, type: 3}
-    textureFormatGPGPC: 12
-    textureFormatAndroid: 50
-    textureSizeGPGPC: 2048
-    textureSizeAndroid: 512
-    GenerateMipmapGPGPC: 1
-    GenerateMipmapAndroid: 1
-  - texture: {fileID: 2800000, guid: f72b7fdcb4008e447ad36a358d822606, type: 3}
-    textureFormatGPGPC: 12
-    textureFormatAndroid: 50
-    textureSizeGPGPC: 2048
-    textureSizeAndroid: 512
-    GenerateMipmapGPGPC: 1
-    GenerateMipmapAndroid: 1
   - texture: {fileID: 2800000, guid: bc1067b960772dc41b14d4220d1070cd, type: 3}
     textureFormatGPGPC: 12
     textureFormatAndroid: 51

@@ -137,10 +137,6 @@ MonoBehaviour:
     m_Localized: Recharger le jeu
     m_Metadata:
       m_Items: []
-  - m_Id: 16695841759232
-    m_Localized: Mods
-    m_Metadata:
-      m_Items: []
   - m_Id: 16761679749120
     m_Localized: "R\xE9initialiser le fichier de sauvegarde"
     m_Metadata:

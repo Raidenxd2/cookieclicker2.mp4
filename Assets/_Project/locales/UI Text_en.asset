@@ -130,10 +130,6 @@ MonoBehaviour:
     m_Localized: Screenshot Settings
     m_Metadata:
       m_Items: []
-  - m_Id: 16695841759232
-    m_Localized: Mods
-    m_Metadata:
-      m_Items: []
   - m_Id: 16719891898368
     m_Localized: Reload Game
     m_Metadata:

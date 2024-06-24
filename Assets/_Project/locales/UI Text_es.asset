@@ -128,10 +128,6 @@ MonoBehaviour:
     m_Localized: "Configuraci\xF3n de captura de pantalla"
     m_Metadata:
       m_Items: []
-  - m_Id: 16695841759232
-    m_Localized: modificaciones
-    m_Metadata:
-      m_Items: []
   - m_Id: 16719891898368
     m_Localized: Recargar juego
     m_Metadata:
