@@ -108,7 +108,7 @@ public class ThemeManager : MonoBehaviour
         {
             LogSystem.Log("AssetPack " + AssetPackName + " isn't available for this application.");
 
-            notification.ShowNotification("Failed to check Asset Pack status because the app wasn't installed through Google Play.", "Themes");
+            notification.ShowNotification("Failed to check Asset Pack status because the internet isn't available or the app wasn't installed through Google Play.", "Themes");
         }
         else if (aps.states[0].status == AndroidAssetPackStatus.NotInstalled)
         {
