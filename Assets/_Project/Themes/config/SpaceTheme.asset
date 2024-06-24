@@ -15,7 +15,7 @@ MonoBehaviour:
   ThemeName: Space
   AssetPackName: SpaceTheme
   ThemePrefabRef:
-    m_AssetGUID: 5cfee934aadb04946879bf58aa306e45
+    m_AssetGUID: 47090cf9a6f72114582a1556279e2e25
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

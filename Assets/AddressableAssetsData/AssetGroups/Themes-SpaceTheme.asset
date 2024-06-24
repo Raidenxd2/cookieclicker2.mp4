@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: e9d388072d7f2d54ea0734618b810fb9
   m_SerializeEntries:
-  - m_GUID: 5cfee934aadb04946879bf58aa306e45
-    m_Address: Assets/_Project/Themes/content/SpaceTheme/SpaceScene.prefab
+  - m_GUID: 47090cf9a6f72114582a1556279e2e25
+    m_Address: Assets/_Project/Themes/content/SpaceTheme/SpaceTheme_Scene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
