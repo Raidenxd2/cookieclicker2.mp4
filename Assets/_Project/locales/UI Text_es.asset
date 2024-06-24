@@ -46,15 +46,6 @@ MonoBehaviour:
     m_Localized: Cargando...
     m_Metadata:
       m_Items: []
-  - m_Id: 3697395867648
-    m_Localized: "\xA1ADVERTENCIA!"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3821438214144
-    m_Localized: El contenido beta se puede romper, cambiar o romper su guardado
-      en cualquier momento.
-    m_Metadata:
-      m_Items: []
   - m_Id: 3993245294592
     m_Localized: OK
     m_Metadata:
@@ -101,16 +92,6 @@ MonoBehaviour:
       el acceso al archivo guardado. Por favor verifique los permisos en el archivo."
     m_Metadata:
       m_Items: []
-  - m_Id: 12300076949504
-    m_Localized: RELANZAMIENTO REQUERIDO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 12347069931520
-    m_Localized: 'Guardar archivo creado.
-
-      Reinicie el juego.'
-    m_Metadata:
-      m_Items: []
   - m_Id: 12417584570368
     m_Localized: Abandonar
     m_Metadata:
@@ -145,10 +126,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 16429755113472
     m_Localized: "Configuraci\xF3n de captura de pantalla"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16463863193600
-    m_Localized: Rec Room Guardar Importar
     m_Metadata:
       m_Items: []
   - m_Id: 16695841759232
@@ -192,10 +169,6 @@ MonoBehaviour:
     m_Localized: Postprocesamiento
     m_Metadata:
       m_Items: []
-  - m_Id: 26495241658368
-    m_Localized: Encendiendo
-    m_Metadata:
-      m_Items: []
   - m_Id: 26524375293952
     m_Localized: "\xC1rboles"
     m_Metadata:
@@ -212,10 +185,6 @@ MonoBehaviour:
     m_Localized: Niebla
     m_Metadata:
       m_Items: []
-  - m_Id: 26645217386496
-    m_Localized: texturas
-    m_Metadata:
-      m_Items: []
   - m_Id: 26676318150656
     m_Localized: "Oclusi\xF3n ambiental del espacio de la pantalla"
     m_Metadata:
@@ -230,11 +199,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 27214296358912
     m_Localized: Cambio
-    m_Metadata:
-      m_Items: []
-  - m_Id: 27240833720320
-    m_Localized: "NOTA: La configuraci\xF3n de Calidad de procesamiento no se puede
-      guardar."
     m_Metadata:
       m_Items: []
   - m_Id: 27860231757824
@@ -278,38 +242,8 @@ MonoBehaviour:
     m_Localized: Rec Room Guardar Importar
     m_Metadata:
       m_Items: []
-  - m_Id: 35763009331200
-    m_Localized: "Pour obtenir un code de sauvegarde, rendez-vous dans la salle ^Cookieclicker.mp4\r\npuis
-      allez dans la sous-salle \"SaveCodeGenerator\" puis appuyez sur le bouton pour
-      g\xE9n\xE9rer le code\r\nalors mettez-le ici"
-    m_Metadata:
-      m_Items: []
   - m_Id: 35818470612992
     m_Localized: Importar
-    m_Metadata:
-      m_Items: []
-  - m_Id: 36339386392576
-    m_Localized: Perfil de la sala recreativa
-    m_Metadata:
-      m_Items: []
-  - m_Id: 36382604500992
-    m_Localized: "\xBFEs correcta esta informaci\xF3n?"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 36857164832768
-    m_Localized: "Advertencias:\r\n1. LOS DATOS SE RESTABLECER\xC1N\r\n2. El sistema
-      Rebirth es diferente en la versi\xF3n Rec Room\r\n4. Los renacimientos no est\xE1n
-      implementados\r\n\r\n\xBFQuieres continuar?"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 37251479740416
-    m_Localized: "Mensaje de prohibici\xF3n"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 37282391760896
-    m_Localized: "Error:\r\nProhibido de API (accounts.rec.net)\r\nError HTTP: 403\r\nEnv\xEDe
-      un ticket a https://recroom.zendesk.com/hc/en-us/requests para desbloquear
-      su IP."
     m_Metadata:
       m_Items: []
   - m_Id: 37723288608768
@@ -328,45 +262,12 @@ MonoBehaviour:
     m_Localized: "\xA1No hay suficientes galletas!"
     m_Metadata:
       m_Items: []
-  - m_Id: 38498303713280
-    m_Localized: Reproductor de video
-    m_Metadata:
-      m_Items: []
-  - m_Id: 38523318542336
-    m_Localized: No, gracias
-    m_Metadata:
-      m_Items: []
-  - m_Id: 38846909095936
-    m_Localized: RECARGA REQUERIDA
-    m_Metadata:
-      m_Items: []
-  - m_Id: 38890404028416
-    m_Localized: Para activar o desactivar las texturas es necesario recargar el
-      juego.
-    m_Metadata:
-      m_Items: []
   - m_Id: 39169753063424
     m_Localized: Temas
     m_Metadata:
       m_Items: []
   - m_Id: 39186068905984
     m_Localized: 'Selecciona un tema:'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 39197460635648
-    m_Localized: Tema del bosque
-    m_Metadata:
-      m_Items: []
-  - m_Id: 39211171815424
-    m_Localized: Tema del espacio
-    m_Metadata:
-      m_Items: []
-  - m_Id: 39821447241728
-    m_Localized: "Actualizaci\xF3n disponible"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 39888992313344
-    m_Localized: "Hay una nueva actualizaci\xF3n disponible, \xBFquieres descargarla?"
     m_Metadata:
       m_Items: []
   - m_Id: 40418649022464
@@ -379,10 +280,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 40550794764288
     m_Localized: "M\xFAsica"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 40589231366144
-    m_Localized: urp-kawase-blur
     m_Metadata:
       m_Items: []
   - m_Id: 41341001637888
@@ -405,14 +302,6 @@ MonoBehaviour:
     m_Localized: Idioma
     m_Metadata:
       m_Items: []
-  - m_Id: 42175408087040
-    m_Localized: Advertencia de tema personalizado
-    m_Metadata:
-      m_Items: []
-  - m_Id: 42218743635968
-    m_Localized: Si estaba usando un tema personalizado, vuelva a cargarlo.
-    m_Metadata:
-      m_Items: []
   - m_Id: 42751990669312
     m_Localized: "El contenido beta puede cambiar, romperse o romper su archivo guardado\r\n\r\n\xBFDesea
       habilitar el contenido beta?"
@@ -420,11 +309,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 43167746859008
     m_Localized: Contenido beta
-    m_Metadata:
-      m_Items: []
-  - m_Id: 43218086895616
-    m_Localized: Se requiere una recarga para habilitar/deshabilitar el contenido
-      beta.
     m_Metadata:
       m_Items: []
   - m_Id: 43279676055552
@@ -447,28 +331,8 @@ MonoBehaviour:
     m_Localized: Tocadiscos tragamonedas
     m_Metadata:
       m_Items: []
-  - m_Id: 59091170336768
-    m_Localized: 1.0.0
-    m_Metadata:
-      m_Items: []
   - m_Id: 280637872775168
     m_Localized: Cookieclicker2.mp4
-    m_Metadata:
-      m_Items: []
-  - m_Id: 665311182823424
-    m_Localized: Graphics API
-    m_Metadata:
-      m_Items: []
-  - m_Id: 696892345786368
-    m_Localized: "Ingl\xE9s (en)"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 697180578357248
-    m_Localized: "Espa\xF1ol (es)"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 699628915236864
-    m_Localized: Seudo (Pseudo-Locale(pseudo))
     m_Metadata:
       m_Items: []
   - m_Id: 1037116854738944
@@ -487,18 +351,6 @@ MonoBehaviour:
     m_Localized: Muy baja
     m_Metadata:
       m_Items: []
-  - m_Id: 1066150825271296
-    m_Localized: 'Error al cargar el juego:'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1067371644559360
-    m_Localized: "El juego ahora se cerrar\xE1 en 30 segundos."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5701317239492608
-    m_Localized: "Modo de ahorro de bater\xEDa"
-    m_Metadata:
-      m_Items: []
   - m_Id: 5827650568716288
     m_Localized: Acceso
     m_Metadata:
@@ -511,10 +363,6 @@ MonoBehaviour:
     m_Localized: "Tabla de clasificaci\xF3n"
     m_Metadata:
       m_Items: []
-  - m_Id: 5838013796319232
-    m_Localized: "Cerrar sesi\xF3n"
-    m_Metadata:
-      m_Items: []
   - m_Id: 6422385197568000
     m_Localized: Juegos de Google Play
     m_Metadata:
@@ -525,10 +373,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 6436239344390144
     m_Localized: tienda de galletas
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7613911591862272
-    m_Localized: Mira AD por 10000 Cookies
     m_Metadata:
       m_Items: []
   - m_Id: 8740648484651008
@@ -545,45 +389,12 @@ MonoBehaviour:
     m_Localized: Tema antiguo
     m_Metadata:
       m_Items: []
-  - m_Id: 9835760787116032
-    m_Localized: No Translation For Spanish.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9835806983180288
-    m_Localized: No Translation For Spanish.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9836071333384192
-    m_Localized: No Translation For Spanish.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 21043291899285504
-    m_Localized: "Limite FPS cuando no est\xE9 enfocado"
-    m_Metadata:
-      m_Items: []
   - m_Id: 21043978339078144
     m_Localized: Contenido beta
     m_Metadata:
       m_Items: []
-  - m_Id: 21044715785801728
-    m_Localized: "franc\xE9s (fr)"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 21378433280888832
-    m_Localized: Habilitar el Monstruo de las Galletas
-    m_Metadata:
-      m_Items: []
-  - m_Id: 165978788776914944
-    m_Localized: HDR
-    m_Metadata:
-      m_Items: []
   - m_Id: 166605031994044416
     m_Localized: "Guardar gesti\xF3n"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 167052430117974016
-    m_Localized: "ADVERTENCIA: Importar datos desde un archivo REINICIAR\xC1 su archivo
-      de guardado existente."
     m_Metadata:
       m_Items: []
   - m_Id: 166606202485878784
@@ -600,18 +411,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 166606814397083648
     m_Localized: Reinicio con Starter Bundle (si se posee)
-    m_Metadata:
-      m_Items: []
-  - m_Id: 167047962857058304
-    m_Localized: Importar datos
-    m_Metadata:
-      m_Items: []
-  - m_Id: 167047964228595712
-    m_Localized: Exportar datos
-    m_Metadata:
-      m_Items: []
-  - m_Id: 167061826088742912
-    m_Localized: "Japon\xE9s (ja)"
     m_Metadata:
       m_Items: []
   - m_Id: 167076722826293248

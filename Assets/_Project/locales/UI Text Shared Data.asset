@@ -43,14 +43,6 @@ MonoBehaviour:
     m_Key: LOADING_TEXT
     m_Metadata:
       m_Items: []
-  - m_Id: 3697395867648
-    m_Key: INIT_WARNINGSCREEN_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3821438214144
-    m_Key: INIT_WARNINGSCREEN_INFO
-    m_Metadata:
-      m_Items: []
   - m_Id: 3993245294592
     m_Key: OK_BTN
     m_Metadata:
@@ -95,14 +87,6 @@ MonoBehaviour:
     m_Key: SAVEDATAHELP_INFO
     m_Metadata:
       m_Items: []
-  - m_Id: 12300076949504
-    m_Key: RELAUNCHGAME_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 12347069931520
-    m_Key: RELAUNCHGAME_INFO
-    m_Metadata:
-      m_Items: []
   - m_Id: 12417584570368
     m_Key: QUIT_BTN
     m_Metadata:
@@ -137,10 +121,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 16429755113472
     m_Key: SCREENSHOTSETTINGS_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16463863193600
-    m_Key: RECROOMIMPORT_BTN
     m_Metadata:
       m_Items: []
   - m_Id: 16695841759232
@@ -183,10 +163,6 @@ MonoBehaviour:
     m_Key: POSTPROCESSING_TOGGLE
     m_Metadata:
       m_Items: []
-  - m_Id: 26495241658368
-    m_Key: LIGHTING_TOGGLE
-    m_Metadata:
-      m_Items: []
   - m_Id: 26524375293952
     m_Key: TREES_TOGGLE
     m_Metadata:
@@ -203,10 +179,6 @@ MonoBehaviour:
     m_Key: FOG_TOGGLE
     m_Metadata:
       m_Items: []
-  - m_Id: 26645217386496
-    m_Key: TEXTURES_TOGGLE
-    m_Metadata:
-      m_Items: []
   - m_Id: 26676318150656
     m_Key: SSAO_TOGGLE
     m_Metadata:
@@ -221,10 +193,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 27214296358912
     m_Key: CHANGE_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 27240833720320
-    m_Key: RENDERQUALITY_WARNING
     m_Metadata:
       m_Items: []
   - m_Id: 27860231757824
@@ -267,32 +235,8 @@ MonoBehaviour:
     m_Key: RRSAVEIMPORT_TITLE
     m_Metadata:
       m_Items: []
-  - m_Id: 35763009331200
-    m_Key: RRSAVEIMPORT_Info
-    m_Metadata:
-      m_Items: []
   - m_Id: 35818470612992
     m_Key: IMPORT_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 36339386392576
-    m_Key: RRPROFILE_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 36382604500992
-    m_Key: RRPROFILE_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 36857164832768
-    m_Key: RRWARNINGSCREEN_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 37251479740416
-    m_Key: RRBAN_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 37282391760896
-    m_Key: RRBAN_INFO
     m_Metadata:
       m_Items: []
   - m_Id: 37723288608768
@@ -311,44 +255,12 @@ MonoBehaviour:
     m_Key: NECDIALOG_INFO
     m_Metadata:
       m_Items: []
-  - m_Id: 38498303713280
-    m_Key: EASTEREGG_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 38523318542336
-    m_Key: EASTEREGG_NOTHANKS
-    m_Metadata:
-      m_Items: []
-  - m_Id: 38846909095936
-    m_Key: TEXTURESCHANGED_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 38890404028416
-    m_Key: TEXTURESCHANGED_INFO
-    m_Metadata:
-      m_Items: []
   - m_Id: 39169753063424
     m_Key: THEMES_TITLE
     m_Metadata:
       m_Items: []
   - m_Id: 39186068905984
     m_Key: THEMES_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 39197460635648
-    m_Key: THEMES_FOREST
-    m_Metadata:
-      m_Items: []
-  - m_Id: 39211171815424
-    m_Key: THEMES_SPACE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 39821447241728
-    m_Key: UPDATEAVAILABLE_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 39888992313344
-    m_Key: UPDATEAVAILABLE_INFO
     m_Metadata:
       m_Items: []
   - m_Id: 40418649022464
@@ -361,10 +273,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 40550794764288
     m_Key: CREDITS_MUSIC
-    m_Metadata:
-      m_Items: []
-  - m_Id: 40589231366144
-    m_Key: CREDITS_URP-KAWASE-BLUR
     m_Metadata:
       m_Items: []
   - m_Id: 41341001637888
@@ -387,24 +295,12 @@ MonoBehaviour:
     m_Key: ACCESSIBILITY_LANGUAGE
     m_Metadata:
       m_Items: []
-  - m_Id: 42175408087040
-    m_Key: CUSTOMTHEMEWARNING_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 42218743635968
-    m_Key: CUSTOMTHEMEWARNING_INFO
-    m_Metadata:
-      m_Items: []
   - m_Id: 42751990669312
     m_Key: EBCWARNING_INFO
     m_Metadata:
       m_Items: []
   - m_Id: 43167746859008
     m_Key: BETACONTENT_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 43218086895616
-    m_Key: BETACONTENT_INFO
     m_Metadata:
       m_Items: []
   - m_Id: 43279676055552
@@ -427,28 +323,8 @@ MonoBehaviour:
     m_Key: JUKEBOX_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 59091170336768
-    m_Key: VERSION
-    m_Metadata:
-      m_Items: []
   - m_Id: 280637872775168
     m_Key: APP_NAME
-    m_Metadata:
-      m_Items: []
-  - m_Id: 665311182823424
-    m_Key: GRAPHICSAPI_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 696892345786368
-    m_Key: LANGUAGE_ENGLISH
-    m_Metadata:
-      m_Items: []
-  - m_Id: 697180578357248
-    m_Key: LANGUAGE_SPANSIH
-    m_Metadata:
-      m_Items: []
-  - m_Id: 699628915236864
-    m_Key: LANGUAGE_PSEUDO
     m_Metadata:
       m_Items: []
   - m_Id: 1037116854738944
@@ -467,18 +343,6 @@ MonoBehaviour:
     m_Key: TEXTUREQUALITY_VERYLOW
     m_Metadata:
       m_Items: []
-  - m_Id: 1066150825271296
-    m_Key: FAILEDTOLOADGAME_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1067371644559360
-    m_Key: FAILEDTOLOADGAME_GAMEQUIT
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5701317239492608
-    m_Key: OPTIONS_BSM
-    m_Metadata:
-      m_Items: []
   - m_Id: 5827650568716288
     m_Key: LOGIN_BTN
     m_Metadata:
@@ -489,10 +353,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5827744323993600
     m_Key: LEADERBOARD_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5838013796319232
-    m_Key: LOGOUT_BTN
     m_Metadata:
       m_Items: []
   - m_Id: 6422385197568000
@@ -507,10 +367,6 @@ MonoBehaviour:
     m_Key: COOKIESTORE_TITLE
     m_Metadata:
       m_Items: []
-  - m_Id: 7613911591862272
-    m_Key: ADBTN
-    m_Metadata:
-      m_Items: []
   - m_Id: 8740648484651008
     m_Key: SB_TITLE
     m_Metadata:
@@ -523,36 +379,8 @@ MonoBehaviour:
     m_Key: THEMES_OLD
     m_Metadata:
       m_Items: []
-  - m_Id: 9835760787116032
-    m_Key: DOWNLOADDATASCREEN_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9835806983180288
-    m_Key: DOWNLOADDATASCREEN_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9836071333384192
-    m_Key: DOWNLOADINGDATASCREEN_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 21043291899285504
-    m_Key: BETACONTENT_FPSLIMIT
-    m_Metadata:
-      m_Items: []
   - m_Id: 21043978339078144
     m_Key: BETACONTENT_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 21044715785801728
-    m_Key: LANGUAGE_FRENCH
-    m_Metadata:
-      m_Items: []
-  - m_Id: 21378433280888832
-    m_Key: BETACONTENT_COOKIEMONSTER
-    m_Metadata:
-      m_Items: []
-  - m_Id: 165978788776914944
-    m_Key: QUALITYSETTINGS_HDRTOGGLE
     m_Metadata:
       m_Items: []
   - m_Id: 166605031994044416
@@ -573,22 +401,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 166606814397083648
     m_Key: RESETWITHSTARTERBUNDLE_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 167047962857058304
-    m_Key: IMPORTDATA_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 167047964228595712
-    m_Key: EXPORTDATA_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 167052430117974016
-    m_Key: IMPORTDATAWARNING_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 167061826088742912
-    m_Key: LANGUAGE_JAPANESE
     m_Metadata:
       m_Items: []
   - m_Id: 167076722826293248
