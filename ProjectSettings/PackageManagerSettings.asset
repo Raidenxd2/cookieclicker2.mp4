@@ -31,13 +31,7 @@ MonoBehaviour:
     m_Url: https://package.openupm.com
     m_Scopes:
     - com.google.external-dependency-manager
-    - com.google.play.games
     - com.github.superunitybuild.buildtool
-    - com.google.android.appbundle
-    - com.google.play.assetdelivery
-    - com.google.play.common
-    - com.google.play.core
-    - be.khepri.play.assetdelivery.addressables
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4
