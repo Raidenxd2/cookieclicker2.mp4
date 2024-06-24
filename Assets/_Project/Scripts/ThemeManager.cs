@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Android;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 
 public class ThemeManager : MonoBehaviour
 {
@@ -31,9 +32,8 @@ public class ThemeManager : MonoBehaviour
     [SerializeField] private Notification notification;
 
     private string CurrentAssetPackName;
-    private GameObject CurrentThemePrefab;
-    private AssetReference CurrentThemePrefabRef;
-    private AsyncOperationHandle<GameObject> CurrentThemePrefabHandle;
+    private AssetReference CurrentThemeSceneRef;
+    private AsyncOperationHandle<SceneInstance> CurrentThemeSceneHandle;
 
     private void Start()
     {
@@ -58,12 +58,11 @@ public class ThemeManager : MonoBehaviour
 
         ContentLoading.SetActive(true);
 
-        if (CurrentThemePrefab != null)
+        if (CurrentThemeSceneHandle.IsValid())
         {
             try
             {
-                Destroy(CurrentThemePrefab);
-                Addressables.Release(CurrentThemePrefabHandle);
+                Addressables.UnloadSceneAsync(CurrentThemeSceneHandle);
             }
             catch
             {
@@ -86,7 +85,7 @@ public class ThemeManager : MonoBehaviour
         yield return aps;
 
         CurrentAssetPackName = AssetPackName;
-        CurrentThemePrefabRef = ThemePrefabRef;
+        CurrentThemeSceneRef = ThemePrefabRef;
 
         if (aps.states[0].status == AndroidAssetPackStatus.Completed)
         {
@@ -94,14 +93,10 @@ public class ThemeManager : MonoBehaviour
 
             DefaultTheme.SetActive(false);
 
-            CurrentThemePrefabHandle = Addressables.LoadAssetAsync<GameObject>(ThemePrefabRef);
-            yield return CurrentThemePrefabHandle;
+            CurrentThemeSceneHandle = Addressables.LoadSceneAsync(ThemePrefabRef);
+            yield return CurrentThemeSceneHandle;
 
-            if (CurrentThemePrefabHandle.Status == AsyncOperationStatus.Succeeded)
-            {
-                CurrentThemePrefab = Instantiate(CurrentThemePrefabHandle.Result);
-            }
-            else
+            if (CurrentThemeSceneHandle.Status == AsyncOperationStatus.Failed)
             {
                 notification.ShowNotification("Failed to load theme.", "Themes");
                 DefaultTheme.SetActive(true);
@@ -140,14 +135,10 @@ public class ThemeManager : MonoBehaviour
         LogSystem.Log("Non Android platform, loading Theme.");
 
         DefaultTheme.SetActive(false);
-        CurrentThemePrefabHandle = Addressables.LoadAssetAsync<GameObject>(ThemePrefabRef);
-        yield return CurrentThemePrefabHandle;
+        CurrentThemeSceneHandle = Addressables.LoadSceneAsync(ThemePrefabRef, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        yield return CurrentThemeSceneHandle;
 
-        if (CurrentThemePrefabHandle.Status == AsyncOperationStatus.Succeeded)
-        {
-            CurrentThemePrefab = Instantiate(CurrentThemePrefabHandle.Result);
-        }
-        else
+        if (CurrentThemeSceneHandle.Status == AsyncOperationStatus.Failed)
         {
             notification.ShowNotification("Failed to load theme.", "Themes");
             DefaultTheme.SetActive(true);
@@ -192,7 +183,7 @@ public class ThemeManager : MonoBehaviour
 
         AssetPackDownloadingScreen.GetComponent<WindowAnimations>().HideWindow();
         AssetPackDownloadRequiredScreen.GetComponent<WindowAnimations>().HideWindow();
-        StartCoroutine(SelectTheme(CurrentAssetPackName, CurrentThemePrefabRef));
+        StartCoroutine(SelectTheme(CurrentAssetPackName, CurrentThemeSceneRef));
     }
 
     public void CancelAssetPackDownload()
