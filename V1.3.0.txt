@@ -1,0 +1,6 @@
+V1.3.0:
+Removed Beta Content feature: Mods
+Updated Theme: Space Theme
+Improved Theme system.
+Improved performance.
+Minor changes
