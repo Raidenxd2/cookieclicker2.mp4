@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Fonts_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
   m_Group: {fileID: 11400000, guid: 95092c78a573b684f8e4802318d39ff8, type: 2}
-  m_StaticContent: 1
+  m_StaticContent: 0

@@ -23,9 +23,7 @@ public class PlayerData
     public bool ResearchFactory;
     public bool Music;
     public bool Sounds;
-    public float LastSavedGameVersion;
     public bool StarterBundleBought;
-    public int Clicks;
 
     // Offline
     public bool offlineProgressCheck;
@@ -66,14 +64,12 @@ public class PlayerData
         Trees = ad.Trees;
         VSync = ad.VSync;
         TextureQuality = ad.TextureQuality;
-        LastSavedGameVersion = ga.LastSavedGameVersion;
         Music = ga.Music;
         Sounds = ga.Sounds;
         Fog = ad.Fog;
         Grandmas = ga.Grandmas;
         GrandmaPrice = ga.GrandmaPrice;
         StarterBundleBought = ga.StarterBundleBought;
-        Clicks = ga.Clicks;
         CookieFactorys = ga.CookieFactorys;
         CookieFactoryPrice = ga.CookieFactoryPrice;
 

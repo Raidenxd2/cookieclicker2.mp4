@@ -12,8 +12,6 @@ using Unity.Services.Authentication;
 using UnityEngine.Localization;
 using Cookieclicker2mp4Google;
 
-
-
 #if UNITY_ANDROID
 using GooglePlayGames;
 #endif
@@ -42,8 +40,6 @@ public class Game : MonoBehaviour
     public bool ResearchFactory;
     public bool Music;
     public bool Sounds;
-    public float LastSavedGameVersion;
-    public float GameVersion;
 
     // game objects
     [Header("Game Objects")]
@@ -119,14 +115,10 @@ public class Game : MonoBehaviour
     public GameObject BetaContentScreen;
     public Toggle[] BetaContentToggles;
     public GameObject ScreenshotOptionsBTN;
-    public GameObject RegisteredBTN;
 
     [Header("IAP")]
     public GameObject StarterBundleBTN;
     public bool StarterBundleBought;
-
-    [Header("Ads")]
-    public int Clicks;
 
     [Header("Particles")]
     public GameObject CookieVFX;
@@ -186,7 +178,6 @@ public class Game : MonoBehaviour
         StartCoroutine(AutoSave());
         StartCoroutine(Tick());
         CheckPrices();
-        LastSavedGameVersion = GameVersion;
         try
         {
             SoundAssign();
@@ -362,13 +353,11 @@ public class Game : MonoBehaviour
         ResearchFactory = data.ResearchFactory;
         offlineManager.offlineProgressCheck = data.offlineProgressCheck;
         offlineManager.OfflineTime = data.OfflineTime;
-        LastSavedGameVersion = data.LastSavedGameVersion;
         Sounds = data.Sounds;
         Music = data.Music;
         Grandmas = data.Grandmas;
         GrandmaPrice = data.GrandmaPrice;
         StarterBundleBought = data.StarterBundleBought;
-        Clicks = data.Clicks;
         CookieFactorys = data.CookieFactorys;
         CookieFactoryPrice = data.CookieFactoryPrice;
 
@@ -384,7 +373,7 @@ public class Game : MonoBehaviour
         {
             SaveDataWarningScreen.SetActive(true);
             SaveDataWarningInfo.text = SaveDataWarningTexturesText.GetLocalizedString();
-            SaveDataWarningYesButton.onClick.AddListener(() => ad.TexturesToggle(true));
+            SaveDataWarningYesButton.onClick.AddListener(() => PlayerPrefs.SetInt("GRAPHICS_Textures", 1));
         }
 
         
@@ -392,7 +381,7 @@ public class Game : MonoBehaviour
         {
             SaveDataWarningScreen.SetActive(true);
             SaveDataWarningInfo.text = SaveDataWarningLightingText.GetLocalizedString();
-            SaveDataWarningYesButton.onClick.AddListener(() => ad.LightingToggle(true));
+            SaveDataWarningYesButton.onClick.AddListener(() => PlayerPrefs.SetInt("GRAPHICS_Lighting", 1));
         }
     }
 
@@ -411,7 +400,6 @@ public class Game : MonoBehaviour
         DrillPrice = 0;
         Grandmas = 0;
         GrandmaPrice = 0;
-        Clicks = 0;
         CookieFactorys = 0;
         CookieFactoryPrice = 0;
 
@@ -442,7 +430,6 @@ public class Game : MonoBehaviour
             DrillPrice = 0;
             Grandmas = 0;
             GrandmaPrice = 0;
-            Clicks = 0;
             CookieFactorys = 0;
             CookieFactoryPrice = 0;
 
@@ -487,7 +474,6 @@ public class Game : MonoBehaviour
     public void BakeCookie()
     {
         Cookies += CPC;
-        Clicks += 1;
         Instantiate(CookieGains, CookieGainsSpot);
         Instantiate(CookieVFX, CookieVFXSpot);
 #if UNITY_ANDROID
@@ -625,29 +611,6 @@ public class Game : MonoBehaviour
         else
         {
             NECDialog.SetActive(true);
-        }
-    }
-
-    public void OpenCreditsLink(int num)
-    {
-        if (Application.internetReachability == NetworkReachability.NotReachable)
-        {
-            NoNetworkScreen.SetActive(true);
-            return;
-        }
-        switch (num)
-        {
-            
-            case 1:
-                Application.OpenURL("https://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web");
-                break;
-            case 2:
-                Application.OpenURL("https://raidenxd2.github.io/cookieclicker2.mp4/Music.txt");
-                break;
-            case 3:
-                Application.OpenURL("https://github.com/tomc128/urp-kawase-blur");
-                break;
-            
         }
     }
 

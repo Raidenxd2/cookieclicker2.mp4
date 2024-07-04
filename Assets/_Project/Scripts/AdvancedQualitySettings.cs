@@ -56,14 +56,6 @@ public class AdvancedQualitySettings : MonoBehaviour
         UpdateSettings();
     }
 
-    public void LightingToggle(bool Toggle)
-    {
-        Lighting = Toggle;
-        PlayerPrefs.SetInt("GRAPHICS_Lighting", boolToInt(Toggle));
-
-        UpdateSettings();
-    }
-
     public void ParticalsToggle(bool Toggle)
     {
         Particals = Toggle;
@@ -79,27 +71,11 @@ public class AdvancedQualitySettings : MonoBehaviour
 
         UpdateSettings();
     }
-
-    public void VSyncToggle(bool Toggle)
-    {
-        VSync = Toggle;
-        PlayerPrefs.SetInt("GRAPHICS_VSync", boolToInt(Toggle));
-
-        UpdateSettings();
-    }
     
     public void FogToggle(bool Toggle)
     {
         Fog = Toggle;
         PlayerPrefs.SetInt("GRAPHICS_Fog", boolToInt(Toggle));
-
-        UpdateSettings();
-    }
-
-    public void TexturesToggle(bool Toggle)
-    {
-        Textures = Toggle;
-        PlayerPrefs.SetInt("GRAPHICS_Textures", boolToInt(Toggle));
 
         UpdateSettings();
     }
@@ -116,14 +92,6 @@ public class AdvancedQualitySettings : MonoBehaviour
     {
         AO = Toggle;
         PlayerPrefs.SetInt("GRAPHICS_AO", boolToInt(Toggle));
-
-        UpdateSettings();
-    }
-
-    public void HDRToggle(bool Toggle)
-    {
-        HDR = Toggle;
-        PlayerPrefs.SetInt("GRAPHICS_HDR", boolToInt(Toggle));
 
         UpdateSettings();
     }

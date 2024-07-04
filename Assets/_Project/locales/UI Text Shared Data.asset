@@ -567,6 +567,14 @@ MonoBehaviour:
     m_Key: ASSETPACK_DOWNLOADING
     m_Metadata:
       m_Items: []
+  - m_Id: 205416744414261248
+    m_Key: OPENWEBPAGE_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 205416749619392512
+    m_Key: OPENWEBPAGE_INFO
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

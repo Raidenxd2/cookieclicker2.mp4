@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 778049d47ab428742bcc77b6412b3a1d
   m_currentHash:
     serializedVersion: 2
-    Hash: eec7ddfad7ad81235e57b865ad605b2d
+    Hash: 5af3cc350a51594df195d0af224b4051
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -58,7 +58,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9645910b0a967b4408ca0815447bf01e, type: 2}
   - {fileID: 11400000, guid: 95092c78a573b684f8e4802318d39ff8, type: 2}
   - {fileID: 11400000, guid: 78a10d4e09becd546867f1b394005556, type: 2}
-  - {fileID: 11400000, guid: 5779d79cc77b23c4aa9c893efc541029, type: 2}
   - {fileID: 11400000, guid: 6c4cdf000241c3f4b9129af6ce4830d3, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
@@ -80,7 +79,7 @@ MonoBehaviour:
       - m_Id: 4e6646e3f189a7846b33545516748d4b
         m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
       - m_Id: 4a9f52f1b5b66794fa0b096476def18c
-        m_Value: https://drive.google.com/uc?export=download&id=10R_2wEtpBJYcZe4vubLIHvCu8rDv6y4z
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
     m_ProfileEntryNames:
     - m_Id: 50aaf528fb0dbaa4f825d28853c6736f
       m_Name: BuildTarget
