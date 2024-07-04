@@ -7,11 +7,37 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
+    "com.google.android.appbundle": {
+      "version": "1.8.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.google.external-dependency-manager": {
       "version": "1.2.180",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
+    "com.google.play.common": {
+      "version": "1.8.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.google.android.appbundle": "1.8.0"
+      },
+      "url": "https://package.openupm.com"
+    },
+    "com.google.play.core": {
+      "version": "1.8.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.google.android.appbundle": "1.8.0",
+        "com.google.external-dependency-manager": "1.2.172"
+      },
       "url": "https://package.openupm.com"
     },
     "com.kyrylokuzyk.primetween": {
@@ -41,7 +67,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.burst": {
-      "version": "1.8.13",
+      "version": "1.8.16",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -83,11 +109,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.localization": {
-      "version": "1.4.5",
+      "version": "1.5.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.addressables": "1.21.8",
+        "com.unity.addressables": "1.21.9",
         "com.unity.nuget.newtonsoft-json": "3.0.2"
       },
       "url": "https://packages.unity.com"

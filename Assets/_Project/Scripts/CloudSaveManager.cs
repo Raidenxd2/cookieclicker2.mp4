@@ -90,7 +90,7 @@ public class CloudSaveManager : MonoBehaviour
 
     public void VisitDataDeletionWebsite()
     {
-        Application.OpenURL("https://raidenxd2.github.io/cookieclicker2.mp4/DataDeletion.html");
+        OpenURLManager.instance.OpenURL("https://raidenxd2.github.io/cookieclicker2.mp4/DataDeletion.html");
     }
 
     public void OpenPlayerIDScreen()

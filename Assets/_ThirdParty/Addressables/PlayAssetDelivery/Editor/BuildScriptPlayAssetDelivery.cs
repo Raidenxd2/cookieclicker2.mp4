@@ -166,6 +166,17 @@ namespace AddressablesPlayAssetDelivery.Editor
 
             if (!AssetDatabase.IsValidFolder(path))
                 AssetDatabase.CreateFolder(CustomAssetPackUtility.PackContentRootDirectory, folderName);
+
+            var src = path + "/src";
+            var main = src + "/main";
+            var assets = main + "/assets";
+            if (!AssetDatabase.IsValidFolder(src))
+                AssetDatabase.CreateFolder(path, "src");
+            if (!AssetDatabase.IsValidFolder(main))
+                AssetDatabase.CreateFolder(src, "main");
+            if (!AssetDatabase.IsValidFolder(assets))
+                AssetDatabase.CreateFolder(main, "assets");
+            
             return path;
         }
 
@@ -240,7 +251,7 @@ namespace AddressablesPlayAssetDelivery.Editor
 
                 // Store the bundle's build path and its corresponding .androidpack folder location
                 string bundlePackDir = ConstructAssetPackDirectoryName(assetPackName);
-                string assetsFolderPath = Path.Combine(bundlePackDir, Path.GetFileName(bundleBuildPath));
+                string assetsFolderPath = Path.Combine(bundlePackDir, "src", "main", "assets", Path.GetFileName(bundleBuildPath));
                 bundleIdToEditorDataEntry.Add(entry.BundleFileId, new BuildProcessorDataEntry(bundleBuildPath, assetsFolderPath));
             }
         }
