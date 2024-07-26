@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
 [CustomEditor(typeof(WindowAnimations))]
 public class WindowEditor : Editor
@@ -19,6 +18,8 @@ public class WindowEditor : Editor
             wa.transform.rotation = new Quaternion(0, 0, 0, 0);
             wa.transform.Rotate(new Vector3(-90, 0, 0));
             wa.gameObject.SetActive(false);
+
+            EditorSceneManager.MarkAllScenesDirty();
         }
 
         if (GUILayout.Button("Show Window"))
@@ -27,6 +28,8 @@ public class WindowEditor : Editor
             wa.transform.rotation = new Quaternion(0, 0, 0, 0);
             wa.transform.Rotate(new Vector3(0, 0, 0));
             wa.gameObject.SetActive(true);
+
+            EditorSceneManager.MarkAllScenesDirty();
         }
         GUILayout.EndHorizontal();
     }
