@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using BreakInfinity;
-using Cookieclicker2mp4Google;
 
 public class ResearchFactory : MonoBehaviour
 {
@@ -65,10 +64,6 @@ public class ResearchFactory : MonoBehaviour
             CheckIfUserOwnsResearchFactory();
 
             al.InitAddressableLightmaps();
-
-            #if UNITY_ANDROID
-            GooglePlayGamesManager.instance.GiveAchievement(GPGSIds.achievement_unlock_the_research_factory);
-            #endif
         }
         else
         {

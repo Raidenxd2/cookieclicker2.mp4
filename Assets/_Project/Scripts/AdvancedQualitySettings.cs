@@ -158,22 +158,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     public void SetDefaults()
     {
         #if UNITY_ANDROID
-        if (IsGPGPC.instance.isPC)
-        {
-            PostProcessing = true;
-            Lighting = true;
-            Particals = true;
-            Trees = true;
-            VSync = true;
-            Fog = true;
-            TextureQuality = 0;
-            Textures = true;
-            AO = false;
-            HDR = true;
-            RenderQuality = 1f;
-        }
-        
-        if (Application.isMobilePlatform && !IsGPGPC.instance.isPC)
+        if (Application.isMobilePlatform)
         {
             PostProcessing = false;
             Lighting = true;
@@ -274,12 +259,5 @@ public class AdvancedQualitySettings : MonoBehaviour
         qualityWrapper.SetRenderScale(RenderQuality);
 
         switchRendererFeature.set(AO);
-
-        #if UNITY_ANDROID
-        if (IsGPGPC.instance.isPC)
-        {
-            Application.targetFrameRate = 60;
-        }
-        #endif
     }
 }

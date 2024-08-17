@@ -6,18 +6,7 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine.AddressableAssets;
 using LoggerSystem;
-using Unity.Services.Core;
-using Unity.Services.Authentication;
 using System;
-using System.Collections.Generic;
-using Unity.Services.CloudSave;
-using System.Threading.Tasks;
-
-
-#if UNITY_ANDROID
-using GooglePlayGames;
-using GooglePlayGames.BasicApi;
-#endif
 
 public class BetaContent : MonoBehaviour
 {
@@ -101,157 +90,11 @@ public class BetaContent : MonoBehaviour
 
     public void LoadScene()
     {
-        #if UNITY_ANDROID
-        if (PlayerPrefs.GetInt("EnableCloudSave", 0) == 0)
-        {
-            EnableCloudSaveScreen.SetActive(true);
-            return;
-        }
-
-        if (PlayerPrefs.GetInt("EnableCloudSave", 0) == 1 && !GooglePlayGamesManager.instance.LoggedInToGPG)
-        {
-            GPGSignInScreen.SetActive(true);
-            return;
-        }
-        #endif
-
         LoadSceneAsync();
     }
 
-    public void EnableCloudSave()
+    private void LoadSceneAsync()
     {
-        PlayerPrefs.SetInt("EnableCloudSave", 1);
-
-        LoadScene();
-    }
-
-    public void DisableCloudSave()
-    {
-        PlayerPrefs.SetInt("EnableCloudSave", 2);
-
-        LoadScene();
-    }
-
-    #if UNITY_ANDROID
-    public void SignInToGPG()
-    {
-        PlayGamesPlatform.Instance.ManuallyAuthenticate(LoadScene);
-    }
-
-    private void LoadScene(SignInStatus status)
-    {
-        if (status == SignInStatus.Success)
-        {
-            GooglePlayGamesManager.instance.LoggedInToGPG = true;
-
-            PlayGamesPlatform.Instance.RequestServerSideAccess(true, code => {
-                GooglePlayGamesManager.instance.Token = code;
-            });
-
-            LoadScene();
-        }
-        else
-        {
-            LoadScene();
-        }
-    }
-
-    public void DontSignInToGPG()
-    {
-        LoadSceneAsync();
-    }
-    #endif
-
-    private async void LoadSceneAsync()
-    {
-        if (PlayerPrefs.GetInt("EnableCloudSave", 0) == 1)
-        {
-            infoText.text = "Initializing Unity Gaming Services...";
-            await UnityServices.InitializeAsync();
-
-            infoText.text = "Signing in...";
-            await Task.Delay(2000);
-
-            #if UNITY_ANDROID
-            infoText.text = "Signing in...";
-
-            try
-            {
-                #if UNITY_EDITOR
-                await AuthenticationService.Instance.SignInAnonymouslyAsync();
-                #else
-                await AuthenticationService.Instance.SignInWithGooglePlayGamesAsync(GooglePlayGamesManager.instance.Token);
-                #endif
-            }
-            catch (Exception ex)
-            {
-                LogSystem.Log("Failed to sign in.\n" + ex.ToString(), LogTypes.Exception);
-            }
-
-            infoText.text = "Checking if user played the game before...";
-
-            if (AuthenticationService.Instance.IsSignedIn)
-            {
-                try
-                {
-                    if (PlayerPrefs.GetInt("HasPlayed", 0) == 0)
-                    {
-                        var hasPlayed_Cloud = await CloudSaveService.Instance.Data.Player.LoadAsync(new HashSet<string>{"UserPlayed"});
-                        if (hasPlayed_Cloud.TryGetValue("UserPlayed", out var keyName))
-                        {
-                            LogSystem.Log("UserPlayed (from cloud): " + keyName.Value.GetAs<string>());
-                            PlayerPrefs.SetInt("HasPlayed", 1);
-
-                            infoText.text = "Downloading save file...";
-
-                            PlayerPrefs.SetInt("GRAPHICS_PostProcessing", 0);
-                            PlayerPrefs.SetInt("GRAPHICS_Lighting", 1);
-                            PlayerPrefs.SetInt("GRAPHICS_Particles", 1);
-                            PlayerPrefs.SetInt("GRAPHICS_Trees", 1);
-                            PlayerPrefs.SetInt("GRAPHICS_VSync", 0);
-                            PlayerPrefs.SetInt("GRAPHICS_Fog", 1);
-                            PlayerPrefs.SetInt("GRAPHICS_TextureQuality", 0);
-                            PlayerPrefs.SetInt("GRAPHICS_Textures", 1);
-                            PlayerPrefs.SetInt("GRAPHICS_AO", 0);
-                            PlayerPrefs.SetInt("GRAPHICS_HDR", 0);
-                            PlayerPrefs.SetFloat("GRAPHICS_RenderQuality", 0.75f);
-
-                            byte[] file = await CloudSaveService.Instance.Files.Player.LoadBytesAsync("cookie2");
-                            File.WriteAllBytes(Application.persistentDataPath + "/cookie2", file);
-                        }
-                        else
-                        {
-                            LogSystem.Log("UserPlayed doesn't exist.", LogTypes.Warning);
-                        }
-                    }
-                    else if (PlayerPrefs.GetInt("HasPlayed", 0) == 1)
-                    {
-                        LogSystem.Log("This device has played this game before, setting UserPlayed to 1 on the cloud.");
-
-                        var data = new Dictionary<string, object>{ {"UserPlayed", "1"} };
-                        var result = await CloudSaveService.Instance.Data.Player.SaveAsync(data);
-
-                        var metadata = await CloudSaveService.Instance.Files.Player.GetMetadataAsync("cookie2");
-                        LogSystem.Log("LastModified (cloud file): " + metadata.Modified.Value.ToString());
-                        LogSystem.Log("LastModified (local file): " + File.GetLastWriteTimeUtc(Application.persistentDataPath + "/cookie2").ToString());
-
-                        if (metadata.Modified.Value > File.GetLastWriteTimeUtc(Application.persistentDataPath + "/cookie2"))
-                        {
-                            infoText.text = "Downloading updated save file...";
-                            byte[] cloudFile = await CloudSaveService.Instance.Files.Player.LoadBytesAsync("cookie2");
-                            File.WriteAllBytes(Application.persistentDataPath + "/cookie2", cloudFile);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    LogSystem.Log("Failed to check if user played the game before.\n" + ex.ToString(), LogTypes.Exception);
-                }
-            }
-            #endif
-        }
-        
-
         infoText.text = "Loading Game...";
 
         StartCoroutine(LoadGameScene());

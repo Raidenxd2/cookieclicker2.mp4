@@ -1,5 +1,4 @@
 using System.Collections;
-using System;
 using UnityEngine;
 using BreakInfinity;
 using TMPro;
@@ -7,14 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using LoggerSystem;
 using UnityEngine.AddressableAssets;
-using Unity.Services.CloudSave;
-using Unity.Services.Authentication;
 using UnityEngine.Localization;
-using Cookieclicker2mp4Google;
-
-#if UNITY_ANDROID
-using GooglePlayGames;
-#endif
 using UnityEngine.Purchasing;
 
 public class Game : MonoBehaviour
@@ -199,13 +191,6 @@ public class Game : MonoBehaviour
         SoundAudioSource = SoundSource.GetComponent<AudioSource>();
 
         al.InitAddressableLightmaps();
-
-        #if UNITY_ANDROID
-        if (ResearchFactory)
-        {
-            GooglePlayGamesManager.instance.GiveAchievement(GPGSIds.achievement_unlock_the_research_factory);
-        }
-        #endif
     }
 
     public void HideStarterBundleButton()
@@ -292,43 +277,12 @@ public class Game : MonoBehaviour
         StartCoroutine(Tick());
     }
 
-    public async void SavePlayer()
+    public void SavePlayer()
     {
         PlayerPrefs.Save();
         offlineManager.SaveTime();
         ad.SaveGraphics();
         SaveSystem.SavePlayer(this, offlineManager, ad, researchFactory);
-#if UNITY_ANDROID
-        if (PlayGamesPlatform.Instance.localUser.authenticated)
-        {
-            try
-            {
-                GooglePlayGamesManager.instance.SetLeaderboardValue(Cookies, GPGSIds.leaderboard_cookies);
-                GooglePlayGamesManager.instance.SetLeaderboardValue(CPS, GPGSIds.leaderboard_cookies_per_second);
-                GooglePlayGamesManager.instance.SetLeaderboardValue(CPC, GPGSIds.leaderboard_cookies_per_click);
-                GooglePlayGamesManager.instance.IncreseAchievement(GPGSIds.achievement_10_autoclickers, (Int32) Autoclickers);
-                GooglePlayGamesManager.instance.IncreseAchievement(GPGSIds.achievement_10_doublecookies, (Int32) Doublecookies);
-                GooglePlayGamesManager.instance.IncreseAchievement(GPGSIds.achievement_10_drills, (Int32) Drills);
-                GooglePlayGamesManager.instance.IncreseAchievement(GPGSIds.achievement_10_grandmas, (Int32) Grandmas);
-                GooglePlayGamesManager.instance.IncreseAchievement(GPGSIds.achievement_10_cookie_factorys, (Int32) CookieFactorys);
-            }
-            catch (Exception ex)
-            {
-                LogSystem.Log(ex.ToString(), LogTypes.Exception);
-            }
-        }
-
-        if (PlayerPrefs.GetInt("EnableCloudSave", 0) == 2)
-        {
-            return;
-        }
-
-        if (AuthenticationService.Instance.IsSignedIn)
-        {
-            byte[] file = System.IO.File.ReadAllBytes(Application.persistentDataPath + "/cookie2");
-            await CloudSaveService.Instance.Files.Player.SaveAsync("cookie2", file);
-        }
-#endif
     }
 
     public void LoadPlayer()
@@ -476,16 +430,6 @@ public class Game : MonoBehaviour
         Cookies += CPC;
         Instantiate(CookieGains, CookieGainsSpot);
         Instantiate(CookieVFX, CookieVFXSpot);
-#if UNITY_ANDROID
-        try
-        {
-            GooglePlayGamesManager.instance.GiveAchievement(GPGSIds.achievement_bake_a_cookie);
-        }
-        catch
-        {
-            LogSystem.Log("Could not give Google Play achievement.", LogTypes.Error);
-        }
-#endif
     }
 
     public void QuitGame()
