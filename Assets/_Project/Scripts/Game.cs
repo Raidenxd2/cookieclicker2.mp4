@@ -7,7 +7,6 @@ using UnityEngine.UI;
 using LoggerSystem;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Localization;
-using UnityEngine.Purchasing;
 
 public class Game : MonoBehaviour
 {
@@ -130,10 +129,6 @@ public class Game : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-#if UNITY_ANDROID
-        IAPManager.Instance.game = this;
-#endif
-
         VersionText.text = "v" + Application.version + "-" + Application.platform + " (" + Application.unityVersion + ")";
         
         if (Application.platform == RuntimePlatform.Android)
@@ -196,33 +191,6 @@ public class Game : MonoBehaviour
     public void HideStarterBundleButton()
     {
         StarterBundleBTN.SetActive(false);
-    }
-
-    public void OnPurchaseComplete(Product product)
-    {
-        Time.timeScale = 1f;
-        LogSystem.Log(product.definition.id + " Should have added Cookies now.", LogTypes.Normal);
-        if(product.definition.id == "com.raiden.cookieclicker2.mp4.cookies_50000")
-	    {
-	    	Cookies += 50000;
-	    }
-        if(product.definition.id == "com.raiden.cookieclicker2.mp4.cookies_100000")
-        {
-            Cookies += 100000;
-        }
-    }
-
-    public void OnPurchaseClicked(string productId) 
-    {
-#if UNITY_ANDROID
-        IAPManager.Instance.OnPurchaseClicked(productId);
-#endif
-    }
-
-    public void OnPurchaseFailed(Product product, PurchaseFailureReason purchaseFailureReason)
-    {
-        Time.timeScale = 1f;
-        LogSystem.Log(product.transactionID + " failed " + purchaseFailureReason, LogTypes.Error);
     }
 
     void SoundAssign()
@@ -364,65 +332,6 @@ public class Game : MonoBehaviour
         SavePlayer();
         LogSystem.Log("Reset Data. Now reloading...");
         Reload();
-    }
-
-    public void ResetDataWithStarterBundle()
-    {
-        #if UNITY_ANDROID
-        if (StarterBundleBought || IAPManager.Instance.CheckIfUserOwnsStarterBundle())
-        {
-            Cookies = 150000;
-            CPS = 0;
-            CPC = 1;
-            TimePlayed = 0;
-            Autoclickers = 0;
-            Doublecookies = 0;
-            ResearchFactory = false;
-            Drills = 0;
-            AutoclickerPrice = 0;
-            DoublecookiePrice = 0;
-            DrillPrice = 0;
-            Grandmas = 0;
-            GrandmaPrice = 0;
-            CookieFactorys = 0;
-            CookieFactoryPrice = 0;
-
-            researchFactory.ResearchPoints = 1;
-            researchFactory.BigCookieUnlocked = false;
-            researchFactory.BigCookieResearched = false;
-
-            var oldCookies = Cookies;
-            Cookies = 9999999999999;
-
-            StarterBundleBought = true;
-            for (int i = 0; i < 10; i++)
-            {
-                BuyGrandma();
-            }
-            for (int i = 0; i < 10; i++)
-            {
-                BuyDoublecookie();
-            }
-            for (int i = 0; i < 10; i++)
-            {
-                BuyAutoclicker();
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                BuyDrill();
-            }
-
-            Cookies = oldCookies;
-
-            SavePlayer();
-            LogSystem.Log("Reset Data. Now reloading...");
-            Reload();
-        }
-        else
-        {
-            notification.ShowNotification("You don't own the starter bundle, so you can't reset with it.", "Error");
-        }
-        #endif
     }
 
     public void BakeCookie()
