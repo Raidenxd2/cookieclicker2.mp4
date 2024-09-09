@@ -1,6 +1,6 @@
 V1.3.0:
 
-The game is now open source at https://github.com/Raidenxd2/cookieclicker2.mp4 licensed under GPL-3.0
+The game is now open source at https://github.com/Raidenxd2/cookieclicker2.mp4 licensed under GNU General Public License v3.0
 All Google stuff has been removed.
 Mac build now available.
 
