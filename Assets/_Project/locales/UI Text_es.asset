@@ -210,7 +210,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34366876524544
-    m_Localized: (Compatible con Windows y Linux)
+    m_Localized: (Compatible con Windows, macOS y Linux)
     m_Metadata:
       m_Items: []
   - m_Id: 34443477098496
@@ -572,6 +572,35 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 195960503595184128
     m_Localized: Error
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202211336331243520
+    m_Localized: Paquete de activos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202211337438539776
+    m_Localized: "Debes descargar un Asset Pack para poder utilizar este tema.\n\xBFDesea
+      descargarlo?\n(Wi-Fi recomendado)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202211338101239808
+    m_Localized: Descargando Asset Pack...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 205416744414261248
+    m_Localized: Abrir el sitio web
+    m_Metadata:
+      m_Items: []
+  - m_Id: 205416749619392512
+    m_Localized: "\xBFQuiere abrir el siguiente enlace en su navegador?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230843885871562752
+    m_Localized: "Actualizaci\xF3n disponible"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230843887104688128
+    m_Localized: "Hay una nueva actualizaci\xF3n disponible, \xBFquieres descargarla?"
     m_Metadata:
       m_Items: []
   references:

@@ -575,6 +575,14 @@ MonoBehaviour:
     m_Key: OPENWEBPAGE_INFO
     m_Metadata:
       m_Items: []
+  - m_Id: 230843885871562752
+    m_Key: UPDATEAVAILABLE_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230843887104688128
+    m_Key: UPDATEAVAILABLE_MESSAGE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

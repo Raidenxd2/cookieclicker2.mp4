@@ -209,7 +209,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34366876524544
-    m_Localized: "(Windows\u304A\u3088\u3073Linux\u306B\u5BFE\u5FDC\uFF09"
+    m_Localized: "(Windows\u3001macOS\u3001Linux\u306B\u5BFE\u5FDC\uFF09"
     m_Metadata:
       m_Items: []
   - m_Id: 34443477098496
@@ -562,6 +562,30 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 195960503595184128
     m_Localized: "\u30A8\u30E9\u30FC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202211336331243520
+    m_Localized: "\u30A2\u30BB\u30C3\u30C8\u30D1\u30C3\u30AF"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202211337438539776
+    m_Localized: "\u3053\u306E\u30C6\u30FC\u30DE\u3092\u4F7F\u7528\u3059\u308B\u306B\u306F\u3001\u30A2\u30BB\u30C3\u30C8\u30D1\u30C3\u30AF\u3092\u30C0\u30A6\u30F3\u30ED\u30FC\u30C9\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\n\u30C0\u30A6\u30F3\u30ED\u30FC\u30C9\u3057\u307E\u3059\u304B\uFF1F\n(Wi-Fi\u63A8\u5968)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202211338101239808
+    m_Localized: "\u30A2\u30BB\u30C3\u30C8\u30D1\u30C3\u30AF\u306E\u30C0\u30A6\u30F3\u30ED\u30FC\u30C9..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 205416744414261248
+    m_Localized: "\u30AA\u30FC\u30D7\u30F3\u30A6\u30A7\u30D6\u30B5\u30A4\u30C8"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 205416749619392512
+    m_Localized: "\u6B21\u306E\u30EA\u30F3\u30AF\u3092\u30A6\u30A7\u30D6\u30D6\u30E9\u30A6\u30B6\u3067\u958B\u304D\u307E\u3059\u304B\uFF1F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230843885871562752
+    m_Localized: "\u66F4\u65B0\u3042\u308A"
     m_Metadata:
       m_Items: []
   references:

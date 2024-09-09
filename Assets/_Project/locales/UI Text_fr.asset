@@ -216,7 +216,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34366876524544
-    m_Localized: (compatible avec Windows et Linux)
+    m_Localized: (compatible avec Windows, macOS et Linux)
     m_Metadata:
       m_Items: []
   - m_Id: 34443477098496
@@ -574,6 +574,36 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 195960503595184128
     m_Localized: Erreur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230843887104688128
+    m_Localized: "Une nouvelle mise \xE0 jour est disponible, voulez-vous la t\xE9l\xE9charger
+      ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230843885871562752
+    m_Localized: "Mise \xE0 jour disponible"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 205416749619392512
+    m_Localized: Voulez-vous ouvrir le lien suivant dans votre navigateur web ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 205416744414261248
+    m_Localized: Ouvrir le site web
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202211338101239808
+    m_Localized: "T\xE9l\xE9chargement de l'Asset Pack..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202211337438539776
+    m_Localized: "Vous devez t\xE9l\xE9charger un Asset Pack pour pouvoir utiliser
+      ce th\xE8me.\nVoulez-vous le t\xE9l\xE9charger ?\n(Wi-Fi recommand\xE9)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 202211336331243520
+    m_Localized: Pack d'actifs
     m_Metadata:
       m_Items: []
   references:

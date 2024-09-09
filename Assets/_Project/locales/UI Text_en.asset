@@ -214,7 +214,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34366876524544
-    m_Localized: (Supported on Windows and Linux)
+    m_Localized: (Supported on Windows, macOS, and Linux)
     m_Metadata:
       m_Items: []
   - m_Id: 34443477098496
@@ -631,6 +631,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 205416749619392512
     m_Localized: Do you want to open the following link in your web browser?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230843885871562752
+    m_Localized: Update Available
+    m_Metadata:
+      m_Items: []
+  - m_Id: 230843887104688128
+    m_Localized: A new update is available, do you want to download it?
     m_Metadata:
       m_Items: []
   references:
