@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.cysharp.unitask": "2.5.5",
     "com.github.superunitybuild.buildtool": "7.0.0",
     "com.kyrylokuzyk.primetween": "file:../Assets/Plugins/PrimeTween/internal/com.kyrylokuzyk.primetween.tgz",
     "com.unity.2d.sprite": "1.0.0",
@@ -41,12 +42,8 @@
       "name": "package.openupm.com",
       "url": "https://package.openupm.com",
       "scopes": [
-        "com.google.external-dependency-manager",
         "com.github.superunitybuild.buildtool",
-        "com.google.android.appbundle",
-        "com.google.play.common",
-        "com.google.play.core",
-        "com.google.play.assetdelivery"
+        "com.cysharp.unitask"
       ]
     }
   ]
