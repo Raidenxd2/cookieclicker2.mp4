@@ -87,4 +87,9 @@ public class ScreenShot : MonoBehaviour
         ScreenshotQuality = IntConvert;
         ScreenshotQualityText.text = IntConvert + "x";
     }
+
+    public void OpenScreenshotsFolder()
+    {
+        Application.OpenURL(Application.persistentDataPath + "/screenshots");
+    }
 }
