@@ -13,14 +13,17 @@ public class LocaleDropdown : MonoBehaviour
     {
         yield return LocalizationSettings.InitializationOperation;
 
-        List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
-        int selectedLocale = 0; //TODO: Store the selected locale in the player prefs
+        List<TMP_Dropdown.OptionData> options = new();
+        int selectedLocale = 0;
         
         for(int i = 0; i < LocalizationSettings.AvailableLocales.Locales.Count; i++)
         {
-            Locale locale = LocalizationSettings.AvailableLocales.Locales[i];
-            options.Add(new TMP_Dropdown.OptionData(locale.name));
-            if (locale == LocalizationSettings.SelectedLocale) selectedLocale = i;
+            if (LocalizationSettings.AvailableLocales.Locales[i].name != "cc2 localization fix (cc2_localization_fix)")
+            {
+                Locale locale = LocalizationSettings.AvailableLocales.Locales[i];
+                options.Add(new TMP_Dropdown.OptionData(locale.name));
+                if (locale == LocalizationSettings.SelectedLocale) selectedLocale = i;
+            }
         }
         
         _localesDropdown.options = options;

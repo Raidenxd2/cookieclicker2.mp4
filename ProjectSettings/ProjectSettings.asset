@@ -141,7 +141,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 1.3.0-Beta2_OS
+  bundleVersion: 1.3.0-Beta2_OS_11003
   preloadedAssets:
   - {fileID: 11400000, guid: 5a6050f4d65b99340992ab87fbbe1f03, type: 2}
   metroInputSource: 0
@@ -167,14 +167,14 @@ PlayerSettings:
     Android: com.raiden.cookieclicker2mp4_os
     Standalone: com.raiden.Cookieclicker2.mp4
   buildNumber:
-    Standalone: 0
+    Standalone: 2
     VisionOS: 0
-    iPhone: 0
+    iPhone: 2
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 11001
-  AndroidMinSdkVersion: 22
-  AndroidTargetSdkVersion: 35
+  AndroidBundleVersionCode: 11003
+  AndroidMinSdkVersion: 0
+  AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 0
   aotOptions: 
   stripEngineCode: 1
@@ -263,7 +263,7 @@ PlayerSettings:
   useCustomGradlePropertiesTemplate: 0
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
-  AndroidTargetArchitectures: 10
+  AndroidTargetArchitectures: 2
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 2
   androidSplashScreen: {fileID: 2800000, guid: 17f2218b6a95f9149ab80bd43df2bf5c, type: 3}
@@ -699,7 +699,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: PROBUILDER_EXPERIMENTAL_FEATURES
+    Android: BUILD_TYPE_RELEASE;BUILD_PLATFORM_ANDROID;BUILD_ARCH_ANDROID;BUILD_BACKEND_IL2CPP;BUILD_DIST_ANDROIDARM64;PROBUILDER_EXPERIMENTAL_FEATURES;PRIME_TWEEN_DOTWEEN_ADAPTER
     EmbeddedLinux: PROBUILDER_EXPERIMENTAL_FEATURES
     GameCoreScarlett: 
     GameCoreXboxOne: PROBUILDER_EXPERIMENTAL_FEATURES
