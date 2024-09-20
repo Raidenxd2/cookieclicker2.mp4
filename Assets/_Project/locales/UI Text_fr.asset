@@ -606,6 +606,10 @@ MonoBehaviour:
     m_Localized: Pack d'actifs
     m_Metadata:
       m_Items: []
+  - m_Id: 234758542913757184
+    m_Localized: "Ouvrir le dossier Captures d'\xE9cran"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
