@@ -5,7 +5,6 @@ using UnityEngine.AddressableAssets;
 public class ThemeSO : ScriptableObject
 {
     public string ThemeName;
-    public string AssetPackName;
 
     public AssetReference ThemePrefabRef;
 }

@@ -291,7 +291,7 @@ namespace UnityEngine.Rendering.Universal
                 copyResolvedDepth: RenderingUtils.MultisampleDepthResolveSupported() && SystemInfo.supportsMultisampleAutoResolve && copyDepthAfterTransparents);
 
             // Motion vectors depend on the (copy) depth texture. Depth is reprojected to calculate motion vectors.
-            m_MotionVectorPass = new MotionVectorRenderPass(copyDepthEvent + 1, m_CameraMotionVecMaterial, m_ObjectMotionVecMaterial);
+            m_MotionVectorPass = new MotionVectorRenderPass(copyDepthEvent + 1, m_CameraMotionVecMaterial, m_ObjectMotionVecMaterial, data.opaqueLayerMask);
 
             m_DrawSkyboxPass = new DrawSkyboxPass(RenderPassEvent.BeforeRenderingSkybox);
             m_CopyColorPass = new CopyColorPass(RenderPassEvent.AfterRenderingSkybox, m_SamplingMaterial, m_BlitMaterial);
@@ -740,12 +740,6 @@ namespace UnityEngine.Rendering.Universal
             if (SystemInfo.graphicsDeviceType != GraphicsDeviceType.Vulkan || m_VulkanEnablePreTransform)
                 createColorTexture |= createDepthTexture;
 #endif
-            // If there is any scaling, the color and depth need to be the same resolution and the target texture
-            // will not be the proper size in this case. Same happens with GameView.
-            // This introduces the final blit pass.
-            if (RTHandles.rtHandleProperties.rtHandleScale.x != 1.0f || RTHandles.rtHandleProperties.rtHandleScale.y != 1.0f)
-                createColorTexture |= createDepthTexture;
-
             // If there is any scaling, the color and depth need to be the same resolution and the target texture
             // will not be the proper size in this case. Same happens with GameView.
             // This introduces the final blit pass.
@@ -1306,6 +1300,10 @@ namespace UnityEngine.Rendering.Universal
                 m_FinalDepthCopyPass.Setup(m_DepthTexture, k_CameraTarget);
                 m_FinalDepthCopyPass.CopyToDepth = true;
                 m_FinalDepthCopyPass.MssaSamples = 0;
+                // Turning off unnecessary NRP in Editor because of MSAA mistmatch between CameraTargetDescriptor vs camera backbuffer
+                // NRP layer considers this being a pass with MSAA samples by checking CameraTargetDescriptor taken from RP asset
+                // while the camera backbuffer has a single sample
+                m_FinalDepthCopyPass.useNativeRenderPass = false; 
                 EnqueuePass(m_FinalDepthCopyPass);
             }
 #endif

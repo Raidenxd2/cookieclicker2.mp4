@@ -32,16 +32,15 @@ public class ThemeManager : MonoBehaviour
             GameObject go = Instantiate(ThemeButton, ThemeButtonParent);
             ThemeButton tb = go.GetComponent<ThemeButton>();
 
-            tb.AssetPackName = theme.AssetPackName;
             tb.ThemePrefabRef = theme.ThemePrefabRef;
 
             tb.ThemeButtonText.text = theme.ThemeName;
 
-            tb.button.onClick.AddListener(() => StartCoroutine(SelectTheme(theme.AssetPackName, theme.ThemePrefabRef)));
+            tb.button.onClick.AddListener(() => StartCoroutine(SelectTheme(theme.ThemePrefabRef)));
         }
     }
     
-    public IEnumerator SelectTheme(string AssetPackName, AssetReference ThemePrefabRef)
+    public IEnumerator SelectTheme(AssetReference ThemePrefabRef)
     {
         ThemesScreen.HideWindow();
         GlobalDark.HideWindow();
@@ -60,7 +59,7 @@ public class ThemeManager : MonoBehaviour
             }
         }
 
-        if (AssetPackName == "default")
+        if (!ThemePrefabRef.RuntimeKeyIsValid())
         {
             LogSystem.Log("Default theme selected.");
 
