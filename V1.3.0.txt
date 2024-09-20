@@ -6,7 +6,10 @@ Mac build now available.
 
 Added an update checker.
 Removed Beta Content feature: Mods
-Updated Theme: Space Theme
+Renamed Space theme to Moon theme and updated it.
 Improved Theme system.
 Improved performance.
-Minor changes
+Minor changes.
+Target Android 15.
+Added an Open Screenshots folder button to the screenshot options.
+Improved lighting.
