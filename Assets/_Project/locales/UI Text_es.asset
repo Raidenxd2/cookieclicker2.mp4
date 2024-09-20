@@ -603,6 +603,10 @@ MonoBehaviour:
     m_Localized: "Hay una nueva actualizaci\xF3n disponible, \xBFquieres descargarla?"
     m_Metadata:
       m_Items: []
+  - m_Id: 234758542913757184
+    m_Localized: Abrir la carpeta Screenshots
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
