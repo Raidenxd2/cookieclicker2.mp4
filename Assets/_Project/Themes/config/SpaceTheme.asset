@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee0e22bdd685d1468629827db876c08, type: 3}
   m_Name: SpaceTheme
   m_EditorClassIdentifier: 
-  ThemeName: Space
-  AssetPackName: SpaceTheme
+  ThemeName: Moon
   ThemePrefabRef:
     m_AssetGUID: 47090cf9a6f72114582a1556279e2e25
     m_SubObjectName: 
