@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 16219
+  controlID: 24818
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 16145
+  controlID: 24819
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 16226
+  controlID: 24820
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -243,7 +243,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 1c70faffdea3faff14aafaff6c54fdff3cb6fdff7cb8fdff8e3afeff0cfbffff128d00008a8d0000489000005e900000f8910000dc930000529700005411010038130100f6210100da230100e67d01005a7f0100348401005e85010018860100
+      m_ExpandedIDs: dee8f8ff7800f9ff0891f9ffb299f9ffa8d0f9ff1c70faffdea3faff14aafaff6c54fdff3cb6fdff7cb8fdff8e3afeff0cfbffff128d00008a8d0000489000005e900000f8910000dc930000529700005411010038130100f6210100da230100e67d01005a7f0100348401005e85010018860100caec010042ed01003a180200381b0200b01b0200781e0200e01e0200f4220200082502008e250200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -652,9 +652,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 3.5248113, y: -1.8897283, z: -0.364479}
+    m_Target: {x: 10.832626, y: -1.629631, z: 1.7636567}
     speed: 2
-    m_Value: {x: 3.5248113, y: -1.8897283, z: -0.364479}
+    m_Value: {x: 10.832626, y: -1.629631, z: 1.7636567}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -665,7 +665,7 @@ MonoBehaviour:
   m_SceneViewState:
     m_AlwaysRefresh: 0
     showFog: 0
-    showSkybox: 0
+    showSkybox: 1
     showFlares: 1
     showImageEffects: 1
     showParticleSystems: 1
@@ -700,9 +700,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.15619619, y: -0.02523678, z: 0.0039383825, w: -0.98742336}
+    m_Target: {x: -0.17077342, y: 0.22532333, z: -0.04037473, w: -0.95840746}
     speed: 2
-    m_Value: {x: -0.15619193, y: -0.02523609, z: 0.003938275, w: -0.9873964}
+    m_Value: {x: -0.17076409, y: 0.22531103, z: -0.040372524, w: -0.9583551}
   m_Size:
     m_Target: 1.6822104
     speed: 2
@@ -724,7 +724,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 0
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.2847044, y: 0.03444575, z: -0.010287915, w: -0.957968}
+  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -1063,7 +1063,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_Project/Scripts
+    - Assets/_Project/Scenes/Game
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1071,16 +1071,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 75
   m_LastFolders:
-  - Assets/_Project/Scripts
+  - Assets/_Project/Scenes/Game
   m_LastFoldersGridSize: 75
   m_LastProjectPath: D:\Stuff\stuff\Cookieclicker2.mp4 Unity2022
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 3c6d0000
-    m_LastClickedID: 27964
-    m_ExpandedIDs: 000000003a6b00003c6b00003e6b0000406b0000426b0000446b0000466b0000486b00004a6b0000426d000000ca9a3bffffff7f
+    m_SelectedIDs: 626e0000
+    m_LastClickedID: 28258
+    m_ExpandedIDs: 000000003a6b00003c6b00003e6b0000406b0000426b0000446b0000466b0000486b00004a6b00003a6d0000626e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1133,8 +1133,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: e67d0100
-    m_LastClickedInstanceID: 97766
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 16220
+  controlID: 24814
   draggingID: 0
 --- !u!114 &16
 MonoBehaviour:
@@ -1290,7 +1290,7 @@ MonoBehaviour:
   - {fileID: 20}
   - {fileID: 21}
   m_Selected: 0
-  m_LastSelected: 4
+  m_LastSelected: 1
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1358,10 +1358,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1435
+    x: 1913
     y: 86
-    width: 484
-    height: 826
+    width: 646
+    height: 1155
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
