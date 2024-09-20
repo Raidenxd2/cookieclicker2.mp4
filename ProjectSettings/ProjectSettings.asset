@@ -173,7 +173,7 @@ PlayerSettings:
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 11003
-  AndroidMinSdkVersion: 0
+  AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 0
   aotOptions: 
@@ -699,7 +699,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: BUILD_TYPE_RELEASE;BUILD_PLATFORM_ANDROID;BUILD_ARCH_ANDROID;BUILD_BACKEND_IL2CPP;BUILD_DIST_ANDROIDARM64;PROBUILDER_EXPERIMENTAL_FEATURES;PRIME_TWEEN_DOTWEEN_ADAPTER
+    Android: PROBUILDER_EXPERIMENTAL_FEATURES
     EmbeddedLinux: PROBUILDER_EXPERIMENTAL_FEATURES
     GameCoreScarlett: 
     GameCoreXboxOne: PROBUILDER_EXPERIMENTAL_FEATURES
