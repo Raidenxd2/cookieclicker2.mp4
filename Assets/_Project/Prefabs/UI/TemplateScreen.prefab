@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2afbc485eda37784b9339ee9edb65471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inEase: 27
-  outEase: 26
+  inEase: 26
+  outEase: 25
   Time: 0.4
 --- !u!1 &106894220619524469
 GameObject:
