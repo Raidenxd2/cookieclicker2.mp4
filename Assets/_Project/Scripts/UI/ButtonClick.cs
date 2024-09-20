@@ -7,7 +7,7 @@ public class ButtonClick : MonoBehaviour
     private Button button;
     public AudioClip UIClick;
 
-    void Awake()
+    private void Awake()
     {
         try
         {

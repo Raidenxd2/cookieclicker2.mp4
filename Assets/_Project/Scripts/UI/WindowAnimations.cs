@@ -1,4 +1,5 @@
-using PrimeTween;
+using LitMotion;
+using LitMotion.Extensions;
 using UnityEngine;
 
 public class WindowAnimations : MonoBehaviour
@@ -10,17 +11,23 @@ public class WindowAnimations : MonoBehaviour
     //shows the window
     void OnEnable()
     {
-        transform.localScale = new Vector3(0, 0, 0);
-        transform.localRotation = Quaternion.Euler(-90, 0, 0);
-
-        transform.DOScale(new Vector3(1, 1, 1), Time).SetEase(inEase);
-        transform.DORotate(new Vector3(30, 0, 0), Time).SetEase(inEase);
+        LMotion.Create(Vector3.zero, Vector3.one, Time)
+            .WithEase(inEase)
+            .BindToLocalScale(transform);
+        LMotion.Create(new Vector3(-90, 0, 0), Vector3.zero, Time)
+            .WithEase(inEase)
+            .BindToLocalEulerAngles(transform);
     }
 
     //hides the window
     public void HideWindow()
     {
-        transform.DOScale(new Vector3(0, 0, 0), Time).SetEase(outEase).OnComplete(() => gameObject.SetActive(false));
-        transform.DORotate(new Vector3(-90, 0, 0), Time).SetEase(outEase);
+        LMotion.Create(Vector3.one, Vector3.zero, Time)
+            .WithEase(outEase)
+            .WithOnComplete(() => gameObject.SetActive(false))
+            .BindToLocalScale(transform);
+        LMotion.Create(Vector3.zero, new Vector3(-90, 0, 0), Time)
+            .WithEase(outEase)
+            .BindToLocalEulerAngles(transform);
     }
 }

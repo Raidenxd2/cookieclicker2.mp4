@@ -1,4 +1,4 @@
-using PrimeTween;
+using LitMotion;
 using UnityEngine;
 
 public class CookieAnimations : MonoBehaviour
@@ -9,11 +9,14 @@ public class CookieAnimations : MonoBehaviour
 
     public void GoDown()
     {
-        transform.DOLocalMoveY(-0.20f, Time).SetEase(inEase).OnComplete(() => GoUp());
+        LMotion.Create(new Vector3(0, -11.62416f, 13.0128f), new Vector3(0, -11.82416f, 13.0128f), Time)
+            .WithEase(inEase)
+            .WithOnComplete(() => GoUp());
     }
 
     public void GoUp()
     {
-        transform.DOLocalMoveY(0, Time).SetEase(outEase);
+        LMotion.Create(new Vector3(0, -11.82416f, 13.0128f), new Vector3(0, -11.62416f, 13.0128f), Time)
+            .WithEase(outEase);
     }
 }
