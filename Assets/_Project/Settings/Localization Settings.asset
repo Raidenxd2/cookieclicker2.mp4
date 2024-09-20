@@ -59,6 +59,7 @@ MonoBehaviour:
           rid: -2
         m_CustomTablePostprocessor:
           rid: -2
+        m_AsynchronousBehaviour: 0
         m_UseFallback: 0
     - rid: 2421218356339933189
       type: {class: LocalizedStringDatabase, ns: UnityEngine.Localization.Settings, asm: Unity.Localization}
@@ -69,9 +70,11 @@ MonoBehaviour:
           rid: -2
         m_CustomTablePostprocessor:
           rid: -2
+        m_AsynchronousBehaviour: 0
         m_UseFallback: 0
         m_MissingTranslationState: 1
         m_NoTranslationFoundMessage: No translation found for '{key}' in {table.TableCollectionName}
+          with locale {locale}
         m_SmartFormat:
           rid: 2421218356339933190
     - rid: 2421218356339933190
