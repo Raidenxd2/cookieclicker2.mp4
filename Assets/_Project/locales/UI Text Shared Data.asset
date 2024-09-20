@@ -583,6 +583,10 @@ MonoBehaviour:
     m_Key: UPDATEAVAILABLE_MESSAGE
     m_Metadata:
       m_Items: []
+  - m_Id: 234758542913757184
+    m_Key: SCREENSHOTOPTIONS_OPENSCREENSHOTSFOLDER
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

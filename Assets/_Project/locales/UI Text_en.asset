@@ -641,6 +641,10 @@ MonoBehaviour:
     m_Localized: A new update is available, do you want to download it?
     m_Metadata:
       m_Items: []
+  - m_Id: 234758542913757184
+    m_Localized: Open Screenshots folder
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
