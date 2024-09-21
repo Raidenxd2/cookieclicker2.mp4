@@ -110,7 +110,7 @@ MonoBehaviour:
     - 35
     isFlag: 0
   - variantName: Create symbols.zip
-    selectedIndex: 2
+    selectedIndex: 0
     values:
     - Disabled
     - Public
@@ -235,7 +235,7 @@ MonoBehaviour:
     - 35
     isFlag: 0
   - variantName: Create symbols.zip
-    selectedIndex: 2
+    selectedIndex: 0
     values:
     - Disabled
     - Public
@@ -405,7 +405,7 @@ MonoBehaviour:
     - 35
     isFlag: 0
   - variantName: Create symbols.zip
-    selectedIndex: 2
+    selectedIndex: 0
     values:
     - Disabled
     - Public
@@ -438,9 +438,9 @@ MonoBehaviour:
     openFolderPostBuild: 1
     constantsFileLocation: Assets\SuperUnityBuild
   _productParameters:
-    buildCounter: 11004
+    buildCounter: 11005
     buildVersion: 1.3.0-Beta2_OS_11002
-    versionTemplate: 1.3.0-Beta2_OS_$BUILD
+    versionTemplate: 1.3.0-Beta2-OS_$BUILD
     autoGenerate: 1
     syncWithPlayerSettings: 0
   _releaseTypeList:
@@ -494,34 +494,34 @@ MonoBehaviour:
     - {fileID: -926145965997145155}
   _projectConfigurations:
     configSet:
-      _Buckets: ffffffff43000000ffffffff1000000051000000ffffffff58000000ffffffff25000000ffffffff2c0000003a00000030000000ffffffffffffffffffffffff2f000000ffffffff370000001e000000ffffffffffffffff0b00000038000000ffffffffffffffffffffffffffffffffffffffff5e000000ffffffffffffffff2b000000ffffffff0f00000034000000ffffffff020000005a000000ffffffff3b000000ffffffffffffffff5700000052000000ffffffffffffffffffffffff0e000000ffffffff2e000000ffffffffffffffffffffffffffffffffffffffff1a0000004f000000ffffffff5b000000ffffffffffffffff29000000ffffffffffffffff24000000ffffffffffffffffffffffff1900000053000000ffffffffffffffffffffffffffffffffffffffff4100000009000000ffffffffffffffff15000000ffffffffffffffffffffffffffffffffffffffff2a000000ffffffffffffffff420000004500000044000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff4b000000ffffffffffffffff1b0000004a0000004d00000026000000ffffffffffffffff5d0000002d000000ffffffffffffffff36000000ffffffffffffffff010000001f00000031000000560000003e0000001d000000ffffffffffffffffffffffffffffffffffffffff2300000022000000ffffffffffffffff04000000ffffffffffffffffffffffffffffffffffffffff1c000000ffffffff4e000000ffffffffffffffff3c000000ffffffffffffffff5f000000ffffffff5000000047000000ffffffffffffffff3f000000ffffffffffffffff1800000020000000ffffffff0300000049000000ffffffffffffffffffffffff0d000000ffffffff27000000ffffffff46000000ffffffff4800000032000000330000004c000000ffffffffffffffffffffffff35000000390000002100000013000000ffffffffffffffff54000000ffffffffffffffffffffffffffffffff40000000ffffffffffffffffffffffff5c000000ffffffffffffffffffffffff59000000ffffffff
-      _HashCodes: 1c7dd871bfd5b058e285e5638e0855077a55120107c3b13422fc61766c07251285a9a62bdc53376cab9cac3d74a78943262f693a2d24225cd46d611053b5ba3a15bf8a53ea10ca7f71c76776959b630cf665e40829c6d86083c479523c1481386870132df15e3a406271f95e39216c1ec4da6d39220f42078f6e234ba767614934daaf3cf12060548e36ac3d46d56042369f0e206922b1165e25251514bc0a07fb9db774a474ce43457ce97410801e418e5d345fe7e4c4454cd72c0fed64316def107300fadfe86db3f3dc63fbe3f1137a64f009878a7279510e9f5954be58098887c937134e5c09fe37875617242b79d03dcd4dceee4e3995803a142d6dfd4847dd8169f29699340b20fb6e6b0c0424a347166efa618161537e86581d51e54980fa693cf75f362b1e8f3125d34aa739438a20728a031924a5ed461eec07183a223ee55d41a3e24afebb652616683212c11ddb2e2a25d010e0826b4747ff116d296c69229e034416c593d859fa5dd62789e18872edc1560d0edf1271cc5719670000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-      _Next: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff06000000ffffffffffffffffffffffffffffffff0a000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff08000000ffffffffffffffffffffffffffffffff12000000ffffffffffffffffffffffffffffffffffffffffffffffff17000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff14000000ffffffffffffffff0c000000ffffffffffffffff0500000011000000ffffffffffffffffffffffffffffffffffffffffffffffff07000000ffffffff55000000ffffffff3d000000ffffffff16000000280000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+      _Buckets: ffffffffffffffffffffffff4900000051000000ffffffff58000000ffffffffffffffff25000000ffffffff3a00000030000000ffffffffffffffffffffffff2f000000ffffffff370000001e000000ffffffffffffffff2800000038000000ffffffffffffffff45000000ffffffff070000005e000000ffffffffffffffffffffffffffffffff27000000340000002c000000ffffffff5a000000ffffffff4d00000029000000ffffffff5700000052000000ffffffff00000000ffffffffffffffff08000000ffffffffffffffffffffffffffffffffffffffff0c000000460000004f000000ffffffff5b000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1900000053000000ffffffffffffffff03000000ffffffffffffffffffffffffffffffff2d0000000d00000015000000ffffffffffffffffffffffffffffffffffffffff47000000ffffffffffffffff21000000ffffffffffffffffffffffffffffffffffffffff24000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1b00000014000000ffffffffffffffff44000000ffffffff5d00000022000000ffffffffffffffff36000000ffffffffffffffffffffffff1f00000031000000560000003e0000001d000000ffffffff41000000ffffffffffffffffffffffffffffffffffffffffffffffff06000000ffffffffffffffff4a000000ffffffffffffffffffffffff1c00000048000000ffffffffffffffffffffffff3c000000ffffffffffffffff5f0000004e00000050000000ffffffffffffffff050000003f00000040000000ffffffff1800000023000000ffffffff0e000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff2e000000ffffffff3200000033000000ffffffffffffffff430000000b0000003500000039000000ffffffff13000000ffffffffffffffff54000000ffffffffffffffff4b0000004c000000ffffffffffffffffffffffffffffffff5c000000ffffffffffffffffffffffff59000000ffffffff
+      _HashCodes: 820bd25dc56be66740fb512e027c56034afbab3ec576234bc293653cc0cf0c048ba3a66a0aa1dc02355a9f2e5e0e3448f0779a62f30afe3c967e5a0053b5ba3a15bf8a53ea10ca7f71c76776959b630cf665e40829c6d86083c479523c1481386870132df15e3a406271f95e39216c1ec4da6d39220f42078f6e234ba76761497266180c7b2fe650b4a2182ff2a35304f68b206f2fe17048f2710631b02a625c79db9d43f68b58664fdb3012a652284e8064d9332d2cdf5dca454617ed64316def107300fadfe86db3f3dc63fbe3f1137a64f009878a7279510e9f5954be58098887c937134e5c09fe37875617242b79d03dcd4dceee4e3995803a142d6dfd486920f6743e9c3172455f1d366966bd6f4db1b81a546b141769792c6beb1d9b61624f2e1625d8b51ae2c4fe5015ef9e2a594e5224b6eeef1acf73916dec07183a223ee55d41a3e24afebb652616683212c11ddb2e2a25d010e0826b4747ff116d296c69229e034416c593d859fa5dd62789e18872edc1560d0edf1271cc5719670000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+      _Next: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0a000000ffffffffffffffff04000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0f000000ffffffff2600000009000000ffffffffffffffffffffffffffffffff12000000ffffffff20000000ffffffffffffffffffffffffffffffff17000000ffffffffffffffffffffffff01000000ffffffffffffffffffffffffffffffffffffffff2b000000ffffffff10000000ffffffffffffffffffffffff1a000000ffffffffffffffff42000000ffffffffffffffffffffffff3b0000002a00000002000000ffffffff11000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff55000000ffffffff3d000000ffffffff16000000ffffffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
       _Count: 96
       _Version: 96
       _FreeList: -1
       _FreeCount: 0
       _Keys:
-      - Development/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+      - Development/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
         ARMv7
-      - Development/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - Development/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-      - Development/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+      - Development/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Development/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+      - Development/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
         ARM64
-      - Development/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - Development/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-      - Development/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+      - Development/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Development/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+      - Development/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
         x86
-      - Development/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - Development/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-      - Development/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+      - Development/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Development/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+      - Development/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
         x86_64
-      - Development/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - Development/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-      - Development/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+      - Development/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Development/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+      - Development/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
         Universal
-      - Development/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - Development/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
+      - Development/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Development/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
       - Development/Android
       - Development/PC/Windows x86 (App)/IL2CPP/itch.io Windows Release
       - Development/PC/Windows x86 (App)/IL2CPP
@@ -539,26 +539,26 @@ MonoBehaviour:
       - Development/macOS/macOS (Universal,App)
       - Development/macOS
       - Development
-      - Release/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+      - Release/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
         ARMv7
-      - Release/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - Release/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-      - Release/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+      - Release/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Release/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+      - Release/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
         ARM64
-      - Release/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - Release/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-      - Release/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+      - Release/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Release/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+      - Release/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
         x86
-      - Release/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - Release/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-      - Release/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+      - Release/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Release/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+      - Release/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
         x86_64
-      - Release/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - Release/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-      - Release/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+      - Release/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Release/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+      - Release/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
         Universal
-      - Release/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - Release/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
+      - Release/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Release/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
       - Release/Android
       - Release/PC/Windows x86 (App)/IL2CPP/itch.io Windows Release
       - Release/PC/Windows x86 (App)/IL2CPP
@@ -576,28 +576,28 @@ MonoBehaviour:
       - Release/macOS/macOS (Universal,App)
       - Release/macOS
       - Release
-      - Release with logs/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+      - Release with logs/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
         ARMv7
-      - Release with logs/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - Release with logs/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-      - Release with logs/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+      - Release with logs/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Release with logs/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+      - Release with logs/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
         ARM64
-      - Release with logs/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - Release with logs/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-      - Release with logs/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+      - Release with logs/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Release with logs/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+      - Release with logs/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
         x86
-      - Release with logs/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - Release with logs/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-      - Release with logs/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+      - Release with logs/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Release with logs/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+      - Release with logs/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
         x86_64
-      - Release with logs/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - Release with logs/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
+      - Release with logs/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - Release with logs/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
       - Release with logs/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single
-        Binary,Auto,Auto,Debugging)/IL2CPP/Android Universal
+        Binary,Auto,Auto,Disabled)/IL2CPP/Android Universal
       - Release with logs/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single
-        Binary,Auto,Auto,Debugging)/IL2CPP
+        Binary,Auto,Auto,Disabled)/IL2CPP
       - Release with logs/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single
-        Binary,Auto,Auto,Debugging)
+        Binary,Auto,Auto,Disabled)
       - Release with logs/Android
       - Release with logs/PC/Windows x86 (App)/IL2CPP/itch.io Windows Release
       - Release with logs/PC/Windows x86 (App)/IL2CPP
@@ -717,60 +717,60 @@ MonoBehaviour:
       - 
       - 
       _Values:
-      - enabled: 0
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
-        - Development/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+        - Development/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
           ARMv7
       - enabled: 1
         childKeys:
-        - Development/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - enabled: 0
+        - Development/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
-        - Development/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+        - Development/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
           ARM64
       - enabled: 1
         childKeys:
-        - Development/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - enabled: 0
+        - Development/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
-        - Development/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+        - Development/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
           x86
       - enabled: 1
         childKeys:
-        - Development/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - enabled: 0
+        - Development/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
-        - Development/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+        - Development/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
           x86_64
       - enabled: 1
         childKeys:
-        - Development/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - enabled: 0
+        - Development/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
         - Development/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single
-          Binary,Auto,Auto,Debugging)/IL2CPP/Android Universal
+          Binary,Auto,Auto,Disabled)/IL2CPP/Android Universal
       - enabled: 1
         childKeys:
         - Development/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single
-          Binary,Auto,Auto,Debugging)/IL2CPP
+          Binary,Auto,Auto,Disabled)/IL2CPP
       - enabled: 1
         childKeys:
-        - Development/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-        - Development/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-        - Development/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-        - Development/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
+        - Development/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+        - Development/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+        - Development/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+        - Development/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
         - Development/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single
-          Binary,Auto,Auto,Debugging)
+          Binary,Auto,Auto,Disabled)
       - enabled: 0
         childKeys: []
       - enabled: 1
@@ -779,7 +779,7 @@ MonoBehaviour:
       - enabled: 1
         childKeys:
         - Development/PC/Windows x86 (App)/IL2CPP
-      - enabled: 0
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
@@ -819,58 +819,58 @@ MonoBehaviour:
         - Development/PC
         - Development/Linux
         - Development/macOS
-      - enabled: 0
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
-        - Release/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+        - Release/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
           ARMv7
       - enabled: 1
         childKeys:
-        - Release/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
+        - Release/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
       - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
-        - Release/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+        - Release/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
           ARM64
       - enabled: 1
         childKeys:
-        - Release/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - enabled: 0
+        - Release/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
-        - Release/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+        - Release/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
           x86
       - enabled: 1
         childKeys:
-        - Release/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - enabled: 0
+        - Release/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
-        - Release/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+        - Release/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
           x86_64
       - enabled: 1
         childKeys:
-        - Release/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - enabled: 0
+        - Release/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
-        - Release/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+        - Release/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
           Universal
       - enabled: 1
         childKeys:
-        - Release/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
+        - Release/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
       - enabled: 1
         childKeys:
-        - Release/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-        - Release/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-        - Release/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-        - Release/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-        - Release/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
+        - Release/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+        - Release/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+        - Release/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+        - Release/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+        - Release/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
       - enabled: 0
         childKeys: []
       - enabled: 1
@@ -879,7 +879,7 @@ MonoBehaviour:
       - enabled: 1
         childKeys:
         - Release/PC/Windows x86 (App)/IL2CPP
-      - enabled: 1
+      - enabled: 0
         childKeys: []
       - enabled: 1
         childKeys:
@@ -919,60 +919,60 @@ MonoBehaviour:
         - Release/PC
         - Release/Linux
         - Release/macOS
-      - enabled: 0
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
-        - Release with logs/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+        - Release with logs/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
           ARMv7
       - enabled: 1
         childKeys:
-        - Release with logs/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - enabled: 0
+        - Release with logs/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
-        - Release with logs/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+        - Release with logs/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
           ARM64
       - enabled: 1
         childKeys:
-        - Release with logs/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - enabled: 0
+        - Release with logs/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
-        - Release with logs/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+        - Release with logs/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
           x86
       - enabled: 1
         childKeys:
-        - Release with logs/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - enabled: 0
+        - Release with logs/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
-        - Release with logs/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP/Android
+        - Release with logs/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP/Android
           x86_64
       - enabled: 1
         childKeys:
-        - Release with logs/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)/IL2CPP
-      - enabled: 0
+        - Release with logs/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)/IL2CPP
+      - enabled: 1
         childKeys: []
       - enabled: 1
         childKeys:
         - Release with logs/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single
-          Binary,Auto,Auto,Debugging)/IL2CPP/Android Universal
+          Binary,Auto,Auto,Disabled)/IL2CPP/Android Universal
       - enabled: 1
         childKeys:
         - Release with logs/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single
-          Binary,Auto,Auto,Debugging)/IL2CPP
+          Binary,Auto,Auto,Disabled)/IL2CPP
       - enabled: 1
         childKeys:
-        - Release with logs/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-        - Release with logs/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-        - Release with logs/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
-        - Release with logs/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Debugging)
+        - Release with logs/Android/Android (ARMv7,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+        - Release with logs/Android/Android (ARM64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+        - Release with logs/Android/Android (X86,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
+        - Release with logs/Android/Android (X86_64,ASTC,App,APK,Single Binary,Auto,Auto,Disabled)
         - Release with logs/Android/Android (ARMv7+ARM64+X86+X86_64,ASTC,App,APK,Single
-          Binary,Auto,Auto,Debugging)
+          Binary,Auto,Auto,Disabled)
       - enabled: 0
         childKeys: []
       - enabled: 1
@@ -1228,7 +1228,7 @@ MonoBehaviour:
     showBuildInfo: 0
     hideDisabled: 0
     treeView: 0
-    selectedKeyChain: Release/PC/Windows x64 (App)/IL2CPP/itch.io Windows Release
+    selectedKeyChain: Development/PC/Windows x64 (App)/IL2CPP/itch.io Windows Release
   _preBuildActions:
     buildActions:
     - {fileID: 8740057897878208988}
@@ -1342,7 +1342,7 @@ MonoBehaviour:
     - 34
     isFlag: 0
   - variantName: Create symbols.zip
-    selectedIndex: 2
+    selectedIndex: 0
     values:
     - Disabled
     - Public
@@ -1507,7 +1507,7 @@ MonoBehaviour:
     - 34
     isFlag: 0
   - variantName: Create symbols.zip
-    selectedIndex: 2
+    selectedIndex: 0
     values:
     - Disabled
     - Public
