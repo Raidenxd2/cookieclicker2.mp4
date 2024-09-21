@@ -211,8 +211,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34078715256832
-    m_Localized: "Conseil\_: Vous pouvez appuyer sur F12 pour prendre une capture
-      d'\xE9cran."
+    m_Localized: "Appuyez sur F12 pour effectuer une capture d'\xE9cran."
     m_Metadata:
       m_Items: []
   - m_Id: 34366876524544

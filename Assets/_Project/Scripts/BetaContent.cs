@@ -11,10 +11,6 @@ using System;
 public class BetaContent : MonoBehaviour
 {
     public GameObject BetaContentWarning;
-    public GameObject EnableCloudSaveScreen;
-    public GameObject GPGSignInScreen;
-    public GameObject SideBar;
-    public GameObject ModsBTN;
     public GameObject ResearchFactoryButton;
     public GameObject ErrorScreen;
 
@@ -69,14 +65,6 @@ public class BetaContent : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("BetaContent", 0) == 1 && SceneManager.GetActiveScene().name != "Init")
         {
-            if (PlayerPrefs.GetInt("BETA_EnableSideBar", 0) == 1)
-            {
-                SideBar.SetActive(true);
-            }
-            else
-            {
-                SideBar.SetActive(false);
-            }
             if (PlayerPrefs.GetInt("BETA_ResearchFactory", 0) == 1)
             {
                 ResearchFactoryButton.SetActive(true);
@@ -89,11 +77,6 @@ public class BetaContent : MonoBehaviour
     }
 
     public void LoadScene()
-    {
-        LoadSceneAsync();
-    }
-
-    private void LoadSceneAsync()
     {
         infoText.text = "Loading Game...";
 

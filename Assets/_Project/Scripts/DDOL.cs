@@ -4,7 +4,8 @@ public class DDOL : MonoBehaviour
 {
     private static DDOL instance;
 
-    void Awake() {
+    private void Awake()
+    {
         if (instance != null) 
         {
             Destroy(gameObject);
