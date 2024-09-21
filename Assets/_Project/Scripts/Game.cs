@@ -139,6 +139,7 @@ public class Game : MonoBehaviour
         {
             ScreenshotOptionsBTN.SetActive(true);
         }
+
         if (PlayerPrefs.GetInt("HasPlayed", 0) == 0)
         {
             ad.SetDefaults();
@@ -147,7 +148,9 @@ public class Game : MonoBehaviour
             PlayerPrefs.Save();
             Reload();
         }
+
         LoadPlayer();
+
         if (HasPlayed == false)
         {
             HasPlayed = true;
@@ -161,10 +164,12 @@ public class Game : MonoBehaviour
             ad.VSync = false;
             ResetData();
         }
+
         offlineManager.LoadOfflineTime();
         StartCoroutine(AutoSave());
         StartCoroutine(Tick());
         CheckPrices();
+
         try
         {
             SoundAssign();
@@ -173,14 +178,10 @@ public class Game : MonoBehaviour
         {
             LogSystem.Log("Could not assign audio. Did you load from the Init scene?", LogTypes.Error);
         }
+
         ad.LoadGraphics();
         
-        BetaContentToggles[0].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_EnableSideBar", BetaContentToggles[0].isOn);});
-        BetaContentToggles[1].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_ResearchFactory", BetaContentToggles[1].isOn);});
-        if (StarterBundleBought)
-        {
-            StarterBundleBTN.SetActive(false);
-        }
+        BetaContentToggles[0].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_ResearchFactory", BetaContentToggles[0].isOn);});
 
         MusicAudioSource = MusicSource.GetComponent<AudioSource>();
         SoundAudioSource = SoundSource.GetComponent<AudioSource>();
@@ -233,7 +234,6 @@ public class Game : MonoBehaviour
     {
         yield return new WaitForSeconds(60);
         SavePlayer();
-        SoundAssign();
         StartCoroutine(AutoSave());
     }
 

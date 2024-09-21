@@ -210,7 +210,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34078715256832
-    m_Localized: 'Tip: You can press F12 to take a screenshot.'
+    m_Localized: Press F12 to take a screenshot.
     m_Metadata:
       m_Items: []
   - m_Id: 34366876524544

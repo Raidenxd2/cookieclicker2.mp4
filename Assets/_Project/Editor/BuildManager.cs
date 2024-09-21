@@ -1,6 +1,5 @@
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using UnityEngine;
 
 public class BuildManager : Editor
 {
@@ -9,9 +8,6 @@ public class BuildManager : Editor
     {
         PlayerSettings.SetScriptingDefineSymbols(UnityEditor.Build.NamedBuildTarget.Android, "PROBUILDER_EXPERIMENTAL_FEATURES;PRIME_TWEEN_DOTWEEN_ADAPTER;ENABLE_LOG;SAVE_LOG");
 
-        GameObject.Find("BuildConfig").GetComponent<BuildConfig>().BetaBuild = true;
-        GameObject.Find("BuildConfig").GetComponent<BuildConfig>().Beta_SaveLogsToFile = true;
-
         EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
     }
 
@@ -19,9 +15,6 @@ public class BuildManager : Editor
     public static void DisableBetaBuild()
     {
         PlayerSettings.SetScriptingDefineSymbols(UnityEditor.Build.NamedBuildTarget.Android, "PROBUILDER_EXPERIMENTAL_FEATURES;PRIME_TWEEN_DOTWEEN_ADAPTER");
-
-        GameObject.Find("BuildConfig").GetComponent<BuildConfig>().BetaBuild = false;
-        GameObject.Find("BuildConfig").GetComponent<BuildConfig>().Beta_SaveLogsToFile = false;
 
         EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
     }

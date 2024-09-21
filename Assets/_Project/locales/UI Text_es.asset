@@ -206,7 +206,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 34078715256832
-    m_Localized: 'Sugerencia: puede presionar F12 para tomar una captura de pantalla.'
+    m_Localized: Pulsa F12 para hacer una captura de pantalla.
     m_Metadata:
       m_Items: []
   - m_Id: 34366876524544
