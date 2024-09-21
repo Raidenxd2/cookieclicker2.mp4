@@ -1,4 +1,3 @@
-#if !UNITY_EDITOR
 using Cysharp.Threading.Tasks;
 using LoggerSystem;
 using UnityEngine;
@@ -40,4 +39,3 @@ public class Updater : MonoBehaviour
         OpenURLManager.instance.OpenURL("https://raidenxd2.itch.io/cookieclicker2mp4#download");
     }
 }
-#endif

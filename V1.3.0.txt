@@ -13,3 +13,4 @@ Minor changes.
 Target Android 15.
 Added an Open Screenshots folder button to the screenshot options.
 Improved lighting.
+Updated loading screen.
