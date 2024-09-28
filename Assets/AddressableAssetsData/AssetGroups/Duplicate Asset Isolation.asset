@@ -22,6 +22,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19eddcecf2876f14887fe5a1ee205db4
+    m_Address: Assets/_Project/Materials/tiled_wall/tiled_wall_clean_science_factory.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1a69666f657b7f74fa1ce67f48133e27
     m_Address: Assets/_Project/Materials/sky.mat
     m_ReadOnly: 0
@@ -82,6 +87,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b400a5bca253c984f9b4c00f52bc9efe
+    m_Address: Assets/_Project/Models/Science_Factory/V2/Science_Factory_Normal_V2_UV.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b7efc7970735e7a4f9139dfb24ca57bb
     m_Address: Assets/_Project/Settings/New Lighting Settings.lighting
     m_ReadOnly: 0
@@ -102,6 +112,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d348f02554a005b44b07be0969bde51c
+    m_Address: Assets/_Project/Materials/PaintedPlaster017.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dfe76e5753fb3214482cbe9896f1c8a6
     m_Address: Assets/Animations/Loading.anim
     m_ReadOnly: 0
@@ -109,6 +124,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e6e9a19c3678ded42a3bc431ebef7dbd
     m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Utils/FallbackError.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eee973ce6dc0799459fca2e55e82af4d
+    m_Address: Assets/_Project/Textures/tiled_wall/clean/tiled_wall_clean_basecolor.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f01b61210e5634d418de91d7d7279846
+    m_Address: Assets/_Project/Models/Science_Factory/V2/mat/door_handle.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
