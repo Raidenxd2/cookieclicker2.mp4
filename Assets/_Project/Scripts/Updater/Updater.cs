@@ -20,7 +20,7 @@ public class Updater : MonoBehaviour
 
     private async UniTask StartAsync()
     {
-        string json = (await UnityWebRequest.Get("https://itch.io/api/1/x/wharf/latest?target=raidenxd2/cookieclicker2mp4&channel_name=win-64").SendWebRequest()).downloadHandler.text;
+        string json = (await UnityWebRequest.Get("https://itch.io/api/1/x/wharf/latest?target=raidenxd2/cookieclicker2mp4&channel_name=updatertest-win-64").SendWebRequest()).downloadHandler.text;
 
         string version = JsonUtility.FromJson<LatestJSON>(json).latest;
 

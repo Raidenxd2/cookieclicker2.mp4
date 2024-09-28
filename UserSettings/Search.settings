@@ -1,5 +1,6 @@
 trackSelection = true
 refreshSearchWindowsInPlayMode = false
+pickerAdvancedUI = false
 fetchPreview = true
 defaultFlags = 0
 keepOpen = false
@@ -25,6 +26,9 @@ scopes = {
 	"last_search.45F317DD" = "ok"
 	"OpenInspectorPreview.45F317DD" = "0"
 	"currentGroup.45F317DD" = "all"
+	"last_search.66F56946" = ""
+	"OpenInspectorPreview.66F56946" = "0"
+	"currentGroup.66F56946" = "all"
 }
 providers = {
 	adb = {

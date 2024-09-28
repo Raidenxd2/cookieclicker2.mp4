@@ -16,7 +16,7 @@ public class LocalizationFix : MonoBehaviour
 
         for (int i = 0; i < LocalizationSettings.AvailableLocales.Locales.Count; i++)
         {
-            if (LocalizationSettings.AvailableLocales.Locales[i].name == "cc2 localization fix (cc2_localization_fix)")
+            if (LocalizationSettings.AvailableLocales.Locales[i].name == "Arabic (ar)")
             {
                 await UniTask.WaitForSeconds(0.1f);
                 LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[i];
