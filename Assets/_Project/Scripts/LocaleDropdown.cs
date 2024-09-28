@@ -18,7 +18,7 @@ public class LocaleDropdown : MonoBehaviour
         
         for(int i = 0; i < LocalizationSettings.AvailableLocales.Locales.Count; i++)
         {
-            if (LocalizationSettings.AvailableLocales.Locales[i].name != "cc2 localization fix (cc2_localization_fix)")
+            if (LocalizationSettings.AvailableLocales.Locales[i].name != "Arabic (ar)")
             {
                 Locale locale = LocalizationSettings.AvailableLocales.Locales[i];
                 options.Add(new TMP_Dropdown.OptionData(locale.name));

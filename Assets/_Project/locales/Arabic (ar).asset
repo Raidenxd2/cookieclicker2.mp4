@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bb1838fe8befb0429646b938e757ff3, type: 3}
-  m_Name: cc2 localization fix (cc2_localization_fix)
+  m_Name: Arabic (ar)
   m_EditorClassIdentifier: 
   m_Identifier:
-    m_Code: cc2_localization_fix
+    m_Code: ar
   m_Metadata:
     m_Items: []
-  m_LocaleName: cc2 localization fix (cc2_localization_fix)
+  m_LocaleName: Arabic (ar)
   m_CustomFormatCultureCode: 
   m_UseCustomFormatter: 0
   m_SortOrder: 10000

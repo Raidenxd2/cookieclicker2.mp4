@@ -33,7 +33,7 @@ QualitySettings:
     lodBias: 0.01
     maximumLODLevel: 0
     enableLODCrossFade: 0
-    streamingMipmapsActive: 1
+    streamingMipmapsActive: 0
     streamingMipmapsAddAllCameras: 1
     streamingMipmapsMemoryBudget: 256
     streamingMipmapsRenderersPerFrame: 256
@@ -72,7 +72,7 @@ QualitySettings:
     globalTextureMipmapLimit: 0
     textureMipmapLimitSettings: []
     anisotropicTextures: 2
-    antiAliasing: 8
+    antiAliasing: 2
     softParticles: 1
     softVegetation: 1
     realtimeReflectionProbes: 0
@@ -83,7 +83,7 @@ QualitySettings:
     lodBias: 0.01
     maximumLODLevel: 0
     enableLODCrossFade: 0
-    streamingMipmapsActive: 1
+    streamingMipmapsActive: 0
     streamingMipmapsAddAllCameras: 1
     streamingMipmapsMemoryBudget: 256
     streamingMipmapsRenderersPerFrame: 256

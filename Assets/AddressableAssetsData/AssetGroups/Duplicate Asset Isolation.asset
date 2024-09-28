@@ -17,13 +17,53 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 3ecb7aab68ae73646ba9ea4731282a99
   m_SerializeEntries:
+  - m_GUID: 0ca6dca7396eb48e5849247ffd444914
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/BakedLit.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a69666f657b7f74fa1ce67f48133e27
+    m_Address: Assets/_Project/Materials/sky.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1b2100d72f78b624cbf39ec09da0934b
     m_Address: Assets/Textures/loading_grayscale.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c6d1305fcb87717478343bdd8ecaa629
-    m_Address: Assets/Textures/button.png
+  - m_GUID: 29becf1d36a65f743b1efa3ac07973e8
+    m_Address: Assets/_Project/Models/Cookie/Normal/cookie_normal.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36e335017ad71d54fbb10842863188ae
+    m_Address: Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/FallbackShader.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3803db3f951f70e4d8ab9a40b1f2f815
+    m_Address: Assets/_Project/Textures/CommonObjectsColorAtlas.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 650dd9526735d5b46b79224bc6e94025
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Unlit.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 681886c5eb7344803b6206f758bf0b1c
+    m_Address: Assets/_Project/Settings/Mobile.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8e75f63c59d535b408f74819d989f9a9
+    m_Address: Assets/_Project/Post Processing/pp_normal.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9c5457a918faeb1469fa6d5b23d0ad6a
+    m_Address: Assets/Textures/InfoButton.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -32,13 +72,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3fcbebada04c564fbe3cdc0688af674
+    m_Address: Assets/_Project/Models/drill/drill.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a9a2aa327a8d30c45a14abc15d60312b
     m_Address: Assets/Animations/Loading.controller
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9c5457a918faeb1469fa6d5b23d0ad6a
-    m_Address: Assets/Textures/InfoButton.png
+  - m_GUID: b7efc7970735e7a4f9139dfb24ca57bb
+    m_Address: Assets/_Project/Settings/New Lighting Settings.lighting
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c6d1305fcb87717478343bdd8ecaa629
+    m_Address: Assets/Textures/button.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c99effbd8aa85754db4ae27d2572ffba
+    m_Address: Assets/_Project/Materials/CommonObjectsMat.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -52,8 +107,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fe393ace9b354375a9cb14cdbbc28be4
-    m_Address: Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader
+  - m_GUID: e6e9a19c3678ded42a3bc431ebef7dbd
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Utils/FallbackError.shader
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -62,68 +117,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 681886c5eb7344803b6206f758bf0b1c
-    m_Address: Assets/_Project/Settings/Mobile.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e6e9a19c3678ded42a3bc431ebef7dbd
-    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Utils/FallbackError.shader
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 650dd9526735d5b46b79224bc6e94025
-    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Unlit.shader
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 36e335017ad71d54fbb10842863188ae
-    m_Address: Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/FallbackShader.shader
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0ca6dca7396eb48e5849247ffd444914
-    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/BakedLit.shader
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1a69666f657b7f74fa1ce67f48133e27
-    m_Address: Assets/_Project/Materials/sky.mat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 29becf1d36a65f743b1efa3ac07973e8
-    m_Address: Assets/_Project/Models/Cookie/Normal/cookie_normal.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3803db3f951f70e4d8ab9a40b1f2f815
-    m_Address: Assets/_Project/Textures/CommonObjectsColorAtlas.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8e75f63c59d535b408f74819d989f9a9
-    m_Address: Assets/_Project/Post Processing/pp_normal.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a3fcbebada04c564fbe3cdc0688af674
-    m_Address: Assets/_Project/Models/drill/drill.fbx
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b7efc7970735e7a4f9139dfb24ca57bb
-    m_Address: Assets/_Project/Settings/New Lighting Settings.lighting
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c99effbd8aa85754db4ae27d2572ffba
-    m_Address: Assets/_Project/Materials/CommonObjectsMat.mat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9a9ca041adc99e7448d72866fe3e7817
-    m_Address: Assets/_Project/Textures/Gradient.png
+  - m_GUID: fe393ace9b354375a9cb14cdbbc28be4
+    m_Address: Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -133,4 +128,3 @@ MonoBehaviour:
     m_Schemas:
     - {fileID: 11400000, guid: d7e24da315a7c28469b4d93425e40478, type: 2}
     - {fileID: 11400000, guid: dd8b133134b421e4381a695c95fe753e, type: 2}
-    - {fileID: 11400000, guid: 9ee89d9022c1a2b4e8032b721766e249, type: 2}
