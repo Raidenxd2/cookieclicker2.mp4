@@ -23,8 +23,6 @@ public class DEBUG : MonoBehaviour
         DEBUGButton.SetActive(true);
 
         StartCoroutine(FPSDisplay());
-        LogSystem.Log("Current Renderer: " + SystemInfo.graphicsDeviceType);
-        RendererText.text = "Current Renderer: " + SystemInfo.graphicsDeviceType;
     }
 
     IEnumerator FPSDisplay()

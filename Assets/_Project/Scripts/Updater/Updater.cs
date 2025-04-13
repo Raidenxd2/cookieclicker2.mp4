@@ -1,3 +1,4 @@
+using System.IO;
 using Cysharp.Threading.Tasks;
 using LoggerSystem;
 using UnityEngine;
@@ -20,14 +21,14 @@ public class Updater : MonoBehaviour
 
     private async UniTask StartAsync()
     {
-        string json = (await UnityWebRequest.Get("https://itch.io/api/1/x/wharf/latest?target=raidenxd2/cookieclicker2mp4&channel_name=updatertest-win-64").SendWebRequest()).downloadHandler.text;
+        int version = int.Parse((await UnityWebRequest.Get("https://raidenxd2.github.io/cookieclicker2.mp4/build").SendWebRequest()).downloadHandler.text);
 
-        string version = JsonUtility.FromJson<LatestJSON>(json).latest;
+        int localVersion = int.Parse((await UnityWebRequest.Get(Path.Combine(Application.streamingAssetsPath, "build")).SendWebRequest()).downloadHandler.text);
 
-        LogSystem.Log("itch.io version: " + version);
-        LogSystem.Log("Game version: " + Application.version);
+        LogSystem.Log("Latest version: " + version);
+        LogSystem.Log("Local version: " + localVersion);
 
-        if (version != Application.version)
+        if (version > localVersion)
         {
             GlobalDark.SetActive(true);
             UpdateAvailabeScreen.SetActive(true);

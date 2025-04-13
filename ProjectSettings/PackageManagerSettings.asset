@@ -33,6 +33,7 @@ MonoBehaviour:
     - com.github.superunitybuild.buildtool
     - com.cysharp.unitask
     - com.annulusgames.lit-motion
+    - com.raiden.serial
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4

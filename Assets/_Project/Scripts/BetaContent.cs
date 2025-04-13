@@ -32,7 +32,6 @@ public class BetaContent : MonoBehaviour
     {
         try
         {
-            LogSystem.Log(PlayerPrefs.GetInt("HasPlayed", 0).ToString());
             if (PlayerPrefs.GetInt("HasPlayed", 0) == 0)
             {
                 PlayerPrefs.SetInt("BetaContent", 0);

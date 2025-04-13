@@ -7,10 +7,11 @@ using UnityEngine.UI;
 using LoggerSystem;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Localization;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class Game : MonoBehaviour
 {
-
     // variables
     [Header("Game Variables")]
     public BigDouble Cookies;
@@ -90,16 +91,16 @@ public class Game : MonoBehaviour
     private AudioSource SoundAudioSource;
 
     public Camera gameCamera;
-    public UnityEngine.Rendering.Volume CVDFilter;
-    public UnityEngine.Rendering.VolumeProfile CBNormal;
-    public UnityEngine.Rendering.VolumeProfile CBProtanopia;
-    public UnityEngine.Rendering.VolumeProfile CBProtanomaly;
-    public UnityEngine.Rendering.VolumeProfile CBDeuteranopia;
-    public UnityEngine.Rendering.VolumeProfile CBDeuteranomaly;
-    public UnityEngine.Rendering.VolumeProfile CBTritanopia;
-    public UnityEngine.Rendering.VolumeProfile CBTritanomaly;
-    public UnityEngine.Rendering.VolumeProfile CBAchromatopsia;
-    public UnityEngine.Rendering.VolumeProfile CBAchromatomaly;
+    public Volume CVDFilter;
+    public VolumeProfile CBNormal;
+    public VolumeProfile CBProtanopia;
+    public VolumeProfile CBProtanomaly;
+    public VolumeProfile CBDeuteranopia;
+    public VolumeProfile CBDeuteranomaly;
+    public VolumeProfile CBTritanopia;
+    public VolumeProfile CBTritanomaly;
+    public VolumeProfile CBAchromatopsia;
+    public VolumeProfile CBAchromatomaly;
 
     [Header("BetaContent")]
     public GameObject BetaContentWarningScreen;
@@ -464,19 +465,6 @@ public class Game : MonoBehaviour
         else
         {
             NECDialog.SetActive(true);
-        }
-    }
-
-    public void ChangeCameraBGColor(string color)
-    {
-        switch (color)
-        {
-            case "normal":
-                gameCamera.backgroundColor = new Color32(53, 67, 89, 255);
-                break;
-            case "space":
-                gameCamera.backgroundColor = new Color(0, 0, 0, 255);
-                break;
         }
     }
 

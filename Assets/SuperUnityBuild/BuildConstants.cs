@@ -41,23 +41,26 @@ namespace SuperUnityBuild.Generated
     public enum Distribution
     {
         None,
-        Android_Google_Release,
-        Android_Development,
+        Android_ARMv7,
+        Android_ARM64,
         itch_io_Windows_Release,
         Windows64Build,
         itch_io_Linux_Release,
         itch_io_macOS_Release,
+        Android_x86,
+        Android_x86_64,
+        Android_Universal,
     }
 
     public static class BuildConstants
     {
-        public static readonly DateTime buildDate = new DateTime(638615227011488193);
-        public const string version = "1.3.0-Beta1_OS";
-        public const ReleaseType releaseType = ReleaseType.Release_with_logs;
-        public const Platform platform = Platform.Android;
-        public const ScriptingBackend scriptingBackend = ScriptingBackend.IL2CPP;
-        public const Architecture architecture = Architecture.Android;
-        public const Distribution distribution = Distribution.Android_Development;
+        public static readonly DateTime buildDate = new DateTime(638759360715249631);
+        public const string version = "1.3.0-Beta2-OS_11023";
+        public const ReleaseType releaseType = ReleaseType.Release;
+        public const Platform platform = Platform.PC;
+        public const ScriptingBackend scriptingBackend = ScriptingBackend.Mono;
+        public const Architecture architecture = Architecture.Windows_x64;
+        public const Distribution distribution = Distribution.itch_io_Windows_Release;
     }
 }
 

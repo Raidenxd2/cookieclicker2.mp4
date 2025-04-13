@@ -17,23 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: dac3443347cf7df49b12d2f59a0f09f5
   m_SerializeEntries:
-  - m_GUID: 97756a796a6d007408af39a643993837
-    m_Address: Assets/Fonts/Source Sans Pro/SourceSansPro-Bold SDF.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e92e3add251e23f43971c7230066aa3e
-    m_Address: Assets/Fonts/Source Sans Pro/SourceSansPro-Regular SDF.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9365f1b5c8f3033409acda93e69baeca
-    m_Address: Assets/Fonts/Noto Sans Japanese/NotoSansJP-Bold SDF.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ab9b5c568549c5a46add3ec486cad980
-    m_Address: Assets/Fonts/Noto Sans Japanese/NotoSansJP-Regular SDF.asset
+  - m_GUID: 2146eff5482b4824988e3f7c085d71a5
+    m_Address: Assets/Fonts/Noto Sans Japanese/NotoSansJP-Bold.ttf
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -42,8 +27,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2146eff5482b4824988e3f7c085d71a5
-    m_Address: Assets/Fonts/Noto Sans Japanese/NotoSansJP-Bold.ttf
+  - m_GUID: 4c1677d74b2b96c4784f21b60629a25f
+    m_Address: Assets/Fonts/Source Sans Pro/SourceSansPro-Bold.ttf
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -52,8 +37,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4c1677d74b2b96c4784f21b60629a25f
-    m_Address: Assets/Fonts/Source Sans Pro/SourceSansPro-Bold.ttf
+  - m_GUID: 9365f1b5c8f3033409acda93e69baeca
+    m_Address: Assets/Fonts/Noto Sans Japanese/NotoSansJP-Bold SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97756a796a6d007408af39a643993837
+    m_Address: Assets/Fonts/Source Sans Pro/SourceSansPro-Bold SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab9b5c568549c5a46add3ec486cad980
+    m_Address: Assets/Fonts/Noto Sans Japanese/NotoSansJP-Regular SDF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e92e3add251e23f43971c7230066aa3e
+    m_Address: Assets/Fonts/Source Sans Pro/SourceSansPro-Regular SDF.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -61,6 +61,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 9bd8c6dc482bf244fa3a69cd62f55319, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 77787bfcf6107694eb413ece495e81e0, type: 2}
     - {fileID: 11400000, guid: 6531b2ea82adb2f43a77c67b64c51341, type: 2}
-    - {fileID: 11400000, guid: 64f96e08c098a614f9030c422c464f75, type: 2}
+    - {fileID: 11400000, guid: 77787bfcf6107694eb413ece495e81e0, type: 2}

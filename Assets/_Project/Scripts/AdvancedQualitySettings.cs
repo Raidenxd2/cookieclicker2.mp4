@@ -27,9 +27,6 @@ public class AdvancedQualitySettings : MonoBehaviour
     [Header("Performance Mode")]
     public GameObject TreesReal;
     public UniversalAdditionalCameraData GameCamera_AdditionalData;
-    public GameObject Cookie_Performance;
-    public GameObject Cookie_Normal;
-    public GameObject Research_Factory_Normal;
     public GameObject ParticalsReal;
 
     int boolToInt(bool val)
@@ -123,7 +120,6 @@ public class AdvancedQualitySettings : MonoBehaviour
     public void SaveGraphics()
     {
         PlayerPrefs.Save();
-        LogSystem.Log("Saved Graphics Options");
     }
 
     public void LoadGraphics()
@@ -151,27 +147,22 @@ public class AdvancedQualitySettings : MonoBehaviour
         RenderQuality = PlayerPrefs.GetFloat("GRAPHICS_RenderQuality", 1);
 
         UpdateSettings();
-
-        LogSystem.Log("Loaded Graphics Options");
     }
 
     public void SetDefaults()
     {
         #if UNITY_ANDROID
-        if (Application.isMobilePlatform)
-        {
-            PostProcessing = false;
-            Lighting = true;
-            Particals = true;
-            Trees = true;
-            VSync = false;
-            Fog = true;
-            TextureQuality = 0;
-            Textures = true;
-            AO = false;
-            HDR = false;
-            RenderQuality = 0.75f;
-        }
+        PostProcessing = false;
+        Lighting = true;
+        Particals = true;
+        Trees = true;
+        VSync = false;
+        Fog = true;
+        TextureQuality = 0;
+        Textures = true;
+        AO = false;
+        HDR = false;
+        RenderQuality = 0.75f;
         #endif
 
         #if UNITY_STANDALONE
@@ -208,16 +199,12 @@ public class AdvancedQualitySettings : MonoBehaviour
         if (PostProcessing)
         {
             pp_normal.SetActive(true);
-            #if UNITY_ANDROID
             GameCamera_AdditionalData.renderPostProcessing = true;
-            #endif
         }
         else
         {
             pp_normal.SetActive(false);
-            #if UNITY_ANDROID
             GameCamera_AdditionalData.renderPostProcessing = false;
-            #endif
         }
         if (Particals)
         {
