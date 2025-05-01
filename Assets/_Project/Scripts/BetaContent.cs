@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine.AddressableAssets;
-using LoggerSystem;
 using System;
 
 public class BetaContent : MonoBehaviour
@@ -35,10 +34,6 @@ public class BetaContent : MonoBehaviour
             if (PlayerPrefs.GetInt("HasPlayed", 0) == 0)
             {
                 PlayerPrefs.SetInt("BetaContent", 0);
-                PlayerPrefs.SetInt("BETA_EnableSideBar", 0);
-                PlayerPrefs.SetInt("BETA_Mods", 0);
-                PlayerPrefs.SetInt("BETA_FPSLIMIT", 0);
-                PlayerPrefs.SetInt("BETA_CookieMonster", 0);
                 PlayerPrefs.SetInt("BETA_ResearchFactory", 0);
                 PlayerPrefs.Save();
             }

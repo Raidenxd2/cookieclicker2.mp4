@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Cookieclicker2.mp4 Unity2022.sln"
+    "dotnet.defaultSolution": "Cookieclicker2.mp4.sln"
 }

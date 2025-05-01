@@ -47,9 +47,9 @@ public class DEBUG : MonoBehaviour
         {
             game.Cookies = BigDouble.Parse(CookiesInput.text);
         }
-        catch 
+        catch
         {
-            LogSystem.Log("could not convert cookiesinput to a bigdouble due to invalid string", LogTypes.Error);
+            LogSystem.Log("Failed to set Cookies.", LogTypes.Error);
         }
     }
 

@@ -3,7 +3,7 @@
 // - No Glow Option
 // - Softness is applied on both side of the outline
 
-Shader "CC2/TextMeshPro/Mobile/Distance Field Always On Top" {
+Shader "BeanShootout/TextMeshPro/Mobile/Distance Field Always On Top" {
 
 Properties {
 	_FaceColor          ("Face Color", Color) = (1,1,1,1)
@@ -80,7 +80,7 @@ SubShader {
 
 		#include "UnityCG.cginc"
 		#include "UnityUI.cginc"
-		#include "../TextMesh Pro/Shaders/TMPro_Properties.cginc"
+		#include "../../TextMesh Pro/Shaders/TMPro_Properties.cginc"
 
 		struct vertex_t {
 			UNITY_VERTEX_INPUT_INSTANCE_ID

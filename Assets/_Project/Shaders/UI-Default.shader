@@ -1,6 +1,6 @@
 // Unity built-in shader source. Copyright (c) 2016 Unity Technologies. MIT license (see license.txt)
 
-Shader "CC2/UnityBuiltInShaders/UI/Default"
+Shader "BeanShootout/UnityBuiltInShaders/UI/Default"
 {
     Properties
     {

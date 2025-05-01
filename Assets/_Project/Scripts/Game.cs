@@ -7,7 +7,6 @@ using UnityEngine.UI;
 using LoggerSystem;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Localization;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
 
 public class Game : MonoBehaviour
@@ -108,10 +107,6 @@ public class Game : MonoBehaviour
     public Toggle[] BetaContentToggles;
     public GameObject ScreenshotOptionsBTN;
 
-    [Header("IAP")]
-    public GameObject StarterBundleBTN;
-    public bool StarterBundleBought;
-
     [Header("Particles")]
     public GameObject CookieVFX;
     public GameObject CookieGains;
@@ -190,11 +185,6 @@ public class Game : MonoBehaviour
         al.InitAddressableLightmaps();
     }
 
-    public void HideStarterBundleButton()
-    {
-        StarterBundleBTN.SetActive(false);
-    }
-
     void SoundAssign()
     {
         soundManager = GameObject.FindGameObjectWithTag("audio").GetComponent<SoundManager>();
@@ -250,42 +240,71 @@ public class Game : MonoBehaviour
     {
         PlayerPrefs.Save();
         offlineManager.SaveTime();
-        ad.SaveGraphics();
-        SaveSystem.SavePlayer(this, offlineManager, ad, researchFactory);
+
+        BetterPrefs.SetString("Cookies", Cookies.ToString());
+        BetterPrefs.SetString("CPC", CPC.ToString());
+        BetterPrefs.SetString("CPS", CPS.ToString());
+        BetterPrefs.SetString("TimePlayed", TimePlayed.ToString());
+        BetterPrefs.SetBool("HasPlayed", HasPlayed);
+        BetterPrefs.SetString("Autoclickers", Autoclickers.ToString());
+        BetterPrefs.SetString("Doublecookies", Doublecookies.ToString());
+        BetterPrefs.SetString("AutoclickerPrice", AutoclickerPrice.ToString());
+        BetterPrefs.SetString("DoublecookiePrice", DoublecookiePrice.ToString());
+        BetterPrefs.SetString("Drills", Drills.ToString());
+        BetterPrefs.SetString("DrillPrice", DrillPrice.ToString());
+        BetterPrefs.SetBool("ResearchFactory", ResearchFactory);
+        BetterPrefs.SetBool("offlineProgressCheck", offlineManager.offlineProgressCheck);
+        BetterPrefs.SetString("OfflineTime", offlineManager.OfflineTime);
+        BetterPrefs.SetBool("Sounds", Sounds);
+        BetterPrefs.SetBool("Music", Music);
+        BetterPrefs.SetString("Grandmas", Grandmas.ToString());
+        BetterPrefs.SetString("GrandmaPrice", GrandmaPrice.ToString());
+        BetterPrefs.SetString("CookieFactorys", CookieFactorys.ToString());
+        BetterPrefs.SetString("CookieFactoryPrice", CookieFactoryPrice.ToString());
+        BetterPrefs.SetString("ResearchPoints", researchFactory.ResearchPoints.ToString());
+        BetterPrefs.SetBool("BigCookieResearched", researchFactory.BigCookieResearched);
+
+        BetterPrefs.Save();
     }
 
     public void LoadPlayer()
     {
-        PlayerData data = SaveSystem.LoadPlayer(this);
-
-        SaveSystem.LoadPlayer(this);
-
         ad.LoadGraphics();
 
-        Cookies = data.Cookies;
-        CPC = data.CPC;
-        CPS = data.CPS;
-        TimePlayed = data.TimePlayed;
-        HasPlayed = data.HasPlayed;
-        Autoclickers = data.Autoclickers;
-        Doublecookies = data.Doublecookies;
-        AutoclickerPrice = data.AutoclickerPrice;
-        DoublecookiePrice = data.DoublecookiePrice;
-        Drills = data.Drills;
-        DrillPrice = data.DrillPrice;
-        ResearchFactory = data.ResearchFactory;
-        offlineManager.offlineProgressCheck = data.offlineProgressCheck;
-        offlineManager.OfflineTime = data.OfflineTime;
-        Sounds = data.Sounds;
-        Music = data.Music;
-        Grandmas = data.Grandmas;
-        GrandmaPrice = data.GrandmaPrice;
-        StarterBundleBought = data.StarterBundleBought;
-        CookieFactorys = data.CookieFactorys;
-        CookieFactoryPrice = data.CookieFactoryPrice;
+        try
+        {
+            BetterPrefs.Load(Application.persistentDataPath + "/Saves/Default.cookie");
+        }
+        catch(System.Exception ex)
+        {
+            SDIE.SetActive(true);
+            SmallErrorText.text = "" + ex.Message;
+            ErrorText.text = "" + ex;
+        }
 
-        researchFactory.ResearchPoints = data.ResearchPoints;
-        researchFactory.BigCookieResearched = data.BigCookieResearched;
+        Cookies = BigDouble.Parse(BetterPrefs.GetString("Cookies", "0"));
+        CPC = BigDouble.Parse(BetterPrefs.GetString("CPC", "1"));
+        CPS = BigDouble.Parse(BetterPrefs.GetString("CPS", "0"));
+        TimePlayed = BigDouble.Parse(BetterPrefs.GetString("TimePlayed", "0"));
+        HasPlayed = BetterPrefs.GetBool("HasPlayed", false);
+        Autoclickers = BigDouble.Parse(BetterPrefs.GetString("Autoclickers", "0"));
+        Doublecookies = BigDouble.Parse(BetterPrefs.GetString("Doublecookies", "0"));
+        AutoclickerPrice = BigDouble.Parse(BetterPrefs.GetString("AutoclickerPrice", "0"));
+        DoublecookiePrice = BigDouble.Parse(BetterPrefs.GetString("DoublecookiePrice", "0"));
+        Drills = BigDouble.Parse(BetterPrefs.GetString("Drills", "0"));
+        DrillPrice = BigDouble.Parse(BetterPrefs.GetString("DrillPrice", "0"));
+        ResearchFactory = BetterPrefs.GetBool("ResearchFactory", false);
+        offlineManager.offlineProgressCheck = BetterPrefs.GetBool("offlineProgressCheck", false);;
+        offlineManager.OfflineTime = BetterPrefs.GetString("OfflineTime", "");
+        Sounds = BetterPrefs.GetBool("Sounds", false);
+        Music = BetterPrefs.GetBool("Music", false);
+        Grandmas = BigDouble.Parse(BetterPrefs.GetString("Grandmas", "0"));
+        GrandmaPrice = BigDouble.Parse(BetterPrefs.GetString("GrandmaPrice", "0"));
+        CookieFactorys = BigDouble.Parse(BetterPrefs.GetString("CookieFactorys", "0"));
+        CookieFactoryPrice = BigDouble.Parse(BetterPrefs.GetString("CookieFactoryPrice", "0"));
+
+        researchFactory.ResearchPoints = BigDouble.Parse(BetterPrefs.GetString("ResearchPoints", "1"));
+        researchFactory.BigCookieResearched = BetterPrefs.GetBool("BigCookieResearched", false);
 
         researchFactory.LoadResearchFactory();
 
@@ -548,16 +567,6 @@ public class Game : MonoBehaviour
         {
             BetaContentWarningScreen.SetActive(true);
         }
-    }
-
-    public void EntermodioScreen()
-    {
-        gameCamera.transform.rotation = new Quaternion(0, 0, 0, 0);
-    }
-
-    public void ExitmodioScreen()
-    {
-        gameCamera.transform.rotation = new Quaternion(30, 0, 0, 0);
     }
 
     public void CheckResearchFactory()

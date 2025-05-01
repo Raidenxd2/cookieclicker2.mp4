@@ -1,6 +1,5 @@
 using System.Collections;
 using LoggerSystem;
-using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -22,7 +21,6 @@ public class ThemeManager : MonoBehaviour
 
     [SerializeField] private Notification notification;
 
-    private AssetReference CurrentThemeSceneRef;
     private AsyncOperationHandle<SceneInstance> CurrentThemeSceneHandle;
 
     private void Start()

@@ -1,5 +1,0 @@
-V1.2.5:
-Performance optimizations.
-Error handling when loading the game.
-Localization updates.
-Minor changes.

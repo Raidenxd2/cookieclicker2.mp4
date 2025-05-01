@@ -18,12 +18,9 @@ public class LocaleDropdown : MonoBehaviour
         
         for(int i = 0; i < LocalizationSettings.AvailableLocales.Locales.Count; i++)
         {
-            if (LocalizationSettings.AvailableLocales.Locales[i].name != "Arabic (ar)")
-            {
-                Locale locale = LocalizationSettings.AvailableLocales.Locales[i];
-                options.Add(new TMP_Dropdown.OptionData(locale.name));
-                if (locale == LocalizationSettings.SelectedLocale) selectedLocale = i;
-            }
+            Locale locale = LocalizationSettings.AvailableLocales.Locales[i];
+            options.Add(new TMP_Dropdown.OptionData(locale.name));
+            if (locale == LocalizationSettings.SelectedLocale) selectedLocale = i;
         }
         
         _localesDropdown.options = options;

@@ -16,10 +16,8 @@ MonoBehaviour:
     m_Rules: []
   DiagnosticParams:
     m_ParamsStack:
-    - Platform: -2
+    - PlatformGroup: 0
       m_SerializedParams:
-      - Key: TextureEmptySpaceLimit
-        Value: 50
       - Key: SpriteAtlasEmptySpaceLimit
         Value: 50
       - Key: StreamingAssetsFolderSizeLimit
@@ -34,10 +32,8 @@ MonoBehaviour:
         Value: 204800
       - Key: TextureStreamingMipmapsSizeLimit
         Value: 4000
-    - Platform: 13
+    - PlatformGroup: 0
       m_SerializedParams:
-      - Key: TextureEmptySpaceLimit
-        Value: 50
       - Key: SpriteAtlasEmptySpaceLimit
         Value: 50
       - Key: StreamingAssetsFolderSizeLimit
@@ -52,10 +48,8 @@ MonoBehaviour:
         Value: 204800
       - Key: TextureStreamingMipmapsSizeLimit
         Value: 4000
-    - Platform: 24
+    - PlatformGroup: 0
       m_SerializedParams:
-      - Key: TextureEmptySpaceLimit
-        Value: 50
       - Key: SpriteAtlasEmptySpaceLimit
         Value: 50
       - Key: StreamingAssetsFolderSizeLimit
@@ -70,10 +64,8 @@ MonoBehaviour:
         Value: 204800
       - Key: TextureStreamingMipmapsSizeLimit
         Value: 4000
-    - Platform: 2
+    - PlatformGroup: 0
       m_SerializedParams:
-      - Key: TextureEmptySpaceLimit
-        Value: 50
       - Key: SpriteAtlasEmptySpaceLimit
         Value: 50
       - Key: StreamingAssetsFolderSizeLimit
@@ -88,10 +80,8 @@ MonoBehaviour:
         Value: 204800
       - Key: TextureStreamingMipmapsSizeLimit
         Value: 4000
-    - Platform: 5
+    - PlatformGroup: 0
       m_SerializedParams:
-      - Key: TextureEmptySpaceLimit
-        Value: 50
       - Key: SpriteAtlasEmptySpaceLimit
         Value: 50
       - Key: StreamingAssetsFolderSizeLimit
@@ -106,10 +96,8 @@ MonoBehaviour:
         Value: 204800
       - Key: TextureStreamingMipmapsSizeLimit
         Value: 4000
-    - Platform: 19
+    - PlatformGroup: 0
       m_SerializedParams:
-      - Key: TextureEmptySpaceLimit
-        Value: 50
       - Key: SpriteAtlasEmptySpaceLimit
         Value: 50
       - Key: StreamingAssetsFolderSizeLimit
@@ -124,10 +112,40 @@ MonoBehaviour:
         Value: 204800
       - Key: TextureStreamingMipmapsSizeLimit
         Value: 4000
-    - Platform: 20
+    - PlatformGroup: 0
       m_SerializedParams:
-      - Key: TextureEmptySpaceLimit
+      - Key: SpriteAtlasEmptySpaceLimit
         Value: 50
+      - Key: StreamingAssetsFolderSizeLimit
+        Value: 50
+      - Key: StreamingClipThresholdBytes
+        Value: 218294
+      - Key: LongDecompressedClipThresholdBytes
+        Value: 204800
+      - Key: LongCompressedMobileClipThresholdBytes
+        Value: 204800
+      - Key: LoadInBackGroundClipSizeThresholdBytes
+        Value: 204800
+      - Key: TextureStreamingMipmapsSizeLimit
+        Value: 4000
+    - PlatformGroup: 7
+      m_SerializedParams:
+      - Key: SpriteAtlasEmptySpaceLimit
+        Value: 50
+      - Key: StreamingAssetsFolderSizeLimit
+        Value: 50
+      - Key: StreamingClipThresholdBytes
+        Value: 218294
+      - Key: LongDecompressedClipThresholdBytes
+        Value: 204800
+      - Key: LongCompressedMobileClipThresholdBytes
+        Value: 204800
+      - Key: LoadInBackGroundClipSizeThresholdBytes
+        Value: 204800
+      - Key: TextureStreamingMipmapsSizeLimit
+        Value: 4000
+    - PlatformGroup: 1
+      m_SerializedParams:
       - Key: SpriteAtlasEmptySpaceLimit
         Value: 50
       - Key: StreamingAssetsFolderSizeLimit

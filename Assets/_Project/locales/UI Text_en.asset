@@ -242,10 +242,6 @@ MonoBehaviour:
       OF THEM.'
     m_Metadata:
       m_Items: []
-  - m_Id: 35725591945216
-    m_Localized: Rec Room Save Import
-    m_Metadata:
-      m_Items: []
   - m_Id: 35818470612992
     m_Localized: Import
     m_Metadata:
@@ -318,20 +314,12 @@ MonoBehaviour:
     m_Localized: Beta Content
     m_Metadata:
       m_Items: []
-  - m_Id: 43279676055552
-    m_Localized: Side Bar
-    m_Metadata:
-      m_Items: []
   - m_Id: 43315780624384
     m_Localized: Mods
     m_Metadata:
       m_Items: []
   - m_Id: 43660564996096
     m_Localized: Disable Beta Content
-    m_Metadata:
-      m_Items: []
-  - m_Id: 43976131846144
-    m_Localized: Sidebar
     m_Metadata:
       m_Items: []
   - m_Id: 47768164343808
@@ -358,57 +346,12 @@ MonoBehaviour:
     m_Localized: Very Low
     m_Metadata:
       m_Items: []
-  - m_Id: 5827650568716288
-    m_Localized: Login
-    m_Metadata:
-      m_Items: []
   - m_Id: 5827705644122112
     m_Localized: Achievements
     m_Metadata:
       m_Items: []
   - m_Id: 5827744323993600
     m_Localized: Leaderboard
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6422385197568000
-    m_Localized: Google Play Games
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6422453581500416
-    m_Localized: Failed to login to Google Play.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6436239344390144
-    m_Localized: Cookie Store
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8740648484651008
-    m_Localized: Starter Bundle
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8740677802835968
-    m_Localized: 'Buying the Starter Bundle gives you:
-
-      ***ONE TIME ONLY***
-
-      150000
-      Cookies
-
-      10 Grandmas
-
-      10 Doublecookies
-
-      10 Autoclickers
-
-      5
-      Drills
-
-
-      Do you want to purchase the Starter Bundle?'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9057636776398848
-    m_Localized: Old Theme
     m_Metadata:
       m_Items: []
   - m_Id: 21043978339078144
@@ -425,14 +368,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 166606409164402688
     m_Localized: Cancel
-    m_Metadata:
-      m_Items: []
-  - m_Id: 166606786911809536
-    m_Localized: Reset without Starter Bundle
-    m_Metadata:
-      m_Items: []
-  - m_Id: 166606814397083648
-    m_Localized: Reset with Starter Bundle (if owned)
     m_Metadata:
       m_Items: []
   - m_Id: 167076722826293248
@@ -461,14 +396,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 167714459552067584
     m_Localized: Save Data Warning
-    m_Metadata:
-      m_Items: []
-  - m_Id: 171891393479585792
-    m_Localized: Age Block
-    m_Metadata:
-      m_Items: []
-  - m_Id: 171891396071665664
-    m_Localized: Your current age setting has blocked this content.
     m_Metadata:
       m_Items: []
   - m_Id: 185542321738887168
@@ -501,128 +428,16 @@ MonoBehaviour:
       It is recommended that you turn it on.
     m_Metadata:
       m_Items: []
-  - m_Id: 188093104086855680
-    m_Localized: Enable Cloud Save
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188093175771705344
-    m_Localized: 'Do you want to enable Cloud Save?
-
-      Cloud Save allows you
-      to sync save data between devices.
-
-
-      You can manage Cloud Save options
-      by going to Options > Save Management > Cloud Save...'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188231376385617920
-    m_Localized: Cloud Save...
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188232584512942080
-    m_Localized: Enable Cloud Save
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188232634009923584
-    m_Localized: Disable Cloud Save
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188232685461450752
-    m_Localized: Delete save data from the cloud
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188369631588397056
-    m_Localized: 'Are you sure you want to delete your save data from the cloud?
-
-
-      This
-      will disable Cloud Save and delete <color=red>ALL</color> data from the cloud'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377289905156096
-    m_Localized: You have Cloud Save disabled.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377352886824960
-    m_Localized: Preparing...
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377390446817280
-    m_Localized: Deleting all keys...
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377436508663808
-    m_Localized: Deleting file from the cloud...
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377506733895680
-    m_Localized: Deleting account...
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377601906847744
-    m_Localized: Successfully deleted all data from the cloud.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377662745227264
-    m_Localized: Failed to delete all data from the cloud!
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377726909689856
-    m_Localized: Enabled Cloud Save.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377748703293440
-    m_Localized: Disabled Cloud Save.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188380235057344512
-    m_Localized: '<color=yellow>Warning: You will need to reload the game when enabling/disabling
-      Cloud Save.</color>'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188436096396046336
-    m_Localized: Get Player ID
-    m_Metadata:
-      m_Items: []
   - m_Id: 188436499728707584
     m_Localized: Visit Data Deletion website
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188436996317523968
-    m_Localized: 'Player ID: '
     m_Metadata:
       m_Items: []
   - m_Id: 188437138454097920
     m_Localized: Copy to Clipboard
     m_Metadata:
       m_Items: []
-  - m_Id: 190959236602933248
-    m_Localized: 'You must be signed in to Google Play Games in order to use Cloud
-      Save.
-
-      Do you want to sign in now?'
-    m_Metadata:
-      m_Items: []
   - m_Id: 195960503595184128
     m_Localized: Error
-    m_Metadata:
-      m_Items: []
-  - m_Id: 202211336331243520
-    m_Localized: Asset Pack
-    m_Metadata:
-      m_Items: []
-  - m_Id: 202211337438539776
-    m_Localized: 'You must download an Asset Pack in order to use this theme.
-
-      Do
-      you want to download it?
-
-      (Wi-Fi recommended)'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 202211338101239808
-    m_Localized: Downloading Asset Pack...
     m_Metadata:
       m_Items: []
   - m_Id: 205416744414261248

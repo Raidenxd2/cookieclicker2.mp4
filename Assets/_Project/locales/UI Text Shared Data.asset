@@ -15,272 +15,8 @@ MonoBehaviour:
   m_TableCollectionName: UI Text
   m_TableCollectionNameGuidString: ab574aa97b8f08a4089ea8b506a20c54
   m_Entries:
-  - m_Id: 83856171008
-    m_Key: THEMES_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 145017511936
-    m_Key: CREDITS_BTN
-    m_Metadata:
-      m_Items: []
   - m_Id: 160733569024
     m_Key: ACCESSIBILITY_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2673423654912
-    m_Key: OPTIONS_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2694319677440
-    m_Key: SHOP_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2697087918080
-    m_Key: STATS_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3309573742592
-    m_Key: LOADING_TEXT
-    m_Metadata:
-      m_Items: []
-  - m_Id: 3993245294592
-    m_Key: OK_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8853357305856
-    m_Key: SAVEDATAIOERROR_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8969480806400
-    m_Key: SAVEDATAIOERROR_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9171402989568
-    m_Key: RETRY_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9420158771200
-    m_Key: CONTINUE_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9457601323008
-    m_Key: MOREINFO_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9554519105536
-    m_Key: SAVEDATAIOERROR_WARNING
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9861785427968
-    m_Key: HELP_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 10470915809280
-    m_Key: BACK_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 10556009848832
-    m_Key: MOREINFO_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11434464878592
-    m_Key: SAVEDATAHELP_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 12417584570368
-    m_Key: QUIT_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 15313051033600
-    m_Key: OFFLINEPROGRESS_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 15401689260032
-    m_Key: OFFLINEPROGRESS_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 15488058368000
-    m_Key: OFFLINEPROGRESS_YOUHAVEBEEN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16318115323904
-    m_Key: OPTIONS_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16348926681088
-    m_Key: SAVE_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16370523152384
-    m_Key: LOAD_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16389607235584
-    m_Key: QUALITYSETTINGS_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16429755113472
-    m_Key: SCREENSHOTSETTINGS_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16719891898368
-    m_Key: RELOADGAME_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16761679749120
-    m_Key: RESETDATA_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16782286364672
-    m_Key: SOUND_TOGGLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 16807724818432
-    m_Key: MUSIC_TOGGLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 17850076471296
-    m_Key: RESETDIALOG_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 17888940892160
-    m_Key: RESETDIALOG_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 17947132665856
-    m_Key: NO_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 17963507228672
-    m_Key: YES_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 26447313346560
-    m_Key: POSTPROCESSING_TOGGLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 26524375293952
-    m_Key: TREES_TOGGLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 26544814137344
-    m_Key: PARTICLES_TOGGLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 26595489718272
-    m_Key: VSYNC_TOGGLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 26622060634112
-    m_Key: FOG_TOGGLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 26676318150656
-    m_Key: SSAO_TOGGLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 27057014153216
-    m_Key: TEXTUREQUALITY_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 27164400918528
-    m_Key: RENDERQUALITY_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 27214296358912
-    m_Key: CHANGE_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 27860231757824
-    m_Key: QUALITYSETTINGS_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 34076039290880
-    m_Key: SCREENSHOTOPTIONS_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 34078715256832
-    m_Key: SCREENSHOTOPTIONS_TIP
-    m_Metadata:
-      m_Items: []
-  - m_Id: 34366876524544
-    m_Key: SCREENSHOTOPTIONS_SUPPORTED
-    m_Metadata:
-      m_Items: []
-  - m_Id: 34443477098496
-    m_Key: SCREENSHOTOPTIONS_QUALITY
-    m_Metadata:
-      m_Items: []
-  - m_Id: 34486405799936
-    m_Key: SCREENSHOTOPTIONS_NOTIFICATIONS
-    m_Metadata:
-      m_Items: []
-  - m_Id: 34547839770624
-    m_Key: SCREENSHOTOPTIONS_DELETESCREENSHOTS
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35242550730752
-    m_Key: DELETESCREENSHOTS_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35287182319616
-    m_Key: DELETESCREENSHOTS_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35725591945216
-    m_Key: RRSAVEIMPORT_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 35818470612992
-    m_Key: IMPORT_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 37723288608768
-    m_Key: SHOP_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 37951928508416
-    m_Key: STATS_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 38170544021504
-    m_Key: NECDIALOG_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 38208854794240
-    m_Key: NECDIALOG_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 39169753063424
-    m_Key: THEMES_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 39186068905984
-    m_Key: THEMES_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 40418649022464
-    m_Key: CREDITS_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 40445249298432
-    m_Key: CREDITS_SOURCESANSPROLICENCE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 40550794764288
-    m_Key: CREDITS_MUSIC
-    m_Metadata:
-      m_Items: []
-  - m_Id: 41341001637888
-    m_Key: NONETWORK_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 41412892008448
-    m_Key: NONETWORK_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 41766140485632
-    m_Key: ACCESSIBILITY_TITLE
     m_Metadata:
       m_Items: []
   - m_Id: 41820125372416
@@ -291,148 +27,196 @@ MonoBehaviour:
     m_Key: ACCESSIBILITY_LANGUAGE
     m_Metadata:
       m_Items: []
-  - m_Id: 42751990669312
-    m_Key: EBCWARNING_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 43167746859008
-    m_Key: BETACONTENT_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 43279676055552
-    m_Key: BETACONTENT_SIDEBAR
-    m_Metadata:
-      m_Items: []
-  - m_Id: 43315780624384
-    m_Key: BETACONTENT_MODS
-    m_Metadata:
-      m_Items: []
-  - m_Id: 43660564996096
-    m_Key: BETACONTENT_DISABLEBC
-    m_Metadata:
-      m_Items: []
-  - m_Id: 43976131846144
-    m_Key: SIDEBAR_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 47768164343808
-    m_Key: JUKEBOX_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 280637872775168
-    m_Key: APP_NAME
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1037116854738944
-    m_Key: TEXTUREQUALITY_HIGH
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1037121254563840
-    m_Key: TEXTUREQUALITY_MEDIUM
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1037121959206912
-    m_Key: TEXTUREQUALITY_LOW
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1037125956378624
-    m_Key: TEXTUREQUALITY_VERYLOW
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5827650568716288
-    m_Key: LOGIN_BTN
+  - m_Id: 41766140485632
+    m_Key: ACCESSIBILITY_TITLE
     m_Metadata:
       m_Items: []
   - m_Id: 5827705644122112
     m_Key: ACHIEVEMENTS_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 5827744323993600
-    m_Key: LEADERBOARD_BTN
+  - m_Id: 280637872775168
+    m_Key: APP_NAME
     m_Metadata:
       m_Items: []
-  - m_Id: 6422385197568000
-    m_Key: GPG_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6422453581500416
-    m_Key: GPGFAILED_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6436239344390144
-    m_Key: COOKIESTORE_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8740648484651008
-    m_Key: SB_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8740677802835968
-    m_Key: SB_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9057636776398848
-    m_Key: THEMES_OLD
+  - m_Id: 10470915809280
+    m_Key: BACK_BTN
     m_Metadata:
       m_Items: []
   - m_Id: 21043978339078144
     m_Key: BETACONTENT_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 166605031994044416
-    m_Key: OPTIONS_SAVEMANAGEMENT_BTN
+  - m_Id: 43660564996096
+    m_Key: BETACONTENT_DISABLEBC
     m_Metadata:
       m_Items: []
-  - m_Id: 166606202485878784
-    m_Key: RESETOPTIONS_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 166606409164402688
-    m_Key: CANCEL_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 166606786911809536
-    m_Key: RESETNOSTARTERBUNDLE_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 166606814397083648
-    m_Key: RESETWITHSTARTERBUNDLE_BTN
+  - m_Id: 43315780624384
+    m_Key: BETACONTENT_MODS
     m_Metadata:
       m_Items: []
   - m_Id: 167076722826293248
     m_Key: BETACONTENT_RESEARCHFACTORY
     m_Metadata:
       m_Items: []
-  - m_Id: 167356780145029120
-    m_Key: RESEARCH_BTN
+  - m_Id: 43167746859008
+    m_Key: BETACONTENT_TITLE
     m_Metadata:
       m_Items: []
-  - m_Id: 167356816211849216
-    m_Key: RESEARCH_LOCKED
+  - m_Id: 166606409164402688
+    m_Key: CANCEL_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 167356840152936448
-    m_Key: RESEARCH_ENTER_BTN
+  - m_Id: 27214296358912
+    m_Key: CHANGE_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 167357168852152320
-    m_Key: RESEARCH_UNLOCK_BTN
+  - m_Id: 9420158771200
+    m_Key: CONTINUE_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188437138454097920
+    m_Key: COPYTOCLIPBOARD_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 145017511936
+    m_Key: CREDITS_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40550794764288
+    m_Key: CREDITS_MUSIC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40445249298432
+    m_Key: CREDITS_SOURCESANSPROLICENCE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40418649022464
+    m_Key: CREDITS_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35287182319616
+    m_Key: DELETESCREENSHOTS_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35242550730752
+    m_Key: DELETESCREENSHOTS_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42751990669312
+    m_Key: EBCWARNING_INFO
     m_Metadata:
       m_Items: []
   - m_Id: 167358762515705856
     m_Key: EXIT_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 167714459552067584
-    m_Key: SDWS_TITLE
+  - m_Id: 26622060634112
+    m_Key: FOG_TOGGLE
     m_Metadata:
       m_Items: []
-  - m_Id: 171891393479585792
-    m_Key: AGEBLOCK_TITLE
+  - m_Id: 9861785427968
+    m_Key: HELP_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 171891396071665664
-    m_Key: AGEBLOCK_INFO
+  - m_Id: 35818470612992
+    m_Key: IMPORT_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 195960503595184128
+    m_Key: INIT_ERRORTITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47768164343808
+    m_Key: JUKEBOX_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5827744323993600
+    m_Key: LEADERBOARD_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16370523152384
+    m_Key: LOAD_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3309573742592
+    m_Key: LOADING_TEXT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9457601323008
+    m_Key: MOREINFO_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10556009848832
+    m_Key: MOREINFO_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16807724818432
+    m_Key: MUSIC_TOGGLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38208854794240
+    m_Key: NECDIALOG_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38170544021504
+    m_Key: NECDIALOG_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17947132665856
+    m_Key: NO_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41412892008448
+    m_Key: NONETWORK_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41341001637888
+    m_Key: NONETWORK_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15401689260032
+    m_Key: OFFLINEPROGRESS_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15313051033600
+    m_Key: OFFLINEPROGRESS_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15488058368000
+    m_Key: OFFLINEPROGRESS_YOUHAVEBEEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3993245294592
+    m_Key: OK_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 205416749619392512
+    m_Key: OPENWEBPAGE_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 205416744414261248
+    m_Key: OPENWEBPAGE_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2673423654912
+    m_Key: OPTIONS_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166605031994044416
+    m_Key: OPTIONS_SAVEMANAGEMENT_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16318115323904
+    m_Key: OPTIONS_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26544814137344
+    m_Key: PARTICLES_TOGGLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 185560684687011840
+    m_Key: PCONLY_AA
     m_Metadata:
       m_Items: []
   - m_Id: 185542321738887168
@@ -443,148 +227,216 @@ MonoBehaviour:
     m_Key: PCONLY_FULLSCREEN
     m_Metadata:
       m_Items: []
-  - m_Id: 185543356721147904
-    m_Key: PCONLY_WINDOWMODE
-    m_Metadata:
-      m_Items: []
   - m_Id: 185543417295286272
     m_Key: PCONLY_RESOULTION
     m_Metadata:
       m_Items: []
-  - m_Id: 185560684687011840
-    m_Key: PCONLY_AA
+  - m_Id: 185543356721147904
+    m_Key: PCONLY_WINDOWMODE
     m_Metadata:
       m_Items: []
-  - m_Id: 187364344928677888
-    m_Key: SAVEDATAWARNING_TEXTURES
+  - m_Id: 26447313346560
+    m_Key: POSTPROCESSING_TOGGLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16389607235584
+    m_Key: QUALITYSETTINGS_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27860231757824
+    m_Key: QUALITYSETTINGS_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12417584570368
+    m_Key: QUIT_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16719891898368
+    m_Key: RELOADGAME_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27164400918528
+    m_Key: RENDERQUALITY_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356780145029120
+    m_Key: RESEARCH_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356840152936448
+    m_Key: RESEARCH_ENTER_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167356816211849216
+    m_Key: RESEARCH_LOCKED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167357168852152320
+    m_Key: RESEARCH_UNLOCK_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16761679749120
+    m_Key: RESETDATA_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17888940892160
+    m_Key: RESETDIALOG_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17850076471296
+    m_Key: RESETDIALOG_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166606202485878784
+    m_Key: RESETOPTIONS_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9171402989568
+    m_Key: RETRY_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16348926681088
+    m_Key: SAVE_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11434464878592
+    m_Key: SAVEDATAHELP_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8969480806400
+    m_Key: SAVEDATAIOERROR_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8853357305856
+    m_Key: SAVEDATAIOERROR_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9554519105536
+    m_Key: SAVEDATAIOERROR_WARNING
     m_Metadata:
       m_Items: []
   - m_Id: 187364375354159104
     m_Key: SAVEDATAWARNING_LIGHTING
     m_Metadata:
       m_Items: []
-  - m_Id: 188093104086855680
-    m_Key: CLOUDSAVEENABLE_TITLE
+  - m_Id: 187364344928677888
+    m_Key: SAVEDATAWARNING_TEXTURES
     m_Metadata:
       m_Items: []
-  - m_Id: 188093175771705344
-    m_Key: CLOUDSAVEENABLE_INFO
+  - m_Id: 34547839770624
+    m_Key: SCREENSHOTOPTIONS_DELETESCREENSHOTS
     m_Metadata:
       m_Items: []
-  - m_Id: 188231376385617920
-    m_Key: CLOUDSAVEBTN
+  - m_Id: 34486405799936
+    m_Key: SCREENSHOTOPTIONS_NOTIFICATIONS
     m_Metadata:
       m_Items: []
-  - m_Id: 188232584512942080
-    m_Key: ENABLECLOUDSAVEBTN
+  - m_Id: 234758542913757184
+    m_Key: SCREENSHOTOPTIONS_OPENSCREENSHOTSFOLDER
     m_Metadata:
       m_Items: []
-  - m_Id: 188232634009923584
-    m_Key: DISABLECLOUDSAVEBTN
+  - m_Id: 34443477098496
+    m_Key: SCREENSHOTOPTIONS_QUALITY
     m_Metadata:
       m_Items: []
-  - m_Id: 188232685461450752
-    m_Key: DELETECLOUDDATABTN
+  - m_Id: 34366876524544
+    m_Key: SCREENSHOTOPTIONS_SUPPORTED
     m_Metadata:
       m_Items: []
-  - m_Id: 188369631588397056
-    m_Key: DELETECLOUDDATA_INFO
+  - m_Id: 34078715256832
+    m_Key: SCREENSHOTOPTIONS_TIP
     m_Metadata:
       m_Items: []
-  - m_Id: 188377289905156096
-    m_Key: DELETECLOUDDATA_CLOUDSAVEDISABLEDERROR
+  - m_Id: 34076039290880
+    m_Key: SCREENSHOTOPTIONS_TITLE
     m_Metadata:
       m_Items: []
-  - m_Id: 188377352886824960
-    m_Key: DELETECLOUDDATA_PREPARING
+  - m_Id: 16429755113472
+    m_Key: SCREENSHOTSETTINGS_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 188377390446817280
-    m_Key: DELETECLOUDDATA_DELETINGALLKEYS
+  - m_Id: 167714459552067584
+    m_Key: SDWS_TITLE
     m_Metadata:
       m_Items: []
-  - m_Id: 188377436508663808
-    m_Key: DELETECLOUDDATA_DELETINGFILEFROMCLOUD
+  - m_Id: 2694319677440
+    m_Key: SHOP_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 188377506733895680
-    m_Key: DELETECLOUDDATA_DELETINGACCOUNT
+  - m_Id: 37723288608768
+    m_Key: SHOP_TITLE
     m_Metadata:
       m_Items: []
-  - m_Id: 188377601906847744
-    m_Key: DELETECLOUDDATA_DELETEDATASUCCESS
+  - m_Id: 16782286364672
+    m_Key: SOUND_TOGGLE
     m_Metadata:
       m_Items: []
-  - m_Id: 188377662745227264
-    m_Key: DELETECLOUDDATA_FAILEDTODELETE
+  - m_Id: 26676318150656
+    m_Key: SSAO_TOGGLE
     m_Metadata:
       m_Items: []
-  - m_Id: 188377726909689856
-    m_Key: CLOUDDATA_ENABLEDCLOUDSAVE
+  - m_Id: 2697087918080
+    m_Key: STATS_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 188377748703293440
-    m_Key: CLOUDDATA_DISABLEDCLOUDSAVE
+  - m_Id: 37951928508416
+    m_Key: STATS_TITLE
     m_Metadata:
       m_Items: []
-  - m_Id: 188380235057344512
-    m_Key: CLOUDSAVEWARNING
+  - m_Id: 1037116854738944
+    m_Key: TEXTUREQUALITY_HIGH
     m_Metadata:
       m_Items: []
-  - m_Id: 188436096396046336
-    m_Key: GETPLAYERID_BTN
+  - m_Id: 1037121959206912
+    m_Key: TEXTUREQUALITY_LOW
     m_Metadata:
       m_Items: []
-  - m_Id: 188436499728707584
-    m_Key: VISITDATADELETIONWEBSITE_BTN
+  - m_Id: 1037121254563840
+    m_Key: TEXTUREQUALITY_MEDIUM
     m_Metadata:
       m_Items: []
-  - m_Id: 188436996317523968
-    m_Key: PLAYERID
+  - m_Id: 27057014153216
+    m_Key: TEXTUREQUALITY_TITLE
     m_Metadata:
       m_Items: []
-  - m_Id: 188437138454097920
-    m_Key: COPYTOCLIPBOARD_BTN
+  - m_Id: 1037125956378624
+    m_Key: TEXTUREQUALITY_VERYLOW
     m_Metadata:
       m_Items: []
-  - m_Id: 190959236602933248
-    m_Key: GPG_SIGNINPROMPT
+  - m_Id: 83856171008
+    m_Key: THEMES_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 195960503595184128
-    m_Key: INIT_ERRORTITLE
+  - m_Id: 39186068905984
+    m_Key: THEMES_INFO
     m_Metadata:
       m_Items: []
-  - m_Id: 202211336331243520
-    m_Key: ASSETPACK
+  - m_Id: 39169753063424
+    m_Key: THEMES_TITLE
     m_Metadata:
       m_Items: []
-  - m_Id: 202211337438539776
-    m_Key: ASSETPACK_DOWNLOADREQUIRED
-    m_Metadata:
-      m_Items: []
-  - m_Id: 202211338101239808
-    m_Key: ASSETPACK_DOWNLOADING
-    m_Metadata:
-      m_Items: []
-  - m_Id: 205416744414261248
-    m_Key: OPENWEBPAGE_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 205416749619392512
-    m_Key: OPENWEBPAGE_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 230843885871562752
-    m_Key: UPDATEAVAILABLE_TITLE
+  - m_Id: 26524375293952
+    m_Key: TREES_TOGGLE
     m_Metadata:
       m_Items: []
   - m_Id: 230843887104688128
     m_Key: UPDATEAVAILABLE_MESSAGE
     m_Metadata:
       m_Items: []
-  - m_Id: 234758542913757184
-    m_Key: SCREENSHOTOPTIONS_OPENSCREENSHOTSFOLDER
+  - m_Id: 230843885871562752
+    m_Key: UPDATEAVAILABLE_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 188436499728707584
+    m_Key: VISITDATADELETIONWEBSITE_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26595489718272
+    m_Key: VSYNC_TOGGLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17963507228672
+    m_Key: YES_BTN
     m_Metadata:
       m_Items: []
   m_Metadata:

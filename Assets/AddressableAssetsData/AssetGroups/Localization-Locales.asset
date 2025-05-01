@@ -13,36 +13,28 @@ MonoBehaviour:
   m_Name: Localization-Locales
   m_EditorClassIdentifier: 
   m_GroupName: Localization-Locales
-  m_Data:
-    m_SerializedData: []
   m_GUID: f4cb66732afaae74186a107935c1aea9
   m_SerializeEntries:
   - m_GUID: 117c6574dc809b34fabfe0639ede92a4
-    m_Address: French (fr)
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4bd6a69616eb6614a9a0a9d64465009a
-    m_Address: Arabic (ar)
+    m_Address: "fran\xE7ais (French)"
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 87878c4e68127704e9e69013c2190376
-    m_Address: Japanese (ja)
+    m_Address: "\u65E5\u672C\u8A9E (Japanese)"
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ad2ebe161fd41a246a2983a1850e27d5
-    m_Address: Spanish (es)
+    m_Address: "espa\xF1ol (Spanish)"
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cca75ee1c0c55e146b8021ce4cecf5f0
-    m_Address: English (en)
+    m_Address: English
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale

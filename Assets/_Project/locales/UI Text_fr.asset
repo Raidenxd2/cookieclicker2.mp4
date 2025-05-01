@@ -239,10 +239,6 @@ MonoBehaviour:
       TOUS."
     m_Metadata:
       m_Items: []
-  - m_Id: 35725591945216
-    m_Localized: Salle de jeux Enregistrer Importer
-    m_Metadata:
-      m_Items: []
   - m_Id: 35818470612992
     m_Localized: Importer
     m_Metadata:
@@ -308,16 +304,8 @@ MonoBehaviour:
     m_Localized: "Contenu b\xEAta"
     m_Metadata:
       m_Items: []
-  - m_Id: 43279676055552
-    m_Localized: "Barre lat\xE9rale"
-    m_Metadata:
-      m_Items: []
   - m_Id: 43315780624384
     m_Localized: Mods
-    m_Metadata:
-      m_Items: []
-  - m_Id: 43976131846144
-    m_Localized: "Barre lat\xE9rale"
     m_Metadata:
       m_Items: []
   - m_Id: 43660564996096
@@ -348,42 +336,12 @@ MonoBehaviour:
     m_Localized: "Tr\xE8s lent"
     m_Metadata:
       m_Items: []
-  - m_Id: 5827650568716288
-    m_Localized: Connexion
-    m_Metadata:
-      m_Items: []
   - m_Id: 5827705644122112
     m_Localized: "R\xE9alisations"
     m_Metadata:
       m_Items: []
   - m_Id: 5827744323993600
     m_Localized: Classement
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6422385197568000
-    m_Localized: "Jeux Google\_Play"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6422453581500416
-    m_Localized: "\xC9chec de la connexion \xE0 Google Play."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6436239344390144
-    m_Localized: Magasin de cookies
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8740648484651008
-    m_Localized: "Pack de d\xE9marrage"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8740677802835968
-    m_Localized: "L'achat du Starter Bundle vous donne :\r\n***UNE FOIS SEULEMENT***\r\n150000
-      Biscuits\r\n10 mamies\r\n10 doubles cookies\r\n10\_Cliqueurs automatiques\r\n5
-      exercices\r\n\r\nSouhaitez-vous acheter le pack de d\xE9marrage\_?"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9057636776398848
-    m_Localized: "Ancien th\xE8me"
     m_Metadata:
       m_Items: []
   - m_Id: 40445249298432
@@ -400,14 +358,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 166606409164402688
     m_Localized: Annuler
-    m_Metadata:
-      m_Items: []
-  - m_Id: 166606786911809536
-    m_Localized: "R\xE9initialisation sans l'ensemble de d\xE9part"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 166606814397083648
-    m_Localized: "Remise \xE0 z\xE9ro avec l'ensemble de d\xE9part (si vous le poss\xE9dez)"
     m_Metadata:
       m_Items: []
   - m_Id: 167076722826293248
@@ -436,14 +386,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 167714459552067584
     m_Localized: "Avertissement de sauvegarde des donn\xE9es"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 171891393479585792
-    m_Localized: "Bloc d'\xE2ge"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 171891396071665664
-    m_Localized: "Votre \xE2ge actuel a bloqu\xE9 ce contenu."
     m_Metadata:
       m_Items: []
   - m_Id: 185560684687011840
@@ -476,99 +418,12 @@ MonoBehaviour:
       supprim\xE9e. Il est recommand\xE9 de l'activer."
     m_Metadata:
       m_Items: []
-  - m_Id: 188377748703293440
-    m_Localized: "D\xE9sactiv\xE9 Sauvegarde dans le nuage."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377726909689856
-    m_Localized: "Activ\xE9 Cloud Save."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377662745227264
-    m_Localized: "\xC9chec de la suppression de toutes les donn\xE9es du nuage !"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377601906847744
-    m_Localized: "Suppression r\xE9ussie de toutes les donn\xE9es du nuage."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377506733895680
-    m_Localized: Suppression d'un compte...
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377436508663808
-    m_Localized: Suppression d'un fichier du nuage...
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377390446817280
-    m_Localized: Suppression de toutes les touches...
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377352886824960
-    m_Localized: "Pr\xE9parer..."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377289905156096
-    m_Localized: "Vous avez d\xE9sactiv\xE9 l'option Cloud Save."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188369631588397056
-    m_Localized: "\xCAtes-vous s\xFBr de vouloir supprimer vos donn\xE9es de sauvegarde
-      du nuage ?\n\nCela d\xE9sactivera la sauvegarde dans le nuage et supprimera
-      <color=red>ALL</color> les donn\xE9es du nuage."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188232685461450752
-    m_Localized: "Supprimer les donn\xE9es sauvegard\xE9es dans le nuage"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188232634009923584
-    m_Localized: "D\xE9sactiver l'enregistrement dans le nuage"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188232584512942080
-    m_Localized: Activer la sauvegarde dans le nuage
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188231376385617920
-    m_Localized: Sauvegarde dans le nuage...
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188093175771705344
-    m_Localized: "Voulez-vous activer l'option Sauvegarde dans le nuage ?\nL'enregistrement
-      dans le nuage vous permet de synchroniser les donn\xE9es d'enregistrement entre
-      les appareils.\n\nVous pouvez g\xE9rer les options de sauvegarde dans le nuage
-      en allant dans Options > Gestion des sauvegardes > Sauvegarde dans le nuage..."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188093104086855680
-    m_Localized: Activer la sauvegarde dans le nuage
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188380235057344512
-    m_Localized: "<color=yellow>Avertissement : Vous devrez recharger le jeu lorsque
-      vous activez/d\xE9sactivez la sauvegarde dans le nuage.</color>"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188436096396046336
-    m_Localized: Obtenir l'ID du joueur
-    m_Metadata:
-      m_Items: []
   - m_Id: 188436499728707584
     m_Localized: "Visiter le site web de la suppression des donn\xE9es"
     m_Metadata:
       m_Items: []
-  - m_Id: 188436996317523968
-    m_Localized: 'Identifiant du joueur : '
-    m_Metadata:
-      m_Items: []
   - m_Id: 188437138454097920
     m_Localized: Copier dans le presse-papiers
-    m_Metadata:
-      m_Items: []
-  - m_Id: 190959236602933248
-    m_Localized: "Vous devez \xEAtre connect\xE9 \xE0 Google Play Games pour pouvoir
-      utiliser Cloud Save.\nVoulez-vous vous connecter maintenant ?"
     m_Metadata:
       m_Items: []
   - m_Id: 195960503595184128
@@ -590,19 +445,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 205416744414261248
     m_Localized: Ouvrir le site web
-    m_Metadata:
-      m_Items: []
-  - m_Id: 202211338101239808
-    m_Localized: "T\xE9l\xE9chargement de l'Asset Pack..."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 202211337438539776
-    m_Localized: "Vous devez t\xE9l\xE9charger un Asset Pack pour pouvoir utiliser
-      ce th\xE8me.\nVoulez-vous le t\xE9l\xE9charger ?\n(Wi-Fi recommand\xE9)"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 202211336331243520
-    m_Localized: Pack d'actifs
     m_Metadata:
       m_Items: []
   - m_Id: 234758542913757184

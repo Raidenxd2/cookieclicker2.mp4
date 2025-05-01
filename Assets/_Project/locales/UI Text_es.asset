@@ -234,10 +234,6 @@ MonoBehaviour:
       TODOS ELLOS."
     m_Metadata:
       m_Items: []
-  - m_Id: 35725591945216
-    m_Localized: Rec Room Guardar Importar
-    m_Metadata:
-      m_Items: []
   - m_Id: 35818470612992
     m_Localized: Importar
     m_Metadata:
@@ -307,20 +303,12 @@ MonoBehaviour:
     m_Localized: Contenido beta
     m_Metadata:
       m_Items: []
-  - m_Id: 43279676055552
-    m_Localized: barra lateral
-    m_Metadata:
-      m_Items: []
   - m_Id: 43315780624384
     m_Localized: modificaciones
     m_Metadata:
       m_Items: []
   - m_Id: 43660564996096
     m_Localized: Deshabilitar contenido beta
-    m_Metadata:
-      m_Items: []
-  - m_Id: 43976131846144
-    m_Localized: barra lateral
     m_Metadata:
       m_Items: []
   - m_Id: 47768164343808
@@ -347,42 +335,12 @@ MonoBehaviour:
     m_Localized: Muy baja
     m_Metadata:
       m_Items: []
-  - m_Id: 5827650568716288
-    m_Localized: Acceso
-    m_Metadata:
-      m_Items: []
   - m_Id: 5827705644122112
     m_Localized: logros
     m_Metadata:
       m_Items: []
   - m_Id: 5827744323993600
     m_Localized: "Tabla de clasificaci\xF3n"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6422385197568000
-    m_Localized: Juegos de Google Play
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6422453581500416
-    m_Localized: "Error al iniciar sesi\xF3n en Google Play."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6436239344390144
-    m_Localized: tienda de galletas
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8740648484651008
-    m_Localized: Paquete de inicio
-    m_Metadata:
-      m_Items: []
-  - m_Id: 8740677802835968
-    m_Localized: "Comprar el paquete de inicio te da:\r\n***SOLO UNA VEZ***\r\n150000
-      galletas\r\n10 abuelas\r\n10 galletas dobles\r\n10 clics autom\xE1ticos\r\n5
-      ejercicios\r\n\r\n\xBFQuieres comprar el paquete de inicio?"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9057636776398848
-    m_Localized: Tema antiguo
     m_Metadata:
       m_Items: []
   - m_Id: 21043978339078144
@@ -399,14 +357,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 166606409164402688
     m_Localized: Cancelar
-    m_Metadata:
-      m_Items: []
-  - m_Id: 166606786911809536
-    m_Localized: Reinicio sin paquete de inicio
-    m_Metadata:
-      m_Items: []
-  - m_Id: 166606814397083648
-    m_Localized: Reinicio con Starter Bundle (si se posee)
     m_Metadata:
       m_Items: []
   - m_Id: 167076722826293248
@@ -435,14 +385,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 167714459552067584
     m_Localized: Aviso de guardar datos
-    m_Metadata:
-      m_Items: []
-  - m_Id: 171891393479585792
-    m_Localized: "Bloc d'\xE2ge"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 171891396071665664
-    m_Localized: "Tu configuraci\xF3n de edad actual ha bloqueado este contenido."
     m_Metadata:
       m_Items: []
   - m_Id: 185542321738887168
@@ -475,116 +417,16 @@ MonoBehaviour:
       eliminado. Se recomienda activarla."
     m_Metadata:
       m_Items: []
-  - m_Id: 188093104086855680
-    m_Localized: Activar Guardar en la nube
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188093175771705344
-    m_Localized: "\xBFQuieres activar Guardar en la nube?\nGuardar en la nube te
-      permite sincronizar los datos guardados entre dispositivos.\n\nPuedes gestionar
-      las opciones de Guardar en la nube yendo a Opciones > Gesti\xF3n de guardados
-      > Guardar en la nube...."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188231376385617920
-    m_Localized: Guardar en la nube...
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188232584512942080
-    m_Localized: Activar Guardar en la nube
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188232634009923584
-    m_Localized: Desactivar Guardar en la nube
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188232685461450752
-    m_Localized: Borrar datos guardados en la nube
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188369631588397056
-    m_Localized: "\xBFEst\xE1s seguro de que quieres borrar tus datos guardados de
-      la nube?\n\nEsto desactivar\xE1 Guardar en la nube y borrar\xE1 <color=red>TODOS</color>
-      los datos de la nube"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377289905156096
-    m_Localized: Tienes desactivado Guardar en la nube.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377352886824960
-    m_Localized: Preparando...
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377390446817280
-    m_Localized: Borrar todas las llaves...
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377436508663808
-    m_Localized: Borrar archivo de la nube...
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377506733895680
-    m_Localized: Borrar cuenta...
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377601906847744
-    m_Localized: "Eliminados con \xE9xito todos los datos de la nube."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377662745227264
-    m_Localized: No se han podido eliminar todos los datos de la nube.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377726909689856
-    m_Localized: Activado Guardar en la nube.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188377748703293440
-    m_Localized: Desactivado Guardar en la nube.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188380235057344512
-    m_Localized: "<color=yellow>Advertencia: Tendr\xE1s que recargar el juego al
-      activar/desactivar Guardar en la nube.</color>"
-    m_Metadata:
-      m_Items: []
   - m_Id: 188437138454097920
     m_Localized: Copiar al portapapeles
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188436996317523968
-    m_Localized: 'ID de jugador: '
     m_Metadata:
       m_Items: []
   - m_Id: 188436499728707584
     m_Localized: "Visite el sitio web de supresi\xF3n de datos"
     m_Metadata:
       m_Items: []
-  - m_Id: 188436096396046336
-    m_Localized: Obtener ID de jugador
-    m_Metadata:
-      m_Items: []
-  - m_Id: 190959236602933248
-    m_Localized: "Debes iniciar sesi\xF3n en Google Play Games para poder utilizar
-      Guardar en la nube.\nQuieres iniciar sesi\xF3n ahora?"
-    m_Metadata:
-      m_Items: []
   - m_Id: 195960503595184128
     m_Localized: Error
-    m_Metadata:
-      m_Items: []
-  - m_Id: 202211336331243520
-    m_Localized: Paquete de activos
-    m_Metadata:
-      m_Items: []
-  - m_Id: 202211337438539776
-    m_Localized: "Debes descargar un Asset Pack para poder utilizar este tema.\n\xBFDesea
-      descargarlo?\n(Wi-Fi recomendado)"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 202211338101239808
-    m_Localized: Descargando Asset Pack...
     m_Metadata:
       m_Items: []
   - m_Id: 205416744414261248
