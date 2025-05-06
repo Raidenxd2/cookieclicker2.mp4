@@ -19,8 +19,11 @@ public class ResearchFactory : MonoBehaviour
     public GameObject ResearchCanvas;
     public GameObject ResearchScreen;
     public Transform GameCamera;
+    public Transform VRCamera;
     public Transform MainScene;
+    public Transform MainSceneVR;
     public Transform WhatWasThisNamed;
+    public Transform WhatWasThisNamedVR;
     public Animator Fade;
     public int BigCookieDuration;
     public TMP_Text BigCookieText;
@@ -85,7 +88,16 @@ public class ResearchFactory : MonoBehaviour
     {
         Fade.Play("FadeIn");
         yield return new WaitForSeconds(1);
-        GameCamera.SetPositionAndRotation(WhatWasThisNamed.position, WhatWasThisNamed.rotation);
+
+        if (VRManager.instance.VREnabled)
+        {
+            VRCamera.position = WhatWasThisNamedVR.position;
+        }
+        else
+        {
+            GameCamera.SetPositionAndRotation(WhatWasThisNamed.position, WhatWasThisNamed.rotation);
+        }
+
         FinishEnter();
         Fade.Play("FadeOut");
     }
@@ -94,7 +106,16 @@ public class ResearchFactory : MonoBehaviour
     {
         Fade.Play("FadeIn");
         yield return new WaitForSeconds(1);
-        GameCamera.SetPositionAndRotation(MainScene.position, MainScene.rotation);
+
+        if (VRManager.instance.VREnabled)
+        {
+            VRCamera.position = MainSceneVR.position;
+        }
+        else
+        {
+            GameCamera.SetPositionAndRotation(MainScene.position, MainScene.rotation);
+        }
+        
         FinishExit();
         Fade.Play("FadeOut");
     }

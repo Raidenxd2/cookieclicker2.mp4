@@ -100,6 +100,8 @@ public class Game : MonoBehaviour
     public VolumeProfile CBTritanomaly;
     public VolumeProfile CBAchromatopsia;
     public VolumeProfile CBAchromatomaly;
+    public Volume PP;
+    public VolumeProfile VRProfile;
 
     [Header("BetaContent")]
     public GameObject BetaContentWarningScreen;
@@ -122,10 +124,24 @@ public class Game : MonoBehaviour
     public LocalizedString SaveDataWarningTexturesText;
     public LocalizedString SaveDataWarningLightingText;
 
+    [Header("VR")]
+    [SerializeField] private GameObject VRObject1;
+    [SerializeField] private GameObject VRObject2;
+
     // Start is called before the first frame update
     void Start()
     {
         VersionText.text = "v" + Application.version + "-" + Application.platform + " (" + Application.unityVersion + ")";
+
+        if (VRManager.instance.VREnabled)
+        {
+            VRObject1.SetActive(true);
+            VRObject2.SetActive(true);
+
+            PP.profile = VRProfile;
+
+            gameCamera.gameObject.SetActive(false);
+        }
         
         if (Application.platform == RuntimePlatform.Android)
         {

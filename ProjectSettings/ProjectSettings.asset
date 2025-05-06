@@ -140,7 +140,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 2.0.0-Beta1-OS_11035 (open-source)
+  bundleVersion: 2.0.0-Beta1-OS_11037 (open-source)
   preloadedAssets:
   - {fileID: 11400000, guid: 5a6050f4d65b99340992ab87fbbe1f03, type: 2}
   metroInputSource: 0
@@ -167,12 +167,12 @@ PlayerSettings:
     Android: com.raiden.cookieclicker2mp4_os2
     Standalone: com.raiden.cookieclicker2mp4-os
   buildNumber:
-    Standalone: 11035
+    Standalone: 11037
     VisionOS: 0
     iPhone: 25
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 11035
+  AndroidBundleVersionCode: 11037
   AndroidMinSdkVersion: 25
   AndroidTargetSdkVersion: 36
   AndroidPreferredInstallLocation: 0
@@ -263,7 +263,7 @@ PlayerSettings:
   useCustomGradlePropertiesTemplate: 0
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
-  AndroidTargetArchitectures: 3
+  AndroidTargetArchitectures: 11
   AndroidSplashScreenScale: 2
   androidSplashScreen: {fileID: 2800000, guid: 17f2218b6a95f9149ab80bd43df2bf5c, type: 3}
   AndroidKeystoreName: E:/Stuff/cc2.keystore
@@ -712,7 +712,7 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   scriptingDefineSymbols:
-    Android: 
+    Android: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
     EmbeddedLinux: PROBUILDER_EXPERIMENTAL_FEATURES
     GameCoreScarlett: 
     GameCoreXboxOne: PROBUILDER_EXPERIMENTAL_FEATURES
@@ -723,10 +723,10 @@ PlayerSettings:
     PS5: PROBUILDER_EXPERIMENTAL_FEATURES
     QNX: 
     Stadia: PROBUILDER_EXPERIMENTAL_FEATURES
-    Standalone: 
+    Standalone: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
     VisionOS: 
     WebGL: PROBUILDER_EXPERIMENTAL_FEATURES
-    Windows Store Apps: PROBUILDER_EXPERIMENTAL_FEATURES
+    Windows Store Apps: PROBUILDER_EXPERIMENTAL_FEATURES;USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
     XboxOne: PROBUILDER_EXPERIMENTAL_FEATURES
     iPhone: 
     tvOS: PROBUILDER_EXPERIMENTAL_FEATURES

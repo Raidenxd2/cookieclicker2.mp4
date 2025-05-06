@@ -39,6 +39,7 @@ namespace KillItMyself.Edito
             bms.BuildCount = EditorGUILayout.IntField("Build Count", bms.BuildCount);
             bms.Branch = EditorGUILayout.TextField("Branch", bms.Branch);
             bms.VersionPrefix = EditorGUILayout.TextField("Version Prefix", bms.VersionPrefix);
+            bms.ExeName = EditorGUILayout.TextField("Exe name", bms.ExeName);
 
             if (GUILayout.Button("Save settings"))
             {
@@ -176,19 +177,19 @@ namespace KillItMyself.Edito
             switch (bt)
             {
                 case BuildTarget.StandaloneWindows:
-                    exeName = BuildPath + "/Cookieclicker2.mp4.exe";
+                    exeName = BuildPath + "/" + bms.ExeName + ".exe";
                     break;
                 case BuildTarget.StandaloneWindows64:
-                    exeName = BuildPath + "/Cookieclicker2.mp4.exe";
+                    exeName = BuildPath + "/" + bms.ExeName + ".exe";
                     break;
                 case BuildTarget.StandaloneOSX:
-                    exeName = BuildPath + "/Cookieclicker2.mp4.app";
+                    exeName = BuildPath + "/" + bms.ExeName + ".app";
                     break;
                 case BuildTarget.StandaloneLinux64:
-                    exeName = BuildPath + "/Cookieclicker2.mp4.x86_64";
+                    exeName = BuildPath + "/" + bms.ExeName + ".x86_64";
                     break;
                 case BuildTarget.Android:
-                    exeName = BuildPath + "/Cookieclicker2mp4.apk";
+                    exeName = BuildPath + "/" + bms.ExeName + ".apk";
                     break;
             }
 

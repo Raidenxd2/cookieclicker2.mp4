@@ -7,6 +7,7 @@ namespace KillItMyself.Edito
         public int BuildCount;
         public string Branch;
         public string VersionPrefix;
+        public string ExeName;
         public bool BuildAddressables = true;
         public bool IncrementBuildNumber = true;
     }

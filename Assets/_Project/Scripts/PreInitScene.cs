@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Localization.Settings;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.UI;
 
 public class PreInitScene : MonoBehaviour
 {
@@ -12,6 +11,11 @@ public class PreInitScene : MonoBehaviour
 
     private IEnumerator Start()
     {
+        if (VRManager.instance.VREnabled)
+        {
+            VRManager.instance.InitVR();
+        }
+
         AsyncOperationHandle initHandle = LocalizationSettings.InitializationOperation;
         while (!initHandle.IsDone)
         {

@@ -1,0 +1,88 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.XR.Management;
+
+public class VRManager : MonoBehaviour
+{
+    public bool VREnabled;
+
+    public static bool VRBootEnabled;
+
+    private XRLoader currentLoader;
+
+    [SerializeField] private GameObject PreInit_VR;
+    [SerializeField] private GameObject PreInit_ScreenCanvas;
+
+    public static VRManager instance;
+
+    [UnityCommandLineParser.CommandLineCommand("vr")]
+    public static void EnableVR()
+    {
+        VRBootEnabled = true;
+    }
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+        instance = this;
+
+        if (VRBootEnabled)
+        {
+            VREnabled = true;
+        }
+
+        if (VREnabled)
+        {
+            InitXR();
+        }
+    }
+
+    public void InitVR()
+    {
+        if (SceneManager.GetActiveScene().name == "PreInit")
+        {
+            PreInit_ScreenCanvas.SetActive(false);
+            PreInit_VR.SetActive(true);
+        }
+    }
+
+    private void InitXR()
+    {
+        currentLoader = XRGeneralSettings.Instance.Manager.activeLoaders[0];
+
+        if (!currentLoader.Initialize())
+        {
+            Debug.LogError("(VRManager) Failed to init current loader.");
+            VREnabled = false;
+            return;
+        }
+
+        if (!currentLoader.Start())
+        {
+            Debug.LogError("(VRManager) Failed to start current loader.");
+            currentLoader.Deinitialize();
+            VREnabled = false;
+            return;
+        }
+
+        XRGeneralSettings.Instance.Manager.StartSubsystems();
+
+        InitVR();
+    }
+
+    private void OnDestroy()
+    {
+        if (VREnabled)
+        {
+            currentLoader.Stop();
+            currentLoader.Deinitialize();
+            currentLoader = null;
+        }
+    }
+}
