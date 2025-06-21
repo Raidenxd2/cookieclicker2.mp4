@@ -160,6 +160,12 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  vrFallbackSceneRef:
+    m_AssetGUID: cedcb9f7e5851d24fbdf0420c2e26b9d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!4 &54283061
 Transform:
   m_ObjectHideFlags: 0

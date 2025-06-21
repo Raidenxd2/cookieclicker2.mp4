@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.Rendering.Analytics;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -1727,7 +1726,6 @@ namespace UnityEditor.Rendering
             if (EditorPrefs.HasKey(kResourceFilterEditorPrefsKey))
                 m_ResourceFilter = (ResourceFilter)EditorPrefs.GetInt(kResourceFilterEditorPrefsKey);
 
-            GraphicsToolLifetimeAnalytic.WindowOpened<RenderGraphViewer>();
         }
 
         void CreateGUI()
@@ -1746,7 +1744,6 @@ namespace UnityEditor.Rendering
         void OnDisable()
         {
             UnsubscribeToRenderGraphEvents();
-            GraphicsToolLifetimeAnalytic.WindowClosed<RenderGraphViewer>();
         }
 
         void SubscribeToRenderGraphEvents()

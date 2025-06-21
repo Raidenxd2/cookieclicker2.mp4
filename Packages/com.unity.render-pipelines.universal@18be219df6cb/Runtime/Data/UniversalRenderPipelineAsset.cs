@@ -413,21 +413,7 @@ namespace UnityEngine.Rendering.Universal
     internal struct DeprecationMessage
     {
         internal const string CompatibilityScriptingAPIObsolete = "This rendering path is for compatibility mode only (when Render Graph is disabled). Use Render Graph API instead.";
-        internal const string CompatibilityScriptingAPIConsoleWarning = "The project currently uses the compatibility mode where the Render Graph API is disabled. Support for this mode will be removed in future Unity versions. Migrate existing ScriptableRenderPasses to the new RenderGraph API. After the migration, disable the compatibility mode in Edit > Projects Settings > Graphics > Render Graph.";
     }
-
-#if UNITY_EDITOR
-    internal class WarnUsingNonRenderGraph
-    {
-        [InitializeOnLoadMethod]
-        internal static void EmitConsoleWarning()
-        {
-            RenderGraphSettings rgs = GraphicsSettings.GetRenderPipelineSettings<RenderGraphSettings>();
-            if (rgs != null && rgs.enableRenderCompatibilityMode)
-                Debug.LogWarning(DeprecationMessage.CompatibilityScriptingAPIConsoleWarning);
-        }
-    }
-#endif
 
     /// <summary>
     /// The asset that contains the URP setting.
@@ -1531,9 +1517,6 @@ namespace UnityEngine.Rendering.Universal
         {
             get
             {
-                if (RenderGraphGraphicsAutomatedTests.enabled)
-                   return true;
-
                 if (GraphicsSettings.TryGetRenderPipelineSettings<RenderGraphSettings>(out var renderGraphSettings))
                     return !renderGraphSettings.enableRenderCompatibilityMode;
 

@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using LoggerSystem;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Localization;
 using UnityEngine.Rendering;
+using Cysharp.Threading.Tasks;
 
 public class Game : MonoBehaviour
 {
-    // variables
+    public static Game instance;
+
     [Header("Game Variables")]
     public BigDouble Cookies;
     public BigDouble CPS;
@@ -39,7 +40,6 @@ public class Game : MonoBehaviour
     public GameObject NECDialog;
     public GameObject SDIE;
     public GameObject NoNetworkScreen;
-    public GameObject SaveDataWarningScreen;
 
     // scripts
     [Header("Scripts")]
@@ -61,10 +61,6 @@ public class Game : MonoBehaviour
     public TMP_Text Shop_Grandma;
     public TMP_Text VersionText;
     public TMP_Text Shop_CookieFactory;
-    public TMP_Text SaveDataWarningInfo;
-
-    [Header("Buttons")]
-    public Button SaveDataWarningYesButton;
 
     // stats
     [Header("Stats")]
@@ -120,13 +116,29 @@ public class Game : MonoBehaviour
     public GameObject Research_Factory_Particals;
     public ResearchFactory researchFactory;
 
-    [Header("Localization")]
-    public LocalizedString SaveDataWarningTexturesText;
-    public LocalizedString SaveDataWarningLightingText;
+    [Header("Minigame Mine")]
+    public float HammerStrength;
+    public float HammerEnergy;
+    public double HammerStrengthUpgradePrice;
+    public double Coins;
+    public double HammerEnergyUpgradePrice;
+    public double CoinMultiplierUpgradePrice;
+    public double CoinMultiplier;
 
     [Header("VR")]
     [SerializeField] private GameObject VRObject1;
     [SerializeField] private GameObject VRObject2;
+    public GameObject XROrigin;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        instance = null;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -279,6 +291,13 @@ public class Game : MonoBehaviour
         BetterPrefs.SetString("CookieFactoryPrice", CookieFactoryPrice.ToString());
         BetterPrefs.SetString("ResearchPoints", researchFactory.ResearchPoints.ToString());
         BetterPrefs.SetBool("BigCookieResearched", researchFactory.BigCookieResearched);
+        BetterPrefs.SetFloat("HammerStrength", HammerStrength);
+        BetterPrefs.SetFloat("HammerEnergy", HammerEnergy);
+        BetterPrefs.SetString("HammerStrengthUpgradePrice", HammerEnergyUpgradePrice.ToString());
+        BetterPrefs.SetString("Coins", Coins.ToString());
+        BetterPrefs.SetString("HammerEnergyUpgradePrice", HammerEnergyUpgradePrice.ToString());
+        BetterPrefs.SetString("CoinMultiplierUpgradePrice", CoinMultiplierUpgradePrice.ToString());
+        BetterPrefs.SetString("CoinMultiplier", CoinMultiplier.ToString());
 
         BetterPrefs.Save();
     }
@@ -324,23 +343,16 @@ public class Game : MonoBehaviour
 
         researchFactory.LoadResearchFactory();
 
+        HammerStrength = BetterPrefs.GetFloat("HammerStrength", 0.2f);
+        HammerEnergy = BetterPrefs.GetFloat("HammerEnergy", 100);
+        HammerStrengthUpgradePrice = double.Parse(BetterPrefs.GetString("HammerStrengthUpgradePrice", "100"));
+        Coins = double.Parse(BetterPrefs.GetString("Coins", "100"));
+        HammerEnergyUpgradePrice = double.Parse(BetterPrefs.GetString("HammerEnergyUpgradePrice", "200"));
+        CoinMultiplierUpgradePrice = double.Parse(BetterPrefs.GetString("CoinMultiplierUpgradePrice", "300"));
+        CoinMultiplier = double.Parse(BetterPrefs.GetString("CoinMultiplier", "1"));
+
         CheckResearchFactory();
         CheckDrill();
-
-        if (PlayerPrefs.GetInt("GRAPHICS_Textures") == 0)
-        {
-            SaveDataWarningScreen.SetActive(true);
-            SaveDataWarningInfo.text = SaveDataWarningTexturesText.GetLocalizedString();
-            SaveDataWarningYesButton.onClick.AddListener(() => PlayerPrefs.SetInt("GRAPHICS_Textures", 1));
-        }
-
-        
-        if (PlayerPrefs.GetInt("GRAPHICS_Lighting") == 0)
-        {
-            SaveDataWarningScreen.SetActive(true);
-            SaveDataWarningInfo.text = SaveDataWarningLightingText.GetLocalizedString();
-            SaveDataWarningYesButton.onClick.AddListener(() => PlayerPrefs.SetInt("GRAPHICS_Lighting", 1));
-        }
     }
 
     public void ResetData()
@@ -364,6 +376,14 @@ public class Game : MonoBehaviour
         researchFactory.ResearchPoints = 1;
         researchFactory.BigCookieUnlocked = false;
         researchFactory.BigCookieResearched = false;
+
+        HammerStrength = 0.2f;
+        HammerEnergy = 100;
+        HammerStrengthUpgradePrice = 100;
+        Coins = 100;
+        HammerEnergyUpgradePrice = 200;
+        CoinMultiplierUpgradePrice = 300;
+        CoinMultiplier = 1;
 
         SavePlayer();
         LogSystem.Log("Reset Data. Now reloading...");
@@ -422,6 +442,23 @@ public class Game : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    public void LoadVRFallbackScene()
+    {
+#if !UNITY_EDITOR
+        LoadVRFallbackSceneAsync().Forget();
+#endif
+    }
+
+    private async UniTaskVoid LoadVRFallbackSceneAsync()
+    {
+        SavePlayer();
+        
+        await Addressables.UnloadSceneAsync(AddressableHandles.instance.gameSceneHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+
+        AddressableHandles.instance.vrFallbackSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.vrFallbackSceneRef, LoadSceneMode.Single);
+        await AddressableHandles.instance.vrFallbackSceneHandle;
     }
 
     public void BuyAutoclicker()

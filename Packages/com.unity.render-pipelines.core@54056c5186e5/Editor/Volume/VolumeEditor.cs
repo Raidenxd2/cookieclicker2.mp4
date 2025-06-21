@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor.Rendering.Analytics;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -125,15 +124,15 @@ namespace UnityEditor.Rendering
             // NOTES:
             // - schedule.Execute is needed to defer the registration until attached to panel. Otherwise the event fires during initialization.
             // - PropertyField.RegisterValueChangeCallback doesn't work as expected even with schedule.Execute, so use ChangeEvent<float> instead.
-            volumeProfileObjectField.schedule.Execute(() => volumeProfileObjectField.RegisterValueChangedCallback(evt =>
-            {
-                VolumeProfileUsageAnalytic.Send(targetVolume, profileRef);
-            }));
+            // volumeProfileObjectField.schedule.Execute(() => volumeProfileObjectField.RegisterValueChangedCallback(evt =>
+            // {
+                
+            // }));
             var priorityPropertyField = root.Q<PropertyField>("volume-profile-priority");
-            priorityPropertyField.schedule.Execute(() => priorityPropertyField.RegisterCallback<ChangeEvent<float>>(evt =>
-            {
-                VolumePriorityUsageAnalytic.Send(targetVolume);
-            }));
+            // priorityPropertyField.schedule.Execute(() => priorityPropertyField.RegisterCallback<ChangeEvent<float>>(evt =>
+            // {
+                
+            // }));
 
             root.Q("volume-profile-component-container").Add(new IMGUIContainer(() =>
             {

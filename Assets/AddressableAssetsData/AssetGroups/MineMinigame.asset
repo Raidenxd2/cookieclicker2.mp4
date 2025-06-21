@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: MineMinigame
+  m_EditorClassIdentifier: 
+  m_GroupName: MineMinigame
+  m_GUID: b060fc226d1cd314ab1de2e8f442d436
+  m_SerializeEntries:
+  - m_GUID: a0b6b36c341cf264a9c23fdb518c0195
+    m_Address: Assets/_Project/Scenes/MineMinigame.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9bd8c6dc482bf244fa3a69cd62f55319, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 663a2a3fdec9ed745a5c64aea74360ed, type: 2}
+    - {fileID: 11400000, guid: 55ab61dd5b1d1c4478799d1bd7231d58, type: 2}

@@ -439,6 +439,38 @@ MonoBehaviour:
     m_Key: YES_BTN
     m_Metadata:
       m_Items: []
+  - m_Id: 333413640022274048
+    m_Key: MINEMINIGAME_EXITCONFIRM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333413889830825984
+    m_Key: MINEMINIGAME_LOSE_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333413916129112064
+    m_Key: MINEMINIGAME_LOSE_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333442041957330944
+    m_Key: MINIGAMES_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333552801102442496
+    m_Key: MINIGAMES_DRILL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333687507739488256
+    m_Key: VRFALLBACK_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333687523543625728
+    m_Key: VRFALLBACK_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333710168075022336
+    m_Key: MINEMINIGAME_NEC
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

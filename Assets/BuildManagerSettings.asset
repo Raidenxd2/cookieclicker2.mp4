@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ea87b8dd4d32641b64da18662f9b08, type: 3}
   m_Name: BuildManagerSettings
   m_EditorClassIdentifier: 
-  BuildCount: 11037
+  BuildCount: 11044
   Branch: open-source
   VersionPrefix: 2.0.0-Beta1-OS
+  ExeName: Cookieclicker2.mp4
   BuildAddressables: 1
   IncrementBuildNumber: 1

@@ -68,7 +68,11 @@ namespace UnityEditor.XR.Interaction.Toolkit.Samples
                             if (InteractionLayerSettings.Instance.IsLayerEmpty(k_TeleportLayerIndex) || DisplayTeleportDialog())
                                 InteractionLayerSettings.Instance.SetLayerNameAt(k_TeleportLayerIndex, k_TeleportLayerName);
                             else
-                                SettingsService.OpenProjectSettings(XRInteractionToolkitSettingsProvider.k_SettingsPath);
+                            {
+                                
+                            }
+                                
+                                // SettingsService.OpenProjectSettings(XRInteractionToolkitSettingsProvider.k_SettingsPath);
                         },
                     });
 
@@ -135,10 +139,10 @@ namespace UnityEditor.XR.Interaction.Toolkit.Samples
         {
             // Delay opening the window since sometimes other settings in the player settings provider redirect to the
             // project validation window causing serialized objects to be nullified.
-            EditorApplication.delayCall += () =>
-            {
-                SettingsService.OpenProjectSettings(k_ProjectValidationSettingsPath);
-            };
+            // EditorApplication.delayCall += () =>
+            // {
+            //     SettingsService.OpenProjectSettings(k_ProjectValidationSettingsPath);
+            // };
         }
 
         static bool IsInteractionLayerTeleport()

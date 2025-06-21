@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using UnityEditor.Rendering.Analytics;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -203,7 +202,6 @@ namespace UnityEditor.Rendering
                 });
 
                 Apply(w, s, value);
-                GraphicsToolUsageAnalytic.ActionPerformed<DebugWindow>("Widget Value Changed", s_Analytic.ToNestedColumn());
             }
         }
     }

@@ -41,7 +41,7 @@ namespace UnityEngine.Rendering.Universal
         /// </summary>
         public bool enableRenderCompatibilityMode
         {
-            get => m_EnableRenderCompatibilityMode && !RenderGraphGraphicsAutomatedTests.enabled;
+            get => m_EnableRenderCompatibilityMode;
             set
             {
                 this.SetValueAndNotify(ref m_EnableRenderCompatibilityMode, value, nameof(m_EnableRenderCompatibilityMode));

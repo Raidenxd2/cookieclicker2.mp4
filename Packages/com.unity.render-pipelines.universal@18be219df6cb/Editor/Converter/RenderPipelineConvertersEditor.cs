@@ -10,8 +10,6 @@ using UnityEngine.UIElements;
 using UnityEngine.Assertions;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-using UnityEditor.Rendering.Analytics;
-
 
 namespace UnityEditor.Rendering.Universal
 {
@@ -149,12 +147,6 @@ namespace UnityEditor.Rendering.Universal
         void OnEnable()
         {
             InitIfNeeded();
-            GraphicsToolLifetimeAnalytic.WindowOpened<RenderPipelineConvertersEditor>();
-        }
-
-        private void OnDisable()
-        {
-            GraphicsToolLifetimeAnalytic.WindowClosed<RenderPipelineConvertersEditor>();
         }
 
         void InitIfNeeded()
@@ -967,9 +959,7 @@ namespace UnityEditor.Rendering.Universal
                 EditorSceneManager.OpenScene(currentScenePath);
             }
 
-            RecreateUI(); 
-
-            GraphicsToolUsageAnalytic.ActionPerformed<RenderPipelineConvertersEditor>(nameof(Convert), contextInfo.ToNestedColumn());
+            RecreateUI();
         }
 
         void ConvertIndex(int coreConverterIndex, int index)

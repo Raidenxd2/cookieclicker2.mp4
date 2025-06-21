@@ -82,7 +82,7 @@ namespace UnityEngine.Rendering
                 if (value != m_EnableRuntimeUI)
                 {
                     m_EnableRuntimeUI = value;
-                    DebugUpdater.SetEnabled(value);
+                    // DebugUpdater.SetEnabled(value);
                 }
             }
         }
@@ -119,7 +119,7 @@ namespace UnityEngine.Rendering
                 }
 
                 onDisplayRuntimeUIChanged(value);
-                DebugUpdater.HandleInternalEventSystemComponents(value);
+                // DebugUpdater.HandleInternalEventSystemComponents(value);
 
                 runtimeUIState.open = m_Root != null && m_Root.activeInHierarchy;
             }

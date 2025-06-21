@@ -460,6 +460,38 @@ MonoBehaviour:
     m_Localized: Open Screenshots folder
     m_Metadata:
       m_Items: []
+  - m_Id: 333413640022274048
+    m_Localized: Are you sure you want to exit?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333413889830825984
+    m_Localized: Lose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333413916129112064
+    m_Localized: You have ran out of drill energy!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333442041957330944
+    m_Localized: Minigames
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333552801102442496
+    m_Localized: Drill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333687507739488256
+    m_Localized: Error
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333687523543625728
+    m_Localized: XR Origin was destroyed!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333710168075022336
+    m_Localized: Not Enough Coins!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
