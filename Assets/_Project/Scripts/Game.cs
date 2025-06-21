@@ -446,9 +446,7 @@ public class Game : MonoBehaviour
 
     public void LoadVRFallbackScene()
     {
-#if !UNITY_EDITOR
         LoadVRFallbackSceneAsync().Forget();
-#endif
     }
 
     private async UniTaskVoid LoadVRFallbackSceneAsync()
