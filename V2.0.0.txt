@@ -20,3 +20,4 @@ Updated loading screen.
 Minor UI changes.
 Removed unused code, assets, and localization
 Changed saving system.
+Added Minigame Drill
