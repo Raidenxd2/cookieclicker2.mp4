@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 147ae308eec018b40a7b312ae58f44c7
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Models/UniversalController.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 19eddcecf2876f14887fe5a1ee205db4
     m_Address: Assets/_Project/Materials/tiled_wall/tiled_wall_clean_science_factory.mat
     m_ReadOnly: 0
@@ -32,6 +37,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1b2100d72f78b624cbf39ec09da0934b
     m_Address: Assets/Textures/loading_grayscale.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 27b7629e54b332449bfa3a4065ffe17a
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Models/BlinkVisual.fbx
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -65,6 +75,17 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85e675893a909864d9c237e20202651b
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Textures/DefaultMaterial_AO.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 893219773891c784ab469a39151879b4
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Prefabs/Teleport/Directional
+      Teleport Reticle.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8d2bb70cbf9db8d4da26e15b26e74248
     m_Address: Packages/com.unity.render-pipelines.universal/Shaders/SimpleLit.shader
     m_ReadOnly: 0
@@ -75,8 +96,29 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 91ff3830fc4055a4fb0d0d2be32101a7
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Materials/Flat
+      Blue.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 933532a4fcc9baf4fa0491de14d08ed7
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Lit.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 99685157b02e4d446bbecb015645e5e8
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Materials/Controller_Grey.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9c5457a918faeb1469fa6d5b23d0ad6a
     m_Address: Assets/Textures/InfoButton.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f12d299d16099343a3c5c0d7285822a
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Materials/Controller_White.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -87,6 +129,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a3fcbebada04c564fbe3cdc0688af674
     m_Address: Assets/_Project/Models/drill/drill.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3fde713df4d99042a0403c4be9eea32
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Prefabs/Teleport/Blocking
+      Teleport Reticle.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -107,6 +155,17 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b7efc7970735e7a4f9139dfb24ca57bb
     m_Address: Assets/_Project/Settings/New Lighting Settings.lighting
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be2911572dc3afa448d24b4e97edc5f1
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Models/Reticle_Torus.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c348712bda248c246b8c49b3db54643f
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/XRI Default
+      Input Actions.inputactions
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -135,6 +194,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e053b8fbc416ba349b4a58a26410bba2
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Models/Pinch_Pointer_LOD0.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e19b5bb6cb8e91e43b1b5d81a069296f
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Shaders/Unlit_Fresnel.shadergraph
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e6e9a19c3678ded42a3bc431ebef7dbd
     m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Utils/FallbackError.shader
     m_ReadOnly: 0
@@ -150,8 +219,24 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f5ccd52dc494e054fbe7d7161dcabe25
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Materials/FresnelHighlight.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f6f2ff7458698aa45a03c3d2d581f377
     m_Address: Assets/_Project/Settings/Renderer3D_Mobile.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc690d1505c48cb4696838b71abd2ca0
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/AffordanceThemes/PokeSphereColor.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd3c5d8fce991e04f9c11109dde95b3b
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Materials/Telport
+      Anchor.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -13,6 +13,7 @@ namespace KillItMyself.Edito
         [MenuItem("Bean Shootout/Build Manager")]
         public static void ShowWindow()
         {
+            // If Assets/BuildManagerSettings.asset doesn't exist, create it
             if (!AssetDatabase.AssetPathExists("Assets/BuildManagerSettings.asset"))
             {
                 BuildManagerSettings asset = CreateInstance<BuildManagerSettings>();
@@ -34,7 +35,11 @@ namespace KillItMyself.Edito
                 LoadBms();
             }
 
+            bms.DevBuild = GUILayout.Toggle(bms.DevBuild, "Development Build");
+            bms.BuildAssetBundles = GUILayout.Toggle(bms.BuildAssetBundles, "Build AssetBundles");
+            bms.StripUnneededFilesFromAssetBundleBuild = GUILayout.Toggle(bms.StripUnneededFilesFromAssetBundleBuild, "Remove unneeded files from AssetBundle build");
             bms.BuildAddressables = GUILayout.Toggle(bms.BuildAddressables, "Build Addressables");
+            bms.RemoveBurstDebugInformation = GUILayout.Toggle(bms.RemoveBurstDebugInformation, "Remove BurstDebugInformation");
             bms.IncrementBuildNumber = GUILayout.Toggle(bms.IncrementBuildNumber, "Increment Build Number");
             bms.BuildCount = EditorGUILayout.IntField("Build Count", bms.BuildCount);
             bms.Branch = EditorGUILayout.TextField("Branch", bms.Branch);
@@ -146,11 +151,17 @@ namespace KillItMyself.Edito
                 return;
             }
 
+            if (bms.BuildAssetBundles)
+            {
+                BuildAssetBundles(bt);
+            }
+
             if (bms.BuildAddressables)
             {
                 AddressableAssetSettings.BuildPlayerContent();
             }
 
+            // Get all scenes in Build Settings/Build Profiles
             List<string> scenes = new();
             foreach (var scene in EditorBuildSettings.scenes)
             {
@@ -193,36 +204,186 @@ namespace KillItMyself.Edito
                     break;
             }
 
-            BuildPipeline.BuildPlayer(scenes.ToArray(), exeName, bt, BuildOptions.ShowBuiltPlayer);
+            BuildOptions bo = BuildOptions.None;
 
-            DirectoryInfo boDir = new("Assets/_Project/BuildOutput/win");
-            FileInfo[] boInfo = boDir.GetFiles("*.*");
-
-            foreach (FileInfo file in boInfo)
+            if (bms.DevBuild)
             {
-                if (file.Extension == ".meta")
-                {
+                bo = BuildOptions.ShowBuiltPlayer | BuildOptions.Development;
+            }
+            else if (bt == BuildTarget.Android)
+            {
+                bo = BuildOptions.ShowBuiltPlayer;
+            }
+            else
+            {
+                bo = BuildOptions.ShowBuiltPlayer | BuildOptions.CompressWithLz4;
+            }
 
-                }
-                else
+            BuildPipeline.BuildPlayer(scenes.ToArray(), exeName, bt, bo);
+
+            // Copy files from Assets/_Project/BuildOutput/win to the built folder for Windows
+            if (bt == BuildTarget.StandaloneWindows || bt == BuildTarget.StandaloneWindows64)
+            {
+                DirectoryInfo boDir = new("Assets/_Project/BuildOutput/win");
+                FileInfo[] boInfo = boDir.GetFiles("*.*");
+
+                foreach (FileInfo file in boInfo)
                 {
-                    File.Copy("Assets/_Project/BuildOutput/win/" + file.Name, BuildPath + "/" + Path.GetFileName(file.Name), true);
+                    if (file.Extension == ".meta")
+                    {
+
+                    }
+                    else
+                    {
+                        File.Copy("Assets/_Project/BuildOutput/win/" + file.Name, BuildPath + "/" + Path.GetFileName(file.Name), true);
+                    }
                 }
             }
 
-            DirectoryInfo boDir2 = new("Assets/CopyToStreamingAssets");
-            FileInfo[] boInfo2 = boDir2.GetFiles("*.*");
-
-            foreach (FileInfo file in boInfo2)
+            // Analytics-related file deletion
+            if (bt == BuildTarget.StandaloneWindows || bt == BuildTarget.StandaloneWindows64 || bt == BuildTarget.StandaloneLinux64)
             {
-                if (file.Extension == ".meta")
-                {
+                DeleteFileIfExists(BuildPath + "/" + bms.ExeName + "_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll");
+                DeleteFileIfExists(BuildPath + "/" + bms.ExeName + "_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.pdb");
+                DeleteFileIfExists(BuildPath + "/" + bms.ExeName + "_Data/Managed/UnityEngine.UnityAnalyticsModule.dll");
+                DeleteFileIfExists(BuildPath + "/" + bms.ExeName + "_Data/Managed/UnityEngine.UnityAnalyticsModule.pdb");
+            }
 
+            // Delete BurstDebugInformation if its enabled
+            if (bms.RemoveBurstDebugInformation)
+            {
+                if (bt == BuildTarget.StandaloneWindows || bt == BuildTarget.StandaloneWindows64 || bt == BuildTarget.StandaloneLinux64)
+                {
+                    if (Directory.Exists(BuildPath + "/" + PlayerSettings.productName + "_BurstDebugInformation_DoNotShip"))
+                    {
+                        Directory.Delete(BuildPath + "/" + PlayerSettings.productName + "_BurstDebugInformation_DoNotShip", true);
+                    }
+                }
+            }
+
+            // Copy files from Assets/CopyToStreamingAssets only for Windows or Linux
+            if (bt == BuildTarget.StandaloneWindows || bt == BuildTarget.StandaloneWindows64 || bt == BuildTarget.StandaloneLinux64)
+            {
+                if (Directory.Exists("Assets/CopyToStreamingAssets"))
+                {
+                    DirectoryInfo boDir2 = new("Assets/CopyToStreamingAssets");
+                    FileInfo[] boInfo2 = boDir2.GetFiles("*.*");
+
+                    foreach (FileInfo file in boInfo2)
+                    {
+                        if (file.Extension == ".meta")
+                        {
+
+                        }
+                        else
+                        {
+                            File.Copy("Assets/CopyToStreamingAssets/" + file.Name, BuildPath + "/" + bms.ExeName + "_Data/StreamingAssets/" + Path.GetFileName(file.Name));
+                        }
+                    }
+                }
+            }
+        }
+
+        [MenuItem("Bean Shootout/Build AssetBundles")]
+        private static void BuildAssetBundlesMenuItem()
+        {
+            if (bms == null)
+            {
+                LoadBms();
+            }
+
+            BuildAssetBundles(EditorUserBuildSettings.activeBuildTarget);
+
+            AssetDatabase.Refresh();
+        }
+
+        private static void BuildAssetBundles(BuildTarget bt)
+        {
+            string bundleDirectory = "Assets/AssetBundleBuild";
+            string bundleDirectoryName = "AssetBundleBuild";
+
+            if (!Directory.Exists(bundleDirectory))
+            {
+                Directory.CreateDirectory(bundleDirectory);
+            }
+
+            BuildPipeline.BuildAssetBundles(bundleDirectory, BuildAssetBundleOptions.AssetBundleStripUnityVersion, bt);
+
+            // Removes meta, manifest, and other files from the built AssetBundles
+            if (bms.StripUnneededFilesFromAssetBundleBuild)
+            {
+                File.Delete(bundleDirectory + "/" + bundleDirectoryName);
+                File.Delete(bundleDirectory + "/" + bundleDirectoryName + ".meta");
+                File.Delete(bundleDirectory + "/" + bundleDirectoryName + ".manifest");
+
+                DirectoryInfo buildFiles = new(bundleDirectory);
+                if (buildFiles.Exists)
+                {
+                    foreach (var file in buildFiles.EnumerateFiles())
+                    {
+                        if (file.Extension == "manifest")
+                        {
+                            File.Delete(file.FullName);
+                            if (File.Exists(file.FullName + ".meta"))
+                            {
+                                File.Delete(file.FullName + ".meta");
+                            }
+                        }
+                    }
                 }
                 else
                 {
-                    File.Copy("Assets/CopyToStreamingAssets/" + file.Name, BuildPath + "/Cookieclicker2.mp4_Data/StreamingAssets/" + Path.GetFileName(file.Name), true);
+                    Debug.LogError("(BuildManager) Assets/AssetBundlebuild doesn't exist? (Failed)");
+                    return;
                 }
+            }
+
+            if (!Directory.Exists("Assets/StreamingAssets/Bundles"))
+            {
+                Directory.CreateDirectory("Assets/StreamingAssets/Bundles");
+            }
+
+            DirectoryInfo bundlesFolder = new("Assets/StreamingAssets/Bundles");
+            if (bundlesFolder.Exists)
+            {
+                foreach (var file in bundlesFolder.EnumerateFiles())
+                {
+                    Debug.Log("(BuildManager) Deleting built AssetBundle from StreamingAssets/Bundles " + file.Name);
+                    File.Delete(file.FullName);
+                }
+            }
+            else
+            {
+                Debug.LogError("(BuildManager) Assets/StreamingAssets/Bundles doesn't exist? (Failed)");
+                return;
+            }
+
+            DirectoryInfo buildFiles2 = new(bundleDirectory);
+            if (buildFiles2.Exists)
+            {
+                foreach (var file in buildFiles2.EnumerateFiles())
+                {
+                    if (file.Extension == "meta")
+                    {
+                        continue;
+                    }
+
+                    Debug.Log("(BuildManager) Copying AssetBundle " + file.Name + " (" + file.Length + ") to StreamingAssets");
+                    File.Copy(file.FullName, "Assets/StreamingAssets/Bundles/" + file.Name);
+                }
+            }
+            else
+            {
+                Debug.LogError("(BuildManager) Assets/AssetBundleBuild doesn't exist? (Failed)");
+                return;
+            }
+        }
+
+        private void DeleteFileIfExists(string path)
+        {
+            if (File.Exists(path))
+            {
+                File.Delete(path);
             }
         }
 
@@ -232,7 +393,7 @@ namespace KillItMyself.Edito
             AssetDatabase.Refresh();
         }
 
-        private void LoadBms()
+        private static void LoadBms()
         {
             bms = AssetDatabase.LoadAssetAtPath<BuildManagerSettings>("Assets/BuildManagerSettings.asset");
         }
