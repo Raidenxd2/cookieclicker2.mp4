@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine.AddressableAssets;
 using System;
+using UnityEngine.Rendering.Universal;
 
 public class BetaContent : MonoBehaviour
 {
@@ -29,6 +30,11 @@ public class BetaContent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (VRManager.instance.IsMobileVR)
+        {
+            UniversalRenderPipelineAsset urp = (UniversalRenderPipelineAsset)QualitySettings.renderPipeline;
+            urp.msaaSampleCount = 4;
+        }
         try
         {
             if (PlayerPrefs.GetInt("HasPlayed", 0) == 0)

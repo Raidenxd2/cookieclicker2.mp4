@@ -46835,11 +46835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67877e6ac0f11ac45b81a4eb829d5358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  URPAsset: {fileID: 11400000, guid: dd50da09b231832449f80d2e2529b5da, type: 2}
-  WindowModeDropdown: {fileID: 2084122632}
-  ResolutionDropdown: {fileID: 1479133075}
-  AADropdown: {fileID: 1736683105}
-  VSyncToggle: {fileID: 1529287412}
 --- !u!1001 &1369412666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50649,17 +50644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1479133075 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1401833681302480738, guid: b040e007001c36048bbb4e31e3132759, type: 3}
-  m_PrefabInstance: {fileID: 1479133071}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1479133076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53198,8 +53182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd995dc17cb7434a8ba2d25ded97e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraData: {fileID: 519420030}
-  PCOnlySettingsButton: {fileID: 914827853}
 --- !u!1 &1561183490
 GameObject:
   m_ObjectHideFlags: 0
@@ -58414,17 +58396,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
---- !u!114 &1736683105 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1401833681302480738, guid: b040e007001c36048bbb4e31e3132759, type: 3}
-  m_PrefabInstance: {fileID: 1736683100}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1737977223
 GameObject:
   m_ObjectHideFlags: 0
@@ -66370,17 +66341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2084122632 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1401833681302480738, guid: b040e007001c36048bbb4e31e3132759, type: 3}
-  m_PrefabInstance: {fileID: 2084122628}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2084122633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74212,8 +74172,8 @@ MonoBehaviour:
   m_Camera: {fileID: 1383292369}
   m_OriginBaseGameObject: {fileID: 1717954561545536651}
   m_CameraFloorOffsetObject: {fileID: 1594622452}
-  m_RequestedTrackingOriginMode: 1
-  m_CameraYOffset: -1
+  m_RequestedTrackingOriginMode: 3
+  m_CameraYOffset: 0
 --- !u!1 &1246816218863786729
 GameObject:
   m_ObjectHideFlags: 0
@@ -74827,7 +74787,7 @@ Transform:
   m_GameObject: {fileID: 1717954561545536651}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.5, z: 1}
+  m_LocalPosition: {x: 0, y: -8, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -74853,7 +74813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1718513917322043156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76430,7 +76390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2769229248664119297
 Transform:
   m_ObjectHideFlags: 0
@@ -79278,7 +79238,7 @@ MonoBehaviour:
   m_SnapTurn: {fileID: -7374733323251553461, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_Move: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_UIScroll: {fileID: 2464016903823916871, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_SmoothMotionEnabled: 1
+  m_SmoothMotionEnabled: 0
   m_SmoothTurnEnabled: 0
   m_NearFarEnableTeleportDuringNearInteraction: 1
   m_UIScrollingEnabled: 1
@@ -79938,7 +79898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5565933393363720893
 MonoBehaviour:
   m_ObjectHideFlags: 0

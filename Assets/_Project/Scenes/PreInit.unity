@@ -678,6 +678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VREnabled: 0
+  IsMobileVR: 0
   PreInit_VR: {fileID: 2141925434}
   PreInit_ScreenCanvas: {fileID: 249079379}
 --- !u!4 &2013971737

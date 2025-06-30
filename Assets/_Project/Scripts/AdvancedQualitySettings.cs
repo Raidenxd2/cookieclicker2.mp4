@@ -163,6 +163,12 @@ public class AdvancedQualitySettings : MonoBehaviour
         AO = false;
         HDR = false;
         RenderQuality = 0.75f;
+        if (VRManager.instance.IsMobileVR)
+        {
+            PostProcessing = true;
+            RenderQuality = 1f;
+        }
+        
         #endif
 
         #if UNITY_STANDALONE
@@ -237,6 +243,11 @@ public class AdvancedQualitySettings : MonoBehaviour
         else
         {
             RenderSettings.fog = false;
+        }
+
+        if (VRManager.instance.IsMobileVR)
+        {
+            QualitySettings.anisotropicFiltering = AnisotropicFiltering.ForceEnable;
         }
 
         QualitySettings.globalTextureMipmapLimit = TextureQuality;

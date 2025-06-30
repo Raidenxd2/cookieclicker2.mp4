@@ -1641,6 +1641,7 @@ MonoBehaviour:
   ProgressBar: {fileID: 1330663287}
   progressText: {fileID: 1815384817}
   infoText: {fileID: 760369756}
+  MobileVR: 1
 --- !u!4 &1444536518
 Transform:
   m_ObjectHideFlags: 0
@@ -1933,6 +1934,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newPos: {x: 0, y: 0, z: 16.45}
+  newScale: {x: 0.01, y: 0.01, z: 0.01}
+  newRot: {x: 0, y: 0, z: 0}
 --- !u!1 &1730403252
 GameObject:
   m_ObjectHideFlags: 0
