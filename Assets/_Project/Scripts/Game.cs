@@ -143,6 +143,8 @@ public class Game : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Remove();
+        
         VersionText.text = "v" + Application.version + "-" + Application.platform + " (" + Application.unityVersion + ")";
 
         if (VRManager.instance.VREnabled)
@@ -183,7 +185,6 @@ public class Game : MonoBehaviour
             ad.TextureQuality = 0;
             ad.Trees = true;
             ad.Particals = true;
-            ad.Lighting = true;
             ad.PostProcessing = true;
             ad.VSync = false;
             ResetData();
@@ -266,6 +267,8 @@ public class Game : MonoBehaviour
 
     public void SavePlayer()
     {
+        Remove();
+
         PlayerPrefs.Save();
         offlineManager.SaveTime();
 
@@ -304,6 +307,8 @@ public class Game : MonoBehaviour
 
     public void LoadPlayer()
     {
+        Remove();
+
         ad.LoadGraphics();
 
         try
@@ -353,6 +358,14 @@ public class Game : MonoBehaviour
 
         CheckResearchFactory();
         CheckDrill();
+    }
+
+    public void Remove()
+    {
+        PlayerPrefs.SetInt("unity.player_session_count", 0);
+        PlayerPrefs.SetInt("unity.player_sessionid", 0);
+        PlayerPrefs.SetInt("unity.cloud_userid", 0);
+        PlayerPrefs.Save();
     }
 
     public void ResetData()

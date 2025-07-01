@@ -8,10 +8,8 @@ using LoggerSystem;
 public class DEBUG : MonoBehaviour
 {
     public TMP_Text FPSText;
-    public TMP_Text RendererText;
     public TMP_InputField CookiesInput;
     public Game game;
-    public GameObject DEBUGScreen;
     public GameObject TerrainObject;
     public int FramesPerSec;
     public TMP_InputField FPSInput;

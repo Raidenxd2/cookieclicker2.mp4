@@ -5,9 +5,9 @@ namespace LoggerSystem
 {
     public static class LogSystem
     {
-        [Conditional("ENABLE_LOG")]
         public static void Log(string text, LogTypes logTypes = LogTypes.Normal)
         {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
             StackFrame frame = new(1, true);
             var method = frame.GetMethod().Name;
             var fileName = frame.GetFileName();
@@ -34,8 +34,10 @@ namespace LoggerSystem
                 default:
                     throw new System.Exception("Unknown LogType.");
             }
+#endif
         }
 
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
         public static string GetLogTypeName(LogTypes logTypes)
         {
             switch (logTypes)
@@ -54,7 +56,7 @@ namespace LoggerSystem
                     throw new System.Exception("Unknown LogType.");
             }
         }
-
+#endif
     }
 
     public enum LogTypes

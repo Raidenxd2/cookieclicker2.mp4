@@ -5,7 +5,9 @@ using UnityEngine.XR.Management;
 public class VRManager : MonoBehaviour
 {
     public bool VREnabled;
+#if UNITY_ANDROID
     public bool IsMobileVR;
+#endif
 
     public static bool VRBootEnabled;
 

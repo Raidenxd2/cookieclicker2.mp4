@@ -10,11 +10,7 @@ using UnityEngine.Rendering.Universal;
 
 public class BetaContent : MonoBehaviour
 {
-    public GameObject BetaContentWarning;
     public GameObject ResearchFactoryButton;
-    public GameObject ErrorScreen;
-
-    public TMP_Text ErrorText;
 
     public Image ProgressBar;
     public TMP_Text progressText;
@@ -30,11 +26,18 @@ public class BetaContent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.SetInt("unity.player_session_count", 0);
+        PlayerPrefs.SetInt("unity.player_sessionid", 0);
+        PlayerPrefs.SetInt("unity.cloud_userid", 0);
+        PlayerPrefs.Save();
+        
+#if UNITY_ANDROID
         if (VRManager.instance.IsMobileVR)
         {
             UniversalRenderPipelineAsset urp = (UniversalRenderPipelineAsset)QualitySettings.renderPipeline;
             urp.msaaSampleCount = 4;
         }
+#endif
         try
         {
             if (PlayerPrefs.GetInt("HasPlayed", 0) == 0)
@@ -44,10 +47,6 @@ public class BetaContent : MonoBehaviour
                 PlayerPrefs.Save();
             }
             Scene scene = SceneManager.GetActiveScene();
-            if (scene.name == "Init" && PlayerPrefs.GetInt("BetaContent", 0) == 1)
-            {
-                BetaContentWarning.SetActive(true);
-            }
             UpdateBetaContent();
             if (scene.name != "Game")
             {
@@ -88,12 +87,6 @@ public class BetaContent : MonoBehaviour
         Addressables.UnloadSceneAsync(AddressableHandles.instance.initSceneHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
 
         AddressableHandles.instance.gameSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.gameSceneRef, LoadSceneMode.Single);
-
-        if (AddressableHandles.instance.gameSceneHandle.OperationException != null)
-        {
-            ErrorScreen.SetActive(true);
-            ErrorText.text = "Game failed to load\n" + AddressableHandles.instance.gameSceneHandle.OperationException.ToString();
-        }
 
         while (!AddressableHandles.instance.gameSceneHandle.IsDone)
         {
