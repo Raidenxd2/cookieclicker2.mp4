@@ -1,4 +1,4 @@
-V1.3.0:
+V2.0.0:
 
 The game is now open source at https://github.com/Raidenxd2/cookieclicker2.mp4 licensed under GNU General Public License v3.0
 All Google stuff has been removed.
@@ -21,3 +21,4 @@ Minor UI changes.
 Removed unused code, assets, and localization
 Changed saving system.
 Added Minigame Drill
+Added VR support (use _Launch in VR.bat or start the game with -vr true)

@@ -157,15 +157,12 @@ public class Game : MonoBehaviour
 
             gameCamera.gameObject.SetActive(false);
         }
-        
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            ScreenshotOptionsBTN.SetActive(false);
-        }
-        else
-        {
-            ScreenshotOptionsBTN.SetActive(true);
-        }
+
+#if UNITY_ANDROID
+        ScreenshotOptionsBTN.SetActive(false);
+#else
+        ScreenshotOptionsBTN.SetActive(true);
+#endif
 
         if (PlayerPrefs.GetInt("HasPlayed", 0) == 0)
         {
