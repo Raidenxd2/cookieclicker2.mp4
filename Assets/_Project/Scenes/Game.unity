@@ -2326,7 +2326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: a8d1fe4c2d372be44bfb6b90870d16c3, type: 2}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -30449,7 +30449,6 @@ MonoBehaviour:
   MainSceneVR: {fileID: 2109193962}
   WhatWasThisNamed: {fileID: 308534142}
   WhatWasThisNamedVR: {fileID: 1799945199}
-  Fade: {fileID: 2043084230}
   BigCookieDuration: 0
   BigCookieText: {fileID: 1012296891}
   BigCookieUnlocked: 0
@@ -38526,6 +38525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1144221426}
   - component: {fileID: 1144221425}
+  - component: {fileID: 1144221428}
   - component: {fileID: 1144221427}
   m_Layer: 5
   m_Name: Fade
@@ -38589,6 +38589,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0a494b23d9e3846bec7c8b31322b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1144221428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144221422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1147421328
 GameObject:
   m_ObjectHideFlags: 0
@@ -55938,7 +55955,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.5
+  m_fontSize: 61.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -56748,7 +56765,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.5
+  m_fontSize: 69.6
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -67531,6 +67548,7 @@ MonoBehaviour:
   Stats_Grandmas: {fileID: 598499480}
   Stats_CookieFactorys: {fileID: 1107414898}
   Fade: {fileID: 2043084230}
+  FadeCanvasGroup: {fileID: 2043084231}
   gameCamera: {fileID: 519420031}
   CVDFilter: {fileID: 3925544536955947482}
   CBNormal: {fileID: 11400000, guid: 96c866f0d764d1247b51d065eb25d716, type: 2}

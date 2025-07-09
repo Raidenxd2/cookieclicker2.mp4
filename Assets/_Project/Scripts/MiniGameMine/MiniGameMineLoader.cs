@@ -34,6 +34,7 @@ public class MiniGameMineLoader : MonoBehaviour
     private async UniTaskVoid LoadMinigameMineAsync()
     {
         game.Fade.Play("FadeIn");
+        game.FadeCanvasGroup.blocksRaycasts = true;
         await UniTask.WaitForSeconds(1);
 
         if (VRManager.instance.VREnabled)
@@ -62,6 +63,7 @@ public class MiniGameMineLoader : MonoBehaviour
         }
 
         game.Fade.Play("FadeOut");
+        game.FadeCanvasGroup.blocksRaycasts = false;
     }
 
     public void UnloadMinigameMine()
@@ -72,6 +74,7 @@ public class MiniGameMineLoader : MonoBehaviour
     private async UniTaskVoid UnloadMinigameMineAsync()
     {
         game.Fade.Play("FadeIn");
+        game.FadeCanvasGroup.blocksRaycasts = true;
         await UniTask.WaitForSeconds(1);
 
         if (VRManager.instance.VREnabled)
@@ -92,5 +95,6 @@ public class MiniGameMineLoader : MonoBehaviour
         }
 
         game.Fade.Play("FadeOut");
+        game.FadeCanvasGroup.blocksRaycasts = false;
     }
 }

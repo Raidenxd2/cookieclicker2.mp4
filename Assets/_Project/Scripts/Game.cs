@@ -76,6 +76,7 @@ public class Game : MonoBehaviour
     // animations
     [Header("Animations")]
     public Animator Fade;
+    public CanvasGroup FadeCanvasGroup;
 
     // audio
     [Header("Audio")]
@@ -443,6 +444,7 @@ public class Game : MonoBehaviour
     IEnumerator ReloadWait()
     {
         Fade.Play("FadeIn");
+        FadeCanvasGroup.blocksRaycasts = true;
         yield return new WaitForSeconds(1);
 
         LogSystem.Log("Loading Init scene and unloading the Game scene.", LogTypes.Normal);

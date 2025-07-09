@@ -24,7 +24,6 @@ public class ResearchFactory : MonoBehaviour
     public Transform MainSceneVR;
     public Transform WhatWasThisNamed;
     public Transform WhatWasThisNamedVR;
-    public Animator Fade;
     public int BigCookieDuration;
     public TMP_Text BigCookieText;
     public bool BigCookieUnlocked;
@@ -86,7 +85,8 @@ public class ResearchFactory : MonoBehaviour
 
     IEnumerator Fade1()
     {
-        Fade.Play("FadeIn");
+        game.Fade.Play("FadeIn");
+        game.FadeCanvasGroup.blocksRaycasts = true;
         yield return new WaitForSeconds(1);
 
         if (VRManager.instance.VREnabled)
@@ -99,12 +99,14 @@ public class ResearchFactory : MonoBehaviour
         }
 
         FinishEnter();
-        Fade.Play("FadeOut");
+        game.Fade.Play("FadeOut");
+        game.FadeCanvasGroup.blocksRaycasts = false;
     }
 
     IEnumerator Fade2()
     {
-        Fade.Play("FadeIn");
+        game.Fade.Play("FadeIn");
+        game.FadeCanvasGroup.blocksRaycasts = true;
         yield return new WaitForSeconds(1);
 
         if (VRManager.instance.VREnabled)
@@ -117,7 +119,8 @@ public class ResearchFactory : MonoBehaviour
         }
         
         FinishExit();
-        Fade.Play("FadeOut");
+        game.Fade.Play("FadeOut");
+        game.FadeCanvasGroup.blocksRaycasts = false;
     }
 
     public void FinishEnter()
