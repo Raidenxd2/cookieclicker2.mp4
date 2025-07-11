@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
-  m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
+  m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 0}
   m_SkyboxMaterial: {fileID: 2100000, guid: 12b04fdf24391a74f9f4fbaa14a1b8e2, type: 2}
   m_HaloStrength: 0
   m_FlareStrength: 0
@@ -4766,7 +4766,7 @@ MonoBehaviour:
   m_Camera: {fileID: 527499404}
   m_OriginBaseGameObject: {fileID: 1271165830}
   m_CameraFloorOffsetObject: {fileID: 968931738}
-  m_RequestedTrackingOriginMode: 0
+  m_RequestedTrackingOriginMode: 3
   m_CameraYOffset: 0
 --- !u!4 &1271165834
 Transform:
@@ -6965,6 +6965,10 @@ PrefabInstance:
       value: -61.5
       objectReference: {fileID: 0}
     - target: {fileID: 106894220619524467, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
+      propertyPath: m_fontSize
+      value: 69.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 106894220619524467, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 97756a796a6d007408af39a643993837, type: 2}
@@ -6975,6 +6979,10 @@ PrefabInstance:
     - target: {fileID: 106894220619524467, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 106894220619524469, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 106894221135080652, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -7082,7 +7090,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a8d1fe4c2d372be44bfb6b90870d16c3, type: 2}
     - target: {fileID: 2200124996992798892, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
-      value: 20
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 6388686575972754995, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_IsActive
@@ -7196,7 +7204,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:ab574aa97b8f08a4089ea8b506a20c54
     m_TableEntryReference:
-      m_KeyId: 333687507739488256
+      m_KeyId: 38170544021504
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

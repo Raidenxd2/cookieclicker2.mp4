@@ -9,7 +9,6 @@ public class ResearchFactory : MonoBehaviour
     public Game game;
     public AddressableLightmaps al;
     public GameObject NECDialog;
-    public Animator CameraAnimation;
 
     [Header("UI")]
     public GameObject LockedText;

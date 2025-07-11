@@ -8,6 +8,15 @@ using LoggerSystem;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
 using Cysharp.Threading.Tasks;
+using System.Collections.Generic;
+using System.IO;
+using System;
+
+#if UNITY_ANDROID
+using UnityEngine.XR.Management;
+using UnityEngine.XR;
+using UnityEngine.XR.OpenXR.Features.Meta;
+#endif
 
 public class Game : MonoBehaviour
 {
@@ -40,6 +49,7 @@ public class Game : MonoBehaviour
     public GameObject NECDialog;
     public GameObject SDIE;
     public GameObject NoNetworkScreen;
+    [SerializeField] private GameObject GlobalDark;
 
     // scripts
     [Header("Scripts")]
@@ -49,6 +59,7 @@ public class Game : MonoBehaviour
     public Notification notification;
     public AddressableLightmaps al;
     public BetaContent bc;
+    public VRFadeCanvas vrFade;
 
     // text
     [Header("Text")]
@@ -127,9 +138,19 @@ public class Game : MonoBehaviour
     public double CoinMultiplier;
 
     [Header("VR")]
-    [SerializeField] private GameObject VRObject1;
-    [SerializeField] private GameObject VRObject2;
+    [SerializeField] private AssetReference VRPrefab;
+    private GameObject VRPrefabGO;
+#if UNITY_ANDROID
+    [SerializeField] private GameObject AndroidVROnlySettingsButton;
+    [SerializeField] private TMP_Dropdown OculusQuestRefreshRateDropdown;
+#endif
     public GameObject XROrigin;
+
+#if UNITY_ANDROID
+    private XRDisplaySubsystem displaySubsystem;
+#endif
+
+    private bool AllowUpdate;
 
     private void Awake()
     {
@@ -145,18 +166,71 @@ public class Game : MonoBehaviour
     void Start()
     {
         Remove();
-        
+
         VersionText.text = "v" + Application.version + "-" + Application.platform + " (" + Application.unityVersion + ")";
 
+        StartAsync().Forget();
+    }
+
+    private async UniTaskVoid StartAsync()
+    {
         if (VRManager.instance.VREnabled)
         {
-            VRObject1.SetActive(true);
-            VRObject2.SetActive(true);
+            try
+            {
+                VRPrefabGO = Instantiate(await Addressables.LoadAssetAsync<GameObject>(VRPrefab));
+                VRPrefabObject vrpo = VRPrefabGO.GetComponent<VRPrefabObject>();
+
+                XROrigin = vrpo.XROrigin;
+                researchFactory.VRCamera = vrpo.XROrigin.transform;
+                researchFactory.MainSceneVR = vrpo.MainSceneVR;
+
+                vrFade.InitVR();
+            }
+            catch (Exception ex)
+            {
+                LogSystem.Log(ex.ToString(), LogTypes.Exception);
+                LoadVRFallbackScene();
+                return;
+            }
 
             PP.profile = VRProfile;
 
             gameCamera.gameObject.SetActive(false);
         }
+
+#if UNITY_ANDROID
+        if (VRManager.instance.IsMobileVR)
+        {
+            try
+            {
+                displaySubsystem = XRGeneralSettings.Instance.Manager.activeLoader.GetLoadedSubsystem<XRDisplaySubsystem>();
+                if (displaySubsystem.TryGetSupportedDisplayRefreshRates(Unity.Collections.Allocator.Temp, out var refreshRates))
+                {
+                    List<string> options = new();
+                    OculusQuestRefreshRateDropdownData oqrrdd = OculusQuestRefreshRateDropdown.GetComponent<OculusQuestRefreshRateDropdownData>();
+                    foreach (var rf in refreshRates)
+                    {
+                        options.Add(rf.ToString() + " FPS");
+                        oqrrdd.refreshRates.Add(rf);
+                    }
+                    OculusQuestRefreshRateDropdown.AddOptions(options);
+                }
+                else
+                {
+                    LogSystem.Log("Failed to get supported refresh rates.", LogTypes.Warning);
+                }
+            }
+            catch
+            {
+                LogSystem.Log("Unknown error while getting supported refresh rates.", LogTypes.Error);
+            }
+
+            XRSettings.useOcclusionMesh = false;
+
+            AndroidVROnlySettingsButton.SetActive(true);
+        }
+#endif
 
 #if UNITY_ANDROID
         ScreenshotOptionsBTN.SetActive(false);
@@ -203,13 +277,15 @@ public class Game : MonoBehaviour
         }
 
         ad.LoadGraphics();
-        
-        BetaContentToggles[0].onValueChanged.AddListener(delegate{ChangeBetaContentFeatureValue("BETA_ResearchFactory", BetaContentToggles[0].isOn);});
+
+        BetaContentToggles[0].onValueChanged.AddListener(delegate { ChangeBetaContentFeatureValue("BETA_ResearchFactory", BetaContentToggles[0].isOn); });
 
         MusicAudioSource = MusicSource.GetComponent<AudioSource>();
         SoundAudioSource = SoundSource.GetComponent<AudioSource>();
 
         al.InitAddressableLightmaps();
+
+        AllowUpdate = true;
     }
 
     void SoundAssign()
@@ -313,7 +389,7 @@ public class Game : MonoBehaviour
         {
             BetterPrefs.Load(Application.persistentDataPath + "/Saves/Default.cookie");
         }
-        catch(System.Exception ex)
+        catch(Exception ex)
         {
             SDIE.SetActive(true);
             SmallErrorText.text = "" + ex.Message;
@@ -438,6 +514,20 @@ public class Game : MonoBehaviour
         Music = Toggle;
     }
 
+#if UNITY_ANDROID
+    public void ChangeRefreshRate(float val)
+    {
+        if (displaySubsystem == null)
+        {
+            LogSystem.Log("displaySubsystem was null!", LogTypes.Error);
+        }
+        if (!displaySubsystem.TryRequestDisplayRefreshRate(val))
+        {
+            LogSystem.Log("Failed to request refresh rate of " + val, LogTypes.Error);
+        }
+    }
+#endif
+
     IEnumerator ReloadWait()
     {
         Fade.Play("FadeIn");
@@ -447,6 +537,9 @@ public class Game : MonoBehaviour
         LogSystem.Log("Loading Init scene and unloading the Game scene.", LogTypes.Normal);
 
         Addressables.UnloadSceneAsync(AddressableHandles.instance.gameSceneHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+
+        Destroy(VRPrefabGO);
+        Addressables.Release(VRPrefab);
 
         AddressableHandles.instance.initSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.initSceneRef, LoadSceneMode.Single);
 
@@ -663,6 +756,11 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!AllowUpdate)
+        {
+            return;
+        }
+
         CookiesText.text = "Cookies: " + Cookies;
         Shop_Autoclicker.text = "Autoclicker (" + AutoclickerPrice + " Cookies)";
         Shop_Doublecookie.text = "Doublecookie (" + DoublecookiePrice + " Cookies)";

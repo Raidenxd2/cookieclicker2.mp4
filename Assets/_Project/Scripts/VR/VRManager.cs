@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.XR.Management;
 
 public class VRManager : MonoBehaviour
@@ -12,9 +11,6 @@ public class VRManager : MonoBehaviour
     public static bool VRBootEnabled;
 
     private XRLoader currentLoader;
-
-    [SerializeField] private GameObject PreInit_VR;
-    [SerializeField] private GameObject PreInit_ScreenCanvas;
 
     public static VRManager instance;
 
@@ -48,15 +44,6 @@ public class VRManager : MonoBehaviour
         }
     }
 
-    public void InitVR()
-    {
-        if (SceneManager.GetActiveScene().name == "PreInit")
-        {
-            PreInit_ScreenCanvas.SetActive(false);
-            PreInit_VR.SetActive(true);
-        }
-    }
-
     private void InitXR()
     {
         currentLoader = XRGeneralSettings.Instance.Manager.activeLoaders[0];
@@ -77,8 +64,6 @@ public class VRManager : MonoBehaviour
         }
 
         XRGeneralSettings.Instance.Manager.StartSubsystems();
-
-        InitVR();
     }
 
     private void OnDestroy()

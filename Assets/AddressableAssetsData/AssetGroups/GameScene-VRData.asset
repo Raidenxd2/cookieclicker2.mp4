@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: GameScene-VRData
+  m_EditorClassIdentifier: 
+  m_GroupName: GameScene-VRData
+  m_GUID: 750c4b718bbf907448db4beafe90a058
+  m_SerializeEntries:
+  - m_GUID: 4facb27151d461043a476c725d04d47d
+    m_Address: Assets/_Project/Prefabs/GameScene_VRPrefab.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9bd8c6dc482bf244fa3a69cd62f55319, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: dd5f76ec01ba8c2489631a58ad16c6d1, type: 2}
+    - {fileID: 11400000, guid: b54f222b461e3a548b6973802de1ce22, type: 2}

@@ -242,10 +242,6 @@ MonoBehaviour:
     m_Localized: Comercio
     m_Metadata:
       m_Items: []
-  - m_Id: 37951928508416
-    m_Localized: "Estad\xEDsticas"
-    m_Metadata:
-      m_Items: []
   - m_Id: 38170544021504
     m_Localized: Error
     m_Metadata:
@@ -383,10 +379,6 @@ MonoBehaviour:
     m_Localized: Salida
     m_Metadata:
       m_Items: []
-  - m_Id: 167714459552067584
-    m_Localized: Aviso de guardar datos
-    m_Metadata:
-      m_Items: []
   - m_Id: 185542321738887168
     m_Localized: "Configuraci\xF3n s\xF3lo para PC"
     m_Metadata:
@@ -407,26 +399,8 @@ MonoBehaviour:
     m_Localized: Antialiasing (MSAA)
     m_Metadata:
       m_Items: []
-  - m_Id: 187364344928677888
-    m_Localized: "Tienes las Texturas desactivadas, pero esta opci\xF3n ha sido eliminada.
-      Se recomienda activarla."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 187364375354159104
-    m_Localized: "Tiene la iluminaci\xF3n desactivada, pero esta opci\xF3n se ha
-      eliminado. Se recomienda activarla."
-    m_Metadata:
-      m_Items: []
   - m_Id: 188437138454097920
     m_Localized: Copiar al portapapeles
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188436499728707584
-    m_Localized: "Visite el sitio web de supresi\xF3n de datos"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 195960503595184128
-    m_Localized: Error
     m_Metadata:
       m_Items: []
   - m_Id: 205416744414261248

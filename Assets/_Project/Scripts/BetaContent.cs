@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine.AddressableAssets;
 using System;
+using Cysharp.Threading.Tasks;
+#if UNITY_ANDROID
 using UnityEngine.Rendering.Universal;
+#endif
 
 public class BetaContent : MonoBehaviour
 {
@@ -17,6 +20,9 @@ public class BetaContent : MonoBehaviour
     public TMP_Text infoText;
 
     public static BetaContent instance;
+
+    [SerializeField] private AssetReference VRPrefab;
+    private GameObject VRPrefabGO;
 
     private void Awake()
     {
@@ -30,7 +36,7 @@ public class BetaContent : MonoBehaviour
         PlayerPrefs.SetInt("unity.player_sessionid", 0);
         PlayerPrefs.SetInt("unity.cloud_userid", 0);
         PlayerPrefs.Save();
-        
+
 #if UNITY_ANDROID
         if (VRManager.instance.IsMobileVR)
         {
@@ -38,6 +44,12 @@ public class BetaContent : MonoBehaviour
             urp.msaaSampleCount = 4;
         }
 #endif
+
+        if (VRManager.instance.VREnabled)
+        {
+            LoadVRData();
+        }
+
         try
         {
             if (PlayerPrefs.GetInt("HasPlayed", 0) == 0)
@@ -58,6 +70,11 @@ public class BetaContent : MonoBehaviour
             File.WriteAllText(Application.temporaryCachePath + "/BetaContentInitFail.txt", ex.ToString());
             LoadScene();
         }
+    }
+
+    private async UniTask LoadVRData()
+    {
+        VRPrefabGO = Instantiate(await Addressables.LoadAssetAsync<GameObject>(VRPrefab));
     }
 
     public void UpdateBetaContent()

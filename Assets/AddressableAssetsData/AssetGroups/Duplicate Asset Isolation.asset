@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 12b04fdf24391a74f9f4fbaa14a1b8e2
+    m_Address: Assets/_Project/Materials/VRFallbackSkybox.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 147ae308eec018b40a7b312ae58f44c7
     m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Models/UniversalController.fbx
     m_ReadOnly: 0
@@ -57,6 +62,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3803db3f951f70e4d8ab9a40b1f2f815
     m_Address: Assets/_Project/Textures/CommonObjectsColorAtlas.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e5e18e26b8a510498179eb065f026f0
+    m_Address: Assets/_Project/Shaders/Skybox_World.shadergraph
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

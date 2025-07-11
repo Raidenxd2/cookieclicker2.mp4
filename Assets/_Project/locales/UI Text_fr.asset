@@ -247,10 +247,6 @@ MonoBehaviour:
     m_Localized: Boutique
     m_Metadata:
       m_Items: []
-  - m_Id: 37951928508416
-    m_Localized: Statistiques
-    m_Metadata:
-      m_Items: []
   - m_Id: 38170544021504
     m_Localized: Erreur
     m_Metadata:
@@ -384,10 +380,6 @@ MonoBehaviour:
     m_Localized: Sortie
     m_Metadata:
       m_Items: []
-  - m_Id: 167714459552067584
-    m_Localized: "Avertissement de sauvegarde des donn\xE9es"
-    m_Metadata:
-      m_Items: []
   - m_Id: 185560684687011840
     m_Localized: "Anti-cr\xE9nelage (MSAA)"
     m_Metadata:
@@ -408,26 +400,8 @@ MonoBehaviour:
     m_Localized: "Param\xE8tres PC uniquement"
     m_Metadata:
       m_Items: []
-  - m_Id: 187364375354159104
-    m_Localized: "Vous avez d\xE9sactiv\xE9 l'\xE9clairage, mais cette option a \xE9t\xE9
-      supprim\xE9e. Il est recommand\xE9 de l'activer."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 187364344928677888
-    m_Localized: "Vous avez d\xE9sactiv\xE9 les textures, mais cette option a \xE9t\xE9
-      supprim\xE9e. Il est recommand\xE9 de l'activer."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188436499728707584
-    m_Localized: "Visiter le site web de la suppression des donn\xE9es"
-    m_Metadata:
-      m_Items: []
   - m_Id: 188437138454097920
     m_Localized: Copier dans le presse-papiers
-    m_Metadata:
-      m_Items: []
-  - m_Id: 195960503595184128
-    m_Localized: Erreur
     m_Metadata:
       m_Items: []
   - m_Id: 230843887104688128

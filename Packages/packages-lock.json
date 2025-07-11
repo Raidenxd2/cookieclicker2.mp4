@@ -18,6 +18,13 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
+    "com.raiden.buildmanager": {
+      "version": "https://github.com/Raidenxd2/BuildManager.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "198c135d744cf3893cb1dcdda50b3083e7309908"
+    },
     "com.raiden.serial": {
       "version": "1.0.2",
       "depth": 0,
@@ -299,16 +306,27 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.xr.openxr": {
-      "version": "file:com.unity.xr.openxr",
+    "com.unity.xr.meta-openxr": {
+      "version": "file:com.unity.xr.meta-openxr",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
+        "com.unity.xr.openxr": "1.15.0",
         "com.unity.xr.management": "4.4.0",
-        "com.unity.xr.legacyinputhelpers": "2.1.2",
-        "com.unity.inputsystem": "1.6.3",
-        "com.unity.xr.core-utils": "2.3.0"
+        "com.unity.xr.core-utils": "2.5.1"
       }
+    },
+    "com.unity.xr.openxr": {
+      "version": "1.15.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.inputsystem": "1.6.3",
+        "com.unity.xr.core-utils": "2.3.0",
+        "com.unity.xr.management": "4.4.0",
+        "com.unity.xr.legacyinputhelpers": "2.1.2"
+      },
+      "url": "https://packages.unity.com"
     },
     "dev.voltstro.unitycommandlineparser": {
       "version": "2.1.2",

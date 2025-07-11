@@ -2,6 +2,7 @@
   "dependencies": {
     "com.annulusgames.lit-motion": "2.0.1",
     "com.cysharp.unitask": "2.5.10",
+    "com.raiden.buildmanager": "https://github.com/Raidenxd2/BuildManager.git",
     "com.raiden.serial": "1.0.2",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.addressables": "2.4.6",
@@ -17,6 +18,7 @@
     "com.unity.ugui": "2.0.0",
     "com.unity.xr.interaction.toolkit": "3.0.8",
     "com.unity.xr.management": "4.5.1",
+    "com.unity.xr.meta-openxr": "2.2.0",
     "com.unity.xr.openxr": "1.14.3",
     "dev.voltstro.unitycommandlineparser": "2.1.2",
     "com.unity.modules.androidjni": "1.0.0",

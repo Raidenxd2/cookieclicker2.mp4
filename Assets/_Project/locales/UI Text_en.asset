@@ -250,10 +250,6 @@ MonoBehaviour:
     m_Localized: Shop
     m_Metadata:
       m_Items: []
-  - m_Id: 37951928508416
-    m_Localized: Stats
-    m_Metadata:
-      m_Items: []
   - m_Id: 38170544021504
     m_Localized: Error
     m_Metadata:
@@ -394,10 +390,6 @@ MonoBehaviour:
     m_Localized: Exit
     m_Metadata:
       m_Items: []
-  - m_Id: 167714459552067584
-    m_Localized: Save Data Warning
-    m_Metadata:
-      m_Items: []
   - m_Id: 185542321738887168
     m_Localized: PC Only Settings
     m_Metadata:
@@ -418,26 +410,8 @@ MonoBehaviour:
     m_Localized: Anti-Aliasing (MSAA)
     m_Metadata:
       m_Items: []
-  - m_Id: 187364344928677888
-    m_Localized: You have Textures turned off, but this option has been removed.
-      It is recommended that you turn it on.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 187364375354159104
-    m_Localized: You have Lighting turned off, but this option has been removed.
-      It is recommended that you turn it on.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 188436499728707584
-    m_Localized: Visit Data Deletion website
-    m_Metadata:
-      m_Items: []
   - m_Id: 188437138454097920
     m_Localized: Copy to Clipboard
-    m_Metadata:
-      m_Items: []
-  - m_Id: 195960503595184128
-    m_Localized: Error
     m_Metadata:
       m_Items: []
   - m_Id: 205416744414261248
@@ -480,16 +454,20 @@ MonoBehaviour:
     m_Localized: Drill
     m_Metadata:
       m_Items: []
-  - m_Id: 333687507739488256
-    m_Localized: Error
-    m_Metadata:
-      m_Items: []
   - m_Id: 333687523543625728
     m_Localized: XR Origin was destroyed!
     m_Metadata:
       m_Items: []
   - m_Id: 333710168075022336
     m_Localized: Not Enough Coins!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 340318770223132672
+    m_Localized: Oculus Quest Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 340319299783372800
+    m_Localized: Refresh Rate
     m_Metadata:
       m_Items: []
   references:

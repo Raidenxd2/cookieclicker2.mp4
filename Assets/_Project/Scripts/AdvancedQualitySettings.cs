@@ -14,12 +14,10 @@ public class AdvancedQualitySettings : MonoBehaviour
     public int TextureQuality;
     public float RenderQuality;
     public GameObject pp_normal;
-    public GameObject pp_performance;
     public TMP_Text RenderQualityText;
     public TMP_InputField RenderQualityInput;
     public QualityWrapper qualityWrapper;
     public SwitchRendererFeature switchRendererFeature;
-    [SerializeField] private UniversalRenderPipelineAsset asset;
 
     [Header("Performance Mode")]
     public GameObject TreesReal;
@@ -230,6 +228,7 @@ public class AdvancedQualitySettings : MonoBehaviour
         if (VRManager.instance.IsMobileVR)
         {
             QualitySettings.anisotropicFiltering = AnisotropicFiltering.ForceEnable;
+            qualityWrapper.SetMSAA(MsaaQuality._4x);
         }
 #endif
 

@@ -123,10 +123,6 @@ MonoBehaviour:
     m_Key: IMPORT_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 195960503595184128
-    m_Key: INIT_ERRORTITLE
-    m_Metadata:
-      m_Items: []
   - m_Id: 47768164343808
     m_Key: JUKEBOX_BTN
     m_Metadata:
@@ -160,7 +156,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 38170544021504
-    m_Key: NECDIALOG_TITLE
+    m_Key: ERROR
     m_Metadata:
       m_Items: []
   - m_Id: 17947132665856
@@ -315,14 +311,6 @@ MonoBehaviour:
     m_Key: SAVEDATAIOERROR_WARNING
     m_Metadata:
       m_Items: []
-  - m_Id: 187364375354159104
-    m_Key: SAVEDATAWARNING_LIGHTING
-    m_Metadata:
-      m_Items: []
-  - m_Id: 187364344928677888
-    m_Key: SAVEDATAWARNING_TEXTURES
-    m_Metadata:
-      m_Items: []
   - m_Id: 34547839770624
     m_Key: SCREENSHOTOPTIONS_DELETESCREENSHOTS
     m_Metadata:
@@ -355,10 +343,6 @@ MonoBehaviour:
     m_Key: SCREENSHOTSETTINGS_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 167714459552067584
-    m_Key: SDWS_TITLE
-    m_Metadata:
-      m_Items: []
   - m_Id: 2694319677440
     m_Key: SHOP_BTN
     m_Metadata:
@@ -377,10 +361,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 2697087918080
     m_Key: STATS_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 37951928508416
-    m_Key: STATS_TITLE
     m_Metadata:
       m_Items: []
   - m_Id: 1037116854738944
@@ -427,10 +407,6 @@ MonoBehaviour:
     m_Key: UPDATEAVAILABLE_TITLE
     m_Metadata:
       m_Items: []
-  - m_Id: 188436499728707584
-    m_Key: VISITDATADELETIONWEBSITE_BTN
-    m_Metadata:
-      m_Items: []
   - m_Id: 26595489718272
     m_Key: VSYNC_TOGGLE
     m_Metadata:
@@ -459,16 +435,20 @@ MonoBehaviour:
     m_Key: MINIGAMES_DRILL
     m_Metadata:
       m_Items: []
-  - m_Id: 333687507739488256
-    m_Key: VRFALLBACK_TITLE
-    m_Metadata:
-      m_Items: []
   - m_Id: 333687523543625728
     m_Key: VRFALLBACK_INFO
     m_Metadata:
       m_Items: []
   - m_Id: 333710168075022336
     m_Key: MINEMINIGAME_NEC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 340318770223132672
+    m_Key: OCULUSSTANDALONE_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 340319299783372800
+    m_Key: OCULUSSTANDALONE_FPSMODE
     m_Metadata:
       m_Items: []
   m_Metadata:

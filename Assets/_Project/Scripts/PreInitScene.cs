@@ -13,11 +13,6 @@ public class PreInitScene : MonoBehaviour
         PlayerPrefs.SetInt("unity.player_sessionid", 0);
         PlayerPrefs.SetInt("unity.cloud_userid", 0);
         PlayerPrefs.Save();
-        
-        if (VRManager.instance.VREnabled)
-        {
-            VRManager.instance.InitVR();
-        }
 
         AsyncOperationHandle initHandle = LocalizationSettings.InitializationOperation;
         while (!initHandle.IsDone)
