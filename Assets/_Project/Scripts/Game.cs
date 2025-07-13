@@ -8,8 +8,6 @@ using LoggerSystem;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
 using Cysharp.Threading.Tasks;
-using System.Collections.Generic;
-using System.IO;
 using System;
 
 #if UNITY_ANDROID
@@ -473,7 +471,6 @@ public class Game : MonoBehaviour
         CoinMultiplier = 1;
 
         SavePlayer();
-        LogSystem.Log("Reset Data. Now reloading...");
         Reload();
     }
 
@@ -497,8 +494,6 @@ public class Game : MonoBehaviour
 
     public void Reload()
     {
-        LogSystem.Log("Reloading..");
-
         al.UnloadLightmaps();
 
         StartCoroutine(ReloadWait());
@@ -686,10 +681,6 @@ public class Game : MonoBehaviour
 
     public void DisableBetaContent()
     {
-        PlayerPrefs.SetInt("BETA_EnableSideBar", 0);
-        PlayerPrefs.SetInt("BETA_Mods", 0);
-        PlayerPrefs.SetInt("BETA_FPSLIMIT", 0);
-        PlayerPrefs.SetInt("BETA_CookieMonster", 0);
         PlayerPrefs.SetInt("BETA_ResearchFactory", 0);
 
         bc.UpdateBetaContent();
