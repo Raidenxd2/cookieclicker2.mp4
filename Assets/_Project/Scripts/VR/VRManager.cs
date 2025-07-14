@@ -1,3 +1,4 @@
+#if !CC2_REMOVE_VR_SUPPORT
 using UnityEngine;
 using UnityEngine.XR.Management;
 
@@ -76,3 +77,4 @@ public class VRManager : MonoBehaviour
         }
     }
 }
+#endif

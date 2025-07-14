@@ -1,4 +1,4 @@
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
 using System.Collections.Generic;
 using UnityEngine;
 

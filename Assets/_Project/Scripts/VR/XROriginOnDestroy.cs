@@ -1,3 +1,4 @@
+#if !CC2_REMOVE_VR_SUPPORT
 using UnityEngine;
 
 public class XROriginOnDestroy : MonoBehaviour
@@ -7,3 +8,4 @@ public class XROriginOnDestroy : MonoBehaviour
         Game.instance.LoadVRFallbackScene();
     }
 }
+#endif

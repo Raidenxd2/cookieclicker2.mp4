@@ -186,8 +186,8 @@ MonoBehaviour:
     m_Localized: Brouillard
     m_Metadata:
       m_Items: []
-  - m_Id: 26676318150656
-    m_Localized: "Occlusion ambiante de l'espace de l'\xE9cran"
+  - m_Id: 333413640022274048
+    m_Localized: "\xCAtes-vous s\xFBr de vouloir sortir ?"
     m_Metadata:
       m_Items: []
   - m_Id: 27057014153216
@@ -423,6 +423,38 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 234758542913757184
     m_Localized: "Ouvrir le dossier Captures d'\xE9cran"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333413889830825984
+    m_Localized: Perdre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333413916129112064
+    m_Localized: "Vous n'avez plus d'\xE9nergie de forage !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333442041957330944
+    m_Localized: Mini-jeux
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333552801102442496
+    m_Localized: Perceuse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333687523543625728
+    m_Localized: "XR Origin a \xE9t\xE9 d\xE9truit !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333710168075022336
+    m_Localized: "Pas assez de pi\xE8ces !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 340318770223132672
+    m_Localized: "Param\xE8tres de l'Oculus Quest"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 340319299783372800
+    m_Localized: "Taux de rafra\xEEchissement"
     m_Metadata:
       m_Items: []
   references:

@@ -181,8 +181,8 @@ MonoBehaviour:
     m_Localized: Niebla
     m_Metadata:
       m_Items: []
-  - m_Id: 26676318150656
-    m_Localized: "Oclusi\xF3n ambiental del espacio de la pantalla"
+  - m_Id: 333413640022274048
+    m_Localized: "\xBFSeguro que quieres salir?"
     m_Metadata:
       m_Items: []
   - m_Id: 27057014153216
@@ -421,6 +421,38 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 234758542913757184
     m_Localized: Abrir la carpeta Screenshots
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333413889830825984
+    m_Localized: Pierde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333413916129112064
+    m_Localized: "\xA1Te has quedado sin energ\xEDa de perforaci\xF3n!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333442041957330944
+    m_Localized: Minijuegos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333552801102442496
+    m_Localized: Taladro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333687523543625728
+    m_Localized: "\xA1El Origen XR fue destruido!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333710168075022336
+    m_Localized: No hay suficientes monedas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 340318770223132672
+    m_Localized: Ajustes de Oculus Quest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 340319299783372800
+    m_Localized: "Frecuencia de actualizaci\xF3n"
     m_Metadata:
       m_Items: []
   references:

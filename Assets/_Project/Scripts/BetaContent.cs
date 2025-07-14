@@ -21,8 +21,10 @@ public class BetaContent : MonoBehaviour
 
     public static BetaContent instance;
 
+#if !CC2_REMOVE_VR_SUPPORT
     [SerializeField] private AssetReference VRPrefab;
     private GameObject VRPrefabGO;
+#endif
 
     private void Awake()
     {
@@ -45,10 +47,14 @@ public class BetaContent : MonoBehaviour
         }
 #endif
 
+#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             LoadVRData();
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         }
+#endif
 
         try
         {
@@ -72,10 +78,12 @@ public class BetaContent : MonoBehaviour
         }
     }
 
+#if !CC2_REMOVE_VR_SUPPORT
     private async UniTask LoadVRData()
     {
         VRPrefabGO = Instantiate(await Addressables.LoadAssetAsync<GameObject>(VRPrefab));
     }
+#endif
 
     public void UpdateBetaContent()
     {

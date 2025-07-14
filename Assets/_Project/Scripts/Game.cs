@@ -57,7 +57,9 @@ public class Game : MonoBehaviour
     public Notification notification;
     public AddressableLightmaps al;
     public BetaContent bc;
+#if !CC2_REMOVE_VR_SUPPORT
     public VRFadeCanvas vrFade;
+#endif
 
     // text
     [Header("Text")]
@@ -114,6 +116,9 @@ public class Game : MonoBehaviour
     public GameObject BetaContentScreen;
     public Toggle[] BetaContentToggles;
     public GameObject ScreenshotOptionsBTN;
+#if UNITY_WEBGL
+    public GameObject QuitBTN;
+#endif
 
     [Header("Particles")]
     public GameObject CookieVFX;
@@ -134,18 +139,19 @@ public class Game : MonoBehaviour
     public double HammerEnergyUpgradePrice;
     public double CoinMultiplierUpgradePrice;
     public double CoinMultiplier;
-
+#if !CC2_REMOVE_VR_SUPPORT
     [Header("VR")]
     [SerializeField] private AssetReference VRPrefab;
     private GameObject VRPrefabGO;
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
     [SerializeField] private GameObject AndroidVROnlySettingsButton;
     [SerializeField] private TMP_Dropdown OculusQuestRefreshRateDropdown;
 #endif
     public GameObject XROrigin;
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
     private XRDisplaySubsystem displaySubsystem;
+#endif
 #endif
 
     private bool AllowUpdate;
@@ -170,8 +176,11 @@ public class Game : MonoBehaviour
         StartAsync().Forget();
     }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
     private async UniTaskVoid StartAsync()
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
     {
+#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             try
@@ -196,7 +205,7 @@ public class Game : MonoBehaviour
 
             gameCamera.gameObject.SetActive(false);
         }
-
+#endif
 #if UNITY_ANDROID
         if (VRManager.instance.IsMobileVR)
         {
@@ -230,10 +239,13 @@ public class Game : MonoBehaviour
         }
 #endif
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_WEBGL
         ScreenshotOptionsBTN.SetActive(false);
 #else
         ScreenshotOptionsBTN.SetActive(true);
+#endif
+#if UNITY_WEBGL
+        QuitBTN.SetActive(false);
 #endif
 
         if (PlayerPrefs.GetInt("HasPlayed", 0) == 0)
@@ -532,9 +544,10 @@ public class Game : MonoBehaviour
         LogSystem.Log("Loading Init scene and unloading the Game scene.", LogTypes.Normal);
 
         Addressables.UnloadSceneAsync(AddressableHandles.instance.gameSceneHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
-
+#if !CC2_REMOVE_VR_SUPPORT
         Destroy(VRPrefabGO);
         Addressables.Release(VRPrefab);
+#endif
 
         AddressableHandles.instance.initSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.initSceneRef, LoadSceneMode.Single);
 
@@ -543,7 +556,7 @@ public class Game : MonoBehaviour
             yield return null;
         }
     }
-
+#if !CC2_REMOVE_VR_SUPPORT
     public void LoadVRFallbackScene()
     {
         LoadVRFallbackSceneAsync().Forget();
@@ -558,6 +571,7 @@ public class Game : MonoBehaviour
         AddressableHandles.instance.vrFallbackSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.vrFallbackSceneRef, LoadSceneMode.Single);
         await AddressableHandles.instance.vrFallbackSceneHandle;
     }
+#endif
 
     public void BuyAutoclicker()
     {

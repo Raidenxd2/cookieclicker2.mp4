@@ -10,14 +10,12 @@ public class AdvancedQualitySettings : MonoBehaviour
     public bool Trees;
     public bool VSync;
     public bool Fog;
-    public bool AO;
     public int TextureQuality;
     public float RenderQuality;
     public GameObject pp_normal;
     public TMP_Text RenderQualityText;
     public TMP_InputField RenderQualityInput;
     public QualityWrapper qualityWrapper;
-    public SwitchRendererFeature switchRendererFeature;
 
     [Header("Performance Mode")]
     public GameObject TreesReal;
@@ -80,14 +78,6 @@ public class AdvancedQualitySettings : MonoBehaviour
         UpdateSettings();
     }
 
-    public void AOToggle(bool Toggle)
-    {
-        AO = Toggle;
-        PlayerPrefs.SetInt("GRAPHICS_AO", boolToInt(Toggle));
-
-        UpdateSettings();
-    }
-
     public void GraphicsPresetChanged(int value)
     {
         LogSystem.Log(value.ToString());
@@ -125,14 +115,12 @@ public class AdvancedQualitySettings : MonoBehaviour
         var VSyncTemp = PlayerPrefs.GetInt("GRAPHICS_VSync");
         var FogTemp = PlayerPrefs.GetInt("GRAPHICS_Fog");
         var TextureQualityTemp = PlayerPrefs.GetInt("GRAPHICS_TextureQuality");
-        var AOTemp = PlayerPrefs.GetInt("GRAPHICS_AO");
         PostProcessing = intToBool(ppTemp);
         Particals = intToBool(ParticlesTemp);
         Trees = intToBool(TreesTemp);
         VSync = intToBool(VSyncTemp);
         Fog = intToBool(FogTemp);
         TextureQuality = TextureQualityTemp;
-        AO = intToBool(AOTemp);
         RenderQuality = PlayerPrefs.GetFloat("GRAPHICS_RenderQuality", 1);
 
         UpdateSettings();
@@ -140,13 +128,12 @@ public class AdvancedQualitySettings : MonoBehaviour
 
     public void SetDefaults()
     {
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
         Particals = true;
         Trees = true;
         VSync = false;
         Fog = true;
         TextureQuality = 0;
-        AO = false;
         RenderQuality = 0.75f;
         if (VRManager.instance.IsMobileVR)
         {
@@ -154,18 +141,26 @@ public class AdvancedQualitySettings : MonoBehaviour
             RenderQuality = 1f;
         }
         
-        #endif
+#endif
 
-        #if UNITY_STANDALONE
+#if UNITY_WEBGL
+        Particals = true;
+        Trees = true;
+        VSync = false;
+        Fog = true;
+        TextureQuality = 0;
+        RenderQuality = 1f;
+#endif
+
+#if UNITY_STANDALONE
         PostProcessing = true;
         Particals = true;
         Trees = true;
         VSync = true;
         Fog = true;
         TextureQuality = 0;
-        AO = false;
         RenderQuality = 1f;
-        #endif
+#endif
 
         PlayerPrefs.SetInt("GRAPHICS_PostProcessing", boolToInt(PostProcessing));
         PlayerPrefs.SetInt("GRAPHICS_Particles", boolToInt(Particals));
@@ -173,7 +168,6 @@ public class AdvancedQualitySettings : MonoBehaviour
         PlayerPrefs.SetInt("GRAPHICS_VSync", boolToInt(VSync));
         PlayerPrefs.SetInt("GRAPHICS_Fog", boolToInt(Fog));
         PlayerPrefs.SetInt("GRAPHICS_TextureQuality", TextureQuality);
-        PlayerPrefs.SetInt("GRAPHICS_AO", boolToInt(AO));
         PlayerPrefs.SetFloat("GRAPHICS_RenderQuality", RenderQuality);
 
         UpdateSettings();
@@ -237,7 +231,5 @@ public class AdvancedQualitySettings : MonoBehaviour
         RenderQualityText.text = RenderQuality + "x";
 
         qualityWrapper.SetRenderScale(RenderQuality);
-
-        switchRendererFeature.set(AO);
     }
 }

@@ -185,10 +185,6 @@ MonoBehaviour:
     m_Localized: Fog
     m_Metadata:
       m_Items: []
-  - m_Id: 26676318150656
-    m_Localized: Screen Space Ambient Occlusion
-    m_Metadata:
-      m_Items: []
   - m_Id: 27057014153216
     m_Localized: Texture Quality
     m_Metadata:

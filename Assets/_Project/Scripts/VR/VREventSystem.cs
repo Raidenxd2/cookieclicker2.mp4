@@ -1,3 +1,4 @@
+#if !CC2_REMOVE_VR_SUPPORT
 using UnityEngine;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.XR.Interaction.Toolkit.UI;
@@ -13,3 +14,4 @@ public class VREventSystem : MonoBehaviour
         }
     }
 }
+#endif

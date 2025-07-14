@@ -1,0 +1,10 @@
+{
+  "name": "com.unity.test-framework.performance",
+  "displayName": "Performance testing API",
+  "version": "3.1.0",
+  "unity": "2020.3",
+  "description": "Package that extends Unity Test Framework package. Adds performance testing capabilities and collects configuration metadata.\n\nModified version that removes everything lol",
+  "author": {
+    "name": "Unity"
+  }
+}

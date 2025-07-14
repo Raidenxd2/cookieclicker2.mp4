@@ -7,11 +7,15 @@ public class AddressableHandles : MonoBehaviour
 {
     public AssetReference gameSceneRef;
     public AssetReference initSceneRef;
+#if !CC2_REMOVE_VR_SUPPORT
     public AssetReference vrFallbackSceneRef;
+#endif
 
     public AsyncOperationHandle<SceneInstance> gameSceneHandle;
     public AsyncOperationHandle<SceneInstance> initSceneHandle;
+#if !CC2_REMOVE_VR_SUPPORT
     public AsyncOperationHandle<SceneInstance> vrFallbackSceneHandle;
+#endif
 
     public static AddressableHandles instance;
 

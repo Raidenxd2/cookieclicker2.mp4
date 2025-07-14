@@ -355,10 +355,6 @@ MonoBehaviour:
     m_Key: SOUND_TOGGLE
     m_Metadata:
       m_Items: []
-  - m_Id: 26676318150656
-    m_Key: SSAO_TOGGLE
-    m_Metadata:
-      m_Items: []
   - m_Id: 2697087918080
     m_Key: STATS_BTN
     m_Metadata:

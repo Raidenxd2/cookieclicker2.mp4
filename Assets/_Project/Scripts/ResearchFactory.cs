@@ -20,9 +20,13 @@ public class ResearchFactory : MonoBehaviour
     public Transform GameCamera;
     public Transform VRCamera;
     public Transform MainScene;
+#if !CC2_REMOVE_VR_SUPPORT
     public Transform MainSceneVR;
+#endif
     public Transform WhatWasThisNamed;
+#if !CC2_REMOVE_VR_SUPPORT
     public Transform WhatWasThisNamedVR;
+#endif
     public int BigCookieDuration;
     public TMP_Text BigCookieText;
     public bool BigCookieUnlocked;
@@ -88,14 +92,18 @@ public class ResearchFactory : MonoBehaviour
         game.FadeCanvasGroup.blocksRaycasts = true;
         yield return new WaitForSeconds(1);
 
+#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             VRCamera.position = WhatWasThisNamedVR.position;
         }
         else
         {
+#endif
             GameCamera.SetPositionAndRotation(WhatWasThisNamed.position, WhatWasThisNamed.rotation);
+#if !CC2_REMOVE_VR_SUPPORT
         }
+#endif
 
         FinishEnter();
         game.Fade.Play("FadeOut");
@@ -108,15 +116,19 @@ public class ResearchFactory : MonoBehaviour
         game.FadeCanvasGroup.blocksRaycasts = true;
         yield return new WaitForSeconds(1);
 
+#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             VRCamera.position = MainSceneVR.position;
         }
         else
         {
+#endif
             GameCamera.SetPositionAndRotation(MainScene.position, MainScene.rotation);
+#if !CC2_REMOVE_VR_SUPPORT
         }
-        
+#endif
+
         FinishExit();
         game.Fade.Play("FadeOut");
         game.FadeCanvasGroup.blocksRaycasts = false;
