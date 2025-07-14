@@ -116,9 +116,7 @@ public class Game : MonoBehaviour
     public GameObject BetaContentScreen;
     public Toggle[] BetaContentToggles;
     public GameObject ScreenshotOptionsBTN;
-#if UNITY_WEBGL
     public GameObject QuitBTN;
-#endif
 
     [Header("Particles")]
     public GameObject CookieVFX;

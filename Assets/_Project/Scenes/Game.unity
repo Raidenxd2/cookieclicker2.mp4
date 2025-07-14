@@ -64584,6 +64584,7 @@ MonoBehaviour:
   BetaContentToggles:
   - {fileID: 382717712}
   ScreenshotOptionsBTN: {fileID: 2113006684}
+  QuitBTN: {fileID: 1493900857}
   CookieVFX: {fileID: 855337172176263824, guid: a9fc5eae49f09e8459d6e2cba2a914b9, type: 3}
   CookieGains: {fileID: 8907755305702998037, guid: 107fa5a46d36a3843aa0ee3e8f58ddd0, type: 3}
   CookieVFXSpot: {fileID: 1096343094}
