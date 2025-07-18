@@ -7,7 +7,6 @@ public class AdvancedQualitySettings : MonoBehaviour
 {
     public bool PostProcessing;
     public bool Particals;
-    public bool Trees;
     public bool VSync;
     public bool Fog;
     public int TextureQuality;
@@ -18,7 +17,6 @@ public class AdvancedQualitySettings : MonoBehaviour
     public QualityWrapper qualityWrapper;
 
     [Header("Performance Mode")]
-    public GameObject TreesReal;
     public UniversalAdditionalCameraData GameCamera_AdditionalData;
     public GameObject ParticalsReal;
 
@@ -50,14 +48,6 @@ public class AdvancedQualitySettings : MonoBehaviour
     {
         Particals = Toggle;
         PlayerPrefs.SetInt("GRAPHICS_Particles", boolToInt(Toggle));
-
-        UpdateSettings();
-    }
-
-    public void TreesToggle(bool Toggle)
-    {
-        Trees = Toggle;
-        PlayerPrefs.SetInt("GRAPHICS_Trees", boolToInt(Toggle));
 
         UpdateSettings();
     }
@@ -111,13 +101,11 @@ public class AdvancedQualitySettings : MonoBehaviour
     {
         var ppTemp = PlayerPrefs.GetInt("GRAPHICS_PostProcessing");
         var ParticlesTemp = PlayerPrefs.GetInt("GRAPHICS_Particles");
-        var TreesTemp = PlayerPrefs.GetInt("GRAPHICS_Trees");
         var VSyncTemp = PlayerPrefs.GetInt("GRAPHICS_VSync");
         var FogTemp = PlayerPrefs.GetInt("GRAPHICS_Fog");
         var TextureQualityTemp = PlayerPrefs.GetInt("GRAPHICS_TextureQuality");
         PostProcessing = intToBool(ppTemp);
         Particals = intToBool(ParticlesTemp);
-        Trees = intToBool(TreesTemp);
         VSync = intToBool(VSyncTemp);
         Fog = intToBool(FogTemp);
         TextureQuality = TextureQualityTemp;
@@ -130,7 +118,6 @@ public class AdvancedQualitySettings : MonoBehaviour
     {
 #if UNITY_ANDROID
         Particals = true;
-        Trees = true;
         VSync = false;
         Fog = true;
         TextureQuality = 0;
@@ -145,7 +132,6 @@ public class AdvancedQualitySettings : MonoBehaviour
 
 #if UNITY_WEBGL
         Particals = true;
-        Trees = true;
         VSync = false;
         Fog = true;
         TextureQuality = 0;
@@ -155,7 +141,6 @@ public class AdvancedQualitySettings : MonoBehaviour
 #if UNITY_STANDALONE
         PostProcessing = true;
         Particals = true;
-        Trees = true;
         VSync = true;
         Fog = true;
         TextureQuality = 0;
@@ -164,7 +149,6 @@ public class AdvancedQualitySettings : MonoBehaviour
 
         PlayerPrefs.SetInt("GRAPHICS_PostProcessing", boolToInt(PostProcessing));
         PlayerPrefs.SetInt("GRAPHICS_Particles", boolToInt(Particals));
-        PlayerPrefs.SetInt("GRAPHICS_Trees", boolToInt(Trees));
         PlayerPrefs.SetInt("GRAPHICS_VSync", boolToInt(VSync));
         PlayerPrefs.SetInt("GRAPHICS_Fog", boolToInt(Fog));
         PlayerPrefs.SetInt("GRAPHICS_TextureQuality", TextureQuality);
@@ -192,14 +176,6 @@ public class AdvancedQualitySettings : MonoBehaviour
         else
         {
             ParticalsReal.SetActive(false);
-        }
-        if (Trees)
-        {
-            TreesReal.SetActive(true);
-        }
-        else
-        {
-            TreesReal.SetActive(false);
         }
         if (VSync)
         {

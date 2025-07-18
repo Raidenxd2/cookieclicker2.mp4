@@ -10,7 +10,6 @@ public class DEBUG : MonoBehaviour
     public TMP_Text FPSText;
     public TMP_InputField CookiesInput;
     public Game game;
-    public GameObject TerrainObject;
     public int FramesPerSec;
     public TMP_InputField FPSInput;
     public GameObject DEBUGButton;
@@ -54,11 +53,6 @@ public class DEBUG : MonoBehaviour
     public void LoadCookies()
     {
         CookiesInput.text = "" + game.Cookies;
-    }
-
-    public void HideTerrain()
-    {
-        TerrainObject.SetActive(false);
     }
 
     public void SetFPS()

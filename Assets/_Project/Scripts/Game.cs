@@ -263,7 +263,6 @@ public class Game : MonoBehaviour
             Music = true;
             Sounds = true;
             ad.TextureQuality = 0;
-            ad.Trees = true;
             ad.Particals = true;
             ad.PostProcessing = true;
             ad.VSync = false;

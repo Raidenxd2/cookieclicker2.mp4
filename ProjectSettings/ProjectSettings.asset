@@ -140,7 +140,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 2.0.0-PublicRelease-OS_11070 (open-source)
+  bundleVersion: 2.0.0-PublicRelease-OS_11073 (open-source)
   preloadedAssets:
   - {fileID: 11400000, guid: 5a6050f4d65b99340992ab87fbbe1f03, type: 2}
   - {fileID: -944628639613478452, guid: f6942149c81fd7d4a9c839ed3180c690, type: 3}
@@ -168,12 +168,12 @@ PlayerSettings:
     Android: com.raiden.cookieclicker2mp4_os2
     Standalone: com.raiden.cookieclicker2mp4-os
   buildNumber:
-    Standalone: 11070
+    Standalone: 11073
     VisionOS: 0
     iPhone: 25
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 11070
+  AndroidBundleVersionCode: 11073
   AndroidMinSdkVersion: 25
   AndroidTargetSdkVersion: 36
   AndroidPreferredInstallLocation: 0

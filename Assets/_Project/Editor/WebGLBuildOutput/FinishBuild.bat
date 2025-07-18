@@ -1,0 +1,1 @@
+gzipper compress ./ --gzip --brotli --zstd --gzip-level 9 --brotli-quality 11 --zstd-level 5 --threshold 256000 --remove-larger
