@@ -10,7 +10,7 @@ public class WebGLBuild : Editor
     [MenuItem("Tools/Make WebGL Build")]
     public static void MakeWebGLBuild()
     {
-        if (!EditorUtility.DisplayDialog("", "Are you sure you want to make a WebGL build? This will:\n\nRemove all VR and XR packages\nRemove XR Interaction Toolkit Samples\nPrevent VR data from being included\nMake a WebGL build", "Yes", "No"))
+        if (!EditorUtility.DisplayDialog("", "Are you sure you want to make a WebGL build? This will:\n\nRemove all VR and XR packages\nRemove XR Interaction Toolkit Samples\nPrevent VR data from being included\nMake a WebGL build\n\nThis operation is destructive.", "Yes", "No"))
         {
             return;
         }
@@ -44,12 +44,20 @@ public class WebGLBuild : Editor
 
         AddressableAssetGroup aag1 = AssetDatabase.LoadAssetAtPath<AddressableAssetGroup>("Assets/AddressableAssetsData/AssetGroups/VRDataShared");
         aag1.GetSchema<BundledAssetGroupSchema>().IncludeInBuild = false;
+        EditorUtility.SetDirty(aag1);
         AddressableAssetGroup aag2 = AssetDatabase.LoadAssetAtPath<AddressableAssetGroup>("Assets/AddressableAssetsData/AssetGroups/InitScene-VRData");
         aag2.GetSchema<BundledAssetGroupSchema>().IncludeInBuild = false;
+        EditorUtility.SetDirty(aag2);
         AddressableAssetGroup aag3 = AssetDatabase.LoadAssetAtPath<AddressableAssetGroup>("Assets/AddressableAssetsData/AssetGroups/GameScene-VRData");
         aag3.GetSchema<BundledAssetGroupSchema>().IncludeInBuild = false;
+        EditorUtility.SetDirty(aag3);
         AddressableAssetGroup aag4 = AssetDatabase.LoadAssetAtPath<AddressableAssetGroup>("Assets/AddressableAssetsData/AssetGroups/VRFallback");
         aag4.GetSchema<BundledAssetGroupSchema>().IncludeInBuild = false;
+        EditorUtility.SetDirty(aag3);
+
+        AssetDatabase.Refresh();
+
+        AddressableAssetSettings.BuildPlayerContent();
 
         // Get all scenes in Build Settings/Build Profiles
         List<string> scenes = new();
