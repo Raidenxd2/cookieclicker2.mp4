@@ -45,11 +45,21 @@ public class WebGLBuild : Editor
             Directory.Delete(Application.dataPath + "/../Packages/com.unity.xr.meta-openxr", true);
         }
 
-        string[] packages = new[] { "com.unity.xr.interaction.toolkit", "com.unity.xr.management", "com.unity.xr.openxr", "com.unity.xr.meta-openxr", "com.unity.modules.vr"};
+        if (!File.Exists(Application.dataPath + "/WebGL_PackagesRemoved"))
+        {
+            string[] packages = new[] { "com.unity.xr.interaction.toolkit", "com.unity.xr.management", "com.unity.xr.openxr", "com.unity.xr.meta-openxr", "com.unity.modules.vr" };
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-        RemovePackagesAsync(packages);
+            RemovePackagesAsync(packages);
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+
+            File.Create(Application.dataPath + "/WebGL_PackagesRemoved");
+
+            EditorUtility.DisplayDialog("", "Please run 'Tools/Make WebGL Build' again.", "OK");
+
+            EditorUtility.ClearProgressBar();
+            return;
+        }
 
         WebGLConfigSO wglc = AssetDatabase.LoadAssetAtPath<WebGLConfigSO>("Assets/WebGLConfig.asset");
         foreach (var group in wglc.assetGroupsToDisable)
