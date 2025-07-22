@@ -137,7 +137,6 @@ public class Game : MonoBehaviour
     public double HammerEnergyUpgradePrice;
     public double CoinMultiplierUpgradePrice;
     public double CoinMultiplier;
-#if !CC2_REMOVE_VR_SUPPORT
     [Header("VR")]
     [SerializeField] private AssetReference VRPrefab;
     private GameObject VRPrefabGO;
@@ -147,7 +146,6 @@ public class Game : MonoBehaviour
 
 #if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
     private XRDisplaySubsystem displaySubsystem;
-#endif
 #endif
 
     private bool AllowUpdate;
@@ -202,7 +200,7 @@ public class Game : MonoBehaviour
             gameCamera.gameObject.SetActive(false);
         }
 #endif
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.IsMobileVR)
         {
             try
@@ -516,7 +514,7 @@ public class Game : MonoBehaviour
         Music = Toggle;
     }
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
     public void ChangeRefreshRate(float val)
     {
         if (displaySubsystem == null)

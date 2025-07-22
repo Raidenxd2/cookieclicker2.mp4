@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using UnityEngine.AddressableAssets;
 using System;
+#if !CC2_REMOVE_VR_SUPPORT
 using Cysharp.Threading.Tasks;
+#endif
 #if UNITY_ANDROID
 using UnityEngine.Rendering.Universal;
 #endif
@@ -21,10 +23,8 @@ public class BetaContent : MonoBehaviour
 
     public static BetaContent instance;
 
-#if !CC2_REMOVE_VR_SUPPORT
     [SerializeField] private AssetReference VRPrefab;
     private GameObject VRPrefabGO;
-#endif
 
     private void Awake()
     {
@@ -39,7 +39,7 @@ public class BetaContent : MonoBehaviour
         PlayerPrefs.SetInt("unity.cloud_userid", 0);
         PlayerPrefs.Save();
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.IsMobileVR)
         {
             UniversalRenderPipelineAsset urp = (UniversalRenderPipelineAsset)QualitySettings.renderPipeline;
