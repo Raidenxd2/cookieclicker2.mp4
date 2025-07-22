@@ -44727,6 +44727,17 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1339319647 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1401833681302480738, guid: b040e007001c36048bbb4e31e3132759, type: 3}
+  m_PrefabInstance: {fileID: 1339319642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322643153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1339319648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57825,9 +57836,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1875723493}
   - component: {fileID: 1875723492}
+  - component: {fileID: 1875723497}
   - component: {fileID: 1875723494}
   - component: {fileID: 1875723495}
-  - component: {fileID: 1875723496}
+  - component: {fileID: 1875723498}
   m_Layer: 0
   m_Name: MouseEventSystem
   m_TagString: Untagged
@@ -57872,7 +57884,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875723490}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
@@ -57935,7 +57947,27 @@ MonoBehaviour:
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
---- !u!114 &1875723496
+--- !u!114 &1875723497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875723490}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1875723498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57944,7 +57976,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1875723490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee5e69c0c5f2eb84395310fa52e605b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 75ebd5c223501e94ea5fa9e49d476e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1880085087
@@ -62661,6 +62693,8 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  AndroidVROnlySettingsButton: {fileID: 1823450551}
+  OculusQuestRefreshRateDropdown: {fileID: 1339319647}
   XROrigin: {fileID: 0}
 --- !u!4 &2106446465
 Transform:

@@ -10,7 +10,8 @@ using UnityEngine.Rendering;
 using Cysharp.Threading.Tasks;
 using System;
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
+using System.Collections.Generic;
 using UnityEngine.XR.Management;
 using UnityEngine.XR;
 using UnityEngine.XR.OpenXR.Features.Meta;

@@ -10,7 +10,7 @@ public class AndroidPrepareBuild : Editor
     [MenuItem("Tools/Prepare Non-VR Android build")]
     public static void PrepareAndroidBuild()
     {
-        if (!EditorUtility.DisplayDialog("", "Are you sure want to prepare to make a Non-VR Android build? This will:\n\nRemove all VR and XR packages\nRemove XR Interaction Toolkit Samples\nPrevent VR data from being included\n\nThis operation is destructive.", "Yes", "No"))
+        if (!EditorUtility.DisplayDialog("", "Are you sure want to prepare to make a Non-VR Android build? This will:\n\nRemove all VR and XR packages\nRemove XR Interaction Toolkit Samples\nPrevent VR data from being included\nSet AudioClips to mono\n\nThis operation is destructive.", "Yes", "No"))
         {
             return;
         }
