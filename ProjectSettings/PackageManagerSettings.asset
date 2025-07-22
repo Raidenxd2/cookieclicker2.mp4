@@ -31,7 +31,6 @@ MonoBehaviour:
     m_Name: package.openupm.com
     m_Url: https://package.openupm.com
     m_Scopes:
-    - com.github.superunitybuild.buildtool
     - com.cysharp.unitask
     - com.annulusgames.lit-motion
     - com.raiden.serial
@@ -46,6 +45,6 @@ MonoBehaviour:
   m_RegistryInfoDraft:
     m_Modified: 0
     m_ErrorMessage: 
-    m_UserModificationsInstanceId: -876
-    m_OriginalInstanceId: -880
+    m_UserModificationsInstanceId: -868
+    m_OriginalInstanceId: -872
   m_LoadAssets: 0

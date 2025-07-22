@@ -9,13 +9,13 @@ public class DeleteSave : MonoBehaviour
     {
         try
         {
-            File.Delete(Application.persistentDataPath + "/cookie2");
+            File.Delete(Application.persistentDataPath + "/Saves/Default.cookie");
             game.SavePlayer();
             game.Reload();
         }
         catch
         {
-            game.ErrorText.text = "Could not delete save file, please delete manualy at: " + Application.persistentDataPath + "/cookie2";
+            game.ErrorText.text = "Could not delete save file, please delete manualy at: " + Application.persistentDataPath + "/Saves/Default.cookie";
         }
     }
 }

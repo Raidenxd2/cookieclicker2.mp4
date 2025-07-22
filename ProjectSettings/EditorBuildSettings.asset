@@ -12,7 +12,7 @@ EditorBuildSettings:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: f44da2c0f58c31f4196ab2c2bc7f1986, type: 2}
     com.unity.addressableassets: {fileID: 11400000, guid: 9e02dac3f60ffc64cbaab0fe6484bdd5, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: f6942149c81fd7d4a9c839ed3180c690, type: 3}
-    com.unity.localization.settings: {fileID: 11400000, guid: 5a6050f4d65b99340992ab87fbbe1f03, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 8a551d6fc16eef0438e99cd9843bbf82, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: ea4419f11930f49429784e0a655c2a28, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d45d0090f76dbdd4ca8bbe877eb041d3, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 1fd3eede65d2b684897885ba920b3ba5, type: 2}

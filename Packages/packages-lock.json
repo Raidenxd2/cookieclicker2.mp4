@@ -19,11 +19,11 @@
       "url": "https://package.openupm.com"
     },
     "com.raiden.buildmanager": {
-      "version": "https://github.com/Raidenxd2/BuildManager.git",
+      "version": "https://github.com/Raidenxd2/BuildManager.git#v1.1.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "198c135d744cf3893cb1dcdda50b3083e7309908"
+      "hash": "f8dc341d8d8c693358aa215d18e88e50a00dda71"
     },
     "com.raiden.serial": {
       "version": "1.0.2",
@@ -31,6 +31,15 @@
       "source": "registry",
       "dependencies": {},
       "url": "https://package.openupm.com"
+    },
+    "com.raiden.sharedshaders": {
+      "version": "https://github.com/Raidenxd2/SharedShaders.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.shadergraph": "14.0.12"
+      },
+      "hash": "236a5651376901766f4ec9d2d83a24c153702c0b"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -101,14 +110,12 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.localization": {
-      "version": "1.5.5",
+      "version": "file:com.unity.localization",
       "depth": 0,
-      "source": "registry",
+      "source": "embedded",
       "dependencies": {
-        "com.unity.addressables": "1.25.0",
-        "com.unity.nuget.newtonsoft-json": "3.0.2"
-      },
-      "url": "https://packages.unity.com"
+        "com.unity.addressables": "1.25.0"
+      }
     },
     "com.unity.mathematics": {
       "version": "1.3.2",
@@ -120,13 +127,6 @@
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.4",
       "depth": 2,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.nuget.newtonsoft-json": {
-      "version": "3.2.1",
-      "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

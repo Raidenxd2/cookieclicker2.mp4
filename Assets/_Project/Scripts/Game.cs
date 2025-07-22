@@ -141,10 +141,8 @@ public class Game : MonoBehaviour
     [Header("VR")]
     [SerializeField] private AssetReference VRPrefab;
     private GameObject VRPrefabGO;
-#if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
     [SerializeField] private GameObject AndroidVROnlySettingsButton;
     [SerializeField] private TMP_Dropdown OculusQuestRefreshRateDropdown;
-#endif
     public GameObject XROrigin;
 
 #if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT

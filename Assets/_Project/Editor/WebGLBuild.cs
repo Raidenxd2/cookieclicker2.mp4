@@ -47,7 +47,7 @@ public class WebGLBuild : Editor
 
         if (!File.Exists(Application.dataPath + "/WebGL_PackagesRemoved"))
         {
-            string[] packages = new[] { "com.unity.xr.interaction.toolkit", "com.unity.xr.management", "com.unity.xr.openxr", "com.unity.xr.meta-openxr", "com.unity.modules.vr" };
+            string[] packages = new[] { "dev.voltstro.unitycommandlineparser", "com.unity.xr.interaction.toolkit", "com.unity.xr.management", "com.unity.xr.openxr", "com.unity.xr.meta-openxr", "com.unity.modules.vr", "com.unity.modules.androidjni", "com.unity.modules.screencapture" };
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             RemovePackagesAsync(packages);

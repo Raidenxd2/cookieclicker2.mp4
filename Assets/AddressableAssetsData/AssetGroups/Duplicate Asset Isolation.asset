@@ -56,7 +56,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4b56ddbc0b9a5ec44ad5c5f1ad40e5e4
-    m_Address: Assets/_Project/Shaders/UI-Default.shader
+    m_Address: Packages/com.raiden.sharedshaders/Runtime/Shaders/UI/UI-Default-Minimal.shader
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
