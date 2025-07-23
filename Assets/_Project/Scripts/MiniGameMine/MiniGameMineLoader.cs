@@ -95,7 +95,7 @@ public class MiniGameMineLoader : MonoBehaviour
         }
 #endif
 
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Game"));
+        SceneManager.SetActiveScene(AddressableHandles.instance.gameSceneHandle.Result.Scene);
 
         await Addressables.UnloadSceneAsync(MinigameMineSceneHandle);
 

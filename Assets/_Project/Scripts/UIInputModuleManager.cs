@@ -2,6 +2,9 @@ using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem.UI;
 #endif
+#if ENABLE_LEGACY_INPUT_MANAGER
+using UnityEngine.EventSystems;
+#endif
 #if !CC2_REMOVE_VR_SUPPORT
 using UnityEngine.XR.Interaction.Toolkit.UI;
 #endif

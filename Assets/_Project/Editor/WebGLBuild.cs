@@ -12,7 +12,7 @@ public class WebGLBuild : Editor
     [MenuItem("Tools/Make WebGL Build")]
     public static void MakeWebGLBuild()
     {
-        if (!EditorUtility.DisplayDialog("", "Are you sure you want to make a WebGL build? This will:\n\nRemove all VR and XR packages\nRemove XR Interaction Toolkit Samples\nPrevent VR data from being included\nMake a WebGL build\n\nThis operation is destructive.", "Yes", "No"))
+        if (!EditorUtility.DisplayDialog("", "Are you sure you want to make a WebGL build? This will:\n\nRemove all VR and XR packages\nRemove XR Interaction Toolkit Samples\nPrevent VR data from being included\nRemove Input System package\nMake a WebGL build\n\nThis operation is destructive.", "Yes", "No"))
         {
             return;
         }
@@ -47,7 +47,7 @@ public class WebGLBuild : Editor
 
         if (!File.Exists(Application.dataPath + "/WebGL_PackagesRemoved"))
         {
-            string[] packages = new[] { "dev.voltstro.unitycommandlineparser", "com.unity.xr.interaction.toolkit", "com.unity.xr.management", "com.unity.xr.openxr", "com.unity.xr.meta-openxr", "com.unity.modules.vr", "com.unity.modules.androidjni", "com.unity.modules.screencapture" };
+            string[] packages = new[] { "dev.voltstro.unitycommandlineparser", "com.unity.xr.interaction.toolkit", "com.unity.xr.management", "com.unity.xr.openxr", "com.unity.xr.meta-openxr", "com.unity.inputsystem", "com.unity.modules.vr", "com.unity.modules.androidjni", "com.unity.modules.screencapture" };
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             RemovePackagesAsync(packages);

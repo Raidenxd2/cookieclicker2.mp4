@@ -10,7 +10,7 @@ public class AndroidPrepareBuild : Editor
     [MenuItem("Tools/Prepare Non-VR Android build")]
     public static void PrepareAndroidBuild()
     {
-        if (!EditorUtility.DisplayDialog("", "Are you sure want to prepare to make a Non-VR Android build? This will:\n\nRemove all VR and XR packages\nRemove XR Interaction Toolkit Samples\nPrevent VR data from being included\nSet AudioClips to mono\n\nThis operation is destructive.", "Yes", "No"))
+        if (!EditorUtility.DisplayDialog("", "Are you sure want to prepare to make a Non-VR Android build? This will:\n\nRemove all VR and XR packages\nRemove XR Interaction Toolkit Samples\nPrevent VR data from being included\nRemove Input System package\nSet AudioClips to mono\n\nThis operation is destructive.", "Yes", "No"))
         {
             return;
         }
@@ -64,7 +64,7 @@ public class AndroidPrepareBuild : Editor
 
         if (!File.Exists(Application.dataPath + "/Android_PackagesRemoved"))
         {
-            string[] packages = new[] { "dev.voltstro.unitycommandlineparser", "com.unity.xr.interaction.toolkit", "com.unity.xr.management", "com.unity.xr.openxr", "com.unity.xr.meta-openxr", "com.unity.modules.vr", "com.unity.modules.screencapture" };
+            string[] packages = new[] { "dev.voltstro.unitycommandlineparser", "com.unity.xr.interaction.toolkit", "com.unity.xr.management", "com.unity.xr.openxr", "com.unity.xr.meta-openxr", "com.unity.inputsystem", "com.unity.modules.vr", "com.unity.modules.screencapture" };
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             RemovePackagesAsync(packages);
