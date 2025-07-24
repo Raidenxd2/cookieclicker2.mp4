@@ -28916,9 +28916,7 @@ MonoBehaviour:
   GameCamera: {fileID: 519420032}
   VRCamera: {fileID: 0}
   MainScene: {fileID: 537815512}
-  MainSceneVR: {fileID: 0}
   WhatWasThisNamed: {fileID: 308534142}
-  WhatWasThisNamedVR: {fileID: 1799945199}
   BigCookieDuration: 0
   BigCookieText: {fileID: 1012296891}
   BigCookieUnlocked: 0
@@ -35344,7 +35342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1084802765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44934,11 +44932,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8677716255406429253, guid: 02c5ad9b1e6f22642824d6ffc7c20dbb, type: 3}
   m_PrefabInstance: {fileID: 1369412666}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1369412668 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8677716255406429252, guid: 02c5ad9b1e6f22642824d6ffc7c20dbb, type: 3}
-  m_PrefabInstance: {fileID: 1369412666}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1370603575 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 106894221135080655, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
@@ -50318,7 +50311,6 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
   LoadingAsset: {fileID: 480504837}
-  LoadingAssetVR: {fileID: 1369412668}
   game: {fileID: 2106446464}
 --- !u!1 &1580759142 stripped
 GameObject:
@@ -62634,7 +62626,6 @@ MonoBehaviour:
   notification: {fileID: 1120771770}
   al: {fileID: 816785819}
   bc: {fileID: 290554229}
-  vrFade: {fileID: 1144221427}
   CookiesText: {fileID: 1537137052}
   Shop_Autoclicker: {fileID: 1033384404}
   Shop_Doublecookie: {fileID: 711381718}

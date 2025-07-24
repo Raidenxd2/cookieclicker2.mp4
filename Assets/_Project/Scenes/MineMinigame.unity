@@ -2816,11 +2816,7 @@ MonoBehaviour:
   reachedWhite: 0
   reachedEnd: 0
   WinScreen: {fileID: 0}
-  OldVRPosition: {x: 0, y: 0, z: 0}
-  OldVRRotation: {x: 0, y: 0, z: 0, w: 0}
-  OldVRParent: {fileID: 0}
   Camera: {fileID: 2785156130274170674}
-  VRCameraPosition: {fileID: 1249906909}
   UI: {fileID: 6143994917007831185}
 --- !u!1001 &1790731977
 PrefabInstance:
@@ -7489,7 +7485,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c3a139c5fac8e9b4cba623319f31b8cf, type: 2}
+  - {fileID: 2100000, guid: d348f02554a005b44b07be0969bde51c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8245,7 +8241,7 @@ Transform:
   m_GameObject: {fileID: 1029614454429171413}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -17.250011, y: -2, z: -209.8}
+  m_LocalPosition: {x: -17.250011, y: -1.6, z: -209.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

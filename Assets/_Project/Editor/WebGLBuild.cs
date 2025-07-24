@@ -45,6 +45,11 @@ public class WebGLBuild : Editor
             Directory.Delete(Application.dataPath + "/../Packages/com.unity.xr.meta-openxr", true);
         }
 
+        if (Directory.Exists(Application.dataPath + "/../Packages/com.unity.xr.openxr"))
+        {
+            Directory.Delete(Application.dataPath + "/../Packages/com.unity.xr.openxr", true);
+        }
+
         if (!File.Exists(Application.dataPath + "/WebGL_PackagesRemoved"))
         {
             string[] packages = new[] { "dev.voltstro.unitycommandlineparser", "com.unity.xr.interaction.toolkit", "com.unity.xr.management", "com.unity.xr.openxr", "com.unity.xr.meta-openxr", "com.unity.inputsystem", "com.unity.modules.vr", "com.unity.modules.androidjni", "com.unity.modules.screencapture" };
