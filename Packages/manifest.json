@@ -4,7 +4,7 @@
     "com.cysharp.unitask": "2.5.10",
     "com.raiden.buildmanager": "https://github.com/Raidenxd2/BuildManager.git#v1.1.0",
     "com.raiden.serial": "1.0.2",
-    "com.raiden.sharedshaders": "https://github.com/Raidenxd2/SharedShaders.git",
+    "com.raiden.sharedshaders": "https://github.com/Raidenxd2/SharedShaders.git#1.1.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.addressables": "2.6.0",
     "com.unity.ide.visualstudio": "2.0.23",

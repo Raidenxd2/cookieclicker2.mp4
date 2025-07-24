@@ -60,6 +60,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a050fb19c1fba4458dec6e3d507daf0
+    m_Address: Packages/com.raiden.sharedshaders/Runtime/Shaders/Skybox-Cubed-Basic-Half.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 650dd9526735d5b46b79224bc6e94025
     m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Unlit.shader
     m_ReadOnly: 0

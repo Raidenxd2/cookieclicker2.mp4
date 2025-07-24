@@ -33,13 +33,11 @@
       "url": "https://package.openupm.com"
     },
     "com.raiden.sharedshaders": {
-      "version": "https://github.com/Raidenxd2/SharedShaders.git",
+      "version": "https://github.com/Raidenxd2/SharedShaders.git#1.1.0",
       "depth": 0,
       "source": "git",
-      "dependencies": {
-        "com.unity.shadergraph": "14.0.12"
-      },
-      "hash": "236a5651376901766f4ec9d2d83a24c153702c0b"
+      "dependencies": {},
+      "hash": "c2aedbb25c21d17cee62696c82f62a9c223d40c5"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

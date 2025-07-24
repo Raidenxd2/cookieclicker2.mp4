@@ -19,6 +19,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     [Header("Performance Mode")]
     public UniversalAdditionalCameraData GameCamera_AdditionalData;
     public GameObject ParticalsReal;
+    public GameObject ParticalsReal2;
 
     int boolToInt(bool val)
     {
@@ -173,10 +174,12 @@ public class AdvancedQualitySettings : MonoBehaviour
         if (Particals)
         {
             ParticalsReal.SetActive(true);
+            ParticalsReal2.SetActive(true);
         }
         else
         {
             ParticalsReal.SetActive(false);
+            ParticalsReal2.SetActive(false);
         }
         if (VSync)
         {
