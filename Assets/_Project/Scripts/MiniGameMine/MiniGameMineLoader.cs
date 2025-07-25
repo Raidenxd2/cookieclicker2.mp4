@@ -9,11 +9,6 @@ public class MiniGameMineLoader : MonoBehaviour
     [SerializeField] private AssetReference MinigameMineScene;
     private SceneInstance MinigameMineSceneHandle;
 
-    [SerializeField] private GameObject LoadingAsset;
-#if !CC2_REMOVE_VR_SUPPORT
-    [SerializeField] private GameObject LoadingAssetVR;
-#endif
-
     [SerializeField] private Game game;
 
     public static MiniGameMineLoader instance;
@@ -39,38 +34,12 @@ public class MiniGameMineLoader : MonoBehaviour
         game.FadeCanvasGroup.blocksRaycasts = true;
         await UniTask.WaitForSeconds(1);
 
-#if !CC2_REMOVE_VR_SUPPORT
-        if (VRManager.instance.VREnabled)
-        {
-            LoadingAssetVR.SetActive(true);
-        }
-        else
-        {
-#endif
-            LoadingAsset.SetActive(true);
-#if !CC2_REMOVE_VR_SUPPORT
-        }
-#endif
-
         game.researchFactory.GameCanvas.SetActive(false);
         game.gameCamera.gameObject.SetActive(false);
 
         MinigameMineSceneHandle = await Addressables.LoadSceneAsync(MinigameMineScene, LoadSceneMode.Additive);
 
         SceneManager.SetActiveScene(MinigameMineSceneHandle.Scene);
-
-#if !CC2_REMOVE_VR_SUPPORT
-        if (VRManager.instance.VREnabled)
-        {
-            LoadingAssetVR.SetActive(false);
-        }
-        else
-        {
-#endif
-            LoadingAsset.SetActive(false);
-#if !CC2_REMOVE_VR_SUPPORT
-        }
-#endif
 
         game.Fade.Play("FadeOut");
         game.FadeCanvasGroup.blocksRaycasts = false;

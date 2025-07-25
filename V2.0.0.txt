@@ -1,25 +1,26 @@
 V2.0.0:
 
 The game is now open source at https://github.com/Raidenxd2/cookieclicker2.mp4 licensed under GNU General Public License v3.0
-All Google stuff has been removed.
-Mac build now available.
-Added WebGL support.
 
-Upgraded to Unity 6000.0.48f1
+Upgraded to Unity 6000.1.13f1
+All Google stuff has been removed.
+Added macOS support.
+Added WebGL support.
 Added an update checker.
 Removed Beta Content feature: Mods
 Removed Beta Content feature: Sidebar
 Renamed Space theme to Moon theme and updated it.
 Improved Theme system.
 Improved performance.
-Minor changes.
-Target Android 16.
-Minimum Android version is now Android 7.1 (API level 25)
-Added an Open Screenshots folder button to the screenshot options.
 Improved lighting.
-Updated loading screen.
+Improved scrolling.
+Minor changes.
 Minor UI changes.
+Target Android 16.
+Added an Open Screenshots folder button to the screenshot options.
+Updated loading screen.
 Removed unused code, assets, and localization
 Changed saving system.
-Added Minigame Drill
+Added Minigame Drill.
+Added Achievements.
 Added VR support (use _Launch in VR.bat or start the game with -vr true)

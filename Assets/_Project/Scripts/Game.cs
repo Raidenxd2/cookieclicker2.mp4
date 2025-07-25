@@ -151,6 +151,9 @@ public class Game : MonoBehaviour
 
     private bool AllowUpdate;
 
+    private WaitForSeconds oneSecond;
+    private WaitForSeconds sixtySeconds;
+
     private void Awake()
     {
         instance = this;
@@ -266,19 +269,17 @@ public class Game : MonoBehaviour
             ResetData();
         }
 
+        oneSecond = new(1);
+        sixtySeconds = new(60);
+
         offlineManager.LoadOfflineTime();
         StartCoroutine(AutoSave());
         StartCoroutine(Tick());
         CheckPrices();
 
-        try
-        {
-            SoundAssign();
-        }
-        catch
-        {
-            LogSystem.Log("Could not assign audio. Did you load from the Init scene?", LogTypes.Error);
-        }
+        soundManager = GameObject.FindGameObjectWithTag("audio").GetComponent<SoundManager>();
+        MusicSource = GameObject.FindGameObjectWithTag("music");
+        SoundSource = GameObject.FindGameObjectWithTag("sound");
 
         ad.LoadGraphics();
 
@@ -290,13 +291,6 @@ public class Game : MonoBehaviour
         al.InitAddressableLightmaps();
 
         AllowUpdate = true;
-    }
-
-    void SoundAssign()
-    {
-        soundManager = GameObject.FindGameObjectWithTag("audio").GetComponent<SoundManager>();
-        MusicSource = GameObject.FindGameObjectWithTag("music");
-        SoundSource = GameObject.FindGameObjectWithTag("sound");
     }
 
     void CheckPrices()
@@ -330,14 +324,14 @@ public class Game : MonoBehaviour
 
     IEnumerator AutoSave()
     {
-        yield return new WaitForSeconds(60);
+        yield return sixtySeconds;
         SavePlayer();
         StartCoroutine(AutoSave());
     }
 
     IEnumerator Tick()
     {
-        yield return new WaitForSeconds(1);
+        yield return oneSecond;
         Cookies += CPS;
         TimePlayed += 1;
         StartCoroutine(Tick());
@@ -485,6 +479,13 @@ public class Game : MonoBehaviour
         Cookies += CPC;
         Instantiate(CookieGains, CookieGainsSpot);
         Instantiate(CookieVFX, CookieVFXSpot);
+
+        if (!BetterPrefs.GetBool("BakeCookie", false))
+        {
+            BetterPrefs.SetBool("BakeCookie", true);
+
+            AchievementManager.instance.UpdateAchievements();
+        }
     }
 
     public void QuitGame()
@@ -533,7 +534,7 @@ public class Game : MonoBehaviour
     {
         Fade.Play("FadeIn");
         FadeCanvasGroup.blocksRaycasts = true;
-        yield return new WaitForSeconds(1);
+        yield return oneSecond;
 
         LogSystem.Log("Loading Init scene and unloading the Game scene.", LogTypes.Normal);
 

@@ -16,8 +16,9 @@ public class Updater : MonoBehaviour
         {
             return;
         }
-
+#if !UNITY_EDITOR
         StartAsync().Forget();
+#endif
     }
 
     private async UniTaskVoid StartAsync()
