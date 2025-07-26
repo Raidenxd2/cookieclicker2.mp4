@@ -1,15 +1,15 @@
-using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Networking;
+using Cysharp.Threading.Tasks;
 
 public class Credits : MonoBehaviour
 {
-    public GameObject WebTextScreen;
-    public GameObject DownloadedTextScroll;
-    public TMP_Text DownloadedText;
-    public GameObject NoNetworkScreen;
-    public string ErrorText = "Uh oh, something went wrong while downloading the file. Please try again later. Error details: ";
+    [SerializeField] private GameObject WebTextScreen;
+    [SerializeField] private GameObject DownloadedTextScroll;
+    [SerializeField] private TMP_Text DownloadedText;
+    [SerializeField] private GameObject NoNetworkScreen;
+    [SerializeField] private string ErrorText = "Uh oh, something went wrong while downloading the file. Please try again later.";
 
     public void DownloadCredits(string url)
     {
@@ -18,28 +18,21 @@ public class Credits : MonoBehaviour
             NoNetworkScreen.SetActive(true);
             return;
         }
-        StartCoroutine(GetText(url));
+
+        GetText(url).Forget();
     }
 
-    IEnumerator GetText(string url)
+    private async UniTaskVoid GetText(string url)
     {
-        using (UnityWebRequest www = UnityWebRequest.Get(url))
+        try
         {
-            AsyncOperation operation = www.SendWebRequest();
-            while (!operation.isDone)
-            {
-                yield return null;
-            }
-            if (www.result == UnityWebRequest.Result.ConnectionError)
-            {
-                DownloadedTextScroll.SetActive(true);
-                DownloadedText.SetText(ErrorText + www.error);
-            }
-            else
-            {
-                DownloadedTextScroll.SetActive(true);
-                DownloadedText.text = www.downloadHandler.text;
-            }
+            DownloadedText.text = (await UnityWebRequest.Get(url).SendWebRequest()).downloadHandler.text;
         }
+        catch
+        {
+            DownloadedText.text = ErrorText;
+        }
+
+        DownloadedTextScroll.SetActive(true);
     }
 }

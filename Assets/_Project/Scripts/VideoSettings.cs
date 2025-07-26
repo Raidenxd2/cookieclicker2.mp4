@@ -17,16 +17,13 @@ public class VideoSettings : MonoBehaviour
     private Resolution[] resolutions;
     private List<Resolution> filteredResolutions;
 
-    private float currentRefreshRate;
     private int currentResolutionIndex = 0;
 
-    private System.Collections.IEnumerator Start()
+    private void Start()
     {
         AddOptionsToDropdown();
 
-        yield return new WaitForSeconds(1f);
-
-        if (PlayerPrefs.GetInt("VideoSettings_Setup", 0) == 0)
+        if (!BetterPrefs.GetBool("VideoSettings_Setup", false))
         {
             ResetSettings();
         }
@@ -38,10 +35,10 @@ public class VideoSettings : MonoBehaviour
 
     private void ResetSettings()
     {
-        PlayerPrefs.SetInt("VideoSettings_Setup", 1);
-        PlayerPrefs.SetInt("WindowMode", 1);
-        PlayerPrefs.SetInt("GRAPHICS_AA", 1);
-        PlayerPrefs.SetInt("GRAPHICS_VSync", 1);
+        BetterPrefs.SetBool("VideoSettings_Setup", true);
+        BetterPrefs.SetInt("WindowMode", 1);
+        BetterPrefs.SetInt("GRAPHICS_AA", 1);
+        BetterPrefs.SetBool("GRAPHICS_VSync", true);
     }
 
     private void AddOptionsToDropdown()
@@ -50,15 +47,10 @@ public class VideoSettings : MonoBehaviour
         filteredResolutions = new List<Resolution>();
 
         ResolutionDropdown.ClearOptions();
-        currentRefreshRate = (float)Screen.currentResolution.refreshRateRatio.value;
 
         for (int i = 0; i < resolutions.Length; i++)
         {
             filteredResolutions.Add(resolutions[i]);
-            if (resolutions[i].refreshRateRatio.numerator == currentRefreshRate)
-            {
-                
-            }
         }
 
         List<string> options = new();
@@ -75,9 +67,18 @@ public class VideoSettings : MonoBehaviour
         ResolutionDropdown.AddOptions(options);
         ResolutionDropdown.value = currentResolutionIndex;
 
-        if (PlayerPrefs.GetInt("VideoSettings_Setup", 0) == 0)
+        if (!BetterPrefs.GetBool("VideoSettings_Setup", false))
         {
-            PlayerPrefs.SetInt("ResolutionIndex", currentResolutionIndex);
+            BetterPrefs.SetInt("ResolutionIndex", currentResolutionIndex);
+        }
+
+        if (BetterPrefs.GetInt("ResolutionIndex", 1) >= options.Count)
+        {
+            BetterPrefs.SetInt("ResolutionIndex", options.Count);
+        }
+        if (BetterPrefs.GetInt("ResolutionIndex", 1) < 0)
+        {
+            BetterPrefs.SetInt("ResolutionIndex", options.Count);
         }
 
         ResolutionDropdown.RefreshShownValue();
@@ -85,23 +86,23 @@ public class VideoSettings : MonoBehaviour
 
     private void LoadSettings()
     {
-        ResolutionDropdown.value = PlayerPrefs.GetInt("ResolutionIndex", 0);
-        WindowModeDropdown.value = PlayerPrefs.GetInt("WindowMode", 1);
-        AADropdown.value = PlayerPrefs.GetInt("GRAPHICS_AA", 1);
-        VSyncToggle.isOn = intToBool(PlayerPrefs.GetInt("GRAPHICS_VSync", 1));
-        SetResolution(PlayerPrefs.GetInt("ResolutionIndex", 1));
-        ChangeWindowMode(PlayerPrefs.GetInt("WindowMode", 1));
-        ChangeAntiAliasing(PlayerPrefs.GetInt("GRAPHICS_AA", 1));
-        ChangeVSync(intToBool(PlayerPrefs.GetInt("GRAPHICS_VSync", 1)));
+        ResolutionDropdown.value = BetterPrefs.GetInt("ResolutionIndex", 0);
+        WindowModeDropdown.value = BetterPrefs.GetInt("WindowMode", 1);
+        AADropdown.value = BetterPrefs.GetInt("GRAPHICS_AA", 1);
+        VSyncToggle.isOn = BetterPrefs.GetBool("GRAPHICS_VSync", true);
+        SetResolution(BetterPrefs.GetInt("ResolutionIndex", 1));
+        ChangeWindowMode(BetterPrefs.GetInt("WindowMode", 1));
+        ChangeAntiAliasing(BetterPrefs.GetInt("GRAPHICS_AA", 1));
+        ChangeVSync(BetterPrefs.GetBool("GRAPHICS_VSync", true));
     }
 
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = filteredResolutions[resolutionIndex];
 
-        PlayerPrefs.SetInt("ResolutionIndex", resolutionIndex);
+        BetterPrefs.SetInt("ResolutionIndex", resolutionIndex);
 
-        switch (PlayerPrefs.GetInt("WindowMode", 1))
+        switch (BetterPrefs.GetInt("WindowMode", 1))
         {
             case 0:
                 Screen.SetResolution(resolution.width, resolution.height, FullScreenMode.ExclusiveFullScreen);
@@ -124,14 +125,14 @@ public class VideoSettings : MonoBehaviour
 
     public void ChangeWindowMode(int val)
     {
-        PlayerPrefs.SetInt("WindowMode", val);
+        BetterPrefs.SetInt("WindowMode", val);
 
-        SetResolution(PlayerPrefs.GetInt("ResolutionIndex", 1));
+        SetResolution(BetterPrefs.GetInt("ResolutionIndex", 1));
     }
 
     public void ChangeVSync(bool val)
     {
-        PlayerPrefs.SetInt("GRAPHICS_VSync", boolToInt(val));
+        BetterPrefs.SetBool("GRAPHICS_VSync", val);
 
         if (val)
         {
@@ -145,7 +146,7 @@ public class VideoSettings : MonoBehaviour
 
     public void ChangeAntiAliasing(int val)
     {
-        PlayerPrefs.SetInt("GRAPHICS_AA", val);
+        BetterPrefs.SetInt("GRAPHICS_AA", val);
 
         switch (val)
         {
@@ -162,22 +163,6 @@ public class VideoSettings : MonoBehaviour
                 URPAsset.msaaSampleCount = 8;
                 break;
         }
-    }
-
-    int boolToInt(bool val)
-    {
-        if (val)
-            return 1;
-        else
-            return 0;
-    }
-
-    bool intToBool(int val)
-    {
-        if (val != 0)
-            return true;
-        else   
-            return false;
     }
 }
 #endif

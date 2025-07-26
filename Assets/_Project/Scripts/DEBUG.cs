@@ -26,7 +26,7 @@ public class DEBUG : MonoBehaviour
     {
         int lastFrameCount = Time.frameCount;
         float lastTime = Time.realtimeSinceStartup;
-        yield return new WaitForSeconds(1f);
+        yield return game.oneSecond;
  
         float timeSpan = Time.realtimeSinceStartup - lastTime;
         int frameCount = Time.frameCount - lastFrameCount;

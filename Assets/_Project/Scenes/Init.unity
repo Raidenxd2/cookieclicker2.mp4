@@ -292,6 +292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 851826769}
   - component: {fileID: 851826770}
+  - component: {fileID: 851826771}
   m_Layer: 7
   m_Name: AudioSystem
   m_TagString: audio
@@ -327,6 +328,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EffectsSource: {fileID: 598073057}
+--- !u!81 &851826771
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851826768}
+  m_Enabled: 1
 --- !u!1001 &987222429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -474,7 +483,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0

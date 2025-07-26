@@ -54,4 +54,12 @@ public class init : MonoBehaviour
         AddressableHandles.instance.gameSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.gameSceneRef, LoadSceneMode.Single);
         await AddressableHandles.instance.gameSceneHandle;
     }
+
+#if UNITY_EDITOR
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    public static void SetHasLoaded()
+    {
+        HasLoaded = false;
+    }
+#endif
 }

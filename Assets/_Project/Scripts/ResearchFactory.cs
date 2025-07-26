@@ -5,10 +5,9 @@ using BreakInfinity;
 
 public class ResearchFactory : MonoBehaviour
 {
-
-    public Game game;
-    public AddressableLightmaps al;
-    public GameObject NECDialog;
+    [SerializeField] private Game game;
+    [SerializeField] private AddressableLightmaps al;
+    [SerializeField] private GameObject NECDialog;
 
     [Header("UI")]
     public GameObject LockedText;
@@ -41,14 +40,13 @@ public class ResearchFactory : MonoBehaviour
 
     void Start()
     {
-        // ResearchPoints = 1;
         BigCookieDuration = 0;
         StartCoroutine(Tick());
     }
 
     IEnumerator Tick()
     {
-        yield return new WaitForSeconds(1);
+        yield return game.oneSecond;
         
         if (BigCookieDuration > -1 && BigCookieResearching == true)
         {
@@ -64,6 +62,8 @@ public class ResearchFactory : MonoBehaviour
         {
             game.ResearchFactory = true;
             game.Cookies -= 20000;
+
+            BetterPrefs.SetBool("UnlockResearchFactory", true);
 
             game.CheckResearchFactory();
             CheckIfUserOwnsResearchFactory();
@@ -90,7 +90,7 @@ public class ResearchFactory : MonoBehaviour
     {
         game.Fade.Play("FadeIn");
         game.FadeCanvasGroup.blocksRaycasts = true;
-        yield return new WaitForSeconds(1);
+        yield return game.oneSecond;
 
 #if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
@@ -114,7 +114,7 @@ public class ResearchFactory : MonoBehaviour
     {
         game.Fade.Play("FadeIn");
         game.FadeCanvasGroup.blocksRaycasts = true;
-        yield return new WaitForSeconds(1);
+        yield return game.oneSecond;
 
 #if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)

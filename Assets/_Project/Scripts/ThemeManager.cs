@@ -1,4 +1,4 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using LoggerSystem;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -34,11 +34,11 @@ public class ThemeManager : MonoBehaviour
 
             tb.ThemeButtonText.text = theme.ThemeName;
 
-            tb.button.onClick.AddListener(() => StartCoroutine(SelectTheme(theme.ThemePrefabRef)));
+            tb.button.onClick.AddListener(() => SelectTheme(theme.ThemePrefabRef).Forget());
         }
     }
     
-    public IEnumerator SelectTheme(AssetReference ThemePrefabRef)
+    public async UniTaskVoid SelectTheme(AssetReference ThemePrefabRef)
     {
         ThemesScreen.HideWindow();
         GlobalDark.HideWindow();
@@ -49,7 +49,7 @@ public class ThemeManager : MonoBehaviour
         {
             try
             {
-                Addressables.UnloadSceneAsync(CurrentThemeSceneHandle);
+                await Addressables.UnloadSceneAsync(CurrentThemeSceneHandle);
             }
             catch
             {
@@ -63,12 +63,12 @@ public class ThemeManager : MonoBehaviour
 
             DefaultTheme.SetActive(true);
             ContentLoading.SetActive(false);
-            yield break;
+            return;
         }
 
         DefaultTheme.SetActive(false);
         CurrentThemeSceneHandle = Addressables.LoadSceneAsync(ThemePrefabRef, UnityEngine.SceneManagement.LoadSceneMode.Additive);
-        yield return CurrentThemeSceneHandle;
+        await CurrentThemeSceneHandle;
 
         if (CurrentThemeSceneHandle.Status == AsyncOperationStatus.Failed)
         {

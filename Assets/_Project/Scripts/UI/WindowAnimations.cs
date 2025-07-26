@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class WindowAnimations : MonoBehaviour
 {
-    public Ease inEase;
-    public Ease outEase;
-    public float Time;
+    [SerializeField] private Ease inEase;
+    [SerializeField] private Ease outEase;
+    [SerializeField] private float Time;
 
-    //shows the window
-    void OnEnable()
+    private void OnEnable()
     {
         LMotion.Create(Vector3.zero, Vector3.one, Time)
             .WithEase(inEase)
@@ -19,7 +18,6 @@ public class WindowAnimations : MonoBehaviour
             .BindToLocalEulerAngles(transform);
     }
 
-    //hides the window
     public void HideWindow()
     {
         LMotion.Create(Vector3.one, Vector3.zero, Time)

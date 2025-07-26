@@ -2,9 +2,6 @@ using System;
 using System.Globalization; // I'm not sure if there's a "Yes, this is Unity" define symbol
 // (#if UNITY doesn't seem to work). If you happen to know one - please create
 // an issue here https://github.com/Razenpok/BreakInfinity.cs/issues.
-#if UNITY_2017_1_OR_NEWER
-
-#endif
 
 namespace BreakInfinity
 {
@@ -26,13 +23,8 @@ namespace BreakInfinity
         //The smallest exponent that can appear in a Double, though not all mantissas are valid here.
         private const long DoubleExpMin = -324;
 
-#if UNITY_2017_1_OR_NEWER
         public double mantissa;
         public long exponent;
-#else
-        public double mantissa;
-        public long exponent;
-#endif
 
         public BigDouble(double mantissa, long exponent)
         {
@@ -1007,23 +999,5 @@ namespace BreakInfinity
         {
             return BigDouble.Pow(value, 2);
         }
-
-#if EXTENSIONS_EASTER_EGGS
-        /// <summary>
-        /// Joke function from Realm Grinder.
-        /// </summary>
-        public static BigDouble AscensionPenalty(this BigDouble value, double ascensions)
-        {
-            return Math.Abs(ascensions) < double.Epsilon ? value : BigDouble.Pow(value, Math.Pow(10, -ascensions));
-        }
-
-        /// <summary>
-        /// Joke function from Cookie Clicker. It's an 'egg'.
-        /// </summary>
-        public static BigDouble Egg(this BigDouble value)
-        {
-            return value + 9;
-        }
-#endif
     }
 }

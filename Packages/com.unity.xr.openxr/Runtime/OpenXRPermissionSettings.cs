@@ -8,24 +8,24 @@ namespace UnityEngine.XR.OpenXR
 {
     public partial class OpenXRSettings
     {
-#if UNITY_ANDROID
-        string m_eyeTrackingQuestPermissionsToRequest = "com.oculus.permission.EYE_TRACKING";
-        string m_eyeTrackingAndroidXRPermissionsToRequest = "android.permission.EYE_TRACKING_FINE";
+//#if UNITY_ANDROID
+//        string m_eyeTrackingQuestPermissionsToRequest = "com.oculus.permission.EYE_TRACKING";
+//        string m_eyeTrackingAndroidXRPermissionsToRequest = "android.permission.EYE_TRACKING_FINE";
 
-        static void PermissionGrantedCallback(string permissionName)
-        {
-            if (permissionName == GetInstance(true).m_eyeTrackingQuestPermissionsToRequest || permissionName == GetInstance(true).m_eyeTrackingAndroidXRPermissionsToRequest)
-            {
-                Internal_SetHasEyeTrackingPermissions(true);
-                return;
-            }
-        }
+//        static void PermissionGrantedCallback(string permissionName)
+//        {
+//            if (permissionName == GetInstance(true).m_eyeTrackingQuestPermissionsToRequest || permissionName == GetInstance(true).m_eyeTrackingAndroidXRPermissionsToRequest)
+//            {
+//                Internal_SetHasEyeTrackingPermissions(true);
+//                return;
+//            }
+//        }
 
-        static bool IsPermissionGranted(string permissionName)
-        {
-            return Permission.HasUserAuthorizedPermission(permissionName);
-        }
-#endif
+//        static bool IsPermissionGranted(string permissionName)
+//        {
+//            return Permission.HasUserAuthorizedPermission(permissionName);
+//        }
+//#endif
 
         void ApplyPermissionSettings()
         {
@@ -46,24 +46,24 @@ namespace UnityEngine.XR.OpenXR
                         break;
                     }
                 }
-                if (metaQuestFeatureEnabled)
-                {
-                    if (IsPermissionGranted(m_eyeTrackingQuestPermissionsToRequest))
-                        Internal_SetHasEyeTrackingPermissions(true);
-                    else
-                        permissionsToRequest.Add(m_eyeTrackingQuestPermissionsToRequest);
-                }
+                //if (metaQuestFeatureEnabled)
+                //{
+                //    if (IsPermissionGranted(m_eyeTrackingQuestPermissionsToRequest))
+                //        Internal_SetHasEyeTrackingPermissions(true);
+                //    else
+                //        permissionsToRequest.Add(m_eyeTrackingQuestPermissionsToRequest);
+                //}
 
-                if (IsPermissionGranted(m_eyeTrackingAndroidXRPermissionsToRequest))
-                    Internal_SetHasEyeTrackingPermissions(true);
-                else
-                    permissionsToRequest.Add(m_eyeTrackingAndroidXRPermissionsToRequest);
-                if (permissionsToRequest.Count > 0)
-                {
-                    var permissionCallbacks = new PermissionCallbacks();
-                    permissionCallbacks.PermissionGranted += PermissionGrantedCallback;
-                    Permission.RequestUserPermissions(permissionsToRequest.ToArray(), permissionCallbacks);
-                }
+                //if (IsPermissionGranted(m_eyeTrackingAndroidXRPermissionsToRequest))
+                //    Internal_SetHasEyeTrackingPermissions(true);
+                //else
+                //    permissionsToRequest.Add(m_eyeTrackingAndroidXRPermissionsToRequest);
+                //if (permissionsToRequest.Count > 0)
+                //{
+                //    var permissionCallbacks = new PermissionCallbacks();
+                //    permissionCallbacks.PermissionGranted += PermissionGrantedCallback;
+                //    Permission.RequestUserPermissions(permissionsToRequest.ToArray(), permissionCallbacks);
+                //}
             }
 #endif
         }

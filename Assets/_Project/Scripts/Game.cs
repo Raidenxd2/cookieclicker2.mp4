@@ -52,14 +52,14 @@ public class Game : MonoBehaviour
 
     // scripts
     [Header("Scripts")]
-    public OfflineManager offlineManager;
-    public AdvancedQualitySettings ad;
-    public SoundManager soundManager;
-    public Notification notification;
-    public AddressableLightmaps al;
-    public BetaContent bc;
+    [SerializeField] private OfflineManager offlineManager;
+    [SerializeField] private AdvancedQualitySettings ad;
+    [SerializeField] private SoundManager soundManager;
+    [SerializeField] private Notification notification;
+    [SerializeField] private AddressableLightmaps al;
+    [SerializeField] private BetaContent bc;
 #if !CC2_REMOVE_VR_SUPPORT
-    public VRFadeCanvas vrFade;
+    [SerializeField] private VRFadeCanvas vrFade;
 #endif
 
     // text
@@ -151,8 +151,8 @@ public class Game : MonoBehaviour
 
     private bool AllowUpdate;
 
-    private WaitForSeconds oneSecond;
-    private WaitForSeconds sixtySeconds;
+    public WaitForSeconds oneSecond;
+    public WaitForSeconds sixtySeconds;
 
     private void Awake()
     {
@@ -167,8 +167,6 @@ public class Game : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Remove();
-
         VersionText.text = "v" + Application.version + "-" + Application.platform + " (" + Application.unityVersion + ")";
 
         StartAsync().Forget();
@@ -239,8 +237,6 @@ public class Game : MonoBehaviour
 
 #if UNITY_ANDROID || UNITY_WEBGL
         ScreenshotOptionsBTN.SetActive(false);
-#else
-        ScreenshotOptionsBTN.SetActive(true);
 #endif
 #if UNITY_WEBGL
         QuitBTN.SetActive(false);
@@ -339,8 +335,6 @@ public class Game : MonoBehaviour
 
     public void SavePlayer()
     {
-        Remove();
-
         PlayerPrefs.Save();
         offlineManager.SaveTime();
 
@@ -379,8 +373,6 @@ public class Game : MonoBehaviour
 
     public void LoadPlayer()
     {
-        Remove();
-
         ad.LoadGraphics();
 
         try
@@ -432,14 +424,6 @@ public class Game : MonoBehaviour
         CheckDrill();
     }
 
-    public void Remove()
-    {
-        PlayerPrefs.SetInt("unity.player_session_count", 0);
-        PlayerPrefs.SetInt("unity.player_sessionid", 0);
-        PlayerPrefs.SetInt("unity.cloud_userid", 0);
-        PlayerPrefs.Save();
-    }
-
     public void ResetData()
     {
         Cookies = 0;
@@ -469,6 +453,9 @@ public class Game : MonoBehaviour
         HammerEnergyUpgradePrice = 200;
         CoinMultiplierUpgradePrice = 300;
         CoinMultiplier = 1;
+
+        BetterPrefs.DeleteAll();
+        BetterPrefs.Save();
 
         SavePlayer();
         Reload();
@@ -576,6 +563,15 @@ public class Game : MonoBehaviour
             AutoclickerPrice += 25;
             Autoclickers += 1;
             CPS += 1;
+
+            if (!BetterPrefs.GetBool("TenAC", false))
+            {
+                if (Autoclickers >= 10)
+                {
+                    BetterPrefs.SetBool("TenAC", true);
+                    AchievementManager.instance.UpdateAchievements();
+                }
+            }
         }
         else
         {
@@ -591,6 +587,15 @@ public class Game : MonoBehaviour
             DoublecookiePrice += 50;
             Doublecookies += 1;
             CPC += 1;
+
+            if (!BetterPrefs.GetBool("TenDC", false))
+            {
+                if (Autoclickers >= 10)
+                {
+                    BetterPrefs.SetBool("TenDC", true);
+                    AchievementManager.instance.UpdateAchievements();
+                }
+            }
         }
         else
         {
@@ -608,6 +613,15 @@ public class Game : MonoBehaviour
             CPC += 2;
             CPS += 2;
 
+            if (!BetterPrefs.GetBool("TenDrills", false))
+            {
+                if (Autoclickers >= 10)
+                {
+                    BetterPrefs.SetBool("TenDrills", true);
+                    AchievementManager.instance.UpdateAchievements();
+                }
+            }
+
             CheckDrill();
         }
         else
@@ -624,6 +638,15 @@ public class Game : MonoBehaviour
             GrandmaPrice += 150;
             Grandmas += 1;
             CPS += 4;
+
+            if (!BetterPrefs.GetBool("TenGrandmas", false))
+            {
+                if (Autoclickers >= 10)
+                {
+                    BetterPrefs.SetBool("TenGrandmas", true);
+                    AchievementManager.instance.UpdateAchievements();
+                }
+            }
         }
         else
         {
@@ -640,6 +663,15 @@ public class Game : MonoBehaviour
             CookieFactorys++;
             CPS += 8;
             CPC += 4;
+
+            if (!BetterPrefs.GetBool("TenCF", false))
+            {
+                if (Autoclickers >= 10)
+                {
+                    BetterPrefs.SetBool("TenCF", true);
+                    AchievementManager.instance.UpdateAchievements();
+                }
+            }
         }
         else
         {

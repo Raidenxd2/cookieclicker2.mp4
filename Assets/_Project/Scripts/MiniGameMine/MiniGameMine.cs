@@ -78,15 +78,14 @@ public class MiniGameMine : MonoBehaviour
 
             Camera.SetActive(false);
 
-            Game.instance.XROrigin.transform.position = VRCameraPosition.position;
-            Game.instance.XROrigin.transform.rotation = VRCameraPosition.rotation;
+            Game.instance.XROrigin.transform.SetPositionAndRotation(VRCameraPosition.position, VRCameraPosition.rotation);
             Game.instance.XROrigin.transform.parent = Player;
 
             UI.transform.parent = Player;
         }
 #endif
 
-        StartCoroutine(Init());
+        Init();
     }
 
     void Update()
@@ -104,9 +103,8 @@ public class MiniGameMine : MonoBehaviour
         CoinsText.text = Game.instance.Coins.ToString("Coins: " + "0");
     }
 
-    IEnumerator Init()
+    private void Init()
     {
-        yield return new WaitForSeconds(0.1f);
         tempHammerStrength = Game.instance.HammerStrength;
         tempHammerEnergy = Game.instance.HammerEnergy;
         Player.localPosition = StartPos;
@@ -124,7 +122,7 @@ public class MiniGameMine : MonoBehaviour
 
     public void GameLose()
     {
-        StartCoroutine(Init());
+        Init();
     }
 
     public void GameExit()

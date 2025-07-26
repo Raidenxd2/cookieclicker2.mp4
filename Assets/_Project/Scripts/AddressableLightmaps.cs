@@ -1,6 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using LoggerSystem;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -20,32 +19,23 @@ public class AddressableLightmaps : MonoBehaviour
 
         if (game.ResearchFactory)
         {
-            StartCoroutine(LoadResearchFactoryLightmap());
+            LoadResearchFactoryLightmap().Forget();
         }
     }
 
-    private IEnumerator LoadResearchFactoryLightmap()
+    private async UniTaskVoid LoadResearchFactoryLightmap()
     {
         rflHandle = Addressables.LoadAssetAsync<Texture2D>(WithResearchFactoryLightmap);
-        yield return rflHandle;
+        await rflHandle;
 
-        if (rflHandle.Status == AsyncOperationStatus.Succeeded)
-        {
-            List<LightmapData> lightmapData = new List<LightmapData>();
+        List<LightmapData> lightmapData = new List<LightmapData>();
 
-            LightmapData lightmapData1 = new();
-            lightmapData1.lightmapColor = rflHandle.Result;
+        LightmapData lightmapData1 = new();
+        lightmapData1.lightmapColor = rflHandle.Result;
 
-            lightmapData.Add(lightmapData1);
+        lightmapData.Add(lightmapData1);
 
-            LightmapSettings.lightmaps = lightmapData.ToArray();
-        }
-        else if (rflHandle.Status == AsyncOperationStatus.Failed)
-        {
-            LogSystem.Log("Failed to load lightmap.", LogTypes.Error);
-        }
-
-        yield return null;
+        LightmapSettings.lightmaps = lightmapData.ToArray();
     }
 
     public void UnloadLightmaps()

@@ -10,11 +10,8 @@ License: MIT
 */
 
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System;
 
 public static class BetterPrefs
 {
@@ -374,19 +371,7 @@ public static class BetterPrefs
         }
         */
 
-        // Add the current date and time to the array (UNIX time)
-
-        double totalSecs = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-
-        data["date"] = (float)totalSecs; // Set the date key to the current time now that we know at what time the save was made
-
         string[,] dataArray = new string[data.Count, 3];
-
-
-
-
-
-
 
         if (data.Count == 0)
         {
@@ -422,16 +407,8 @@ public static class BetterPrefs
             }
             else if (pair.Value is float)
             {
-                if (pair.Key != "date")
-                {
-                    objectType = "float";
-                    valueFormatted = pair.Value.ToString();
-                }
-                else
-                {
-                    objectType = "float";
-                    valueFormatted = totalSecs.ToString(); // override the date value with the current time
-                }
+                objectType = "float";
+                valueFormatted = pair.Value.ToString();
             }
             else if (pair.Value is string)
             {
@@ -480,9 +457,6 @@ public static class BetterPrefs
         // Write2DArray(string[,], BinaryWriter)
 
         Write2DArray(dataArray, new BinaryWriter(file));
-
-
-
 
         file.Close();
 
@@ -831,79 +805,6 @@ public static class BetterPrefs
         // Check if the key exists
 
         return data.ContainsKey(key);
-    }
-
-    public static DateTime GetDate(string savePath = "current") // Get the date of a save, or, if the save wasn't saved yet, the current date
-    {
-        if (savePath == "current")
-        {
-            if (HasKey("date"))
-            {
-                DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((int)GetFloat("date"));
-
-                return dateTimeOffset.LocalDateTime;
-            }
-            else
-            {
-                return DateTime.Now;
-            }
-        }
-        else
-        {
-            if (!File.Exists(savePath))
-            {
-                Debug.LogWarning("BetterPrefs: The save file \"" + savePath + "\" does not exist");
-                return DateTime.Now;
-            }
-
-            // Get the date from the save file using Read2DArray
-
-            FileStream file = File.Open(savePath, FileMode.Open);
-
-            BinaryReader reader = new BinaryReader(file);
-
-            string[,] dataArray = Read2DArray(reader);
-
-            file.Close();
-
-            for (int i = 0; i < dataArray.GetLength(0); i++)
-            {
-                string objectType = dataArray[i, 0];
-                string key = dataArray[i, 1];
-                string valueFormatted = dataArray[i, 2];
-
-                if (key == "date")
-                {
-                    if (objectType == "float")
-                    {
-                        // This is a float
-
-                        float value;
-
-                        if (float.TryParse(valueFormatted, out value))
-                        {
-                            // The value is a valid float
-                        }
-                        else
-                        {
-                            // The value is not a valid float
-
-                            Debug.LogWarning("BetterPrefs: Invalid date in save file \"" + savePath + "\"");
-
-                            continue;
-                        }
-
-                        DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((int)value);
-
-                        return dateTimeOffset.LocalDateTime;
-                    }
-                }
-            }
-
-            Debug.LogError("BetterPrefs: Could not find the date in the save file");
-
-            return DateTime.MinValue;
-        }
     }
 
     public static int GetCount() // Get how many keys are in the data

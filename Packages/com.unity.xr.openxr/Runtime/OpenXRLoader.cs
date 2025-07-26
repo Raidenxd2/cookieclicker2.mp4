@@ -210,7 +210,6 @@ namespace UnityEngine.XR.OpenXR
 
             Deinitialize();
             Instance = null;
-            OpenXRAnalytics.SendInitializeEvent(false);
 
             return false;
         }
@@ -261,7 +260,6 @@ namespace UnityEngine.XR.OpenXR
                 return false;
 
             SetApplicationInfo();
-            OpenXRAnalytics.SendInitializeEvent(true);
 
             OpenXRFeature.ReceiveLoaderEvent(this, OpenXRFeature.LoaderEvent.SubsystemCreate);
 

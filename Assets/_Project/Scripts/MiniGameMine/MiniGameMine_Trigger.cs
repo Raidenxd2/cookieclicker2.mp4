@@ -16,10 +16,6 @@ public class MiniGameMine_Trigger : MonoBehaviour
                 miniGameMine.DecreseHammerStrength(0.3f);
                 // HammerStrengthDecresed.SetActive(true);
             }
-            else
-            {
-                Debug.Log("Dril Strength To Low!");
-            }
         }
         else if (type == "hardstone" && miniGameMine.Player.localPosition.y <= -800 && miniGameMine.reachedHardStone == false)
         {
@@ -28,10 +24,6 @@ public class MiniGameMine_Trigger : MonoBehaviour
             {
                 miniGameMine.DecreseHammerStrength(0.8f);
                 // HammerStrengthDecresed.SetActive(true);
-            }
-            else
-            {
-                Debug.Log("Dril Strength To Low!");
             }
         }
         else if (type == "heat" && miniGameMine.Player.localPosition.y <= -1200 && miniGameMine.reachedHeat == false)
@@ -42,10 +34,6 @@ public class MiniGameMine_Trigger : MonoBehaviour
                 miniGameMine.DecreseHammerStrength(1.2f);
                 // HammerStrengthDecresed.SetActive(true);
             }
-            else
-            {
-                Debug.Log("Dril Strength To Low!");
-            }
         }
         else if (type == "red" && miniGameMine.Player.localPosition.y <= -1600 && miniGameMine.reachedRed == false)
         {
@@ -54,10 +42,6 @@ public class MiniGameMine_Trigger : MonoBehaviour
             {
                 miniGameMine.DecreseHammerStrength(1.2f);
                 // HammerStrengthDecresed.SetActive(true);
-            }
-            else
-            {
-                Debug.Log("Dril Strength To Low!");
             }
         }
         else if (type == "white" && miniGameMine.Player.localPosition.y <= -2000 && miniGameMine.reachedWhite == false)
@@ -68,10 +52,6 @@ public class MiniGameMine_Trigger : MonoBehaviour
                 miniGameMine.DecreseHammerStrength(1.4f);
                 // HammerStrengthDecresed.SetActive(true);
             }
-            else
-            {
-                Debug.Log("Dril Strength To Low!");
-            }
         }
         else if (type == "end" && miniGameMine.Player.localPosition.y <= -2340 && miniGameMine.reachedEnd == false)
         {
@@ -81,10 +61,6 @@ public class MiniGameMine_Trigger : MonoBehaviour
             {
                 miniGameMine.DecreseHammerStrength(1.4f);
                 // HammerStrengthDecresed.SetActive(true);
-            }
-            else
-            {
-                Debug.Log("Dril Strength To Low!");
             }
         }
     }

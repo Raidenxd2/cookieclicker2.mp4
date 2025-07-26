@@ -17,12 +17,6 @@
     "defineConstraints": [],
     "versionDefines": [
         {
-            "name": "com.unity.modules.unityanalytics",
-            "expression": "1.0.0",
-            "excludePlatforms": ["PS5"],
-            "define": "UNITY_ANALYTICS"
-        },
-        {
             "name": "com.microsoft.mixedreality.openxr",
             "expression": "1.0.0",
             "define": "MICROSOFT_OPENXR_PACKAGE"

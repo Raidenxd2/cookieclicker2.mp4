@@ -1,16 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NotificationAnimation : MonoBehaviour
 {
-
     public Animation NotificationAnimations;
     public GameObject NotificationObject;
-    private RectTransform rectTransform;
     private Vector2 position;
     private bool Playing;
     public RectTransform OringinalPos;
+
+    private WaitForSeconds fiveSeconds;
+
+    private void Awake()
+    {
+        fiveSeconds = new(5);
+    }
 
     void OnEnable()
     {
@@ -22,9 +26,9 @@ public class NotificationAnimation : MonoBehaviour
 
     IEnumerator NotificationWaitThenClose()
     {
-        yield return new WaitForSeconds(5);
+        yield return fiveSeconds;
         NotificationAnimations.Play("NotificationClose");
-        yield return new WaitForSeconds(1);
+        yield return Game.instance.oneSecond;
         Playing = false;
     }
 
