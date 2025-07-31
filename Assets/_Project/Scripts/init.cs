@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class init : MonoBehaviour
