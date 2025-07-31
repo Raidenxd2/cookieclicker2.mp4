@@ -22,6 +22,7 @@ public class UIInputModuleManager : MonoBehaviour
             GetComponent<XRUIInputModule>().enabled = true;
         }
 #endif
+
 #if ENABLE_INPUT_SYSTEM
 
 #if !CC2_REMOVE_VR_SUPPORT

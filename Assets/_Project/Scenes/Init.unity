@@ -666,7 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fedcd233387e999449a74acc15da88fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newPos: {x: 0, y: 0, z: 16.45}
+  newPos: {x: 1000, y: 1000, z: 1016.45}
   newScale: {x: 0.01, y: 0.01, z: 0.01}
   newRot: {x: 0, y: 0, z: 0}
 --- !u!114 &1694790276

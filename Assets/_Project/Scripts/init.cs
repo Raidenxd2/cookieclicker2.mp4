@@ -55,6 +55,13 @@ public class init : MonoBehaviour
 
         SceneManager.SetActiveScene(AddressableHandles.instance.gameSceneHandle.Result.Scene);
 
+#if !CC2_REMOVE_VR_SUPPORT
+        if (VRManager.instance.VREnabled)
+        {
+            await Game.instance.InitVR();
+        }
+#endif
+
         await Addressables.UnloadSceneAsync(AddressableHandles.instance.initSceneHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
 
         Game.instance.PlayInitialFadeOut();

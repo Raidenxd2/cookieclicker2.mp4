@@ -140,6 +140,7 @@ public class Game : MonoBehaviour
     [Header("VR")]
     [SerializeField] private AssetReference VRPrefab;
     private GameObject VRPrefabGO;
+    [SerializeField] private Transform VRPrefabParent;
     [SerializeField] private GameObject AndroidVROnlySettingsButton;
     [SerializeField] private TMP_Dropdown OculusQuestRefreshRateDropdown;
     public GameObject XROrigin;
@@ -182,65 +183,6 @@ public class Game : MonoBehaviour
     private async UniTaskVoid StartAsync()
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
     {
-#if !CC2_REMOVE_VR_SUPPORT
-        if (VRManager.instance.VREnabled)
-        {
-            try
-            {
-                VRPrefabGO = Instantiate(await Addressables.LoadAssetAsync<GameObject>(VRPrefab));
-                VRPrefabObject vrpo = VRPrefabGO.GetComponent<VRPrefabObject>();
-
-                XROrigin = vrpo.XROrigin;
-                researchFactory.VRCamera = vrpo.XROrigin.transform;
-                researchFactory.MainSceneVR = vrpo.MainSceneVR;
-
-                vrFade.InitVR();
-            }
-            catch (Exception ex)
-            {
-                LogSystem.Log(ex.ToString(), LogTypes.Exception);
-                LoadVRFallbackScene();
-                return;
-            }
-
-            PP.profile = VRProfile;
-
-            gameCamera.gameObject.SetActive(false);
-        }
-#endif
-#if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
-        if (VRManager.instance.IsMobileVR)
-        {
-            try
-            {
-                displaySubsystem = XRGeneralSettings.Instance.Manager.activeLoader.GetLoadedSubsystem<XRDisplaySubsystem>();
-                if (displaySubsystem.TryGetSupportedDisplayRefreshRates(Unity.Collections.Allocator.Temp, out var refreshRates))
-                {
-                    List<string> options = new();
-                    OculusQuestRefreshRateDropdownData oqrrdd = OculusQuestRefreshRateDropdown.GetComponent<OculusQuestRefreshRateDropdownData>();
-                    foreach (var rf in refreshRates)
-                    {
-                        options.Add(rf.ToString() + " FPS");
-                        oqrrdd.refreshRates.Add(rf);
-                    }
-                    OculusQuestRefreshRateDropdown.AddOptions(options);
-                }
-                else
-                {
-                    LogSystem.Log("Failed to get supported refresh rates.", LogTypes.Warning);
-                }
-            }
-            catch
-            {
-                LogSystem.Log("Unknown error while getting supported refresh rates.", LogTypes.Error);
-            }
-
-            XRSettings.useOcclusionMesh = false;
-
-            AndroidVROnlySettingsButton.SetActive(true);
-        }
-#endif
-
 #if UNITY_ANDROID || UNITY_WEBGL
         ScreenshotOptionsBTN.SetActive(false);
 #endif
@@ -298,6 +240,68 @@ public class Game : MonoBehaviour
     {
         Fade.Play("FadeOut");
     }
+
+#if !CC2_REMOVE_VR_SUPPORT
+    public async UniTask InitVR()
+    {
+        if (VRManager.instance.VREnabled)
+        {
+            try
+            {
+                VRPrefabGO = Instantiate(await Addressables.LoadAssetAsync<GameObject>(VRPrefab), VRPrefabParent);
+                VRPrefabObject vrpo = VRPrefabGO.GetComponent<VRPrefabObject>();
+
+                XROrigin = vrpo.XROrigin;
+                researchFactory.VRCamera = vrpo.XROrigin.transform;
+                researchFactory.MainSceneVR = vrpo.MainSceneVR;
+
+                vrFade.InitVR();
+            }
+            catch (Exception ex)
+            {
+                LogSystem.Log(ex.ToString(), LogTypes.Exception);
+                LoadVRFallbackScene();
+                return;
+            }
+
+            PP.profile = VRProfile;
+
+            gameCamera.gameObject.SetActive(false);
+        }
+#if UNITY_ANDROID
+        if (VRManager.instance.IsMobileVR)
+        {
+            try
+            {
+                displaySubsystem = XRGeneralSettings.Instance.Manager.activeLoader.GetLoadedSubsystem<XRDisplaySubsystem>();
+                if (displaySubsystem.TryGetSupportedDisplayRefreshRates(Unity.Collections.Allocator.Temp, out var refreshRates))
+                {
+                    List<string> options = new();
+                    OculusQuestRefreshRateDropdownData oqrrdd = OculusQuestRefreshRateDropdown.GetComponent<OculusQuestRefreshRateDropdownData>();
+                    foreach (var rf in refreshRates)
+                    {
+                        options.Add(rf.ToString() + " FPS");
+                        oqrrdd.refreshRates.Add(rf);
+                    }
+                    OculusQuestRefreshRateDropdown.AddOptions(options);
+                }
+                else
+                {
+                    LogSystem.Log("Failed to get supported refresh rates.", LogTypes.Warning);
+                }
+            }
+            catch
+            {
+                LogSystem.Log("Unknown error while getting supported refresh rates.", LogTypes.Error);
+            }
+
+            XRSettings.useOcclusionMesh = false;
+
+            AndroidVROnlySettingsButton.SetActive(true);
+        }
+#endif
+    }
+#endif
 
     void CheckPrices()
     {
