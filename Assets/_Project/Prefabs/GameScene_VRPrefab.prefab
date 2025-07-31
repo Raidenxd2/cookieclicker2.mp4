@@ -1640,10 +1640,7 @@ MonoBehaviour:
   m_StartingGroupMembers:
   - {fileID: 0}
   - {fileID: 7237418047064030572}
-  m_StartingInteractionOverridesMap:
-  - groupMember: {fileID: 0}
-    overrideGroupMembers:
-    - {fileID: 7237418047064030572}
+  m_StartingInteractionOverridesMap: []
 --- !u!114 &1708547648255192466
 MonoBehaviour:
   m_ObjectHideFlags: 0
