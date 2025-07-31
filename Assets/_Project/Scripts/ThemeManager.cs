@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using LoggerSystem;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -17,11 +16,22 @@ public class ThemeManager : MonoBehaviour
 
     [SerializeField] private GameObject ContentLoading;
 
-    [SerializeField] private GameObject DefaultTheme;
-
     [SerializeField] private Notification notification;
+    [SerializeField] private AddressableLightmaps al;
+
+    public ThemeObject CurrentTheme;
+
+    public ThemeObject FallbackTheme;
 
     private AsyncOperationHandle<SceneInstance> CurrentThemeSceneHandle;
+
+    public static ThemeManager instance;
+
+    private void Awake()
+    {
+        CurrentTheme = FallbackTheme;
+        instance = this;
+    }
 
     private void Start()
     {
@@ -38,17 +48,21 @@ public class ThemeManager : MonoBehaviour
         }
     }
     
-    public async UniTaskVoid SelectTheme(AssetReference ThemePrefabRef)
+    public async UniTask SelectTheme(AssetReference ThemePrefabRef)
     {
         ThemesScreen.HideWindow();
         GlobalDark.HideWindow();
 
         ContentLoading.SetActive(true);
 
+        CurrentTheme = FallbackTheme;
+
         if (CurrentThemeSceneHandle.IsValid())
         {
             try
             {
+                al.UnloadLightmaps();
+                al.RemoveLightmaps();
                 await Addressables.UnloadSceneAsync(CurrentThemeSceneHandle);
             }
             catch
@@ -57,25 +71,50 @@ public class ThemeManager : MonoBehaviour
             }
         }
 
-        if (!ThemePrefabRef.RuntimeKeyIsValid())
+        try
         {
-            LogSystem.Log("Default theme selected.");
-
-            DefaultTheme.SetActive(true);
-            ContentLoading.SetActive(false);
-            return;
+            CurrentThemeSceneHandle = Addressables.LoadSceneAsync(ThemePrefabRef, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+            await CurrentThemeSceneHandle;
         }
-
-        DefaultTheme.SetActive(false);
-        CurrentThemeSceneHandle = Addressables.LoadSceneAsync(ThemePrefabRef, UnityEngine.SceneManagement.LoadSceneMode.Additive);
-        await CurrentThemeSceneHandle;
+        catch
+        {
+            notification.ShowNotification("Failed to load theme.", "Themes");
+            ContentLoading.SetActive(false);
+        }
 
         if (CurrentThemeSceneHandle.Status == AsyncOperationStatus.Failed)
         {
             notification.ShowNotification("Failed to load theme.", "Themes");
-            DefaultTheme.SetActive(true);
+        }
+        else
+        {
+            CurrentTheme = GameObject.Find("ThemeScene").GetComponent<ThemeObject>();
+
+            Game.instance.CheckResearchFactory();
+            Game.instance.CheckDrill();
+
+            al.InitAddressableLightmaps();
         }
 
         ContentLoading.SetActive(false);
+    }
+
+    public async UniTask UnloadTheme()
+    {
+        try
+        {
+            al.UnloadLightmaps();
+            al.RemoveLightmaps();
+            await Addressables.UnloadSceneAsync(CurrentThemeSceneHandle);
+        }
+        catch
+        {
+
+        }
+    }
+
+    private void OnDestroy()
+    {
+        instance = null;
     }
 }

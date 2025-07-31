@@ -165,10 +165,6 @@ MonoBehaviour:
     m_Localized: Postprocesamiento
     m_Metadata:
       m_Items: []
-  - m_Id: 26524375293952
-    m_Localized: "\xC1rboles"
-    m_Metadata:
-      m_Items: []
   - m_Id: 26544814137344
     m_Localized: "Part\xEDculas"
     m_Metadata:
@@ -195,10 +191,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 27214296358912
     m_Localized: Cambio
-    m_Metadata:
-      m_Items: []
-  - m_Id: 27860231757824
-    m_Localized: "Configuraci\xF3n de calidad"
     m_Metadata:
       m_Items: []
   - m_Id: 34076039290880
@@ -234,10 +226,6 @@ MonoBehaviour:
       TODOS ELLOS."
     m_Metadata:
       m_Items: []
-  - m_Id: 35818470612992
-    m_Localized: Importar
-    m_Metadata:
-      m_Items: []
   - m_Id: 37723288608768
     m_Localized: Comercio
     m_Metadata:
@@ -248,10 +236,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 38208854794240
     m_Localized: "\xA1No hay suficientes galletas!"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 39169753063424
-    m_Localized: Temas
     m_Metadata:
       m_Items: []
   - m_Id: 39186068905984
@@ -299,10 +283,6 @@ MonoBehaviour:
     m_Localized: Contenido beta
     m_Metadata:
       m_Items: []
-  - m_Id: 43315780624384
-    m_Localized: modificaciones
-    m_Metadata:
-      m_Items: []
   - m_Id: 43660564996096
     m_Localized: Deshabilitar contenido beta
     m_Metadata:
@@ -335,20 +315,12 @@ MonoBehaviour:
     m_Localized: logros
     m_Metadata:
       m_Items: []
-  - m_Id: 5827744323993600
-    m_Localized: "Tabla de clasificaci\xF3n"
-    m_Metadata:
-      m_Items: []
   - m_Id: 21043978339078144
     m_Localized: Contenido beta
     m_Metadata:
       m_Items: []
   - m_Id: 166605031994044416
     m_Localized: "Guardar gesti\xF3n"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 166606202485878784
-    m_Localized: Restablecer opciones
     m_Metadata:
       m_Items: []
   - m_Id: 166606409164402688

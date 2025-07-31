@@ -1,4 +1,4 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -7,18 +7,22 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class PreInitScene : MonoBehaviour
 {
-    private IEnumerator Start()
+    private void Start()
+    {
+        StartAsync().Forget();
+    }
+
+    private async UniTaskVoid StartAsync()
     {
         PlayerPrefs.SetInt("unity.player_session_count", 0);
         PlayerPrefs.SetInt("unity.player_sessionid", 0);
         PlayerPrefs.SetInt("unity.cloud_userid", 0);
         PlayerPrefs.Save();
 
+        Application.backgroundLoadingPriority = ThreadPriority.Low;
+
         AsyncOperationHandle initHandle = LocalizationSettings.InitializationOperation;
-        while (!initHandle.IsDone)
-        {
-            yield return null;
-        }
+        await initHandle;
 
         if (!Directory.Exists(Application.persistentDataPath + "/Saves"))
         {

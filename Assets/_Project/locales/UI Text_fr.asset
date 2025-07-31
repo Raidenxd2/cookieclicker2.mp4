@@ -170,10 +170,6 @@ MonoBehaviour:
     m_Localized: Post-traitement
     m_Metadata:
       m_Items: []
-  - m_Id: 26524375293952
-    m_Localized: Des arbres
-    m_Metadata:
-      m_Items: []
   - m_Id: 26544814137344
     m_Localized: Particules
     m_Metadata:
@@ -200,10 +196,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 27214296358912
     m_Localized: Changement
-    m_Metadata:
-      m_Items: []
-  - m_Id: 27860231757824
-    m_Localized: "Param\xE8tres de qualit\xE9"
     m_Metadata:
       m_Items: []
   - m_Id: 34076039290880
@@ -239,10 +231,6 @@ MonoBehaviour:
       TOUS."
     m_Metadata:
       m_Items: []
-  - m_Id: 35818470612992
-    m_Localized: Importer
-    m_Metadata:
-      m_Items: []
   - m_Id: 37723288608768
     m_Localized: Boutique
     m_Metadata:
@@ -253,10 +241,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 38208854794240
     m_Localized: "Pas assez de biscuits\_!"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 39169753063424
-    m_Localized: "Th\xE8mes"
     m_Metadata:
       m_Items: []
   - m_Id: 39186068905984
@@ -300,10 +284,6 @@ MonoBehaviour:
     m_Localized: "Contenu b\xEAta"
     m_Metadata:
       m_Items: []
-  - m_Id: 43315780624384
-    m_Localized: Mods
-    m_Metadata:
-      m_Items: []
   - m_Id: 43660564996096
     m_Localized: "D\xE9sactiver le contenu b\xEAta"
     m_Metadata:
@@ -336,20 +316,12 @@ MonoBehaviour:
     m_Localized: "R\xE9alisations"
     m_Metadata:
       m_Items: []
-  - m_Id: 5827744323993600
-    m_Localized: Classement
-    m_Metadata:
-      m_Items: []
   - m_Id: 40445249298432
     m_Localized: SIL OPEN FONT LICENSE
     m_Metadata:
       m_Items: []
   - m_Id: 166605031994044416
     m_Localized: Gestion des sauvegardes
-    m_Metadata:
-      m_Items: []
-  - m_Id: 166606202485878784
-    m_Localized: "Options de r\xE9initialisation"
     m_Metadata:
       m_Items: []
   - m_Id: 166606409164402688

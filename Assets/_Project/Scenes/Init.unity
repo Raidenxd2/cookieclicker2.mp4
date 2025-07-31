@@ -743,6 +743,12 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  DefaultThemeScene:
+    m_AssetGUID: c396c36bde6b9eb4b8729bac2068c263
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!4 &1710680513
 Transform:
   m_ObjectHideFlags: 0

@@ -31,7 +31,6 @@ public class ResearchFactory : MonoBehaviour
     public bool BigCookieUnlocked;
     public bool BigCookieResearching;
     public TMP_Text ResearchPointsText;
-    [SerializeField] private Transform CookieTransform;
     [SerializeField] private Notification notification;
 
     [Header("Variables")]
@@ -161,7 +160,7 @@ public class ResearchFactory : MonoBehaviour
     {
         if (BigCookieResearched)
         {
-            CookieTransform.localScale = new Vector3(600, 600, 600);
+            ThemeManager.instance.CurrentTheme.Cookie.transform.localScale = new Vector3(600, 600, 600);
         }
 
         CheckIfUserOwnsResearchFactory();
@@ -195,7 +194,7 @@ public class ResearchFactory : MonoBehaviour
             game.CPC += 10;
             game.CPS += 10;
 
-            CookieTransform.localScale = new Vector3(600, 600, 600);
+            ThemeManager.instance.CurrentTheme.Cookie.transform.localScale = new Vector3(600, 600, 600);
 
             notification.ShowNotification("Big Cookie researched!", "Research");
         }

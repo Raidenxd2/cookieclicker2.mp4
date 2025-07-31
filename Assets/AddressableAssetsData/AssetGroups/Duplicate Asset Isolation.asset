@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Duplicate Asset Isolation
   m_GUID: 3ecb7aab68ae73646ba9ea4731282a99
   m_SerializeEntries:
+  - m_GUID: 0406db5a14f94604a8c57ccfbc9f3b46
+    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesUnlit.shader
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0ca6dca7396eb48e5849247ffd444914
     m_Address: Packages/com.unity.render-pipelines.universal/Shaders/BakedLit.shader
     m_ReadOnly: 0
@@ -120,6 +125,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c348712bda248c246b8c49b3db54643f
+    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/XRI Default
+      Input Actions.inputactions
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c6d1305fcb87717478343bdd8ecaa629
     m_Address: Assets/_Project/Textures/button.png
     m_ReadOnly: 0
@@ -132,6 +143,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d348f02554a005b44b07be0969bde51c
     m_Address: Assets/_Project/Materials/PaintedPlaster017.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d53d60cdef6d51747923033acc722ab4
+    m_Address: Assets/_Project/Materials/ParticleMat.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

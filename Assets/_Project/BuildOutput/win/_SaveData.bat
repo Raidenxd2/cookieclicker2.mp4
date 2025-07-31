@@ -1,1 +1,1 @@
-start explorer "%USERPROFILE%\AppData\LocalLow\Raiden\Cookieclicker2_mp4"
+start explorer "%USERPROFILE%\AppData\LocalLow\Raiden\Cookieclicker2.mp4"

@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.Rendering.Universal;
-using LoggerSystem;
 
 public class AdvancedQualitySettings : MonoBehaviour
 {
@@ -18,29 +17,12 @@ public class AdvancedQualitySettings : MonoBehaviour
 
     [Header("Performance Mode")]
     public UniversalAdditionalCameraData GameCamera_AdditionalData;
-    public GameObject ParticalsReal;
     public GameObject ParticalsReal2;
-
-    int boolToInt(bool val)
-    {
-        if (val)
-            return 1;
-        else
-            return 0;
-    }
-
-    bool intToBool(int val)
-    {
-        if (val != 0)
-            return true;
-        else   
-            return false;
-    }
 
     public void PostProcessToggle(bool Toggle)
     {
         PostProcessing = Toggle;
-        PlayerPrefs.SetInt("GRAPHICS_PostProcessing", boolToInt(Toggle));
+        BetterPrefs.SetBool("GRAPHICS_PostProcessing", Toggle);
 
         UpdateSettings();
     }
@@ -48,7 +30,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     public void ParticalsToggle(bool Toggle)
     {
         Particals = Toggle;
-        PlayerPrefs.SetInt("GRAPHICS_Particles", boolToInt(Toggle));
+        BetterPrefs.SetBool("GRAPHICS_Particles", Toggle);
 
         UpdateSettings();
     }
@@ -56,7 +38,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     public void FogToggle(bool Toggle)
     {
         Fog = Toggle;
-        PlayerPrefs.SetInt("GRAPHICS_Fog", boolToInt(Toggle));
+        BetterPrefs.SetBool("GRAPHICS_Fog", Toggle);
 
         UpdateSettings();
     }
@@ -64,15 +46,14 @@ public class AdvancedQualitySettings : MonoBehaviour
     public void RenderQualityChange()
     {
         RenderQuality = float.Parse(RenderQualityInput.text);
-        PlayerPrefs.SetFloat("GRAPHICS_RenderQuality", RenderQuality);
+        BetterPrefs.SetFloat("GRAPHICS_RenderQuality", RenderQuality);
 
         UpdateSettings();
     }
 
     public void GraphicsPresetChanged(int value)
     {
-        LogSystem.Log(value.ToString());
-        PlayerPrefs.SetInt("GRAPHICS_TextureQuality", value);
+        BetterPrefs.SetInt("GRAPHICS_TextureQuality", value);
         if (value == 0)
         {
             TextureQuality = 0;
@@ -93,24 +74,14 @@ public class AdvancedQualitySettings : MonoBehaviour
         UpdateSettings();
     }
 
-    public void SaveGraphics()
-    {
-        PlayerPrefs.Save();
-    }
-
     public void LoadGraphics()
     {
-        var ppTemp = PlayerPrefs.GetInt("GRAPHICS_PostProcessing");
-        var ParticlesTemp = PlayerPrefs.GetInt("GRAPHICS_Particles");
-        var VSyncTemp = PlayerPrefs.GetInt("GRAPHICS_VSync");
-        var FogTemp = PlayerPrefs.GetInt("GRAPHICS_Fog");
-        var TextureQualityTemp = PlayerPrefs.GetInt("GRAPHICS_TextureQuality");
-        PostProcessing = intToBool(ppTemp);
-        Particals = intToBool(ParticlesTemp);
-        VSync = intToBool(VSyncTemp);
-        Fog = intToBool(FogTemp);
-        TextureQuality = TextureQualityTemp;
-        RenderQuality = PlayerPrefs.GetFloat("GRAPHICS_RenderQuality", 1);
+        PostProcessing = BetterPrefs.GetBool("GRAPHICS_PostProcessing", false);
+        Particals = BetterPrefs.GetBool("GRAPHICS_Particles", false);
+        VSync = BetterPrefs.GetBool("GRAPHICS_VSync", false);
+        Fog = BetterPrefs.GetBool("GRAPHICS_Fog", false);
+        TextureQuality = BetterPrefs.GetInt("GRAPHICS_TextureQuality", 0);
+        RenderQuality = BetterPrefs.GetFloat("GRAPHICS_RenderQuality", 1);
 
         UpdateSettings();
     }
@@ -149,12 +120,12 @@ public class AdvancedQualitySettings : MonoBehaviour
         RenderQuality = 1f;
 #endif
 
-        PlayerPrefs.SetInt("GRAPHICS_PostProcessing", boolToInt(PostProcessing));
-        PlayerPrefs.SetInt("GRAPHICS_Particles", boolToInt(Particals));
-        PlayerPrefs.SetInt("GRAPHICS_VSync", boolToInt(VSync));
-        PlayerPrefs.SetInt("GRAPHICS_Fog", boolToInt(Fog));
-        PlayerPrefs.SetInt("GRAPHICS_TextureQuality", TextureQuality);
-        PlayerPrefs.SetFloat("GRAPHICS_RenderQuality", RenderQuality);
+        BetterPrefs.SetBool("GRAPHICS_PostProcessing", PostProcessing);
+        BetterPrefs.SetBool("GRAPHICS_Particles", Particals);
+        BetterPrefs.SetBool("GRAPHICS_VSync", VSync);
+        BetterPrefs.SetBool("GRAPHICS_Fog", Fog);
+        BetterPrefs.SetInt("GRAPHICS_TextureQuality", TextureQuality);
+        BetterPrefs.SetFloat("GRAPHICS_RenderQuality", RenderQuality);
 
         UpdateSettings();
     }
@@ -173,12 +144,12 @@ public class AdvancedQualitySettings : MonoBehaviour
         }
         if (Particals)
         {
-            ParticalsReal.SetActive(true);
+            ThemeManager.instance.CurrentTheme.ThemeParticles.SetActive(true);
             ParticalsReal2.SetActive(true);
         }
         else
         {
-            ParticalsReal.SetActive(false);
+            ThemeManager.instance.CurrentTheme.ThemeParticles.SetActive(false);
             ParticalsReal2.SetActive(false);
         }
         if (VSync)

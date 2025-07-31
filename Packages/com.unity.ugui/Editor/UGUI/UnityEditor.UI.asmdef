@@ -1,28 +1,24 @@
 {
     "name": "UnityEditor.UI",
- 
+    "rootNamespace": "",
     "references": [
-      "UnityEngine.UI"
+        "UnityEngine.UI"
     ],
     "includePlatforms": [
         "Editor"
     ],
     "excludePlatforms": [],
-	"versionDefines": [
-        {
-            "name": "com.unity.modules.physics",
-            "expression": "1.0.0",
-            "define": "PACKAGE_PHYSICS"
-        },
-        {
-            "name": "com.unity.modules.physics2d",
-            "expression": "1.0.0",
-            "define": "PACKAGE_PHYSICS2D"
-        },
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
         {
             "name": "com.unity.modules.animation",
             "expression": "1.0.0",
             "define": "PACKAGE_ANIMATION"
         }
-    ]
+    ],
+    "noEngineReferences": false
 }

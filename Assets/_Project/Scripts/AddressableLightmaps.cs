@@ -7,11 +7,16 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class AddressableLightmaps : MonoBehaviour
 {
     [SerializeField] private Game game;
-    [SerializeField] private AssetReferenceTexture2D WithResearchFactoryLightmap;
+    [SerializeField] private Texture2D GameLightmap;
     private AsyncOperationHandle<Texture2D> rflHandle;
 
     public void InitAddressableLightmaps()
     {
+        if (ThemeManager.instance.CurrentTheme.ResearchFactoryLightmap == null)
+        {
+            return;
+        }
+
         if (rflHandle.IsValid())
         {
             Addressables.Release(rflHandle);
@@ -23,17 +28,38 @@ public class AddressableLightmaps : MonoBehaviour
         }
     }
 
-    private async UniTaskVoid LoadResearchFactoryLightmap()
+    public void RemoveLightmaps()
     {
-        rflHandle = Addressables.LoadAssetAsync<Texture2D>(WithResearchFactoryLightmap);
-        await rflHandle;
+        if (rflHandle.IsValid())
+        {
+            Addressables.Release(rflHandle);
+        }
 
-        List<LightmapData> lightmapData = new List<LightmapData>();
+        List<LightmapData> lightmapData = new();
 
         LightmapData lightmapData1 = new();
-        lightmapData1.lightmapColor = rflHandle.Result;
+        lightmapData1.lightmapColor = GameLightmap;
 
         lightmapData.Add(lightmapData1);
+
+        LightmapSettings.lightmaps = lightmapData.ToArray();
+    }
+
+    private async UniTaskVoid LoadResearchFactoryLightmap()
+    {
+        rflHandle = Addressables.LoadAssetAsync<Texture2D>(ThemeManager.instance.CurrentTheme.ResearchFactoryLightmap);
+        await rflHandle;
+
+        List<LightmapData> lightmapData = new();
+
+        LightmapData lightmapData1 = new();
+        lightmapData1.lightmapColor = GameLightmap;
+
+        LightmapData lightmapData2 = new();
+        lightmapData2.lightmapColor = rflHandle.Result;
+
+        lightmapData.Add(lightmapData1);
+        lightmapData.Add(lightmapData2);
 
         LightmapSettings.lightmaps = lightmapData.ToArray();
     }

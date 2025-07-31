@@ -16,37 +16,37 @@ MonoBehaviour:
   m_GUID: 1ba9725550f5f344e9338122cdf5afb9
   m_SerializeEntries:
   - m_GUID: 023db2c8e55d2864bafd37d9652de079
-    m_Address: Assets/_Project/Audio/Music/Lancefield_-_Infinite_Sorrows.mp3
+    m_Address: InfiniteSorrows
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7e0a1ccf0ce478e4fa1e68f59153091a
-    m_Address: Assets/_Project/Audio/Music/Hypnothis.mp3
+    m_Address: Hypnothis
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9f741f8f75d460a44bf205db8fc4792b
-    m_Address: Assets/Audio/SFX/UI_Click_01.mp3
+    m_Address: UI_Click_01
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9f7a032adbfd10746a0a6cf1583a8907
-    m_Address: Assets/_Project/Audio/Music/Pamgaea.mp3
+    m_Address: Pamgaea
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: da338a10eba3b0e4ea419cf89ffcae66
-    m_Address: Assets/_Project/Audio/Music/Klockworx.mp3
+    m_Address: Klockworx
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e13e7453a4b525e44bdbd6a96bebcffa
-    m_Address: Assets/_Project/Audio/Music/airtone_-_sleepwalking.mp3
+    m_Address: sleepwalking
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e79139cb7b147cb4e9d73f99c88b890c
-    m_Address: Assets/_Project/Audio/Music/Electrodoodle.mp3
+    m_Address: Electrodoodle
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

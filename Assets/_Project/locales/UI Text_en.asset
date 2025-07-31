@@ -169,10 +169,6 @@ MonoBehaviour:
     m_Localized: Post Processing
     m_Metadata:
       m_Items: []
-  - m_Id: 26524375293952
-    m_Localized: Trees
-    m_Metadata:
-      m_Items: []
   - m_Id: 26544814137344
     m_Localized: Particles
     m_Metadata:
@@ -195,10 +191,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 27214296358912
     m_Localized: Change
-    m_Metadata:
-      m_Items: []
-  - m_Id: 27860231757824
-    m_Localized: Quality Settings
     m_Metadata:
       m_Items: []
   - m_Id: 34076039290880
@@ -238,10 +230,6 @@ MonoBehaviour:
       OF THEM.'
     m_Metadata:
       m_Items: []
-  - m_Id: 35818470612992
-    m_Localized: Import
-    m_Metadata:
-      m_Items: []
   - m_Id: 37723288608768
     m_Localized: Shop
     m_Metadata:
@@ -252,10 +240,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 38208854794240
     m_Localized: Not Enough Cookies!
-    m_Metadata:
-      m_Items: []
-  - m_Id: 39169753063424
-    m_Localized: Themes
     m_Metadata:
       m_Items: []
   - m_Id: 39186068905984
@@ -306,10 +290,6 @@ MonoBehaviour:
     m_Localized: Beta Content
     m_Metadata:
       m_Items: []
-  - m_Id: 43315780624384
-    m_Localized: Mods
-    m_Metadata:
-      m_Items: []
   - m_Id: 43660564996096
     m_Localized: Disable Beta Content
     m_Metadata:
@@ -342,20 +322,12 @@ MonoBehaviour:
     m_Localized: Achievements
     m_Metadata:
       m_Items: []
-  - m_Id: 5827744323993600
-    m_Localized: Leaderboard
-    m_Metadata:
-      m_Items: []
   - m_Id: 21043978339078144
     m_Localized: Beta Content
     m_Metadata:
       m_Items: []
   - m_Id: 166605031994044416
     m_Localized: Save Management
-    m_Metadata:
-      m_Items: []
-  - m_Id: 166606202485878784
-    m_Localized: Reset Options
     m_Metadata:
       m_Items: []
   - m_Id: 166606409164402688

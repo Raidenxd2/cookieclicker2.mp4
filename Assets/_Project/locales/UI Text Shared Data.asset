@@ -51,10 +51,6 @@ MonoBehaviour:
     m_Key: BETACONTENT_DISABLEBC
     m_Metadata:
       m_Items: []
-  - m_Id: 43315780624384
-    m_Key: BETACONTENT_MODS
-    m_Metadata:
-      m_Items: []
   - m_Id: 167076722826293248
     m_Key: BETACONTENT_RESEARCHFACTORY
     m_Metadata:
@@ -107,6 +103,10 @@ MonoBehaviour:
     m_Key: EBCWARNING_INFO
     m_Metadata:
       m_Items: []
+  - m_Id: 38170544021504
+    m_Key: ERROR
+    m_Metadata:
+      m_Items: []
   - m_Id: 167358762515705856
     m_Key: EXIT_BTN
     m_Metadata:
@@ -119,16 +119,8 @@ MonoBehaviour:
     m_Key: HELP_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 35818470612992
-    m_Key: IMPORT_BTN
-    m_Metadata:
-      m_Items: []
   - m_Id: 47768164343808
     m_Key: JUKEBOX_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5827744323993600
-    m_Key: LEADERBOARD_BTN
     m_Metadata:
       m_Items: []
   - m_Id: 16370523152384
@@ -137,6 +129,30 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 3309573742592
     m_Key: LOADING_TEXT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333413640022274048
+    m_Key: MINEMINIGAME_EXITCONFIRM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333413916129112064
+    m_Key: MINEMINIGAME_LOSE_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333413889830825984
+    m_Key: MINEMINIGAME_LOSE_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333710168075022336
+    m_Key: MINEMINIGAME_NEC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333442041957330944
+    m_Key: MINIGAMES_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 333552801102442496
+    m_Key: MINIGAMES_DRILL
     m_Metadata:
       m_Items: []
   - m_Id: 9457601323008
@@ -155,10 +171,6 @@ MonoBehaviour:
     m_Key: NECDIALOG_INFO
     m_Metadata:
       m_Items: []
-  - m_Id: 38170544021504
-    m_Key: ERROR
-    m_Metadata:
-      m_Items: []
   - m_Id: 17947132665856
     m_Key: NO_BTN
     m_Metadata:
@@ -169,6 +181,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 41341001637888
     m_Key: NONETWORK_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 340319299783372800
+    m_Key: OCULUSSTANDALONE_FPSMODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 340318770223132672
+    m_Key: OCULUSSTANDALONE_TITLE
     m_Metadata:
       m_Items: []
   - m_Id: 15401689260032
@@ -239,10 +259,6 @@ MonoBehaviour:
     m_Key: QUALITYSETTINGS_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 27860231757824
-    m_Key: QUALITYSETTINGS_TITLE
-    m_Metadata:
-      m_Items: []
   - m_Id: 12417584570368
     m_Key: QUIT_BTN
     m_Metadata:
@@ -281,10 +297,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 17850076471296
     m_Key: RESETDIALOG_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 166606202485878784
-    m_Key: RESETOPTIONS_TITLE
     m_Metadata:
       m_Items: []
   - m_Id: 9171402989568
@@ -387,14 +399,6 @@ MonoBehaviour:
     m_Key: THEMES_INFO
     m_Metadata:
       m_Items: []
-  - m_Id: 39169753063424
-    m_Key: THEMES_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 26524375293952
-    m_Key: TREES_TOGGLE
-    m_Metadata:
-      m_Items: []
   - m_Id: 230843887104688128
     m_Key: UPDATEAVAILABLE_MESSAGE
     m_Metadata:
@@ -403,48 +407,16 @@ MonoBehaviour:
     m_Key: UPDATEAVAILABLE_TITLE
     m_Metadata:
       m_Items: []
+  - m_Id: 333687523543625728
+    m_Key: VRFALLBACK_INFO
+    m_Metadata:
+      m_Items: []
   - m_Id: 26595489718272
     m_Key: VSYNC_TOGGLE
     m_Metadata:
       m_Items: []
   - m_Id: 17963507228672
     m_Key: YES_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 333413640022274048
-    m_Key: MINEMINIGAME_EXITCONFIRM
-    m_Metadata:
-      m_Items: []
-  - m_Id: 333413889830825984
-    m_Key: MINEMINIGAME_LOSE_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 333413916129112064
-    m_Key: MINEMINIGAME_LOSE_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 333442041957330944
-    m_Key: MINIGAMES_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 333552801102442496
-    m_Key: MINIGAMES_DRILL
-    m_Metadata:
-      m_Items: []
-  - m_Id: 333687523543625728
-    m_Key: VRFALLBACK_INFO
-    m_Metadata:
-      m_Items: []
-  - m_Id: 333710168075022336
-    m_Key: MINEMINIGAME_NEC
-    m_Metadata:
-      m_Items: []
-  - m_Id: 340318770223132672
-    m_Key: OCULUSSTANDALONE_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 340319299783372800
-    m_Key: OCULUSSTANDALONE_FPSMODE
     m_Metadata:
       m_Items: []
   m_Metadata:

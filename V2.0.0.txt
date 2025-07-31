@@ -6,6 +6,7 @@ Upgraded to Unity 6000.1.13f1
 All Google stuff has been removed.
 Added macOS support.
 Added WebGL support.
+Added Windows ARM64 support.
 Added an update checker.
 Removed Beta Content feature: Mods
 Removed Beta Content feature: Sidebar

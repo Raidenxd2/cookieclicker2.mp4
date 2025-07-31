@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: ForestTheme
   m_EditorClassIdentifier: 
   ThemeName: Forest
-  AssetPackName: default
   ThemePrefabRef:
-    m_AssetGUID: 
+    m_AssetGUID: c396c36bde6b9eb4b8729bac2068c263
     m_SubObjectName: 
-    m_SubObjectGUID: 
     m_SubObjectType: 
+    m_SubObjectGUID: 
     m_EditorAssetChanged: 0

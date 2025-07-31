@@ -1,46 +1,61 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance;
 
-    [SerializeField] private AudioClip[] musics;
+    [SerializeField] private AssetReferenceT<AudioClip>[] musics;
+    private AsyncOperationHandle<AudioClip> musicHandle;
     private bool overrideSong;
     private int overrideIndex;
 
-    private AudioSource musicSource;
+    private bool stopPlaying;
 
-    private bool isPlaying;
+    private AudioSource musicSource;
 
     private void Awake()
     {
         instance = this;
 
         musicSource = GameObject.FindGameObjectWithTag("music").GetComponent<AudioSource>();
+
+        PlayRandomSongAsync().Forget();
     }
 
-    private void Update()
+    private async UniTaskVoid PlayRandomSongAsync()
     {
-        if (!isPlaying)
+        if (stopPlaying)
         {
-            isPlaying = true;
-
-            int musicIndex = 0;
-
-            if (overrideSong)
-            {
-                musicIndex = overrideIndex;
-            }
-            else
-            {
-                musicIndex = Random.Range(0, musics.Length);
-            }
-
-            musicSource.clip = musics[musicIndex];
-            musicSource.Play();
-            StartCoroutine(MusicLoop());
+            return;
         }
+
+        if (musicHandle.IsValid())
+        {
+            Addressables.Release(musicHandle);
+        }
+
+        int musicIndex = 0;
+
+        if (overrideSong)
+        {
+            musicIndex = overrideIndex;
+        }
+        else
+        {
+            musicIndex = Random.Range(0, musics.Length);
+        }
+
+        musicHandle = Addressables.LoadAssetAsync<AudioClip>(musics[musicIndex]);
+        await musicHandle;
+
+        musicSource.clip = musicHandle.Result;
+        musicSource.Play();
+
+        await UniTask.WaitUntil(() => musicSource.isPlaying == false);
+        PlayRandomSongAsync().Forget();
     }
     
     public void PlaySong(int index)
@@ -49,17 +64,14 @@ public class MusicManager : MonoBehaviour
         overrideIndex = index;
         
         musicSource.Stop();
-
-        isPlaying = false;
     }
 
-    private IEnumerator MusicLoop()
+    public void UnloadSong()
     {
-        while (musicSource.isPlaying)
-        {
-            yield return null;
-        }
+        stopPlaying = true;
 
-        isPlaying = false;
+        musicSource.Stop();
+
+        Addressables.Release(musicHandle);
     }
 }

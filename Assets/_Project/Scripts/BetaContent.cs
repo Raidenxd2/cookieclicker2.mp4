@@ -14,11 +14,10 @@ public class BetaContent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("HasPlayed", 0) == 0)
+        if (BetterPrefs.GetBool("HasPlayed", false))
         {
-            PlayerPrefs.SetInt("BetaContent", 0);
-            PlayerPrefs.SetInt("BETA_ResearchFactory", 0);
-            PlayerPrefs.Save();
+            BetterPrefs.SetBool("BetaContent", false);
+            BetterPrefs.SetBool("BETA_ResearchFactory", false);
         }
 
         UpdateBetaContent();
@@ -26,9 +25,9 @@ public class BetaContent : MonoBehaviour
 
     public void UpdateBetaContent()
     {
-        if (PlayerPrefs.GetInt("BetaContent", 0) == 1)
+        if (BetterPrefs.GetBool("BetaContent", false))
         {
-            if (PlayerPrefs.GetInt("BETA_ResearchFactory", 0) == 1)
+            if (BetterPrefs.GetBool("BETA_ResearchFactory", false))
             {
                 ResearchFactoryButton.SetActive(true);
             }

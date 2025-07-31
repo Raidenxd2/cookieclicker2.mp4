@@ -9,6 +9,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
 using Cysharp.Threading.Tasks;
 using System;
+using System.IO;
 
 #if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
 using System.Collections.Generic;
@@ -43,7 +44,6 @@ public class Game : MonoBehaviour
 
     // game objects
     [Header("Game Objects")]
-    public GameObject Drill_Model;
     public GameObject Drill_Partical;
     public GameObject NECDialog;
     public GameObject SDIE;
@@ -126,7 +126,6 @@ public class Game : MonoBehaviour
     public Transform CookieGainsSpot;
 
     [Header("Research Factory")]
-    public GameObject Research_Factory_Normal;
     public GameObject Research_Factory_Particals;
     public ResearchFactory researchFactory;
 
@@ -154,9 +153,16 @@ public class Game : MonoBehaviour
     public WaitForSeconds oneSecond;
     public WaitForSeconds sixtySeconds;
 
+    [SerializeField] private AssetReference DefaultThemeScene;
+
     private void Awake()
     {
         instance = this;
+
+        if (!File.Exists(Application.persistentDataPath + "/Saves/Default.cookie"))
+        {
+            BetterPrefs.Load("/Saves/Default.cookie");
+        }
     }
 
     private void OnDestroy()
@@ -244,7 +250,6 @@ public class Game : MonoBehaviour
 
         if (PlayerPrefs.GetInt("HasPlayed", 0) == 0)
         {
-            ad.SetDefaults();
             SavePlayer();
             PlayerPrefs.SetInt("HasPlayed", 1);
             PlayerPrefs.Save();
@@ -284,9 +289,14 @@ public class Game : MonoBehaviour
         MusicAudioSource = MusicSource.GetComponent<AudioSource>();
         SoundAudioSource = SoundSource.GetComponent<AudioSource>();
 
-        al.InitAddressableLightmaps();
-
         AllowUpdate = true;
+
+        // ThemeManager.instance.SelectTheme(DefaultThemeScene).Forget();
+    }
+
+    public void PlayInitialFadeOut()
+    {
+        Fade.Play("FadeOut");
     }
 
     void CheckPrices()
@@ -457,7 +467,10 @@ public class Game : MonoBehaviour
         BetterPrefs.DeleteAll();
         BetterPrefs.Save();
 
+        ad.SetDefaults();
+
         SavePlayer();
+
         Reload();
     }
 
@@ -480,17 +493,35 @@ public class Game : MonoBehaviour
         Application.Quit();
     }
 
-    void OnApplicationQuit()
+    private void OnApplicationQuit()
     {
-        ad.SaveGraphics();
         SavePlayer();
     }
 
     public void Reload()
     {
-        al.UnloadLightmaps();
+        ReloadAsync().Forget();
+    }
 
-        StartCoroutine(ReloadWait());
+    private async UniTaskVoid ReloadAsync()
+    {
+        Fade.Play("FadeIn");
+        FadeCanvasGroup.blocksRaycasts = true;
+        await UniTask.WaitForSeconds(1);
+
+        MusicManager.instance.UnloadSong();
+
+        await ThemeManager.instance.UnloadTheme();
+
+        await Addressables.UnloadSceneAsync(AddressableHandles.instance.gameSceneHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+
+#if !CC2_REMOVE_VR_SUPPORT
+        Destroy(VRPrefabGO);
+        Addressables.Release(VRPrefab);
+#endif
+
+        AddressableHandles.instance.initSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.initSceneRef, LoadSceneMode.Single);
+        await AddressableHandles.instance.initSceneHandle;
     }
 
     public void SoundToggle(bool Toggle)
@@ -517,27 +548,6 @@ public class Game : MonoBehaviour
     }
 #endif
 
-    IEnumerator ReloadWait()
-    {
-        Fade.Play("FadeIn");
-        FadeCanvasGroup.blocksRaycasts = true;
-        yield return oneSecond;
-
-        LogSystem.Log("Loading Init scene and unloading the Game scene.", LogTypes.Normal);
-
-        Addressables.UnloadSceneAsync(AddressableHandles.instance.gameSceneHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
-#if !CC2_REMOVE_VR_SUPPORT
-        Destroy(VRPrefabGO);
-        Addressables.Release(VRPrefab);
-#endif
-
-        AddressableHandles.instance.initSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.initSceneRef, LoadSceneMode.Single);
-
-        while (!AddressableHandles.instance.initSceneHandle.IsDone)
-        {
-            yield return null;
-        }
-    }
 #if !CC2_REMOVE_VR_SUPPORT
     public void LoadVRFallbackScene()
     {
@@ -715,34 +725,25 @@ public class Game : MonoBehaviour
 
     public void EnableBetaContent()
     {
-        PlayerPrefs.SetInt("BetaContent", 1);
+        BetterPrefs.SetBool("BetaContent", true);
         BetaContentScreen.SetActive(true);
         BetaContentWarningScreen.GetComponent<WindowAnimations>().HideWindow();
     }
 
     public void DisableBetaContent()
     {
-        PlayerPrefs.SetInt("BETA_ResearchFactory", 0);
+        BetterPrefs.SetBool("BETA_ResearchFactory", false);
 
         bc.UpdateBetaContent();
         BetaContentScreen.GetComponent<WindowAnimations>().HideWindow();
 
-        PlayerPrefs.SetInt("BetaContent", 0);
+        BetterPrefs.SetBool("BetaContent", false);
     }
 
     public void ChangeBetaContentFeatureValue(string name, bool toggle)
     {
-        switch (toggle)
-        {
-            case false:
-                PlayerPrefs.SetInt(name, 0);
-                bc.UpdateBetaContent();
-                break;
-            case true:
-                PlayerPrefs.SetInt(name, 1);
-                bc.UpdateBetaContent();
-                break;
-        }
+        BetterPrefs.SetBool(name, toggle);
+        bc.UpdateBetaContent();
     }
 
     public void ShowBetaContentWindow()
@@ -761,26 +762,26 @@ public class Game : MonoBehaviour
     {
         if (ResearchFactory)
         {
-            Research_Factory_Normal.SetActive(true);
+            ThemeManager.instance.CurrentTheme.ResearchFactory.SetActive(true);
             Research_Factory_Particals.SetActive(true);
         }
         else
         {
-            Research_Factory_Normal.SetActive(false);
+            ThemeManager.instance.CurrentTheme.ResearchFactory.SetActive(false);
             Research_Factory_Particals.SetActive(false);
         }
     }
 
-    private void CheckDrill()
+    public void CheckDrill()
     {
         if (Drills >= 1)
         {
-            Drill_Model.SetActive(true);
+            ThemeManager.instance.CurrentTheme.Drill.SetActive(true);
             Drill_Partical.SetActive(true);
         }
         else
         {
-            Drill_Model.SetActive(false);
+            ThemeManager.instance.CurrentTheme.Drill.SetActive(false);
             Drill_Partical.SetActive(false);
         }
     }

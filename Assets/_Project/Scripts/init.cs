@@ -9,6 +9,7 @@ public class init : MonoBehaviour
     public GameObject DDOL;
 
     [SerializeField] private AssetReference VRPrefab;
+    [SerializeField] private AssetReference DefaultThemeScene;
 
     public static bool HasLoaded;
 
@@ -31,9 +32,7 @@ public class init : MonoBehaviour
 #if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-            LoadVRData();
-#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            LoadVRData().Forget();
         }
 #endif
 
@@ -49,10 +48,17 @@ public class init : MonoBehaviour
 
     private async UniTaskVoid LoadGameSceneAsync()
     {
+        AddressableHandles.instance.gameSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.gameSceneRef, LoadSceneMode.Additive);
+        await AddressableHandles.instance.gameSceneHandle;
+
+        await UniTask.WaitForEndOfFrame();
+        await ThemeManager.instance.SelectTheme(DefaultThemeScene);
+
+        SceneManager.SetActiveScene(AddressableHandles.instance.gameSceneHandle.Result.Scene);
+
         await Addressables.UnloadSceneAsync(AddressableHandles.instance.initSceneHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
 
-        AddressableHandles.instance.gameSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.gameSceneRef, LoadSceneMode.Single);
-        await AddressableHandles.instance.gameSceneHandle;
+        Game.instance.PlayInitialFadeOut();
     }
 
 #if UNITY_EDITOR
