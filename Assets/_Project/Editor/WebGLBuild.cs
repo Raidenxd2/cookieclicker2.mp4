@@ -50,9 +50,14 @@ public class WebGLBuild : Editor
             Directory.Delete(Application.dataPath + "/../Packages/com.unity.xr.openxr", true);
         }
 
+        if (Directory.Exists(Application.dataPath + "/../Packages/com.unity.xr.interaction.toolkit"))
+        {
+            Directory.Delete(Application.dataPath + "/../Packages/com.unity.xr.interaction.toolkit", true);
+        }
+
         if (!File.Exists(Application.dataPath + "/WebGL_PackagesRemoved"))
         {
-            string[] packages = new[] { "dev.voltstro.unitycommandlineparser", "com.unity.xr.interaction.toolkit", "com.unity.xr.management", "com.unity.xr.openxr", "com.unity.xr.meta-openxr", "com.unity.inputsystem", "com.unity.modules.vr", "com.unity.modules.androidjni", "com.unity.modules.screencapture" };
+            string[] packages = new[] { "dev.voltstro.unitycommandlineparser", "com.unity.xr.interaction.toolkit", "com.unity.xr.management", "com.unity.xr.openxr", "com.unity.xr.meta-openxr", "com.unity.inputsystem", "com.unity.modules.vr", "com.unity.modules.screencapture", "com.unity.modules.uielements" };
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             RemovePackagesAsync(packages);
