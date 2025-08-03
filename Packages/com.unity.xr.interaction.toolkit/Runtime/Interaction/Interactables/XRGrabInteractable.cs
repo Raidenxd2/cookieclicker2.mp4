@@ -733,9 +733,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Interactables
 
         Transform m_OriginalSceneParent;
 
-        // Account for teleportation to avoid throws with unintentionally high energy
-        TeleportationMonitor m_TeleportationMonitor;
-
         readonly Dictionary<IXRSelectInteractor, Transform> m_DynamicAttachTransforms = new Dictionary<IXRSelectInteractor, Transform>();
 
         static readonly LinkedPool<Transform> s_DynamicAttachTransformPool = new LinkedPool<Transform>(OnCreatePooledItem, OnGetPooledItem, OnReleasePooledItem, OnDestroyPooledItem);
@@ -746,9 +743,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Interactables
         protected override void Awake()
         {
             base.Awake();
-
-            m_TeleportationMonitor = new TeleportationMonitor();
-            m_TeleportationMonitor.teleported += OnTeleported;
 
             m_CurrentMovementType = m_MovementType;
             if (!TryGetComponent(out m_Rigidbody))
@@ -1716,8 +1710,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Interactables
                 Grab();
                 InvokeGrabTransformersOnGrab();
             }
-
-            SubscribeTeleportationProvider(args.interactorObject);
         }
 
         /// <inheritdoc />
@@ -1752,8 +1744,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Interactables
             // Don't restore ability to collide with character until the object is not overlapping with the character.
             // This prevents the character from being pushed out of the way of the dropped object while moving.
             m_SelectingCharacterInteractors.Remove(args.interactorObject);
-
-            UnsubscribeTeleportationProvider(args.interactorObject);
         }
 
         /// <inheritdoc />
@@ -2126,16 +2116,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Interactables
                 return calcVelocity / totalWeights;
 
             return Vector3.zero;
-        }
-
-        void SubscribeTeleportationProvider(IXRInteractor interactor)
-        {
-            m_TeleportationMonitor.AddInteractor(interactor);
-        }
-
-        void UnsubscribeTeleportationProvider(IXRInteractor interactor)
-        {
-            m_TeleportationMonitor.RemoveInteractor(interactor);
         }
 
         void OnTeleported(Pose offset)

@@ -36,11 +36,6 @@
             "define": "PACKAGE_TMP"
         },
         {
-            "name": "com.unity.device-simulator",
-            "expression": "1.0.0",
-            "define": "PACKAGE_DEVICE_SIMULATOR "
-        },
-        {
             "name": "com.unity.addressables",
             "expression": "[1.0,2.0]",
             "define": "ADDRESSABLES_ANALYZE"

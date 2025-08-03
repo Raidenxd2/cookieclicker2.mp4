@@ -37,6 +37,8 @@ public class Game : MonoBehaviour
     public BigDouble GrandmaPrice;
     public BigDouble CookieFactorys;
     public BigDouble CookieFactoryPrice;
+    public BigDouble CookieFarms;
+    public BigDouble CookieFarmPrice;
     public bool HasPlayed;
     public bool ResearchFactory;
     public bool Music;
@@ -68,11 +70,12 @@ public class Game : MonoBehaviour
     public TMP_Text Shop_Autoclicker;
     public TMP_Text Shop_Doublecookie;
     public TMP_Text Shop_Drill;
+    public TMP_Text Shop_Grandma;
+    public TMP_Text Shop_CookieFactory;
+    public TMP_Text Shop_CookieFarm;
     public TMP_Text ErrorText;
     public TMP_Text SmallErrorText;
-    public TMP_Text Shop_Grandma;
     public TMP_Text VersionText;
-    public TMP_Text Shop_CookieFactory;
 
     // stats
     [Header("Stats")]
@@ -84,6 +87,7 @@ public class Game : MonoBehaviour
     public TMP_Text Stats_CPC;
     public TMP_Text Stats_Grandmas;
     public TMP_Text Stats_CookieFactorys;
+    public TMP_Text Stats_CookieFarms;
 
     // animations
     [Header("Animations")]
@@ -160,10 +164,7 @@ public class Game : MonoBehaviour
     {
         instance = this;
 
-        if (!File.Exists(Application.persistentDataPath + "/Saves/Default.cookie"))
-        {
-            BetterPrefs.Load("/Saves/Default.cookie");
-        }
+        BetterPrefs.Load("/Saves/Default.cookie");
     }
 
     private void OnDestroy()
@@ -189,14 +190,6 @@ public class Game : MonoBehaviour
 #if UNITY_WEBGL
         QuitBTN.SetActive(false);
 #endif
-
-        if (PlayerPrefs.GetInt("HasPlayed", 0) == 0)
-        {
-            SavePlayer();
-            PlayerPrefs.SetInt("HasPlayed", 1);
-            PlayerPrefs.Save();
-            Reload();
-        }
 
         LoadPlayer();
 
@@ -330,6 +323,11 @@ public class Game : MonoBehaviour
             CookieFactorys = 0;
             CookieFactoryPrice = 320;
         }
+        if (CookieFarmPrice < 1100)
+        {
+            CookieFarms = 0;
+            CookieFarmPrice = 1100;
+        }
     }
 
     IEnumerator AutoSave()
@@ -372,6 +370,8 @@ public class Game : MonoBehaviour
         BetterPrefs.SetString("GrandmaPrice", GrandmaPrice.ToString());
         BetterPrefs.SetString("CookieFactorys", CookieFactorys.ToString());
         BetterPrefs.SetString("CookieFactoryPrice", CookieFactoryPrice.ToString());
+        BetterPrefs.SetString("CookieFarms", CookieFarms.ToString());
+        BetterPrefs.SetString("CookieFarmPrice", CookieFarmPrice.ToString());
         BetterPrefs.SetString("ResearchPoints", researchFactory.ResearchPoints.ToString());
         BetterPrefs.SetBool("BigCookieResearched", researchFactory.BigCookieResearched);
         BetterPrefs.SetFloat("HammerStrength", HammerStrength);
@@ -420,6 +420,8 @@ public class Game : MonoBehaviour
         GrandmaPrice = BigDouble.Parse(BetterPrefs.GetString("GrandmaPrice", "0"));
         CookieFactorys = BigDouble.Parse(BetterPrefs.GetString("CookieFactorys", "0"));
         CookieFactoryPrice = BigDouble.Parse(BetterPrefs.GetString("CookieFactoryPrice", "0"));
+        CookieFarms = BigDouble.Parse(BetterPrefs.GetString("CookieFarms", "0"));
+        CookieFarmPrice = BigDouble.Parse(BetterPrefs.GetString("CookieFarmPrice", "0"));
 
         researchFactory.ResearchPoints = BigDouble.Parse(BetterPrefs.GetString("ResearchPoints", "1"));
         researchFactory.BigCookieResearched = BetterPrefs.GetBool("BigCookieResearched", false);
@@ -455,6 +457,8 @@ public class Game : MonoBehaviour
         GrandmaPrice = 0;
         CookieFactorys = 0;
         CookieFactoryPrice = 0;
+        CookieFarms = 0;
+        CookieFarmPrice = 0;
 
         researchFactory.ResearchPoints = 1;
         researchFactory.BigCookieUnlocked = false;
@@ -604,7 +608,7 @@ public class Game : MonoBehaviour
 
             if (!BetterPrefs.GetBool("TenDC", false))
             {
-                if (Autoclickers >= 10)
+                if (Doublecookies >= 10)
                 {
                     BetterPrefs.SetBool("TenDC", true);
                     AchievementManager.instance.UpdateAchievements();
@@ -629,7 +633,7 @@ public class Game : MonoBehaviour
 
             if (!BetterPrefs.GetBool("TenDrills", false))
             {
-                if (Autoclickers >= 10)
+                if (Drills >= 10)
                 {
                     BetterPrefs.SetBool("TenDrills", true);
                     AchievementManager.instance.UpdateAchievements();
@@ -655,7 +659,7 @@ public class Game : MonoBehaviour
 
             if (!BetterPrefs.GetBool("TenGrandmas", false))
             {
-                if (Autoclickers >= 10)
+                if (Grandmas >= 10)
                 {
                     BetterPrefs.SetBool("TenGrandmas", true);
                     AchievementManager.instance.UpdateAchievements();
@@ -680,9 +684,34 @@ public class Game : MonoBehaviour
 
             if (!BetterPrefs.GetBool("TenCF", false))
             {
-                if (Autoclickers >= 10)
+                if (CookieFactorys >= 10)
                 {
                     BetterPrefs.SetBool("TenCF", true);
+                    AchievementManager.instance.UpdateAchievements();
+                }
+            }
+        }
+        else
+        {
+            NECDialog.SetActive(true);
+        }
+    }
+
+    public void BuyCookieFarm()
+    {
+        if (Cookies >= CookieFarmPrice)
+        {
+            Cookies -= CookieFarmPrice;
+            CookieFarmPrice += 1100;
+            CookieFarms++;
+            CPS += 18;
+            CPC += 9;
+
+            if (!BetterPrefs.GetBool("TenCFA", false))
+            {
+                if (CookieFarms >= 10)
+                {
+                    BetterPrefs.SetBool("TenCFA", true);
                     AchievementManager.instance.UpdateAchievements();
                 }
             }
@@ -791,7 +820,7 @@ public class Game : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!AllowUpdate)
         {
@@ -804,6 +833,7 @@ public class Game : MonoBehaviour
         Shop_Drill.text = "Drill (" + DrillPrice + " Cookies)";
         Shop_Grandma.text = "Grandma (" + GrandmaPrice + " Cookies)";
         Shop_CookieFactory.text = "Cookie Factory (" + CookieFactoryPrice + " Cookies)";
+        Shop_CookieFarm.text = "Cookie Farm (" + CookieFarmPrice + " Cookies)";
 
         // stats
         Stats_Cookies.text = "Cookies: " + Cookies;
@@ -814,6 +844,7 @@ public class Game : MonoBehaviour
         Stats_CPS.text = "Cookies Per Second: " + CPS;
         Stats_Grandmas.text = "Grandmas: " + Grandmas;
         Stats_CookieFactorys.text = "Cookie Factorys: " + CookieFactorys;
+        Stats_CookieFarms.text = "Cookie Farms: " + CookieFarms;
 
         // music & sounds
         if (Music == false)

@@ -163,7 +163,7 @@ MonoBehaviour:
   m_colorSubmissionModes:
     m_List: 00000000
   m_depthSubmissionMode: 0
-  m_spacewarpMotionVectorTextureFormat: 0
+  m_spacewarpMotionVectorTextureFormat: 1
   m_optimizeBufferDiscards: 0
   m_symmetricProjection: 0
   m_optimizeMultiviewRenderRegions: 0
@@ -1147,7 +1147,7 @@ MonoBehaviour:
   optimizeMultiviewRenderRegions: 0
   multiviewRenderRegionsOptimizationMode: 0
   m_hasMigratedMultiviewRenderRegions: 1
-  spacewarpMotionVectorTextureFormat: 0
+  spacewarpMotionVectorTextureFormat: 1
 --- !u!114 &2701804145868352099
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -60,11 +60,6 @@
             "define": "PHYSICS2D_MODULE_PRESENT"
         },
         {
-            "name": "com.unity.burst",
-            "expression": "1.6.6",
-            "define": "BURST_PRESENT"
-        },
-        {
             "name": "com.unity.xr.hands",
             "expression": "1.1.0",
             "define": "XR_HANDS_1_1_OR_NEWER"

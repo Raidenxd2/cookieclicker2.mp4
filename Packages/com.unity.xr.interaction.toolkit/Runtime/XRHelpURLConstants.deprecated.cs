@@ -8,7 +8,6 @@ using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Rendering;
 using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.State;
 using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Theme.Audio;
 using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Theme.Primitives;
-using UnityEngine.XR.Interaction.Toolkit.AR;
 using UnityEngine.XR.Interaction.Toolkit.Transformers;
 
 namespace UnityEngine.XR.Interaction.Toolkit
@@ -28,12 +27,6 @@ namespace UnityEngine.XR.Interaction.Toolkit
         public const string k_XRLegacyGrabTransformer = k_BaseApi + k_BaseNamespace + "Transformers." + nameof(XRLegacyGrabTransformer) + ".html";
 
         /// <summary>
-        /// Scripting API URL for <see cref="LocomotionSystem"/>.
-        /// </summary>
-        [Obsolete("k_LocomotionSystem has been deprecated in version 3.0.0.")]
-        public const string k_LocomotionSystem = k_BaseApi + k_BaseNamespace + nameof(LocomotionSystem) + ".html";
-
-        /// <summary>
         /// Scripting API URL for <see cref="XRController"/>.
         /// </summary>
         [Obsolete("k_XRController has been deprecated in version 3.0.0.")]
@@ -46,46 +39,10 @@ namespace UnityEngine.XR.Interaction.Toolkit
         public const string k_XRScreenSpaceController = k_BaseApi + k_BaseNamespace + nameof(XRScreenSpaceController) + ".html";
 
         /// <summary>
-        /// Scripting API URL for <see cref="DeviceBasedContinuousMoveProvider"/>.
-        /// </summary>
-        [Obsolete("k_DeviceBasedContinuousMoveProvider has been deprecated in version 3.0.0.")]
-        public const string k_DeviceBasedContinuousMoveProvider = k_BaseApi + k_BaseNamespace + nameof(DeviceBasedContinuousMoveProvider) + ".html";
-
-        /// <summary>
-        /// Scripting API URL for <see cref="DeviceBasedContinuousTurnProvider"/>.
-        /// </summary>
-        [Obsolete("k_DeviceBasedContinuousTurnProvider has been deprecated in version 3.0.0.")]
-        public const string k_DeviceBasedContinuousTurnProvider = k_BaseApi + k_BaseNamespace + nameof(DeviceBasedContinuousTurnProvider) + ".html";
-
-        /// <summary>
-        /// Scripting API URL for <see cref="DeviceBasedSnapTurnProvider"/>.
-        /// </summary>
-        [Obsolete("k_DeviceBasedSnapTurnProvider has been deprecated in version 3.0.0.")]
-        public const string k_DeviceBasedSnapTurnProvider = k_BaseApi + k_BaseNamespace + nameof(DeviceBasedSnapTurnProvider) + ".html";
-
-        /// <summary>
-        /// Scripting API URL for <see cref="ActionBasedContinuousMoveProvider"/>.
-        /// </summary>
-        [Obsolete("k_ActionBasedContinuousMoveProvider has been deprecated in version 3.0.0.")]
-        public const string k_ActionBasedContinuousMoveProvider = k_BaseApi + k_BaseNamespace + nameof(ActionBasedContinuousMoveProvider) + ".html";
-
-        /// <summary>
-        /// Scripting API URL for <see cref="ActionBasedContinuousTurnProvider"/>.
-        /// </summary>
-        [Obsolete("k_ActionBasedContinuousTurnProvider has been deprecated in version 3.0.0.")]
-        public const string k_ActionBasedContinuousTurnProvider = k_BaseApi + k_BaseNamespace + nameof(ActionBasedContinuousTurnProvider) + ".html";
-
-        /// <summary>
         /// Scripting API URL for <see cref="ActionBasedController"/>.
         /// </summary>
         [Obsolete("k_ActionBasedController has been deprecated in version 3.0.0.")]
         public const string k_ActionBasedController = k_BaseApi + k_BaseNamespace + nameof(ActionBasedController) + ".html";
-
-        /// <summary>
-        /// Scripting API URL for <see cref="ActionBasedSnapTurnProvider"/>.
-        /// </summary>
-        [Obsolete("k_ActionBasedSnapTurnProvider has been deprecated in version 3.0.0.")]
-        public const string k_ActionBasedSnapTurnProvider = k_BaseApi + k_BaseNamespace + nameof(ActionBasedSnapTurnProvider) + ".html";
 
         /// <summary>
         /// Scripting API URL for <see cref="AudioAffordanceReceiver"/>.
@@ -248,53 +205,5 @@ namespace UnityEngine.XR.Interaction.Toolkit
         /// </summary>
         [Obsolete("The Affordance System namespace and all associated classes have been deprecated. The existing affordance system will be moved, replaced and updated with a new interaction feedback system in a future version of XRI.")]
         public const string k_Vector4AffordanceThemeDatum = k_BaseApi + k_BaseNamespace + "AffordanceSystem.Theme.Primitives." + nameof(Vector4AffordanceThemeDatum) + ".html";
-
-        /// <summary>
-        /// Scripting API URL for <see cref="ARAnnotationInteractable"/>.
-        /// </summary>
-        [Obsolete("ARAnnotationInteractable is marked for deprecation and will be removed in a future version.")]
-        public const string k_ARAnnotationInteractable = k_BaseApi + k_BaseNamespace + "AR." + nameof(ARAnnotationInteractable) + ".html";
-
-        /// <summary>
-        /// Scripting API URL for <see cref="ARGestureInteractor"/>.
-        /// </summary>
-        [Obsolete("ARGestureInteractor is marked for deprecation and will be removed in a future version.")]
-        public const string k_ARGestureInteractor = k_BaseApi + k_BaseNamespace + "AR." + nameof(ARGestureInteractor) + ".html";
-
-        /// <summary>
-        /// Scripting API URL for <see cref="ARPlacementInteractable"/>.
-        /// </summary>
-        [Obsolete("ARPlacementInteractable is marked for deprecation and will be removed in a future version.")]
-        public const string k_ARPlacementInteractable = k_BaseApi + k_BaseNamespace + "AR." + nameof(ARPlacementInteractable) + ".html";
-
-        /// <summary>
-        /// Scripting API URL for <see cref="ARRotationInteractable"/>.
-        /// </summary>
-        [Obsolete("ARRotationInteractable is marked for deprecation and will be removed in a future version.")]
-        public const string k_ARRotationInteractable = k_BaseApi + k_BaseNamespace + "AR." + nameof(ARRotationInteractable) + ".html";
-
-        /// <summary>
-        /// Scripting API URL for <see cref="ARScaleInteractable"/>.
-        /// </summary>
-        [Obsolete("ARScaleInteractable is marked for deprecation and will be removed in a future version.")]
-        public const string k_ARScaleInteractable = k_BaseApi + k_BaseNamespace + "AR." + nameof(ARScaleInteractable) + ".html";
-
-        /// <summary>
-        /// Scripting API URL for <see cref="ARSelectionInteractable"/>.
-        /// </summary>
-        [Obsolete("ARSelectionInteractable is marked for deprecation and will be removed in a future version.")]
-        public const string k_ARSelectionInteractable = k_BaseApi + k_BaseNamespace + "AR." + nameof(ARSelectionInteractable) + ".html";
-
-        /// <summary>
-        /// Scripting API URL for <see cref="ARTranslationInteractable"/>.
-        /// </summary>
-        [Obsolete("ARTranslationInteractable is marked for deprecation and will be removed in a future version.")]
-        public const string k_ARTranslationInteractable = k_BaseApi + k_BaseNamespace + "AR." + nameof(ARTranslationInteractable) + ".html";
-
-        /// <summary>
-        /// Scripting API URL for <see cref="CharacterControllerDriver"/>.
-        /// </summary>
-        [Obsolete("k_CharacterControllerDriver has been deprecated in version 3.0.0.")]
-        public const string k_CharacterControllerDriver = k_BaseApi + k_BaseNamespace + nameof(CharacterControllerDriver) + ".html";
     }
 }

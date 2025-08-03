@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation;
 
 namespace UnityEditor.XR.Interaction.Toolkit
 {
@@ -122,7 +121,6 @@ namespace UnityEditor.XR.Interaction.Toolkit
 
             m_InteractionLayerSettingsEditor = Editor.CreateEditor(InteractionLayerSettings.Instance);
             m_XRInteractionEditorSettingsEditor = Editor.CreateEditor(XRInteractionEditorSettings.Instance);
-            m_XRDeviceSimulatorSettingsEditor = Editor.CreateEditor(XRDeviceSimulatorSettings.Instance);
         }
 
         /// <inheritdoc />

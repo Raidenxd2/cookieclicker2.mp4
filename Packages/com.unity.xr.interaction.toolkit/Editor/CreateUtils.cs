@@ -19,7 +19,6 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.XR.Interaction.Toolkit.Interactors.Casters;
 using UnityEngine.XR.Interaction.Toolkit.Interactors.Visuals;
-using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
 using UnityEngine.XR.Interaction.Toolkit.Transformers;
 using UnityEngine.XR.Interaction.Toolkit.UI;
 
@@ -150,33 +149,6 @@ namespace UnityEditor.XR.Interaction.Toolkit
         public static void CreateInteractionManager(MenuCommand menuCommand)
         {
             Finalize(CreateInteractionManager(menuCommand?.GetContextTransform()));
-        }
-
-        [MenuItem("GameObject/XR/Teleportation Area", false, 10), UsedImplicitly]
-        public static void CreateTeleportationArea(MenuCommand menuCommand)
-        {
-            CreateInteractionManager();
-
-            Finalize(CreateAndPlacePrimitive("Teleportation Area", menuCommand?.GetContextTransform(),
-                PrimitiveType.Plane,
-                typeof(TeleportationArea)));
-        }
-
-        [MenuItem("GameObject/XR/Teleportation Anchor", false, 10), UsedImplicitly]
-        public static void CreateTeleportationAnchor(MenuCommand menuCommand)
-        {
-            CreateInteractionManager();
-
-            var anchorGO = CreateAndPlacePrimitive("Teleportation Anchor", menuCommand?.GetContextTransform(),
-                PrimitiveType.Plane,
-                typeof(TeleportationAnchor));
-
-            var destinationGO = ObjectFactory.CreateGameObject("Anchor");
-            Place(destinationGO, anchorGO.transform);
-
-            var teleportationAnchor = anchorGO.GetComponent<TeleportationAnchor>();
-            teleportationAnchor.teleportAnchorTransform = destinationGO.transform;
-            Finalize(anchorGO);
         }
 
         [MenuItem("GameObject/XR/UI Canvas", false, 10), UsedImplicitly]

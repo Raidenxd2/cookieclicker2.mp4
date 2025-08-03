@@ -9,16 +9,11 @@ Author: amytimed
 License: MIT
 */
 
-using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 
 public static class BetterPrefs
 {
-    public static string saveLocation = Application.persistentDataPath + "/saves/"; // Set this to wherever you want your saves to be stored. In portable builds, you could use Application.dataPath + "/saves/". (makes saves in the same folder as the executable, like for storing games on a flash drive)
-    public static string saveExtension = ".sav"; // Set this to the extension you want your saves for your game to have.
-    public static string defaultSaveName = "game"; // The saves created by Set functions (like SetBool, SetFloat etc) will be, by default, saved to a file with this name.
-
     static Dictionary<string, object> data; // The data that will be saved. This should only ever be accessed through the Get and Set functions.
     public static string currentSave = null; // The full path and name of the save file that is currently loaded, null if no save is loaded.
 
@@ -59,7 +54,6 @@ public static class BetterPrefs
     {
         if (data == null)
         {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
             return;
         }
         data[key] = value;
@@ -69,7 +63,6 @@ public static class BetterPrefs
     {
         if (data == null)
         {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
             return;
         }
 
@@ -80,45 +73,16 @@ public static class BetterPrefs
     {
         if (data == null)
         {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
             return;
         }
 
-        if (key != "date")
-        {
-            data[key] = value;
-        }
-        else
-        {
-            Debug.LogError("BetterPrefs: Key \"date\" is reserved for the date of the save file. Please use a different key.");
-        }
+        data[key] = value;
     }
 
     public static void SetString(string key, string value)
     {
         if (data == null)
         {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
-            return;
-        }
-        data[key] = value;
-    }
-
-    public static void SetVector2(string key, Vector2 value)
-    {
-        if (data == null)
-        {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
-            return;
-        }
-        data[key] = value;
-    }
-
-    public static void SetVector3(string key, Vector3 value)
-    {
-        if (data == null)
-        {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
             return;
         }
         data[key] = value;
@@ -128,7 +92,6 @@ public static class BetterPrefs
     {
         if (data == null)
         {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
             return false;
         }
 
@@ -146,7 +109,6 @@ public static class BetterPrefs
     {
         if (data == null)
         {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
             return -1;
         }
 
@@ -164,7 +126,6 @@ public static class BetterPrefs
     {
         if (data == null)
         {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
             return -1;
         }
 
@@ -182,49 +143,12 @@ public static class BetterPrefs
     {
         if (data == null)
         {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
             return "";
         }
 
         if (data.ContainsKey(key))
         {
             return ((string)data[key]);
-        }
-        else
-        {
-            return fallback;
-        }
-    }
-
-    public static Vector2 GetVector2(string key, Vector2 fallback)
-    {
-        if (data == null)
-        {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
-            return Vector2.zero;
-        }
-
-        if (data.ContainsKey(key))
-        {
-            return (Vector2)data[key];
-        }
-        else
-        {
-            return fallback;
-        }
-    }
-
-    public static Vector3 GetVector3(string key, Vector3 fallback)
-    {
-        if (data == null)
-        {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
-            return Vector3.zero;
-        }
-
-        if (data.ContainsKey(key))
-        {
-            return (Vector3)data[key];
         }
         else
         {
@@ -238,7 +162,6 @@ public static class BetterPrefs
     {
         if (data == null)
         {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
             return false;
         }
 
@@ -248,7 +171,6 @@ public static class BetterPrefs
         }
         else
         {
-            Debug.LogError("BetterPrefs: Key " + key + " does not exist. You should always use BetterPrefs.HasKey to check if a key exists before trying to access it.");
             return false;
         }
     }
@@ -257,7 +179,6 @@ public static class BetterPrefs
     {
         if (data == null)
         {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
             return -1;
         }
 
@@ -267,7 +188,6 @@ public static class BetterPrefs
         }
         else
         {
-            Debug.LogError("BetterPrefs: Key " + key + " does not exist. You should always use BetterPrefs.HasKey to check if a key exists before trying to access it.");
             return -1;
         }
     }
@@ -276,7 +196,6 @@ public static class BetterPrefs
     {
         if (data == null)
         {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
             return -1;
         }
 
@@ -286,7 +205,6 @@ public static class BetterPrefs
         }
         else
         {
-            Debug.LogError("BetterPrefs: Key " + key + " does not exist. You should always use BetterPrefs.HasKey to check if a key exists before trying to access it.");
             return -1;
         }
     }
@@ -295,7 +213,6 @@ public static class BetterPrefs
     {
         if (data == null)
         {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
             return "";
         }
 
@@ -305,46 +222,7 @@ public static class BetterPrefs
         }
         else
         {
-            Debug.LogError("BetterPrefs: Key " + key + " does not exist. You should always use BetterPrefs.HasKey to check if a key exists before trying to access it.");
             return "";
-        }
-    }
-
-    public static Vector2 GetVector2(string key)
-    {
-        if (data == null)
-        {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
-            return Vector2.zero;
-        }
-
-        if (data.ContainsKey(key))
-        {
-            return (Vector2)data[key];
-        }
-        else
-        {
-            Debug.LogError("BetterPrefs: Key " + key + " does not exist. You should always use BetterPrefs.HasKey to check if a key exists before trying to access it.");
-            return Vector2.zero;
-        }
-    }
-
-    public static Vector3 GetVector3(string key)
-    {
-        if (data == null)
-        {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
-            return Vector3.zero;
-        }
-
-        if (data.ContainsKey(key))
-        {
-            return (Vector3)data[key];
-        }
-        else
-        {
-            Debug.LogError("BetterPrefs: Key " + key + " does not exist. You should always use BetterPrefs.HasKey to check if a key exists before trying to access it.");
-            return Vector3.zero;
         }
     }
 
@@ -352,7 +230,6 @@ public static class BetterPrefs
     {
         if (data == null)
         {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
             return null;
         }
 
@@ -380,9 +257,6 @@ public static class BetterPrefs
             {
                 File.Delete(savePath);
             }
-
-            Debug.Log("BetterPrefs: Saved file with no data; deleted file");
-
             return null;
         }
 
@@ -415,25 +289,8 @@ public static class BetterPrefs
                 objectType = "string";
                 valueFormatted = pair.Value.ToString();
             }
-            else if (pair.Value is Vector2)
-            {
-                objectType = "vector2";
-
-                Vector2 value = (Vector2)pair.Value;
-
-                valueFormatted = value.x.ToString() + "," + value.y.ToString();
-            }
-            else if (pair.Value is Vector3)
-            {
-                objectType = "vector3";
-
-                Vector3 value = (Vector3)pair.Value;
-
-                valueFormatted = value.x.ToString() + "," + value.y.ToString() + "," + value.z.ToString();
-            }
             else
             {
-                Debug.LogError("BetterPrefs: Unsupported type " + pair.Value.GetType() + " for key " + pair.Key);
                 continue;
             }
 
@@ -460,19 +317,12 @@ public static class BetterPrefs
 
         file.Close();
 
-        Debug.Log("BetterPrefs: Saved data to \"" + savePath + "\"");
-
         return savePath; // Return the path to the file, could be useful
 
     }
 
     public static void Load(string savePath = "default")
     {
-        if (savePath == "default")
-        {
-            savePath = Path.Combine(saveLocation, defaultSaveName, saveExtension); // If no save path is specified, we load from the default save file.
-        }
-
         data = new Dictionary<string, object>();
 
         if (File.Exists(savePath)) // If the file doesn't exist, we know that file path is where the current save should be, so we store that and when Save is called, saves will be put there by default.
@@ -501,16 +351,8 @@ public static class BetterPrefs
 
                     bool value;
 
-                    if (bool.TryParse(valueFormatted, out value))
+                    if (!bool.TryParse(valueFormatted, out value))
                     {
-                        // The value is a valid bool
-                    }
-                    else
-                    {
-                        // The value is not a valid bool
-
-                        Debug.LogWarning("BetterPrefs: Invalid bool value in save file \"" + savePath + "\" for key \"" + key + "\"");
-
                         continue;
                     }
 
@@ -522,7 +364,6 @@ public static class BetterPrefs
                     }
                     else
                     {
-                        Debug.LogWarning("BetterPrefs: Duplicate key in save file \"" + savePath + "\" " + key + ". Using the last one.");
                         data[key] = value;
                     }
                 }
@@ -540,7 +381,6 @@ public static class BetterPrefs
                     }
                     else
                     {
-                        Debug.LogWarning("BetterPrefs: Duplicate key in save file \"" + savePath + "\" " + key + ". Using the last one.");
                         data[key] = value;
                     }
                 }
@@ -550,16 +390,8 @@ public static class BetterPrefs
 
                     int value;
 
-                    if (int.TryParse(valueFormatted, out value))
+                    if (!int.TryParse(valueFormatted, out value))
                     {
-                        // The value is a valid int
-                    }
-                    else
-                    {
-                        // The value is not a valid int
-
-                        Debug.LogWarning("BetterPrefs: Invalid int value in save file \"" + savePath + "\" for key \"" + key + "\"");
-
                         continue;
                     }
 
@@ -571,7 +403,6 @@ public static class BetterPrefs
                     }
                     else
                     {
-                        Debug.LogWarning("BetterPrefs: Duplicate key in save file \"" + savePath + "\" " + key + ". Using the last one.");
                         data[key] = value;
                     }
                 }
@@ -581,16 +412,8 @@ public static class BetterPrefs
 
                     float value;
 
-                    if (float.TryParse(valueFormatted, out value))
+                    if (!float.TryParse(valueFormatted, out value))
                     {
-                        // The value is a valid float
-                    }
-                    else
-                    {
-                        // The value is not a valid float
-
-                        Debug.LogWarning("BetterPrefs: Invalid float value in save file \"" + savePath + "\" for key \"" + key + "\"");
-
                         continue;
                     }
 
@@ -602,162 +425,12 @@ public static class BetterPrefs
                     }
                     else
                     {
-                        Debug.LogWarning("BetterPrefs: Duplicate key in save file \"" + savePath + "\" " + key + ". Using the last one.");
                         data[key] = value;
                     }
-                }
-                else if (objectType == "vector2")
-                {
-                    // This is a vector2
-
-                    Vector2 value;
-
-                    // There is no TryParse for Vector2, so we have to do it manually
-
-                    float x;
-                    float y;
-
-                    string[] values = valueFormatted.Split(',');
-
-                    if (values.Length != 2)
-                    {
-                        // There is more than one comma in the value, so it is not a valid vector2
-
-                        Debug.LogWarning("BetterPrefs: Invalid vector2 value in save file \"" + savePath + "\" for key \"" + key + "\"");
-
-                        continue;
-                    }
-                    else
-                    {
-                        if (float.TryParse(values[0].Trim(), out x))
-                        {
-                            // The x value is a valid float
-                        }
-                        else
-                        {
-                            // The x value is not a valid float
-
-                            Debug.LogWarning("BetterPrefs: Invalid vector2 X value in save file \"" + savePath + "\" for key \"" + key + "\"");
-
-                            continue;
-                        }
-
-                        if (float.TryParse(values[1].Trim(), out y))
-                        {
-                            // The y value is a valid float
-                        }
-                        else
-                        {
-                            // The y value is not a valid float
-
-                            Debug.LogWarning("BetterPrefs: Invalid vector2 Y value in save file \"" + savePath + "\" for key \"" + key + "\"");
-
-                            continue;
-                        }
-
-                        // Add the value to the dictionary
-
-                        value = new Vector2(x, y);
-
-                        if (!data.ContainsKey(key))
-                        {
-                            data.Add(key, value);
-                        }
-                        else
-                        {
-                            Debug.LogWarning("BetterPrefs: Duplicate key in save file \"" + savePath + "\" " + key + ". Using the last one.");
-                            data[key] = value;
-                        }
-                    }
-                }
-                else if (objectType == "vector3")
-                {
-                    // This is a vector3
-
-                    Vector3 value;
-
-                    // There is no TryParse for Vector3, so we have to do it manually
-
-                    float x;
-                    float y;
-                    float z;
-
-                    string[] values = valueFormatted.Split(',');
-
-                    if (values.Length != 3)
-                    {
-                        // There is more than one comma in the value, so it is not a valid vector3
-
-                        Debug.LogWarning("BetterPrefs: Invalid vector3 value in save file \"" + savePath + "\" for key \"" + key + "\"");
-
-                        continue;
-                    }
-                    else
-                    {
-                        if (float.TryParse(values[0].Trim(), out x))
-                        {
-                            // The x value is a valid float
-                        }
-                        else
-                        {
-                            // The x value is not a valid float
-
-                            Debug.LogWarning("BetterPrefs: Invalid vector3 X value in save file \"" + savePath + "\" for key \"" + key + "\"");
-
-                            continue;
-                        }
-
-                        if (float.TryParse(values[1].Trim(), out y))
-                        {
-                            // The y value is a valid float
-                        }
-                        else
-                        {
-                            // The y value is not a valid float
-
-                            Debug.LogWarning("BetterPrefs: Invalid vector3 Y value in save file \"" + savePath + "\". for key \"" + key + "\"");
-
-                            continue;
-                        }
-
-                        if (float.TryParse(values[2].Trim(), out z))
-                        {
-                            // The z value is a valid float
-                        }
-                        else
-                        {
-                            // The z value is not a valid float
-
-                            Debug.LogWarning("BetterPrefs: Invalid vector3 Z value in save file \"" + savePath + "\" for key \"" + key + "\"");
-
-                            continue;
-                        }
-
-                        // Add the value to the dictionary
-
-                        value = new Vector3(x, y, z);
-
-                        if (!data.ContainsKey(key))
-                        {
-                            data.Add(key, value);
-                        }
-                        else
-                        {
-                            Debug.LogWarning("BetterPrefs: Duplicate key in save file \"" + savePath + "\" " + key + ". Using the last one.");
-                            data[key] = value;
-                        }
-                    }
-                }
-                else if (objectType == "unknown")
-                {
-                    Debug.LogWarning("BetterPrefs: A type of unknown was found in save file \"" + savePath + "\". This is caused by BetterPrefs.Save encountering an unsupported type in its data. Please do not manually edit BetterPrefs data from memory without using BetterPrefs methods.");
                 }
                 else
                 {
                     // This is not a valid type
-
-                    Debug.LogWarning("BetterPrefs: Invalid type in save file \"" + savePath + "\" for key \"" + key + "\"");
-
                     continue;
                 }
 
@@ -777,52 +450,12 @@ public static class BetterPrefs
         }
 
         data.Clear();
-
-        Debug.Log("BetterPrefs: Deleted all data (this can be undone by quitting without saving)");
-    }
-
-    public static void DeleteKey(string key)
-    {
-        if (data == null)
-        {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
-            return;
-        }
-
-        // Delete the key
-
-        data.Remove(key);
-    }
-
-    public static bool HasKey(string key)
-    {
-        if (data == null)
-        {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
-            return false;
-        }
-
-        // Check if the key exists
-
-        return data.ContainsKey(key);
-    }
-
-    public static int GetCount() // Get how many keys are in the data
-    {
-        if (data == null)
-        {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
-            return -1;
-        }
-
-        return data.Count;
     }
 
     public static Dictionary<string, object> GetData() // Get the data
     {
         if (data == null)
         {
-            Debug.LogError("BetterPrefs: No save is loaded, but you are trying to access it");
             return new Dictionary<string, object>();
         }
 

@@ -35,10 +35,6 @@ MonoBehaviour:
     m_Key: ACHIEVEMENTS_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 280637872775168
-    m_Key: APP_NAME
-    m_Metadata:
-      m_Items: []
   - m_Id: 10470915809280
     m_Key: BACK_BTN
     m_Metadata:

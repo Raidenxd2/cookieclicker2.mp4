@@ -182,7 +182,7 @@ public class ResearchFactory : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (BigCookieDuration < 0 && BigCookieResearching == true)
         {
