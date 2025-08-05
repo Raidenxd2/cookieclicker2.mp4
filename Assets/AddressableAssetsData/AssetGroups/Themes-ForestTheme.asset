@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: c11582d74c5e6164a9f30e1914bfbfba
   m_SerializeEntries:
   - m_GUID: c396c36bde6b9eb4b8729bac2068c263
-    m_Address: Assets/_Project/Themes/content/ForestTheme/ForestTheme_Scene.unity
+    m_Address: ForestTheme/ForestTheme_Scene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

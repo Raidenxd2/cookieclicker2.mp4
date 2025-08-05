@@ -16,27 +16,27 @@ MonoBehaviour:
   m_GUID: 8959838bca62f49438f1b2cd86604089
   m_SerializeEntries:
   - m_GUID: 12b04fdf24391a74f9f4fbaa14a1b8e2
-    m_Address: Assets/_Project/Materials/VRFallbackSkybox.mat
+    m_Address: VRDataShared/VRFallbackSkybox.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 147ae308eec018b40a7b312ae58f44c7
-    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Models/UniversalController.fbx
+    m_Address: VRDataShared/UniversalController.fbx
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 85e675893a909864d9c237e20202651b
-    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Textures/DefaultMaterial_AO.png
+    m_Address: VRDataShared/DefaultMaterial_AO.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 99685157b02e4d446bbecb015645e5e8
-    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Materials/Controller_Grey.mat
+    m_Address: VRDataShared/Controller_Grey.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9f12d299d16099343a3c5c0d7285822a
-    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/Materials/Controller_White.mat
+    m_Address: VRDataShared/Controller_White.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

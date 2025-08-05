@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: 7eafa766f278c7b409f1564dd6744f74
   m_SerializeEntries:
   - m_GUID: bcf0a51b374207947aed416254ffa56b
-    m_Address: Assets/_Project/Prefabs/InitScene_VRPefab.prefab
+    m_Address: InitScene_VRPefab.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

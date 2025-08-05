@@ -9,6 +9,7 @@ public class VideoSettings : MonoBehaviour
 {
     [SerializeField] private UniversalRenderPipelineAsset URPAsset;
 
+    [SerializeField] private TMP_Dropdown GraphicsAPIDropdown;
     [SerializeField] private TMP_Dropdown WindowModeDropdown;
     [SerializeField] private TMP_Dropdown ResolutionDropdown;
     [SerializeField] private TMP_Dropdown AADropdown;
@@ -19,8 +20,15 @@ public class VideoSettings : MonoBehaviour
 
     private int currentResolutionIndex = 0;
 
+    [SerializeField] private GameObject GameRestartRequired;
+
     private void Start()
     {
+        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            GraphicsAPIDropdown.gameObject.SetActive(true);
+        }
+
         AddOptionsToDropdown();
 
         if (!BetterPrefs.GetBool("VideoSettings_Setup", false))
@@ -39,6 +47,7 @@ public class VideoSettings : MonoBehaviour
         BetterPrefs.SetInt("WindowMode", 1);
         BetterPrefs.SetInt("GRAPHICS_AA", 1);
         BetterPrefs.SetBool("GRAPHICS_VSync", true);
+        PlayerPrefs.SetInt("GraphicsAPI", 0);
     }
 
     private void AddOptionsToDropdown()
@@ -88,6 +97,7 @@ public class VideoSettings : MonoBehaviour
     {
         ResolutionDropdown.value = BetterPrefs.GetInt("ResolutionIndex", 0);
         WindowModeDropdown.value = BetterPrefs.GetInt("WindowMode", 1);
+        GraphicsAPIDropdown.value = PlayerPrefs.GetInt("GraphicsAPI", 0);
         AADropdown.value = BetterPrefs.GetInt("GRAPHICS_AA", 1);
         VSyncToggle.isOn = BetterPrefs.GetBool("GRAPHICS_VSync", true);
         SetResolution(BetterPrefs.GetInt("ResolutionIndex", 1));
@@ -163,6 +173,13 @@ public class VideoSettings : MonoBehaviour
                 URPAsset.msaaSampleCount = 8;
                 break;
         }
+    }
+
+    public void ChangeGraphicsAPI(int val)
+    {
+        PlayerPrefs.SetInt("GraphicsAPI", val);
+
+        GameRestartRequired.SetActive(true);
     }
 }
 #endif

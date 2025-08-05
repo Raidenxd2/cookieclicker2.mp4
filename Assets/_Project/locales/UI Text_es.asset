@@ -423,6 +423,15 @@ MonoBehaviour:
     m_Localized: "Frecuencia de actualizaci\xF3n"
     m_Metadata:
       m_Items: []
+  - m_Id: 350071170588749824
+    m_Localized: "Interfaz de programaci\xF3n de aplicaciones gr\xE1ficas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350072567359090688
+    m_Localized: "Es necesario reiniciar el equipo para cambiar la API de gr\xE1ficos.\n\xBFDesea
+      reiniciar ahora?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

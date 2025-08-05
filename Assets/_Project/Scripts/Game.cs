@@ -175,7 +175,7 @@ public class Game : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        VersionText.text = "v" + Application.version + "-" + Application.platform + " (" + Application.unityVersion + ")";
+        VersionText.text = "v" + Application.version + "-" + Application.platform + " (" + Application.unityVersion + ", " + SystemInfo.graphicsDeviceType + ")";
 
         StartAsync().Forget();
     }
@@ -505,6 +505,17 @@ public class Game : MonoBehaviour
     {
         SavePlayer();
     }
+
+#if UNITY_STANDALONE_WIN
+    public void RestartGame()
+    {
+        SavePlayer();
+
+        Application.OpenURL(Application.dataPath + "\\..\\Cookieclicker2.mp4.exe");
+
+        Application.Quit();
+    }
+#endif
 
     public void Reload()
     {

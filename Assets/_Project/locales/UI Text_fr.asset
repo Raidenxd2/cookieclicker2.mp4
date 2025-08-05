@@ -425,6 +425,15 @@ MonoBehaviour:
     m_Localized: "Taux de rafra\xEEchissement"
     m_Metadata:
       m_Items: []
+  - m_Id: 350071170588749824
+    m_Localized: API graphique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350072567359090688
+    m_Localized: "Un red\xE9marrage est n\xE9cessaire pour modifier l'API graphique.\nVoulez-vous
+      red\xE9marrer maintenant ?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

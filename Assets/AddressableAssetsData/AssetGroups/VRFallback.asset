@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: 48896a26e9021a3429f699e3b3684169
   m_SerializeEntries:
   - m_GUID: cedcb9f7e5851d24fbdf0420c2e26b9d
-    m_Address: Assets/_Project/Scenes/VRFallback.unity
+    m_Address: VRFallback.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

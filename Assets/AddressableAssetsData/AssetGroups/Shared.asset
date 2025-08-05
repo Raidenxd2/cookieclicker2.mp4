@@ -10,159 +10,163 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Duplicate Asset Isolation
+  m_Name: Shared
   m_EditorClassIdentifier: 
-  m_GroupName: Duplicate Asset Isolation
+  m_GroupName: Shared
   m_GUID: 3ecb7aab68ae73646ba9ea4731282a99
   m_SerializeEntries:
   - m_GUID: 0406db5a14f94604a8c57ccfbc9f3b46
-    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesUnlit.shader
+    m_Address: Shared/ParticlesUnlit.shader
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0ca6dca7396eb48e5849247ffd444914
-    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/BakedLit.shader
+    m_Address: Shared/BakedLit.shader
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 144d206b2e547c947898785b00702f27
-    m_Address: Assets/_Project/Textures/UnityWhite.png
+    m_Address: Shared/UnityWhite.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 19eddcecf2876f14887fe5a1ee205db4
-    m_Address: Assets/_Project/Materials/tiled_wall/tiled_wall_clean_science_factory.mat
+    m_Address: Shared/tiled_wall_clean_science_factory.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1a69666f657b7f74fa1ce67f48133e27
-    m_Address: Assets/_Project/Materials/sky.mat
+    m_Address: Shared/sky.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1b2100d72f78b624cbf39ec09da0934b
-    m_Address: Assets/_Project/Textures/loading_grayscale.png
+    m_Address: Shared/loading_grayscale.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 29becf1d36a65f743b1efa3ac07973e8
-    m_Address: Assets/_Project/Models/Cookie/Normal/cookie_normal.fbx
+    m_Address: Shared/cookie_normal.fbx
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 36e335017ad71d54fbb10842863188ae
-    m_Address: Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/FallbackShader.shader
+    m_Address: Shared/FallbackShader.shader
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3803db3f951f70e4d8ab9a40b1f2f815
-    m_Address: Assets/_Project/Textures/CommonObjectsColorAtlas.png
+    m_Address: Shared/CommonObjectsColorAtlas.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4b56ddbc0b9a5ec44ad5c5f1ad40e5e4
-    m_Address: Packages/com.raiden.sharedshaders/Runtime/Shaders/UI/UI-Default-Minimal.shader
+    m_Address: Shared/UI-Default-Minimal.shader
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5a050fb19c1fba4458dec6e3d507daf0
-    m_Address: Packages/com.raiden.sharedshaders/Runtime/Shaders/Skybox-Cubed-Basic-Half.shader
+    m_Address: Shared/Skybox-Cubed-Basic-Half.shader
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 650dd9526735d5b46b79224bc6e94025
-    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Unlit.shader
+    m_Address: Shared/Unlit.shader
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 83b856dc0ad55c04ebb286dbbeb83a0d
-    m_Address: Assets/_Project/Textures/UIAtlas.spriteatlasv2
+    m_Address: Shared/UIAtlas.spriteatlasv2
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8d2bb70cbf9db8d4da26e15b26e74248
-    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/SimpleLit.shader
+    m_Address: Shared/SimpleLit.shader
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 933532a4fcc9baf4fa0491de14d08ed7
-    m_Address: Packages/com.unity.render-pipelines.universal/Shaders/Lit.shader
+    m_Address: Shared/Lit.shader
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9c5457a918faeb1469fa6d5b23d0ad6a
-    m_Address: Assets/_Project/Textures/InfoButton.png
+    m_Address: Shared/InfoButton.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9d3756eb89a31ad4f99569241d670979
-    m_Address: Assets/_Project/Textures/tiled_wall/clean/tiled_wall_clean_normal.jpg
+    m_Address: Shared/tiled_wall_clean_normal.jpg
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a3fcbebada04c564fbe3cdc0688af674
-    m_Address: Assets/_Project/Models/drill/drill.fbx
+    m_Address: Shared/drill.fbx
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a8d1fe4c2d372be44bfb6b90870d16c3
-    m_Address: Assets/_Project/Materials/CC2_UnityBuiltInShaders_UI_Default.mat
+    m_Address: Shared/CC2_UnityBuiltInShaders_UI_Default.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a9a2aa327a8d30c45a14abc15d60312b
-    m_Address: Assets/_Project/Animations/Loading.controller
+    m_Address: Shared/Loading.controller
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b400a5bca253c984f9b4c00f52bc9efe
-    m_Address: Assets/_Project/Models/Science_Factory/V2/Science_Factory_Normal_V2_UV.fbx
+    m_Address: Shared/Science_Factory_Normal_V2_UV.fbx
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b7efc7970735e7a4f9139dfb24ca57bb
-    m_Address: Assets/_Project/Settings/New Lighting Settings.lighting
+    m_Address: Shared/New Lighting Settings.lighting
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c348712bda248c246b8c49b3db54643f
-    m_Address: Assets/Samples/XR Interaction Toolkit/3.0.8/Starter Assets/XRI Default
-      Input Actions.inputactions
+    m_Address: Shared/XRI Default Input Actions.inputactions
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c6d1305fcb87717478343bdd8ecaa629
-    m_Address: Assets/_Project/Textures/button.png
+    m_Address: Shared/button.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c99effbd8aa85754db4ae27d2572ffba
-    m_Address: Assets/_Project/Materials/CommonObjectsMat.mat
+    m_Address: Shared/CommonObjectsMat.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d348f02554a005b44b07be0969bde51c
-    m_Address: Assets/_Project/Materials/PaintedPlaster017.mat
+    m_Address: Shared/PaintedPlaster017.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d53d60cdef6d51747923033acc722ab4
-    m_Address: Assets/_Project/Materials/ParticleMat.mat
+    m_Address: Shared/ParticleMat.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dfe76e5753fb3214482cbe9896f1c8a6
-    m_Address: Assets/_Project/Animations/Loading.anim
+    m_Address: Shared/Loading.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6e9a19c3678ded42a3bc431ebef7dbd
+    m_Address: Shared/FallbackError.shader
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: eee973ce6dc0799459fca2e55e82af4d
-    m_Address: Assets/_Project/Textures/tiled_wall/clean/tiled_wall_clean_basecolor.jpg
+    m_Address: Shared/tiled_wall_clean_basecolor.jpg
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f01b61210e5634d418de91d7d7279846
-    m_Address: Assets/_Project/Models/Science_Factory/V2/mat/door_handle.mat
+    m_Address: Shared/door_handle.mat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

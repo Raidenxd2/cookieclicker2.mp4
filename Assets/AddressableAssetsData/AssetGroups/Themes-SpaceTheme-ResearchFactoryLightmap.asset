@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: 52ae71a0a4a352f45b0598ca6ad869c9
   m_SerializeEntries:
   - m_GUID: 62d9145fe550d3f449f346a8b4273969
-    m_Address: Assets/_Project/Themes/content/SpaceTheme/SpaceTheme_Scene/SpaceTheme_WithResearchFactory.exr
+    m_Address: SpaceTheme/SpaceTheme_WithResearchFactory.exr
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

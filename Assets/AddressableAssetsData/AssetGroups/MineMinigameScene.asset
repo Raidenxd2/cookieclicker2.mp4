@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: b060fc226d1cd314ab1de2e8f442d436
   m_SerializeEntries:
   - m_GUID: a0b6b36c341cf264a9c23fdb518c0195
-    m_Address: Assets/_Project/Scenes/MineMinigame.unity
+    m_Address: MineMinigame.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

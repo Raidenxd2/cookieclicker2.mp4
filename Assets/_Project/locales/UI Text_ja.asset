@@ -420,6 +420,14 @@ MonoBehaviour:
     m_Localized: "\u672C\u5F53\u306B\u51FA\u305F\u3044\u306E\u304B\uFF1F"
     m_Metadata:
       m_Items: []
+  - m_Id: 350071170588749824
+    m_Localized: "\u30B0\u30E9\u30D5\u30A3\u30C3\u30AF\u30B9API"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350072567359090688
+    m_Localized: "\u30B0\u30E9\u30D5\u30A3\u30C3\u30AF\u30B9 API \u3092\u5909\u66F4\u3059\u308B\u306B\u306F\u518D\u8D77\u52D5\u304C\u5FC5\u8981\u3067\u3059\u3002\n\u4ECA\u3059\u3050\u518D\u8D77\u52D5\u3057\u307E\u3059\u304B\uFF1F"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

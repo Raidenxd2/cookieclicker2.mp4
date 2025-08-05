@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: GameScene
   m_EditorClassIdentifier: 
   m_GroupName: GameScene
-  m_Data:
-    m_SerializedData: []
   m_GUID: adc14b5cafb410b40a693ad9b2335112
   m_SerializeEntries:
   - m_GUID: 8c9cfa26abfee488c85f1582747f6a02
-    m_Address: Assets/Scenes/Game.unity
+    m_Address: Game.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -28,4 +26,3 @@ MonoBehaviour:
     m_Schemas:
     - {fileID: 11400000, guid: 18be3b9ae47e354438c24866f7ac8835, type: 2}
     - {fileID: 11400000, guid: 10d3b59010ffb9343b1ef43eedeae66a, type: 2}
-    - {fileID: 11400000, guid: db35d33cb8471b74d9f6d2beb038eee0, type: 2}

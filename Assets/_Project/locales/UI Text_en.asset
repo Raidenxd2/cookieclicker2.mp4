@@ -434,6 +434,17 @@ MonoBehaviour:
     m_Localized: Refresh Rate
     m_Metadata:
       m_Items: []
+  - m_Id: 350071170588749824
+    m_Localized: Graphics API
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350072567359090688
+    m_Localized: 'A restart is required to change the Graphics API.
+
+      Do you
+      want to restart now?'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

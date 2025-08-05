@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: 750c4b718bbf907448db4beafe90a058
   m_SerializeEntries:
   - m_GUID: 4facb27151d461043a476c725d04d47d
-    m_Address: Assets/_Project/Prefabs/GameScene_VRPrefab.prefab
+    m_Address: GameScene_VRPrefab.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
