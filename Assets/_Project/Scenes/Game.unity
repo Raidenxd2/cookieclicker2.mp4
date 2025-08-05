@@ -30853,6 +30853,10 @@ PrefabInstance:
       value: Vulkan
       objectReference: {fileID: 0}
     - target: {fileID: 1401833681302480738, guid: b040e007001c36048bbb4e31e3132759, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401833681302480738, guid: b040e007001c36048bbb4e31e3132759, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1367571782}

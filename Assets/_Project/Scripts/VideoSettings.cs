@@ -39,6 +39,8 @@ public class VideoSettings : MonoBehaviour
         {
             LoadSettings();
         }
+
+        GraphicsAPIDropdown.onValueChanged.AddListener(ChangeGraphicsAPI);
     }
 
     private void ResetSettings()
