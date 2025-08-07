@@ -15,6 +15,7 @@
     "com.unity.render-pipelines.universal": "https://github.com/Raidenxd2/com.unity.render-pipelines.universal.git#6000.1.13f1",
     "com.unity.test-framework": "1.5.1",
     "com.unity.test-framework.performance": "https://github.com/Raidenxd2/com.unity.test-framework.performance_empty.git",
+    "com.unity.toolchain.win-x86_64-linux-x86_64": "2.0.10",
     "com.unity.ugui": "2.0.0",
     "com.unity.xr.interaction.toolkit": "3.1.2",
     "com.unity.xr.management": "4.5.1",

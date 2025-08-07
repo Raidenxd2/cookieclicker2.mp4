@@ -1,8 +1,11 @@
+// IMPORTANT: You must disable warnings as errors in order to build this.
+
 // me vs c++ who will win
 #include "PrecompiledHeader.h"
 #include "..\UnityPlayerStub\Exports.h"
 #include <iostream>
 #include <fstream>
+#include <atlstr.h>
 #include "Registry.hpp"
 
 using namespace std;
@@ -22,10 +25,7 @@ extern "C"
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nShowCmd)
 {
-    LPWSTR newCmd = nullptr;
-
-    // Remove a warning because the default configuration that Unity has makes warnings errors
-    std::cout << lpCmdLine;
+    LPWSTR newCmd = lpCmdLine;
 
     try
     {
@@ -36,16 +36,29 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
         // 0: Direct3D 11: nothing
         // 1: Direct3D 12: -force-d3d12
         // 2: Vulkan: -force-vulkan
-        switch (key->GetInt32(L"GraphicsAPI_h1886732360"))
+        long GraphicsAPI = key->GetInt32(L"GraphicsAPI_h1886732360");
+
+        if (GraphicsAPI == 0)
         {
-        case 0:
-            break;
-        case 1:
-            newCmd = L"-force-d3d12";
-            break;
-        case 2:
-            newCmd = L"-force-vulkan";
-            break;
+
+        }
+        else if (GraphicsAPI == 1)
+        {
+            size_t len = wcslen(lpCmdLine) + wcslen(L" -force-d3d12") + 1;
+            LPWSTR combined = new wchar_t[len];
+            wcscpy(combined, lpCmdLine);
+            wcscat(combined, L" -force-d3d12");
+
+            newCmd = combined;
+        }
+        else if (GraphicsAPI == 2)
+        {
+            size_t len = wcslen(lpCmdLine) + wcslen(L" -force-vulkan") + 1;
+            LPWSTR combined = new wchar_t[len];
+            wcscpy(combined, lpCmdLine);
+            wcscat(combined, L" -force-vulkan");
+
+            newCmd = combined;
         }
     }
     catch (const std::exception& e)
