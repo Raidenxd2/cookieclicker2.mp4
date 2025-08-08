@@ -39,20 +39,6 @@ namespace UnityEngine.Localization.Settings
         {
             Locale locale = null;
 
-            // Application preference on iOS
-            #if UNITY_IOS && !UNITY_EDITOR
-            locale = FindLocaleOrFallback(getPreferredLanguage(), availableLocales);
-            if (locale != null)
-                return locale;
-            #endif
-
-            // CultureInfo does is not reliable, on 2019.4 it does not seem to work at all. We will call directly into Android instead.
-            #if UNITY_ANDROID && !UNITY_EDITOR
-            locale = FindLocaleOrFallback(GetAndroidDeviceLanguage(), availableLocales);
-            if (locale != null)
-                return locale;
-            #endif
-
             // We first check the CultureInfo as this is more accurate and contains regional information.
             locale = FindLocaleOrFallback(GetSystemCulture(), availableLocales);
 
@@ -106,37 +92,5 @@ namespace UnityEngine.Localization.Settings
         /// </summary>
         /// <returns></returns>
         protected virtual SystemLanguage GetApplicationSystemLanguage() => Application.systemLanguage;
-
-        #if UNITY_IOS && !UNITY_EDITOR
-        [System.Runtime.InteropServices.DllImport("__Internal")]
-        extern static string getPreferredLanguage();
-        #endif
-
-        #if UNITY_ANDROID && !UNITY_EDITOR
-        static string GetAndroidDeviceLanguage()
-        {
-            using (AndroidJavaClass cls = new AndroidJavaClass("java.util.Locale"))
-            {
-                if (cls != null)
-                {
-                    using (AndroidJavaObject locale = cls.CallStatic<AndroidJavaObject>("getDefault"))
-                    {
-                        if (locale != null)
-                        {
-                            // This API requires Android 21 which is the min version in 2021.2 and above.
-                            #if UNITY_2021_2_OR_NEWER
-                            return locale.Call<string>("toLanguageTag");
-                            #else
-                            // We use the older method which supports all android API.
-                            return $"{locale.Call<string>("getLanguage")}-{locale.Call<string>("getCountry")}";
-                            #endif
-                        }
-                    }
-                }
-            }
-            return null;
-        }
-
-        #endif
     }
 }

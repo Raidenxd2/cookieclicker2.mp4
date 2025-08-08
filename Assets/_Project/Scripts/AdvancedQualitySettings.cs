@@ -173,7 +173,6 @@ public class AdvancedQualitySettings : MonoBehaviour
         if (VRManager.instance.IsMobileVR)
         {
             QualitySettings.anisotropicFiltering = AnisotropicFiltering.ForceEnable;
-            qualityWrapper.SetMSAA(MsaaQuality._4x);
         }
 #endif
 
