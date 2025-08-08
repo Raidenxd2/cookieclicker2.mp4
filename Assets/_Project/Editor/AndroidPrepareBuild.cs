@@ -60,6 +60,11 @@ public class AndroidPrepareBuild : Editor
             Directory.Delete(Application.dataPath + "/../Packages/com.unity.xr.openxr", true);
         }
 
+        if (Directory.Exists(Application.dataPath + "/../Packages/com.unity.xr.interaction.toolkit"))
+        {
+            Directory.Delete(Application.dataPath + "/../Packages/com.unity.xr.interaction.toolkit", true);
+        }
+
         AssetDatabase.Refresh();
 
         if (!File.Exists(Application.dataPath + "/Android_PackagesRemoved"))
