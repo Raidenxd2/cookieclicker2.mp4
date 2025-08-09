@@ -89,6 +89,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     public void SetDefaults()
     {
 #if UNITY_ANDROID
+        PostProcessing = false;
         Particals = true;
         VSync = false;
         Fog = true;
