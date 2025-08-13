@@ -14,12 +14,6 @@ public class BetaContent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (BetterPrefs.GetBool("HasPlayed", false))
-        {
-            BetterPrefs.SetBool("BetaContent", false);
-            BetterPrefs.SetBool("BETA_ResearchFactory", false);
-        }
-
         UpdateBetaContent();
     }
 

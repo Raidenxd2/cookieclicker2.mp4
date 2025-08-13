@@ -9,7 +9,6 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
 using Cysharp.Threading.Tasks;
 using System;
-using System.IO;
 
 #if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
 using System.Collections.Generic;
@@ -225,8 +224,6 @@ public class Game : MonoBehaviour
         SoundAudioSource = SoundSource.GetComponent<AudioSource>();
 
         AllowUpdate = true;
-
-        // ThemeManager.instance.SelectTheme(DefaultThemeScene).Forget();
     }
 
     public void PlayInitialFadeOut()
@@ -535,8 +532,11 @@ public class Game : MonoBehaviour
         await Addressables.UnloadSceneAsync(AddressableHandles.instance.gameSceneHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
 
 #if !CC2_REMOVE_VR_SUPPORT
-        Destroy(VRPrefabGO);
-        Addressables.Release(VRPrefab);
+        if (VRPrefabGO != null)
+        {
+            Destroy(VRPrefabGO);
+            Addressables.Release(VRPrefab);
+        }
 #endif
 
         AddressableHandles.instance.initSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.initSceneRef, LoadSceneMode.Single);
@@ -792,7 +792,7 @@ public class Game : MonoBehaviour
 
     public void ShowBetaContentWindow()
     {
-        if (PlayerPrefs.GetInt("BetaContent", 0) == 1)
+        if (BetterPrefs.GetBool("BetaContent", false))
         {
             BetaContentScreen.SetActive(true);
         }
