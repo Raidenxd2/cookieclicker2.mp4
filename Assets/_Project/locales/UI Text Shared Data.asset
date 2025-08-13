@@ -423,6 +423,14 @@ MonoBehaviour:
     m_Key: PCONLY_RESTARTREQUIRED
     m_Metadata:
       m_Items: []
+  - m_Id: 353284959693975552
+    m_Key: MINEMINIGAME_RESTARTBTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 353284993130967040
+    m_Key: MINEMINIGAME_RESTARTCONFIRM
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

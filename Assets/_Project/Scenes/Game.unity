@@ -7244,7 +7244,7 @@ MonoBehaviour:
   m_Spacing: 5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -27850,6 +27850,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 106894220619524467, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 106894221135080652, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_SizeDelta.y
       value: -596.02
@@ -27868,11 +27872,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 106894221135080653, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_fontSize
-      value: 117
+      value: 117.2
       objectReference: {fileID: 0}
     - target: {fileID: 106894221135080653, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 106894221135080653, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 106894221150636281, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_Material
@@ -51425,7 +51433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 810.3852, y: 0}
+  m_AnchoredPosition: {x: 810.3852, y: -0}
   m_SizeDelta: {x: 1620.7704, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1736243452
@@ -58123,7 +58131,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1

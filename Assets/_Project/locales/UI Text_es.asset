@@ -432,6 +432,14 @@ MonoBehaviour:
       reiniciar ahora?"
     m_Metadata:
       m_Items: []
+  - m_Id: 353284959693975552
+    m_Localized: Reiniciar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 353284993130967040
+    m_Localized: "\xBFEst\xE1s seguro de que quieres reiniciar?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

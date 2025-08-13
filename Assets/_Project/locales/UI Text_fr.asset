@@ -434,6 +434,14 @@ MonoBehaviour:
       red\xE9marrer maintenant ?"
     m_Metadata:
       m_Items: []
+  - m_Id: 353284993130967040
+    m_Localized: "\xCAtes-vous s\xFBr de vouloir red\xE9marrer ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 353284959693975552
+    m_Localized: "Red\xE9marrer"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
