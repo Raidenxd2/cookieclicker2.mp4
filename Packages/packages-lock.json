@@ -303,6 +303,13 @@
         "com.unity.xr.core-utils": "2.3.0"
       }
     },
+    "com.yasirkula.simplefilebrowser": {
+      "version": "1.7.4",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "dev.voltstro.unitycommandlineparser": {
       "version": "2.1.2",
       "depth": 0,
@@ -327,6 +334,12 @@
       "source": "registry",
       "dependencies": {},
       "url": "https://package.openupm.com"
+    },
+    "com.unity.modules.androidjni": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
     },
     "com.unity.modules.animation": {
       "version": "1.0.0",

@@ -37,6 +37,8 @@ MonoBehaviour:
     - dev.voltstro.unitycommandlineparser
     - org.nuget.mcmaster.extensions.commandlineutils
     - org.nuget.system.componentmodel.annotations
+    - com.yasirkula.simplefilebrowser
+    - com.virtualmaker.filebrowser
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4
@@ -45,6 +47,6 @@ MonoBehaviour:
   m_RegistryInfoDraft:
     m_Modified: 0
     m_ErrorMessage: 
-    m_UserModificationsInstanceId: -868
-    m_OriginalInstanceId: -872
+    m_UserModificationsInstanceId: -872
+    m_OriginalInstanceId: -876
   m_LoadAssets: 0

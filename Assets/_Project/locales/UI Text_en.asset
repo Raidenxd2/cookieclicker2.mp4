@@ -453,6 +453,25 @@ MonoBehaviour:
     m_Localized: Are you sure you want to restart?
     m_Metadata:
       m_Items: []
+  - m_Id: 353300703559299072
+    m_Localized: Import
+    m_Metadata:
+      m_Items: []
+  - m_Id: 353300783540482048
+    m_Localized: Export
+    m_Metadata:
+      m_Items: []
+  - m_Id: 353302126887972864
+    m_Localized: Successfully exported save file
+    m_Metadata:
+      m_Items: []
+  - m_Id: 353590312994353152
+    m_Localized: 'Are you sure you want to import the save file?
+
+      This will
+      reset all current data.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -20,7 +20,9 @@
     "com.unity.xr.management": "4.5.1",
     "com.unity.xr.meta-openxr": "2.2.0",
     "com.unity.xr.openxr": "1.14.3",
+    "com.yasirkula.simplefilebrowser": "1.7.4",
     "dev.voltstro.unitycommandlineparser": "2.1.2",
+    "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.assetbundle": "1.0.0",
     "com.unity.modules.audio": "1.0.0",
@@ -45,7 +47,9 @@
         "com.raiden.serial",
         "dev.voltstro.unitycommandlineparser",
         "org.nuget.mcmaster.extensions.commandlineutils",
-        "org.nuget.system.componentmodel.annotations"
+        "org.nuget.system.componentmodel.annotations",
+        "com.yasirkula.simplefilebrowser",
+        "com.virtualmaker.filebrowser"
       ]
     }
   ]

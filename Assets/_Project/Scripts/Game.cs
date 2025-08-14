@@ -9,6 +9,9 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
 using Cysharp.Threading.Tasks;
 using System;
+using SimpleFileBrowser;
+using UnityEngine.Localization;
+using System.IO;
 
 #if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
 using System.Collections.Generic;
@@ -147,6 +150,11 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject AndroidVROnlySettingsButton;
     [SerializeField] private TMP_Dropdown OculusQuestRefreshRateDropdown;
     public GameObject XROrigin;
+    [SerializeField] private UISkin FileBrowserUISkin;
+    [SerializeField] private LocalizedString ExportSaveFileSuccess;
+    [SerializeField] private LocalizedString SaveManagement;
+    [SerializeField] private GameObject ExportImportSaveFileDark;
+    [SerializeField] private GameObject ImportSaveFileWarningScreen;
 
 #if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
     private XRDisplaySubsystem displaySubsystem;
@@ -224,6 +232,8 @@ public class Game : MonoBehaviour
         SoundAudioSource = SoundSource.GetComponent<AudioSource>();
 
         AllowUpdate = true;
+
+        FileBrowser.Skin = FileBrowserUISkin;
     }
 
     public void PlayInitialFadeOut()
@@ -477,6 +487,56 @@ public class Game : MonoBehaviour
         SavePlayer();
 
         Reload();
+    }
+
+    public void ExportSaveFile()
+    {
+        ExportImportSaveFileDark.SetActive(true);
+        FileBrowser.SetFilters(false, ".cookie");
+        FileBrowser.ShowSaveDialog(ExportOnSuccess, ExportOnCancel, FileBrowser.PickMode.Files, false, null, "Default.cookie", "Export Default.cookie", "Export");
+    }
+
+    private void ExportOnSuccess(string[] paths)
+    {
+        FileBrowserHelpers.WriteTextToFile(paths[0], File.ReadAllText(Application.persistentDataPath + "/Saves/Default.cookie"));
+        ExportImportSaveFileDark.SetActive(false);
+        notification.ShowNotification(ExportSaveFileSuccess.GetLocalizedString(), SaveManagement.GetLocalizedString());
+    }
+
+    private void ExportOnCancel()
+    {
+        ExportImportSaveFileDark.SetActive(false);
+    }
+
+    public void ImportSaveFile()
+    {
+        ExportImportSaveFileDark.SetActive(true);
+        Time.timeScale = 0;
+
+        FileBrowser.SetFilters(false, ".cookie");
+        FileBrowser.ShowLoadDialog(ImportOnSuccess, ImportOnCancel, FileBrowser.PickMode.Files, false, null, null, "Import", "Import");
+    }
+
+    private string importPath;
+
+    private void ImportOnSuccess(string[] paths)
+    {
+        importPath = paths[0];
+        ExportImportSaveFileDark.SetActive(false);
+        ImportSaveFileWarningScreen.SetActive(true);
+        Time.timeScale = 1;
+    }
+
+    public void ImportSaveFileFinish()
+    {
+        File.WriteAllText(Application.persistentDataPath + "/Saves/Default.cookie", FileBrowserHelpers.ReadTextFromFile(importPath));
+        Reload();
+    }
+
+    private void ImportOnCancel()
+    {
+        ExportImportSaveFileDark.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void BakeCookie()
