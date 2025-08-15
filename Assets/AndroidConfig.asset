@@ -20,3 +20,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: da338a10eba3b0e4ea419cf89ffcae66, type: 3}
   - {fileID: 8300000, guid: 023db2c8e55d2864bafd37d9652de079, type: 3}
   - {fileID: 8300000, guid: 9f7a032adbfd10746a0a6cf1583a8907, type: 3}
+  assetGroupsToDisable:
+  - {fileID: 11400000, guid: a74e7ca909981a74eb8084537d0722fc, type: 2}
+  - {fileID: 11400000, guid: 6ece8665e22c1b04588429012c012be6, type: 2}
+  - {fileID: 11400000, guid: 3817f0e1bf31f2d48a844ddceb9f50e1, type: 2}
+  - {fileID: 11400000, guid: 27d34fc588179f049bca496362a4e6ab, type: 2}
