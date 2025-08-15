@@ -532,6 +532,11 @@ public class Game : MonoBehaviour
         ReloadAsync().Forget();
     }
 
+    public void ImportCancel()
+    {
+        importPath = null;
+    }
+
     private void ImportOnCancel()
     {
         ExportImportSaveFileDark.SetActive(false);

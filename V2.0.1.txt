@@ -1,5 +1,5 @@
 V2.0.1:
-Fix Scroll View in Credits
+Fixed Scroll View in Credits
 Added Restart button to Minigame Drill
 Make the Minigame Drill map longer in terms of width for wide screens
 Added save export and import
