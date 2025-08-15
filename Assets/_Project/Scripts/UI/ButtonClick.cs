@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class ButtonClick : MonoBehaviour
 {
-
     private Button button;
     public AudioClip UIClick;
 

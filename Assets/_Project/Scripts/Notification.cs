@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class Notification : MonoBehaviour
 {
-
     private string NotificationText;
     private string NotificationTitle;
     public TMP_Text NotificationTextObject;

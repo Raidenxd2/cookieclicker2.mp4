@@ -123,7 +123,6 @@ public class Game : MonoBehaviour
     public GameObject BetaContentScreen;
     public Toggle[] BetaContentToggles;
     public GameObject ScreenshotOptionsBTN;
-    public GameObject QuitBTN;
 
     [Header("Particles")]
     public GameObject CookieVFX;
@@ -191,11 +190,8 @@ public class Game : MonoBehaviour
     private async UniTaskVoid StartAsync()
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
     {
-#if UNITY_ANDROID || UNITY_WEBGL
+#if UNITY_ANDROID
         ScreenshotOptionsBTN.SetActive(false);
-#endif
-#if UNITY_WEBGL
-        QuitBTN.SetActive(false);
 #endif
 
         LoadPlayer();

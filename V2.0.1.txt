@@ -1,9 +1,9 @@
 V2.0.1:
+Removed WebGL support
 Fixed Scroll View in Credits
 Added Restart button to Minigame Drill
 Make the Minigame Drill map longer in terms of width for wide screens
 Added save export and import
 Added an option to disable the update checker
 Fixed Beta Content settings not saving
-Fixed WebGL saving
 Add _ResetGraphicsAPI.bat for Windows

@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using TMPro;
 using BreakInfinity;
-using LoggerSystem;
 
 public class OfflineManager : MonoBehaviour
 {

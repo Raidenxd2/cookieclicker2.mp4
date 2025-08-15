@@ -22,13 +22,6 @@ public class AndroidPrepareBuild : Editor
 
         EditorUtility.DisplayProgressBar("", "Preparing...", 0);
 
-        WebGLConfigSO wglc = AssetDatabase.LoadAssetAtPath<WebGLConfigSO>("Assets/WebGLConfig.asset");
-        foreach (var group in wglc.assetGroupsToDisable)
-        {
-            group.GetSchema<BundledAssetGroupSchema>().IncludeInBuild = false;
-            EditorUtility.SetDirty(group);
-        }
-
         AndroidConfigSO androidConfig = AssetDatabase.LoadAssetAtPath<AndroidConfigSO>("Assets/AndroidConfig.asset");
         foreach (var clip in androidConfig.AudioClipsSwitchMono)
         {
@@ -42,6 +35,11 @@ public class AndroidPrepareBuild : Editor
                 AssetDatabase.ImportAsset(assetPath);
                 Debug.Log("(AndroidPrepareBuild) Changed forceToMono setting of " + assetPath);
             }
+        }
+        foreach (var group in androidConfig.assetGroupsToDisable)
+        {
+            group.GetSchema<BundledAssetGroupSchema>().IncludeInBuild = false;
+            EditorUtility.SetDirty(group);
         }
 
         if (Directory.Exists(Application.dataPath + "/Samples/XR Interaction Toolkit"))

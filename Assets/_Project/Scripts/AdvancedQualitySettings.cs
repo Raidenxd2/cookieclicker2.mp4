@@ -104,14 +104,6 @@ public class AdvancedQualitySettings : MonoBehaviour
 #endif
 #endif
 
-#if UNITY_WEBGL
-        Particals = true;
-        VSync = false;
-        Fog = true;
-        TextureQuality = 0;
-        RenderQuality = 1f;
-#endif
-
 #if UNITY_STANDALONE
         PostProcessing = true;
         Particals = true;
