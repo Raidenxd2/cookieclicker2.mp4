@@ -472,6 +472,10 @@ MonoBehaviour:
       reset all current data.'
     m_Metadata:
       m_Items: []
+  - m_Id: 353622833446531072
+    m_Localized: Check for updates on startup
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

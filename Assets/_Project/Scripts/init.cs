@@ -1,4 +1,6 @@
 using Cysharp.Threading.Tasks;
+using SimpleFileBrowser;
+using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering.Universal;
@@ -48,6 +50,14 @@ public class init : MonoBehaviour
 
     private async UniTaskVoid LoadGameSceneAsync()
     {
+        await UniTask.WaitForEndOfFrame();
+        if (!string.IsNullOrEmpty(Game.importPath))
+        {
+            File.Delete(Application.persistentDataPath + "/Saves/Default.cookie");
+            File.WriteAllText(Application.persistentDataPath + "/Saves/Default.cookie", FileBrowserHelpers.ReadTextFromFile(Game.importPath));
+            Game.importPath = null;
+        }
+
         AddressableHandles.instance.gameSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.gameSceneRef, LoadSceneMode.Additive);
         await AddressableHandles.instance.gameSceneHandle;
 

@@ -505,6 +505,17 @@
                 },
                 {
                     "name": "",
+                    "id": "2f4eeb82-53dc-49d0-9a12-6e7f140ff11b",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerOpenXR>{RightHand}/thumbstickclicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";XR",
+                    "action": "RightClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "7236c0d9-6ca3-47cf-a6ee-a97f5b59ea77",
                     "path": "<XRController>/devicePosition",
                     "interactions": "",

@@ -400,7 +400,7 @@ public class Game : MonoBehaviour
         {
             BetterPrefs.Load(Application.persistentDataPath + "/Saves/Default.cookie");
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             SDIE.SetActive(true);
             SmallErrorText.text = "" + ex.Message;
@@ -419,7 +419,7 @@ public class Game : MonoBehaviour
         Drills = BigDouble.Parse(BetterPrefs.GetString("Drills", "0"));
         DrillPrice = BigDouble.Parse(BetterPrefs.GetString("DrillPrice", "0"));
         ResearchFactory = BetterPrefs.GetBool("ResearchFactory", false);
-        offlineManager.offlineProgressCheck = BetterPrefs.GetBool("offlineProgressCheck", false);;
+        offlineManager.offlineProgressCheck = BetterPrefs.GetBool("offlineProgressCheck", false); ;
         offlineManager.OfflineTime = BetterPrefs.GetString("OfflineTime", "");
         Sounds = BetterPrefs.GetBool("Sounds", false);
         Music = BetterPrefs.GetBool("Music", false);
@@ -517,7 +517,7 @@ public class Game : MonoBehaviour
         FileBrowser.ShowLoadDialog(ImportOnSuccess, ImportOnCancel, FileBrowser.PickMode.Files, false, null, null, "Import", "Import");
     }
 
-    private string importPath;
+    public static string importPath;
 
     private void ImportOnSuccess(string[] paths)
     {
@@ -529,8 +529,7 @@ public class Game : MonoBehaviour
 
     public void ImportSaveFileFinish()
     {
-        File.WriteAllText(Application.persistentDataPath + "/Saves/Default.cookie", FileBrowserHelpers.ReadTextFromFile(importPath));
-        Reload();
+        ReloadAsync().Forget();
     }
 
     private void ImportOnCancel()
@@ -611,6 +610,11 @@ public class Game : MonoBehaviour
     public void MusicToggle(bool Toggle)
     {
         Music = Toggle;
+    }
+
+    public void UpdateCheckerToggle(bool Toggle)
+    {
+        BetterPrefs.SetBool("DisableUpdateChecker", !Toggle);
     }
 
 #if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT

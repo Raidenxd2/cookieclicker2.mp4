@@ -1,8 +1,9 @@
 V2.0.1:
 Fix Scroll View in Credits
-Add Restart button to Minigame Drill
+Added Restart button to Minigame Drill
 Make the Minigame Drill map longer in terms of width for wide screens
-Add Save export and import
+Added save export and import
+Added an option to disable the update checker
 Fixed Beta Content settings not saving
 Fixed WebGL saving
 Add _ResetGraphicsAPI.bat for Windows

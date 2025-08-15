@@ -447,6 +447,10 @@ MonoBehaviour:
     m_Key: IMPORTSAVEFILEWARNING_INFO
     m_Metadata:
       m_Items: []
+  - m_Id: 353622833446531072
+    m_Key: UPDATECHECKER_TOGGLE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

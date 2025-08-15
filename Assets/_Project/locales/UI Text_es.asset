@@ -457,6 +457,10 @@ MonoBehaviour:
       restablecer\xE1 todos los datos actuales."
     m_Metadata:
       m_Items: []
+  - m_Id: 353622833446531072
+    m_Localized: Buscar actualizaciones al iniciar
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

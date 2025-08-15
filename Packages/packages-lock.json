@@ -304,11 +304,10 @@
       }
     },
     "com.yasirkula.simplefilebrowser": {
-      "version": "1.7.4",
+      "version": "file:com.yasirkula.simplefilebrowser",
       "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://package.openupm.com"
+      "source": "embedded",
+      "dependencies": {}
     },
     "dev.voltstro.unitycommandlineparser": {
       "version": "2.1.2",

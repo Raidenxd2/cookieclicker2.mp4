@@ -16,6 +16,11 @@ public class Updater : MonoBehaviour
         {
             return;
         }
+        if (BetterPrefs.GetBool("DisableUpdateChecker", false))
+        {
+            return;
+        }
+
 #if !UNITY_EDITOR
         StartAsync().Forget();
 #endif

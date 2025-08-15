@@ -459,6 +459,10 @@ MonoBehaviour:
     m_Localized: Exportation
     m_Metadata:
       m_Items: []
+  - m_Id: 353622833446531072
+    m_Localized: "V\xE9rifier les mises \xE0 jour au d\xE9marrage"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
