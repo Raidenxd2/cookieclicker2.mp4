@@ -13,6 +13,7 @@ public class VRCanvas : MonoBehaviour
         {
             Canvas canvas = GetComponent<Canvas>();
             canvas.renderMode = RenderMode.WorldSpace;
+            GetComponent<RectTransform>().sizeDelta = new(1920, 1080);
             transform.localScale = newScale;
             transform.rotation = Quaternion.Euler(newRot);
             transform.position = newPos;
