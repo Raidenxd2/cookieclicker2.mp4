@@ -1,27 +1,9 @@
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceProviders;
-
-public class AddressableHandles : MonoBehaviour
+public static class AddressableHandles
 {
-    public AssetReference gameSceneRef;
-    public AssetReference initSceneRef;
+    public const string gameSceneRef = "Game";
+    public const string initSceneRef = "Init";
+    public const string miniGameMineRef = "MineMinigame";
 #if !CC2_REMOVE_VR_SUPPORT
-    public AssetReference vrFallbackSceneRef;
+    public const string vrFallbackSceneRef = "VRFallback";
 #endif
-
-    public AsyncOperationHandle<SceneInstance> gameSceneHandle;
-    public AsyncOperationHandle<SceneInstance> initSceneHandle;
-#if !CC2_REMOVE_VR_SUPPORT
-    public AsyncOperationHandle<SceneInstance> vrFallbackSceneHandle;
-#endif
-
-    public static AddressableHandles instance;
-
-    private void Awake()
-    {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
 }

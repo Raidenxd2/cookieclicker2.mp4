@@ -185,12 +185,7 @@ MonoBehaviour:
   Drill: {fileID: 1967563996}
   ResearchFactory: {fileID: 384167442}
   ThemeParticles: {fileID: 871517601}
-  ResearchFactoryLightmap:
-    m_AssetGUID: 62d9145fe550d3f449f346a8b4273969
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
+  ResearchFactoryLightmapLocation: Lightmap/SpaceTheme_WithResearchFactory
 --- !u!4 &505034618
 Transform:
   m_ObjectHideFlags: 0

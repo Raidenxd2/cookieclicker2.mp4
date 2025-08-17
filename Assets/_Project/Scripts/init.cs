@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using SimpleFileBrowser;
 using System.IO;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
@@ -10,10 +9,9 @@ public class init : MonoBehaviour
 {
     public GameObject DDOL;
 
-    [SerializeField] private AssetReference VRPrefab;
-    [SerializeField] private AssetReference DefaultThemeScene;
-
     public static bool HasLoaded;
+
+    [SerializeField] private ThemeSO DefaultTheme;
 
     private void Start()
     {
@@ -22,6 +20,8 @@ public class init : MonoBehaviour
             HasLoaded = true;
             DontDestroyOnLoad(DDOL);
         }
+
+        Resources.UnloadUnusedAssets();
 
 #if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.IsMobileVR)
@@ -44,7 +44,7 @@ public class init : MonoBehaviour
 #if !CC2_REMOVE_VR_SUPPORT
     private async UniTask LoadVRData()
     {
-        Instantiate(await Addressables.LoadAssetAsync<GameObject>(VRPrefab));
+        Instantiate(await Resources.LoadAsync("InitScene_VRPrefab") as GameObject);
     }
 #endif
 
@@ -58,13 +58,12 @@ public class init : MonoBehaviour
             Game.importPath = null;
         }
 
-        AddressableHandles.instance.gameSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.gameSceneRef, LoadSceneMode.Additive);
-        await AddressableHandles.instance.gameSceneHandle;
+        await SceneManager.LoadSceneAsync(AddressableHandles.gameSceneRef, LoadSceneMode.Additive);
 
         await UniTask.WaitForEndOfFrame();
-        await ThemeManager.instance.SelectTheme(DefaultThemeScene);
+        await ThemeManager.instance.SelectTheme(DefaultTheme.ThemeSceneName);
 
-        SceneManager.SetActiveScene(AddressableHandles.instance.gameSceneHandle.Result.Scene);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.gameSceneRef));
 
 #if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
@@ -73,7 +72,7 @@ public class init : MonoBehaviour
         }
 #endif
 
-        await Addressables.UnloadSceneAsync(AddressableHandles.instance.initSceneHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+        await SceneManager.UnloadSceneAsync(AddressableHandles.initSceneRef, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
 
         Game.instance.PlayInitialFadeOut();
     }

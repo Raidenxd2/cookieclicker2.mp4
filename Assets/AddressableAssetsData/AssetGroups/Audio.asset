@@ -25,11 +25,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9f741f8f75d460a44bf205db8fc4792b
-    m_Address: UI_Click_01
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9f7a032adbfd10746a0a6cf1583a8907
     m_Address: Pamgaea
     m_ReadOnly: 0

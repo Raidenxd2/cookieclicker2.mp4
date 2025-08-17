@@ -2,7 +2,7 @@
   "dependencies": {
     "com.annulusgames.lit-motion": "2.0.1",
     "com.cysharp.unitask": "2.5.10",
-    "com.raiden.buildmanager": "https://github.com/Raidenxd2/BuildManager.git#v1.1.0",
+    "com.raiden.buildmanager": "https://github.com/Raidenxd2/BuildManager.git#v1.2.0",
     "com.raiden.serial": "1.0.2",
     "com.raiden.sharedshaders": "https://github.com/Raidenxd2/SharedShaders.git#1.1.0",
     "com.unity.2d.sprite": "1.0.0",
@@ -15,6 +15,7 @@
     "com.unity.render-pipelines.universal": "https://github.com/Raidenxd2/com.unity.render-pipelines.universal.git#6000.1.13f1",
     "com.unity.test-framework": "1.5.1",
     "com.unity.test-framework.performance": "https://github.com/Raidenxd2/com.unity.test-framework.performance_empty.git",
+    "com.unity.toolchain.win-x86_64-linux-x86_64": "2.0.10",
     "com.unity.ugui": "https://github.com/Raidenxd2/com.unity.ugui.git",
     "com.unity.xr.interaction.toolkit": "3.1.2",
     "com.unity.xr.management": "4.5.1",

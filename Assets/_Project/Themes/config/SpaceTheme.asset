@@ -13,8 +13,4 @@ MonoBehaviour:
   m_Name: SpaceTheme
   m_EditorClassIdentifier: 
   ThemeName: Moon
-  ThemePrefabRef:
-    m_AssetGUID: 47090cf9a6f72114582a1556279e2e25
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  ThemeSceneName: SpaceTheme_Scene

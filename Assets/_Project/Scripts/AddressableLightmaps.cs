@@ -1,25 +1,18 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class AddressableLightmaps : MonoBehaviour
 {
     [SerializeField] private Game game;
     [SerializeField] private Texture2D GameLightmap;
-    private AsyncOperationHandle<Texture2D> rflHandle;
+    private Texture2D rflTexture;
 
     public void InitAddressableLightmaps()
     {
-        if (ThemeManager.instance.CurrentTheme.ResearchFactoryLightmap == null)
+        if (string.IsNullOrEmpty(ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapLocation))
         {
             return;
-        }
-
-        if (rflHandle.IsValid())
-        {
-            Addressables.Release(rflHandle);
         }
 
         if (game.ResearchFactory)
@@ -30,11 +23,6 @@ public class AddressableLightmaps : MonoBehaviour
 
     public void RemoveLightmaps()
     {
-        if (rflHandle.IsValid())
-        {
-            Addressables.Release(rflHandle);
-        }
-
         List<LightmapData> lightmapData = new();
 
         LightmapData lightmapData1 = new();
@@ -47,8 +35,7 @@ public class AddressableLightmaps : MonoBehaviour
 
     private async UniTaskVoid LoadResearchFactoryLightmap()
     {
-        rflHandle = Addressables.LoadAssetAsync<Texture2D>(ThemeManager.instance.CurrentTheme.ResearchFactoryLightmap);
-        await rflHandle;
+        rflTexture = await Resources.LoadAsync(ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapLocation) as Texture2D;
 
         List<LightmapData> lightmapData = new();
 
@@ -56,7 +43,7 @@ public class AddressableLightmaps : MonoBehaviour
         lightmapData1.lightmapColor = GameLightmap;
 
         LightmapData lightmapData2 = new();
-        lightmapData2.lightmapColor = rflHandle.Result;
+        lightmapData2.lightmapColor = rflTexture;
 
         lightmapData.Add(lightmapData1);
         lightmapData.Add(lightmapData2);
@@ -66,9 +53,9 @@ public class AddressableLightmaps : MonoBehaviour
 
     public void UnloadLightmaps()
     {
-        if (rflHandle.IsValid())
+        if (rflTexture != null)
         {
-            Addressables.Release(rflHandle);
+            Resources.UnloadAsset(rflTexture);
         }
     }
 }

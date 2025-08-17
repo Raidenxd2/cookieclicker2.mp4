@@ -1,7 +1,6 @@
 #if !CC2_REMOVE_VR_SUPPORT
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 
 public class VRFallbackScene : MonoBehaviour
@@ -13,10 +12,7 @@ public class VRFallbackScene : MonoBehaviour
 
     private async UniTaskVoid LoadInitSceneAsync()
     {
-        await Addressables.UnloadSceneAsync(AddressableHandles.instance.vrFallbackSceneHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
-
-        AddressableHandles.instance.initSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.initSceneRef, LoadSceneMode.Single);
-        await AddressableHandles.instance.initSceneHandle;
+        await SceneManager.LoadSceneAsync(AddressableHandles.initSceneRef);
     }
 }
 #endif

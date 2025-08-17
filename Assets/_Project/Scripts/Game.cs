@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using LoggerSystem;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
 using Cysharp.Threading.Tasks;
 using System;
@@ -143,7 +142,6 @@ public class Game : MonoBehaviour
     public double CoinMultiplierUpgradePrice;
     public double CoinMultiplier;
     [Header("VR")]
-    [SerializeField] private AssetReference VRPrefab;
     private GameObject VRPrefabGO;
     [SerializeField] private Transform VRPrefabParent;
     [SerializeField] private GameObject AndroidVROnlySettingsButton;
@@ -163,8 +161,6 @@ public class Game : MonoBehaviour
 
     public WaitForSeconds oneSecond;
     public WaitForSeconds sixtySeconds;
-
-    [SerializeField] private AssetReference DefaultThemeScene;
 
     private void Awake()
     {
@@ -244,7 +240,7 @@ public class Game : MonoBehaviour
         {
             try
             {
-                VRPrefabGO = Instantiate(await Addressables.LoadAssetAsync<GameObject>(VRPrefab), VRPrefabParent);
+                VRPrefabGO = Instantiate(await Resources.LoadAsync("GameScene_VRPrefab") as GameObject);
                 VRPrefabObject vrpo = VRPrefabGO.GetComponent<VRPrefabObject>();
 
                 XROrigin = vrpo.XROrigin;
@@ -589,18 +585,14 @@ public class Game : MonoBehaviour
 
         await ThemeManager.instance.UnloadTheme();
 
-        await Addressables.UnloadSceneAsync(AddressableHandles.instance.gameSceneHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
-
 #if !CC2_REMOVE_VR_SUPPORT
         if (VRPrefabGO != null)
         {
             Destroy(VRPrefabGO);
-            Addressables.Release(VRPrefab);
         }
 #endif
 
-        AddressableHandles.instance.initSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.initSceneRef, LoadSceneMode.Single);
-        await AddressableHandles.instance.initSceneHandle;
+        await SceneManager.LoadSceneAsync(AddressableHandles.initSceneRef);
     }
 
     public void SoundToggle(bool Toggle)
@@ -641,11 +633,8 @@ public class Game : MonoBehaviour
     private async UniTaskVoid LoadVRFallbackSceneAsync()
     {
         SavePlayer();
-        
-        await Addressables.UnloadSceneAsync(AddressableHandles.instance.gameSceneHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
 
-        AddressableHandles.instance.vrFallbackSceneHandle = Addressables.LoadSceneAsync(AddressableHandles.instance.vrFallbackSceneRef, LoadSceneMode.Single);
-        await AddressableHandles.instance.vrFallbackSceneHandle;
+        await SceneManager.LoadSceneAsync(AddressableHandles.vrFallbackSceneRef);
     }
 #endif
 

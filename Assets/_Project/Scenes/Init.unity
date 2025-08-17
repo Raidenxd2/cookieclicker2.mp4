@@ -737,18 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DDOL: {fileID: 32888412}
-  VRPrefab:
-    m_AssetGUID: bcf0a51b374207947aed416254ffa56b
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  DefaultThemeScene:
-    m_AssetGUID: c396c36bde6b9eb4b8729bac2068c263
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
+  DefaultTheme: {fileID: 11400000, guid: 2a0d21d200573854fa3af0ba4c7af6d2, type: 2}
 --- !u!4 &1710680513
 Transform:
   m_ObjectHideFlags: 0

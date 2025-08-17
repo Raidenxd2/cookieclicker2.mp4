@@ -1,14 +1,9 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
 public class MiniGameMineLoader : MonoBehaviour
 {
-    [SerializeField] private AssetReference MinigameMineScene;
-    private SceneInstance MinigameMineSceneHandle;
-
     [SerializeField] private Game game;
 
     public static MiniGameMineLoader instance;
@@ -37,9 +32,9 @@ public class MiniGameMineLoader : MonoBehaviour
         game.researchFactory.GameCanvas.SetActive(false);
         game.gameCamera.gameObject.SetActive(false);
 
-        MinigameMineSceneHandle = await Addressables.LoadSceneAsync(MinigameMineScene, LoadSceneMode.Additive);
+        await SceneManager.LoadSceneAsync(AddressableHandles.miniGameMineRef, LoadSceneMode.Additive);
 
-        SceneManager.SetActiveScene(MinigameMineSceneHandle.Scene);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.miniGameMineRef));
 
         game.Fade.Play("FadeOut");
         game.FadeCanvasGroup.blocksRaycasts = false;
@@ -64,9 +59,9 @@ public class MiniGameMineLoader : MonoBehaviour
         }
 #endif
 
-        SceneManager.SetActiveScene(AddressableHandles.instance.gameSceneHandle.Result.Scene);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.gameSceneRef));
 
-        await Addressables.UnloadSceneAsync(MinigameMineSceneHandle);
+        await SceneManager.UnloadSceneAsync(AddressableHandles.miniGameMineRef);
 
         game.researchFactory.GameCanvas.SetActive(true);
 

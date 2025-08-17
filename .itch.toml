@@ -1,0 +1,16 @@
+[[actions]]
+name = "play"
+path = "Cookieclicker2.mp4.exe"
+platform = "windows"
+
+[[actions]]
+name = "Launch in VR"
+path = "Cookieclicker2.mp4.exe"
+platform = "windows"
+args = ["-vr true"]
+
+[[actions]]
+name = "Open save data"
+path = "_SaveData.bat"
+platform = "windows"
+

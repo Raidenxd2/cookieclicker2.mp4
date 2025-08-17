@@ -128,7 +128,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 54283061}
-  - component: {fileID: 54283060}
   - component: {fileID: 54283062}
   m_Layer: 0
   m_Name: PersistentObject
@@ -137,36 +136,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &54283060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54283059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9e2984d5d594d245a083b8bc5601db9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameSceneRef:
-    m_AssetGUID: 8c9cfa26abfee488c85f1582747f6a02
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  initSceneRef:
-    m_AssetGUID: d4a7d93e3e2e49d45b9512bb488488b3
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
-  vrFallbackSceneRef:
-    m_AssetGUID: cedcb9f7e5851d24fbdf0420c2e26b9d
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
 --- !u!4 &54283061
 Transform:
   m_ObjectHideFlags: 0
