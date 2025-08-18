@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System.IO;
 using UnityEditor;
-using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
@@ -35,11 +34,6 @@ public class AndroidPrepareBuild : Editor
                 AssetDatabase.ImportAsset(assetPath);
                 Debug.Log("(AndroidPrepareBuild) Changed forceToMono setting of " + assetPath);
             }
-        }
-        foreach (var group in androidConfig.assetGroupsToDisable)
-        {
-            group.GetSchema<BundledAssetGroupSchema>().IncludeInBuild = false;
-            EditorUtility.SetDirty(group);
         }
 
         if (Directory.Exists(Application.dataPath + "/Samples/XR Interaction Toolkit"))

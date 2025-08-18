@@ -5,5 +5,4 @@ using UnityEngine;
 public class AndroidConfigSO : ScriptableObject
 {
     public AudioClip[] AudioClipsSwitchMono;
-    public AddressableAssetGroup[] assetGroupsToDisable;
 }

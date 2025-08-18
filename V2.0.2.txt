@@ -1,2 +1,2 @@
 V2.0.2:
-Fixed crashing
+Fixed crashing and some issues
