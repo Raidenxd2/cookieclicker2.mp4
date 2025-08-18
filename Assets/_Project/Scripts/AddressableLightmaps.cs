@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using LoggerSystem;
 using UnityEngine;
 
 public class AddressableLightmaps : MonoBehaviour
@@ -8,11 +9,18 @@ public class AddressableLightmaps : MonoBehaviour
     [SerializeField] private Texture2D GameLightmap;
     private Texture2D rflTexture;
 
+    private AssetBundle lightmapBundle;
+
     public void InitAddressableLightmaps()
     {
-        if (string.IsNullOrEmpty(ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapLocation))
+        if (string.IsNullOrEmpty(ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapABName))
         {
             return;
+        }
+
+        if (lightmapBundle != null)
+        {
+            UnloadLightmaps();
         }
 
         if (game.ResearchFactory)
@@ -35,7 +43,9 @@ public class AddressableLightmaps : MonoBehaviour
 
     private async UniTaskVoid LoadResearchFactoryLightmap()
     {
-        rflTexture = await Resources.LoadAsync(ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapLocation) as Texture2D;
+        LogSystem.Log("Loading AssetBundle " + ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapABName + " and asset " + ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapAssetName);
+        lightmapBundle = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/" + ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapABName);
+        rflTexture = await lightmapBundle.LoadAssetAsync(ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapAssetName) as Texture2D;
 
         List<LightmapData> lightmapData = new();
 
@@ -53,9 +63,13 @@ public class AddressableLightmaps : MonoBehaviour
 
     public void UnloadLightmaps()
     {
-        if (rflTexture != null)
+        if (lightmapBundle != null)
         {
-            Resources.UnloadAsset(rflTexture);
+            LogSystem.Log("Unloading AssetBundle " + lightmapBundle.name);
+
+            rflTexture = null;
+            lightmapBundle.Unload(true);
+            lightmapBundle = null;
         }
     }
 }

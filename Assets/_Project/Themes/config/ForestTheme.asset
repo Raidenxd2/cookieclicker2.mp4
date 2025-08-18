@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: ForestTheme
   m_EditorClassIdentifier: 
   ThemeName: Forest
+  ThemeAssetBundleName: themes-foresttheme-scene
   ThemeSceneName: ForestTheme_Scene

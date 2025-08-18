@@ -5241,8 +5241,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Research Factory
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e92e3add251e23f43971c7230066aa3e, type: 2}
-  m_sharedMaterial: {fileID: -473840801986087895, guid: e92e3add251e23f43971c7230066aa3e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce7b37e2cef819b4086843c75a29766d, type: 2}
+  m_sharedMaterial: {fileID: -473840801986087895, guid: ce7b37e2cef819b4086843c75a29766d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5847,7 +5847,8 @@ MonoBehaviour:
   Drill: {fileID: 1967563996}
   ResearchFactory: {fileID: 384167442}
   ThemeParticles: {fileID: 1557077699}
-  ResearchFactoryLightmapLocation: Lightmap/ForestTheme_WithResearchFactory
+  ResearchFactoryLightmapABName: themes-foresttheme-researchfactorylightmap
+  ResearchFactoryLightmapAssetName: ForestTheme_WithResearchFactory
 --- !u!4 &1885377573
 Transform:
   m_ObjectHideFlags: 0

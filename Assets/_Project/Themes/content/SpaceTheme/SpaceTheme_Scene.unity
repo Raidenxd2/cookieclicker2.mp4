@@ -185,7 +185,8 @@ MonoBehaviour:
   Drill: {fileID: 1967563996}
   ResearchFactory: {fileID: 384167442}
   ThemeParticles: {fileID: 871517601}
-  ResearchFactoryLightmapLocation: Lightmap/SpaceTheme_WithResearchFactory
+  ResearchFactoryLightmapABName: themes-spacetheme-researchfactorylightmap
+  ResearchFactoryLightmapAssetName: SpaceTheme_WithResearchFactory
 --- !u!4 &505034618
 Transform:
   m_ObjectHideFlags: 0
@@ -662,7 +663,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Research Factory
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e92e3add251e23f43971c7230066aa3e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce7b37e2cef819b4086843c75a29766d, type: 2}
   m_sharedMaterial: {fileID: -473840801986087895, guid: e92e3add251e23f43971c7230066aa3e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -728,7 +729,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1912632052

@@ -6,5 +6,6 @@ public class ThemeObject : MonoBehaviour
     public GameObject Drill;
     public GameObject ResearchFactory;
     public GameObject ThemeParticles;
-    public string ResearchFactoryLightmapLocation;
+    public string ResearchFactoryLightmapABName;
+    public string ResearchFactoryLightmapAssetName;
 }

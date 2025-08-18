@@ -5,5 +5,6 @@ public class ThemeSO : ScriptableObject
 {
     public string ThemeName;
 
+    public string ThemeAssetBundleName;
     public string ThemeSceneName;
 }

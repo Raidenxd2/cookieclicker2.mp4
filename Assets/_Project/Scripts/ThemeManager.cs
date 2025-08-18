@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using LoggerSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +22,7 @@ public class ThemeManager : MonoBehaviour
 
     public ThemeObject FallbackTheme;
 
+    private AssetBundle CurrentThemeBundle;
     private string CurrentSceneName;
 
     public static ThemeManager instance;
@@ -38,15 +40,16 @@ public class ThemeManager : MonoBehaviour
             GameObject go = Instantiate(ThemeButton, ThemeButtonParent);
             ThemeButton tb = go.GetComponent<ThemeButton>();
 
+            tb.ThemeAssetBundleName = theme.ThemeAssetBundleName;
             tb.ThemeSceneName = theme.ThemeSceneName;
 
             tb.ThemeButtonText.text = theme.ThemeName;
 
-            tb.button.onClick.AddListener(() => SelectTheme(theme.ThemeSceneName).Forget());
+            tb.button.onClick.AddListener(() => SelectTheme(theme.ThemeAssetBundleName, theme.ThemeSceneName).Forget());
         }
     }
     
-    public async UniTask SelectTheme(string SceneName)
+    public async UniTask SelectTheme(string AssetBundleName, string SceneName)
     {
         ThemesScreen.HideWindow();
         GlobalDark.HideWindow();
@@ -59,9 +62,11 @@ public class ThemeManager : MonoBehaviour
         {
             try
             {
+                LogSystem.Log("Unloading Scene " + CurrentSceneName + " and bundle " + CurrentThemeBundle.name);
                 al.UnloadLightmaps();
                 al.RemoveLightmaps();
                 await SceneManager.UnloadSceneAsync(CurrentSceneName);
+                await CurrentThemeBundle.UnloadAsync(true);
             }
             catch
             {
@@ -71,6 +76,10 @@ public class ThemeManager : MonoBehaviour
 
         try
         {
+            LogSystem.Log("Loading AssetBundle " + AssetBundleName + " and scene " + SceneName);
+            CurrentThemeBundle = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/" + AssetBundleName);
+            string[] scenes = CurrentThemeBundle.GetAllScenePaths();
+
             CurrentSceneName = SceneName;
             await SceneManager.LoadSceneAsync(SceneName, LoadSceneMode.Additive);
         }
@@ -96,10 +105,11 @@ public class ThemeManager : MonoBehaviour
     {
         try
         {
+            LogSystem.Log("Unloading Scene " + CurrentSceneName + " and bundle " + CurrentThemeBundle.name);
             al.UnloadLightmaps();
             al.RemoveLightmaps();
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.gameSceneRef));
             await SceneManager.UnloadSceneAsync(CurrentSceneName);
+            await CurrentThemeBundle.UnloadAsync(true);
         }
         catch
         {

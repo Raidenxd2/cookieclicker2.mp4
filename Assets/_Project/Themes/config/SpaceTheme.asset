@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: SpaceTheme
   m_EditorClassIdentifier: 
   ThemeName: Moon
+  ThemeAssetBundleName: themes-spacetheme-scene
   ThemeSceneName: SpaceTheme_Scene

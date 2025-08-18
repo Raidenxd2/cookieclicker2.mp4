@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using LoggerSystem;
 using SimpleFileBrowser;
 using System.IO;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class init : MonoBehaviour
     public GameObject DDOL;
 
     public static bool HasLoaded;
+    public static bool HasLoadedSharedData;
 
     [SerializeField] private ThemeSO DefaultTheme;
 
@@ -31,6 +33,13 @@ public class init : MonoBehaviour
         }
 #endif
 
+        if (!HasLoadedSharedData)
+        {
+            LogSystem.Log("Loading AssetBundle shareddata");
+            AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Bundles/shareddata");
+            HasLoadedSharedData = true;
+        }
+
 #if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
@@ -50,9 +59,9 @@ public class init : MonoBehaviour
 
     private async UniTaskVoid LoadGameSceneAsync()
     {
-        await UniTask.WaitForEndOfFrame();
         if (!string.IsNullOrEmpty(Game.importPath))
         {
+            await UniTask.WaitForEndOfFrame();
             File.Delete(Application.persistentDataPath + "/Saves/Default.cookie");
             File.WriteAllText(Application.persistentDataPath + "/Saves/Default.cookie", FileBrowserHelpers.ReadTextFromFile(Game.importPath));
             Game.importPath = null;
@@ -61,7 +70,7 @@ public class init : MonoBehaviour
         await SceneManager.LoadSceneAsync(AddressableHandles.gameSceneRef, LoadSceneMode.Additive);
 
         await UniTask.WaitForEndOfFrame();
-        await ThemeManager.instance.SelectTheme(DefaultTheme.ThemeSceneName);
+        await ThemeManager.instance.SelectTheme(DefaultTheme.ThemeAssetBundleName, DefaultTheme.ThemeSceneName);
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.gameSceneRef));
 
@@ -82,6 +91,7 @@ public class init : MonoBehaviour
     public static void SetHasLoaded()
     {
         HasLoaded = false;
+        HasLoadedSharedData = false;
     }
 #endif
 }

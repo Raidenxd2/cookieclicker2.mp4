@@ -1,0 +1,76 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.1.13f1
+CRC: 697712704
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: df5c335d48763cc4c79bfa66cb8c119f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a0559f1f261f22f3f7397bda7e44d031
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 9bbfd120973ccae6619dfc7482fefdff
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 89
+  Script: {instanceID: 0}
+- Class: 104
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: af90a998645132043a09c1d76fd81096, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 900b87ad66c5d89459fd76ae552b28a2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 706004fabc1d49d459ec20fbc99c34f4, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 157
+  Script: {instanceID: 0}
+- Class: 196
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 215
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 258
+  Script: {instanceID: 0}
+- Class: 850595691
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/_Project/Themes/content/ForestTheme/ForestTheme_Scene.unity
+Dependencies:
+- C:/Users/Lemres/cookieclicker2.mp4/Assets/AssetBundleBuild/shareddata
