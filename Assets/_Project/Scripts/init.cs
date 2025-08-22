@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
-public class init : MonoBehaviour
+public class Init : MonoBehaviour
 {
     public GameObject DDOL;
 
@@ -61,7 +61,6 @@ public class init : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(Game.importPath))
         {
-            await UniTask.WaitForEndOfFrame();
             File.Delete(Application.persistentDataPath + "/Saves/Default.cookie");
             File.WriteAllText(Application.persistentDataPath + "/Saves/Default.cookie", FileBrowserHelpers.ReadTextFromFile(Game.importPath));
             Game.importPath = null;

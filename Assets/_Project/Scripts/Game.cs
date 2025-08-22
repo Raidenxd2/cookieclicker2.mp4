@@ -179,13 +179,6 @@ public class Game : MonoBehaviour
     {
         VersionText.text = "v" + Application.version + "-" + Application.platform + " (" + Application.unityVersion + ", " + SystemInfo.graphicsDeviceType + ")";
 
-        StartAsync().Forget();
-    }
-
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-    private async UniTaskVoid StartAsync()
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
-    {
 #if UNITY_ANDROID
         ScreenshotOptionsBTN.SetActive(false);
 #endif
@@ -226,6 +219,8 @@ public class Game : MonoBehaviour
         AllowUpdate = true;
 
         FileBrowser.Skin = FileBrowserUISkin;
+
+        UpdateAudio();
     }
 
     public void PlayInitialFadeOut()
@@ -598,11 +593,36 @@ public class Game : MonoBehaviour
     public void SoundToggle(bool Toggle)
     {
         Sounds = Toggle;
+
+        UpdateAudio();
     }
 
     public void MusicToggle(bool Toggle)
     {
         Music = Toggle;
+
+        UpdateAudio();
+    }
+
+    private void UpdateAudio()
+    {
+        // music & sounds
+        if (Music == false)
+        {
+            MusicAudioSource.volume = 0;
+        }
+        else
+        {
+            MusicAudioSource.volume = 1;
+        }
+        if (Sounds == false)
+        {
+            SoundAudioSource.volume = 0;
+        }
+        else
+        {
+            SoundAudioSource.volume = 1;
+        }
     }
 
     public void UpdateCheckerToggle(bool Toggle)
@@ -910,23 +930,5 @@ public class Game : MonoBehaviour
         Stats_Grandmas.text = "Grandmas: " + Grandmas;
         Stats_CookieFactorys.text = "Cookie Factorys: " + CookieFactorys;
         Stats_CookieFarms.text = "Cookie Farms: " + CookieFarms;
-
-        // music & sounds
-        if (Music == false)
-        {
-            MusicAudioSource.volume = 0;
-        }
-        else
-        {
-            MusicAudioSource.volume = 1;
-        }
-        if (Sounds == false)
-        {
-            SoundAudioSource.volume = 0;
-        }
-        else
-        {
-            SoundAudioSource.volume = 1;
-        }
     }
 }

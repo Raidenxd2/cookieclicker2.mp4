@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Init.unity
     guid: d4a7d93e3e2e49d45b9512bb488488b3
   - enabled: 1
-    path: Assets/_Project/Scenes/VRFallback.unity
-    guid: cedcb9f7e5851d24fbdf0420c2e26b9d
-  - enabled: 1
     path: Assets/_Project/Scenes/Game.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/_Project/Scenes/VRFallback.unity
+    guid: cedcb9f7e5851d24fbdf0420c2e26b9d
   - enabled: 1
     path: Assets/_Project/Scenes/MineMinigame.unity
     guid: a0b6b36c341cf264a9c23fdb518c0195

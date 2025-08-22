@@ -2,7 +2,6 @@
 using UnityEngine;
 using System.IO;
 using TMPro;
-using LoggerSystem;
 using UnityEngine.InputSystem;
 
 public class ScreenShot : MonoBehaviour 
@@ -11,8 +10,6 @@ public class ScreenShot : MonoBehaviour
     public Notification notification;
     public int ScreenshotQuality;
     public TMP_Text ScreenshotQualityText;
-    public bool NotificationsInScreenshots;
-    public GameObject Nnotification;
 
     private PlayerInput playerInput;
 
@@ -20,37 +17,16 @@ public class ScreenShot : MonoBehaviour
     {
         playerInput = GameObject.Find("PlayerInput").GetComponent<PlayerInput>();
 
-        try
+        if (!Directory.Exists(Application.persistentDataPath + filePath))
         {
-            if (!Directory.Exists(Application.persistentDataPath + filePath))
-            {
-                Directory.CreateDirectory(Application.persistentDataPath + filePath);
-            }
-        }
-        catch (IOException ex)
-        {
-            LogSystem.Log(ex.Message, LogTypes.Exception);
-            notification.ShowNotification(ex.Message, "Error");
+            Directory.CreateDirectory(Application.persistentDataPath + filePath);
         }
     }
 
     public void DeleteScreenshots()
     {
-        try
-        {
-            Directory.Delete(Application.persistentDataPath + filePath, true);
-            Directory.CreateDirectory(Application.persistentDataPath + filePath);
-        }
-        catch (IOException ex)
-        {
-            LogSystem.Log(ex.Message, LogTypes.Exception);
-            notification.ShowNotification(ex.Message, "Error");
-        }
-    }
-
-    public void NotifcationScreenshotToggle()
-    {
-        NotificationsInScreenshots = !NotificationsInScreenshots;
+        Directory.Delete(Application.persistentDataPath + filePath, true);
+        Directory.CreateDirectory(Application.persistentDataPath + filePath);
     }
 
     void Update()
@@ -65,17 +41,8 @@ public class ScreenShot : MonoBehaviour
     {
         string datetime = System.DateTime.Now.ToString("MM-dd-yyyy hh;mm;ss");
 
-        if (NotificationsInScreenshots)
-        {
-            Nnotification.SetActive(true);
-        }
-        else
-        {
-            Nnotification.SetActive(false);
-        }
         ScreenCapture.CaptureScreenshot(Application.persistentDataPath + "/screenshots/" + datetime + ".png", ScreenshotQuality);
         notification.ShowNotification("Screenshot saved at " + Application.persistentDataPath + filePath + "/" + datetime + ".png", "Screenshot Taken");
-        Nnotification.SetActive(true);
     }
 
     public void OnValueChanged(float newValue)

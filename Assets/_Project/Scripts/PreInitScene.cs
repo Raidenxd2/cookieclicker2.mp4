@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
@@ -19,35 +18,6 @@ public class PreInitScene : MonoBehaviour
         PlayerPrefs.SetInt("unity.player_sessionid", 0);
         PlayerPrefs.SetInt("unity.cloud_userid", 0);
         PlayerPrefs.Save();
-
-        // #if UNITY_STANDALONE_WIN didn't fucking work
-        if (Application.platform == RuntimePlatform.WindowsPlayer)
-        {
-            try
-            {
-                Debug.Log(Application.dataPath);
-                if (File.Exists(Application.dataPath + "\\..\\baselib.dll"))
-                {
-                    File.Delete(Application.dataPath + "\\..\\baselib.dll");
-                }
-                if (File.Exists(Application.dataPath + "\\..\\Cookieclicker2.mp4_x64_MasterWithLTCG_il2cpp.pdb"))
-                {
-                    File.Delete(Application.dataPath + "\\..\\Cookieclicker2.mp4_x64_MasterWithLTCG_il2cpp.pdb");
-                }
-                if (File.Exists(Application.dataPath + "\\..\\GameAssembly.dll"))
-                {
-                    File.Delete(Application.dataPath + "\\..\\GameAssembly.dll");
-                }
-                if (Directory.Exists(Application.dataPath + "\\il2cpp_data"))
-                {
-                    Directory.Delete(Application.dataPath + "\\il2cpp_data", true);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.LogException(ex);
-            }
-        }
 
         Application.backgroundLoadingPriority = ThreadPriority.Low;
 

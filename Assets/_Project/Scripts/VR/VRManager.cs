@@ -51,14 +51,14 @@ public class VRManager : MonoBehaviour
 
         if (!currentLoader.Initialize())
         {
-            Debug.LogError("(VRManager) Failed to init current loader.");
+            UnityEngine.Debug.LogError("(VRManager) Failed to init current loader.");
             VREnabled = false;
             return;
         }
 
         if (!currentLoader.Start())
         {
-            Debug.LogError("(VRManager) Failed to start current loader.");
+            UnityEngine.Debug.LogError("(VRManager) Failed to start current loader.");
             currentLoader.Deinitialize();
             VREnabled = false;
             return;
