@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ace3b75965624d4d84b0750129d1749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VREnabled: 0
+  VREnabled: 1
 --- !u!1 &2099011409
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +174,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2099011410}
   - component: {fileID: 2099011411}
-  - component: {fileID: 2099011412}
   m_Layer: 0
   m_Name: PreInit
   m_TagString: Untagged
@@ -207,18 +206,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ec6c1f1bb4686244838498e25577e94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2099011412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099011409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e07c78e63492b314590c63986f1a5c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807

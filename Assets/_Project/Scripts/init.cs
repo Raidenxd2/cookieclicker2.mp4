@@ -3,7 +3,6 @@ using LoggerSystem;
 using SimpleFileBrowser;
 using System.IO;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class Init : MonoBehaviour
@@ -12,6 +11,7 @@ public class Init : MonoBehaviour
 
     public static bool HasLoaded;
     public static bool HasLoadedSharedData;
+    public static bool HasLoadedAndroidVRSVC;
 
     [SerializeField] private ThemeSO DefaultTheme;
 
@@ -25,14 +25,6 @@ public class Init : MonoBehaviour
 
         Resources.UnloadUnusedAssets();
 
-#if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
-        if (VRManager.instance.IsMobileVR)
-        {
-            UniversalRenderPipelineAsset urp = (UniversalRenderPipelineAsset)QualitySettings.renderPipeline;
-            urp.msaaSampleCount = 4;
-        }
-#endif
-
         if (!HasLoadedSharedData)
         {
             LogSystem.Log("Loading AssetBundle shareddata");
@@ -40,22 +32,18 @@ public class Init : MonoBehaviour
             HasLoadedSharedData = true;
         }
 
-#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             LoadVRData().Forget();
         }
-#endif
 
         LoadGameSceneAsync().Forget();
     }
 
-#if !CC2_REMOVE_VR_SUPPORT
     private async UniTask LoadVRData()
     {
         Instantiate(await Resources.LoadAsync("InitScene_VRPrefab") as GameObject);
     }
-#endif
 
     private async UniTaskVoid LoadGameSceneAsync()
     {
@@ -66,19 +54,31 @@ public class Init : MonoBehaviour
             Game.importPath = null;
         }
 
+#if UNITY_ANDROID
+        if (!HasLoadedAndroidVRSVC)
+        {
+            AssetBundle avrsvc = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/svc-androidvr");
+
+            ShaderVariantCollection svc = await avrsvc.LoadAssetAsync("AndroidVRShaderVariants") as ShaderVariantCollection;
+            svc.WarmUp();
+
+            await avrsvc.UnloadAsync(true);
+
+            HasLoadedAndroidVRSVC = true;
+        }
+#endif
+
         await SceneManager.LoadSceneAsync(AddressableHandles.gameSceneRef, LoadSceneMode.Additive);
 
         await UniTask.WaitForEndOfFrame();
-        await ThemeManager.instance.SelectTheme(DefaultTheme.ThemeAssetBundleName, DefaultTheme.ThemeSceneName);
+        await ThemeManager.instance.SelectTheme(DefaultTheme.ThemeAssetBundleName, DefaultTheme.ThemeSceneName, DefaultTheme.ThemeSceneFullPath);
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.gameSceneRef));
 
-#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             await Game.instance.InitVR();
         }
-#endif
 
         await SceneManager.UnloadSceneAsync(AddressableHandles.initSceneRef, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
 
@@ -91,6 +91,7 @@ public class Init : MonoBehaviour
     {
         HasLoaded = false;
         HasLoadedSharedData = false;
+        HasLoadedAndroidVRSVC = false;
     }
 #endif
 }

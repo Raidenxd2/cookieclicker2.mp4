@@ -3,6 +3,10 @@ using LoggerSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+#if UNITY_EDITOR
+using UnityEditor.SceneManagement;
+#endif
+
 public class ThemeManager : MonoBehaviour
 {
     [SerializeField] private ThemeSO[] Themes;
@@ -25,6 +29,10 @@ public class ThemeManager : MonoBehaviour
     private AssetBundle CurrentThemeBundle;
     private string CurrentSceneName;
 
+#if UNITY_EDITOR
+    [SerializeField] private bool LoadAssetBundlesInEditor;
+#endif
+
     public static ThemeManager instance;
 
     private void Awake()
@@ -45,11 +53,11 @@ public class ThemeManager : MonoBehaviour
 
             tb.ThemeButtonText.text = theme.ThemeName;
 
-            tb.button.onClick.AddListener(() => SelectTheme(theme.ThemeAssetBundleName, theme.ThemeSceneName).Forget());
+            tb.button.onClick.AddListener(() => SelectTheme(theme.ThemeAssetBundleName, theme.ThemeSceneName, theme.ThemeSceneFullPath).Forget());
         }
     }
     
-    public async UniTask SelectTheme(string AssetBundleName, string SceneName)
+    public async UniTask SelectTheme(string AssetBundleName, string SceneName, string FullAssetPath)
     {
         ThemesScreen.HideWindow();
         GlobalDark.HideWindow();
@@ -66,7 +74,15 @@ public class ThemeManager : MonoBehaviour
                 al.UnloadLightmaps();
                 al.RemoveLightmaps();
                 await SceneManager.UnloadSceneAsync(CurrentSceneName);
-                await CurrentThemeBundle.UnloadAsync(true);
+
+#if UNITY_EDITOR
+                if (LoadAssetBundlesInEditor)
+                {
+#endif
+                    await CurrentThemeBundle.UnloadAsync(true);
+#if UNITY_EDITOR
+                }
+#endif
             }
             catch
             {
@@ -77,11 +93,22 @@ public class ThemeManager : MonoBehaviour
         try
         {
             LogSystem.Log("Loading AssetBundle " + AssetBundleName + " and scene " + SceneName);
-            CurrentThemeBundle = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/" + AssetBundleName);
-            string[] scenes = CurrentThemeBundle.GetAllScenePaths();
 
-            CurrentSceneName = SceneName;
-            await SceneManager.LoadSceneAsync(SceneName, LoadSceneMode.Additive);
+#if UNITY_EDITOR
+            if (LoadAssetBundlesInEditor)
+            {
+#endif
+                CurrentThemeBundle = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/" + AssetBundleName);
+                CurrentSceneName = SceneName;
+                await SceneManager.LoadSceneAsync(SceneName, LoadSceneMode.Additive);
+#if UNITY_EDITOR
+            }
+            else
+            {
+                CurrentSceneName = SceneName;
+                await EditorSceneManager.LoadSceneAsyncInPlayMode(FullAssetPath, new(LoadSceneMode.Additive));
+            }
+#endif
         }
         catch
         {
@@ -109,7 +136,15 @@ public class ThemeManager : MonoBehaviour
             al.UnloadLightmaps();
             al.RemoveLightmaps();
             await SceneManager.UnloadSceneAsync(CurrentSceneName);
-            await CurrentThemeBundle.UnloadAsync(true);
+
+#if UNITY_EDITOR
+            if (LoadAssetBundlesInEditor)
+            {
+#endif
+                await CurrentThemeBundle.UnloadAsync(true);
+#if UNITY_EDITOR
+            }
+#endif
         }
         catch
         {

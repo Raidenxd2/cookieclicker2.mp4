@@ -1,16 +1,16 @@
 ManifestFileVersion: 0
 UnityVersion: 6000.1.13f1
-CRC: 1016321024
+CRC: 204805808
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6322a1b6af3a69806952f94bb18d15d3
+    Hash: f1010e66ae0095d8ddf8e79d0c23f9f3
   TypeTreeHash:
     serializedVersion: 2
     Hash: f3de525786ce824cc9d8d6597bf1f688
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: c5d5bf1611a447479a693490e5694365
+    Hash: 4563b6e1c49cdf1e427e60c3f3290143
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -71,6 +71,7 @@ SerializeReferenceClassIdentifiers:
 Assets:
 - Assets/_Project/Textures/tiled_wall/clean/tiled_wall_clean_normal.jpg
 - Assets/_Project/Models/Cookie/Normal/cookie_normal.fbx
+- Assets/_Project/BakedLit-NoNormal.shader
 - Assets/_Project/Materials/PaintedPlaster017.mat
 - Assets/_Project/Materials/sky.mat
 - Assets/_Project/Models/Science_Factory/V2/mat/door_base.mat

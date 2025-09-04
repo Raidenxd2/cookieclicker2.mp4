@@ -89,19 +89,12 @@ public class AdvancedQualitySettings : MonoBehaviour
     public void SetDefaults()
     {
 #if UNITY_ANDROID
-        PostProcessing = false;
+        PostProcessing = true;
         Particals = true;
         VSync = false;
         Fog = true;
         TextureQuality = 0;
-        RenderQuality = 0.75f;
-#if !CC2_REMOVE_VR_SUPPORT
-        if (VRManager.instance.IsMobileVR)
-        {
-            PostProcessing = true;
-            RenderQuality = 1f;
-        }
-#endif
+        RenderQuality = 1f;
 #endif
 
 #if UNITY_STANDALONE
@@ -162,7 +155,7 @@ public class AdvancedQualitySettings : MonoBehaviour
             RenderSettings.fog = false;
         }
 
-#if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
+#if UNITY_ANDROID
         if (VRManager.instance.IsMobileVR)
         {
             QualitySettings.anisotropicFiltering = AnisotropicFiltering.ForceEnable;

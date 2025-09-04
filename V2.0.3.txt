@@ -1,3 +1,5 @@
-V2.0.2:
-Reduce build size
-Remove Notifications In Screenshots toggle from the Screenshot Settings
+V2.0.3:
+Reduced build size
+Removed unneeded/unused code
+Removed the Notifications In Screenshots toggle from the Screenshot Settings
+Switched to the Render Graph rendering system instead of the old Compatibility Mode

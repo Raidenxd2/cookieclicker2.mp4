@@ -1,4 +1,3 @@
-#if !CC2_REMOVE_VR_SUPPORT
 using UnityEngine;
 
 public class VRFadeCanvas : MonoBehaviour
@@ -11,4 +10,3 @@ public class VRFadeCanvas : MonoBehaviour
         canvas.planeDistance = 0.1f;
     }
 }
-#endif

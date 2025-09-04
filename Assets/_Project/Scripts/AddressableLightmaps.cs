@@ -11,6 +11,8 @@ public class AddressableLightmaps : MonoBehaviour
 
     private AssetBundle lightmapBundle;
 
+    [SerializeField] private bool LoadAssetBundlesInEditor;
+
     public void InitAddressableLightmaps()
     {
         if (string.IsNullOrEmpty(ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapABName))

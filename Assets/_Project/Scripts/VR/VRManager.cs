@@ -1,4 +1,3 @@
-#if !CC2_REMOVE_VR_SUPPORT
 using UnityEngine;
 using UnityEngine.XR.Management;
 
@@ -6,7 +5,7 @@ public class VRManager : MonoBehaviour
 {
     public bool VREnabled;
 #if UNITY_ANDROID
-    public bool IsMobileVR;
+    public bool IsMobileVR = true;
 #endif
 
     public static bool VRBootEnabled;
@@ -39,9 +38,10 @@ public class VRManager : MonoBehaviour
 
         if (VREnabled)
         {
-#if !UNITY_ANDROID
-            InitXR();
-#endif
+            if (Application.platform != RuntimePlatform.Android)
+            {
+                InitXR();
+            }
         }
     }
 
@@ -51,14 +51,14 @@ public class VRManager : MonoBehaviour
 
         if (!currentLoader.Initialize())
         {
-            UnityEngine.Debug.LogError("(VRManager) Failed to init current loader.");
+            Debug.LogError("(VRManager) Failed to init current loader.");
             VREnabled = false;
             return;
         }
 
         if (!currentLoader.Start())
         {
-            UnityEngine.Debug.LogError("(VRManager) Failed to start current loader.");
+            Debug.LogError("(VRManager) Failed to start current loader.");
             currentLoader.Deinitialize();
             VREnabled = false;
             return;
@@ -77,4 +77,3 @@ public class VRManager : MonoBehaviour
         }
     }
 }
-#endif

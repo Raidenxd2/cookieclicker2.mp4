@@ -51,13 +51,11 @@ public class MiniGameMineLoader : MonoBehaviour
         game.FadeCanvasGroup.blocksRaycasts = true;
         await UniTask.WaitForSeconds(1);
 
-#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             Game.instance.XROrigin.transform.parent = MiniGameMine.instance.OldVRParent;
             Game.instance.XROrigin.transform.SetPositionAndRotation(MiniGameMine.instance.OldVRPosition, MiniGameMine.instance.OldVRRotation);
         }
-#endif
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.gameSceneRef));
 
@@ -65,14 +63,10 @@ public class MiniGameMineLoader : MonoBehaviour
 
         game.researchFactory.GameCanvas.SetActive(true);
 
-#if !CC2_REMOVE_VR_SUPPORT
         if (!VRManager.instance.VREnabled)
         {
-#endif
             game.gameCamera.gameObject.SetActive(true);
-#if !CC2_REMOVE_VR_SUPPORT
         }
-#endif
 
         game.Fade.Play("FadeOut");
         game.FadeCanvasGroup.blocksRaycasts = false;

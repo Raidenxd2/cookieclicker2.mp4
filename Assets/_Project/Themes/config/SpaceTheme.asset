@@ -15,3 +15,4 @@ MonoBehaviour:
   ThemeName: Moon
   ThemeAssetBundleName: themes-spacetheme-scene
   ThemeSceneName: SpaceTheme_Scene
+  ThemeSceneFullPath: Assets/_Project/Themes/content/SpaceTheme/SpaceTheme_Scene.unity

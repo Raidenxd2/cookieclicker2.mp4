@@ -7,4 +7,5 @@ public class ThemeSO : ScriptableObject
 
     public string ThemeAssetBundleName;
     public string ThemeSceneName;
+    public string ThemeSceneFullPath;
 }

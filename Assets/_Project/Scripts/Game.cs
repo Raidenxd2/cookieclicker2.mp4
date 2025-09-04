@@ -12,7 +12,7 @@ using SimpleFileBrowser;
 using UnityEngine.Localization;
 using System.IO;
 
-#if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
+#if UNITY_ANDROID
 using System.Collections.Generic;
 using UnityEngine.XR.Management;
 using UnityEngine.XR;
@@ -57,13 +57,10 @@ public class Game : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private OfflineManager offlineManager;
     [SerializeField] private AdvancedQualitySettings ad;
-    [SerializeField] private SoundManager soundManager;
     [SerializeField] private Notification notification;
     [SerializeField] private AddressableLightmaps al;
     [SerializeField] private BetaContent bc;
-#if !CC2_REMOVE_VR_SUPPORT
     [SerializeField] private VRFadeCanvas vrFade;
-#endif
 
     // text
     [Header("Text")]
@@ -153,7 +150,7 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject ExportImportSaveFileDark;
     [SerializeField] private GameObject ImportSaveFileWarningScreen;
 
-#if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
+#if UNITY_ANDROID
     private XRDisplaySubsystem displaySubsystem;
 #endif
 
@@ -205,7 +202,6 @@ public class Game : MonoBehaviour
         StartCoroutine(Tick());
         CheckPrices();
 
-        soundManager = GameObject.FindGameObjectWithTag("audio").GetComponent<SoundManager>();
         MusicSource = GameObject.FindGameObjectWithTag("music");
         SoundSource = GameObject.FindGameObjectWithTag("sound");
 
@@ -228,7 +224,6 @@ public class Game : MonoBehaviour
         Fade.Play("FadeOut");
     }
 
-#if !CC2_REMOVE_VR_SUPPORT
     public async UniTask InitVR()
     {
         if (VRManager.instance.VREnabled)
@@ -288,7 +283,6 @@ public class Game : MonoBehaviour
         }
 #endif
     }
-#endif
 
     void CheckPrices()
     {
@@ -580,12 +574,10 @@ public class Game : MonoBehaviour
 
         await ThemeManager.instance.UnloadTheme();
 
-#if !CC2_REMOVE_VR_SUPPORT
         if (VRPrefabGO != null)
         {
             Destroy(VRPrefabGO);
         }
-#endif
 
         await SceneManager.LoadSceneAsync(AddressableHandles.initSceneRef);
     }
@@ -630,7 +622,7 @@ public class Game : MonoBehaviour
         BetterPrefs.SetBool("DisableUpdateChecker", !Toggle);
     }
 
-#if UNITY_ANDROID && !CC2_REMOVE_VR_SUPPORT
+#if UNITY_ANDROID
     public void ChangeRefreshRate(float val)
     {
         if (displaySubsystem == null)
@@ -644,7 +636,6 @@ public class Game : MonoBehaviour
     }
 #endif
 
-#if !CC2_REMOVE_VR_SUPPORT
     public void LoadVRFallbackScene()
     {
         LoadVRFallbackSceneAsync().Forget();
@@ -656,7 +647,6 @@ public class Game : MonoBehaviour
 
         await SceneManager.LoadSceneAsync(AddressableHandles.vrFallbackSceneRef);
     }
-#endif
 
     public void BuyAutoclicker()
     {

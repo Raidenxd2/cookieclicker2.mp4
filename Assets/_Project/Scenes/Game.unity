@@ -28584,6 +28584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 2106446464}
   GameLightmap: {fileID: 2800000, guid: 641b4718258f2284bbbf2eb9b7592543, type: 3}
+  LoadAssetBundlesInEditor: 0
 --- !u!1 &825617255 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1401833680739903524, guid: b040e007001c36048bbb4e31e3132759, type: 3}
@@ -47747,6 +47748,7 @@ MonoBehaviour:
   al: {fileID: 816785819}
   CurrentTheme: {fileID: 0}
   FallbackTheme: {fileID: 1550487520}
+  LoadAssetBundlesInEditor: 0
 --- !u!114 &1550487520
 MonoBehaviour:
   m_ObjectHideFlags: 0

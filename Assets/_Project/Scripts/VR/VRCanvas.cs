@@ -1,4 +1,3 @@
-#if !CC2_REMOVE_VR_SUPPORT
 using UnityEngine;
 
 public class VRCanvas : MonoBehaviour
@@ -20,4 +19,3 @@ public class VRCanvas : MonoBehaviour
         }
     }
 }
-#endif

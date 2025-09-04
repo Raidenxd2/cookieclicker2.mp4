@@ -1,4 +1,3 @@
-#if !CC2_REMOVE_VR_SUPPORT
 using UnityEngine;
 
 public class VRDisable : MonoBehaviour
@@ -11,4 +10,3 @@ public class VRDisable : MonoBehaviour
         }
     }
 }
-#endif
