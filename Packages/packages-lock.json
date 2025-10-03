@@ -19,17 +19,19 @@
       "url": "https://package.openupm.com"
     },
     "com.raiden.buildmanager": {
-      "version": "https://github.com/Raidenxd2/BuildManager.git#v1.2.0",
+      "version": "https://github.com/Raidenxd2/BuildManager.git#v2.1.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "4cbed93c5d06cc13f5671a4e6269b9f32e92df56"
+      "hash": "4478f5080e776f4aee7807f05b93cd29a017469f"
     },
     "com.raiden.serial": {
-      "version": "1.0.2",
+      "version": "2.0.0",
       "depth": 0,
       "source": "registry",
-      "dependencies": {},
+      "dependencies": {
+        "com.unity.ugui": "2.0.0"
+      },
       "url": "https://package.openupm.com"
     },
     "com.raiden.sharedshaders": {
@@ -69,7 +71,7 @@
       "hash": "ad2a81ec3068eafd48753df1825a8dd7201ce60c"
     },
     "com.unity.burst": {
-      "version": "1.8.23",
+      "version": "1.8.24",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -190,7 +192,7 @@
       }
     },
     "com.unity.scriptablebuildpipeline": {
-      "version": "2.4.0",
+      "version": "2.4.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {

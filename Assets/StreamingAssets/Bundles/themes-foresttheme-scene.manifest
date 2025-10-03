@@ -1,16 +1,16 @@
 ManifestFileVersion: 0
-UnityVersion: 6000.1.13f1
-CRC: 189531264
+UnityVersion: 6000.1.17f1
+CRC: 3181060690
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4e55194ce2460716cf78039fdd6b0389
+    Hash: 7906140124f7a8da12692fb341728944
   TypeTreeHash:
     serializedVersion: 2
     Hash: a0559f1f261f22f3f7397bda7e44d031
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 684bdc4d4566957dc81bd2331f528695
+    Hash: f181e3572687d0c442f24cba2ba24cff
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -73,4 +73,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/_Project/Themes/content/ForestTheme/ForestTheme_Scene.unity
 Dependencies:
-- C:/Users/Lemres/cookieclicker2.mp4/Assets/AssetBundleBuild/shareddata
+- C:/Users/Lemres/cookieclicker2.mp4/Assets/StreamingAssets/Bundles/shareddata

@@ -461,6 +461,52 @@ MonoBehaviour:
     m_Localized: Buscar actualizaciones al iniciar
     m_Metadata:
       m_Items: []
+  - m_Id: 368518734610706432
+    m_Localized: Pantalla FPS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370683240254287872
+    m_Localized: "Visualizaci\xF3n de FPS: activa/desactiva el contador de FPS en
+      la esquina superior derecha."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370683241978146816
+    m_Localized: "El posprocesamiento a\xF1ade efectos visuales a la pantalla."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370683242577932288
+    m_Localized: "A\xF1ade efectos visuales a elementos como el taladro."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370683257996193792
+    m_Localized: "VSync\nsincroniza la frecuencia de actualizaci\xF3n y la velocidad
+      de fotogramas de un monitor."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370685853943214080
+    m_Localized: 'Impacto en el rendimiento: Ninguno'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370685925594509312
+    m_Localized: 'Impacto en el rendimiento: Bajo'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370685887304708096
+    m_Localized: 'Impacto en el rendimiento: Medio'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370687090713440256
+    m_Localized: En
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370687091237728256
+    m_Localized: Apagado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371016916993323008
+    m_Localized: "(VR) C\xE1mara con espejo personalizada"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

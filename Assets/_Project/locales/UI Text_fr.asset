@@ -463,6 +463,51 @@ MonoBehaviour:
     m_Localized: "V\xE9rifier les mises \xE0 jour au d\xE9marrage"
     m_Metadata:
       m_Items: []
+  - m_Id: 370687091237728256
+    m_Localized: "D\xE9sactiv\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370687090713440256
+    m_Localized: Sur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370685887304708096
+    m_Localized: 'Impact sur les performances : moyen'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370685925594509312
+    m_Localized: 'Impact sur les performances : faible'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370685853943214080
+    m_Localized: 'Impact sur les performances : Aucun'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370683257996193792
+    m_Localized: "VSync\nsynchronise la fr\xE9quence de rafra\xEEchissement et la
+      fr\xE9quence d'images d'un moniteur."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370683242577932288
+    m_Localized: "Ajoute des effets visuels \xE0 des \xE9l\xE9ments tels que la perceuse."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370683241978146816
+    m_Localized: "Le post-traitement ajoute des effets visuels \xE0 l'\xE9cran."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370683240254287872
+    m_Localized: "Active/d\xE9sactive le compteur FPS dans le coin sup\xE9rieur droit."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368518734610706432
+    m_Localized: Affichage FPS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371016916993323008
+    m_Localized: "(VR) Cam\xE9ra miroir personnalis\xE9e"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -476,6 +476,50 @@ MonoBehaviour:
     m_Localized: Check for updates on startup
     m_Metadata:
       m_Items: []
+  - m_Id: 368518734610706432
+    m_Localized: FPS Display
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370683240254287872
+    m_Localized: Enables/Disables the FPS counter in the top right corner.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370683241978146816
+    m_Localized: Post Processing adds visual effects to the screen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370683242577932288
+    m_Localized: Adds visual effects to things like the drill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370683257996193792
+    m_Localized: "VSync \nsynchronizes the refresh rate and frame rate of a monitor."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370685853943214080
+    m_Localized: 'Performance Impact: None'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370685887304708096
+    m_Localized: 'Performance Impact: Medium'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370685925594509312
+    m_Localized: 'Performance Impact: Low'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370687090713440256
+    m_Localized: On
+    m_Metadata:
+      m_Items: []
+  - m_Id: 370687091237728256
+    m_Localized: Off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371016916993323008
+    m_Localized: (VR) Custom mirror camera
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

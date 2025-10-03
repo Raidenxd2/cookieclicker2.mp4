@@ -1,16 +1,16 @@
 ManifestFileVersion: 0
-UnityVersion: 6000.1.13f1
-CRC: 2111252117
+UnityVersion: 6000.1.17f1
+CRC: 3198623835
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b0425e76a5c19305cda35bc7eff225b1
+    Hash: 605c966dc115098a6cf5ebd9295d3a41
   TypeTreeHash:
     serializedVersion: 2
     Hash: 577540d84c94cf2febf4c672bbf9e8f5
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: eedfce997b512301bcb3d4e8558d9b54
+    Hash: 17f6ab5f78abef11f3a6cb8200c9e546
 HashAppended: 0
 ClassTypes:
 - Class: 48
@@ -19,6 +19,5 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/_Project/AndroidVRShaderVariants.shadervariants
-Dependencies:
-- C:/Users/Lemres/cookieclicker2.mp4/Assets/AssetBundleBuild/shareddata
+- Assets/_Project/ShaderVariantCollections/AndroidVRShaderVariants.shadervariants
+Dependencies: []

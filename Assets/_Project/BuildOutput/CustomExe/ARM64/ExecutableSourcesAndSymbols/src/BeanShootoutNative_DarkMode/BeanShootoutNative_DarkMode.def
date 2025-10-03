@@ -1,0 +1,3 @@
+LIBRARY BeanShootoutNative_DarkMode
+EXPORTS
+   DllMain @1

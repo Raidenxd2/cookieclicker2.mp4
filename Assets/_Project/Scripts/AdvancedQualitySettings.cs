@@ -4,6 +4,7 @@ using UnityEngine.Rendering.Universal;
 
 public class AdvancedQualitySettings : MonoBehaviour
 {
+    public bool FPSDisplay;
     public bool PostProcessing;
     public bool Particals;
     public bool VSync;
@@ -18,6 +19,14 @@ public class AdvancedQualitySettings : MonoBehaviour
     [Header("Performance Mode")]
     public UniversalAdditionalCameraData GameCamera_AdditionalData;
     public GameObject ParticalsReal2;
+
+    public void FPSDisplayToggle(bool Toggle)
+    {
+        FPSDisplay = Toggle;
+        BetterPrefs.SetBool("GRAPHICS_FPSDisplay", Toggle);
+
+        UpdateSettings();
+    }
 
     public void PostProcessToggle(bool Toggle)
     {
@@ -76,6 +85,7 @@ public class AdvancedQualitySettings : MonoBehaviour
 
     public void LoadGraphics()
     {
+        FPSDisplay = BetterPrefs.GetBool("GRAPHICS_FPSDisplay", false);
         PostProcessing = BetterPrefs.GetBool("GRAPHICS_PostProcessing", false);
         Particals = BetterPrefs.GetBool("GRAPHICS_Particles", false);
         VSync = BetterPrefs.GetBool("GRAPHICS_VSync", false);
@@ -89,6 +99,7 @@ public class AdvancedQualitySettings : MonoBehaviour
     public void SetDefaults()
     {
 #if UNITY_ANDROID
+        FPSDisplay = false;
         PostProcessing = true;
         Particals = true;
         VSync = false;
@@ -98,6 +109,7 @@ public class AdvancedQualitySettings : MonoBehaviour
 #endif
 
 #if UNITY_STANDALONE
+        FPSDisplay = false;
         PostProcessing = true;
         Particals = true;
         VSync = true;
@@ -106,6 +118,7 @@ public class AdvancedQualitySettings : MonoBehaviour
         RenderQuality = 1f;
 #endif
 
+        BetterPrefs.SetBool("GRAPHICS_FPSDisplay", FPSDisplay);
         BetterPrefs.SetBool("GRAPHICS_PostProcessing", PostProcessing);
         BetterPrefs.SetBool("GRAPHICS_Particles", Particals);
         BetterPrefs.SetBool("GRAPHICS_VSync", VSync);
@@ -153,6 +166,14 @@ public class AdvancedQualitySettings : MonoBehaviour
         else
         {
             RenderSettings.fog = false;
+        }
+        if (FPSDisplay)
+        {
+            SingletonVariables.instance.FPSDisplayRoot.SetActive(true);
+        }
+        else
+        {
+            SingletonVariables.instance.FPSDisplayRoot.SetActive(false);
         }
 
 #if UNITY_ANDROID

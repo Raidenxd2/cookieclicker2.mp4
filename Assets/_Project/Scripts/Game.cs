@@ -44,6 +44,7 @@ public class Game : MonoBehaviour
     public bool ResearchFactory;
     public bool Music;
     public bool Sounds;
+    public bool VRMirrorCamera;
 
     // game objects
     [Header("Game Objects")]
@@ -52,6 +53,7 @@ public class Game : MonoBehaviour
     public GameObject SDIE;
     public GameObject NoNetworkScreen;
     [SerializeField] private GameObject GlobalDark;
+    [SerializeField] private GameObject VREnableCustomMirrorCameraToggle;
 
     // scripts
     [Header("Scripts")]
@@ -140,6 +142,7 @@ public class Game : MonoBehaviour
     public double CoinMultiplier;
     [Header("VR")]
     private GameObject VRPrefabGO;
+    private VRPrefabObject vrpo;
     [SerializeField] private Transform VRPrefabParent;
     [SerializeField] private GameObject AndroidVROnlySettingsButton;
     [SerializeField] private TMP_Dropdown OculusQuestRefreshRateDropdown;
@@ -176,6 +179,11 @@ public class Game : MonoBehaviour
     {
         VersionText.text = "v" + Application.version + "-" + Application.platform + " (" + Application.unityVersion + ", " + SystemInfo.graphicsDeviceType + ")";
 
+        if (!VRManager.instance.VREnabled || Application.platform == RuntimePlatform.Android)
+        {
+            VREnableCustomMirrorCameraToggle.SetActive(false);
+        }
+
 #if UNITY_ANDROID
         ScreenshotOptionsBTN.SetActive(false);
 #endif
@@ -187,6 +195,7 @@ public class Game : MonoBehaviour
             HasPlayed = true;
             Music = true;
             Sounds = true;
+            VRMirrorCamera = false;
             ad.TextureQuality = 0;
             ad.Particals = true;
             ad.PostProcessing = true;
@@ -231,7 +240,7 @@ public class Game : MonoBehaviour
             try
             {
                 VRPrefabGO = Instantiate(await Resources.LoadAsync("GameScene_VRPrefab") as GameObject);
-                VRPrefabObject vrpo = VRPrefabGO.GetComponent<VRPrefabObject>();
+                vrpo = VRPrefabGO.GetComponent<VRPrefabObject>();
 
                 XROrigin = vrpo.XROrigin;
                 researchFactory.VRCamera = vrpo.XROrigin.transform;
@@ -269,7 +278,7 @@ public class Game : MonoBehaviour
                 }
                 else
                 {
-                    LogSystem.Log("Failed to get supported refresh rates.", LogTypes.Warning);
+                    LogSystem.Log("Failed to get supported refresh rates.", LogTypes.Error);
                 }
             }
             catch
@@ -282,6 +291,8 @@ public class Game : MonoBehaviour
             AndroidVROnlySettingsButton.SetActive(true);
         }
 #endif
+
+        UpdateMirrorCamera();
     }
 
     void CheckPrices()
@@ -369,6 +380,7 @@ public class Game : MonoBehaviour
         BetterPrefs.SetString("HammerEnergyUpgradePrice", HammerEnergyUpgradePrice.ToString());
         BetterPrefs.SetString("CoinMultiplierUpgradePrice", CoinMultiplierUpgradePrice.ToString());
         BetterPrefs.SetString("CoinMultiplier", CoinMultiplier.ToString());
+        BetterPrefs.SetBool("VR_MirrorCamera", VRMirrorCamera);
 
         BetterPrefs.Save();
     }
@@ -423,6 +435,8 @@ public class Game : MonoBehaviour
         HammerEnergyUpgradePrice = double.Parse(BetterPrefs.GetString("HammerEnergyUpgradePrice", "200"));
         CoinMultiplierUpgradePrice = double.Parse(BetterPrefs.GetString("CoinMultiplierUpgradePrice", "300"));
         CoinMultiplier = double.Parse(BetterPrefs.GetString("CoinMultiplier", "1"));
+
+        VRMirrorCamera = BetterPrefs.GetBool("VR_MirrorCamera", false);
 
         CheckResearchFactory();
         CheckDrill();
@@ -580,6 +594,30 @@ public class Game : MonoBehaviour
         }
 
         await SceneManager.LoadSceneAsync(AddressableHandles.initSceneRef);
+    }
+
+    public void MirrorCameraToggle(bool Toggle)
+    {
+        VRMirrorCamera = Toggle;
+
+        UpdateMirrorCamera();
+    }
+
+    private void UpdateMirrorCamera()
+    {
+        if (vrpo == null)
+        {
+            return;
+        }
+
+        if (VRMirrorCamera)
+        {
+            vrpo.MirrorCamera.SetActive(true);
+        }
+        else
+        {
+            vrpo.MirrorCamera.SetActive(false);
+        }
     }
 
     public void SoundToggle(bool Toggle)

@@ -12,6 +12,8 @@ public class Init : MonoBehaviour
     public static bool HasLoaded;
     public static bool HasLoadedSharedData;
     public static bool HasLoadedAndroidVRSVC;
+    public static bool HasLoadedPCNonVRSVC;
+    public static bool HasLoadedPCVRSVC;
 
     [SerializeField] private ThemeSO DefaultTheme;
 
@@ -57,6 +59,7 @@ public class Init : MonoBehaviour
 #if UNITY_ANDROID
         if (!HasLoadedAndroidVRSVC)
         {
+            LogSystem.Log("Loading AndroidVRShaderVariants");
             AssetBundle avrsvc = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/svc-androidvr");
 
             ShaderVariantCollection svc = await avrsvc.LoadAssetAsync("AndroidVRShaderVariants") as ShaderVariantCollection;
@@ -66,6 +69,32 @@ public class Init : MonoBehaviour
 
             HasLoadedAndroidVRSVC = true;
         }
+//#else
+//        if (!HasLoadedPCNonVRSVC && !VRManager.instance.VREnabled)
+//        {
+//            LogSystem.Log("Loading PCNonVRShaderVariants");
+//            AssetBundle avrsvc = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/svc-pcnonvr");
+
+//            ShaderVariantCollection svc = await avrsvc.LoadAssetAsync("PCNonVRShaderVariants") as ShaderVariantCollection;
+//            svc.WarmUp();
+
+//            await avrsvc.UnloadAsync(true);
+
+//            HasLoadedPCNonVRSVC = true;
+//        }
+
+//        if (!HasLoadedPCVRSVC && VRManager.instance.VREnabled)
+//        {
+//            LogSystem.Log("Loading PCVRShaderVariants");
+//            AssetBundle avrsvc = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/svc-pcvr");
+
+//            ShaderVariantCollection svc = await avrsvc.LoadAssetAsync("PCVRShaderVariants") as ShaderVariantCollection;
+//            svc.WarmUp();
+
+//            await avrsvc.UnloadAsync(true);
+
+//            HasLoadedPCVRSVC = true;
+//        }
 #endif
 
         await SceneManager.LoadSceneAsync(AddressableHandles.gameSceneRef, LoadSceneMode.Additive);
@@ -92,6 +121,8 @@ public class Init : MonoBehaviour
         HasLoaded = false;
         HasLoadedSharedData = false;
         HasLoadedAndroidVRSVC = false;
+        HasLoadedPCNonVRSVC = false;
+        HasLoadedPCVRSVC = false;
     }
 #endif
 }

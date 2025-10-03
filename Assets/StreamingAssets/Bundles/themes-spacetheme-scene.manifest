@@ -1,16 +1,16 @@
 ManifestFileVersion: 0
-UnityVersion: 6000.1.13f1
-CRC: 1733090589
+UnityVersion: 6000.1.17f1
+CRC: 2568217910
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2b6b67f6bfeed42f88a471d13abc516d
+    Hash: 95e6ef1c8aaa48d489f61084ec149dc3
   TypeTreeHash:
     serializedVersion: 2
     Hash: bf068ae5fdabf6c45db6860f3041cc6d
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: fc9d8745c7873b9e0ec2c53431e1c455
+    Hash: 4c3746d8c25b57d9173b4b6da05129f9
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -67,4 +67,4 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/_Project/Themes/content/SpaceTheme/SpaceTheme_Scene.unity
 Dependencies:
-- C:/Users/Lemres/cookieclicker2.mp4/Assets/AssetBundleBuild/shareddata
+- C:/Users/Lemres/cookieclicker2.mp4/Assets/StreamingAssets/Bundles/shareddata

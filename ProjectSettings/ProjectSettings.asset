@@ -140,11 +140,13 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 2.0.3-PublicRelease-OS_11125 (open-source)
+  bundleVersion: 2.0.3-PublicRelease-OS_11134 (open-source)
   preloadedAssets:
   - {fileID: 0}
   - {fileID: -944628639613478452, guid: f6942149c81fd7d4a9c839ed3180c690, type: 3}
   - {fileID: 11400000, guid: 5a6050f4d65b99340992ab87fbbe1f03, type: 2}
+  - {fileID: -3897798550495487935, guid: d45d0090f76dbdd4ca8bbe877eb041d3, type: 2}
+  - {fileID: 8850150090056202000, guid: 1fd3eede65d2b684897885ba920b3ba5, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -169,12 +171,12 @@ PlayerSettings:
     Android: com.raiden.cookieclicker2mp4_os2
     Standalone: com.raiden.cookieclicker2mp4-os
   buildNumber:
-    Standalone: 11125
+    Standalone: 11134
     VisionOS: 0
     iPhone: 25
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 11125
+  AndroidBundleVersionCode: 11134
   AndroidMinSdkVersion: 29
   AndroidTargetSdkVersion: 36
   AndroidPreferredInstallLocation: 0
@@ -275,6 +277,9 @@ PlayerSettings:
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
+  androidAppCategory: 3
+  useAndroidAppCategory: 1
+  androidAppCategoryOther: 
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
@@ -770,7 +775,7 @@ PlayerSettings:
     PS5: PROBUILDER_EXPERIMENTAL_FEATURES
     QNX: 
     Stadia: PROBUILDER_EXPERIMENTAL_FEATURES
-    Standalone: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
+    Standalone: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS;SERIAL_UNITASK
     VisionOS: 
     WebGL: CC2_REMOVE_VR_SUPPORT
     Windows Store Apps: PROBUILDER_EXPERIMENTAL_FEATURES;USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS

@@ -2708,7 +2708,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1809892964953227265}
   m_Father: {fileID: 6631651400668412114}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2779271128606028895
@@ -3946,6 +3947,7 @@ MonoBehaviour:
   XROrigin: {fileID: 7451479344291792124}
   VRCamera: {fileID: 6452622580781279367}
   MainSceneVR: {fileID: 515383191604516591}
+  MirrorCamera: {fileID: 7039119349163646583}
 --- !u!1 &8893120055570183209
 GameObject:
   m_ObjectHideFlags: 0
@@ -4118,3 +4120,74 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &3988956420577574932
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6452622580781279367}
+    m_Modifications:
+    - target: {fileID: 3334236803548725269, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334236803548725269, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334236803548725269, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334236803548725269, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334236803548725269, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334236803548725269, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334236803548725269, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334236803548725269, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334236803548725269, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334236803548725269, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265746756260077155, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+      propertyPath: m_Name
+      value: VRMirrorCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265746756260077155, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+--- !u!4 &1809892964953227265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3334236803548725269, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+  m_PrefabInstance: {fileID: 3988956420577574932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7039119349163646583 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6265746756260077155, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+  m_PrefabInstance: {fileID: 3988956420577574932}
+  m_PrefabAsset: {fileID: 0}

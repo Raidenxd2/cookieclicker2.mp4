@@ -1,5 +1,8 @@
 V2.0.3:
-Reduced build size
+Upgraded to Unity 6000.1.17f1 to address a security vulnerability.
 Removed unneeded/unused code
 Removed the Notifications In Screenshots toggle from the Screenshot Settings
 Switched to the Render Graph rendering system instead of the old Compatibility Mode
+Added support for mutliple languages in the settings info screens
+Added an option to use a custom mirror camera for VR
+System mouse cursor is now hidden in VR

@@ -40,6 +40,7 @@ public class VRManager : MonoBehaviour
         {
             if (Application.platform != RuntimePlatform.Android)
             {
+                Cursor.visible = false;
                 InitXR();
             }
         }
@@ -53,6 +54,7 @@ public class VRManager : MonoBehaviour
         {
             Debug.LogError("(VRManager) Failed to init current loader.");
             VREnabled = false;
+            Cursor.visible = true;
             return;
         }
 
@@ -61,6 +63,7 @@ public class VRManager : MonoBehaviour
             Debug.LogError("(VRManager) Failed to start current loader.");
             currentLoader.Deinitialize();
             VREnabled = false;
+            Cursor.visible = true;
             return;
         }
 
