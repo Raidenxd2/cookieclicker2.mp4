@@ -16,7 +16,6 @@ public class AdvancedQualitySettings : MonoBehaviour
     public TMP_InputField RenderQualityInput;
     public QualityWrapper qualityWrapper;
 
-    [Header("Performance Mode")]
     public UniversalAdditionalCameraData GameCamera_AdditionalData;
     public GameObject ParticalsReal2;
 
@@ -98,17 +97,6 @@ public class AdvancedQualitySettings : MonoBehaviour
 
     public void SetDefaults()
     {
-#if UNITY_ANDROID
-        FPSDisplay = false;
-        PostProcessing = true;
-        Particals = true;
-        VSync = false;
-        Fog = true;
-        TextureQuality = 0;
-        RenderQuality = 1f;
-#endif
-
-#if UNITY_STANDALONE
         FPSDisplay = false;
         PostProcessing = true;
         Particals = true;
@@ -116,7 +104,6 @@ public class AdvancedQualitySettings : MonoBehaviour
         Fog = true;
         TextureQuality = 0;
         RenderQuality = 1f;
-#endif
 
         BetterPrefs.SetBool("GRAPHICS_FPSDisplay", FPSDisplay);
         BetterPrefs.SetBool("GRAPHICS_PostProcessing", PostProcessing);
@@ -175,13 +162,6 @@ public class AdvancedQualitySettings : MonoBehaviour
         {
             SingletonVariables.instance.FPSDisplayRoot.SetActive(false);
         }
-
-#if UNITY_ANDROID
-        if (VRManager.instance.IsMobileVR)
-        {
-            QualitySettings.anisotropicFiltering = AnisotropicFiltering.ForceEnable;
-        }
-#endif
 
         QualitySettings.globalTextureMipmapLimit = TextureQuality;
 

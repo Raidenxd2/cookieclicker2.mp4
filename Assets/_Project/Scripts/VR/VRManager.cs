@@ -4,9 +4,6 @@ using UnityEngine.XR.Management;
 public class VRManager : MonoBehaviour
 {
     public bool VREnabled;
-#if UNITY_ANDROID
-    public bool IsMobileVR = true;
-#endif
 
     public static bool VRBootEnabled;
 
@@ -38,11 +35,8 @@ public class VRManager : MonoBehaviour
 
         if (VREnabled)
         {
-            if (Application.platform != RuntimePlatform.Android)
-            {
-                Cursor.visible = false;
-                InitXR();
-            }
+            Cursor.visible = false;
+            InitXR();
         }
     }
 

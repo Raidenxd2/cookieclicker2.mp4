@@ -2,6 +2,8 @@ using Cysharp.Threading.Tasks;
 using LoggerSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
+
 
 #if UNITY_EDITOR
 using UnityEditor.SceneManagement;
@@ -70,7 +72,19 @@ public class ThemeManager : MonoBehaviour
         {
             try
             {
-                LogSystem.Log("Unloading Scene " + CurrentSceneName + " and bundle " + CurrentThemeBundle.name);
+#if UNITY_EDITOR
+                if (LoadAssetBundlesInEditor)
+                {
+                    LogSystem.Log("Unloading Scene " + CurrentSceneName + " and bundle " + CurrentThemeBundle.name);
+                }
+                else
+                {
+#endif
+                    LogSystem.Log("Unloading Scene " + CurrentSceneName);
+#if UNITY_EDITOR
+                }
+#endif
+                
                 al.UnloadLightmaps();
                 al.RemoveLightmaps();
                 await SceneManager.UnloadSceneAsync(CurrentSceneName);

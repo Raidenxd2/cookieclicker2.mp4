@@ -12,13 +12,6 @@ using SimpleFileBrowser;
 using UnityEngine.Localization;
 using System.IO;
 
-#if UNITY_ANDROID
-using System.Collections.Generic;
-using UnityEngine.XR.Management;
-using UnityEngine.XR;
-using UnityEngine.XR.OpenXR.Features.Meta;
-#endif
-
 public class Game : MonoBehaviour
 {
     public static Game instance;
@@ -144,18 +137,12 @@ public class Game : MonoBehaviour
     private GameObject VRPrefabGO;
     private VRPrefabObject vrpo;
     [SerializeField] private Transform VRPrefabParent;
-    [SerializeField] private GameObject AndroidVROnlySettingsButton;
-    [SerializeField] private TMP_Dropdown OculusQuestRefreshRateDropdown;
     public GameObject XROrigin;
     [SerializeField] private UISkin FileBrowserUISkin;
     [SerializeField] private LocalizedString ExportSaveFileSuccess;
     [SerializeField] private LocalizedString SaveManagement;
     [SerializeField] private GameObject ExportImportSaveFileDark;
     [SerializeField] private GameObject ImportSaveFileWarningScreen;
-
-#if UNITY_ANDROID
-    private XRDisplaySubsystem displaySubsystem;
-#endif
 
     private bool AllowUpdate;
 
@@ -179,14 +166,10 @@ public class Game : MonoBehaviour
     {
         VersionText.text = "v" + Application.version + "-" + Application.platform + " (" + Application.unityVersion + ", " + SystemInfo.graphicsDeviceType + ")";
 
-        if (!VRManager.instance.VREnabled || Application.platform == RuntimePlatform.Android)
+        if (!VRManager.instance.VREnabled)
         {
             VREnableCustomMirrorCameraToggle.SetActive(false);
         }
-
-#if UNITY_ANDROID
-        ScreenshotOptionsBTN.SetActive(false);
-#endif
 
         LoadPlayer();
 
@@ -259,38 +242,6 @@ public class Game : MonoBehaviour
 
             gameCamera.gameObject.SetActive(false);
         }
-#if UNITY_ANDROID
-        if (VRManager.instance.IsMobileVR)
-        {
-            try
-            {
-                displaySubsystem = XRGeneralSettings.Instance.Manager.activeLoader.GetLoadedSubsystem<XRDisplaySubsystem>();
-                if (displaySubsystem.TryGetSupportedDisplayRefreshRates(Unity.Collections.Allocator.Temp, out var refreshRates))
-                {
-                    List<string> options = new();
-                    OculusQuestRefreshRateDropdownData oqrrdd = OculusQuestRefreshRateDropdown.GetComponent<OculusQuestRefreshRateDropdownData>();
-                    foreach (var rf in refreshRates)
-                    {
-                        options.Add(rf.ToString() + " FPS");
-                        oqrrdd.refreshRates.Add(rf);
-                    }
-                    OculusQuestRefreshRateDropdown.AddOptions(options);
-                }
-                else
-                {
-                    LogSystem.Log("Failed to get supported refresh rates.", LogTypes.Error);
-                }
-            }
-            catch
-            {
-                LogSystem.Log("Unknown error while getting supported refresh rates.", LogTypes.Error);
-            }
-
-            XRSettings.useOcclusionMesh = false;
-
-            AndroidVROnlySettingsButton.SetActive(true);
-        }
-#endif
 
         UpdateMirrorCamera();
     }
@@ -659,20 +610,6 @@ public class Game : MonoBehaviour
     {
         BetterPrefs.SetBool("DisableUpdateChecker", !Toggle);
     }
-
-#if UNITY_ANDROID
-    public void ChangeRefreshRate(float val)
-    {
-        if (displaySubsystem == null)
-        {
-            LogSystem.Log("displaySubsystem was null!", LogTypes.Error);
-        }
-        if (!displaySubsystem.TryRequestDisplayRefreshRate(val))
-        {
-            LogSystem.Log("Failed to request refresh rate of " + val, LogTypes.Error);
-        }
-    }
-#endif
 
     public void LoadVRFallbackScene()
     {

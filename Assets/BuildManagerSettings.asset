@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BuildCount: 11134
   Branch: open-source
-  VersionPrefix: 2.0.3-PublicRelease-OS
+  VersionPrefix: 2.0.4-PublicRelease-OS
   ExeName: Cookieclicker2.mp4
   BuildAddressables: 1
   RemoveManifestFilesFromAssetBundleBuild: 0

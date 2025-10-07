@@ -1,5 +1,4 @@
-﻿#if !UNITY_ANDROID
-using UnityEngine;
+﻿using UnityEngine;
 using System.IO;
 using TMPro;
 using UnityEngine.InputSystem;
@@ -61,4 +60,3 @@ public class ScreenShot : MonoBehaviour
         Application.OpenURL(Application.persistentDataPath + "/screenshots");
     }
 }
-#endif
