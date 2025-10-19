@@ -16,9 +16,9 @@ MonoBehaviour:
   Branch: open-source
   VersionPrefix: 2.1.0-PublicRelease-OS
   ExeName: Cookieclicker2.mp4
-  BuildAddressables: 0
+  BuildAddressables: 1
   RemoveManifestFilesFromAssetBundleBuild: 0
-  BuildAssetBundles: 0
+  BuildAssetBundles: 1
   CopyPDBFiles: 1
   RemoveBurstDebugInformation: 1
   IncrementBuildNumber: 1

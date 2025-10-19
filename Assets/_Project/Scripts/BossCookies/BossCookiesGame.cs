@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using LitMotion;
 using LitMotion.Extensions;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
 
@@ -18,13 +19,21 @@ public class BossCookiesGame : MonoBehaviour
     [SerializeField] private GameObject LeftArrow;
     [SerializeField] private GameObject RightArrow;
 
+    [SerializeField] private GameObject NECDialog;
+
     [SerializeField] private Ease ease;
     [SerializeField] private float time;
 
     [SerializeField] private LocalizedString CookiesGainedNotificationTitle;
     [SerializeField] private LocalizedString CookiesGainedNotificationMessage;
 
-    public float HammerDamage;
+    [SerializeField] private TMP_Text CookiesText;
+    [SerializeField] private TMP_Text HammerStrengthText;
+    [SerializeField] private TMP_Text HammerStrengthPriceText;
+
+    public Vector3 OldVRPosition;
+    public Quaternion OldVRRotation;
+    public Transform OldVRParent;
 
     public static BossCookiesGame instance;
 
@@ -35,6 +44,26 @@ public class BossCookiesGame : MonoBehaviour
 
     private void Start()
     {
+        if (Game.instance.BossCookies_HammerStrengthUpgradePrice <= 1000)
+        {
+            Game.instance.BossCookies_HammerStrength = 1f;
+            Game.instance.BossCookies_HammerStrengthUpgradePrice = 1000;
+        }
+
+        if (VRManager.instance.VREnabled)
+        {
+            OldVRPosition = Game.instance.XROrigin.transform.position;
+            OldVRRotation = Game.instance.XROrigin.transform.rotation;
+            OldVRParent = Game.instance.XROrigin.transform.parent;
+
+            // Camera.SetActive(false);
+
+            // Game.instance.XROrigin.transform.SetPositionAndRotation(VRCameraPosition.position, VRCameraPosition.rotation);
+            // Game.instance.XROrigin.transform.parent = Player;
+
+            // UI.transform.parent = Player;
+        }
+
         BossCookieObjects = new();
 
         float zPos = 8;
@@ -85,7 +114,7 @@ public class BossCookiesGame : MonoBehaviour
 
     public void HitCookie()
     {
-        BossCookieObjects[CurrentBossCookieObjectsIndex].Health -= HammerDamage;
+        BossCookieObjects[CurrentBossCookieObjectsIndex].Health -= (float)Game.instance.BossCookies_HammerStrength;
 
         if (BossCookieObjects[CurrentBossCookieObjectsIndex].Health <= 0)
         {
@@ -96,9 +125,36 @@ public class BossCookiesGame : MonoBehaviour
         }
     }
 
+    public void Exit()
+    {
+        BossCookiesLoader.instance.UnloadMinigameMine();
+    }
+
     private async UniTaskVoid ShowCookiesGainedNotificationAsync()
     {
         Notification.instance.ShowNotification(string.Format(await CookiesGainedNotificationMessage.GetLocalizedStringAsync(), BossCookieObjects[CurrentBossCookieObjectsIndex].CookiesAmount), await CookiesGainedNotificationTitle.GetLocalizedStringAsync());
+    }
+
+    public void BuyHammerStrengthUpgrade()
+    {
+        if (Game.instance.Cookies >= Game.instance.BossCookies_HammerStrengthUpgradePrice)
+        {
+            Game.instance.Cookies -= Game.instance.BossCookies_HammerStrengthUpgradePrice;
+            Game.instance.BossCookies_HammerStrengthUpgradePrice *= 1.5f;
+            Game.instance.BossCookies_HammerStrength += 1f;
+        }
+        else
+        {
+            NECDialog.SetActive(true);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        CookiesText.text = "Cookies: " + Game.instance.Cookies;
+        HammerStrengthText.text = "Hammer Strength: " + Game.instance.BossCookies_HammerStrength;
+
+        HammerStrengthPriceText.text = "Hammer Strength Upgrade (" + Game.instance.BossCookies_HammerStrengthUpgradePrice + " Cookies)";
     }
 
     private void OnDestroy()

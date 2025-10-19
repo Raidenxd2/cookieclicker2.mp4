@@ -133,6 +133,11 @@ public class Game : MonoBehaviour
     public double HammerEnergyUpgradePrice;
     public double CoinMultiplierUpgradePrice;
     public double CoinMultiplier;
+
+    [Header("Boss Cookies")]
+    public BigDouble BossCookies_HammerStrength;
+    public BigDouble BossCookies_HammerStrengthUpgradePrice;
+
     [Header("VR")]
     private GameObject VRPrefabGO;
     private VRPrefabObject vrpo;
@@ -332,6 +337,8 @@ public class Game : MonoBehaviour
         BetterPrefs.SetString("CoinMultiplierUpgradePrice", CoinMultiplierUpgradePrice.ToString());
         BetterPrefs.SetString("CoinMultiplier", CoinMultiplier.ToString());
         BetterPrefs.SetBool("VR_MirrorCamera", VRMirrorCamera);
+        BetterPrefs.SetString("BossCookies_HammerStrength", BossCookies_HammerStrength.ToString());
+        BetterPrefs.SetString("BossCookies_HammerStrengthUpgradePrice", BossCookies_HammerStrengthUpgradePrice.ToString());
 
         BetterPrefs.Save();
     }
@@ -387,6 +394,9 @@ public class Game : MonoBehaviour
         CoinMultiplierUpgradePrice = double.Parse(BetterPrefs.GetString("CoinMultiplierUpgradePrice", "300"));
         CoinMultiplier = double.Parse(BetterPrefs.GetString("CoinMultiplier", "1"));
 
+        BossCookies_HammerStrength = BigDouble.Parse(BetterPrefs.GetString("BossCookies_HammerStrength", "1"));
+        BossCookies_HammerStrengthUpgradePrice = BigDouble.Parse(BetterPrefs.GetString("BossCookies_HammerStrengthUpgradePrice", "1000"));
+
         VRMirrorCamera = BetterPrefs.GetBool("VR_MirrorCamera", false);
 
         CheckResearchFactory();
@@ -424,6 +434,9 @@ public class Game : MonoBehaviour
         HammerEnergyUpgradePrice = 200;
         CoinMultiplierUpgradePrice = 300;
         CoinMultiplier = 1;
+
+        BossCookies_HammerStrength = 1;
+        BossCookies_HammerStrengthUpgradePrice = 1000;
 
         BetterPrefs.DeleteAll();
         BetterPrefs.Save();

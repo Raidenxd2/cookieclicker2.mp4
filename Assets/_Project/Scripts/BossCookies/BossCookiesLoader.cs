@@ -77,4 +77,66 @@ public class BossCookiesLoader : MonoBehaviour
         game.Fade.Play("FadeOut");
         game.FadeCanvasGroup.blocksRaycasts = false;
     }
+
+    public void UnloadMinigameMine()
+    {
+        UnloadMinigameMineAsync().Forget();
+    }
+
+    private async UniTaskVoid UnloadMinigameMineAsync()
+    {
+        game.Fade.Play("FadeIn");
+        game.FadeCanvasGroup.blocksRaycasts = true;
+        await UniTask.WaitForSeconds(1);
+
+        if (VRManager.instance.VREnabled)
+        {
+            Game.instance.XROrigin.transform.parent = MiniGameMine.instance.OldVRParent;
+            Game.instance.XROrigin.transform.SetPositionAndRotation(MiniGameMine.instance.OldVRPosition, MiniGameMine.instance.OldVRRotation);
+        }
+
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.gameSceneRef));
+
+        await SceneManager.UnloadSceneAsync(AddressableHandles.bossCookiesRef);
+
+#if UNITY_EDITOR
+        if (LoadAssetBundlesInEditor)
+        {
+            LogSystem.Log("Unloading Scene " + AddressableHandles.bossCookiesEnvironmentRef);
+        }
+        else
+        {
+#endif
+            LogSystem.Log("Unloading Scene " + AddressableHandles.bossCookiesEnvironmentRef + " and bundle " + environmentRef.BundleName);
+#if UNITY_EDITOR
+        }
+#endif
+
+        await SceneManager.UnloadSceneAsync(AddressableHandles.bossCookiesEnvironmentRef);
+
+#if UNITY_EDITOR
+        if (LoadAssetBundlesInEditor)
+        {
+#endif
+            await environmentBundle.UnloadAsync(true);
+#if UNITY_EDITOR
+        }
+#endif
+
+        game.researchFactory.GameCanvas.SetActive(true);
+
+        if (!VRManager.instance.VREnabled)
+        {
+            notificationCanvas.worldCamera = game.gameCamera;
+            game.gameCamera.gameObject.SetActive(true);
+        }
+
+        if (game.ad.PostProcessing)
+        {
+            game.ad.pp_normal.SetActive(true);
+        }
+
+        game.Fade.Play("FadeOut");
+        game.FadeCanvasGroup.blocksRaycasts = false;
+    }
 }
