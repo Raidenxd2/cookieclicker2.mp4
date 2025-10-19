@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Name: OpenXRLifeCycleFeature Android
   m_EditorClassIdentifier: 
   m_enabled: 1
+  <failedInitialization>k__BackingField: 0
   nameUi: 
   version: 0.1.0
   featureIdInternal: MetaOpenXR-OpenXRLifeCycle
@@ -137,7 +138,6 @@ MonoBehaviour:
   m_Name: Android
   m_EditorClassIdentifier: 
   features:
-  - {fileID: -9008830085369090420}
   - {fileID: 1766291392316803891}
   - {fileID: -5589759968627444850}
   - {fileID: 3616916277504071648}
@@ -149,7 +149,6 @@ MonoBehaviour:
   - {fileID: 2260291857207908247}
   - {fileID: -8628424404814737099}
   - {fileID: -338137842730659715}
-  - {fileID: -414891594467503973}
   - {fileID: -8713473921213643713}
   - {fileID: 2701804145868352099}
   - {fileID: -4392043422545983486}
@@ -170,6 +169,7 @@ MonoBehaviour:
   m_multiviewRenderRegionsOptimizationMode: 0
   m_hasMigratedMultiviewRenderRegionSetting: 1
   m_foveatedRenderingApi: 1
+  m_useOpenXRPredictedTime: 0
 --- !u!114 &-7780197062693626223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,6 +402,7 @@ MonoBehaviour:
   m_multiviewRenderRegionsOptimizationMode: 0
   m_hasMigratedMultiviewRenderRegionSetting: 1
   m_foveatedRenderingApi: 0
+  m_useOpenXRPredictedTime: 0
 --- !u!114 &-4920928112829867735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -848,6 +849,7 @@ MonoBehaviour:
   m_Name: DisplayUtilitiesFeature Android
   m_EditorClassIdentifier: 
   m_enabled: 1
+  <failedInitialization>k__BackingField: 0
   nameUi: 'Meta Quest: Display Utilities'
   version: 0.1.0
   featureIdInternal: com.unity.openxr.feature.meta-display-utilities
@@ -1012,6 +1014,7 @@ MonoBehaviour:
   m_Name: OpenXRLifeCycleFeature Standalone
   m_EditorClassIdentifier: 
   m_enabled: 0
+  <failedInitialization>k__BackingField: 0
   nameUi: 
   version: 0.1.0
   featureIdInternal: MetaOpenXR-OpenXRLifeCycle
@@ -1523,6 +1526,7 @@ MonoBehaviour:
   m_Name: DisplayUtilitiesFeature Standalone
   m_EditorClassIdentifier: 
   m_enabled: 0
+  <failedInitialization>k__BackingField: 0
   nameUi: 'Meta Quest: Display Utilities'
   version: 0.1.0
   featureIdInternal: com.unity.openxr.feature.meta-display-utilities
@@ -1543,7 +1547,6 @@ MonoBehaviour:
   m_Name: Standalone
   m_EditorClassIdentifier: 
   features:
-  - {fileID: 1488796414435585789}
   - {fileID: -972065227017700386}
   - {fileID: -3483990002093788856}
   - {fileID: 4807827730218488723}
@@ -1555,7 +1558,6 @@ MonoBehaviour:
   - {fileID: -7275455440795051946}
   - {fileID: -1811866281495903257}
   - {fileID: -5228161012635357502}
-  - {fileID: 8276900031952485962}
   - {fileID: 1881997916632076237}
   - {fileID: -6136297786407803263}
   - {fileID: -149273101543809905}
@@ -1577,3 +1579,4 @@ MonoBehaviour:
   m_multiviewRenderRegionsOptimizationMode: 0
   m_hasMigratedMultiviewRenderRegionSetting: 1
   m_foveatedRenderingApi: 1
+  m_useOpenXRPredictedTime: 0

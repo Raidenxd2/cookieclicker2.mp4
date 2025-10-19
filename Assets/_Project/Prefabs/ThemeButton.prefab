@@ -286,9 +286,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 6267147677532831371}
   ThemeButtonText: {fileID: 6211672065737447852}
-  ThemePrefabRef:
-    m_AssetGUID: 
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
+  ThemeAssetBundleName: 
+  ThemeSceneName: 

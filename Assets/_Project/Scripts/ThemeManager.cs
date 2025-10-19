@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using LoggerSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System;
 
 
 #if UNITY_EDITOR

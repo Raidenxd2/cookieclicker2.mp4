@@ -9,6 +9,13 @@ public class Notification : MonoBehaviour
     public TMP_Text NotificationTitleObject;
     public GameObject NotificationObject;
 
+    public static Notification instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public void ShowNotification(string text, string title)
     {
         NotificationText = text;
@@ -16,5 +23,10 @@ public class Notification : MonoBehaviour
         NotificationTextObject.text = NotificationText;
         NotificationTitleObject.text = NotificationTitle;
         NotificationObject.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        instance = null;
     }
 }

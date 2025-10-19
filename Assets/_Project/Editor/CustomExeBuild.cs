@@ -65,4 +65,10 @@ public class CustomExeBuild : IPostprocessBuildWithReport
     {
         EditorPrefs.SetBool("CC2_CustomExeBuild", false);
     }
+
+    [MenuItem("Cookieclicker2.mp4/Reserialize all assets")]
+    public static void ReserializeAllAssets()
+    {
+        AssetDatabase.ForceReserializeAssets();
+    }
 }

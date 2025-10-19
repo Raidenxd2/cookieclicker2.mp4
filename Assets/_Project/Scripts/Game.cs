@@ -51,7 +51,7 @@ public class Game : MonoBehaviour
     // scripts
     [Header("Scripts")]
     [SerializeField] private OfflineManager offlineManager;
-    [SerializeField] private AdvancedQualitySettings ad;
+    public AdvancedQualitySettings ad;
     [SerializeField] private Notification notification;
     [SerializeField] private AddressableLightmaps al;
     [SerializeField] private BetaContent bc;
