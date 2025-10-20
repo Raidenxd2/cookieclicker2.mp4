@@ -20,6 +20,8 @@ public class BossCookiesLoader : MonoBehaviour
     [SerializeField] private string SceneFullAssetPath;
 #endif
 
+    [SerializeField] private Transform notificationCanvasParent;
+
     [SerializeField] private Canvas notificationCanvas;
 
     public static BossCookiesLoader instance;
@@ -72,7 +74,7 @@ public class BossCookiesLoader : MonoBehaviour
 #endif
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.bossCookiesEnvironmentRef));
 
-        notificationCanvas.worldCamera = BossCookiesGame.instance.Camera.GetComponent<Camera>();
+        Notification.instance.NotificationCanvas.worldCamera = BossCookiesGame.instance.Camera.GetComponent<Camera>();
 
         game.Fade.Play("FadeOut");
         game.FadeCanvasGroup.blocksRaycasts = false;
@@ -88,6 +90,13 @@ public class BossCookiesLoader : MonoBehaviour
         game.Fade.Play("FadeIn");
         game.FadeCanvasGroup.blocksRaycasts = true;
         await UniTask.WaitForSeconds(1);
+
+        Notification.instance.NotificationCanvas.renderMode = RenderMode.ScreenSpaceCamera;
+        Notification.instance.NotificationCanvas.transform.parent = notificationCanvasParent;
+        Notification.instance.NotificationCanvas.worldCamera = game.gameCamera;
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
         if (VRManager.instance.VREnabled)
         {
@@ -127,7 +136,6 @@ public class BossCookiesLoader : MonoBehaviour
 
         if (!VRManager.instance.VREnabled)
         {
-            notificationCanvas.worldCamera = game.gameCamera;
             game.gameCamera.gameObject.SetActive(true);
         }
 

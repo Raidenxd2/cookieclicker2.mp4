@@ -1,10 +1,12 @@
 using Cysharp.Threading.Tasks;
 using LitMotion;
 using LitMotion.Extensions;
+using RecRoomRipoff.Independent;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
+using UnityEngine.UI;
 
 public class BossCookiesGame : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class BossCookiesGame : MonoBehaviour
     private int CurrentBossCookieObjectsIndex;
 
     public Transform Camera;
+    [SerializeField] private Camera VRModeCamera;
     [SerializeField] private GameObject LeftArrow;
     [SerializeField] private GameObject RightArrow;
 
@@ -30,6 +33,11 @@ public class BossCookiesGame : MonoBehaviour
     [SerializeField] private TMP_Text CookiesText;
     [SerializeField] private TMP_Text HammerStrengthText;
     [SerializeField] private TMP_Text HammerStrengthPriceText;
+
+    [SerializeField] private Canvas UI;
+    [SerializeField] private GameObject NormalModeRoot;
+    [SerializeField] private GameObject VRModeRoot;
+    [SerializeField] private GameObject Player;
 
     public Vector3 OldVRPosition;
     public Quaternion OldVRRotation;
@@ -82,6 +90,34 @@ public class BossCookiesGame : MonoBehaviour
         }
     }
 
+    public void ChooseNormalMode()
+    {
+        NormalModeRoot.SetActive(true);
+        VRModeRoot.SetActive(false);
+    }
+
+    public void ChooseVRMode()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        NormalModeRoot.SetActive(false);
+        VRModeRoot.SetActive(true);
+        Camera.gameObject.SetActive(false);
+
+        Notification.instance.NotificationCanvas.renderMode = RenderMode.WorldSpace;
+        Notification.instance.NotificationCanvas.transform.parent = Player.transform;
+        Notification.instance.NotificationCanvas.GetComponent<RectTransform>().localPosition = new(1, 0.5f, 0);
+
+        UI.renderMode = RenderMode.WorldSpace;
+        UI.transform.parent = Player.transform;
+        UI.transform.localPosition = new(1, 0.5f, 0);
+        UI.transform.localScale = new(0.001f, 0.001f, 0.001f);
+        UI.worldCamera = VRModeCamera;
+        UI.GetComponent<GraphicRaycaster>().enabled = false;
+        UI.gameObject.AddComponent<RaycasterWorld>();
+    }
+
     public void Left()
     {
         RightArrow.SetActive(true);
@@ -130,9 +166,16 @@ public class BossCookiesGame : MonoBehaviour
         BossCookiesLoader.instance.UnloadMinigameMine();
     }
 
-    private async UniTaskVoid ShowCookiesGainedNotificationAsync()
+    public async UniTaskVoid ShowCookiesGainedNotificationAsync(float Cookies = 0)
     {
-        Notification.instance.ShowNotification(string.Format(await CookiesGainedNotificationMessage.GetLocalizedStringAsync(), BossCookieObjects[CurrentBossCookieObjectsIndex].CookiesAmount), await CookiesGainedNotificationTitle.GetLocalizedStringAsync());
+        if (Cookies == 0)
+        {
+            Notification.instance.ShowNotification(string.Format(await CookiesGainedNotificationMessage.GetLocalizedStringAsync(), BossCookieObjects[CurrentBossCookieObjectsIndex].CookiesAmount), await CookiesGainedNotificationTitle.GetLocalizedStringAsync());
+        }
+        else
+        {
+            Notification.instance.ShowNotification(string.Format(await CookiesGainedNotificationMessage.GetLocalizedStringAsync(), Cookies), await CookiesGainedNotificationTitle.GetLocalizedStringAsync());
+        }
     }
 
     public void BuyHammerStrengthUpgrade()

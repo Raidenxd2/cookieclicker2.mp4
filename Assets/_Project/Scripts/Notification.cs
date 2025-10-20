@@ -9,6 +9,8 @@ public class Notification : MonoBehaviour
     public TMP_Text NotificationTitleObject;
     public GameObject NotificationObject;
 
+    public Canvas NotificationCanvas;
+
     public static Notification instance;
 
     private void Awake()

@@ -83,8 +83,8 @@ public class MiniGameMineLoader : MonoBehaviour
 
         if (VRManager.instance.VREnabled)
         {
-            // Game.instance.XROrigin.transform.parent = MiniGameMine.instance.OldVRParent;
-            // Game.instance.XROrigin.transform.SetPositionAndRotation(MiniGameMine.instance.OldVRPosition, MiniGameMine.instance.OldVRRotation);
+            Game.instance.XROrigin.transform.parent = MiniGameMine.instance.OldVRParent;
+            Game.instance.XROrigin.transform.SetPositionAndRotation(MiniGameMine.instance.OldVRPosition, MiniGameMine.instance.OldVRRotation);
         }
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.gameSceneRef));

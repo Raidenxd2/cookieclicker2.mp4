@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 647761870290442078}
   m_Layer: 0
   m_Name: HitArea
-  m_TagString: Untagged
+  m_TagString: HitArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

@@ -16,4 +16,17 @@ public class BossCookieObject : MonoBehaviour
     {
         HealthText.text = "Health: " + Health;
     }
+
+    public void HitCookie()
+    {
+        Health -= (float)Game.instance.BossCookies_HammerStrength;
+
+        if (Health <= 0)
+        {
+            Game.instance.Cookies += CookiesAmount;
+            BossCookiesGame.instance.ShowCookiesGainedNotificationAsync(CookiesAmount).Forget();
+
+            Health = StartingHealth;
+        }
+    }
 }

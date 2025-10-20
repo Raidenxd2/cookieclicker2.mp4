@@ -12,6 +12,8 @@ TagManager:
   - HideInBuild
   - ShowInBuild
   - Game
+  - Player1Camera
+  - HitArea
   layers:
   - Default
   - TransparentFX
@@ -24,9 +26,9 @@ TagManager:
   - DontRender
   - CommonObjects
   - Particles
-  - 
-  - 
-  - 
+  - Ground
+  - Hammer
+  - HitArea
   - 
   - 
   - 
