@@ -26,14 +26,14 @@
       "hash": "c55a688ec5d7b66533a2c699326873bde322175e"
     },
     "com.raiden.buildmanager": {
-      "version": "https://github.com/Raidenxd2/BuildManager.git#v2.1.0",
+      "version": "https://github.com/Raidenxd2/BuildManager.git#v2.3.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "4478f5080e776f4aee7807f05b93cd29a017469f"
+      "hash": "8ed90f7528cf9161e6c7b2fc7476899ee6c2399a"
     },
     "com.raiden.serial": {
-      "version": "2.0.0",
+      "version": "2.0.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -142,7 +142,7 @@
     },
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.5",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -159,16 +159,6 @@
       "depth": 0,
       "source": "registry",
       "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.project-auditor": {
-      "version": "1.0.2",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.nuget.mono-cecil": "1.10.1",
-        "com.unity.nuget.newtonsoft-json": "3.2.1"
-      },
       "url": "https://packages.unity.com"
     },
     "com.unity.render-pipelines.core": {
@@ -233,6 +223,13 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.settings-manager": {
+      "version": "2.1.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.shadergraph": {
       "version": "17.2.0",
       "depth": 1,
@@ -268,6 +265,16 @@
         "com.unity.modules.imgui": "1.0.0"
       },
       "hash": "47a99bda57812c1ff78fec151241a42c8ea086f3"
+    },
+    "com.unity.web.stripping-tool": {
+      "version": "1.2.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.settings-manager": "2.0.1",
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      },
+      "url": "https://packages.unity.com"
     },
     "com.unity.xr.core-utils": {
       "version": "2.5.3",

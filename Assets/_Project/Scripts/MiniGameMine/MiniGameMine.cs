@@ -27,9 +27,11 @@ public class MiniGameMine : MonoBehaviour
     public bool reachedEnd;
     public GameObject WinScreen;
 
+#if !CC2_REMOVE_VR_SUPPORT
     public Vector3 OldVRPosition;
     public Quaternion OldVRRotation;
     public Transform OldVRParent;
+#endif
 
     [SerializeField] private GameObject Camera;
     [SerializeField] private Transform VRCameraPosition;
@@ -65,6 +67,7 @@ public class MiniGameMine : MonoBehaviour
             Game.instance.CoinMultiplierUpgradePrice = 300;
         }
 
+#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             OldVRPosition = Game.instance.XROrigin.transform.position;
@@ -78,6 +81,7 @@ public class MiniGameMine : MonoBehaviour
 
             UI.transform.parent = Player;
         }
+#endif
 
         Init();
     }

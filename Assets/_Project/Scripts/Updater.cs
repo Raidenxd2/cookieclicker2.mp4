@@ -9,6 +9,7 @@ public class Updater : MonoBehaviour
     [SerializeField] private GameObject UpdateAvailabeScreen;
     [SerializeField] private GameObject GlobalDark;
 
+#if !UNITY_WEBGL
     private void Start()
     {
         if (Application.internetReachability == NetworkReachability.NotReachable)
@@ -40,9 +41,12 @@ public class Updater : MonoBehaviour
             UpdateAvailabeScreen.SetActive(true);
         }
     }
+#endif
 
     public void OpenItchIoPage()
     {
+#if !UNITY_WEBGL
         OpenURLManager.instance.OpenURL("https://raidenxd2.itch.io/cookieclicker2mp4#download");
+#endif
     }
 }

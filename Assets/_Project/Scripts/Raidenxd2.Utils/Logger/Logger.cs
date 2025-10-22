@@ -28,9 +28,6 @@ namespace LoggerSystem
                 case LogTypes.Exception:
                     Debug.LogError($"<color=#ff4d4d>" + GetLogTypeName(logTypes) + logString + text + "</color>");
                     break;
-                case LogTypes.Assertion:
-                    Debug.LogAssertion($"<color=#ff4d4d>" + GetLogTypeName(logTypes) + logString + text + "</color>");
-                    break;
                 default:
                     throw new System.Exception("Unknown LogType.");
             }
@@ -64,7 +61,6 @@ namespace LoggerSystem
         Normal,
         Error,
         Warning,
-        Exception,
-        Assertion
+        Exception
     }
 }

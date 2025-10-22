@@ -13,13 +13,16 @@ public class PlayerCam : MonoBehaviour
     public Transform playerModel;
 
     public bool canMoveCamera = true;
+#if !CC2_DISABLEBOSSCOOKIESVRMODE
     private float xRotation;
     private float yRotation;
+#endif
 
     [SerializeField] private PlayerInput playerControls;
 
     private static bool playerHasJoined;
 
+#if !CC2_DISABLEBOSSCOOKIESVRMODE
     private void Start()
     {
         GetComponent<UniversalAdditionalCameraData>().renderPostProcessing = Game.instance.ad.PostProcessing;
@@ -56,6 +59,7 @@ public class PlayerCam : MonoBehaviour
     {
         playerHasJoined = false;
     }
+#endif
 
 #if UNITY_EDITOR
     [RuntimeInitializeOnLoadMethod]

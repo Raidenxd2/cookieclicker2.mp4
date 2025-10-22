@@ -5,7 +5,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
+#if !CC2_DISABLEBOSSCOOKIESVRMODE
     private bool readyToJump;
+#endif
 
     [Header("Camera")]
     public Camera playerCam;
@@ -22,11 +24,13 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask spinnerLayer;
     public bool canMove = true;
     public bool IsOnKeyboardMouse;
+#if !CC2_DISABLEBOSSCOOKIESVRMODE
     private float horizontalInput;
     private float verticalInput;
     private Vector3 moveDirection;
     private Rigidbody rb;
-    Transform oldParent = null;
+    private Transform oldParent = null;
+#endif
     [SerializeField] private PlayerInput playerControls;
     [SerializeField] private PlayerFade fade;
 
@@ -41,13 +45,16 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private PlayerCam playerCamComponent;
 
+#if !CC2_DISABLEBOSSCOOKIESVRMODE
     private CursorLockMode prevCursorLockMode;
     private bool prevCanMove;
     private bool prevCanMoveCamera;
     private Vector3 prevVel;
 
     private bool Respawning;
+#endif
 
+#if !CC2_DISABLEBOSSCOOKIESVRMODE
     private void Start()
     {
         oldParent = transform.parent;
@@ -116,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
         // Handle drag
         if (grounded)
         {
-            rb.linearDamping = 9;
+            rb.linearDamping = groundDrag;
         }
         else
         {
@@ -216,23 +223,5 @@ public class PlayerMovement : MonoBehaviour
     {
         readyToJump = true;
     }
-
-    public void PreventPlayerFromDoingAnything()
-    {
-        prevCanMove = canMove;
-        prevVel = GetComponent<Rigidbody>().linearVelocity;
-        prevCanMoveCamera = playerCamComponent.canMoveCamera;
-        canMove = false;
-        rb.linearVelocity = Vector3.zero;
-        playerCamComponent.canMoveCamera = false;
-    }
-
-    public void LetPlayerDoAnything()
-    {
-        Cursor.lockState = prevCursorLockMode;
-
-        canMove = prevCanMove;
-        rb.linearVelocity = prevVel;
-        playerCamComponent.canMoveCamera = prevCanMoveCamera;
-    }
+#endif
 }

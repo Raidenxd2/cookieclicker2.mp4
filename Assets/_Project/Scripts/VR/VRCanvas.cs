@@ -6,6 +6,7 @@ public class VRCanvas : MonoBehaviour
     [SerializeField] private Vector3 newScale = new(0.01f, 0.01f, 0.01f);
     [SerializeField] private Vector3 newRot;
 
+#if !CC2_REMOVE_VR_SUPPORT
     private void Start()
     {
         if (VRManager.instance.VREnabled)
@@ -18,4 +19,5 @@ public class VRCanvas : MonoBehaviour
             transform.position = newPos;
         }
     }
+#endif
 }

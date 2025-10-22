@@ -8,15 +8,8 @@ public class ButtonClick : MonoBehaviour
 
     private void Awake()
     {
-        try
-        {
-            button = gameObject.GetComponent<Button>();
-            button.onClick.AddListener(PlaySoundOnClick);
-        }
-        catch
-        {
-
-        }
+        button = gameObject.GetComponent<Button>();
+        button.onClick.AddListener(PlaySoundOnClick);
     }
 
     public void PlaySoundOnClick()

@@ -1,16 +1,16 @@
-using System.Collections;
-using UnityEngine;
 using BreakInfinity;
+using Cysharp.Threading.Tasks;
+using LoggerSystem;
+using SimpleFileBrowser;
+using System;
+using System.Collections;
+using System.IO;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using LoggerSystem;
-using UnityEngine.Rendering;
-using Cysharp.Threading.Tasks;
-using System;
-using SimpleFileBrowser;
-using UnityEngine.Localization;
-using System.IO;
 
 public class Game : MonoBehaviour
 {
@@ -114,6 +114,8 @@ public class Game : MonoBehaviour
     public GameObject BetaContentScreen;
     public Toggle[] BetaContentToggles;
     public GameObject ScreenshotOptionsBTN;
+    public GameObject QuitBTN;
+    public GameObject UpdateCheckerToggleGO;
 
     [Header("Particles")]
     public GameObject CookieVFX;
@@ -139,8 +141,10 @@ public class Game : MonoBehaviour
     public BigDouble BossCookies_HammerStrengthUpgradePrice;
 
     [Header("VR")]
+#if !CC2_REMOVE_VR_SUPPORT
     private GameObject VRPrefabGO;
     private VRPrefabObject vrpo;
+#endif
     [SerializeField] private Transform VRPrefabParent;
     public GameObject XROrigin;
     [SerializeField] private UISkin FileBrowserUISkin;
@@ -171,10 +175,20 @@ public class Game : MonoBehaviour
     {
         VersionText.text = "v" + Application.version + "-" + Application.platform + " (" + Application.unityVersion + ", " + SystemInfo.graphicsDeviceType + ")";
 
+#if !CC2_REMOVE_VR_SUPPORT
         if (!VRManager.instance.VREnabled)
         {
+#endif
             VREnableCustomMirrorCameraToggle.SetActive(false);
+#if !CC2_REMOVE_VR_SUPPORT
         }
+#endif
+
+#if UNITY_WEBGL
+        ScreenshotOptionsBTN.SetActive(false);
+        QuitBTN.SetActive(false);
+        UpdateCheckerToggleGO.SetActive(false);
+#endif
 
         LoadPlayer();
 
@@ -221,6 +235,7 @@ public class Game : MonoBehaviour
         Fade.Play("FadeOut");
     }
 
+#if !CC2_REMOVE_VR_SUPPORT
     public async UniTask InitVR()
     {
         if (VRManager.instance.VREnabled)
@@ -250,6 +265,7 @@ public class Game : MonoBehaviour
 
         UpdateMirrorCamera();
     }
+#endif
 
     void CheckPrices()
     {
@@ -526,16 +542,16 @@ public class Game : MonoBehaviour
         SavePlayer();
     }
 
-#if UNITY_STANDALONE_WIN
     public void RestartGame()
     {
+#if UNITY_STANDALONE_WIN
         SavePlayer();
 
         Application.OpenURL(Application.dataPath + "\\..\\Cookieclicker2.mp4.exe");
 
         Application.Quit();
-    }
 #endif
+    }
 
     public void Reload()
     {
@@ -552,21 +568,26 @@ public class Game : MonoBehaviour
 
         await ThemeManager.instance.UnloadTheme();
 
+#if !CC2_REMOVE_VR_SUPPORT
         if (VRPrefabGO != null)
         {
             Destroy(VRPrefabGO);
         }
+#endif
 
         await SceneManager.LoadSceneAsync(AddressableHandles.initSceneRef);
     }
 
     public void MirrorCameraToggle(bool Toggle)
     {
+#if !CC2_REMOVE_VR_SUPPORT
         VRMirrorCamera = Toggle;
 
         UpdateMirrorCamera();
+#endif
     }
 
+#if !CC2_REMOVE_VR_SUPPORT
     private void UpdateMirrorCamera()
     {
         if (vrpo == null)
@@ -583,6 +604,7 @@ public class Game : MonoBehaviour
             vrpo.MirrorCamera.SetActive(false);
         }
     }
+#endif
 
     public void SoundToggle(bool Toggle)
     {
@@ -624,6 +646,7 @@ public class Game : MonoBehaviour
         BetterPrefs.SetBool("DisableUpdateChecker", !Toggle);
     }
 
+#if !CC2_REMOVE_VR_SUPPORT
     public void LoadVRFallbackScene()
     {
         LoadVRFallbackSceneAsync().Forget();
@@ -635,6 +658,7 @@ public class Game : MonoBehaviour
 
         await SceneManager.LoadSceneAsync(AddressableHandles.vrFallbackSceneRef);
     }
+#endif
 
     public void BuyAutoclicker()
     {

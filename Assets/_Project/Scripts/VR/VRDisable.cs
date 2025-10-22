@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class VRDisable : MonoBehaviour
 {
+#if !CC2_REMOVE_VR_SUPPORT
     private void Start()
     {
         if (VRManager.instance.VREnabled)
@@ -9,4 +10,5 @@ public class VRDisable : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+#endif
 }

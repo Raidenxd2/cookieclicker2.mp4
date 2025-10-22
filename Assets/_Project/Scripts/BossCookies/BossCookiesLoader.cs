@@ -3,6 +3,8 @@ using Cysharp.Threading.Tasks;
 using LoggerSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
+
 
 #if UNITY_EDITOR
 using UnityEditor.SceneManagement;
@@ -63,7 +65,11 @@ public class BossCookiesLoader : MonoBehaviour
         if (LoadAssetBundlesInEditor)
         {
 #endif
-            environmentBundle = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/" + environmentRef.BundleName);
+#if UNITY_WEBGL
+            environmentBundle = DownloadHandlerAssetBundle.GetContent(await UnityWebRequestAssetBundle.GetAssetBundle(Application.streamingAssetsPath + "/Bundles/" + environmentRef.BundleName + ".bundle").SendWebRequest());
+#else
+            environmentBundle = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/" + environmentRef.BundleName + ".bundle");
+#endif
             await SceneManager.LoadSceneAsync(AddressableHandles.bossCookiesEnvironmentRef, LoadSceneMode.Additive);
 #if UNITY_EDITOR
         }
@@ -98,11 +104,13 @@ public class BossCookiesLoader : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
+#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             Game.instance.XROrigin.transform.parent = MiniGameMine.instance.OldVRParent;
             Game.instance.XROrigin.transform.SetPositionAndRotation(MiniGameMine.instance.OldVRPosition, MiniGameMine.instance.OldVRRotation);
         }
+#endif
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.gameSceneRef));
 
@@ -134,10 +142,14 @@ public class BossCookiesLoader : MonoBehaviour
 
         game.researchFactory.GameCanvas.SetActive(true);
 
+#if !CC2_REMOVE_VR_SUPPORT
         if (!VRManager.instance.VREnabled)
         {
+#endif
             game.gameCamera.gameObject.SetActive(true);
+#if !CC2_REMOVE_VR_SUPPORT
         }
+#endif
 
         if (game.ad.PostProcessing)
         {

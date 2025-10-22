@@ -39,9 +39,14 @@ public class BossCookiesGame : MonoBehaviour
     [SerializeField] private GameObject VRModeRoot;
     [SerializeField] private GameObject Player;
 
+    [SerializeField] private GameObject ChooseModeScreen;
+    [SerializeField] private GameObject GlobalDark;
+
+#if !CC2_REMOVE_VR_SUPPORT
     public Vector3 OldVRPosition;
     public Quaternion OldVRRotation;
     public Transform OldVRParent;
+#endif
 
     public static BossCookiesGame instance;
 
@@ -58,6 +63,14 @@ public class BossCookiesGame : MonoBehaviour
             Game.instance.BossCookies_HammerStrengthUpgradePrice = 1000;
         }
 
+#if CC2_DISABLEBOSSCOOKIESVRMODE
+        ChooseNormalMode();
+#else
+        GlobalDark.SetActive(true);
+        ChooseModeScreen.SetActive(true);
+#endif
+
+#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             OldVRPosition = Game.instance.XROrigin.transform.position;
@@ -71,6 +84,7 @@ public class BossCookiesGame : MonoBehaviour
 
             // UI.transform.parent = Player;
         }
+#endif
 
         BossCookieObjects = new();
 
@@ -98,6 +112,7 @@ public class BossCookiesGame : MonoBehaviour
 
     public void ChooseVRMode()
     {
+#if !CC2_DISABLEBOSSCOOKIESVRMODE
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -116,6 +131,7 @@ public class BossCookiesGame : MonoBehaviour
         UI.worldCamera = VRModeCamera;
         UI.GetComponent<GraphicRaycaster>().enabled = false;
         UI.gameObject.AddComponent<RaycasterWorld>();
+#endif
     }
 
     public void Left()

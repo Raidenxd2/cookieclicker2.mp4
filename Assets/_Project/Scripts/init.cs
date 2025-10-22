@@ -3,6 +3,7 @@ using LoggerSystem;
 using SimpleFileBrowser;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public class Init : MonoBehaviour
@@ -24,25 +25,31 @@ public class Init : MonoBehaviour
 
         Resources.UnloadUnusedAssets();
 
+#if !UNITY_WEBGL
         if (!HasLoadedSharedData)
         {
             LogSystem.Log("Loading AssetBundle shareddata");
-            AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Bundles/shareddata");
+            AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Bundles/shareddata.bundle");
             HasLoadedSharedData = true;
         }
+#endif
 
+#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             LoadVRData().Forget();
         }
+#endif
 
         LoadGameSceneAsync().Forget();
     }
 
+#if !CC2_REMOVE_VR_SUPPORT
     private async UniTask LoadVRData()
     {
         Instantiate(await Resources.LoadAsync("InitScene_VRPrefab") as GameObject);
     }
+#endif
 
     private async UniTaskVoid LoadGameSceneAsync()
     {
@@ -53,6 +60,15 @@ public class Init : MonoBehaviour
             Game.importPath = null;
         }
 
+#if UNITY_WEBGL
+        if (!HasLoadedSharedData)
+        {
+            var sharedDataWWW = (await UnityWebRequestAssetBundle.GetAssetBundle(Application.streamingAssetsPath + "/Bundles/shareddata.bundle").SendWebRequest());
+            DownloadHandlerAssetBundle.GetContent(sharedDataWWW);
+            HasLoadedSharedData = true;
+        }
+#endif
+
         await SceneManager.LoadSceneAsync(AddressableHandles.gameSceneRef, LoadSceneMode.Additive);
 
         await UniTask.WaitForEndOfFrame();
@@ -60,10 +76,12 @@ public class Init : MonoBehaviour
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.gameSceneRef));
 
+#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             await Game.instance.InitVR();
         }
+#endif
 
         await SceneManager.UnloadSceneAsync(AddressableHandles.initSceneRef, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
 

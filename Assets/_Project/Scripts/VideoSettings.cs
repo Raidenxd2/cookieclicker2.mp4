@@ -1,4 +1,3 @@
-#if UNITY_STANDALONE
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -14,14 +13,17 @@ public class VideoSettings : MonoBehaviour
     [SerializeField] private TMP_Dropdown ResolutionDropdown;
     [SerializeField] private TMP_Dropdown AADropdown;
     [SerializeField] private Toggle VSyncToggle;
+#if UNITY_STANDALONE
 
     private Resolution[] resolutions;
     private List<Resolution> filteredResolutions;
 
     private int currentResolutionIndex = 0;
+#endif
 
     [SerializeField] private GameObject GameRestartRequired;
 
+#if UNITY_STANDALONE
     private void Start()
     {
         if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
@@ -107,9 +109,11 @@ public class VideoSettings : MonoBehaviour
         ChangeAntiAliasing(BetterPrefs.GetInt("GRAPHICS_AA", 1));
         ChangeVSync(BetterPrefs.GetBool("GRAPHICS_VSync", true));
     }
+#endif
 
     public void SetResolution(int resolutionIndex)
     {
+#if UNITY_STANDALONE
         Resolution resolution = filteredResolutions[resolutionIndex];
 
         BetterPrefs.SetInt("ResolutionIndex", resolutionIndex);
@@ -133,17 +137,21 @@ public class VideoSettings : MonoBehaviour
                 Screen.SetResolution(resolution.width, resolution.height, FullScreenMode.Windowed);
                 break;
         }
+#endif
     }
 
     public void ChangeWindowMode(int val)
     {
+#if UNITY_STANDALONE
         BetterPrefs.SetInt("WindowMode", val);
 
         SetResolution(BetterPrefs.GetInt("ResolutionIndex", 1));
+#endif
     }
 
     public void ChangeVSync(bool val)
     {
+#if UNITY_STANDALONE
         BetterPrefs.SetBool("GRAPHICS_VSync", val);
 
         if (val)
@@ -154,10 +162,12 @@ public class VideoSettings : MonoBehaviour
         {
             QualitySettings.vSyncCount = 0;
         }
+#endif
     }
 
     public void ChangeAntiAliasing(int val)
     {
+#if UNITY_STANDALONE
         BetterPrefs.SetInt("GRAPHICS_AA", val);
 
         switch (val)
@@ -175,13 +185,15 @@ public class VideoSettings : MonoBehaviour
                 URPAsset.msaaSampleCount = 8;
                 break;
         }
+#endif
     }
 
     public void ChangeGraphicsAPI(int val)
     {
+#if UNITY_STANDALONE
         PlayerPrefs.SetInt("GraphicsAPI", val);
 
         GameRestartRequired.SetActive(true);
+#endif
     }
 }
-#endif

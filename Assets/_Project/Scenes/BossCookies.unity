@@ -1234,9 +1234,8 @@ MonoBehaviour:
   NormalModeRoot: {fileID: 1989182166}
   VRModeRoot: {fileID: 1338249124}
   Player: {fileID: 1593798448}
-  OldVRPosition: {x: 0, y: 0, z: 0}
-  OldVRRotation: {x: 0, y: 0, z: 0, w: 0}
-  OldVRParent: {fileID: 0}
+  ChooseModeScreen: {fileID: 987380580}
+  GlobalDark: {fileID: 724898290}
   references:
     version: 2
     RefIds: []
@@ -2570,7 +2569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &724898291
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3741,7 +3740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 106894220553011084, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 106894220553011084, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_TagString
@@ -4034,6 +4033,11 @@ PrefabInstance:
 --- !u!224 &987380579 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 106894220553011085, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
+  m_PrefabInstance: {fileID: 987380578}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &987380580 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 106894220553011084, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
   m_PrefabInstance: {fileID: 987380578}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &987380582 stripped
@@ -5412,7 +5416,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5583706239441727675, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
   m_PrefabInstance: {fileID: 987380578}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 987380580}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2afbc485eda37784b9339ee9edb65471, type: 3}

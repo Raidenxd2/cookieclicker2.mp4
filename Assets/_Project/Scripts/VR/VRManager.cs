@@ -7,6 +7,7 @@ public class VRManager : MonoBehaviour
 
     public static bool VRBootEnabled;
 
+#if !CC2_REMOVE_VR_SUPPORT
     private XRLoader currentLoader;
 
     public static VRManager instance;
@@ -73,4 +74,5 @@ public class VRManager : MonoBehaviour
             currentLoader = null;
         }
     }
+#endif
 }

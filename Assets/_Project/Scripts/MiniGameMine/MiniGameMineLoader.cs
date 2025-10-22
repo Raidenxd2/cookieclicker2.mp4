@@ -3,6 +3,8 @@ using Cysharp.Threading.Tasks;
 using LoggerSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
+
 
 #if UNITY_EDITOR
 using UnityEditor.SceneManagement;
@@ -54,7 +56,11 @@ public class MiniGameMineLoader : MonoBehaviour
         if (LoadAssetBundlesInEditor)
         {
 #endif
-            environmentBundle = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/" + environmentRef.BundleName);
+#if UNITY_WEBGL
+            environmentBundle = DownloadHandlerAssetBundle.GetContent(await UnityWebRequestAssetBundle.GetAssetBundle(Application.streamingAssetsPath + "/Bundles/" + environmentRef.BundleName + ".bundle").SendWebRequest());
+#else
+            environmentBundle = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/" + environmentRef.BundleName + ".bundle");
+#endif
             await SceneManager.LoadSceneAsync(AddressableHandles.miniGameMineEnvironmentRef, LoadSceneMode.Additive);
 #if UNITY_EDITOR
         }
@@ -81,11 +87,13 @@ public class MiniGameMineLoader : MonoBehaviour
         game.FadeCanvasGroup.blocksRaycasts = true;
         await UniTask.WaitForSeconds(1);
 
+#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             Game.instance.XROrigin.transform.parent = MiniGameMine.instance.OldVRParent;
             Game.instance.XROrigin.transform.SetPositionAndRotation(MiniGameMine.instance.OldVRPosition, MiniGameMine.instance.OldVRRotation);
         }
+#endif
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.gameSceneRef));
 
@@ -118,10 +126,14 @@ public class MiniGameMineLoader : MonoBehaviour
 
         game.researchFactory.GameCanvas.SetActive(true);
 
+#if !CC2_REMOVE_VR_SUPPORT
         if (!VRManager.instance.VREnabled)
         {
+#endif
             game.gameCamera.gameObject.SetActive(true);
+#if !CC2_REMOVE_VR_SUPPORT
         }
+#endif
 
         game.Fade.Play("FadeOut");
         game.FadeCanvasGroup.blocksRaycasts = false;

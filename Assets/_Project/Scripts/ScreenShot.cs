@@ -10,6 +10,7 @@ public class ScreenShot : MonoBehaviour
     public int ScreenshotQuality;
     public TMP_Text ScreenshotQualityText;
 
+#if !UNITY_WEBGL
     private PlayerInput playerInput;
 
     void Start()
@@ -21,13 +22,17 @@ public class ScreenShot : MonoBehaviour
             Directory.CreateDirectory(Application.persistentDataPath + filePath);
         }
     }
+#endif
 
     public void DeleteScreenshots()
     {
+#if !UNITY_WEBGL
         Directory.Delete(Application.persistentDataPath + filePath, true);
         Directory.CreateDirectory(Application.persistentDataPath + filePath);
+#endif
     }
 
+#if !UNITY_WEBGL
     void Update()
     {
         if (playerInput.actions["Screenshot"].WasPressedThisFrame())
@@ -43,7 +48,9 @@ public class ScreenShot : MonoBehaviour
         ScreenCapture.CaptureScreenshot(Application.persistentDataPath + "/screenshots/" + datetime + ".png", ScreenshotQuality);
         notification.ShowNotification("Screenshot saved at " + Application.persistentDataPath + filePath + "/" + datetime + ".png", "Screenshot Taken");
     }
+#endif
 
+#if !UNITY_WEBGL
     public void OnValueChanged(float newValue)
     {
         string StringConvert;
@@ -54,9 +61,12 @@ public class ScreenShot : MonoBehaviour
         ScreenshotQuality = IntConvert;
         ScreenshotQualityText.text = IntConvert + "x";
     }
+#endif
 
     public void OpenScreenshotsFolder()
     {
+#if !UNITY_WEBGL
         Application.OpenURL(Application.persistentDataPath + "/screenshots");
+#endif
     }
 }

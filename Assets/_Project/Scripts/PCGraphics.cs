@@ -1,4 +1,3 @@
-#if UNITY_STANDALONE
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -7,7 +6,7 @@ public class PCGraphics : MonoBehaviour
     [SerializeField] private UniversalAdditionalCameraData cameraData;
 
     [SerializeField] private GameObject PCOnlySettingsButton;
-
+#if UNITY_STANDALONE
     private void Start()
     {
         cameraData.dithering = true;
@@ -15,5 +14,5 @@ public class PCGraphics : MonoBehaviour
 
         PCOnlySettingsButton.SetActive(true);
     }
-}
 #endif
+}

@@ -52751,6 +52751,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4941934788868535940, guid: ad97596f556d1594792b188b1a075040, type: 3}
   m_PrefabInstance: {fileID: 4941934788345770446}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1675379964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4941934788868535943, guid: ad97596f556d1594792b188b1a075040, type: 3}
+  m_PrefabInstance: {fileID: 836760262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1683480036
 GameObject:
   m_ObjectHideFlags: 0
@@ -62250,6 +62255,8 @@ MonoBehaviour:
   BetaContentToggles:
   - {fileID: 382717712}
   ScreenshotOptionsBTN: {fileID: 2113006684}
+  QuitBTN: {fileID: 1493900857}
+  UpdateCheckerToggleGO: {fileID: 1675379964}
   CookieVFX: {fileID: 855337172176263824, guid: a9fc5eae49f09e8459d6e2cba2a914b9, type: 3}
   CookieGains: {fileID: 8907755305702998037, guid: 107fa5a46d36a3843aa0ee3e8f58ddd0, type: 3}
   CookieVFXSpot: {fileID: 1096343094}

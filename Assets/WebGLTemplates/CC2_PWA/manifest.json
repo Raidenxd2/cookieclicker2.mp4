@@ -1,0 +1,23 @@
+{
+    "name": {{{ JSON.stringify(PRODUCT_NAME) }}},
+    "short_name": {{{ JSON.stringify(PRODUCT_NAME) }}},
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "{{{ BACKGROUND_COLOR }}}",
+    "theme_color": "{{{ BACKGROUND_COLOR }}}",
+    "description": {{{ JSON.stringify(PRODUCT_DESCRIPTION) }}},
+    "icons": [
+		{
+		  "src": "pwaicon.png",
+		  "sizes": "192x192",
+		  "type": "image/png",
+		  "purpose": "any maskable"
+		},
+		{
+		  "src": "pwaicon512.png",
+		  "sizes": "512x512",
+		  "type": "image/png",
+		  "purpose": "any maskable"
+		}
+	]
+  }

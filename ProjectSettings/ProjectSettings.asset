@@ -16,7 +16,7 @@ PlayerSettings:
   productName: Cookieclicker2.mp4
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_SplashScreenBackgroundColor: {r: 0.043, g: 0.043, b: 0.043, a: 1}
   m_ShowUnitySplashScreen: 0
   m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 0.5
@@ -148,8 +148,6 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: -944628639613478452, guid: f6942149c81fd7d4a9c839ed3180c690, type: 3}
   - {fileID: 11400000, guid: 5a6050f4d65b99340992ab87fbbe1f03, type: 2}
-  - {fileID: -3897798550495487935, guid: d45d0090f76dbdd4ca8bbe877eb041d3, type: 2}
-  - {fileID: 8850150090056202000, guid: 1fd3eede65d2b684897885ba920b3ba5, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -469,7 +467,8 @@ PlayerSettings:
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
-  m_TemplateCustomTags: {}
+  m_TemplateCustomTags:
+    PRODUCT_DESCRIPTION: Cookieclicker2.mp4
   mobileMTRendering:
     Android: 1
     iPhone: 1
@@ -743,10 +742,10 @@ PlayerSettings:
   webGLNameFilesAsHashes: 0
   webGLShowDiagnostics: 0
   webGLDataCaching: 1
-  webGLDebugSymbols: 2
+  webGLDebugSymbols: 1
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: APPLICATION:Minimal
+  webGLTemplate: PROJECT:CC2_Default
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 2
@@ -780,7 +779,7 @@ PlayerSettings:
     Stadia: PROBUILDER_EXPERIMENTAL_FEATURES
     Standalone: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS;SERIAL_UNITASK
     VisionOS: 
-    WebGL: CC2_REMOVE_VR_SUPPORT
+    WebGL: CC2_REMOVE_VR_SUPPORT;CC2_DISABLELOGGING;CC2_DISABLEBOSSCOOKIESVRMODE;SERIAL_UNITASK
     Windows Store Apps: PROBUILDER_EXPERIMENTAL_FEATURES;USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
     XboxOne: PROBUILDER_EXPERIMENTAL_FEATURES
     iPhone: 

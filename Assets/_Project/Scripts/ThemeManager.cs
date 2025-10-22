@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using LoggerSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 
 #if UNITY_EDITOR
@@ -111,7 +112,11 @@ public class ThemeManager : MonoBehaviour
             if (LoadAssetBundlesInEditor)
             {
 #endif
-                CurrentThemeBundle = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/" + AssetBundleName);
+#if UNITY_WEBGL
+                CurrentThemeBundle = DownloadHandlerAssetBundle.GetContent(await UnityWebRequestAssetBundle.GetAssetBundle(Application.streamingAssetsPath + "/Bundles/" + AssetBundleName + ".bundle").SendWebRequest());
+#else
+                CurrentThemeBundle = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/" + AssetBundleName + ".bundle");
+#endif
                 CurrentSceneName = SceneName;
                 await SceneManager.LoadSceneAsync(SceneName, LoadSceneMode.Additive);
 #if UNITY_EDITOR

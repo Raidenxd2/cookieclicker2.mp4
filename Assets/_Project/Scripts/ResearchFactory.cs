@@ -87,14 +87,18 @@ public class ResearchFactory : MonoBehaviour
         game.FadeCanvasGroup.blocksRaycasts = true;
         yield return game.oneSecond;
 
+#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             VRCamera.position = WhatWasThisNamedVR.position;
         }
         else
         {
+#endif
             GameCamera.SetPositionAndRotation(WhatWasThisNamed.position, WhatWasThisNamed.rotation);
+#if !CC2_REMOVE_VR_SUPPORT
         }
+#endif
 
         FinishEnter();
         game.Fade.Play("FadeOut");
@@ -107,14 +111,18 @@ public class ResearchFactory : MonoBehaviour
         game.FadeCanvasGroup.blocksRaycasts = true;
         yield return game.oneSecond;
 
+#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             VRCamera.position = MainSceneVR.position;
         }
         else
         {
+#endif
             GameCamera.SetPositionAndRotation(MainScene.position, MainScene.rotation);
+#if !CC2_REMOVE_VR_SUPPORT
         }
+#endif
 
         FinishExit();
         game.Fade.Play("FadeOut");
