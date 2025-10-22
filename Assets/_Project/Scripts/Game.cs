@@ -198,10 +198,6 @@ public class Game : MonoBehaviour
             Music = true;
             Sounds = true;
             VRMirrorCamera = false;
-            ad.TextureQuality = 0;
-            ad.Particals = true;
-            ad.PostProcessing = true;
-            ad.VSync = false;
             ResetData();
         }
 
@@ -534,13 +530,17 @@ public class Game : MonoBehaviour
 
     public void QuitGame()
     {
+#if !UNITY_WEBGL
         Application.Quit();
+#endif
     }
 
+#if !UNITY_WEBGL
     private void OnApplicationQuit()
     {
         SavePlayer();
     }
+#endif
 
     public void RestartGame()
     {

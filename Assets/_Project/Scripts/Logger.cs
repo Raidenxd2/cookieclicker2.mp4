@@ -1,0 +1,64 @@
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
+
+namespace LoggerSystem
+{
+    public static class LogSystem
+    {
+        public static void Log(string text, LogTypes logTypes = LogTypes.Normal)
+        {
+#if !CC2_DISABLELOGGING
+            StackFrame frame = new(1, true);
+            var method = frame.GetMethod().Name;
+            var fileName = frame.GetFileName();
+            var lineNumber = frame.GetFileLineNumber();
+            var logString = " [" + fileName + ":" + lineNumber + "] (" + method + ") ";
+
+            switch (logTypes)
+            {
+                case LogTypes.Normal:
+                    Debug.Log(GetLogTypeName(logTypes) + logString + text);
+                    break;
+                case LogTypes.Error:
+                    Debug.LogError($"<color=#ff4d4d>" + GetLogTypeName(logTypes) + logString + text + "</color>");
+                    break;
+                case LogTypes.Warning:
+                    Debug.LogWarning($"<color=#ffe347>" + GetLogTypeName(logTypes) + logString + text + "</color>");
+                    break;
+                case LogTypes.Exception:
+                    Debug.LogError($"<color=#ff4d4d>" + GetLogTypeName(logTypes) + logString + text + "</color>");
+                    break;
+                default:
+                    throw new System.Exception("Unknown LogType.");
+            }
+#endif
+        }
+
+#if !CC2_DISABLELOGGING
+        public static string GetLogTypeName(LogTypes logTypes)
+        {
+            switch (logTypes)
+            {
+                case LogTypes.Normal:
+                    return "[LOG]";
+                case LogTypes.Error:
+                    return "[ERROR]";
+                case LogTypes.Warning:
+                    return "[WARNING]";
+                case LogTypes.Exception:
+                    return "[EXCEPTION]";
+                default:
+                    throw new System.Exception("Unknown LogType.");
+            }
+        }
+#endif
+    }
+
+    public enum LogTypes
+    {
+        Normal,
+        Error,
+        Warning,
+        Exception
+    }
+}

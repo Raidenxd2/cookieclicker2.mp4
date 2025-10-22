@@ -20,7 +20,7 @@
     "com.unity.ugui": "https://github.com/Raidenxd2/com.unity.ugui.git",
     "com.unity.web.stripping-tool": "1.2.0",
     "com.unity.xr.interaction.toolkit": "3.1.2",
-    "com.unity.xr.management": "4.5.2",
+    "com.unity.xr.management": "4.5.3",
     "com.unity.xr.openxr": "1.14.3",
     "com.yasirkula.simplefilebrowser": "1.7.4",
     "dev.voltstro.unitycommandlineparser": "2.1.2",
@@ -34,7 +34,6 @@
     "com.unity.modules.physics": "1.0.0",
     "com.unity.modules.screencapture": "1.0.0",
     "com.unity.modules.ui": "1.0.0",
-    "com.unity.modules.uielements": "1.0.0",
     "com.unity.modules.unitywebrequest": "1.0.0",
     "com.unity.modules.unitywebrequestassetbundle": "1.0.0",
     "com.unity.modules.vr": "1.0.0"

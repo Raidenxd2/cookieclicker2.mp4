@@ -1,12 +1,15 @@
 {
     "name": "Unity.XR.OpenXR.Features.MockRuntime",
+    "rootNamespace": "",
     "references": [
         "Unity.XR.OpenXR",
         "Unity.XR.OpenXR.Editor",
         "Unity.InputSystem"
     ],
     "includePlatforms": [],
-    "excludePlatforms": [],
+    "excludePlatforms": [
+        "WebGL"
+    ],
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [

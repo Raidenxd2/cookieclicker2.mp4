@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem.UI;
+#if !CC2_REMOVE_VR_SUPPORT
 using UnityEngine.XR.Interaction.Toolkit.UI;
+#endif
 
 public class UIInputModuleManager : MonoBehaviour
 {
