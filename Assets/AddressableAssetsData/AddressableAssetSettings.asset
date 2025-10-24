@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 778049d47ab428742bcc77b6412b3a1d
   m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: abde9090b25f7ef9a3380ee342543521
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -46,10 +46,10 @@ MonoBehaviour:
   m_StripUnityVersionFromBundleBuild: 1
   m_DisableVisibleSubAssetRepresentations: 0
   m_BuiltInBundleNaming: 2
-  mBuiltInBundleCustomNaming: _
+  mBuiltInBundleCustomNaming: cc2
   m_MonoScriptBundleNaming: 2
   m_CheckForContentUpdateRestrictionsOption: 0
-  m_MonoScriptBundleCustomNaming: _
+  m_MonoScriptBundleCustomNaming: cc2
   m_RemoteCatalogBuildPath:
     m_Id: 4e6646e3f189a7846b33545516748d4b
   m_RemoteCatalogLoadPath:

@@ -97,9 +97,25 @@ public class BossCookiesLoader : MonoBehaviour
         game.FadeCanvasGroup.blocksRaycasts = true;
         await UniTask.WaitForSeconds(1);
 
-        Notification.instance.NotificationCanvas.renderMode = RenderMode.ScreenSpaceCamera;
-        Notification.instance.NotificationCanvas.transform.parent = notificationCanvasParent;
-        Notification.instance.NotificationCanvas.worldCamera = game.gameCamera;
+#if !CC2_REMOVE_VR_SUPPORT
+        if (!VRManager.instance.VREnabled)
+        {
+#endif
+            Notification.instance.NotificationCanvas.renderMode = RenderMode.ScreenSpaceCamera;
+            Notification.instance.NotificationCanvas.transform.parent = notificationCanvasParent;
+            Notification.instance.NotificationCanvas.worldCamera = game.gameCamera;
+#if !CC2_REMOVE_VR_SUPPORT
+        }
+#endif
+
+#if !CC2_REMOVE_VR_SUPPORT
+        if (VRManager.instance.VREnabled)
+        {
+            VRCanvas vrCanvas = Notification.instance.NotificationCanvas.GetComponent<VRCanvas>();
+            Notification.instance.NotificationCanvas.transform.SetPositionAndRotation(vrCanvas.newPos, Quaternion.Euler(vrCanvas.newRot));
+            Notification.instance.NotificationCanvas.transform.parent = notificationCanvasParent;
+        }
+#endif
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -107,8 +123,8 @@ public class BossCookiesLoader : MonoBehaviour
 #if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
-            Game.instance.XROrigin.transform.parent = MiniGameMine.instance.OldVRParent;
-            Game.instance.XROrigin.transform.SetPositionAndRotation(MiniGameMine.instance.OldVRPosition, MiniGameMine.instance.OldVRRotation);
+            Game.instance.XROrigin.transform.parent = BossCookiesGame.instance.OldVRParent;
+            Game.instance.XROrigin.transform.SetPositionAndRotation(BossCookiesGame.instance.OldVRPosition, BossCookiesGame.instance.OldVRRotation);
         }
 #endif
 

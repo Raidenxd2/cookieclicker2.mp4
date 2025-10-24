@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask dontRenderLayer;
     public LayerMask spinnerLayer;
     public bool canMove = true;
-    public bool IsOnKeyboardMouse;
 #if !CC2_DISABLEBOSSCOOKIESVRMODE
     private float horizontalInput;
     private float verticalInput;
@@ -63,14 +62,6 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;
 
         ResetJump();
-
-        Debug.Log("(PlayerMovement) Controller2: " + playerControls.devices[0].displayName);
-        Debug.Log(playerControls.devices[0].name);
-
-        if (playerControls.currentControlScheme.Contains("Keyboard") || playerControls.currentControlScheme.Contains("Mouse"))
-        {
-            IsOnKeyboardMouse = true;
-        }
     }
 
     private void FixedUpdate()

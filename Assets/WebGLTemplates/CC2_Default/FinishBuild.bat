@@ -1,0 +1,2 @@
+:Brotli is not here because neither itch.io or github pages supports brotli for some reason despite the fact that brotli has existed since like 2013
+gzipper compress ./ --gzip --gzip-level 9 --threshold 256000 --remove-larger

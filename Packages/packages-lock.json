@@ -174,7 +174,7 @@
         "com.unity.modules.jsonserialize": "1.0.0",
         "com.unity.rendering.light-transport": "1.0.1"
       },
-      "hash": "e917f5e8714cf6a1bb181404adb8a1553a9cf4f5"
+      "hash": "c95a5e3b7318ecea32a3eab423996f7d3723ccb8"
     },
     "com.unity.render-pipelines.universal": {
       "version": "https://github.com/Raidenxd2/com.unity.render-pipelines.universal.git#6000.1.13f1",

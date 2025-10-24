@@ -20,18 +20,10 @@ public class PlayerCam : MonoBehaviour
 
     [SerializeField] private PlayerInput playerControls;
 
-    private static bool playerHasJoined;
-
 #if !CC2_DISABLEBOSSCOOKIESVRMODE
     private void Start()
     {
         GetComponent<UniversalAdditionalCameraData>().renderPostProcessing = Game.instance.ad.PostProcessing;
-
-        if (!playerHasJoined)
-        {
-            gameObject.tag = "Player1Camera";
-            playerHasJoined = true;
-        }
 
         if (playerControls.devices[0].displayName.Contains("Keyboard") || playerControls.devices[0].displayName.Contains("Mouse"))
         {
@@ -53,19 +45,6 @@ public class PlayerCam : MonoBehaviour
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
 
         playerModel.rotation = Quaternion.Euler(0, yRotation, 0);
-    }
-
-    public static void ChangePlayerHasJoined()
-    {
-        playerHasJoined = false;
-    }
-#endif
-
-#if UNITY_EDITOR
-    [RuntimeInitializeOnLoadMethod]
-    public static void ResetValues()
-    {
-        playerHasJoined = false;
     }
 #endif
 }

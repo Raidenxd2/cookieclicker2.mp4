@@ -1231,11 +1231,19 @@ MonoBehaviour:
   HammerStrengthText: {fileID: 1235957774}
   HammerStrengthPriceText: {fileID: 1977641401}
   UI: {fileID: 1894575461}
+  NormalModeUI: {fileID: 711735637}
   NormalModeRoot: {fileID: 1989182166}
   VRModeRoot: {fileID: 1338249124}
   Player: {fileID: 1593798448}
+  VRCameraPosition: {fileID: 1707780512}
+  VRRoot: {fileID: 1707780512}
   ChooseModeScreen: {fileID: 987380580}
   GlobalDark: {fileID: 724898290}
+  NotificationPos: {x: 105, y: 3, z: -4}
+  NotificationRot: {x: 0, y: 90, z: 0}
+  OldVRPosition: {x: 0, y: 0, z: 0}
+  OldVRRotation: {x: 0, y: 0, z: 0, w: 0}
+  OldVRParent: {fileID: 0}
   references:
     version: 2
     RefIds: []
@@ -2466,9 +2474,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fedcd233387e999449a74acc15da88fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newPos: {x: 0, y: -6.56, z: 6}
+  newPos: {x: 105, y: 3, z: -4}
   newScale: {x: 0.005, y: 0.005, z: 0.005}
-  newRot: {x: 0, y: 0, z: 0}
+  newRot: {x: 0, y: 90, z: 0}
 --- !u!114 &711735634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3880,7 +3888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 106894221135080652, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -273.06006
+      value: -273.06003
       objectReference: {fileID: 0}
     - target: {fileID: 106894221135080653, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_text
@@ -5214,6 +5222,7 @@ GameObject:
   - component: {fileID: 1561233112}
   - component: {fileID: 1561233111}
   - component: {fileID: 1561233110}
+  - component: {fileID: 1561233113}
   m_Layer: 5
   m_Name: HitCookieButton
   m_TagString: Untagged
@@ -5334,6 +5343,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561233108}
   m_CullTransparentMesh: 1
+--- !u!114 &1561233113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561233108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cc246b72443a542b5909f6a0720013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonClick
+  UIClick: {fileID: 8300000, guid: 9f741f8f75d460a44bf205db8fc4792b, type: 3}
 --- !u!1001 &1593798446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5702,6 +5724,37 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1707780511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1707780512}
+  m_Layer: 0
+  m_Name: VRRoot
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1707780512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707780511}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 100, y: 2, z: -4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1839548627
 GameObject:
   m_ObjectHideFlags: 0
@@ -5868,9 +5921,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fedcd233387e999449a74acc15da88fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newPos: {x: 0, y: -6.56, z: 6}
+  newPos: {x: 105, y: 3, z: -4}
   newScale: {x: 0.005, y: 0.005, z: 0.005}
-  newRot: {x: 0, y: 0, z: 0}
+  newRot: {x: 0, y: 90, z: 0}
 --- !u!114 &1894575458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5939,7 +5992,7 @@ Canvas:
   m_GameObject: {fileID: 1894575455}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 2076334429}
   m_PlaneDistance: 5
   m_PixelPerfect: 0
@@ -6624,6 +6677,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 2076334430}
+  - {fileID: 1707780512}
   - {fileID: 2062162146}
   - {fileID: 394586712}
   - {fileID: 807214662}

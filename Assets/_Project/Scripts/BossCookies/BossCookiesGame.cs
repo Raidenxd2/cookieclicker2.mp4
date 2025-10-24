@@ -35,12 +35,18 @@ public class BossCookiesGame : MonoBehaviour
     [SerializeField] private TMP_Text HammerStrengthPriceText;
 
     [SerializeField] private Canvas UI;
+    [SerializeField] private Canvas NormalModeUI;
     [SerializeField] private GameObject NormalModeRoot;
     [SerializeField] private GameObject VRModeRoot;
     [SerializeField] private GameObject Player;
+    [SerializeField] private Transform VRCameraPosition;
+    [SerializeField] private Transform VRRoot;
 
     [SerializeField] private GameObject ChooseModeScreen;
     [SerializeField] private GameObject GlobalDark;
+
+    [SerializeField] private Vector3 NotificationPos;
+    [SerializeField] private Vector3 NotificationRot;
 
 #if !CC2_REMOVE_VR_SUPPORT
     public Vector3 OldVRPosition;
@@ -77,12 +83,16 @@ public class BossCookiesGame : MonoBehaviour
             OldVRRotation = Game.instance.XROrigin.transform.rotation;
             OldVRParent = Game.instance.XROrigin.transform.parent;
 
-            // Camera.SetActive(false);
+            Camera.gameObject.SetActive(false);
 
-            // Game.instance.XROrigin.transform.SetPositionAndRotation(VRCameraPosition.position, VRCameraPosition.rotation);
-            // Game.instance.XROrigin.transform.parent = Player;
+            Game.instance.XROrigin.transform.SetPositionAndRotation(VRCameraPosition.position, VRCameraPosition.rotation);
+            Game.instance.XROrigin.transform.parent = VRRoot;
 
-            // UI.transform.parent = Player;
+            UI.transform.parent = VRRoot;
+            NormalModeUI.transform.parent = VRRoot;
+
+            Notification.instance.NotificationCanvas.transform.SetPositionAndRotation(NotificationPos, Quaternion.Euler(NotificationRot));
+            Notification.instance.NotificationCanvas.transform.parent = VRRoot;
         }
 #endif
 
@@ -116,6 +126,14 @@ public class BossCookiesGame : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+#if !CC2_DISABLE_VR_MODE
+        if (VRManager.instance.VREnabled)
+        {
+            NormalModeUI.gameObject.SetActive(false);
+            Game.instance.XROrigin.SetActive(false);
+        }
+#endif
+
         NormalModeRoot.SetActive(false);
         VRModeRoot.SetActive(true);
         Camera.gameObject.SetActive(false);
@@ -144,9 +162,23 @@ public class BossCookiesGame : MonoBehaviour
             LeftArrow.SetActive(false);
         }
 
-        LMotion.Create(Camera.position, new Vector3(100, 3, BossCookieObjects[CurrentBossCookieObjectsIndex].transform.position.z), time)
+#if !CC2_REMOVE_VR_SUPPORT
+        if (VRManager.instance.VREnabled)
+        {
+            LMotion.Create(VRRoot.position, new Vector3(100, 3, BossCookieObjects[CurrentBossCookieObjectsIndex].transform.position.z), time)
+            .WithEase(ease)
+            .BindToPosition(VRRoot);
+        }
+        else
+        {
+#endif
+            LMotion.Create(Camera.position, new Vector3(100, 3, BossCookieObjects[CurrentBossCookieObjectsIndex].transform.position.z), time)
             .WithEase(ease)
             .BindToPosition(Camera);
+#if !CC2_REMOVE_VR_SUPPORT
+        }
+#endif
+        
     }
 
     public void Right()
@@ -159,9 +191,22 @@ public class BossCookiesGame : MonoBehaviour
             RightArrow.SetActive(false);
         }
 
-        LMotion.Create(Camera.position, new Vector3(100, 3, BossCookieObjects[CurrentBossCookieObjectsIndex].transform.position.z), time)
+#if !CC2_REMOVE_VR_SUPPORT
+        if (VRManager.instance.VREnabled)
+        {
+            LMotion.Create(VRRoot.position, new Vector3(100, 3, BossCookieObjects[CurrentBossCookieObjectsIndex].transform.position.z), time)
+            .WithEase(ease)
+            .BindToPosition(VRRoot);
+        }
+        else
+        {
+#endif
+            LMotion.Create(Camera.position, new Vector3(100, 3, BossCookieObjects[CurrentBossCookieObjectsIndex].transform.position.z), time)
             .WithEase(ease)
             .BindToPosition(Camera);
+#if !CC2_REMOVE_VR_SUPPORT
+        }
+#endif
     }
 
     public void HitCookie()

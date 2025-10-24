@@ -57,6 +57,17 @@
                 },
                 {
                     "name": "",
+                    "id": "e838ccba-1dbf-464f-ae58-5542f3b49683",
+                    "path": "<XRController>{RightHand}/{Primary2DAxis}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";XR",
+                    "action": "Camera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d9edc138-9c74-473d-bd4e-02278d2110ff",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -69,7 +80,7 @@
                 {
                     "name": "",
                     "id": "f7045005-196b-444c-8762-b39ec6baee28",
-                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "path": "<XRController>{RightHand}/primaryButton",
                     "interactions": "",
                     "processors": "",
                     "groups": ";XR",
@@ -157,7 +168,7 @@
                 {
                     "name": "",
                     "id": "0d6cf82f-fe09-41fe-bb48-dd4d03fe0b1a",
-                    "path": "<XRController>{RightHand}/{PrimaryTrigger}",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": ";XR",
