@@ -1,18 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization;
 using TMPro;
+using Cysharp.Threading.Tasks;
 
 public class LocaleDropdown : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown _localesDropdown;
  
-    private IEnumerator Start()
+    private void Start()
     {
-        yield return LocalizationSettings.InitializationOperation;
-
         List<TMP_Dropdown.OptionData> options = new();
         int selectedLocale = 0;
         
@@ -30,6 +28,19 @@ public class LocaleDropdown : MonoBehaviour
 
     private static void OnLocaleChanged(int index)
     {
+        Debug.Log(index);
+        if (index == 3)
+        {
+            if (FontLoader.HasLoadedJapaneseFont)
+            {
+                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
+            }
+            else
+            {
+                FontLoader.instance.LoadJapaneseFont().Forget();
+            }
+            return;
+        }
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
     }
 }

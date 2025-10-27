@@ -1,6 +1,8 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
+#endif
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -30,7 +32,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Transform oldParent = null;
 #endif
+#if ENABLE_INPUT_SYSTEM
     [SerializeField] private PlayerInput playerControls;
+#endif
     [SerializeField] private PlayerFade fade;
 
     [SerializeField] private float moveSpeed = 10;

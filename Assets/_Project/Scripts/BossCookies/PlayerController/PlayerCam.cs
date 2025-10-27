@@ -1,5 +1,7 @@
 using UnityEngine;
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
+#endif
 using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(Camera))]
@@ -18,7 +20,9 @@ public class PlayerCam : MonoBehaviour
     private float yRotation;
 #endif
 
+#if ENABLE_INPUT_SYSTEM
     [SerializeField] private PlayerInput playerControls;
+#endif
 
 #if !CC2_DISABLEBOSSCOOKIESVRMODE
     private void Start()

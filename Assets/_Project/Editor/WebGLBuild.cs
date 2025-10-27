@@ -9,7 +9,7 @@ public class WebGLBuild : Editor
     [MenuItem("Tools/Prepare WebGL Build")]
     public static void MakeWebGLBuild()
     {
-        if (!EditorUtility.DisplayDialog("", "Are you sure you want to prepare a WebGL build? This will:\n\nRemove all VR and XR packages\nRemove XR Interaction Toolkit Samples\nRemove Input System package\n\nThis operation is destructive.", "Yes", "No"))
+        if (!EditorUtility.DisplayDialog("", "Are you sure you want to prepare a WebGL build? This will:\n\nRemove all VR and XR packages\nRemove XR Interaction Toolkit Samples\nRemove Input System package\nRemove _Project/Resources\nRemove Normal Map textures\nRemove Plaster001 textures\nRemove Reflection Probe textures\n\nThis operation is destructive.", "Yes", "No"))
         {
             return;
         }
@@ -42,6 +42,18 @@ public class WebGLBuild : Editor
             Directory.Delete(Application.dataPath + "/../Packages/com.unity.xr.interaction.toolkit", true);
         }
 
+        if (Directory.Exists(Application.dataPath + "/_Project/Resources"))
+        {
+            AssetDatabase.DeleteAsset("Assets/_Project/Resources");
+        }
+
+        CheckIfFileExistsAndDelete(Application.dataPath + "/_Project/Textures/Plaster001/Plaster001_2K-PNG_Color.png");
+        CheckIfFileExistsAndDelete(Application.dataPath + "/_Project/Textures/Plaster001/Plaster001_NDR.png");
+        CheckIfFileExistsAndDelete(Application.dataPath + "/_Project/Themes/content/SpaceTheme/Textures/_Normal.png");
+        CheckIfFileExistsAndDelete(Application.dataPath + "/_Project/Themes/content/ForestTheme/Textures/ForestThemeAtlasNormal.png");
+        CheckIfFileExistsAndDelete(Application.dataPath + "/_Project/Themes/content/ForestTheme/ForestTheme_Scene/ReflectionProbe-0.exr");
+        CheckIfFileExistsAndDelete(Application.dataPath + "/_Project/Themes/content/SpaceTheme/SpaceTheme_Scene/ReflectionProbe-0.exr");
+
         if (!File.Exists(Application.dataPath + "/WebGL_PackagesRemoved"))
         {
             string[] packages = new[] { "dev.voltstro.unitycommandlineparser", "com.unity.xr.interaction.toolkit", "com.unity.xr.management", "com.unity.xr.openxr", "com.unity.inputsystem", "com.unity.modules.vr", "com.unity.modules.screencapture" };
@@ -54,6 +66,18 @@ public class WebGLBuild : Editor
 
             EditorUtility.ClearProgressBar();
             return;
+        }
+    }
+
+    private static void CheckIfFileExistsAndDelete(string path)
+    {
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+            if (File.Exists(path + ".meta"))
+            {
+                File.Delete(path + ".meta");
+            }
         }
     }
 

@@ -25,7 +25,7 @@ MonoBehaviour:
   - Freetype2 Postscript
   - GPU Instancing
   - Mesh Blend Shapes
-  - Mesh Combiner
+  - Mesh Skinning
   - Newtonsoft Json.NET
   - ParticleSystem Events
   - ParticleSystem Gradients
@@ -47,6 +47,9 @@ MonoBehaviour:
   - ParticleSystem Sub Emitters Module
   - ParticleSystem Trails Module
   - ParticleSystem Triggers Module
-  - System.ComponentModel Extra
+  - System.Data
+  - System.Xml
+  - Texture Decompression ASTC
   - Texture Decompression ETC
+  - UI Toolkit Framework
   - WebGPU Support

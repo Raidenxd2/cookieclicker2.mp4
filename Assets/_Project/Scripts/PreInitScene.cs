@@ -4,19 +4,18 @@ using System.IO;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 
 public class PreInitScene : MonoBehaviour
 {
+    public static bool SetJapaneseLanguage;
+
 #if UNITY_STANDALONE_WIN
     [DllImport("BeanShootoutNative_DarkMode", EntryPoint = "DllMain")]
     private static extern void _();
-#endif
 
     private void Awake()
     {
-#if UNITY_STANDALONE_WIN
         if (!Application.isEditor)
         {
             try
@@ -28,8 +27,8 @@ public class PreInitScene : MonoBehaviour
                 Debug.LogException(ex);
             }
         }
-#endif
     }
+#endif
 
     private void Start()
     {
@@ -45,8 +44,14 @@ public class PreInitScene : MonoBehaviour
 
         Application.backgroundLoadingPriority = ThreadPriority.Low;
 
-        AsyncOperationHandle initHandle = LocalizationSettings.InitializationOperation;
-        await initHandle;
+        if (PlayerPrefs.GetString("selected-locale", "en") == "ja")
+        {
+            SetJapaneseLanguage = true;
+            PlayerPrefs.SetString("selected-locale", "en");
+            PlayerPrefs.Save();
+        }
+
+        await LocalizationSettings.InitializationOperation;
 
         if (!Directory.Exists(Application.persistentDataPath + "/Saves"))
         {

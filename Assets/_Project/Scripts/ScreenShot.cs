@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.IO;
 using TMPro;
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
+#endif
 
 public class ScreenShot : MonoBehaviour 
 {

@@ -1,5 +1,7 @@
 using UnityEngine;
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
+#endif
 using UnityEngine.Rendering.Universal;
 
 public class PlayerCamVR : MonoBehaviour
@@ -10,8 +12,11 @@ public class PlayerCamVR : MonoBehaviour
     public Transform orientation;
     public Transform playerModel;
 
+#if ENABLE_INPUT_SYSTEM
     [SerializeField] private PlayerInput playerControls;
+#endif
 
+#if !CC2_DISABLEBOSSCOOKIESVRMODE
     private float yRotation;
 
     private void Start()
@@ -31,4 +36,5 @@ public class PlayerCamVR : MonoBehaviour
 
         playerModel.rotation = Quaternion.Euler(0, yRotation, 0);
     }
+#endif
 }
