@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,9 @@ using UnityEngine.SceneManagement;
 public class PreInitScene : MonoBehaviour
 {
     public static bool SetJapaneseLanguage;
+
+    [SerializeField] private GameObject FatalErrorScreen;
+    [SerializeField] private TMP_Text FatalErrorText;
 
 #if UNITY_STANDALONE_WIN
     [DllImport("BeanShootoutNative_DarkMode", EntryPoint = "DllMain")]
@@ -50,7 +54,16 @@ public class PreInitScene : MonoBehaviour
             PlayerPrefs.SetString("selected-locale", "en");
             PlayerPrefs.Save();
         }
-
+        
+#if !UNITY_WEBGL        
+        if (!Directory.Exists(Application.streamingAssetsPath + "/aa") && !Application.isEditor)
+        {
+            FatalErrorScreen.SetActive(true);
+            FatalErrorText.text = "Addressables content (" + Application.streamingAssetsPath + "/aa" + ") is missing.";
+            return;
+        }
+#endif        
+        
         await LocalizationSettings.InitializationOperation;
 
         if (!Directory.Exists(Application.persistentDataPath + "/Saves"))

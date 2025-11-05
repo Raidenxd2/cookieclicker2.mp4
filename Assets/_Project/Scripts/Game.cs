@@ -3,7 +3,6 @@ using Cysharp.Threading.Tasks;
 using LoggerSystem;
 using SimpleFileBrowser;
 using System;
-using System.Collections;
 using System.IO;
 using TMPro;
 using UnityEngine;
@@ -156,7 +155,6 @@ public class Game : MonoBehaviour
     private bool AllowUpdate;
 
     public WaitForSeconds oneSecond;
-    public WaitForSeconds sixtySeconds;
 
     private void Awake()
     {
@@ -202,11 +200,10 @@ public class Game : MonoBehaviour
         }
 
         oneSecond = new(1);
-        sixtySeconds = new(60);
 
         offlineManager.LoadOfflineTime();
-        StartCoroutine(AutoSave());
-        StartCoroutine(Tick());
+        AutoSave().Forget();
+        Tick().Forget();
         CheckPrices();
 
         MusicSource = GameObject.FindGameObjectWithTag("music");
@@ -297,19 +294,19 @@ public class Game : MonoBehaviour
         }
     }
 
-    IEnumerator AutoSave()
+    private async UniTaskVoid AutoSave()
     {
-        yield return sixtySeconds;
+        await UniTask.WaitForSeconds(60);
         SavePlayer();
-        StartCoroutine(AutoSave());
+        AutoSave().Forget();
     }
 
-    IEnumerator Tick()
+    private async UniTaskVoid Tick()
     {
-        yield return oneSecond;
+        await UniTask.WaitForSeconds(1);
         Cookies += CPS;
         TimePlayed += 1;
-        StartCoroutine(Tick());
+        Tick().Forget();
     }
 
     public void SavePlayer()
@@ -382,7 +379,7 @@ public class Game : MonoBehaviour
         Drills = BigDouble.Parse(BetterPrefs.GetString("Drills", "0"));
         DrillPrice = BigDouble.Parse(BetterPrefs.GetString("DrillPrice", "0"));
         ResearchFactory = BetterPrefs.GetBool("ResearchFactory", false);
-        offlineManager.offlineProgressCheck = BetterPrefs.GetBool("offlineProgressCheck", false); ;
+        offlineManager.offlineProgressCheck = BetterPrefs.GetBool("offlineProgressCheck", false);
         offlineManager.OfflineTime = BetterPrefs.GetString("OfflineTime", "");
         Sounds = BetterPrefs.GetBool("Sounds", false);
         Music = BetterPrefs.GetBool("Music", false);
@@ -595,14 +592,7 @@ public class Game : MonoBehaviour
             return;
         }
 
-        if (VRMirrorCamera)
-        {
-            vrpo.MirrorCamera.SetActive(true);
-        }
-        else
-        {
-            vrpo.MirrorCamera.SetActive(false);
-        }
+        vrpo.MirrorCamera.SetActive(VRMirrorCamera);
     }
 #endif
 
@@ -623,7 +613,7 @@ public class Game : MonoBehaviour
     private void UpdateAudio()
     {
         // music & sounds
-        if (Music == false)
+        if (!Music)
         {
             MusicAudioSource.volume = 0;
         }
@@ -631,7 +621,7 @@ public class Game : MonoBehaviour
         {
             MusicAudioSource.volume = 1;
         }
-        if (Sounds == false)
+        if (!Sounds)
         {
             SoundAudioSource.volume = 0;
         }
@@ -647,7 +637,7 @@ public class Game : MonoBehaviour
     }
 
 #if !CC2_REMOVE_VR_SUPPORT
-    public void LoadVRFallbackScene()
+    private void LoadVRFallbackScene()
     {
         LoadVRFallbackSceneAsync().Forget();
     }

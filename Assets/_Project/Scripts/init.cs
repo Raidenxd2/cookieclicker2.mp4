@@ -10,8 +10,8 @@ public class Init : MonoBehaviour
 {
     public GameObject DDOL;
 
-    public static bool HasLoaded;
-    public static bool HasLoadedSharedData;
+    private static bool HasLoaded;
+    private static bool HasLoadedSharedData;
 
     [SerializeField] private ThemeSO DefaultTheme;
 
@@ -56,7 +56,7 @@ public class Init : MonoBehaviour
         if (!string.IsNullOrEmpty(Game.importPath))
         {
             File.Delete(Application.persistentDataPath + "/Saves/Default.cookie");
-            File.WriteAllText(Application.persistentDataPath + "/Saves/Default.cookie", FileBrowserHelpers.ReadTextFromFile(Game.importPath));
+            await File.WriteAllTextAsync(Application.persistentDataPath + "/Saves/Default.cookie", FileBrowserHelpers.ReadTextFromFile(Game.importPath));
             Game.importPath = null;
         }
 
