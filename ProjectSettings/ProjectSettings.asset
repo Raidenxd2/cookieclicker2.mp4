@@ -148,6 +148,7 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: -944628639613478452, guid: f6942149c81fd7d4a9c839ed3180c690, type: 3}
   - {fileID: 11400000, guid: 5a6050f4d65b99340992ab87fbbe1f03, type: 2}
+  - {fileID: 11400000, guid: b7224aa7088bbee4f93405520d8919f4, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -468,7 +469,9 @@ PlayerSettings:
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
   m_TemplateCustomTags:
+    DESCRIPTION: 
     PRODUCT_DESCRIPTION: Cookieclicker2.mp4
+    WEBXR_POLYFILL_CONFIG: 
   mobileMTRendering:
     Android: 1
     iPhone: 1
@@ -745,7 +748,7 @@ PlayerSettings:
   webGLDebugSymbols: 1
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: PROJECT:CC2_PWA
+  webGLTemplate: PROJECT:WebXRFullView2020
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 2
@@ -779,7 +782,7 @@ PlayerSettings:
     Stadia: PROBUILDER_EXPERIMENTAL_FEATURES
     Standalone: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS;SERIAL_UNITASK
     VisionOS: 
-    WebGL: CC2_REMOVE_VR_SUPPORT;CC2_DISABLELOGGING;CC2_DISABLEBOSSCOOKIESVRMODE;SERIAL_UNITASK
+    WebGL: CC2_DISABLELOGGING;CC2_DISABLEBOSSCOOKIESVRMODE;SERIAL_UNITASK
     Windows Store Apps: PROBUILDER_EXPERIMENTAL_FEATURES;USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
     XboxOne: PROBUILDER_EXPERIMENTAL_FEATURES
     iPhone: 
@@ -792,7 +795,7 @@ PlayerSettings:
   il2cppCompilerConfiguration:
     Android: 2
     Standalone: 2
-    WebGL: 2
+    WebGL: 1
   il2cppCodeGeneration:
     Android: 1
     Standalone: 1
@@ -911,7 +914,7 @@ PlayerSettings:
   qnxGraphicConfPath: 
   apiCompatibilityLevel: 6
   captureStartupLogs: {}
-  activeInputHandler: 1
+  activeInputHandler: 2
   windowsGamepadBackendHint: 0
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0

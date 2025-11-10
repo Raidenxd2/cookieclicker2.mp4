@@ -2,6 +2,8 @@
   "dependencies": {
     "com.annulusgames.lit-motion": "2.0.1",
     "com.cysharp.unitask": "2.5.10",
+    "com.de-panther.webxr": "0.22.1",
+    "com.de-panther.webxr-interactions": "0.22.0",
     "com.raiden.assetbundleassetreference": "https://github.com/Raidenxd2/AssetBundleAssetReference.git",
     "com.raiden.buildmanager": "https://github.com/Raidenxd2/BuildManager.git#v2.3.0",
     "com.raiden.serial": "2.0.1",
@@ -51,7 +53,9 @@
         "dev.voltstro.unitycommandlineparser",
         "org.nuget.mcmaster.extensions.commandlineutils",
         "org.nuget.system.componentmodel.annotations",
-        "com.yasirkula.simplefilebrowser"
+        "com.yasirkula.simplefilebrowser",
+        "com.de-panther.webxr",
+        "com.de-panther.webxr-interactions"
       ]
     }
   ]

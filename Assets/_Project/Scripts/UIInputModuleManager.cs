@@ -4,6 +4,9 @@ using UnityEngine.EventSystems;
 #elif !UNITY_WEBGL
 using UnityEngine.InputSystem.UI;
 #endif
+#if UNITY_WEBGL && !CC2_REMOVE_VR_SUPPORT 
+using UnityEngine.InputSystem.UI;
+#endif    
 #if !CC2_REMOVE_VR_SUPPORT
 using UnityEngine.XR.Interaction.Toolkit.UI;
 #endif

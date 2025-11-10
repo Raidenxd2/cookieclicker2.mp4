@@ -18,6 +18,23 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
+    "com.de-panther.webxr": {
+      "version": "0.22.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.xr.management": "3.2.13"
+      },
+      "url": "https://package.openupm.com"
+    },
+    "com.de-panther.webxr-interactions": {
+      "version": "file:com.de-panther.webxr-interactions",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.de-panther.webxr": "0.22.0"
+      }
+    },
     "com.raiden.assetbundleassetreference": {
       "version": "https://github.com/Raidenxd2/AssetBundleAssetReference.git",
       "depth": 0,

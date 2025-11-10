@@ -35,7 +35,12 @@ public class VRManager : MonoBehaviour
         {
             VREnabled = true;
         }
-
+        
+#if UNITY_WEBGL && !CC2_REMOVE_VR_SUPPORT
+        VREnabled = true;
+        return;
+#endif        
+        
         if (VREnabled)
         {
             Cursor.visible = false;
