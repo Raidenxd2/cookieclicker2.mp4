@@ -143,9 +143,8 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 2.1.0-PublicRelease-OS_11152 (open-source)
+  bundleVersion: 2.1.0-PublicRelease-OS_11153 (open-source, 2539f8b59d1bdcb68b680497cf7f1a6caa3b97cd)
   preloadedAssets:
-  - {fileID: 0}
   - {fileID: -944628639613478452, guid: f6942149c81fd7d4a9c839ed3180c690, type: 3}
   - {fileID: 11400000, guid: 5a6050f4d65b99340992ab87fbbe1f03, type: 2}
   - {fileID: 11400000, guid: b7224aa7088bbee4f93405520d8919f4, type: 2}
@@ -173,12 +172,12 @@ PlayerSettings:
     Android: com.raiden.cookieclicker2mp4_os2
     Standalone: com.raiden.cookieclicker2mp4-os
   buildNumber:
-    Standalone: 11152
+    Standalone: 11153
     VisionOS: 0
     iPhone: 25
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 11152
+  AndroidBundleVersionCode: 11153
   AndroidMinSdkVersion: 29
   AndroidTargetSdkVersion: 36
   AndroidPreferredInstallLocation: 0
@@ -447,7 +446,7 @@ PlayerSettings:
   m_BuildTargetGraphicsJobMode: []
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: WindowsStandaloneSupport
-    m_APIs: 0200000012000000
+    m_APIs: 02000000
     m_Automatic: 0
   - m_BuildTarget: MacStandaloneSupport
     m_APIs: 10000000
@@ -814,7 +813,7 @@ PlayerSettings:
     PS5: 1
     QNX: 1
     Stadia: 1
-    Standalone: 3
+    Standalone: 0
     VisionOS: 1
     WebGL: 3
     Windows Store Apps: 1
