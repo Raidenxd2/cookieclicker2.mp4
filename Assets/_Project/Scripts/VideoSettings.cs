@@ -8,7 +8,6 @@ public class VideoSettings : MonoBehaviour
 {
     [SerializeField] private UniversalRenderPipelineAsset URPAsset;
 
-    [SerializeField] private TMP_Dropdown GraphicsAPIDropdown;
     [SerializeField] private TMP_Dropdown WindowModeDropdown;
     [SerializeField] private TMP_Dropdown ResolutionDropdown;
     [SerializeField] private TMP_Dropdown AADropdown;
@@ -26,11 +25,6 @@ public class VideoSettings : MonoBehaviour
 #if UNITY_STANDALONE
     private void Start()
     {
-        if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
-        {
-            GraphicsAPIDropdown.gameObject.SetActive(true);
-        }
-
         AddOptionsToDropdown();
 
         if (!BetterPrefs.GetBool("VideoSettings_Setup", false))
@@ -41,8 +35,6 @@ public class VideoSettings : MonoBehaviour
         {
             LoadSettings();
         }
-
-        GraphicsAPIDropdown.onValueChanged.AddListener(ChangeGraphicsAPI);
     }
 
     private void ResetSettings()
@@ -51,7 +43,6 @@ public class VideoSettings : MonoBehaviour
         BetterPrefs.SetInt("WindowMode", 1);
         BetterPrefs.SetInt("GRAPHICS_AA", 1);
         BetterPrefs.SetBool("GRAPHICS_VSync", true);
-        PlayerPrefs.SetInt("GraphicsAPI", 0);
     }
 
     private void AddOptionsToDropdown()
@@ -101,7 +92,6 @@ public class VideoSettings : MonoBehaviour
     {
         ResolutionDropdown.value = BetterPrefs.GetInt("ResolutionIndex", 0);
         WindowModeDropdown.value = BetterPrefs.GetInt("WindowMode", 1);
-        GraphicsAPIDropdown.value = PlayerPrefs.GetInt("GraphicsAPI", 0);
         AADropdown.value = BetterPrefs.GetInt("GRAPHICS_AA", 1);
         VSyncToggle.isOn = BetterPrefs.GetBool("GRAPHICS_VSync", true);
         SetResolution(BetterPrefs.GetInt("ResolutionIndex", 1));
@@ -185,15 +175,6 @@ public class VideoSettings : MonoBehaviour
                 URPAsset.msaaSampleCount = 8;
                 break;
         }
-#endif
-    }
-
-    public void ChangeGraphicsAPI(int val)
-    {
-#if UNITY_STANDALONE
-        PlayerPrefs.SetInt("GraphicsAPI", val);
-
-        GameRestartRequired.SetActive(true);
 #endif
     }
 }

@@ -43,14 +43,14 @@
       "hash": "c55a688ec5d7b66533a2c699326873bde322175e"
     },
     "com.raiden.buildmanager": {
-      "version": "https://github.com/Raidenxd2/BuildManager.git#v2.3.0",
+      "version": "https://github.com/Raidenxd2/BuildManager.git#v2.5.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "8ed90f7528cf9161e6c7b2fc7476899ee6c2399a"
+      "hash": "1fdaa3e216a1b222ef146448b8bb51abfb596e4e"
     },
     "com.raiden.serial": {
-      "version": "2.0.1",
+      "version": "2.0.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -58,12 +58,26 @@
       },
       "url": "https://package.openupm.com"
     },
+    "com.raiden.shaderstripper": {
+      "version": "https://github.com/Raidenxd2/ShaderStripper.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "be83a08ce1f6be3444c0a3911bd23e472de853a4"
+    },
     "com.raiden.sharedshaders": {
       "version": "https://github.com/Raidenxd2/SharedShaders.git#1.1.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "c2aedbb25c21d17cee62696c82f62a9c223d40c5"
+    },
+    "com.raiden.signaturealwaysfulltrustpatch": {
+      "version": "https://github.com/Raidenxd2/UnityPackageSignatureAlwaysFullTrustPatch.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "931dbce6b208a94fc96e9ad5878eaf081f8ebc8c"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -105,11 +119,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collections": {
-      "version": "2.5.7",
+      "version": "2.6.2",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.burst": "1.8.19",
+        "com.unity.burst": "1.8.23",
         "com.unity.mathematics": "1.3.2",
         "com.unity.test-framework": "1.4.6",
         "com.unity.nuget.mono-cecil": "1.11.5",
@@ -118,7 +132,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.editorcoroutines": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
@@ -149,12 +163,13 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.inputsystem": {
-      "version": "file:com.unity.inputsystem",
+      "version": "1.16.0",
       "depth": 0,
-      "source": "embedded",
+      "source": "registry",
       "dependencies": {
         "com.unity.modules.uielements": "1.0.0"
-      }
+      },
+      "url": "https://packages.unity.com"
     },
     "com.unity.localization": {
       "version": "https://github.com/Raidenxd2/com.unity.localization.git",
@@ -166,7 +181,7 @@
       "hash": "45ba2fa174445eca06b1fc119f7cc239df408dd6"
     },
     "com.unity.mathematics": {
-      "version": "1.3.2",
+      "version": "1.3.3",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
@@ -186,7 +201,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.nuget.mono-cecil": {
-      "version": "1.11.5",
+      "version": "1.11.6",
       "depth": 2,
       "source": "registry",
       "dependencies": {},
@@ -206,7 +221,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.render-pipelines.core": {
-      "version": "https://github.com/Raidenxd2/com.unity.render-pipelines.core.git#6000.1.13f1",
+      "version": "https://github.com/Raidenxd2/com.unity.render-pipelines.core.git#6000.3.0f1",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -216,21 +231,20 @@
         "com.unity.collections": "2.4.3",
         "com.unity.modules.physics": "1.0.0",
         "com.unity.modules.terrain": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0",
-        "com.unity.rendering.light-transport": "1.0.1"
+        "com.unity.modules.jsonserialize": "1.0.0"
       },
-      "hash": "c95a5e3b7318ecea32a3eab423996f7d3723ccb8"
+      "hash": "bd331406805d8aaee18d1ee1e44287b2aa27c8e8"
     },
     "com.unity.render-pipelines.universal": {
-      "version": "https://github.com/Raidenxd2/com.unity.render-pipelines.universal.git#6000.1.13f1",
+      "version": "https://github.com/Raidenxd2/com.unity.render-pipelines.universal.git#6000.3.0f1",
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.unity.render-pipelines.core": "17.1.0",
-        "com.unity.shadergraph": "17.1.0",
+        "com.unity.render-pipelines.core": "17.3.0",
+        "com.unity.shadergraph": "17.3.0",
         "com.unity.render-pipelines.universal-config": "17.0.3"
       },
-      "hash": "73ffeaca0b761bd972cc391bfeb548df3410df43"
+      "hash": "4f6ec7b507c773413fb755aa64e87093678de8cc"
     },
     "com.unity.render-pipelines.universal-config": {
       "version": "17.0.3",
@@ -238,16 +252,6 @@
       "source": "builtin",
       "dependencies": {
         "com.unity.render-pipelines.core": "17.0.3"
-      }
-    },
-    "com.unity.rendering.light-transport": {
-      "version": "1.0.1",
-      "depth": 1,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.collections": "2.2.0",
-        "com.unity.mathematics": "1.2.4",
-        "com.unity.modules.terrain": "1.0.0"
       }
     },
     "com.unity.scriptablebuildpipeline": {
@@ -261,25 +265,25 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.searcher": {
-      "version": "4.9.3",
+      "version": "4.9.4",
       "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.settings-manager": {
-      "version": "2.1.0",
+      "version": "2.1.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.shadergraph": {
-      "version": "17.2.0",
+      "version": "17.3.0",
       "depth": 1,
       "source": "builtin",
       "dependencies": {
-        "com.unity.render-pipelines.core": "17.2.0",
+        "com.unity.render-pipelines.core": "17.3.0",
         "com.unity.searcher": "4.9.3"
       }
     },
@@ -301,14 +305,13 @@
       "hash": "98ce4b065b0005b6b49736f2e4adf4399b91fe12"
     },
     "com.unity.ugui": {
-      "version": "https://github.com/Raidenxd2/com.unity.ugui.git",
+      "version": "2.0.0",
       "depth": 0,
-      "source": "git",
+      "source": "builtin",
       "dependencies": {
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
-      },
-      "hash": "47a99bda57812c1ff78fec151241a42c8ea086f3"
+      }
     },
     "com.unity.web.stripping-tool": {
       "version": "1.2.0",
@@ -330,22 +333,23 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.interaction.toolkit": {
-      "version": "file:com.unity.xr.interaction.toolkit",
+      "version": "3.3.0",
       "depth": 0,
-      "source": "embedded",
+      "source": "registry",
       "dependencies": {
+        "com.unity.ugui": "1.0.0",
+        "com.unity.modules.xr": "1.0.0",
         "com.unity.inputsystem": "1.8.1",
         "com.unity.mathematics": "1.2.6",
-        "com.unity.ugui": "1.0.0",
-        "com.unity.xr.core-utils": "2.4.0",
         "com.unity.modules.audio": "1.0.0",
         "com.unity.modules.imgui": "1.0.0",
-        "com.unity.modules.physics": "1.0.0",
-        "com.unity.modules.xr": "1.0.0"
-      }
+        "com.unity.xr.core-utils": "2.4.0",
+        "com.unity.modules.physics": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
     },
     "com.unity.xr.legacyinputhelpers": {
-      "version": "2.1.12",
+      "version": "2.1.13",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -367,46 +371,22 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.openxr": {
-      "version": "file:com.unity.xr.openxr",
+      "version": "1.16.0",
       "depth": 0,
-      "source": "embedded",
+      "source": "registry",
       "dependencies": {
-        "com.unity.xr.management": "4.4.0",
-        "com.unity.xr.legacyinputhelpers": "2.1.2",
         "com.unity.inputsystem": "1.6.3",
-        "com.unity.xr.core-utils": "2.3.0"
-      }
+        "com.unity.xr.core-utils": "2.3.0",
+        "com.unity.xr.management": "4.4.0",
+        "com.unity.xr.legacyinputhelpers": "2.1.2"
+      },
+      "url": "https://packages.unity.com"
     },
     "com.yasirkula.simplefilebrowser": {
       "version": "file:com.yasirkula.simplefilebrowser",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
-    },
-    "dev.voltstro.unitycommandlineparser": {
-      "version": "2.1.2",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "org.nuget.mcmaster.extensions.commandlineutils": "4.0.1"
-      },
-      "url": "https://package.openupm.com"
-    },
-    "org.nuget.mcmaster.extensions.commandlineutils": {
-      "version": "4.0.1",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "org.nuget.system.componentmodel.annotations": "5.0.0"
-      },
-      "url": "https://package.openupm.com"
-    },
-    "org.nuget.system.componentmodel.annotations": {
-      "version": "5.0.0",
-      "depth": 2,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://package.openupm.com"
     },
     "com.unity.modules.animation": {
       "version": "1.0.0",

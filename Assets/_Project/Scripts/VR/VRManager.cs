@@ -1,5 +1,6 @@
 using UnityEngine;
 #if !CC2_REMOVE_VR_SUPPORT
+using System;
 using UnityEngine.XR.Management;
 #endif
 
@@ -14,10 +15,13 @@ public class VRManager : MonoBehaviour
 
     public static VRManager instance;
 
-    [UnityCommandLineParser.CommandLineCommand("vr")]
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     public static void EnableVR()
     {
-        VRBootEnabled = true;
+        if (Environment.CommandLine.Contains("-vr"))
+        {
+            VRBootEnabled = true;
+        }
     }
 
     private void Awake()

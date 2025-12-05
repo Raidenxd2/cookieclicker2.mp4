@@ -17,13 +17,15 @@ MonoBehaviour:
   VersionPrefix: 2.1.0-PublicRelease-OS
   ExeName: Cookieclicker2.mp4
   DedicatedServerBuild: 0
-  BuildAddressables: 0
+  BuildAddressables: 1
   RemoveManifestFilesFromAssetBundleBuild: 0
-  BuildAssetBundles: 0
+  BuildAssetBundles: 1
   DeleteBundlesBeforeBuilding: 0
   CopyPDBFiles: 0
   RemoveBurstDebugInformation: 1
   IncrementBuildNumber: 1
+  AddGitCommitHashToVersion: 1
+  AndroidTextureSubtarget: 6
   PlayerBuildOptions: 8
   AssetBundleBuildOptions: 32768
   CompressionType: 0
