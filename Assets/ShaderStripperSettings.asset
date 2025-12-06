@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a43fef584e4a5ba4ce43d552ac5384, type: 3}
+  m_Name: ShaderStripperSettings
+  m_EditorClassIdentifier: com.raiden.shaderstripper.Editor::ShaderStripperSettings
+  DebugMode: 0
+  ShaderKeywordNames:
+  - _RCAS
+  - _DITHERING
+  - _FXAA
+  - _FILM_GRAIN
+  - _SMAA_PRESET_LOW
+  - _SMAA_PRESET_MEDIUM
+  - _SMAA_PRESET_HIGH
+  - TAA_LOW_PRECISION_SOURCE
+  - _CHROMATIC_ABERRATION
+  - _DISTORTION
+  ShadersToStrip:
+  - Hidden/Internal-Debug
+  - Hidden/Internal-ODSWorldTexture
+  - Hidden/Internal-UIRDefaut
+  - Hidden/Physics2D
+  - Hidden/Terrain
+  - Hidden/Universal Render Pipeline/BokehDepthOfField
+  - Hidden/Universal Render Pipeline/CameraMotionBlur
+  - Hidden/Universal Render Pipeline/CameraMotionVectors
+  - Hidden/Universal Render Pipeline/Edge Adaptive Spatial Upsampling
+  - Hidden/Universal Render Pipeline/GaussianDepthOfField
+  - Hidden/Universal Render Pipeline/PaniniProjection
+  - Hidden/Universal Render Pipeline/SubpixelMorphologicalAntialiasing
+  - Hidden/Universal Render Pipeline/TemporalAA
+  - Hidden/Universal Render Pipeline/XRMotionVector
+  - Hidden/Universal/HDRDebugView
+  - Legacy Shaders/Particles/Alpha Blended Premultiply
