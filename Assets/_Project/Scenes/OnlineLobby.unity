@@ -11000,6 +11000,8 @@ MonoBehaviour:
   User: {fileID: 3987992361397619785, guid: 806ce387e95fdc14b8f150297886b477, type: 3}
   UserParent: {fileID: 1267294203}
   OnlineLobbyManagerHostObjectGO: {fileID: 5033777115622894892, guid: fc4cd4f09d09c2d4fad12110f845e581, type: 3}
+  pp_normal: {fileID: 419731042}
+  GameCamera_AdditionalData: {fileID: 719549332}
   references:
     version: 2
     RefIds: []

@@ -7,6 +7,7 @@ using Unity.Netcode.Transports.UTP;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Networking;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class OnlineLobbyManager : MonoBehaviour
@@ -44,6 +45,9 @@ public class OnlineLobbyManager : MonoBehaviour
     [SerializeField] private Transform UserParent;
 
     [SerializeField] private GameObject OnlineLobbyManagerHostObjectGO;
+    
+    public GameObject pp_normal;
+    public UniversalAdditionalCameraData GameCamera_AdditionalData;
 
     private bool Connecting;
     private bool Disconnecting;
@@ -78,6 +82,17 @@ public class OnlineLobbyManager : MonoBehaviour
         {
             BetterPrefs.SetBool("Online_SeenHelp", true);
             HelpScreen.SetActive(true);
+        }
+        
+        if (BetterPrefs.GetBool("GRAPHICS_PostProcessing", true))
+        {
+            pp_normal.SetActive(true);
+            GameCamera_AdditionalData.renderPostProcessing = true;
+        }
+        else
+        {
+            pp_normal.SetActive(false);
+            GameCamera_AdditionalData.renderPostProcessing = false;
         }
         
         Fade.Play("FadeOut");
