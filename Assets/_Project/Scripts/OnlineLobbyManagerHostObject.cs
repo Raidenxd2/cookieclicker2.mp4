@@ -6,7 +6,7 @@ public class OnlineLobbyManagerHostObject : NetworkBehaviour
 {
     public static OnlineLobbyManagerHostObject instance;
 
-    public NetworkVariable<int> timer = new(60, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public NetworkVariable<int> timer = new(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     
     private void Awake()
     {

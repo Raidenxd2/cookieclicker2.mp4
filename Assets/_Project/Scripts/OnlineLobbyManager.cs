@@ -48,6 +48,15 @@ public class OnlineLobbyManager : MonoBehaviour
     
     public GameObject pp_normal;
     public UniversalAdditionalCameraData GameCamera_AdditionalData;
+    
+#if !CC2_REMOVE_VR_SUPPORT
+    private GameObject VRPrefabGO;
+    private VRPrefabObject vrpo;
+#endif
+    [SerializeField] private Transform VRPrefabParent;
+    public GameObject XROrigin;
+    [SerializeField] private VRFadeCanvas vrFade;
+    public Camera gameCamera;
 
     private bool Connecting;
     private bool Disconnecting;
@@ -95,8 +104,62 @@ public class OnlineLobbyManager : MonoBehaviour
             GameCamera_AdditionalData.renderPostProcessing = false;
         }
         
+#if !CC2_REMOVE_VR_SUPPORT
+        if (VRManager.instance.VREnabled)
+        {
+            InitVR().Forget();
+        }
+#endif
+        
         Fade.Play("FadeOut");
     }
+    
+#if !CC2_REMOVE_VR_SUPPORT
+    public async UniTask InitVR()
+    {
+        if (VRManager.instance.VREnabled)
+        {
+            try
+            {
+                VRPrefabGO = Instantiate(await Resources.LoadAsync("OnlineLobby_VRPrefab") as GameObject);
+                vrpo = VRPrefabGO.GetComponent<VRPrefabObject>();
+
+                XROrigin = vrpo.XROrigin;
+
+                vrFade.InitVR();
+            }
+            catch (Exception ex)
+            {
+                LogSystem.Log(ex.ToString(), LogTypes.Exception);
+                LoadVRFallbackSceneAsync().Forget();
+                return;
+            }
+
+            gameCamera.gameObject.SetActive(false);
+        }
+
+        UpdateMirrorCamera();
+    }
+#endif
+    
+#if !CC2_REMOVE_VR_SUPPORT
+    private async UniTaskVoid LoadVRFallbackSceneAsync()
+    {
+        await SceneManager.LoadSceneAsync(AddressableHandles.vrFallbackSceneRef);
+    }
+#endif
+    
+#if !CC2_REMOVE_VR_SUPPORT
+    private void UpdateMirrorCamera()
+    {
+        if (vrpo == null)
+        {
+            return;
+        }
+
+        vrpo.MirrorCamera.SetActive(BetterPrefs.GetBool("VR_MirrorCamera", false));
+    }
+#endif
 
     private void OnDisconnect(ulong obj)
     {

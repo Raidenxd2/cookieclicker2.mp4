@@ -37,6 +37,7 @@ public class VRManager : MonoBehaviour
 
         if (VRBootEnabled)
         {
+            BeanShootoutURP.EnableXRRenderingSupport = true;
             VREnabled = true;
         }
         
@@ -47,6 +48,7 @@ public class VRManager : MonoBehaviour
         
         if (VREnabled)
         {
+            BeanShootoutURP.EnableXRRenderingSupport = true;
             Cursor.visible = false;
             InitXR();
         }

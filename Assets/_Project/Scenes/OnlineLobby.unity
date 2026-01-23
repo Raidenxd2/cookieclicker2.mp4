@@ -8410,7 +8410,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 232.39001, y: 55.170013}
+  m_AnchoredPosition: {x: 232.39001, y: 55.170044}
   m_SizeDelta: {x: 464.29, y: 109.54999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &873669704
@@ -8573,7 +8573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fedcd233387e999449a74acc15da88fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newPos: {x: 0, y: -6.56, z: 6}
+  newPos: {x: 0, y: 1, z: 6}
   newScale: {x: 0.005, y: 0.005, z: 0.005}
   newRot: {x: 0, y: 0, z: 0}
 --- !u!114 &960990301
@@ -10754,6 +10754,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 793328be9b2166e43b6e2fae594eddbd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 793328be9b2166e43b6e2fae594eddbd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 793328be9b2166e43b6e2fae594eddbd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 793328be9b2166e43b6e2fae594eddbd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -11002,6 +11014,10 @@ MonoBehaviour:
   OnlineLobbyManagerHostObjectGO: {fileID: 5033777115622894892, guid: fc4cd4f09d09c2d4fad12110f845e581, type: 3}
   pp_normal: {fileID: 419731042}
   GameCamera_AdditionalData: {fileID: 719549332}
+  VRPrefabParent: {fileID: 0}
+  XROrigin: {fileID: 0}
+  vrFade: {fileID: 1229362756}
+  gameCamera: {fileID: 719549330}
   references:
     version: 2
     RefIds: []
