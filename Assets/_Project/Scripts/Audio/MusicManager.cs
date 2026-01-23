@@ -8,9 +8,12 @@ public class MusicManager : MonoBehaviour
     public static MusicManager instance;
 
     [SerializeField] private AssetReferenceT<AudioClip>[] musics;
+    [SerializeField] private AssetReferenceT<AudioClip>[] musicsOnline;
     private AsyncOperationHandle<AudioClip> musicHandle;
     private bool overrideSong;
     private int overrideIndex;
+
+    public bool useOnlineMusic;
 
     private bool stopPlaying;
 
@@ -22,6 +25,11 @@ public class MusicManager : MonoBehaviour
 
         musicSource = GameObject.FindGameObjectWithTag("music").GetComponent<AudioSource>();
 
+        PlayRandomSongAsync().Forget();
+    }
+
+    public void PlayRandomSong()
+    {
         PlayRandomSongAsync().Forget();
     }
 
@@ -37,7 +45,7 @@ public class MusicManager : MonoBehaviour
             Addressables.Release(musicHandle);
         }
 
-        int musicIndex = 0;
+        int musicIndex;
 
         if (overrideSong)
         {
@@ -45,10 +53,25 @@ public class MusicManager : MonoBehaviour
         }
         else
         {
-            musicIndex = Random.Range(0, musics.Length);
+            if (useOnlineMusic)
+            {
+                musicIndex = Random.Range(0, musicsOnline.Length);
+            }
+            else
+            {
+                musicIndex = Random.Range(0, musics.Length);
+            }
         }
 
-        musicHandle = Addressables.LoadAssetAsync<AudioClip>(musics[musicIndex]);
+        if (useOnlineMusic)
+        {
+            musicHandle = Addressables.LoadAssetAsync<AudioClip>(musicsOnline[musicIndex]);
+        }
+        else
+        {
+            musicHandle = Addressables.LoadAssetAsync<AudioClip>(musics[musicIndex]);
+        }
+        
         await musicHandle;
 
         musicSource.clip = musicHandle.Result;

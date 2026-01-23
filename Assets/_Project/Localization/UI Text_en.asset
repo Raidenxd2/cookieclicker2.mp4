@@ -566,6 +566,120 @@ MonoBehaviour:
     m_Localized: You have gained {0} Cookies!
     m_Metadata:
       m_Items: []
+  - m_Id: 411967994790162432
+    m_Localized: Online
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411968029854543872
+    m_Localized: LAN (Local Area Network)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411968103900786688
+    m_Localized: Network Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411968070136639488
+    m_Localized: Internet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411976868377145344
+    m_Localized: IP Address
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411976883090763776
+    m_Localized: Show IP Address
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977026741481472
+    m_Localized: Connect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977045909450752
+    m_Localized: Host
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977101165211648
+    m_Localized: 'A network error has occurred (Transport).
+
+      Please check that
+      the IP Address you are connecting to is correct.
+
+
+      Returning to main
+      game...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977498202222592
+    m_Localized: 'Failed to connect to server.
+
+
+      Returning to main game...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411979780830539776
+    m_Localized: Username
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411985725597954048
+    m_Localized: Connecting...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411997590558355456
+    m_Localized: Online Lobby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411997938693976064
+    m_Localized: Disconnect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412000206302490624
+    m_Localized: In an online game, your goal is to get as many Cookies/CPS/CPC (host
+      chooses which one) as possible within a time limit.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412005091248975872
+    m_Localized: 'Are you sure you want to disconnect as the host?
+
+      Everyone
+      in the lobby will be disconnected.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412005241233092608
+    m_Localized: 'The host has left the game.
+
+
+      Returning to main game...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412025819163799552
+    m_Localized: Start Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412026706359758848
+    m_Localized: Waiting for host...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412033135284072448
+    m_Localized: 'Failed to start client.
+
+
+      Returning to main game...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412033137234423808
+    m_Localized: 'Failed to start host.
+
+
+      Returning to main game...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412052542609698816
+    m_Localized: 'The timer has ran out!
+
+
+      Returning to main game...'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

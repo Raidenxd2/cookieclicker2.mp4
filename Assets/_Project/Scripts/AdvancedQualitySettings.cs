@@ -1,3 +1,4 @@
+using LoggerSystem;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Rendering.Universal;

@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using LoggerSystem;
 using UnityEngine;
@@ -150,7 +151,19 @@ public class ThemeManager : MonoBehaviour
     {
         try
         {
-            LogSystem.Log("Unloading Scene " + CurrentSceneName + " and bundle " + CurrentThemeBundle.name);
+#if UNITY_EDITOR
+            if (!LoadAssetBundlesInEditor)
+            {
+                LogSystem.Log("Unloading Scene " + CurrentSceneName);
+            }
+            else
+            {
+#endif
+                LogSystem.Log("Unloading Scene " + CurrentSceneName + " and bundle " + CurrentThemeBundle.name);
+#if UNITY_EDITOR
+            }
+#endif
+            
             al.UnloadLightmaps();
             al.RemoveLightmaps();
             await SceneManager.UnloadSceneAsync(CurrentSceneName);
@@ -164,9 +177,10 @@ public class ThemeManager : MonoBehaviour
             }
 #endif
         }
-        catch
+        catch (Exception ex)
         {
-
+            LogSystem.Log("Failed to unload current theme.", LogTypes.Exception);
+            Debug.LogException(ex);
         }
     }
 

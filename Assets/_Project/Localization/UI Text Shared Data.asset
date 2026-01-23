@@ -531,6 +531,94 @@ MonoBehaviour:
     m_Key: BOSSCOOKIES_COOKIESGAINED_MESSAGE
     m_Metadata:
       m_Items: []
+  - m_Id: 411967994790162432
+    m_Key: ONLINE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411968029854543872
+    m_Key: ONLINE_LAN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411968070136639488
+    m_Key: ONLINE_INTERNET
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411968103900786688
+    m_Key: ONLINE_NETWORKMODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411976868377145344
+    m_Key: ONLINE_IPADDRESS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411976883090763776
+    m_Key: ONLINE_SHOWIPADDRESS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977026741481472
+    m_Key: ONLINE_CONNECT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977045909450752
+    m_Key: ONLINE_HOST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977101165211648
+    m_Key: ONLINE_ERROR_TRANSPORT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977498202222592
+    m_Key: ONLINE_ERROR_SERVERCONNECTFAILED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411979780830539776
+    m_Key: ONLINE_USERNAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411985725597954048
+    m_Key: ONLINE_CONNECTING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411997590558355456
+    m_Key: ONLINE_LOBBY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411997938693976064
+    m_Key: ONLINE_DISCONNECT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412000206302490624
+    m_Key: ONLINE_HELP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412005091248975872
+    m_Key: ONLINE_DISCONNECTHOST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412005241233092608
+    m_Key: ONLINE_ERROR_HOSTLEFT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412025819163799552
+    m_Key: ONLINE_STARTGAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412026706359758848
+    m_Key: ONLINE_WAITINGFORHOST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412033135284072448
+    m_Key: ONLINE_CLIENTSTARTERROR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412033137234423808
+    m_Key: ONLINE_HOSTSTARTERROR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412052542609698816
+    m_Key: ONLINE_TIMERRANOUT
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

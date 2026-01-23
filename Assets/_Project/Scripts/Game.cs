@@ -5,6 +5,7 @@ using SimpleFileBrowser;
 using System;
 using System.IO;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Rendering;
@@ -68,6 +69,7 @@ public class Game : MonoBehaviour
     public TMP_Text ErrorText;
     public TMP_Text SmallErrorText;
     public TMP_Text VersionText;
+    public TMP_Text TimerText;
 
     // stats
     [Header("Stats")]
@@ -152,15 +154,24 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject ExportImportSaveFileDark;
     [SerializeField] private GameObject ImportSaveFileWarningScreen;
 
-    private bool AllowUpdate;
+    public bool AllowUpdate;
 
     public WaitForSeconds oneSecond;
+
+    public bool Disconnecting;
+    public LocalizedString HostLeftError;
+    [SerializeField] private GameObject NetworkErrorScreen;
+    [SerializeField] private TMP_Text NetworkErrorText;
+    public GameObject TimerRanOutScreen;
 
     private void Awake()
     {
         instance = this;
 
-        BetterPrefs.Load("/Saves/Default.cookie");
+        if (!OnlineLobbyManager.InOnlineGame)
+        {
+            BetterPrefs.Load("/Saves/Default.cookie");
+        }
     }
 
     private void OnDestroy()
@@ -172,6 +183,8 @@ public class Game : MonoBehaviour
     void Start()
     {
         VersionText.text = "v" + Application.version + "-" + Application.platform + " (" + Application.unityVersion + ", " + SystemInfo.graphicsDeviceType + ")";
+
+        MusicManager.instance.useOnlineMusic = false;
 
 #if !CC2_REMOVE_VR_SUPPORT
         if (!VRManager.instance.VREnabled)
@@ -188,21 +201,35 @@ public class Game : MonoBehaviour
         UpdateCheckerToggleGO.SetActive(false);
 #endif
 
-        LoadPlayer();
+        if (!OnlineLobbyManager.InOnlineGame)
+        {
+            LoadPlayer();
 
-        if (HasPlayed == false)
+            if (!HasPlayed)
+            {
+                HasPlayed = true;
+                Music = true;
+                Sounds = true;
+                VRMirrorCamera = false;
+                ResetData();
+            }
+        }
+        else
         {
             HasPlayed = true;
-            Music = true;
-            Sounds = true;
-            VRMirrorCamera = false;
-            ResetData();
+            Music = BetterPrefs.GetBool("Music", true);
+            Sounds = BetterPrefs.GetBool("Sounds", true);
+            VRMirrorCamera = BetterPrefs.GetBool("VR_MirrorCamera", false);
         }
-
+        
         oneSecond = new(1);
 
-        offlineManager.LoadOfflineTime();
-        AutoSave().Forget();
+        if (!OnlineLobbyManager.InOnlineGame)
+        {
+            offlineManager.LoadOfflineTime();
+            AutoSave().Forget();
+        }
+        
         Tick().Forget();
         CheckPrices();
 
@@ -216,11 +243,59 @@ public class Game : MonoBehaviour
         MusicAudioSource = MusicSource.GetComponent<AudioSource>();
         SoundAudioSource = SoundSource.GetComponent<AudioSource>();
 
+        if (OnlineLobbyManager.InOnlineGame)
+        {
+            NetworkManager.Singleton.ConnectionManager.OnDisconnect2 += OnDisconnect;
+            TimerText.gameObject.SetActive(true);
+            
+            ad.LoadGraphics();
+            CheckResearchFactory();
+            CheckDrill();
+        }
+
         AllowUpdate = true;
 
         FileBrowser.Skin = FileBrowserUISkin;
 
         UpdateAudio();
+
+        if (OnlineLobbyManager.InOnlineGame && NetworkManager.Singleton.IsHost)
+        {
+            OnlineLobbyManagerHostObject.instance.timer.Value = 60;
+            OnlineLobbyManagerHostObject.instance.LoadGameSceneRpc();
+            OnlineLobbyManagerHostObject.instance.TimerTick().Forget();
+        }
+    }
+    
+    private void OnDisconnect(ulong obj)
+    {
+        if (Disconnecting)
+        {
+            NetworkManager.Singleton.ConnectionManager.OnDisconnect2 -= OnDisconnect;
+            return;
+        }
+        
+        if (NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
+        {
+            if (obj == 0)
+            {
+                LogSystem.Log("Host left.", LogTypes.Warning);
+
+                ShowNetworkError(HostLeftError);
+            }
+        }
+    }
+    
+    private void ShowNetworkError(LocalizedString ls)
+    {
+        NetworkManager.Singleton.ConnectionManager.OnDisconnect2 -= OnDisconnect;
+
+        OnlineLobbyManager.InOnlineGame = false;
+        AllowUpdate = false;
+        
+        GlobalDark.SetActive(true);
+        NetworkErrorScreen.SetActive(true);
+        NetworkErrorText.text = ls.GetLocalizedString();
     }
 
     public void PlayInitialFadeOut()
@@ -247,7 +322,7 @@ public class Game : MonoBehaviour
             catch (Exception ex)
             {
                 LogSystem.Log(ex.ToString(), LogTypes.Exception);
-                LoadVRFallbackScene();
+                LoadVRFallbackSceneAsync().Forget();
                 return;
             }
 
@@ -297,6 +372,12 @@ public class Game : MonoBehaviour
     private async UniTaskVoid AutoSave()
     {
         await UniTask.WaitForSeconds(60);
+        
+        if (!SceneManager.GetSceneByName("Game").isLoaded)
+        {
+            return;
+        }
+        
         SavePlayer();
         AutoSave().Forget();
     }
@@ -311,6 +392,14 @@ public class Game : MonoBehaviour
 
     public void SavePlayer()
     {
+        if (OnlineLobbyManager.InOnlineGame || OnlineLobbyManagerHostObject.instance != null)
+        {
+            LogSystem.Log("Can't save current save in online", LogTypes.Warning);
+            return;
+        }
+        
+        LogSystem.Log("Saving");
+        
         PlayerPrefs.Save();
         offlineManager.SaveTime();
 
@@ -354,6 +443,14 @@ public class Game : MonoBehaviour
 
     public void LoadPlayer()
     {
+        if (OnlineLobbyManager.InOnlineGame || OnlineLobbyManagerHostObject.instance != null)
+        {
+            LogSystem.Log("Can't load save in online", LogTypes.Warning);
+            return;
+        }
+        
+        LogSystem.Log("Loading");
+
         ad.LoadGraphics();
 
         try
@@ -447,14 +544,17 @@ public class Game : MonoBehaviour
         BossCookies_HammerStrength = 1;
         BossCookies_HammerStrengthUpgradePrice = 1000;
 
-        BetterPrefs.DeleteAll();
-        BetterPrefs.Save();
+        if (!OnlineLobbyManager.InOnlineGame && OnlineLobbyManagerHostObject.instance == null)
+        {
+            BetterPrefs.DeleteAll();
+            BetterPrefs.Save();
 
-        ad.SetDefaults();
+            ad.SetDefaults();
 
-        SavePlayer();
+            SavePlayer();
 
-        Reload();
+            Reload();
+        }
     }
 
     public void ExportSaveFile()
@@ -535,6 +635,11 @@ public class Game : MonoBehaviour
 #if !UNITY_WEBGL
     private void OnApplicationQuit()
     {
+        if (OnlineLobbyManager.InOnlineGame || OnlineLobbyManagerHostObject.instance != null)
+        {
+            return;
+        }
+        
         SavePlayer();
     }
 #endif
@@ -573,6 +678,31 @@ public class Game : MonoBehaviour
 #endif
 
         await SceneManager.LoadSceneAsync(AddressableHandles.initSceneRef);
+    }
+    
+    public void LoadOnlineLobby()
+    {
+        LoadOnlineLobbyAsync().Forget();
+    }
+
+    private async UniTaskVoid LoadOnlineLobbyAsync()
+    {
+        Fade.Play("FadeIn");
+        FadeCanvasGroup.blocksRaycasts = true;
+        await UniTask.WaitForSeconds(1);
+        
+        MusicManager.instance.UnloadSong();
+
+        await ThemeManager.instance.UnloadTheme();
+        
+#if !CC2_REMOVE_VR_SUPPORT
+        if (VRPrefabGO != null)
+        {
+            Destroy(VRPrefabGO);
+        }
+#endif
+
+        await SceneManager.LoadSceneAsync(AddressableHandles.onlineLobbyRef);
     }
 
     public void MirrorCameraToggle(bool Toggle)
@@ -637,11 +767,6 @@ public class Game : MonoBehaviour
     }
 
 #if !CC2_REMOVE_VR_SUPPORT
-    private void LoadVRFallbackScene()
-    {
-        LoadVRFallbackSceneAsync().Forget();
-    }
-
     private async UniTaskVoid LoadVRFallbackSceneAsync()
     {
         SavePlayer();
@@ -922,5 +1047,11 @@ public class Game : MonoBehaviour
         Stats_Grandmas.text = "Grandmas: " + Grandmas;
         Stats_CookieFactorys.text = "Cookie Factorys: " + CookieFactorys;
         Stats_CookieFarms.text = "Cookie Farms: " + CookieFarms;
+
+        if (OnlineLobbyManager.InOnlineGame)
+        {
+            OnlinePlayerObject.instance.Cookies.Value = (float)Cookies;
+            TimerText.text = OnlineLobbyManagerHostObject.instance.timer.Value.ToString();
+        }
     }
 }
