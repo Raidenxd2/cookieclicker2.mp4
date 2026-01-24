@@ -55,7 +55,7 @@ public class PreInitScene : MonoBehaviour
             PlayerPrefs.Save();
         }
         
-#if !UNITY_WEBGL        
+#if !UNITY_WEBGL && !UNITY_ANDROID
         if (!Directory.Exists(Application.streamingAssetsPath + "/aa") && !Application.isEditor)
         {
             FatalErrorScreen.SetActive(true);

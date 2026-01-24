@@ -143,11 +143,13 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 3.0.0-PublicRelease-OS_11163 (open-source, 40e761a07f55b46b8ac37f950d790d0848dc5303)
+  bundleVersion: 3.0.0-PublicRelease-OS_11165 (open-source, ff8eefd211a71ef859aa13809a2a79faaf6ecd03)
   preloadedAssets:
   - {fileID: -944628639613478452, guid: f6942149c81fd7d4a9c839ed3180c690, type: 3}
   - {fileID: 11400000, guid: 5a6050f4d65b99340992ab87fbbe1f03, type: 2}
   - {fileID: 11400000, guid: b7224aa7088bbee4f93405520d8919f4, type: 2}
+  - {fileID: 2605170428038699836, guid: d45d0090f76dbdd4ca8bbe877eb041d3, type: 2}
+  - {fileID: -7889639256772309719, guid: 1fd3eede65d2b684897885ba920b3ba5, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -172,13 +174,13 @@ PlayerSettings:
     Android: com.raiden.cookieclicker2mp4_os2
     Standalone: com.raiden.cookieclicker2mp4-os
   buildNumber:
-    Standalone: 11163
+    Standalone: 11165
     VisionOS: 0
     iPhone: 25
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 11163
-  AndroidMinSdkVersion: 29
+  AndroidBundleVersionCode: 11165
+  AndroidMinSdkVersion: 25
   AndroidTargetSdkVersion: 36
   AndroidPreferredInstallLocation: 0
   AndroidPreferredDataLocation: 1
@@ -187,7 +189,7 @@ PlayerSettings:
   iPhoneStrippingLevel: 0
   iPhoneScriptCallOptimization: 0
   ForceInternetPermission: 0
-  ForceSDCardPermission: 1
+  ForceSDCardPermission: 0
   CreateWallpaper: 0
   androidSplitApplicationBinary: 0
   keepLoadedShadersAlive: 1
@@ -273,7 +275,7 @@ PlayerSettings:
   AndroidAllowedArchitectures: -1
   AndroidSplashScreenScale: 2
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: E:/user.keystore
+  AndroidKeystoreName: D:/user.keystore
   AndroidKeyaliasName: lemres
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidEnableArm64MTE: 0

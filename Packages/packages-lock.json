@@ -388,9 +388,16 @@
       "dependencies": {}
     },
     "com.yasirkula.simplefilebrowser": {
-      "version": "file:com.yasirkula.simplefilebrowser",
+      "version": "1.7.4",
       "depth": 0,
-      "source": "embedded",
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
+    "com.unity.modules.androidjni": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
       "dependencies": {}
     },
     "com.unity.modules.animation": {
