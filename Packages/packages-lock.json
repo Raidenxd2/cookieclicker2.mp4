@@ -384,10 +384,11 @@
       "url": "https://packages.unity.com"
     },
     "com.veriorpies.parrelsync": {
-      "version": "file:com.veriorpies.parrelsync",
+      "version": "https://github.com/Raidenxd2/ParrelSync.git?path=/ParrelSync",
       "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "d9f471763db267ddb16837f2608575535655e063"
     },
     "com.yasirkula.simplefilebrowser": {
       "version": "1.7.4",

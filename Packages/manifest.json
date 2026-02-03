@@ -43,7 +43,8 @@
     "com.unity.modules.ui": "1.0.0",
     "com.unity.modules.unitywebrequest": "1.0.0",
     "com.unity.modules.unitywebrequestassetbundle": "1.0.0",
-    "com.unity.modules.vr": "1.0.0"
+    "com.unity.modules.vr": "1.0.0",
+    "com.veriorpies.parrelsync": "https://github.com/Raidenxd2/ParrelSync.git?path=/ParrelSync"
   },
   "scopedRegistries": [
     {
