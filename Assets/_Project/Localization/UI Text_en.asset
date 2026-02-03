@@ -680,6 +680,30 @@ MonoBehaviour:
       Returning to main game...'
     m_Metadata:
       m_Items: []
+  - m_Id: 413150867052310528
+    m_Localized: Waiting for host to choose the settings...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413150917975355392
+    m_Localized: Duration of game in seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413151367436972032
+    m_Localized: Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413469358464708608
+    m_Localized: Cookies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413469361727877120
+    m_Localized: CPS (Cookies Per Second)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413469360247287808
+    m_Localized: CPC (Cookies Per Click)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

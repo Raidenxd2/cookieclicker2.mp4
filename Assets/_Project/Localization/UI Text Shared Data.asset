@@ -619,6 +619,30 @@ MonoBehaviour:
     m_Key: ONLINE_TIMERRANOUT
     m_Metadata:
       m_Items: []
+  - m_Id: 413150867052310528
+    m_Key: ONLINE_WAITINGFORHOSTSETTINGS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413150917975355392
+    m_Key: ONLINE_TIMER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413151367436972032
+    m_Key: ONLINE_GAMEMODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413469358464708608
+    m_Key: ONLINE_GAMEMODE_COOKIES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413469361727877120
+    m_Key: ONLINE_GAMEMODE_CPS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413469360247287808
+    m_Key: ONLINE_GAMEMODE_CPC
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
