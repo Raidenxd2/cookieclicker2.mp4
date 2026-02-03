@@ -43,11 +43,11 @@
       "hash": "c55a688ec5d7b66533a2c699326873bde322175e"
     },
     "com.raiden.buildmanager": {
-      "version": "https://github.com/Raidenxd2/BuildManager.git#v2.5.0",
+      "version": "https://github.com/Raidenxd2/BuildManager.git#v2.6.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "1fdaa3e216a1b222ef146448b8bb51abfb596e4e"
+      "hash": "f74c498f10c58ae934c48cb2c8f1b0dd64003aa6"
     },
     "com.raiden.serial": {
       "version": "2.0.3",
@@ -181,13 +181,14 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.netcode.gameobjects": {
-      "version": "file:com.unity.netcode.gameobjects",
+      "version": "https://github.com/Raidenxd2/com.unity.netcode.gameobjects.git#bean-shootout",
       "depth": 0,
-      "source": "embedded",
+      "source": "git",
       "dependencies": {
         "com.unity.nuget.mono-cecil": "1.11.4",
         "com.unity.transport": "2.6.0"
-      }
+      },
+      "hash": "87c7ccaa9ab1ef5d88f6971f0a06e130319cab36"
     },
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.6",
@@ -210,7 +211,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.render-pipelines.core": {
-      "version": "https://github.com/Raidenxd2/com.unity.render-pipelines.core.git#6000.3.0f1",
+      "version": "https://github.com/Raidenxd2/Graphics-SRPCore.git#6000.3",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -222,10 +223,10 @@
         "com.unity.modules.terrain": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
       },
-      "hash": "dc0fbda5a2275c3a6693f1da1eae5ba2c2c59a77"
+      "hash": "db6b06515c5ffa1d6e3e5c923cfce1c82cf0bfc6"
     },
     "com.unity.render-pipelines.universal": {
-      "version": "https://github.com/Raidenxd2/com.unity.render-pipelines.universal.git#6000.3.0f1",
+      "version": "https://github.com/Raidenxd2/Graphics-URP.git#6000.3",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -233,7 +234,7 @@
         "com.unity.shadergraph": "17.3.0",
         "com.unity.render-pipelines.universal-config": "17.0.3"
       },
-      "hash": "3a55ec4f3f7c79ad7d81e931868c36b7c751c44d"
+      "hash": "0919bb0f6a222cd8b35fc41a0957920dde6efff1"
     },
     "com.unity.render-pipelines.universal-config": {
       "version": "17.0.3",
@@ -294,14 +295,15 @@
       "hash": "98ce4b065b0005b6b49736f2e4adf4399b91fe12"
     },
     "com.unity.transport": {
-      "version": "file:com.unity.transport",
+      "version": "https://github.com/Raidenxd2/com.unity.transport.git",
       "depth": 0,
-      "source": "embedded",
+      "source": "git",
       "dependencies": {
         "com.unity.collections": "2.2.1",
         "com.unity.burst": "1.8.24",
         "com.unity.mathematics": "1.3.2"
-      }
+      },
+      "hash": "be09bd9012765773c67d867cebf02ee34ead819f"
     },
     "com.unity.ugui": {
       "version": "2.0.0",

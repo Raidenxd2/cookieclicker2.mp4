@@ -66,21 +66,9 @@ MonoBehaviour:
       - rid: 8522717182137204738
       - rid: 8522717182137204739
       - rid: 8522717182137204740
+      - rid: 2773804043700535507
     m_RuntimeSettings:
-      m_List:
-      - rid: 2995222804026621953
-      - rid: 2995222804026621954
-      - rid: 2995222804026621955
-      - rid: 2995222804026621957
-      - rid: 2995222804026621959
-      - rid: 2995222804026621961
-      - rid: 2995222804026621962
-      - rid: 2995222804026621963
-      - rid: 2995222804026621965
-      - rid: 2995222804026621969
-      - rid: 2995222804026621973
-      - rid: 5439633100913770500
-      - rid: 8522717182137204740
+      m_List: []
   m_AssetVersion: 9
   m_ObsoleteDefaultVolumeProfile: {fileID: 0}
   m_RenderingLayerNames:
@@ -106,6 +94,12 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 2773804043700535507
+      type: {class: STP/RuntimeResources, ns: UnityEngine.Rendering, asm: Unity.RenderPipelines.Core.Runtime}
+      data:
+        m_setupCS: {fileID: 7200000, guid: 33be2e9a5506b2843bdb2bdff9cad5e1, type: 3}
+        m_preTaaCS: {fileID: 7200000, guid: a679dba8ec4d9ce45884a270b0e22dda, type: 3}
+        m_taaCS: {fileID: 7200000, guid: 3923900e2b41b5e47bc25bfdcbcdc9e6, type: 3}
     - rid: 2995222804026621952
       type: {class: UniversalRenderPipelineEditorShaders, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
       data:
