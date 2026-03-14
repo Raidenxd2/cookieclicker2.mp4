@@ -11,6 +11,7 @@ public class VideoSettings : MonoBehaviour
     [SerializeField] private TMP_Dropdown WindowModeDropdown;
     [SerializeField] private TMP_Dropdown ResolutionDropdown;
     [SerializeField] private TMP_Dropdown AADropdown;
+    [SerializeField] private TMP_Dropdown GraphicsAPIDropdown;
     [SerializeField] private Toggle VSyncToggle;
 #if UNITY_STANDALONE
 
@@ -35,6 +36,10 @@ public class VideoSettings : MonoBehaviour
         {
             LoadSettings();
         }
+        
+        WindowModeDropdown.onValueChanged.AddListener(ChangeWindowMode);
+        ResolutionDropdown.onValueChanged.AddListener(SetResolution);
+        GraphicsAPIDropdown.onValueChanged.AddListener(ChangeGraphicsAPI);
     }
 
     private void ResetSettings()
@@ -43,6 +48,8 @@ public class VideoSettings : MonoBehaviour
         BetterPrefs.SetInt("WindowMode", 1);
         BetterPrefs.SetInt("GRAPHICS_AA", 1);
         BetterPrefs.SetBool("GRAPHICS_VSync", true);
+        
+        PlayerPrefs.SetInt("GraphicsAPI", 0);
     }
 
     private void AddOptionsToDropdown()
@@ -94,10 +101,11 @@ public class VideoSettings : MonoBehaviour
         WindowModeDropdown.value = BetterPrefs.GetInt("WindowMode", 1);
         AADropdown.value = BetterPrefs.GetInt("GRAPHICS_AA", 1);
         VSyncToggle.isOn = BetterPrefs.GetBool("GRAPHICS_VSync", true);
-        SetResolution(BetterPrefs.GetInt("ResolutionIndex", 1));
-        ChangeWindowMode(BetterPrefs.GetInt("WindowMode", 1));
+        
         ChangeAntiAliasing(BetterPrefs.GetInt("GRAPHICS_AA", 1));
         ChangeVSync(BetterPrefs.GetBool("GRAPHICS_VSync", true));
+
+        GraphicsAPIDropdown.value = PlayerPrefs.GetInt("GraphicsAPI", 0);
     }
 #endif
 
@@ -175,6 +183,17 @@ public class VideoSettings : MonoBehaviour
                 URPAsset.msaaSampleCount = 8;
                 break;
         }
+#endif
+    }
+    
+    public void ChangeGraphicsAPI(int val)
+    {
+#if UNITY_STANDALONE_WIN
+        PlayerPrefs.SetInt("GraphicsAPI", val);
+
+        PlayerPrefs.Save();
+        
+        GameRestartRequired.SetActive(true);
 #endif
     }
 }
