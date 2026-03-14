@@ -13,7 +13,7 @@ public class PlayerBaseVR : MonoBehaviour
 
     [SerializeField] private PlayerInput playerInput;
 
-    private void Start()
+    private void Awake()
     {
         if (VRManager.instance.VREnabled)
         {
@@ -27,10 +27,10 @@ public class PlayerBaseVR : MonoBehaviour
             Hammer2.localPosition = new(-0.0066f, 0.6149f, -0.0724f);
             Hammer2.localScale = new(0.1f, 0.1f, 0.1f);
             OldCamera.SetActive(false);
-
-            // playerInput.defaultControlScheme = "XR";
-            // playerInput.neverAutoSwitchControlSchemes = true;
-            // playerInput.enabled = true;
+        }
+        else
+        {
+            playerInput.enabled = true;
         }
     }
 }

@@ -62,6 +62,7 @@ public class VRManager : MonoBehaviour
         {
             Debug.LogError("(VRManager) Failed to init current loader.");
             VREnabled = false;
+            BeanShootoutURP.EnableXRRenderingSupport = false;
             Cursor.visible = true;
             return;
         }
@@ -71,6 +72,7 @@ public class VRManager : MonoBehaviour
             Debug.LogError("(VRManager) Failed to start current loader.");
             currentLoader.Deinitialize();
             VREnabled = false;
+            BeanShootoutURP.EnableXRRenderingSupport = false;
             Cursor.visible = true;
             return;
         }
