@@ -55,15 +55,6 @@ public class PreInitScene : MonoBehaviour
             PlayerPrefs.Save();
         }
         
-#if !UNITY_WEBGL && !UNITY_ANDROID
-        if (!Directory.Exists(Application.streamingAssetsPath + "/aa") && !Application.isEditor)
-        {
-            FatalErrorScreen.SetActive(true);
-            FatalErrorText.text = "Addressables content (" + Application.streamingAssetsPath + "/aa" + ") is missing.";
-            return;
-        }
-#endif        
-        
         await LocalizationSettings.InitializationOperation;
 
         if (!Directory.Exists(Application.persistentDataPath + "/Saves"))

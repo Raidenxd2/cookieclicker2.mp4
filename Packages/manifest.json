@@ -2,8 +2,6 @@
   "dependencies": {
     "com.annulusgames.lit-motion": "2.0.1",
     "com.cysharp.unitask": "2.5.10",
-    "com.de-panther.webxr": "0.22.1",
-    "com.de-panther.webxr-interactions": "0.22.0",
     "com.raiden.assetbundleassetreference": "https://github.com/Raidenxd2/AssetBundleAssetReference.git",
     "com.raiden.buildmanager": "https://github.com/Raidenxd2/BuildManager.git#v2.6.0",
     "com.raiden.serial": "2.0.3",
@@ -14,21 +12,21 @@
     "com.unity.addressables": "2.7.4",
     "com.unity.assetbundlebrowser": "https://github.com/Unity-Technologies/AssetBundles-Browser.git",
     "com.unity.ide.rider": "3.0.38",
-    "com.unity.ide.visualstudio": "2.0.25",
     "com.unity.inputsystem": "1.16.0",
     "com.unity.localization": "https://github.com/Raidenxd2/com.unity.localization.git",
     "com.unity.netcode.gameobjects": "https://github.com/Raidenxd2/com.unity.netcode.gameobjects.git#bean-shootout",
-    "com.unity.transport": "https://github.com/Raidenxd2/com.unity.transport.git",
     "com.unity.profiling.core": "1.0.3",
     "com.unity.render-pipelines.core": "https://github.com/Raidenxd2/Graphics-SRPCore.git#6000.3",
     "com.unity.render-pipelines.universal": "https://github.com/Raidenxd2/Graphics-URP.git#6000.3",
     "com.unity.test-framework": "1.5.1",
     "com.unity.test-framework.performance": "https://github.com/Raidenxd2/com.unity.test-framework.performance_empty.git",
+    "com.unity.transport": "https://github.com/Raidenxd2/com.unity.transport.git",
     "com.unity.ugui": "2.0.0",
     "com.unity.web.stripping-tool": "1.2.0",
     "com.unity.xr.interaction.toolkit": "3.3.0",
     "com.unity.xr.management": "4.5.3",
     "com.unity.xr.openxr": "1.16.0",
+    "com.veriorpies.parrelsync": "https://github.com/Raidenxd2/ParrelSync.git?path=/ParrelSync",
     "com.yasirkula.simplefilebrowser": "1.7.4",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -42,9 +40,7 @@
     "com.unity.modules.screencapture": "1.0.0",
     "com.unity.modules.ui": "1.0.0",
     "com.unity.modules.unitywebrequest": "1.0.0",
-    "com.unity.modules.unitywebrequestassetbundle": "1.0.0",
-    "com.unity.modules.vr": "1.0.0",
-    "com.veriorpies.parrelsync": "https://github.com/Raidenxd2/ParrelSync.git?path=/ParrelSync"
+    "com.unity.modules.unitywebrequestassetbundle": "1.0.0"
   },
   "scopedRegistries": [
     {

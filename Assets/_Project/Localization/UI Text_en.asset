@@ -704,6 +704,29 @@ MonoBehaviour:
     m_Localized: CPC (Cookies Per Click)
     m_Metadata:
       m_Items: []
+  - m_Id: 424758248999759872
+    m_Localized: 'Google has announced that, starting in 2026/2027, all apps on certified
+      Android devices will require the developer to submit personal identity details
+      directly to Google.
+
+      Since the developers (there''s only one) of this
+      app do not agree to this requirement, this app will no longer work on certified
+      Android devices after that time.
+
+
+      This warning will only be displayed
+      once and doesn''t apply to standalone VR devices that aren''t running Android
+      XR.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424758800605261824
+    m_Localized: WARNING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430430538852741120
+    m_Localized: Online Mode
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

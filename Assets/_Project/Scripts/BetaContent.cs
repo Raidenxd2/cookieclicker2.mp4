@@ -3,13 +3,7 @@ using UnityEngine;
 public class BetaContent : MonoBehaviour
 {
     [SerializeField] private GameObject ResearchFactoryButton;
-
-    public static BetaContent instance;
-
-    private void Awake()
-    {
-        instance = this;
-    }
+    [SerializeField] private GameObject OnlineButton;
 
     private void Start()
     {
@@ -20,14 +14,8 @@ public class BetaContent : MonoBehaviour
     {
         if (BetterPrefs.GetBool("BetaContent", false))
         {
-            if (BetterPrefs.GetBool("BETA_ResearchFactory", false))
-            {
-                ResearchFactoryButton.SetActive(true);
-            }
-            else
-            {
-                ResearchFactoryButton.SetActive(false);
-            }
+            ResearchFactoryButton.SetActive(BetterPrefs.GetBool("BETA_ResearchFactory", false));
+            OnlineButton.SetActive(BetterPrefs.GetBool("BETA_OnlineMode", false));
         }
     }
 }

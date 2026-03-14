@@ -3,7 +3,6 @@ using LoggerSystem;
 using SimpleFileBrowser;
 using System.IO;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public class Init : MonoBehaviour
@@ -12,6 +11,8 @@ public class Init : MonoBehaviour
 
     private static bool HasLoaded;
     private static bool HasLoadedSharedData;
+    
+    [SerializeField] private GameObject AndroidWarningScreen;
 
     [SerializeField] private ThemeSO DefaultTheme;
 
@@ -23,6 +24,21 @@ public class Init : MonoBehaviour
             DontDestroyOnLoad(DDOL);
         }
 
+#if UNITY_ANDROID
+        if (PlayerPrefs.GetInt("GoogleAndroidWarningShown", 0) == 0)
+        {
+            PlayerPrefs.SetInt("GoogleAndroidWarningShown", 1);
+            AndroidWarningScreen.SetActive(true);
+            
+            return;
+        }
+#endif
+        
+        ContinueLoad();
+    }
+
+    public void ContinueLoad()
+    {
         Resources.UnloadUnusedAssets();
 
 #if !UNITY_WEBGL

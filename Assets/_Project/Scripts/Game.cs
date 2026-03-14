@@ -239,6 +239,7 @@ public class Game : MonoBehaviour
         ad.LoadGraphics();
 
         BetaContentToggles[0].onValueChanged.AddListener(delegate { ChangeBetaContentFeatureValue("BETA_ResearchFactory", BetaContentToggles[0].isOn); });
+        BetaContentToggles[1].onValueChanged.AddListener(delegate { ChangeBetaContentFeatureValue("BETA_OnlineMode", BetaContentToggles[1].isOn); });
 
         MusicAudioSource = MusicSource.GetComponent<AudioSource>();
         SoundAudioSource = SoundSource.GetComponent<AudioSource>();

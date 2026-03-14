@@ -18,23 +18,6 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
-    "com.de-panther.webxr": {
-      "version": "0.22.1",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.xr.management": "3.2.13"
-      },
-      "url": "https://package.openupm.com"
-    },
-    "com.de-panther.webxr-interactions": {
-      "version": "file:com.de-panther.webxr-interactions",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.de-panther.webxr": "0.22.0"
-      }
-    },
     "com.raiden.assetbundleassetreference": {
       "version": "https://github.com/Raidenxd2/AssetBundleAssetReference.git",
       "depth": 0,
@@ -146,15 +129,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.ide.visualstudio": {
-      "version": "2.0.25",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.test-framework": "1.1.31"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.inputsystem": {
       "version": "1.16.0",
       "depth": 0,
@@ -198,10 +172,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.nuget.newtonsoft-json": {
-      "version": "file:com.unity.nuget.newtonsoft-json",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
+      "version": "3.2.2",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
     },
     "com.unity.profiling.core": {
       "version": "1.0.3",
@@ -245,7 +220,7 @@
       }
     },
     "com.unity.scriptablebuildpipeline": {
-      "version": "2.5.1",
+      "version": "2.5.2",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -514,7 +489,7 @@
     },
     "com.unity.modules.vr": {
       "version": "1.0.0",
-      "depth": 0,
+      "depth": 2,
       "source": "builtin",
       "dependencies": {
         "com.unity.modules.jsonserialize": "1.0.0",
