@@ -55,6 +55,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 prevVel;
 
     private bool Respawning;
+
+    private InputAction vr_leftPositionInputAction = new(binding: "<XRController>{LeftHand}/{Primary2DAxis}", expectedControlType: "Vector2");
+    private InputAction vr_leftTriggerInputAction = new(binding: "<XRController>{LeftHand}/triggerPressed", expectedControlType: "Button");
+    private InputAction vr_rightPrimaryButtonInputAction = new(binding: "<XRController>{RightHand}/primaryButton", expectedControlType: "Button");
 #endif
 
 #if !CC2_DISABLEBOSSCOOKIESVRMODE
@@ -66,6 +70,13 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;
 
         ResetJump();
+
+        if (VRManager.instance.VREnabled)
+        {
+            vr_leftPositionInputAction.Enable();
+            vr_leftTriggerInputAction.Enable();
+            vr_rightPrimaryButtonInputAction.Enable();
+        }
     }
 
     private void FixedUpdate()
@@ -138,7 +149,15 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        moveDirection = playerControls.actions["Movement"].ReadValue<Vector2>();
+        if (VRManager.instance.VREnabled)
+        {
+            moveDirection = vr_leftPositionInputAction.ReadValue<Vector2>();
+        }
+        else
+        {
+            moveDirection = playerControls.actions["Movement"].ReadValue<Vector2>();
+        }
+        
         horizontalInput = moveDirection.x;
         verticalInput = moveDirection.y;
 
@@ -149,6 +168,15 @@ public class PlayerMovement : MonoBehaviour
 
             Jump();
 
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
+        
+        if (VRManager.instance.VREnabled && vr_rightPrimaryButtonInputAction.IsPressed() && readyToJump && grounded)
+        {
+            readyToJump = false;
+            
+            Jump();
+            
             Invoke(nameof(ResetJump), jumpCooldown);
         }
     }

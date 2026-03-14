@@ -13,12 +13,8 @@ public class ScreenShot : MonoBehaviour
     public TMP_Text ScreenshotQualityText;
 
 #if !UNITY_WEBGL
-    private PlayerInput playerInput;
-
     void Start()
     {
-        playerInput = GameObject.Find("PlayerInput").GetComponent<PlayerInput>();
-
         if (!Directory.Exists(Application.persistentDataPath + filePath))
         {
             Directory.CreateDirectory(Application.persistentDataPath + filePath);
@@ -37,7 +33,7 @@ public class ScreenShot : MonoBehaviour
 #if !UNITY_WEBGL
     void Update()
     {
-        if (playerInput.actions["Screenshot"].WasPressedThisFrame())
+        if (Keyboard.current.f12Key.wasPressedThisFrame)
         {
             TakeScreenshot();
         }

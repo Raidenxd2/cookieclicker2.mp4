@@ -122,6 +122,11 @@ public class BossCookiesGame : MonoBehaviour
 
     public void ChooseVRMode()
     {
+        ChooseVRModeAsync().Forget();
+    }
+
+    private async UniTaskVoid ChooseVRModeAsync()
+    {
 #if !CC2_DISABLEBOSSCOOKIESVRMODE
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -131,6 +136,8 @@ public class BossCookiesGame : MonoBehaviour
         {
             NormalModeUI.gameObject.SetActive(false);
             Game.instance.XROrigin.SetActive(false);
+
+            await UniTask.WaitForEndOfFrame();
         }
 #endif
 

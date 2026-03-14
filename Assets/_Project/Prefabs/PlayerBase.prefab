@@ -478,6 +478,7 @@ GameObject:
   - component: {fileID: 3459551485006996492}
   - component: {fileID: 6102380272267149602}
   - component: {fileID: 4590000608651959277}
+  - component: {fileID: 2075326365446934330}
   m_Layer: 0
   m_Name: PlayerBase
   m_TagString: Untagged
@@ -509,7 +510,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842872061536074061}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -531,7 +532,7 @@ MonoBehaviour:
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 4063547951066207675}
+  m_Camera: {fileID: 0}
 --- !u!114 &4590000608651959277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,10 +546,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBaseVR
   Hammer: {fileID: 4873098641825818522}
+  Hammer2: {fileID: 6974728639069621167}
   HammerNewParent: {fileID: 2535865397536479288}
   OldCamera: {fileID: 1448248566773897108}
   XRRoot: {fileID: 8967372222610408649}
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 6102380272267149602}
+--- !u!114 &2075326365446934330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842872061536074061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 171d874d8bd492f45b978a0d6ccca0c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CC2::EnableIfCustomVRMirrorCamera
+  go: {fileID: 3418924984233136190}
 --- !u!1 &931596535001691012
 GameObject:
   m_ObjectHideFlags: 0
@@ -2960,11 +2975,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb262d40640ce148b40e9bed25756d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCamVR
-  sensY: 3
+  sensY: 30
   Root: {fileID: 3988415336790450292}
   orientation: {fileID: 7580990743908406841}
   playerModel: {fileID: 483325511181744090}
-  playerControls: {fileID: 6102380272267149602}
 --- !u!1 &6163542730937084599
 GameObject:
   m_ObjectHideFlags: 0
@@ -5307,6 +5321,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+--- !u!1 &3418924984233136190 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6265746756260077155, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}
+  m_PrefabInstance: {fileID: 8756705571863563869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6324047730198105672 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3334236803548725269, guid: 5afd1aebaefa04849b03bcacfef2adf1, type: 3}

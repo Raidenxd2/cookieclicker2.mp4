@@ -11,10 +11,8 @@ public class PlayerCamVR : MonoBehaviour
     public Transform Root;
     public Transform orientation;
     public Transform playerModel;
-
-#if ENABLE_INPUT_SYSTEM
-    [SerializeField] private PlayerInput playerControls;
-#endif
+    
+    private InputAction vr_rightPositionInputAction = new(binding: "<XRController>{RightHand}/{Primary2DAxis}", expectedControlType: "Vector2");
 
 #if !CC2_DISABLEBOSSCOOKIESVRMODE
     private float yRotation;
@@ -22,11 +20,13 @@ public class PlayerCamVR : MonoBehaviour
     private void Start()
     {
         GetComponent<UniversalAdditionalCameraData>().renderPostProcessing = Game.instance.ad.PostProcessing;
+        
+        vr_rightPositionInputAction.Enable();
     }
 
     private void LateUpdate()
     {
-        Vector2 rotateDirection = playerControls.actions["Camera"].ReadValue<Vector2>();
+        Vector2 rotateDirection = vr_rightPositionInputAction.ReadValue<Vector2>();
 
         yRotation += rotateDirection.x * sensY * Time.fixedDeltaTime;
 
