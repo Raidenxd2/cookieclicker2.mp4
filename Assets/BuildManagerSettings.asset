@@ -24,6 +24,7 @@ MonoBehaviour:
   CopyPDBFiles: 1
   RemoveBurstDebugInformation: 1
   IncrementBuildNumber: 1
+  AddVersionToBuildFolder: 1
   AddGitCommitHashToVersion: 1
   AndroidTextureSubtarget: 6
   PlayerBuildOptions: 8
