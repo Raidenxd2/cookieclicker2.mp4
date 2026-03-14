@@ -35,8 +35,8 @@ public class Game : MonoBehaviour
     public BigDouble CookieFarmPrice;
     public bool HasPlayed;
     public bool ResearchFactory;
-    public bool Music;
-    public bool Sounds;
+    public float Music;
+    public float Sounds;
     public bool VRMirrorCamera;
 
     // game objects
@@ -95,6 +95,11 @@ public class Game : MonoBehaviour
 
     private AudioSource MusicAudioSource;
     private AudioSource SoundAudioSource;
+
+    [SerializeField] private Slider MusicSlider;
+    [SerializeField] private Slider SoundSlider;
+    [SerializeField] private TMP_Text MusicValueText;
+    [SerializeField] private TMP_Text SoundValueText;
 
     public Camera gameCamera;
     public Volume CVDFilter;
@@ -210,8 +215,8 @@ public class Game : MonoBehaviour
             if (!HasPlayed)
             {
                 HasPlayed = true;
-                Music = true;
-                Sounds = true;
+                Music = 0.5f;
+                Sounds = 1f;
                 VRMirrorCamera = false;
                 ResetData();
             }
@@ -219,8 +224,8 @@ public class Game : MonoBehaviour
         else
         {
             HasPlayed = true;
-            Music = BetterPrefs.GetBool("Music", true);
-            Sounds = BetterPrefs.GetBool("Sounds", true);
+            Music = BetterPrefs.GetFloat("MusicNew", 0.25f);
+            Sounds = BetterPrefs.GetFloat("SoundsNew", 0.75f);
             VRMirrorCamera = BetterPrefs.GetBool("VR_MirrorCamera", false);
         }
         
@@ -261,6 +266,9 @@ public class Game : MonoBehaviour
         FileBrowser.Skin = FileBrowserUISkin;
 
         UpdateAudio();
+
+        MusicSlider.value = Music;
+        SoundSlider.value = Sounds;
 
         if (OnlineLobbyManager.InOnlineGame && NetworkManager.Singleton.IsHost)
         {
@@ -420,8 +428,8 @@ public class Game : MonoBehaviour
         BetterPrefs.SetBool("ResearchFactory", ResearchFactory);
         BetterPrefs.SetBool("offlineProgressCheck", offlineManager.offlineProgressCheck);
         BetterPrefs.SetString("OfflineTime", offlineManager.OfflineTime);
-        BetterPrefs.SetBool("Sounds", Sounds);
-        BetterPrefs.SetBool("Music", Music);
+        BetterPrefs.SetFloat("SoundsNew", Sounds);
+        BetterPrefs.SetFloat("MusicNew", Music);
         BetterPrefs.SetString("Grandmas", Grandmas.ToString());
         BetterPrefs.SetString("GrandmaPrice", GrandmaPrice.ToString());
         BetterPrefs.SetString("CookieFactorys", CookieFactorys.ToString());
@@ -481,8 +489,8 @@ public class Game : MonoBehaviour
         ResearchFactory = BetterPrefs.GetBool("ResearchFactory", false);
         offlineManager.offlineProgressCheck = BetterPrefs.GetBool("offlineProgressCheck", false);
         offlineManager.OfflineTime = BetterPrefs.GetString("OfflineTime", "");
-        Sounds = BetterPrefs.GetBool("Sounds", false);
-        Music = BetterPrefs.GetBool("Music", false);
+        Sounds = BetterPrefs.GetFloat("SoundsNew", 0.75f);
+        Music = BetterPrefs.GetFloat("MusicNew", 0.25f);
         Grandmas = BigDouble.Parse(BetterPrefs.GetString("Grandmas", "0"));
         GrandmaPrice = BigDouble.Parse(BetterPrefs.GetString("GrandmaPrice", "0"));
         CookieFactorys = BigDouble.Parse(BetterPrefs.GetString("CookieFactorys", "0"));
@@ -729,16 +737,16 @@ public class Game : MonoBehaviour
     }
 #endif
 
-    public void SoundToggle(bool Toggle)
+    public void UpdateSound(float val)
     {
-        Sounds = Toggle;
+        Sounds = val;
 
         UpdateAudio();
     }
 
-    public void MusicToggle(bool Toggle)
+    public void UpdateMusic(float val)
     {
-        Music = Toggle;
+        Music = val;
 
         UpdateAudio();
     }
@@ -746,22 +754,11 @@ public class Game : MonoBehaviour
     private void UpdateAudio()
     {
         // music & sounds
-        if (!Music)
-        {
-            MusicAudioSource.volume = 0;
-        }
-        else
-        {
-            MusicAudioSource.volume = 1;
-        }
-        if (!Sounds)
-        {
-            SoundAudioSource.volume = 0;
-        }
-        else
-        {
-            SoundAudioSource.volume = 1;
-        }
+        MusicAudioSource.volume = Music;
+        SoundAudioSource.volume = Sounds;
+
+        MusicValueText.text = Music * 100f + "%";
+        SoundValueText.text = Sounds * 100f + "%";
     }
 
     public void UpdateCheckerToggle(bool Toggle)
