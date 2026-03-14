@@ -23,16 +23,9 @@ public class CC2Build : IPreprocessBuildWithReport, IPostprocessBuildWithReport
     public void OnPostprocessBuild(BuildReport report)
     {
         // For Windows, macOS, and Linux: Copy modified UnityEngine.UIElementsModule that skips initialization.
-        
-        // Remove D3D12 folder on Windows.
         if (report.summary.platform is BuildTarget.StandaloneWindows or BuildTarget.StandaloneWindows64)
         {
             string dir = Path.GetDirectoryName(report.summary.outputPath);
-
-            if (Directory.Exists(dir + "/D3D12"))
-            {
-                Directory.Delete(dir + "/D3D12", true);
-            }
 
             if (!report.summary.options.HasFlag(BuildOptions.Development))
             {
