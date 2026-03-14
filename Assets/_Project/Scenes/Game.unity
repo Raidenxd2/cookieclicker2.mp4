@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &11016014 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4941934788868535941, guid: ad97596f556d1594792b188b1a075040, type: 3}
+  m_PrefabInstance: {fileID: 2001138996}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &15663363
 GameObject:
   m_ObjectHideFlags: 0
@@ -38829,6 +38840,12 @@ MonoBehaviour:
   RenderQualityText: {fileID: 831539177}
   RenderQualityInput: {fileID: 282990476}
   qualityWrapper: {fileID: 1163313917}
+  FPSDisplayUIToggle: {fileID: 915826154}
+  PostProcessingUIToggle: {fileID: 1410362513}
+  ParticlesUIToggle: {fileID: 43484696}
+  VSyncUIToggle: {fileID: 1529287412}
+  FogUIToggle: {fileID: 1166058941}
+  TextureQualityDropdown: {fileID: 1401833680938172509}
   GameCamera_AdditionalData: {fileID: 519420030}
   ParticalsReal2: {fileID: 1096343093}
 --- !u!1 &1056421480 stripped
@@ -51063,6 +51080,17 @@ MonoBehaviour:
   ThemeParticles: {fileID: 1764964457}
   ResearchFactoryLightmapABName: 
   ResearchFactoryLightmapAssetName: 
+--- !u!114 &1554704516 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4941934788868535941, guid: ad97596f556d1594792b188b1a075040, type: 3}
+  m_PrefabInstance: {fileID: 836760262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675379964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1560792663
 GameObject:
   m_ObjectHideFlags: 0
@@ -57469,11 +57497,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2021499744}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
---- !u!1 &1802618720 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4941934788868535943, guid: ad97596f556d1594792b188b1a075040, type: 3}
-  m_PrefabInstance: {fileID: 2001138996}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1802858538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61328,6 +61351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpdateAvailabeScreen: {fileID: 139949385}
   GlobalDark: {fileID: 792397936}
+  UpdateCheckerToggle: {fileID: 1554704516}
 --- !u!1001 &2001138996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64078,7 +64102,7 @@ MonoBehaviour:
   SDIE: {fileID: 1735523986}
   NoNetworkScreen: {fileID: 879742853}
   GlobalDark: {fileID: 792397936}
-  VREnableCustomMirrorCameraToggle: {fileID: 1802618720}
+  VREnableCustomMirrorCameraToggle: {fileID: 11016014}
   offlineManager: {fileID: 272517152}
   ad: {fileID: 1051201682}
   notification: {fileID: 1120771770}
@@ -70387,6 +70411,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1401833681302480739, guid: b040e007001c36048bbb4e31e3132759, type: 3}
   m_PrefabInstance: {fileID: 1401833680938172507}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1401833680938172509 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1401833681302480738, guid: b040e007001c36048bbb4e31e3132759, type: 3}
+  m_PrefabInstance: {fileID: 1401833680938172507}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479027598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2861958063362228737
 GameObject:
   m_ObjectHideFlags: 0

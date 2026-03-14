@@ -3,15 +3,20 @@ using Cysharp.Threading.Tasks;
 using LoggerSystem;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class Updater : MonoBehaviour
 {
     [SerializeField] private GameObject UpdateAvailabeScreen;
     [SerializeField] private GameObject GlobalDark;
 
+    [SerializeField] private Toggle UpdateCheckerToggle;
+
 #if !UNITY_WEBGL
     private void Start()
     {
+        UpdateCheckerToggle.isOn = !BetterPrefs.GetBool("DisableUpdateChecker", false);
+        
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {
             return;

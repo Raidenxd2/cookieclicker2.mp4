@@ -46,7 +46,7 @@ public class Game : MonoBehaviour
     public GameObject SDIE;
     public GameObject NoNetworkScreen;
     [SerializeField] private GameObject GlobalDark;
-    [SerializeField] private GameObject VREnableCustomMirrorCameraToggle;
+    [SerializeField] private Toggle VREnableCustomMirrorCameraToggle;
 
     // scripts
     [Header("Scripts")]
@@ -190,9 +190,11 @@ public class Game : MonoBehaviour
         if (!VRManager.instance.VREnabled)
         {
 #endif
-            VREnableCustomMirrorCameraToggle.SetActive(false);
+            VREnableCustomMirrorCameraToggle.gameObject.SetActive(false);
 #if !CC2_REMOVE_VR_SUPPORT
         }
+
+        VREnableCustomMirrorCameraToggle.isOn = BetterPrefs.GetBool("VR_MirrorCamera", false);
 #endif
 
 #if UNITY_WEBGL

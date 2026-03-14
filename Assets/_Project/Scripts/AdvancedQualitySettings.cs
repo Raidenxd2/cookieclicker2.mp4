@@ -1,7 +1,7 @@
-using LoggerSystem;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class AdvancedQualitySettings : MonoBehaviour
 {
@@ -16,6 +16,13 @@ public class AdvancedQualitySettings : MonoBehaviour
     public TMP_Text RenderQualityText;
     public TMP_InputField RenderQualityInput;
     public QualityWrapper qualityWrapper;
+
+    [SerializeField] private Toggle FPSDisplayUIToggle;
+    [SerializeField] private Toggle PostProcessingUIToggle;
+    [SerializeField] private Toggle ParticlesUIToggle;
+    [SerializeField] private Toggle VSyncUIToggle;
+    [SerializeField] private Toggle FogUIToggle;
+    [SerializeField] private TMP_Dropdown TextureQualityDropdown;
 
     public UniversalAdditionalCameraData GameCamera_AdditionalData;
     public GameObject ParticalsReal2;
@@ -62,23 +69,8 @@ public class AdvancedQualitySettings : MonoBehaviour
 
     public void GraphicsPresetChanged(int value)
     {
+        TextureQuality = value;
         BetterPrefs.SetInt("GRAPHICS_TextureQuality", value);
-        if (value == 0)
-        {
-            TextureQuality = 0;
-        }
-        if (value == 1)
-        {
-            TextureQuality = 1;
-        }
-        if (value == 2)
-        {
-            TextureQuality = 2;
-        }
-        if (value == 3)
-        {
-            TextureQuality = 3;
-        }
 
         UpdateSettings();
     }
@@ -92,6 +84,13 @@ public class AdvancedQualitySettings : MonoBehaviour
         Fog = BetterPrefs.GetBool("GRAPHICS_Fog", false);
         TextureQuality = BetterPrefs.GetInt("GRAPHICS_TextureQuality", 0);
         RenderQuality = BetterPrefs.GetFloat("GRAPHICS_RenderQuality", 1);
+
+        FPSDisplayUIToggle.isOn = FPSDisplay;
+        PostProcessingUIToggle.isOn = PostProcessing;
+        ParticlesUIToggle.isOn = Particals;
+        VSyncUIToggle.isOn = VSync;
+        FogUIToggle.isOn = Fog;
+        TextureQualityDropdown.value = TextureQuality;
 
         UpdateSettings();
     }
