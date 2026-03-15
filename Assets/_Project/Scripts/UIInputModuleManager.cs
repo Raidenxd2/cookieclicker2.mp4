@@ -16,6 +16,13 @@ public class UIInputModuleManager : MonoBehaviour
 #if !CC2_REMOVE_VR_SUPPORT
     private void Start()
     {
+#if UNITY_EDITOR
+        if (VRManager.instance.VREnabled && VRManager.instance.FakeVR)
+        {
+            GetComponent<InputSystemUIInputModule>().enabled = true;
+            return;
+        }
+#endif
         if (VRManager.instance.VREnabled)
         {
             GetComponent<XRUIInputModule>().enabled = true;

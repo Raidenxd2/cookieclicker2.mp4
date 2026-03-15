@@ -366,11 +366,10 @@
       "hash": "d9f471763db267ddb16837f2608575535655e063"
     },
     "com.yasirkula.simplefilebrowser": {
-      "version": "1.7.4",
+      "version": "file:com.yasirkula.simplefilebrowser",
       "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://package.openupm.com"
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.unity.modules.androidjni": {
       "version": "1.0.0",

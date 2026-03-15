@@ -317,6 +317,17 @@ public class Game : MonoBehaviour
 #if !CC2_REMOVE_VR_SUPPORT
     public async UniTask InitVR()
     {
+#if UNITY_EDITOR
+        if (VRManager.instance.VREnabled && VRManager.instance.FakeVR)
+        {
+            gameCamera.transform.position = new(0, -6, -1);
+            gameCamera.transform.rotation = Quaternion.identity;
+            
+            PP.profile = VRProfile;
+
+            return;
+        }
+#endif
         if (VRManager.instance.VREnabled)
         {
             try

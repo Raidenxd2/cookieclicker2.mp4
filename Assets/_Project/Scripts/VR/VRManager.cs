@@ -7,6 +7,10 @@ using UnityEngine.XR.Management;
 public class VRManager : MonoBehaviour
 {
     public bool VREnabled;
+    
+#if UNITY_EDITOR
+    public bool FakeVR;
+#endif
 
     public static bool VRBootEnabled;
 
@@ -49,8 +53,15 @@ public class VRManager : MonoBehaviour
         if (VREnabled)
         {
             BeanShootoutURP.EnableXRRenderingSupport = true;
-            Cursor.visible = false;
-            InitXR();
+#if UNITY_EDITOR
+            if (!FakeVR)
+            {
+#endif
+                Cursor.visible = false;
+                InitXR();
+#if UNITY_EDITOR
+            }
+#endif
         }
     }
 
