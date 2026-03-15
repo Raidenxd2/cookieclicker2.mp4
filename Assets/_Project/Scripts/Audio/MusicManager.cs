@@ -77,7 +77,7 @@ public class MusicManager : MonoBehaviour
         musicSource.clip = musicHandle.Result;
         musicSource.Play();
 
-        await UniTask.WaitUntil(() => musicSource.isPlaying == false);
+        await UniTask.WaitUntil(() => !musicSource.isPlaying);
         PlayRandomSongAsync().Forget();
     }
     

@@ -23,7 +23,7 @@ MonoBehaviour:
   DeleteBundlesBeforeBuilding: 0
   CopyPDBFiles: 1
   RemoveBurstDebugInformation: 1
-  IncrementBuildNumber: 0
+  IncrementBuildNumber: 1
   AddVersionToBuildFolder: 1
   AddGitCommitHashToVersion: 1
   AndroidTextureSubtarget: 6
