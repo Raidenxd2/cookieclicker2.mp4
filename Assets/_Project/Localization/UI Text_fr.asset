@@ -508,6 +508,180 @@ MonoBehaviour:
     m_Localized: "(VR) Cam\xE9ra miroir personnalis\xE9e"
     m_Metadata:
       m_Items: []
+  - m_Id: 430430538852741120
+    m_Localized: Mode en ligne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424758800605261824
+    m_Localized: AVERTISSEMENT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424758248999759872
+    m_Localized: "Google a annonc\xE9 qu'\xE0 partir de 2026/2027, toutes les applications
+      install\xE9es sur des appareils Android certifi\xE9s exigeront que le d\xE9veloppeur
+      transmette ses informations d'identit\xE9 directement \xE0 Google.\n\xC9tant
+      donn\xE9 que les d\xE9veloppeurs (il n'y en a qu'un seul) de cette application
+      n'acceptent pas cette exigence, celle-ci ne fonctionnera plus sur les appareils
+      Android certifi\xE9s apr\xE8s cette date.\n\nCet avertissement ne s'affichera
+      qu'une seule fois et ne s'applique pas aux appareils de r\xE9alit\xE9 virtuelle
+      autonomes qui ne fonctionnent pas sous Android XR."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413469360247287808
+    m_Localized: "CPC (co\xFBts par clic)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413469361727877120
+    m_Localized: CPS (cookies par seconde)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413469358464708608
+    m_Localized: Cookies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413151367436972032
+    m_Localized: Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413150917975355392
+    m_Localized: "Dur\xE9e de la partie en secondes"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413150867052310528
+    m_Localized: "En attente que l'h\xF4te s\xE9lectionne les param\xE8tres..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412052542609698816
+    m_Localized: "Le temps est \xE9coul\xE9 !\n\nRetour au jeu principal..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412033137234423808
+    m_Localized: "\xC9chec du d\xE9marrage de l'h\xF4te.\n\nRetour au jeu principal..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412033135284072448
+    m_Localized: "\xC9chec du d\xE9marrage du client.\n\nRetour au jeu principal..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412026706359758848
+    m_Localized: "En attente de l'h\xF4te..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412025819163799552
+    m_Localized: Lancer le jeu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412005241233092608
+    m_Localized: "L'h\xF4te a quitt\xE9 la partie.\n\nRetour \xE0 la partie principale..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412005091248975872
+    m_Localized: "\xCAtes-vous s\xFBr de vouloir vous d\xE9connecter en tant qu'h\xF4te
+      ?\nTous les participants pr\xE9sents dans le hall seront d\xE9connect\xE9s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412000206302490624
+    m_Localized: "Dans un jeu en ligne, votre objectif est d'obtenir autant de cookies/CPS/CPC
+      (au choix de l'organisateur) que possible dans un d\xE9lai imparti."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411997938693976064
+    m_Localized: "D\xE9connecter"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411997590558355456
+    m_Localized: Hall d'accueil en ligne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411985725597954048
+    m_Localized: Connexion en cours...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411979780830539776
+    m_Localized: Nom d'utilisateur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977498202222592
+    m_Localized: "\xC9chec de la connexion au serveur.\n\nRetour au jeu principal..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977101165211648
+    m_Localized: "Une erreur r\xE9seau s'est produite (Transport).\nV\xE9rifiez que
+      l'adresse IP \xE0 laquelle vous vous connectez est correcte.\n\nRetour au jeu
+      principal..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977045909450752
+    m_Localized: "H\xF4te"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977026741481472
+    m_Localized: Se connecter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411976883090763776
+    m_Localized: Afficher l'adresse IP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411976868377145344
+    m_Localized: Adresse IP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411968103900786688
+    m_Localized: "Mode r\xE9seau"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411968070136639488
+    m_Localized: Internet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411968029854543872
+    m_Localized: "LAN (r\xE9seau local)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411967994790162432
+    m_Localized: En ligne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 377187145112891392
+    m_Localized: "Tu as gagn\xE9 {0} cookies !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 377187121066946560
+    m_Localized: "Cookies gagn\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376539717368033280
+    m_Localized: Biscuits Boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376538501019873280
+    m_Localized: "Vous pouvez modifier ce param\xE8tre ult\xE9rieurement dans les
+      Options"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376538478223831040
+    m_Localized: "Vous pouvez modifier ce param\xE8tre ult\xE9rieurement dans les
+      Options"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376538156109672448
+    m_Localized: Mode normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376538130637664256
+    m_Localized: "R\xE9glage par d\xE9faut pour le mode VR\nSe d\xE9placer dans un
+      espace 3D\nFrapper avec le \xAB marteau \xBB dans la zone de frappe"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376538100933603328
+    m_Localized: Mode original
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376538079068696576
+    m_Localized: Choisissez un mode
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

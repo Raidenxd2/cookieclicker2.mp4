@@ -508,7 +508,189 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 377187145112891392
-    m_Localized: 
+    m_Localized: "\xA1Has ganado {0} galletas!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376538079068696576
+    m_Localized: Seleccionar modo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376538100933603328
+    m_Localized: Modo original
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376538130637664256
+    m_Localized: "Configuraci\xF3n predeterminada para el modo VR\nMu\xE9vete por
+      un espacio 3D\nGolpea con el \xABmartillo\xBB en la zona de impacto"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376538156109672448
+    m_Localized: Modo normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376538478223831040
+    m_Localized: "Configuraci\xF3n predeterminada para el modo sin realidad virtual\nInterfaz
+      de usuario para elegir qu\xE9 galleta\nHaz clic para blandir el \xABmartillo\xBB"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376538501019873280
+    m_Localized: "Puedes cambiarlo m\xE1s adelante en \xABOpciones\xBB"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376539717368033280
+    m_Localized: Galletas Boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 377187121066946560
+    m_Localized: Galletas ganadas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411967994790162432
+    m_Localized: "En l\xEDnea"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411968029854543872
+    m_Localized: "LAN (red de \xE1rea local)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411968070136639488
+    m_Localized: Internet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411968103900786688
+    m_Localized: Modo red
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411976868377145344
+    m_Localized: "Direcci\xF3n IP"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411976883090763776
+    m_Localized: "Mostrar direcci\xF3n IP"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977026741481472
+    m_Localized: Conectar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977045909450752
+    m_Localized: "Anfitri\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977101165211648
+    m_Localized: "Se ha producido un error de red (Transporte).\nComprueba que la
+      direcci\xF3n IP a la que te est\xE1s conectando sea correcta.\n\nVolviendo
+      al juego principal..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411977498202222592
+    m_Localized: 'No se ha podido conectar al servidor.
+
+
+      Volviendo al juego
+      principal...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411979780830539776
+    m_Localized: Nombre de usuario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411985725597954048
+    m_Localized: Conectando...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411997590558355456
+    m_Localized: "Sala de espera en l\xEDnea"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 411997938693976064
+    m_Localized: Desconectar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412000206302490624
+    m_Localized: "En un juego en l\xEDnea, tu objetivo es conseguir tantas galletas/CPS/CPC
+      (el anfitri\xF3n elige cu\xE1l) como sea posible dentro de un l\xEDmite de
+      tiempo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412005091248975872
+    m_Localized: "\xBFEst\xE1s seguro de que quieres desconectarte como anfitri\xF3n?\nTodos
+      los participantes del vest\xEDbulo quedar\xE1n desconectados."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412005241233092608
+    m_Localized: "El anfitri\xF3n ha abandonado la partida.\n\nVolviendo a la partida
+      principal..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412025819163799552
+    m_Localized: Empezar el juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412026706359758848
+    m_Localized: "Esperando al anfitri\xF3n..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412033135284072448
+    m_Localized: 'No se ha podido iniciar el cliente.
+
+
+      Volviendo al juego
+      principal...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412033137234423808
+    m_Localized: 'No se ha podido iniciar el servidor.
+
+
+      Volviendo al juego
+      principal...'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 412052542609698816
+    m_Localized: "\xA1Se ha agotado el tiempo!\n\nVolviendo al juego principal..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413150867052310528
+    m_Localized: "Esperando a que el servidor seleccione la configuraci\xF3n..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413150917975355392
+    m_Localized: "Duraci\xF3n del juego en segundos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413151367436972032
+    m_Localized: Modo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413469358464708608
+    m_Localized: Cookies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413469361727877120
+    m_Localized: CPS (galletas por segundo)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 413469360247287808
+    m_Localized: CPC (coste por clic)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424758248999759872
+    m_Localized: "Google ha anunciado que, a partir de 2026/2027, todas las aplicaciones
+      instaladas en dispositivos Android certificados exigir\xE1n que el desarrollador
+      env\xEDe sus datos de identidad directamente a Google.\nDado que los desarrolladores
+      (solo hay uno) de esta aplicaci\xF3n no aceptan este requisito, la aplicaci\xF3n
+      dejar\xE1 de funcionar en dispositivos Android certificados a partir de esa
+      fecha.\n\nEsta advertencia solo se mostrar\xE1 una vez y no se aplica a los
+      dispositivos de realidad virtual aut\xF3nomos que no utilicen Android XR."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424758800605261824
+    m_Localized: ADVERTENCIA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430430538852741120
+    m_Localized: "Modo en l\xEDnea"
     m_Metadata:
       m_Items: []
   references:

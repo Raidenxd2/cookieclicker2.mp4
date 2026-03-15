@@ -31,8 +31,8 @@ public class PlayerCam : MonoBehaviour
 
         if (playerControls.devices[0].displayName.Contains("Keyboard") || playerControls.devices[0].displayName.Contains("Mouse"))
         {
-            sensX = 5 * BetterPrefs.GetInt("KeyboardMouseSettings_MouseSensitivity", 1);
-            sensY = 5 * BetterPrefs.GetInt("KeyboardMouseSettings_MouseSensitivity", 1);
+            sensX = 2 * BetterPrefs.GetInt("KeyboardMouseSettings_MouseSensitivity", 1);
+            sensY = 2 * BetterPrefs.GetInt("KeyboardMouseSettings_MouseSensitivity", 1);
         }
     }
 
