@@ -176,11 +176,6 @@ namespace UnityEditor.XR.OpenXR.Features
                     })
                     .Any());
 
-            if (!importers.Any())
-            {
-                throw new BuildFailedException("No OpenXR loader library found. Make sure the Unity OpenXR plug-in package is installed properly.");
-            }
-
             return importers;
         }
 
