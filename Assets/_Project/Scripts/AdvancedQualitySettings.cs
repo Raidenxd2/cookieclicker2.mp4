@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
@@ -15,7 +16,6 @@ public class AdvancedQualitySettings : MonoBehaviour
     public GameObject pp_normal;
     public TMP_Text RenderQualityText;
     public TMP_InputField RenderQualityInput;
-    public QualityWrapper qualityWrapper;
 
     [SerializeField] private Toggle FPSDisplayUIToggle;
     [SerializeField] private Toggle PostProcessingUIToggle;
@@ -24,8 +24,15 @@ public class AdvancedQualitySettings : MonoBehaviour
     [SerializeField] private Toggle FogUIToggle;
     [SerializeField] private TMP_Dropdown TextureQualityDropdown;
 
+    private UniversalRenderPipelineAsset URPAsset;
+    
     public UniversalAdditionalCameraData GameCamera_AdditionalData;
     public GameObject ParticalsReal2;
+
+    private void Awake()
+    {
+        URPAsset = GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset;
+    }
 
     public void FPSDisplayToggle(bool Toggle)
     {
@@ -167,6 +174,6 @@ public class AdvancedQualitySettings : MonoBehaviour
 
         RenderQualityText.text = RenderQuality + "x";
 
-        qualityWrapper.SetRenderScale(RenderQuality);
+        URPAsset.renderScale = RenderQuality;
     }
 }
