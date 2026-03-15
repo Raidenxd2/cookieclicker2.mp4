@@ -163,6 +163,7 @@ MonoBehaviour:
   - {fileID: -4920928112829867735}
   - {fileID: 1374834727152667692}
   - {fileID: -1791733150791993036}
+  - {fileID: 8045845144231616155}
   customLoaderName: 
   m_renderMode: 1
   m_latencyOptimization: 1
@@ -1512,21 +1513,15 @@ MonoBehaviour:
   m_Name: MockInteractionFeature Standalone
   m_EditorClassIdentifier: 
   m_enabled: 0
-  <failedInitialization>k__BackingField: 0
   nameUi: Mock Interaction Feature
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.mockinteraction
   openxrExtensionStrings: 
   company: Unity
   priority: -2147483648
+  targetOpenXRApiVersion: 
   required: 0
-  <actionMapConfig>k__BackingField:
-    name: 
-    localizedName: 
-    actions: []
-    desiredInteractionProfile: 
-    manufacturer: 
-    serialNumber: 
+  customRuntimeLoaderName: 
 --- !u!114 &6391564787858776438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1582,21 +1577,15 @@ MonoBehaviour:
   m_Name: MockInteractionFeature Android
   m_EditorClassIdentifier: 
   m_enabled: 0
-  <failedInitialization>k__BackingField: 0
   nameUi: Mock Interaction Feature
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.mockinteraction
   openxrExtensionStrings: 
   company: Unity
   priority: -2147483648
+  targetOpenXRApiVersion: 
   required: 0
-  <actionMapConfig>k__BackingField:
-    name: 
-    localizedName: 
-    actions: []
-    desiredInteractionProfile: 
-    manufacturer: 
-    serialNumber: 
+  customRuntimeLoaderName: 
 --- !u!114 &8076954898877726812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1672,6 +1661,7 @@ MonoBehaviour:
   - {fileID: -6098976214046798576}
   - {fileID: -9169342924667554623}
   - {fileID: -6966019011601786999}
+  - {fileID: 6222729927968704119}
   customLoaderName: 
   m_renderMode: 1
   m_latencyOptimization: 0
