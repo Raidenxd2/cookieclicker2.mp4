@@ -143,13 +143,11 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 3.0.0-PublicRelease-OS_11169 (open-source, 76f753836a68122226a141b2d74b5029fd5fe748)
+  bundleVersion: 3.0.0-PublicRelease-OS_11170 (open-source, 279c8395a1c57e32e4c6395ff338b27071bf84b9)
   preloadedAssets:
   - {fileID: -944628639613478452, guid: f6942149c81fd7d4a9c839ed3180c690, type: 3}
   - {fileID: 11400000, guid: 5a6050f4d65b99340992ab87fbbe1f03, type: 2}
   - {fileID: 11400000, guid: b7224aa7088bbee4f93405520d8919f4, type: 2}
-  - {fileID: -3897798550495487935, guid: d45d0090f76dbdd4ca8bbe877eb041d3, type: 2}
-  - {fileID: 8850150090056202000, guid: 1fd3eede65d2b684897885ba920b3ba5, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -174,12 +172,12 @@ PlayerSettings:
     Android: com.raiden.cookieclicker2mp4_os2
     Standalone: com.raiden.cookieclicker2mp4-os
   buildNumber:
-    Standalone: 11169
+    Standalone: 11170
     VisionOS: 0
     iPhone: 25
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 11169
+  AndroidBundleVersionCode: 11170
   AndroidMinSdkVersion: 25
   AndroidTargetSdkVersion: 36
   AndroidPreferredInstallLocation: 0

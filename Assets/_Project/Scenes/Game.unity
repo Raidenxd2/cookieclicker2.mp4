@@ -43278,7 +43278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 106894220553011084, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_TagString
-      value: EditorOnly
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 106894220553011085, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
       propertyPath: m_Pivot.x
