@@ -171,7 +171,14 @@ public class BossCookiesLoader : MonoBehaviour
         {
             game.ad.pp_normal.SetActive(true);
         }
-
+        
+#if !CC2_REMOVE_VR_SUPPORT
+        if (VRManager.instance.VREnabled)
+        {
+            Game.instance.XROrigin.SetActive(true);
+        }
+#endif
+        
         game.Fade.Play("FadeOut");
         game.FadeCanvasGroup.blocksRaycasts = false;
     }

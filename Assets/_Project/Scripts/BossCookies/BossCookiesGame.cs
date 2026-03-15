@@ -151,7 +151,14 @@ public class BossCookiesGame : MonoBehaviour
 
         UI.renderMode = RenderMode.WorldSpace;
         UI.transform.parent = Player.transform;
-        UI.transform.localPosition = new(1, 0.5f, 0);
+        if (VRManager.instance.VREnabled)
+        {
+            UI.transform.localPosition = new(1, 1.5f, 0);
+        }
+        else
+        {
+            UI.transform.localPosition = new(1, 0.5f, 0);
+        }
         UI.transform.localScale = new(0.001f, 0.001f, 0.001f);
         UI.worldCamera = VRModeCamera;
         UI.GetComponent<GraphicRaycaster>().enabled = false;

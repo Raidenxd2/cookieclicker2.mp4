@@ -23,7 +23,7 @@ public class PlayerBaseVR : MonoBehaviour
             Hammer.position = Vector3.zero;
             Hammer2.position = Vector3.zero;
             Hammer.localPosition = new(-0.0066f, 0.6149f, -0.0724f);
-            Hammer.localScale = new(0.1f, 0.1f, 0.1f);
+            Hammer.localScale = new(0.2f, 0.25f, 0.2f);
             Hammer2.localPosition = new(-0.0066f, 0.6149f, -0.0724f);
             Hammer2.localScale = new(0.1f, 0.1f, 0.1f);
             OldCamera.SetActive(false);
