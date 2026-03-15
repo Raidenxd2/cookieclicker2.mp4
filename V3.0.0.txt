@@ -1,0 +1,11 @@
+V3.0.0:
+Added WebGL support
+Added back Android support
+Added Boss Cookies minigame
+Added support for Vulkan on Windows
+Added volume sliders
+Added early online mode (Beta Content)
+Reduced font memory usage
+Made the toggles and dropdowns in settings update on startup
+Several misc changes
+Upgraded to Unity 6000.3.8f1
