@@ -104,6 +104,9 @@ public class BossCookiesLoader : MonoBehaviour
             Notification.instance.NotificationCanvas.renderMode = RenderMode.ScreenSpaceCamera;
             Notification.instance.NotificationCanvas.transform.parent = notificationCanvasParent;
             Notification.instance.NotificationCanvas.worldCamera = game.gameCamera;
+            
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
 #if !CC2_REMOVE_VR_SUPPORT
         }
 #endif
@@ -114,15 +117,7 @@ public class BossCookiesLoader : MonoBehaviour
             VRCanvas vrCanvas = Notification.instance.NotificationCanvas.GetComponent<VRCanvas>();
             Notification.instance.NotificationCanvas.transform.SetPositionAndRotation(vrCanvas.newPos, Quaternion.Euler(vrCanvas.newRot));
             Notification.instance.NotificationCanvas.transform.parent = notificationCanvasParent;
-        }
-#endif
-
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-
-#if !CC2_REMOVE_VR_SUPPORT
-        if (VRManager.instance.VREnabled)
-        {
+            
             Game.instance.XROrigin.transform.parent = BossCookiesGame.instance.OldVRParent;
             Game.instance.XROrigin.transform.SetPositionAndRotation(BossCookiesGame.instance.OldVRPosition, BossCookiesGame.instance.OldVRRotation);
         }
