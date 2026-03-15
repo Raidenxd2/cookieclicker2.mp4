@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR;
 #if !CC2_REMOVE_VR_SUPPORT
 using System;
 using UnityEngine.XR.Management;
@@ -67,6 +68,7 @@ public class VRManager : MonoBehaviour
 
     private void InitXR()
     {
+#if !UNITY_ANDROID
         currentLoader = XRGeneralSettings.Instance.Manager.activeLoaders[0];
 
         if (!currentLoader.Initialize())
@@ -89,6 +91,9 @@ public class VRManager : MonoBehaviour
         }
 
         XRGeneralSettings.Instance.Manager.StartSubsystems();
+#else
+        XRSettings.useOcclusionMesh = false;
+#endif
     }
 
     private void OnDestroy()

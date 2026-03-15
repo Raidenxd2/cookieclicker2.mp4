@@ -131,7 +131,7 @@ public class BossCookiesGame : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-#if !CC2_DISABLE_VR_MODE
+#if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             NormalModeUI.gameObject.SetActive(false);
