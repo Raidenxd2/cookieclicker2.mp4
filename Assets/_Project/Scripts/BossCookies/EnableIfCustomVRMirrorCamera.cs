@@ -4,6 +4,7 @@ public class EnableIfCustomVRMirrorCamera : MonoBehaviour
 {
     [SerializeField] private GameObject go;
 
+#if !CC2_REMOVE_VR_SUPPORT
     private void Awake()
     {
         if (BetterPrefs.GetBool("VR_MirrorCamera", false) && VRManager.instance.VREnabled)
@@ -11,4 +12,5 @@ public class EnableIfCustomVRMirrorCamera : MonoBehaviour
             go.SetActive(true);
         }
     }
+#endif
 }

@@ -27,19 +27,9 @@ public class WebGLBuild : Editor
             File.Delete(Application.dataPath + "/Samples/XR Interaction Toolkit.meta");
         }
 
-        if (Directory.Exists(Application.dataPath + "/../Packages/com.unity.inputsystem"))
-        {
-            Directory.Delete(Application.dataPath + "/../Packages/com.unity.inputsystem", true);
-        }
-
         if (Directory.Exists(Application.dataPath + "/../Packages/com.unity.xr.openxr"))
         {
             Directory.Delete(Application.dataPath + "/../Packages/com.unity.xr.openxr", true);
-        }
-
-        if (Directory.Exists(Application.dataPath + "/../Packages/com.unity.xr.interaction.toolkit"))
-        {
-            Directory.Delete(Application.dataPath + "/../Packages/com.unity.xr.interaction.toolkit", true);
         }
 
         if (Directory.Exists(Application.dataPath + "/_Project/Resources"))
@@ -53,10 +43,11 @@ public class WebGLBuild : Editor
         CheckIfFileExistsAndDelete(Application.dataPath + "/_Project/Themes/content/ForestTheme/Textures/ForestThemeAtlasNormal.png");
         CheckIfFileExistsAndDelete(Application.dataPath + "/_Project/Themes/content/ForestTheme/ForestTheme_Scene/ReflectionProbe-0.exr");
         CheckIfFileExistsAndDelete(Application.dataPath + "/_Project/Themes/content/SpaceTheme/SpaceTheme_Scene/ReflectionProbe-0.exr");
+        CheckIfFileExistsAndDelete(Application.dataPath + "/_Project/Scenes/BossCookies-Environment/ReflectionProbe-0.exr");
 
         if (!File.Exists(Application.dataPath + "/WebGL_PackagesRemoved"))
         {
-            string[] packages = new[] { "dev.voltstro.unitycommandlineparser", "com.unity.xr.interaction.toolkit", "com.unity.xr.management", "com.unity.xr.openxr", "com.unity.inputsystem", "com.unity.modules.vr", "com.unity.modules.screencapture" };
+            string[] packages = new[] { "com.unity.xr.interaction.toolkit", "com.unity.xr.management", "com.unity.xr.openxr", "com.unity.inputsystem", "com.unity.modules.screencapture" };
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             RemovePackagesAsync(packages);

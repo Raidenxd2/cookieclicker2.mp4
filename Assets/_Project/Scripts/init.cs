@@ -3,6 +3,7 @@ using LoggerSystem;
 using SimpleFileBrowser;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public class Init : MonoBehaviour

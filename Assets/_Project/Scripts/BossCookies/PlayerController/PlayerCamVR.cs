@@ -12,9 +12,9 @@ public class PlayerCamVR : MonoBehaviour
     public Transform orientation;
     public Transform playerModel;
     
+#if !CC2_DISABLEBOSSCOOKIESVRMODE
     private InputAction vr_rightPositionInputAction = new(binding: "<XRController>{RightHand}/{Primary2DAxis}", expectedControlType: "Vector2");
 
-#if !CC2_DISABLEBOSSCOOKIESVRMODE
     private float yRotation;
 
     private void Start()
