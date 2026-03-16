@@ -1,0 +1,3 @@
+[submodule "Packages/com.unity.xr.openxr"]
+	path = Packages/com.unity.xr.openxr
+	url = https://github.com/Raidenxd2/com.unity.xr.openxr.git
