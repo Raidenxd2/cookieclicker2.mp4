@@ -1,3 +1,4 @@
 V3.0.1:
 Fixed UI scaling with volume sliders
 Fixed Android warning not showing
+Improved version text UI
