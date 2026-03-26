@@ -26,9 +26,9 @@ public class Init : MonoBehaviour
         }
 
 #if UNITY_ANDROID
-        if (PlayerPrefs.GetInt("GoogleAndroidWarningShown", 0) == 0 && !VRManager.instance.VREnabled)
+        if (PlayerPrefs.GetInt("GoogleAndroidWarningShownV2", 0) == 0 && !VRManager.instance.VREnabled)
         {
-            PlayerPrefs.SetInt("GoogleAndroidWarningShown", 1);
+            PlayerPrefs.SetInt("GoogleAndroidWarningShownV2", 1);
             AndroidWarningScreen.SetActive(true);
             
             return;
