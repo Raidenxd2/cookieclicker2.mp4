@@ -119,33 +119,17 @@ public class OnlineLobbyManager : MonoBehaviour
     {
         if (VRManager.instance.VREnabled)
         {
-            try
-            {
-                VRPrefabGO = Instantiate(await Resources.LoadAsync("OnlineLobby_VRPrefab") as GameObject);
-                vrpo = VRPrefabGO.GetComponent<VRPrefabObject>();
+            VRPrefabGO = Instantiate(await Resources.LoadAsync("OnlineLobby_VRPrefab") as GameObject);
+            vrpo = VRPrefabGO.GetComponent<VRPrefabObject>();
 
-                XROrigin = vrpo.XROrigin;
+            XROrigin = vrpo.XROrigin;
 
-                vrFade.InitVR();
-            }
-            catch (Exception ex)
-            {
-                LogSystem.Log(ex.ToString(), LogTypes.Exception);
-                LoadVRFallbackSceneAsync().Forget();
-                return;
-            }
+            vrFade.InitVR();
 
             gameCamera.gameObject.SetActive(false);
         }
 
         UpdateMirrorCamera();
-    }
-#endif
-    
-#if !CC2_REMOVE_VR_SUPPORT
-    private async UniTaskVoid LoadVRFallbackSceneAsync()
-    {
-        await SceneManager.LoadSceneAsync(AddressableHandles.vrFallbackSceneRef);
     }
 #endif
     
@@ -368,10 +352,12 @@ public class OnlineLobbyManager : MonoBehaviour
         Fade.Play("FadeIn");
         FadeCanvasGroup.blocksRaycasts = true;
         await UniTask.WaitForSeconds(1);
+
+        BetterPrefs.Save();
         
         MusicManager.instance.UnloadSong();
         
-        await SceneManager.LoadSceneAsync(AddressableHandles.initSceneRef);
+        await SceneManager.LoadSceneAsync(SceneNames.initSceneRef);
     }
 
     public void ShowNetworkError(LocalizedString ls)
@@ -382,23 +368,8 @@ public class OnlineLobbyManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        try
-        {
-            NetworkManager.Singleton.OnTransportFailure -= OnTransportFailure;
-        }
-        catch
-        {
-            
-        }
-
-        try
-        {
-            NetworkManager.Singleton.ConnectionManager.OnDisconnect2 -= OnDisconnect;
-        }
-        catch
-        {
-            
-        }
+        NetworkManager.Singleton.OnTransportFailure -= OnTransportFailure;
+        NetworkManager.Singleton.ConnectionManager.OnDisconnect2 -= OnDisconnect;
         
         NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnect;
         NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;

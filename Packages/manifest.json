@@ -6,7 +6,7 @@
     "com.raiden.buildmanager": "https://github.com/Raidenxd2/BuildManager.git#v2.6.0",
     "com.raiden.serial": "2.0.3",
     "com.raiden.shaderstripper": "https://github.com/Raidenxd2/ShaderStripper.git",
-    "com.raiden.sharedshaders": "https://github.com/Raidenxd2/SharedShaders.git#1.1.0",
+    "com.raiden.sharedshaders": "https://codeberg.org/Raidenxd2/SharedShaders.git#1.2.0",
     "com.raiden.signaturealwaysfulltrustpatch": "https://github.com/Raidenxd2/UnityPackageSignatureAlwaysFullTrustPatch.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.addressables": "2.7.4",

@@ -1,4 +1,23 @@
-V3.0.1:
+V3.1.0:
 Fixed UI scaling with volume sliders
 Fixed Android warning not showing
+Fixed lines at top and bottom with the setting preview images
+Fixed being able to break the window animation by spamming the back button
 Improved version text UI
+Improved UI scaling for more vertical resolutions
+Removed unused text from Boss Cookies choose mode screen
+Changed VSync info text
+Changed initial VR loading screen
+Removed XR Origin was destroyed error
+Added 2 new themes because Rec Room is shutting down: Rec Room ^cookieclicker.mp4 and Rec Room ^cookieclicker2.mp4
+Added new Boss Cookies cookie: Gray Cookie
+Added a rebirth option
+Added licenses button in the credits screen
+Added dark fade to setting info screens
+Added information to shop items
+Added a way to show files without the .cookie extension on export/import
+Added validation to make sure the save file being imported is valid
+(Online) Improved lobby map
+(Online) Made it so you can't press certain buttons while in a game
+(Online) Added host settings screen
+(Research Factory) Added a way to buy research points

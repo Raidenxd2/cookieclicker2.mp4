@@ -128,6 +128,8 @@ public class ThemeManager : MonoBehaviour
                 await EditorSceneManager.LoadSceneAsyncInPlayMode(FullAssetPath, new(LoadSceneMode.Additive));
             }
 #endif
+            
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneName));
         }
         catch
         {

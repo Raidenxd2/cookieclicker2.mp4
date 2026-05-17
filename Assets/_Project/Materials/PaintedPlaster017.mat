@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PaintedPlaster017
-  m_Shader: {fileID: 4800000, guid: fdbfef27f4a2dff4ba4f174e9ad8f86d, type: 3}
+  m_Shader: {fileID: 4800000, guid: aac4f849fb9ca1043a0febf8229dcb34, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

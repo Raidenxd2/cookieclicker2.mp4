@@ -9,6 +9,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: BaseMat
     second: {fileID: 2100000, guid: aedf1d2d2109be34999d7d63a6957f98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hidden_MakerPenShape_Batched
+    second: {fileID: 2100000, guid: aedf1d2d2109be34999d7d63a6957f98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lit
+    second: {fileID: 2100000, guid: aedf1d2d2109be34999d7d63a6957f98, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

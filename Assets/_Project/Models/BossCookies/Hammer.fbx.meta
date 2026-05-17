@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Hidden_MakerPenShape_Batched
+    second: {fileID: 2100000, guid: 9d67750986d89ce4eb7cdb452495cd9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: TopMat
     second: {fileID: 2100000, guid: cd3ce7f5b7ed8c246b33dc8c8a91e0df, type: 2}
   materials:

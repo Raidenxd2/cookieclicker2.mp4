@@ -33,10 +33,5 @@ public class DebugMenu : MonoBehaviour
     {
         CookiesInput.text = "" + game.Cookies;
     }
-
-    public void SetFPS()
-    {
-        Application.targetFrameRate = int.Parse(FPSInput.text);
-    }
 }
 #endif

@@ -62,6 +62,6 @@ public class PreInitScene : MonoBehaviour
             Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
         }
 
-        SceneManager.LoadScene(AddressableHandles.initSceneRef);
+        SceneManager.LoadScene(SceneNames.initSceneRef);
     }
 }

@@ -11,7 +11,6 @@ public class OfflineManager : MonoBehaviour
     public GameObject OfflineProgressScreen;
 
     public DateTime currentTime;
-    public DateTime oldTime;
 
     public Game game;
 

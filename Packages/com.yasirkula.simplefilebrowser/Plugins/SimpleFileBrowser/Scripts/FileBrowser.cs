@@ -2966,7 +2966,7 @@ namespace SimpleFileBrowser
 				}
 			}
 
-			SetFiltersPostProcessing();
+			SetFiltersPostProcessing(showAllFilesFilter);
 		}
 
 		public static void SetFilters( bool showAllFilesFilter, params string[] filters )
@@ -2982,7 +2982,7 @@ namespace SimpleFileBrowser
 				}
 			}
 
-			SetFiltersPostProcessing();
+			SetFiltersPostProcessing(showAllFilesFilter);
 		}
 
 		public static void SetFilters( bool showAllFilesFilter, IEnumerable<Filter> filters )
@@ -2998,7 +2998,7 @@ namespace SimpleFileBrowser
 				}
 			}
 
-			SetFiltersPostProcessing();
+			SetFiltersPostProcessing(showAllFilesFilter);
 		}
 
 		public static void SetFilters( bool showAllFilesFilter, params Filter[] filters )
@@ -3014,7 +3014,7 @@ namespace SimpleFileBrowser
 				}
 			}
 
-			SetFiltersPostProcessing();
+			SetFiltersPostProcessing(showAllFilesFilter);
 		}
 
 		private static void SetFiltersPreProcessing( bool showAllFilesFilter )
@@ -3022,12 +3022,9 @@ namespace SimpleFileBrowser
 			Instance.showAllFilesFilter = showAllFilesFilter;
 
 			Instance.filters.Clear();
-
-			if( showAllFilesFilter )
-				Instance.filters.Add( Instance.allFilesFilter );
 		}
 
-		private static void SetFiltersPostProcessing()
+		private static void SetFiltersPostProcessing( bool showAllFilesFilter )
 		{
 			List<Filter> filters = Instance.filters;
 
@@ -3037,6 +3034,12 @@ namespace SimpleFileBrowser
 			Instance.filterLabels.Clear();
 			for( int i = 0; i < filters.Count; i++ )
 				Instance.filterLabels.Add( filters[i].ToString() );
+
+			if (showAllFilesFilter)
+			{
+				Instance.filters.Add( Instance.allFilesFilter );
+				Instance.filterLabels.Add(AllFilesFilterText);
+			}
 
 			Instance.RefreshFiltersDropdownWidth();
 

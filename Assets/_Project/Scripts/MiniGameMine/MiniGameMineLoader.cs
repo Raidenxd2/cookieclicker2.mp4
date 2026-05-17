@@ -48,9 +48,9 @@ public class MiniGameMineLoader : MonoBehaviour
         game.researchFactory.GameCanvas.SetActive(false);
         game.gameCamera.gameObject.SetActive(false);
 
-        await SceneManager.LoadSceneAsync(AddressableHandles.miniGameMineRef, LoadSceneMode.Additive);
+        await SceneManager.LoadSceneAsync(SceneNames.miniGameMineRef, LoadSceneMode.Additive);
 
-        LogSystem.Log("Loading AssetBundle " + environmentRef.BundleName + " and scene " + AddressableHandles.miniGameMineEnvironmentRef);
+        LogSystem.Log("Loading AssetBundle " + environmentRef.BundleName + " and scene " + SceneNames.miniGameMineEnvironmentRef);
 
 #if UNITY_EDITOR
         if (LoadAssetBundlesInEditor)
@@ -61,7 +61,7 @@ public class MiniGameMineLoader : MonoBehaviour
 #else
             environmentBundle = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/" + environmentRef.BundleName + ".bundle");
 #endif
-            await SceneManager.LoadSceneAsync(AddressableHandles.miniGameMineEnvironmentRef, LoadSceneMode.Additive);
+            await SceneManager.LoadSceneAsync(SceneNames.miniGameMineEnvironmentRef, LoadSceneMode.Additive);
 #if UNITY_EDITOR
         }
         else
@@ -70,7 +70,7 @@ public class MiniGameMineLoader : MonoBehaviour
         }
 #endif
 
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.miniGameMineEnvironmentRef));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneNames.miniGameMineEnvironmentRef));
 
         game.Fade.Play("FadeOut");
         game.FadeCanvasGroup.blocksRaycasts = false;
@@ -95,25 +95,25 @@ public class MiniGameMineLoader : MonoBehaviour
         }
 #endif
 
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.gameSceneRef));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneNames.gameSceneRef));
 
-        await SceneManager.UnloadSceneAsync(AddressableHandles.miniGameMineRef);
+        await SceneManager.UnloadSceneAsync(SceneNames.miniGameMineRef);
 
 #if UNITY_EDITOR
         if (LoadAssetBundlesInEditor)
         {
-            LogSystem.Log("Unloading Scene " + AddressableHandles.miniGameMineEnvironmentRef);
+            LogSystem.Log("Unloading Scene " + SceneNames.miniGameMineEnvironmentRef);
             
         }
         else
         {
 #endif
-            LogSystem.Log("Unloading Scene " + AddressableHandles.miniGameMineEnvironmentRef + " and bundle " + environmentRef.BundleName);
+            LogSystem.Log("Unloading Scene " + SceneNames.miniGameMineEnvironmentRef + " and bundle " + environmentRef.BundleName);
 #if UNITY_EDITOR
         }
 #endif
 
-        await SceneManager.UnloadSceneAsync(AddressableHandles.miniGameMineEnvironmentRef);
+        await SceneManager.UnloadSceneAsync(SceneNames.miniGameMineEnvironmentRef);
 
 #if UNITY_EDITOR
         if (LoadAssetBundlesInEditor)

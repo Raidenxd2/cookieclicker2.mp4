@@ -49,11 +49,11 @@
       "hash": "be83a08ce1f6be3444c0a3911bd23e472de853a4"
     },
     "com.raiden.sharedshaders": {
-      "version": "https://github.com/Raidenxd2/SharedShaders.git#1.1.0",
+      "version": "https://codeberg.org/Raidenxd2/SharedShaders.git#1.2.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "c2aedbb25c21d17cee62696c82f62a9c223d40c5"
+      "hash": "6f7527d8f52d9449c80feb0190fac11e8ecfa47f"
     },
     "com.raiden.signaturealwaysfulltrustpatch": {
       "version": "https://github.com/Raidenxd2/UnityPackageSignatureAlwaysFullTrustPatch.git",

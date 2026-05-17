@@ -479,8 +479,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 370683257996193792
-    m_Localized: "VSync\nsincroniza la frecuencia de actualizaci\xF3n y la velocidad
-      de fotogramas de un monitor."
+    m_Localized: RE TRANSLATE TEXT
     m_Metadata:
       m_Items: []
   - m_Id: 370685853943214080

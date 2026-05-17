@@ -493,7 +493,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 370683257996193792
-    m_Localized: "VSync \nsynchronizes the refresh rate and frame rate of a monitor."
+    m_Localized: VSync locks the game to your display's refresh rate to reduce tearing.
     m_Metadata:
       m_Items: []
   - m_Id: 370685853943214080
@@ -714,6 +714,13 @@ MonoBehaviour:
       Android devices after that time.
 
 
+      It''s recommended to export your save
+      data to prevent you from losing it.
+
+      This version of the game may stop
+      getting updates in the future.
+
+
       This warning will only be displayed
       once and doesn''t apply to standalone VR devices that aren''t running Android
       XR.'
@@ -725,6 +732,62 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 430430538852741120
     m_Localized: Online Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 438794384176852992
+    m_Localized: Rebirth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 438794684048617472
+    m_Localized: 'Are you sure you want to rebirth?
+
+
+      A rebirth requires:
+
+      {0}
+      Cookies
+
+      {1} Grandmas
+
+
+      Rebirthing will reset everything except
+      for the following:
+
+      Boss Cookies mini game hammer damage
+
+      Drill
+      mini game shop items
+
+      Achievements
+
+
+      10000 starting cookies
+
+      {2}
+      starting Doublecookies
+
+      {3}x Cookies per second
+
+      {4}x the amount
+      of shop purchases'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 438800222668992512
+    m_Localized: You do not have the requirements to rebirth.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 439974844324130816
+    m_Localized: 'NOTICE
+
+
+      The Android Non-VR version of this game is provided
+      AS IS. Meaning no support will be given to anyone playing the Android Non-VR
+      version of this game. This is due to the previous warning shown.
+
+
+      This
+      warning will only be displayed once and doesn''t apply to standalone VR devices
+      that aren''t running Android XR.'
     m_Metadata:
       m_Items: []
   references:

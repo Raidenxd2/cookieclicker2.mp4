@@ -330,23 +330,14 @@ public class Game : MonoBehaviour
 #endif
         if (VRManager.instance.VREnabled)
         {
-            try
-            {
-                VRPrefabGO = Instantiate(await Resources.LoadAsync("GameScene_VRPrefab") as GameObject);
-                vrpo = VRPrefabGO.GetComponent<VRPrefabObject>();
+            VRPrefabGO = Instantiate(await Resources.LoadAsync("GameScene_VRPrefab") as GameObject);
+            vrpo = VRPrefabGO.GetComponent<VRPrefabObject>();
 
-                XROrigin = vrpo.XROrigin;
-                researchFactory.VRCamera = vrpo.XROrigin.transform;
-                researchFactory.MainSceneVR = vrpo.MainSceneVR;
+            XROrigin = vrpo.XROrigin;
+            researchFactory.VRCamera = vrpo.XROrigin.transform;
+            researchFactory.MainSceneVR = vrpo.MainSceneVR;
 
-                vrFade.InitVR();
-            }
-            catch (Exception ex)
-            {
-                LogSystem.Log(ex.ToString(), LogTypes.Exception);
-                LoadVRFallbackSceneAsync().Forget();
-                return;
-            }
+            vrFade.InitVR();
 
             PP.profile = VRProfile;
 
@@ -582,7 +573,7 @@ public class Game : MonoBehaviour
     public void ExportSaveFile()
     {
         ExportImportSaveFileDark.SetActive(true);
-        FileBrowser.SetFilters(false, ".cookie");
+        FileBrowser.SetFilters(true, ".cookie");
         FileBrowser.ShowSaveDialog(ExportOnSuccess, ExportOnCancel, FileBrowser.PickMode.Files, false, null, "Default.cookie", "Export Default.cookie", "Export");
     }
 
@@ -601,9 +592,8 @@ public class Game : MonoBehaviour
     public void ImportSaveFile()
     {
         ExportImportSaveFileDark.SetActive(true);
-        Time.timeScale = 0;
 
-        FileBrowser.SetFilters(false, ".cookie");
+        FileBrowser.SetFilters(true, ".cookie");
         FileBrowser.ShowLoadDialog(ImportOnSuccess, ImportOnCancel, FileBrowser.PickMode.Files, false, null, null, "Import", "Import");
     }
 
@@ -699,7 +689,7 @@ public class Game : MonoBehaviour
         }
 #endif
 
-        await SceneManager.LoadSceneAsync(AddressableHandles.initSceneRef);
+        await SceneManager.LoadSceneAsync(SceneNames.initSceneRef);
     }
     
     public void LoadOnlineLobby()
@@ -724,7 +714,7 @@ public class Game : MonoBehaviour
         }
 #endif
 
-        await SceneManager.LoadSceneAsync(AddressableHandles.onlineLobbyRef);
+        await SceneManager.LoadSceneAsync(SceneNames.onlineLobbyRef);
     }
 
     public void MirrorCameraToggle(bool Toggle)
@@ -776,15 +766,6 @@ public class Game : MonoBehaviour
     {
         BetterPrefs.SetBool("DisableUpdateChecker", !Toggle);
     }
-
-#if !CC2_REMOVE_VR_SUPPORT
-    private async UniTaskVoid LoadVRFallbackSceneAsync()
-    {
-        SavePlayer();
-
-        await SceneManager.LoadSceneAsync(AddressableHandles.vrFallbackSceneRef);
-    }
-#endif
 
     public void BuyAutoclicker()
     {

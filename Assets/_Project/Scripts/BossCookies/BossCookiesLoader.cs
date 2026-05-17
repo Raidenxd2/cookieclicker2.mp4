@@ -57,9 +57,9 @@ public class BossCookiesLoader : MonoBehaviour
         game.researchFactory.GameCanvas.SetActive(false);
         game.gameCamera.gameObject.SetActive(false);
 
-        await SceneManager.LoadSceneAsync(AddressableHandles.bossCookiesRef, LoadSceneMode.Additive);
+        await SceneManager.LoadSceneAsync(SceneNames.bossCookiesRef, LoadSceneMode.Additive);
 
-        LogSystem.Log("Loading AssetBundle " + environmentRef.BundleName + " and scene " + AddressableHandles.bossCookiesEnvironmentRef);
+        LogSystem.Log("Loading AssetBundle " + environmentRef.BundleName + " and scene " + SceneNames.bossCookiesEnvironmentRef);
 
 #if UNITY_EDITOR
         if (LoadAssetBundlesInEditor)
@@ -70,7 +70,7 @@ public class BossCookiesLoader : MonoBehaviour
 #else
             environmentBundle = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/" + environmentRef.BundleName + ".bundle");
 #endif
-            await SceneManager.LoadSceneAsync(AddressableHandles.bossCookiesEnvironmentRef, LoadSceneMode.Additive);
+            await SceneManager.LoadSceneAsync(SceneNames.bossCookiesEnvironmentRef, LoadSceneMode.Additive);
 #if UNITY_EDITOR
         }
         else
@@ -78,7 +78,7 @@ public class BossCookiesLoader : MonoBehaviour
             await EditorSceneManager.LoadSceneAsyncInPlayMode(SceneFullAssetPath, new(LoadSceneMode.Additive));
         }
 #endif
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.bossCookiesEnvironmentRef));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneNames.bossCookiesEnvironmentRef));
 
         Notification.instance.NotificationCanvas.worldCamera = BossCookiesGame.instance.Camera.GetComponent<Camera>();
 
@@ -123,24 +123,24 @@ public class BossCookiesLoader : MonoBehaviour
         }
 #endif
 
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.gameSceneRef));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneNames.gameSceneRef));
 
-        await SceneManager.UnloadSceneAsync(AddressableHandles.bossCookiesRef);
+        await SceneManager.UnloadSceneAsync(SceneNames.bossCookiesRef);
 
 #if UNITY_EDITOR
         if (LoadAssetBundlesInEditor)
         {
-            LogSystem.Log("Unloading Scene " + AddressableHandles.bossCookiesEnvironmentRef);
+            LogSystem.Log("Unloading Scene " + SceneNames.bossCookiesEnvironmentRef);
         }
         else
         {
 #endif
-            LogSystem.Log("Unloading Scene " + AddressableHandles.bossCookiesEnvironmentRef + " and bundle " + environmentRef.BundleName);
+            LogSystem.Log("Unloading Scene " + SceneNames.bossCookiesEnvironmentRef + " and bundle " + environmentRef.BundleName);
 #if UNITY_EDITOR
         }
 #endif
 
-        await SceneManager.UnloadSceneAsync(AddressableHandles.bossCookiesEnvironmentRef);
+        await SceneManager.UnloadSceneAsync(SceneNames.bossCookiesEnvironmentRef);
 
 #if UNITY_EDITOR
         if (LoadAssetBundlesInEditor)

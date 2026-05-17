@@ -78,9 +78,5 @@ public class AddressableLightmaps : MonoBehaviour
             lightmapBundle.Unload(true);
             lightmapBundle = null;
         }
-        else
-        {
-            LogSystem.Log("lightmapBundle was null!", LogTypes.Error);
-        }
     }
 }

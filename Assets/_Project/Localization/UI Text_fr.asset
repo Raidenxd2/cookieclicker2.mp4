@@ -484,8 +484,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 370683257996193792
-    m_Localized: "VSync\nsynchronise la fr\xE9quence de rafra\xEEchissement et la
-      fr\xE9quence d'images d'un moniteur."
+    m_Localized: RE TRANSLATE TEXT
     m_Metadata:
       m_Items: []
   - m_Id: 370683242577932288

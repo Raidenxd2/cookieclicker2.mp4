@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class NotificationAnimation : MonoBehaviour
 {
-    public Animation NotificationAnimations;
+    public Animator NotificationAnimations;
     public GameObject NotificationObject;
     private Vector2 position;
     private bool Playing;

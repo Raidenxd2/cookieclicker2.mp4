@@ -25,10 +25,9 @@ public class Init : MonoBehaviour
             DontDestroyOnLoad(DDOL);
         }
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_EDITOR
         if (PlayerPrefs.GetInt("GoogleAndroidWarningShownV2", 0) == 0 && !VRManager.instance.VREnabled)
         {
-            PlayerPrefs.SetInt("GoogleAndroidWarningShownV2", 1);
             AndroidWarningScreen.SetActive(true);
             
             return;
@@ -40,12 +39,13 @@ public class Init : MonoBehaviour
 
     public void ContinueLoad()
     {
+        PlayerPrefs.SetInt("GoogleAndroidWarningShownV2", 1);
+        
         Resources.UnloadUnusedAssets();
 
 #if !UNITY_WEBGL
         if (!HasLoadedSharedData)
         {
-            LogSystem.Log("Loading AssetBundle shareddata");
             AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Bundles/shareddata.bundle");
             HasLoadedSharedData = true;
         }
@@ -86,12 +86,10 @@ public class Init : MonoBehaviour
         }
 #endif
 
-        await SceneManager.LoadSceneAsync(AddressableHandles.gameSceneRef, LoadSceneMode.Additive);
+        await SceneManager.LoadSceneAsync(SceneNames.gameSceneRef, LoadSceneMode.Additive);
 
         await UniTask.WaitForEndOfFrame();
         await ThemeManager.instance.SelectTheme(DefaultTheme.ThemeAssetBundleName, DefaultTheme.ThemeSceneName, DefaultTheme.ThemeSceneFullPath);
-
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(AddressableHandles.gameSceneRef));
 
 #if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
@@ -100,7 +98,7 @@ public class Init : MonoBehaviour
         }
 #endif
 
-        await SceneManager.UnloadSceneAsync(AddressableHandles.initSceneRef, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+        await SceneManager.UnloadSceneAsync(SceneNames.initSceneRef, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
 
         Game.instance.PlayInitialFadeOut();
     }
