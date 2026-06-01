@@ -1201,7 +1201,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7eda2f81b85fece4ca50cc7abeb3f34d, type: 2}
   - {fileID: 11400000, guid: c361dfe74cd55594c94c1f47f4c901dd, type: 2}
   - {fileID: 11400000, guid: cc2060f6e105faa4eb30fc82dfc12ed6, type: 2}
-  - {fileID: 11400000, guid: 97fef1e5633506640b5831085a1f7d54, type: 2}
   Cookie: {fileID: 1655562487277466652, guid: 587d31e943ba50945afd2d3eb3bfeb75, type: 3}
   CookieParent: {fileID: 394586712}
   Camera: {fileID: 2076334430}

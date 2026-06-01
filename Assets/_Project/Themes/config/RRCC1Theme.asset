@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee0e22bdd685d1468629827db876c08, type: 3}
   m_Name: RRCC1Theme
   m_EditorClassIdentifier: 
-  ThemeName: RRCC1Theme
+  ThemeName: Rec Room ^cookieclicker.mp4
   ThemeAssetBundleName: themes-rrcc1theme-scene
   ThemeSceneName: RRCC1_Scene
   ThemeSceneFullPath: Assets/_Project/Themes/content/RRCC1/RRCC1_Scene.unity
