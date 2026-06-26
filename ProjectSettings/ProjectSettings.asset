@@ -143,7 +143,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 3.0.1-PublicRelease-OS_11172 (open-source, 25bed7e7c54b2f1dbfaf8298030358de1d568ca9)
+  bundleVersion: 3.0.1-PublicRelease-OS_11174 (open-source, 12233ee025598dc750bfcdf217ae8e41172aae3f)
   preloadedAssets:
   - {fileID: -944628639613478452, guid: f6942149c81fd7d4a9c839ed3180c690, type: 3}
   - {fileID: 11400000, guid: 5a6050f4d65b99340992ab87fbbe1f03, type: 2}
@@ -172,12 +172,12 @@ PlayerSettings:
     Android: com.raiden.cookieclicker2mp4_os2
     Standalone: com.raiden.cookieclicker2mp4-os
   buildNumber:
-    Standalone: 11172
+    Standalone: 11174
     VisionOS: 0
     iPhone: 25
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 11172
+  AndroidBundleVersionCode: 11174
   AndroidMinSdkVersion: 25
   AndroidTargetSdkVersion: 36
   AndroidPreferredInstallLocation: 0
@@ -747,7 +747,7 @@ PlayerSettings:
   blurSplashScreenBackground: 1
   spritePackerPolicy: 
   webGLMemorySize: 32
-  webGLExceptionSupport: 0
+  webGLExceptionSupport: 1
   webGLNameFilesAsHashes: 0
   webGLShowDiagnostics: 0
   webGLDataCaching: 1
@@ -772,8 +772,8 @@ PlayerSettings:
   webGLWebAssemblyTable: 1
   webGLWebAssemblyBigInt: 1
   webGLCloseOnQuit: 0
-  webWasm2023: 0
-  webEnableSubmoduleStrippingCompatibility: 1
+  webWasm2023: 1
+  webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
     Android: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS;SERIAL_UNITASK
     EmbeddedLinux: PROBUILDER_EXPERIMENTAL_FEATURES

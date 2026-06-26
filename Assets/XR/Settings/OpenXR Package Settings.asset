@@ -163,7 +163,6 @@ MonoBehaviour:
   - {fileID: -4920928112829867735}
   - {fileID: 1374834727152667692}
   - {fileID: -1791733150791993036}
-  - {fileID: 8045845144231616155}
   customLoaderName: 
   m_renderMode: 1
   m_latencyOptimization: 1
@@ -1661,7 +1660,6 @@ MonoBehaviour:
   - {fileID: -6098976214046798576}
   - {fileID: -9169342924667554623}
   - {fileID: -6966019011601786999}
-  - {fileID: 6222729927968704119}
   customLoaderName: 
   m_renderMode: 1
   m_latencyOptimization: 0

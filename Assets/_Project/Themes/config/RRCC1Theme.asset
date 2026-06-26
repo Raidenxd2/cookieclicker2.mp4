@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: RRCC1Theme
   m_EditorClassIdentifier: 
   ThemeName: Rec Room ^cookieclicker.mp4
-  ThemeAssetBundleName: themes-rrcc1theme-scene
+  ThemeAssetBundleName: themes-rrcc1-scene
   ThemeSceneName: RRCC1_Scene
   ThemeSceneFullPath: Assets/_Project/Themes/content/RRCC1/RRCC1_Scene.unity

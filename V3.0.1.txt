@@ -1,4 +1,4 @@
-V3.1.0:
+V3.0.1:
 Fixed UI scaling with volume sliders
 Fixed lines at top and bottom with the setting preview images
 Fixed being able to break the window animation by spamming the back button
@@ -8,7 +8,7 @@ Removed unused text from Boss Cookies choose mode screen
 Changed VSync info text
 Changed initial VR loading screen
 Removed XR Origin was destroyed error
-Added 2 new themes because Rec Room is shutting down: Rec Room ^cookieclicker.mp4 and Rec Room ^cookieclicker2.mp4
+Added 2 new themes because Rec Room shut down: Rec Room ^cookieclicker.mp4 and Rec Room ^cookieclicker2.mp4
 Added dark fade to setting info screens
 Added information to shop items
 Added a way to show files without the .cookie extension on export/import
