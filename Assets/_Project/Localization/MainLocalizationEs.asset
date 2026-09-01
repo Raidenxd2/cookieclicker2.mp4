@@ -1,0 +1,774 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e2b4e9efc293d49a8e9dd931a9fb81, type: 3}
+  m_Name: MainLocalizationEs
+  m_EditorClassIdentifier: CC2::BeanLocalizationAsset
+  Keys:
+  - Name: ONLINE_IPADDRESS
+    EN: 
+    ES: "Direcci\xF3n IP"
+    FR: 
+    JA: 
+  - Name: ONLINE_USERNAME
+    EN: 
+    ES: Nombre de usuario
+    FR: 
+    JA: 
+  - Name: ONLINE_NETWORKMODE
+    EN: 
+    ES: Modo red
+    FR: 
+    JA: 
+  - Name: ONLINE_SHOWIPADDRESS
+    EN: 
+    ES: "Mostrar direcci\xF3n IP"
+    FR: 
+    JA: 
+  - Name: ONLINE
+    EN: 
+    ES: "En l\xEDnea"
+    FR: 
+    JA: 
+  - Name: ONLINE_STARTGAME
+    EN: 
+    ES: Empezar el juego
+    FR: 
+    JA: 
+  - Name: OK_BTN
+    EN: 
+    ES: OK
+    FR: 
+    JA: 
+  - Name: HELP_BTN
+    EN: 
+    ES: Ayuda
+    FR: 
+    JA: 
+  - Name: ONLINE_DISCONNECT
+    EN: 
+    ES: Desconectar
+    FR: 
+    JA: 
+  - Name: NO_BTN
+    EN: 
+    ES: No
+    FR: 
+    JA: 
+  - Name: YES_BTN
+    EN: 
+    ES: "S\xED"
+    FR: 
+    JA: 
+  - Name: BACK_BTN
+    EN: 
+    ES: "atr\xE1s"
+    FR: 
+    JA: 
+  - Name: ONLINE_DISCONNECTHOST
+    EN: 
+    ES: "\xBFEst\xE1s seguro de que quieres desconectarte como anfitri\xF3n?\nTodos
+      los participantes del vest\xEDbulo quedar\xE1n desconectados."
+    FR: 
+    JA: 
+  - Name: ONLINE_CONNECT
+    EN: 
+    ES: Conectar
+    FR: 
+    JA: 
+  - Name: ONLINE_HELP
+    EN: 
+    ES: "En un juego en l\xEDnea, tu objetivo es conseguir tantas galletas/CPS/CPC
+      (el anfitri\xF3n elige cu\xE1l) como sea posible dentro de un l\xEDmite de
+      tiempo."
+    FR: 
+    JA: 
+  - Name: ONLINE_CONNECTING
+    EN: 
+    ES: Conectando...
+    FR: 
+    JA: 
+  - Name: ONLINE_HOST
+    EN: 
+    ES: "Anfitri\xF3n"
+    FR: 
+    JA: 
+  - Name: ONLINE_GAMEMODE
+    EN: 
+    ES: Modo
+    FR: 
+    JA: 
+  - Name: ONLINE_INTERNET
+    EN: 
+    ES: Internet
+    FR: 
+    JA: 
+  - Name: ONLINE_LAN
+    EN: 
+    ES: "LAN (red de \xE1rea local)"
+    FR: 
+    JA: 
+  - Name: ONLINE_LOBBY
+    EN: 
+    ES: "Sala de espera en l\xEDnea"
+    FR: 
+    JA: 
+  - Name: ONLINE_ERROR_TRANSPORT
+    EN: 
+    ES: "Se ha producido un error de red (Transporte).\nComprueba que la direcci\xF3n
+      IP a la que te est\xE1s conectando sea correcta.\n\nVolviendo al juego principal..."
+    FR: 
+    JA: 
+  - Name: ONLINE_ERROR_SERVERCONNECTFAILED
+    EN: 
+    ES: 'No se ha podido conectar al servidor.
+
+
+      Volviendo al juego principal...'
+    FR: 
+    JA: 
+  - Name: ONLINE_CLIENTSTARTERROR
+    EN: 
+    ES: 'No se ha podido iniciar el cliente.
+
+
+      Volviendo al juego principal...'
+    FR: 
+    JA: 
+  - Name: ONLINE_HOSTSTARTERROR
+    EN: 
+    ES: 'No se ha podido iniciar el servidor.
+
+
+      Volviendo al juego principal...'
+    FR: 
+    JA: 
+  - Name: ONLINE_WAITINGFORHOST
+    EN: 
+    ES: "Esperando al anfitri\xF3n..."
+    FR: 
+    JA: 
+  - Name: ONLINE_ERROR_HOSTLEFT
+    EN: 
+    ES: "El anfitri\xF3n ha abandonado la partida.\n\nVolviendo a la partida principal..."
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_COOKIESGAINED_TITLE
+    EN: 
+    ES: Galletas ganadas
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_COOKIESGAINED_MESSAGE
+    EN: 
+    ES: "\xA1Has ganado {0} galletas!"
+    FR: 
+    JA: 
+  - Name: OPENWEBPAGE_TITLE
+    EN: 
+    ES: Abrir el sitio web
+    FR: 
+    JA: 
+  - Name: MINEMINIGAME_RESTARTCONFIRM
+    EN: 
+    ES: "\xBFEst\xE1s seguro de que quieres reiniciar?"
+    FR: 
+    JA: 
+  - Name: MINEMINIGAME_LOSE_TITLE
+    EN: 
+    ES: Pierde
+    FR: 
+    JA: 
+  - Name: ERROR
+    EN: 
+    ES: Error
+    FR: 
+    JA: 
+  - Name: MINEMINIGAME_LOSE_INFO
+    EN: 
+    ES: "\xA1Te has quedado sin energ\xEDa de perforaci\xF3n!"
+    FR: 
+    JA: 
+  - Name: EXIT_BTN
+    EN: 
+    ES: Salida
+    FR: 
+    JA: 
+  - Name: MINEMINIGAME_EXITCONFIRM
+    EN: 
+    ES: "\xBFSeguro que quieres salir?"
+    FR: 
+    JA: 
+  - Name: SHOP_BTN
+    EN: 
+    ES: Comercio
+    FR: 
+    JA: 
+  - Name: SHOP_TITLE
+    EN: 
+    ES: Comercio
+    FR: 
+    JA: 
+  - Name: MINEMINIGAME_RESTART_BTN
+    EN: 
+    ES: Reiniciar
+    FR: 
+    JA: 
+  - Name: MINEMINIGAME_NEC
+    EN: 
+    ES: No hay suficientes monedas
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_ORIGINALMODETITLE
+    EN: 
+    ES: Modo original
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_DESKTOPMODEDESC
+    EN: 
+    ES: "Configuraci\xF3n predeterminada para el modo sin realidad virtual\nInterfaz
+      de usuario para elegir qu\xE9 galleta\nHaz clic para blandir el \xABmartillo\xBB"
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_DESKTOPMODETITLE
+    EN: 
+    ES: Modo normal
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_CHOOSEMODE
+    EN: 
+    ES: Seleccionar modo
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_ORIGINALMODEDESC
+    EN: 
+    ES: "Configuraci\xF3n predeterminada para el modo VR\nMu\xE9vete por un espacio
+      3D\nGolpea con el \xABmartillo\xBB en la zona de impacto"
+    FR: 
+    JA: 
+  - Name: EXPORTSAVEFILESUCCESS
+    EN: 
+    ES: Archivo guardado exportado correctamente
+    FR: 
+    JA: 
+  - Name: OPTIONS_SAVEMANAGEMENT_BTN
+    EN: 
+    ES: "Guardar gesti\xF3n"
+    FR: 
+    JA: 
+  - Name: TEXTUREQUALITY_HIGH
+    EN: 
+    ES: Alta
+    FR: 
+    JA: 
+  - Name: TEXTUREQUALITY_MEDIUM
+    EN: 
+    ES: Medio
+    FR: 
+    JA: 
+  - Name: TEXTUREQUALITY_LOW
+    EN: 
+    ES: Baja
+    FR: 
+    JA: 
+  - Name: TEXTUREQUALITY_VERYLOW
+    EN: 
+    ES: Muy baja
+    FR: 
+    JA: 
+  - Name: POSTPROCESSING_TOGGLE
+    EN: 
+    ES: Postprocesamiento
+    FR: 
+    JA: 
+  - Name: BETACONTENT_TITLE
+    EN: 
+    ES: Contenido beta
+    FR: 
+    JA: 
+  - Name: CREDITS_MUSIC
+    EN: 
+    ES: "M\xFAsica"
+    FR: 
+    JA: 
+  - Name: QUALITYSETTINGS_BTN
+    EN: 
+    ES: "Configuraci\xF3n de calidad"
+    FR: 
+    JA: 
+  - Name: RESEARCH_LOCKED
+    EN: 
+    ES: "La f\xE1brica de investigaci\xF3n est\xE1 cerrada."
+    FR: 
+    JA: 
+  - Name: UPDATEAVAILABLE_MESSAGE
+    EN: 
+    ES: "Hay una nueva actualizaci\xF3n disponible, \xBFquieres descargarla?"
+    FR: 
+    JA: 
+  - Name: MINIGAMES_BTN
+    EN: 
+    ES: Minijuegos
+    FR: 
+    JA: 
+  - Name: NONETWORK_INFO
+    EN: 
+    ES: "Se requiere una conexi\xF3n de red para acceder a esto."
+    FR: 
+    JA: 
+  - Name: OPTIONS_BTN
+    EN: 
+    ES: Opciones
+    FR: 
+    JA: 
+  - Name: PERFORMANCEIMPACT_NONE
+    EN: 
+    ES: 'Impacto en el rendimiento: Ninguno'
+    FR: 
+    JA: 
+  - Name: RESETDIALOG_INFO
+    EN: 
+    ES: "\xBFEst\xE1s seguro de que deseas restablecer tu archivo guardado?\r\nADVERTENCIA:
+      ESTO REINICIAR\xC1 TODO."
+    FR: 
+    JA: 
+  - Name: REBIRTH
+    EN: 
+    ES: 
+    FR: 
+    JA: 
+  - Name: OFF
+    EN: 
+    ES: Apagado
+    FR: 
+    JA: 
+  - Name: CONTINUE_BTN
+    EN: 
+    ES: Continuar
+    FR: 
+    JA: 
+  - Name: TEXTUREQUALITY_TITLE
+    EN: 
+    ES: Calidad de textura
+    FR: 
+    JA: 
+  - Name: BETACONTENT_ONLINEMODE
+    EN: 
+    ES: "Modo en l\xEDnea"
+    FR: 
+    JA: 
+  - Name: SCREENSHOTOPTIONS_SUPPORTED
+    EN: 
+    ES: (Compatible con Windows, macOS y Linux)
+    FR: 
+    JA: 
+  - Name: ACCESSIBILITY_COLORBLINDNES
+    EN: 
+    ES: Daltonismo
+    FR: 
+    JA: 
+  - Name: LOAD_BTN
+    EN: 
+    ES: Carga
+    FR: 
+    JA: 
+  - Name: PCONLY_WINDOWMODE
+    EN: 
+    ES: Modo ventana
+    FR: 
+    JA: 
+  - Name: PARTICLES_TOGGLE
+    EN: 
+    ES: "Part\xEDculas"
+    FR: 
+    JA: 
+  - Name: UPDATECHECKER_TOGGLE
+    EN: 
+    ES: Buscar actualizaciones al iniciar
+    FR: 
+    JA: 
+  - Name: VR_ENABLECUSTOMMIRRORCAMERA
+    EN: 
+    ES: "(VR) C\xE1mara con espejo personalizada"
+    FR: 
+    JA: 
+  - Name: PERFORMANCEIMPACT_LOW
+    EN: 
+    ES: 'Impacto en el rendimiento: Bajo'
+    FR: 
+    JA: 
+  - Name: ON
+    EN: 
+    ES: En
+    FR: 
+    JA: 
+  - Name: DELETESCREENSHOTS_INFO
+    EN: 
+    ES: "\xA1ADVERTENCIA!\r\nEliminar sus capturas de pantalla\r\nELIMINAR TODOS
+      ELLOS."
+    FR: 
+    JA: 
+  - Name: IMPORTSAVEFILEWARNING_INFO
+    EN: 
+    ES: "\xBFEst\xE1s seguro de que quieres importar el archivo guardado?\nEsto restablecer\xE1
+      todos los datos actuales."
+    FR: 
+    JA: 
+  - Name: ACHIEVEMENTS_BTN
+    EN: 
+    ES: logros
+    FR: 
+    JA: 
+  - Name: QUIT_BTN
+    EN: 
+    ES: Abandonar
+    FR: 
+    JA: 
+  - Name: MOREINFO_TITLE
+    EN: 
+    ES: "M\xE1s informaci\xF3n"
+    FR: 
+    JA: 
+  - Name: NECDIALOG_INFO
+    EN: 
+    ES: "\xA1No hay suficientes galletas!"
+    FR: 
+    JA: 
+  - Name: SOUND_TOGGLE
+    EN: 
+    ES: Sonido
+    FR: 
+    JA: 
+  - Name: RELOADGAME_BTN
+    EN: 
+    ES: Recargar juego
+    FR: 
+    JA: 
+  - Name: RESEARCH_ENTER_BTN
+    EN: 
+    ES: Entre en
+    FR: 
+    JA: 
+  - Name: CHANGE_BTN
+    EN: 
+    ES: Cambio
+    FR: 
+    JA: 
+  - Name: EBCWARNING_INFO
+    EN: 
+    ES: "El contenido beta puede cambiar, romperse o romper su archivo guardado\r\n\r\n\xBFDesea
+      habilitar el contenido beta?"
+    FR: 
+    JA: 
+  - Name: PCONLY_BTN
+    EN: 
+    ES: "Configuraci\xF3n s\xF3lo para PC"
+    FR: 
+    JA: 
+  - Name: RETRY_BTN
+    EN: 
+    ES: Rever
+    FR: 
+    JA: 
+  - Name: SAVEDATAHELP_INFO
+    EN: 
+    ES: "Infracci\xF3n de uso compartido en la ruta: el archivo guardado est\xE1
+      da\xF1ado.\r\nSe deniega el acceso a la ruta \"RUTA\": se deneg\xF3 el acceso
+      al archivo guardado. Por favor verifique los permisos en el archivo."
+    FR: 
+    JA: 
+  - Name: RESEARCH_BTN
+    EN: 
+    ES: "Investigaci\xF3n"
+    FR: 
+    JA: 
+  - Name: SAVEDATAIOERROR_WARNING
+    EN: 
+    ES: "Si contin\xFAa, todos los datos ser\xE1n BORRADOS."
+    FR: 
+    JA: 
+  - Name: RESETDATA_BTN
+    EN: 
+    ES: Restablecer archivo guardado
+    FR: 
+    JA: 
+  - Name: VSYNC_TOGGLE
+    EN: 
+    ES: VSync
+    FR: 
+    JA: 
+  - Name: ACCESSIBILITY_LANGUAGE
+    EN: 
+    ES: Idioma
+    FR: 
+    JA: 
+  - Name: CREDITS_SOURCESANSPROLICENCE
+    EN: 
+    ES: SIL OPEN FONT LICENSE
+    FR: 
+    JA: 
+  - Name: PCONLY_RESTARTREQUIRED
+    EN: 
+    ES: "Es necesario reiniciar el equipo para cambiar la API de gr\xE1ficos.\n\xBFDesea
+      reiniciar ahora?"
+    FR: 
+    JA: 
+  - Name: PCONLY_AA
+    EN: 
+    ES: Antialiasing (MSAA)
+    FR: 
+    JA: 
+  - Name: OPENWEBPAGE_INFO
+    EN: 
+    ES: "\xBFQuiere abrir el siguiente enlace en su navegador?"
+    FR: 
+    JA: 
+  - Name: ONLINE_TIMERRANOUT
+    EN: 
+    ES: "\xA1Se ha agotado el tiempo!\n\nVolviendo al juego principal..."
+    FR: 
+    JA: 
+  - Name: THEMES_BTN
+    EN: 
+    ES: Temas
+    FR: 
+    JA: 
+  - Name: PERFORMANCEIMPACT_MEDIUM
+    EN: 
+    ES: 'Impacto en el rendimiento: Medio'
+    FR: 
+    JA: 
+  - Name: CREDITS_TITLE
+    EN: 
+    ES: "Cr\xE9ditos"
+    FR: 
+    JA: 
+  - Name: RESETDIALOG_TITLE
+    EN: 
+    ES: Pregunta
+    FR: 
+    JA: 
+  - Name: OFFLINEPROGRESS_YOUHAVEBEEN
+    EN: 
+    ES: 'Has sido recompensado:'
+    FR: 
+    JA: 
+  - Name: OFFLINEPROGRESS_TITLE
+    EN: 
+    ES: "Progreso sin conexi\xF3n"
+    FR: 
+    JA: 
+  - Name: MOREINFO_BTN
+    EN: 
+    ES: "M\xE1s informaci\xF3n"
+    FR: 
+    JA: 
+  - Name: SAVEDATAIOERROR_INFO
+    EN: 
+    ES: "Ocurri\xF3 un error al cargar el archivo guardado:"
+    FR: 
+    JA: 
+  - Name: ACCESSIBILITY_BTN
+    EN: 
+    ES: "\rAccesibilidad"
+    FR: 
+    JA: 
+  - Name: OFFLINEPROGRESS_INFO
+    EN: 
+    ES: 'Has estado desconectado durante:'
+    FR: 
+    JA: 
+  - Name: NONETWORK_TITLE
+    EN: 
+    ES: "Se requiere conexi\xF3n de red"
+    FR: 
+    JA: 
+  - Name: FPSDISPLAY_TOGGLE
+    EN: 
+    ES: Pantalla FPS
+    FR: 
+    JA: 
+  - Name: ACCESSIBILITY_TITLE
+    EN: 
+    ES: Accesibilidad
+    FR: 
+    JA: 
+  - Name: UPDATEAVAILABLE_TITLE
+    EN: 
+    ES: "Actualizaci\xF3n disponible"
+    FR: 
+    JA: 
+  - Name: PARTICLES_INFO
+    EN: 
+    ES: "A\xF1ade efectos visuales a elementos como el taladro."
+    FR: 
+    JA: 
+  - Name: EXPORT_BTN
+    EN: 
+    ES: Exportar
+    FR: 
+    JA: 
+  - Name: PCONLY_GRAPHICSAPI
+    EN: 
+    ES: "Interfaz de programaci\xF3n de aplicaciones gr\xE1ficas"
+    FR: 
+    JA: 
+  - Name: DELETESCREENSHOTS_TITLE
+    EN: 
+    ES: ELIMINAR CAPTURAS DE PANTALLA
+    FR: 
+    JA: 
+  - Name: SCREENSHOTOPTIONS_QUALITY
+    EN: 
+    ES: Calidad
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_TITLE
+    EN: 
+    ES: Galletas Boss
+    FR: 
+    JA: 
+  - Name: OPTIONS_TITLE
+    EN: 
+    ES: Opciones
+    FR: 
+    JA: 
+  - Name: SCREENSHOTOPTIONS_OPENSCREENSHOTSFOLDER
+    EN: 
+    ES: Abrir la carpeta Screenshots
+    FR: 
+    JA: 
+  - Name: SCREENSHOTOPTIONS_TITLE
+    EN: 
+    ES: Opciones de captura de pantalla
+    FR: 
+    JA: 
+  - Name: SAVEDATAIOERROR_TITLE
+    EN: 
+    ES: Guardar error de datos
+    FR: 
+    JA: 
+  - Name: JUKEBOX_BTN
+    EN: 
+    ES: Tocadiscos tragamonedas
+    FR: 
+    JA: 
+  - Name: THEMES_INFO
+    EN: 
+    ES: 'Selecciona un tema:'
+    FR: 
+    JA: 
+  - Name: MUSIC_TOGGLE
+    EN: 
+    ES: "M\xFAsica"
+    FR: 
+    JA: 
+  - Name: BETACONTENT_DISABLEBC
+    EN: 
+    ES: Deshabilitar contenido beta
+    FR: 
+    JA: 
+  - Name: SCREENSHOTOPTIONS_TIP
+    EN: 
+    ES: Pulsa F12 para hacer una captura de pantalla.
+    FR: 
+    JA: 
+  - Name: SAVE_BTN
+    EN: 
+    ES: Ahorrar
+    FR: 
+    JA: 
+  - Name: PP_INFO
+    EN: 
+    ES: "El posprocesamiento a\xF1ade efectos visuales a la pantalla."
+    FR: 
+    JA: 
+  - Name: VSYNC_INFO
+    EN: 
+    ES: RE TRANSLATE TEXT
+    FR: 
+    JA: 
+  - Name: IMPORT_BTN
+    EN: 
+    ES: Importar
+    FR: 
+    JA: 
+  - Name: STATS_BTN
+    EN: 
+    ES: "Estad\xEDsticas"
+    FR: 
+    JA: 
+  - Name: MINIGAMES_DRILL
+    EN: 
+    ES: Taladro
+    FR: 
+    JA: 
+  - Name: RESEARCH_UNLOCK_BTN
+    EN: 
+    ES: Desbloquear (20000 Cookies)
+    FR: 
+    JA: 
+  - Name: SCREENSHOTSETTINGS_BTN
+    EN: 
+    ES: "Configuraci\xF3n de captura de pantalla"
+    FR: 
+    JA: 
+  - Name: REBIRTH_INFO
+    EN: 
+    ES: 
+    FR: 
+    JA: 
+  - Name: RENDERQUALITY_TITLE
+    EN: 
+    ES: Calidad de renderizado
+    FR: 
+    JA: 
+  - Name: BETACONTENT_BTN
+    EN: 
+    ES: Contenido beta
+    FR: 
+    JA: 
+  - Name: CREDITS_BTN
+    EN: 
+    ES: "Cr\xE9ditos"
+    FR: 
+    JA: 
+  - Name: BETACONTENT_RESEARCHFACTORY
+    EN: 
+    ES: "F\xE1brica de investigaci\xF3n"
+    FR: 
+    JA: 
+  - Name: FOG_TOGGLE
+    EN: 
+    ES: Niebla
+    FR: 
+    JA: 
+  - Name: SCREENSHOTOPTIONS_DELETESCREENSHOTS
+    EN: 
+    ES: Eliminar capturas de pantalla
+    FR: 
+    JA: 
+  - Name: PCONLY_RESOULTION
+    EN: 
+    ES: "Resoluci\xF3n"
+    FR: 
+    JA: 
+  - Name: FPSDISPLAY_INFO
+    EN: 
+    ES: "Visualizaci\xF3n de FPS: activa/desactiva el contador de FPS en la esquina
+      superior derecha."
+    FR: 
+    JA: 
+  - Name: RELOADREQUIRED
+    EN: 
+    ES: "Es necesario actualizar la p\xE1gina para cambiar esta opci\xF3n. \xBFQuieres
+      actualizarla ahora?"
+    FR: 
+    JA: 

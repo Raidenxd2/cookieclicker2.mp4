@@ -1,10 +1,8 @@
 using Cysharp.Threading.Tasks;
-using System;
 using System.IO;
-using System.Runtime.InteropServices;
+using SerialPackage.Runtime;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 
 public class PreInitScene : MonoBehaviour
@@ -13,26 +11,6 @@ public class PreInitScene : MonoBehaviour
 
     [SerializeField] private GameObject FatalErrorScreen;
     [SerializeField] private TMP_Text FatalErrorText;
-
-#if UNITY_STANDALONE_WIN
-    [DllImport("BeanShootoutNative_DarkMode", EntryPoint = "DllMain")]
-    private static extern void _();
-
-    private void Awake()
-    {
-        if (!Application.isEditor)
-        {
-            try
-            {
-                _();
-            }
-            catch (Exception ex)
-            {
-                Debug.LogException(ex);
-            }
-        }
-    }
-#endif
 
     private void Start()
     {
@@ -46,22 +24,15 @@ public class PreInitScene : MonoBehaviour
         PlayerPrefs.SetInt("unity.cloud_userid", 0);
         PlayerPrefs.Save();
 
-        Application.backgroundLoadingPriority = ThreadPriority.Low;
+        BeanLogger.VerboseLogging = true;
 
-        if (PlayerPrefs.GetString("selected-locale", "en") == "ja")
-        {
-            SetJapaneseLanguage = true;
-            PlayerPrefs.SetString("selected-locale", "en");
-            PlayerPrefs.Save();
-        }
-        
-        await LocalizationSettings.InitializationOperation;
+        Application.backgroundLoadingPriority = ThreadPriority.Low;
 
         if (!Directory.Exists(Application.persistentDataPath + "/Saves"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
         }
 
-        SceneManager.LoadScene(SceneNames.initSceneRef);
+        await SceneManager.LoadSceneAsync(SceneNames.initSceneRef);
     }
 }

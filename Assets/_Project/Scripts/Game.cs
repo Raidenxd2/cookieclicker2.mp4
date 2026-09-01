@@ -1,13 +1,12 @@
 using BreakInfinity;
 using Cysharp.Threading.Tasks;
-using LoggerSystem;
 using SimpleFileBrowser;
 using System;
 using System.IO;
+using SerialPackage.Runtime;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.Localization;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -154,8 +153,8 @@ public class Game : MonoBehaviour
     [SerializeField] private Transform VRPrefabParent;
     public GameObject XROrigin;
     [SerializeField] private UISkin FileBrowserUISkin;
-    [SerializeField] private LocalizedString ExportSaveFileSuccess;
-    [SerializeField] private LocalizedString SaveManagement;
+    [SerializeField] private string ExportSaveFileSuccess;
+    [SerializeField] private string SaveManagement;
     [SerializeField] private GameObject ExportImportSaveFileDark;
     [SerializeField] private GameObject ImportSaveFileWarningScreen;
 
@@ -164,7 +163,7 @@ public class Game : MonoBehaviour
     public WaitForSeconds oneSecond;
 
     public bool Disconnecting;
-    public LocalizedString HostLeftError;
+    public string HostLeftError;
     [SerializeField] private GameObject NetworkErrorScreen;
     [SerializeField] private TMP_Text NetworkErrorText;
     public GameObject TimerRanOutScreen;
@@ -290,14 +289,14 @@ public class Game : MonoBehaviour
         {
             if (obj == 0)
             {
-                LogSystem.Log("Host left.", LogTypes.Warning);
+                BeanLogger.LogWarning("Host left.", this);
 
-                ShowNetworkError(HostLeftError);
+                ShowNetworkError(BeanLocalization.GetString(HostLeftError));
             }
         }
     }
     
-    private void ShowNetworkError(LocalizedString ls)
+    private void ShowNetworkError(string text)
     {
         NetworkManager.Singleton.ConnectionManager.OnDisconnect2 -= OnDisconnect;
 
@@ -306,7 +305,7 @@ public class Game : MonoBehaviour
         
         GlobalDark.SetActive(true);
         NetworkErrorScreen.SetActive(true);
-        NetworkErrorText.text = ls.GetLocalizedString();
+        NetworkErrorText.text = text;
     }
 
     public void PlayInitialFadeOut()
@@ -407,11 +406,11 @@ public class Game : MonoBehaviour
     {
         if (OnlineLobbyManager.InOnlineGame || OnlineLobbyManagerHostObject.instance != null)
         {
-            LogSystem.Log("Can't save current save in online", LogTypes.Warning);
+            BeanLogger.LogWarning("Can't save current save in online", this);
             return;
         }
         
-        LogSystem.Log("Saving");
+        BeanLogger.Log("Saving", this);
         
         PlayerPrefs.Save();
         offlineManager.SaveTime();
@@ -458,11 +457,11 @@ public class Game : MonoBehaviour
     {
         if (OnlineLobbyManager.InOnlineGame || OnlineLobbyManagerHostObject.instance != null)
         {
-            LogSystem.Log("Can't load save in online", LogTypes.Warning);
+            BeanLogger.LogWarning("Can't load save in online", this);
             return;
         }
         
-        LogSystem.Log("Loading");
+        BeanLogger.Log("Loading", this);
 
         ad.LoadGraphics();
 
@@ -581,7 +580,7 @@ public class Game : MonoBehaviour
     {
         FileBrowserHelpers.WriteTextToFile(paths[0], File.ReadAllText(Application.persistentDataPath + "/Saves/Default.cookie"));
         ExportImportSaveFileDark.SetActive(false);
-        notification.ShowNotification(ExportSaveFileSuccess.GetLocalizedString(), SaveManagement.GetLocalizedString());
+        notification.ShowNotification(BeanLocalization.GetString(ExportSaveFileSuccess), BeanLocalization.GetString(SaveManagement));
     }
 
     private void ExportOnCancel()

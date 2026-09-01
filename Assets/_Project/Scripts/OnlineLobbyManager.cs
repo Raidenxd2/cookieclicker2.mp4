@@ -1,11 +1,10 @@
 using System;
 using Cysharp.Threading.Tasks;
-using LoggerSystem;
+using SerialPackage.Runtime;
 using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
-using UnityEngine.Localization;
 using UnityEngine.Networking;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
@@ -23,11 +22,11 @@ public class OnlineLobbyManager : MonoBehaviour
     private AudioSource MusicAudioSource;
     private GameObject MusicSource;
 
-    [SerializeField] private LocalizedString TransportError;
-    [SerializeField] private LocalizedString ServerConnectError;
-    [SerializeField] private LocalizedString ClientStartError;
-    [SerializeField] private LocalizedString HostStartError;
-    public LocalizedString HostLeftError;
+    [SerializeField] private string TransportError;
+    [SerializeField] private string ServerConnectError;
+    [SerializeField] private string ClientStartError;
+    [SerializeField] private string HostStartError;
+    public string HostLeftError;
     [SerializeField] private GameObject NetworkErrorScreen;
     [SerializeField] private TMP_Text NetworkErrorText;
 
@@ -36,7 +35,7 @@ public class OnlineLobbyManager : MonoBehaviour
     [SerializeField] private GameObject LobbyScreen;
     [SerializeField] private GameObject HostDisconnectWarningScreen;
 
-    [SerializeField] private LocalizedString WaitingForHost;
+    [SerializeField] private string WaitingForHost;
     [SerializeField] private TMP_Text ConnectingScreen_Info;
 
     [SerializeField] private GameObject StartGameBTN;
@@ -156,9 +155,9 @@ public class OnlineLobbyManager : MonoBehaviour
         {
             if (obj == 0)
             {
-                LogSystem.Log("Host left.", LogTypes.Warning);
+                BeanLogger.LogWarning("Host left.", this);
 
-                ShowNetworkError(HostLeftError);
+                ShowNetworkError(BeanLocalization.GetString(HostLeftError));
             }
         }
     }
@@ -182,7 +181,7 @@ public class OnlineLobbyManager : MonoBehaviour
         
         if (Connecting)
         {
-            ShowNetworkError(ServerConnectError);
+            ShowNetworkError(BeanLocalization.GetString(ServerConnectError));
             return;
         }
 
@@ -194,7 +193,7 @@ public class OnlineLobbyManager : MonoBehaviour
 
     private void OnTransportFailure()
     {
-        ShowNetworkError(TransportError);
+        ShowNetworkError(BeanLocalization.GetString(TransportError));
     }
 
     private void UpdateAudio()
@@ -227,16 +226,16 @@ public class OnlineLobbyManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            LogSystem.Log("Error starting host", LogTypes.Exception);
+            BeanLogger.LogError("Error starting host", this);
             Debug.LogException(e);
             
-            ShowNetworkError(HostLeftError);
+            ShowNetworkError(BeanLocalization.GetString(HostLeftError));
         }
     }
 
     private void OnClientConnected(ulong obj)
     {
-        LogSystem.Log("Client " + obj + " connected.");
+        BeanLogger.Log("Client " + obj + " connected.", this);
         
         OnlineLobbyManagerHostObject.instance.UpdatePlayerListRpc();
     }
@@ -256,10 +255,10 @@ public class OnlineLobbyManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            LogSystem.Log("Error starting client", LogTypes.Exception);
+            BeanLogger.LogError("Error starting client", this);
             Debug.LogException(e);
             
-            ShowNetworkError(ClientStartError);
+            ShowNetworkError(BeanLocalization.GetString(ClientStartError));
         }
     }
 
@@ -284,7 +283,7 @@ public class OnlineLobbyManager : MonoBehaviour
         {
             UserObject user = Instantiate(User, UserParent).GetComponent<UserObject>();
             
-            LogSystem.Log(client.GetComponent<OnlinePlayerObject>().Username.Value.ToString());
+            BeanLogger.Log(client.GetComponent<OnlinePlayerObject>().Username.Value.ToString(), this);
             
             user.UserNameText.text = client.GetComponent<OnlinePlayerObject>().Username.Value.ToString();
         }
@@ -329,7 +328,7 @@ public class OnlineLobbyManager : MonoBehaviour
         DontDestroyOnLoad(GameObject.Find("OnlineLobbyManagerHostObject(Clone)"));
         
         ConnectingScreen.SetActive(true);
-        ConnectingScreen_Info.text = WaitingForHost.GetLocalizedString();
+        ConnectingScreen_Info.text = BeanLocalization.GetString(WaitingForHost);
     }
     
     public void UpdateHostIPText()
@@ -360,10 +359,10 @@ public class OnlineLobbyManager : MonoBehaviour
         await SceneManager.LoadSceneAsync(SceneNames.initSceneRef);
     }
 
-    public void ShowNetworkError(LocalizedString ls)
+    public void ShowNetworkError(string text)
     {
         NetworkErrorScreen.SetActive(true);
-        NetworkErrorText.text = ls.GetLocalizedString();
+        NetworkErrorText.text = text;
     }
 
     private void OnDestroy()

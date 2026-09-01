@@ -5,7 +5,6 @@ using RecRoomRipoff.Independent;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Localization;
 using UnityEngine.UI;
 
 public class BossCookiesGame : MonoBehaviour
@@ -27,8 +26,8 @@ public class BossCookiesGame : MonoBehaviour
     [SerializeField] private Ease ease;
     [SerializeField] private float time;
 
-    [SerializeField] private LocalizedString CookiesGainedNotificationTitle;
-    [SerializeField] private LocalizedString CookiesGainedNotificationMessage;
+    [SerializeField] private string CookiesGainedNotificationTitle;
+    [SerializeField] private string CookiesGainedNotificationMessage;
 
     [SerializeField] private TMP_Text CookiesText;
     [SerializeField] private TMP_Text HammerStrengthText;
@@ -230,7 +229,7 @@ public class BossCookiesGame : MonoBehaviour
         if (BossCookieObjects[CurrentBossCookieObjectsIndex].Health <= 0)
         {
             Game.instance.Cookies += BossCookieObjects[CurrentBossCookieObjectsIndex].CookiesAmount;
-            ShowCookiesGainedNotificationAsync().Forget();
+            ShowCookiesGainedNotification();
 
             BossCookieObjects[CurrentBossCookieObjectsIndex].Health = BossCookieObjects[CurrentBossCookieObjectsIndex].StartingHealth;
         }
@@ -241,15 +240,15 @@ public class BossCookiesGame : MonoBehaviour
         BossCookiesLoader.instance.UnloadMinigameMine();
     }
 
-    public async UniTaskVoid ShowCookiesGainedNotificationAsync(float Cookies = 0)
+    public void ShowCookiesGainedNotification(float Cookies = 0)
     {
         if (Cookies == 0)
         {
-            Notification.instance.ShowNotification(string.Format(await CookiesGainedNotificationMessage.GetLocalizedStringAsync(), BossCookieObjects[CurrentBossCookieObjectsIndex].CookiesAmount), await CookiesGainedNotificationTitle.GetLocalizedStringAsync());
+            Notification.instance.ShowNotification(string.Format(BeanLocalization.GetString(CookiesGainedNotificationMessage), BossCookieObjects[CurrentBossCookieObjectsIndex].CookiesAmount), BeanLocalization.GetString(CookiesGainedNotificationTitle));
         }
         else
         {
-            Notification.instance.ShowNotification(string.Format(await CookiesGainedNotificationMessage.GetLocalizedStringAsync(), Cookies), await CookiesGainedNotificationTitle.GetLocalizedStringAsync());
+            Notification.instance.ShowNotification(string.Format(BeanLocalization.GetString(CookiesGainedNotificationMessage), Cookies), BeanLocalization.GetString(CookiesGainedNotificationTitle));
         }
     }
 

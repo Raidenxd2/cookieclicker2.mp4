@@ -1,8 +1,8 @@
-using com.raiden.assetbundleassetreference.Runtime;
+using raiden.utils;
 using Cysharp.Threading.Tasks;
+using SerialPackage.Runtime;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Localization.Settings;
 using UnityEngine.Networking;
 
 public class FontLoader : MonoBehaviour
@@ -13,24 +13,12 @@ public class FontLoader : MonoBehaviour
     [SerializeField] private AssetBundleAssetReference jpNormal;
     [SerializeField] private AssetBundleAssetReference jpBold;
 
-    [SerializeField] private GameObject ContentLoading;
-
     public static FontLoader instance;
     public static bool HasLoadedJapaneseFont;
 
     private void Awake()
     {
         instance = this;
-    }
-
-    private void Start()
-    {
-        if (PreInitScene.SetJapaneseLanguage)
-        {
-#pragma warning disable CS4014
-            LoadJapaneseFont();
-#pragma warning restore CS4014
-        }
     }
 
     // Loads the Japanese font assets and adds them to the ssp fallback tables
@@ -40,8 +28,8 @@ public class FontLoader : MonoBehaviour
         {
             return;
         }
-
-        ContentLoading.SetActive(true);
+        
+        BeanLogger.Log("Loading Japanese font", this);
 
 #if UNITY_WEBGL
         AssetBundle jpNormalBundle = DownloadHandlerAssetBundle.GetContent(await UnityWebRequestAssetBundle.GetAssetBundle(Application.streamingAssetsPath + "/Bundles/" + jpNormal.BundleName + ".bundle").SendWebRequest());
@@ -63,13 +51,19 @@ public class FontLoader : MonoBehaviour
         HasLoadedJapaneseFont = true;
         PreInitScene.SetJapaneseLanguage = false;
 
-        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[3];
-
-        ContentLoading.SetActive(false);
+        PlayerPrefs.SetInt("BeanLocalization_CurrentLanguage", 3);
     }
 
     private void OnDestroy()
     {
         instance = null;
     }
+    
+#if UNITY_EDITOR
+    [RuntimeInitializeOnLoadMethod]
+    public static void ResetValues()
+    {
+        HasLoadedJapaneseFont = false;
+    }
+#endif
 }

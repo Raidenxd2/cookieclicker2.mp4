@@ -1,0 +1,836 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e2b4e9efc293d49a8e9dd931a9fb81, type: 3}
+  m_Name: MainLocalizationEn
+  m_EditorClassIdentifier: CC2::BeanLocalizationAsset
+  Keys:
+  - Name: ONLINE_IPADDRESS
+    EN: IP Address
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_USERNAME
+    EN: Username
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_NETWORKMODE
+    EN: Network Mode
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_SHOWIPADDRESS
+    EN: Show IP Address
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE
+    EN: Online
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_STARTGAME
+    EN: Start Game
+    ES: 
+    FR: 
+    JA: 
+  - Name: OK_BTN
+    EN: OK
+    ES: 
+    FR: 
+    JA: 
+  - Name: HELP_BTN
+    EN: Help
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_DISCONNECT
+    EN: Disconnect
+    ES: 
+    FR: 
+    JA: 
+  - Name: NO_BTN
+    EN: No
+    ES: 
+    FR: 
+    JA: 
+  - Name: YES_BTN
+    EN: Yes
+    ES: 
+    FR: 
+    JA: 
+  - Name: BACK_BTN
+    EN: Back
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_DISCONNECTHOST
+    EN: 'Are you sure you want to disconnect as the host?
+
+      Everyone in the
+      lobby will be disconnected.'
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_CONNECT
+    EN: Connect
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_HELP
+    EN: In an online game, your goal is to get as many Cookies/CPS/CPC (host chooses
+      which one) as possible within a time limit.
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_CONNECTING
+    EN: Connecting...
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_HOST
+    EN: Host
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_GAMEMODE
+    EN: Mode
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_INTERNET
+    EN: Internet
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_LAN
+    EN: LAN (Local Area Network)
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_LOBBY
+    EN: Online Lobby
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_ERROR_TRANSPORT
+    EN: 'A network error has occurred (Transport).
+
+      Please check that the IP
+      Address you are connecting to is correct.
+
+
+      Returning to main game...'
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_ERROR_SERVERCONNECTFAILED
+    EN: 'Failed to connect to server.
+
+
+      Returning to main game...'
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_CLIENTSTARTERROR
+    EN: 'Failed to start client.
+
+
+      Returning to main game...'
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_HOSTSTARTERROR
+    EN: 'Failed to start host.
+
+
+      Returning to main game...'
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_WAITINGFORHOST
+    EN: Waiting for host...
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_ERROR_HOSTLEFT
+    EN: 'The host has left the game.
+
+
+      Returning to main game...'
+    ES: 
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_COOKIESGAINED_TITLE
+    EN: Gained Cookies
+    ES: 
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_COOKIESGAINED_MESSAGE
+    EN: You have gained {0} Cookies!
+    ES: 
+    FR: 
+    JA: 
+  - Name: OPENWEBPAGE_TITLE
+    EN: Open Website
+    ES: 
+    FR: 
+    JA: 
+  - Name: MINEMINIGAME_RESTARTCONFIRM
+    EN: Are you sure you want to restart?
+    ES: 
+    FR: 
+    JA: 
+  - Name: MINEMINIGAME_LOSE_TITLE
+    EN: Lose
+    ES: 
+    FR: 
+    JA: 
+  - Name: ERROR
+    EN: Error
+    ES: 
+    FR: 
+    JA: 
+  - Name: MINEMINIGAME_LOSE_INFO
+    EN: You have ran out of drill energy!
+    ES: 
+    FR: 
+    JA: 
+  - Name: EXIT_BTN
+    EN: Exit
+    ES: 
+    FR: 
+    JA: 
+  - Name: MINEMINIGAME_EXITCONFIRM
+    EN: Are you sure you want to exit?
+    ES: 
+    FR: 
+    JA: 
+  - Name: SHOP_BTN
+    EN: Shop
+    ES: 
+    FR: 
+    JA: 
+  - Name: SHOP_TITLE
+    EN: Shop
+    ES: 
+    FR: 
+    JA: 
+  - Name: MINEMINIGAME_RESTART_BTN
+    EN: Restart
+    ES: 
+    FR: 
+    JA: 
+  - Name: MINEMINIGAME_NEC
+    EN: Not Enough Coins!
+    ES: 
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_ORIGINALMODETITLE
+    EN: Original Mode
+    ES: 
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_DESKTOPMODEDESC
+    EN: 'Default for Non-VR mode
+
+      UI for choosing which Cookie
+
+      Click
+      to swing the "Hammer"'
+    ES: 
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_DESKTOPMODETITLE
+    EN: Normal Mode
+    ES: 
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_CHOOSEMODE
+    EN: Choose Mode
+    ES: 
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_ORIGINALMODEDESC
+    EN: 'Default for VR mode
+
+      Move around in a 3D space
+
+      Swing "Hammer"
+      at the Hit Area'
+    ES: 
+    FR: 
+    JA: 
+  - Name: EXPORTSAVEFILESUCCESS
+    EN: Successfully exported save file
+    ES: 
+    FR: 
+    JA: 
+  - Name: OPTIONS_SAVEMANAGEMENT_BTN
+    EN: Save Management
+    ES: 
+    FR: 
+    JA: 
+  - Name: TEXTUREQUALITY_HIGH
+    EN: High
+    ES: 
+    FR: 
+    JA: 
+  - Name: TEXTUREQUALITY_MEDIUM
+    EN: Medium
+    ES: 
+    FR: 
+    JA: 
+  - Name: TEXTUREQUALITY_LOW
+    EN: Low
+    ES: 
+    FR: 
+    JA: 
+  - Name: TEXTUREQUALITY_VERYLOW
+    EN: Very Low
+    ES: 
+    FR: 
+    JA: 
+  - Name: POSTPROCESSING_TOGGLE
+    EN: Post Processing
+    ES: 
+    FR: 
+    JA: 
+  - Name: BETACONTENT_TITLE
+    EN: Beta Content
+    ES: 
+    FR: 
+    JA: 
+  - Name: CREDITS_MUSIC
+    EN: Music
+    ES: 
+    FR: 
+    JA: 
+  - Name: QUALITYSETTINGS_BTN
+    EN: Quality Settings
+    ES: 
+    FR: 
+    JA: 
+  - Name: RESEARCH_LOCKED
+    EN: Research Factory is locked.
+    ES: 
+    FR: 
+    JA: 
+  - Name: UPDATEAVAILABLE_MESSAGE
+    EN: A new update is available, do you want to download it?
+    ES: 
+    FR: 
+    JA: 
+  - Name: MINIGAMES_BTN
+    EN: Minigames
+    ES: 
+    FR: 
+    JA: 
+  - Name: NONETWORK_INFO
+    EN: A network connection is required to access this.
+    ES: 
+    FR: 
+    JA: 
+  - Name: OPTIONS_BTN
+    EN: Options
+    ES: 
+    FR: 
+    JA: 
+  - Name: PERFORMANCEIMPACT_NONE
+    EN: 'Performance Impact: None'
+    ES: 
+    FR: 
+    JA: 
+  - Name: RESETDIALOG_INFO
+    EN: 'Are you sure you want to reset your save file?
+
+      WARNING: THIS WILL
+      RESET EVERYTHING.'
+    ES: 
+    FR: 
+    JA: 
+  - Name: REBIRTH
+    EN: Rebirth
+    ES: 
+    FR: 
+    JA: 
+  - Name: OFF
+    EN: Off
+    ES: 
+    FR: 
+    JA: 
+  - Name: CONTINUE_BTN
+    EN: Continue
+    ES: 
+    FR: 
+    JA: 
+  - Name: TEXTUREQUALITY_TITLE
+    EN: Texture Quality
+    ES: 
+    FR: 
+    JA: 
+  - Name: BETACONTENT_ONLINEMODE
+    EN: Online Mode
+    ES: 
+    FR: 
+    JA: 
+  - Name: SCREENSHOTOPTIONS_SUPPORTED
+    EN: (Supported on Windows, macOS, and Linux)
+    ES: 
+    FR: 
+    JA: 
+  - Name: ACCESSIBILITY_COLORBLINDNES
+    EN: Color Blindness
+    ES: 
+    FR: 
+    JA: 
+  - Name: LOAD_BTN
+    EN: Load
+    ES: 
+    FR: 
+    JA: 
+  - Name: PCONLY_WINDOWMODE
+    EN: Window Mode
+    ES: 
+    FR: 
+    JA: 
+  - Name: PARTICLES_TOGGLE
+    EN: Particles
+    ES: 
+    FR: 
+    JA: 
+  - Name: UPDATECHECKER_TOGGLE
+    EN: Check for updates on startup
+    ES: 
+    FR: 
+    JA: 
+  - Name: VR_ENABLECUSTOMMIRRORCAMERA
+    EN: (VR) Custom mirror camera
+    ES: 
+    FR: 
+    JA: 
+  - Name: PERFORMANCEIMPACT_LOW
+    EN: 'Performance Impact: Low'
+    ES: 
+    FR: 
+    JA: 
+  - Name: ON
+    EN: On
+    ES: 
+    FR: 
+    JA: 
+  - Name: DELETESCREENSHOTS_INFO
+    EN: 'WARNING!
+
+      Deleting your screenshots will
+
+      DELETE ALL OF THEM.'
+    ES: 
+    FR: 
+    JA: 
+  - Name: IMPORTSAVEFILEWARNING_INFO
+    EN: 'Are you sure you want to import the save file?
+
+      This will reset all
+      current data.'
+    ES: 
+    FR: 
+    JA: 
+  - Name: ACHIEVEMENTS_BTN
+    EN: Achievements
+    ES: 
+    FR: 
+    JA: 
+  - Name: QUIT_BTN
+    EN: Quit
+    ES: 
+    FR: 
+    JA: 
+  - Name: MOREINFO_TITLE
+    EN: More Info
+    ES: 
+    FR: 
+    JA: 
+  - Name: NECDIALOG_INFO
+    EN: Not Enough Cookies!
+    ES: 
+    FR: 
+    JA: 
+  - Name: SOUND_TOGGLE
+    EN: Sound
+    ES: 
+    FR: 
+    JA: 
+  - Name: RELOADGAME_BTN
+    EN: Reload Game
+    ES: 
+    FR: 
+    JA: 
+  - Name: RESEARCH_ENTER_BTN
+    EN: Enter
+    ES: 
+    FR: 
+    JA: 
+  - Name: CHANGE_BTN
+    EN: Change
+    ES: 
+    FR: 
+    JA: 
+  - Name: EBCWARNING_INFO
+    EN: 'Beta Content may be changed, broken, or break your save file
+
+
+      Do
+      you want to enable Beta Content?'
+    ES: 
+    FR: 
+    JA: 
+  - Name: PCONLY_BTN
+    EN: PC Only Settings
+    ES: 
+    FR: 
+    JA: 
+  - Name: RETRY_BTN
+    EN: Retry
+    ES: 
+    FR: 
+    JA: 
+  - Name: SAVEDATAHELP_INFO
+    EN: 'Sharing violation on path: Save file is corrupted.
+
+      Access to the
+      path "PATH" is denied: Access was denied to the save file. Please check permissions
+      on the file.'
+    ES: 
+    FR: 
+    JA: 
+  - Name: RESEARCH_BTN
+    EN: Research
+    ES: 
+    FR: 
+    JA: 
+  - Name: SAVEDATAIOERROR_WARNING
+    EN: If you continue, all data will be WIPED.
+    ES: 
+    FR: 
+    JA: 
+  - Name: RESETDATA_BTN
+    EN: Reset save file
+    ES: 
+    FR: 
+    JA: 
+  - Name: VSYNC_TOGGLE
+    EN: VSync
+    ES: 
+    FR: 
+    JA: 
+  - Name: ACCESSIBILITY_LANGUAGE
+    EN: Language
+    ES: 
+    FR: 
+    JA: 
+  - Name: CREDITS_SOURCESANSPROLICENCE
+    EN: SIL OPEN FONT LICENSE
+    ES: 
+    FR: 
+    JA: 
+  - Name: PCONLY_RESTARTREQUIRED
+    EN: 'A restart is required to change the Graphics API.
+
+      Do you want to
+      restart now?'
+    ES: 
+    FR: 
+    JA: 
+  - Name: PCONLY_AA
+    EN: Anti-Aliasing (MSAA)
+    ES: 
+    FR: 
+    JA: 
+  - Name: OPENWEBPAGE_INFO
+    EN: Do you want to open the following link in your web browser?
+    ES: 
+    FR: 
+    JA: 
+  - Name: ONLINE_TIMERRANOUT
+    EN: 'The timer has ran out!
+
+
+      Returning to main game...'
+    ES: 
+    FR: 
+    JA: 
+  - Name: THEMES_BTN
+    EN: Themes
+    ES: 
+    FR: 
+    JA: 
+  - Name: PERFORMANCEIMPACT_MEDIUM
+    EN: 'Performance Impact: Medium'
+    ES: 
+    FR: 
+    JA: 
+  - Name: CREDITS_TITLE
+    EN: Credits
+    ES: 
+    FR: 
+    JA: 
+  - Name: RESETDIALOG_TITLE
+    EN: Question
+    ES: 
+    FR: 
+    JA: 
+  - Name: OFFLINEPROGRESS_YOUHAVEBEEN
+    EN: 'You have been rewarded:'
+    ES: 
+    FR: 
+    JA: 
+  - Name: OFFLINEPROGRESS_TITLE
+    EN: Offline Progress
+    ES: 
+    FR: 
+    JA: 
+  - Name: MOREINFO_BTN
+    EN: More Info
+    ES: 
+    FR: 
+    JA: 
+  - Name: SAVEDATAIOERROR_INFO
+    EN: 'An error occurred when loading the save file:'
+    ES: 
+    FR: 
+    JA: 
+  - Name: ACCESSIBILITY_BTN
+    EN: Accessibility
+    ES: 
+    FR: 
+    JA: 
+  - Name: OFFLINEPROGRESS_INFO
+    EN: 'You have been offline for:'
+    ES: 
+    FR: 
+    JA: 
+  - Name: NONETWORK_TITLE
+    EN: Network Connection Required
+    ES: 
+    FR: 
+    JA: 
+  - Name: FPSDISPLAY_TOGGLE
+    EN: FPS Display
+    ES: 
+    FR: 
+    JA: 
+  - Name: ACCESSIBILITY_TITLE
+    EN: Accessibility
+    ES: 
+    FR: 
+    JA: 
+  - Name: UPDATEAVAILABLE_TITLE
+    EN: Update Available
+    ES: 
+    FR: 
+    JA: 
+  - Name: PARTICLES_INFO
+    EN: Adds visual effects to things like the drill
+    ES: 
+    FR: 
+    JA: 
+  - Name: EXPORT_BTN
+    EN: Export
+    ES: 
+    FR: 
+    JA: 
+  - Name: PCONLY_GRAPHICSAPI
+    EN: Graphics API
+    ES: 
+    FR: 
+    JA: 
+  - Name: DELETESCREENSHOTS_TITLE
+    EN: DELETE SCREENSHOTS
+    ES: 
+    FR: 
+    JA: 
+  - Name: SCREENSHOTOPTIONS_QUALITY
+    EN: Quality
+    ES: 
+    FR: 
+    JA: 
+  - Name: BOSSCOOKIES_TITLE
+    EN: Boss Cookies
+    ES: 
+    FR: 
+    JA: 
+  - Name: OPTIONS_TITLE
+    EN: Options
+    ES: 
+    FR: 
+    JA: 
+  - Name: SCREENSHOTOPTIONS_OPENSCREENSHOTSFOLDER
+    EN: Open Screenshots folder
+    ES: 
+    FR: 
+    JA: 
+  - Name: SCREENSHOTOPTIONS_TITLE
+    EN: Screenshot Options
+    ES: 
+    FR: 
+    JA: 
+  - Name: SAVEDATAIOERROR_TITLE
+    EN: Save Data Error
+    ES: 
+    FR: 
+    JA: 
+  - Name: JUKEBOX_BTN
+    EN: Jukebox
+    ES: 
+    FR: 
+    JA: 
+  - Name: THEMES_INFO
+    EN: 'Select a theme:'
+    ES: 
+    FR: 
+    JA: 
+  - Name: MUSIC_TOGGLE
+    EN: Music
+    ES: 
+    FR: 
+    JA: 
+  - Name: BETACONTENT_DISABLEBC
+    EN: Disable Beta Content
+    ES: 
+    FR: 
+    JA: 
+  - Name: SCREENSHOTOPTIONS_TIP
+    EN: Press F12 to take a screenshot.
+    ES: 
+    FR: 
+    JA: 
+  - Name: SAVE_BTN
+    EN: Save
+    ES: 
+    FR: 
+    JA: 
+  - Name: PP_INFO
+    EN: Post Processing adds visual effects to the screen.
+    ES: 
+    FR: 
+    JA: 
+  - Name: VSYNC_INFO
+    EN: VSync locks the game to your display's refresh rate to reduce tearing.
+    ES: 
+    FR: 
+    JA: 
+  - Name: IMPORT_BTN
+    EN: Import
+    ES: 
+    FR: 
+    JA: 
+  - Name: STATS_BTN
+    EN: Stats
+    ES: 
+    FR: 
+    JA: 
+  - Name: MINIGAMES_DRILL
+    EN: Drill
+    ES: 
+    FR: 
+    JA: 
+  - Name: RESEARCH_UNLOCK_BTN
+    EN: Unlock (20000 Cookies)
+    ES: 
+    FR: 
+    JA: 
+  - Name: SCREENSHOTSETTINGS_BTN
+    EN: Screenshot Settings
+    ES: 
+    FR: 
+    JA: 
+  - Name: REBIRTH_INFO
+    EN: 'Are you sure you want to rebirth?
+
+
+      A rebirth requires:
+
+      {0}
+      Cookies
+
+      {1} Grandmas
+
+
+      Rebirthing will reset everything except
+      for the following:
+
+      Boss Cookies mini game hammer damage
+
+      Drill
+      mini game shop items
+
+      Achievements
+
+
+      10000 starting cookies
+
+      {2}
+      starting Doublecookies
+
+      {3}x Cookies per second
+
+      {4}x the amount
+      of shop purchases'
+    ES: 
+    FR: 
+    JA: 
+  - Name: RENDERQUALITY_TITLE
+    EN: Render Quality
+    ES: 
+    FR: 
+    JA: 
+  - Name: BETACONTENT_BTN
+    EN: Beta Content
+    ES: 
+    FR: 
+    JA: 
+  - Name: CREDITS_BTN
+    EN: Credits
+    ES: 
+    FR: 
+    JA: 
+  - Name: BETACONTENT_RESEARCHFACTORY
+    EN: Research Factory
+    ES: 
+    FR: 
+    JA: 
+  - Name: FOG_TOGGLE
+    EN: Fog
+    ES: 
+    FR: 
+    JA: 
+  - Name: SCREENSHOTOPTIONS_DELETESCREENSHOTS
+    EN: Delete Screenshots
+    ES: 
+    FR: 
+    JA: 
+  - Name: PCONLY_RESOULTION
+    EN: Resolution
+    ES: 
+    FR: 
+    JA: 
+  - Name: FPSDISPLAY_INFO
+    EN: Enables/Disables the FPS counter in the top right corner.
+    ES: 
+    FR: 
+    JA: 
+  - Name: RELOADREQUIRED
+    EN: A reload is required to change this option. Would you like to reload now?
+    ES: 
+    FR: 
+    JA: 

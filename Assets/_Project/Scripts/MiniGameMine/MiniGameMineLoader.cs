@@ -1,6 +1,6 @@
-using com.raiden.assetbundleassetreference.Runtime;
+using raiden.utils;
 using Cysharp.Threading.Tasks;
-using LoggerSystem;
+using SerialPackage.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
@@ -50,7 +50,7 @@ public class MiniGameMineLoader : MonoBehaviour
 
         await SceneManager.LoadSceneAsync(SceneNames.miniGameMineRef, LoadSceneMode.Additive);
 
-        LogSystem.Log("Loading AssetBundle " + environmentRef.BundleName + " and scene " + SceneNames.miniGameMineEnvironmentRef);
+        BeanLogger.Log("Loading AssetBundle " + environmentRef.BundleName + " and scene " + SceneNames.miniGameMineEnvironmentRef, this);
 
 #if UNITY_EDITOR
         if (LoadAssetBundlesInEditor)
@@ -102,13 +102,12 @@ public class MiniGameMineLoader : MonoBehaviour
 #if UNITY_EDITOR
         if (LoadAssetBundlesInEditor)
         {
-            LogSystem.Log("Unloading Scene " + SceneNames.miniGameMineEnvironmentRef);
-            
+            BeanLogger.Log("Unloading Scene " + SceneNames.miniGameMineEnvironmentRef, this);
         }
         else
         {
 #endif
-            LogSystem.Log("Unloading Scene " + SceneNames.miniGameMineEnvironmentRef + " and bundle " + environmentRef.BundleName);
+            BeanLogger.Log("Unloading Scene " + SceneNames.miniGameMineEnvironmentRef + " and bundle " + environmentRef.BundleName, this);
 #if UNITY_EDITOR
         }
 #endif

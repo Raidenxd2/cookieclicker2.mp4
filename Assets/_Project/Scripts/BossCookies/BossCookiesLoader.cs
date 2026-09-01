@@ -1,6 +1,6 @@
-using com.raiden.assetbundleassetreference.Runtime;
 using Cysharp.Threading.Tasks;
-using LoggerSystem;
+using raiden.utils;
+using SerialPackage.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
@@ -59,7 +59,7 @@ public class BossCookiesLoader : MonoBehaviour
 
         await SceneManager.LoadSceneAsync(SceneNames.bossCookiesRef, LoadSceneMode.Additive);
 
-        LogSystem.Log("Loading AssetBundle " + environmentRef.BundleName + " and scene " + SceneNames.bossCookiesEnvironmentRef);
+        BeanLogger.Log("Loading AssetBundle " + environmentRef.BundleName + " and scene " + SceneNames.bossCookiesEnvironmentRef, this);
 
 #if UNITY_EDITOR
         if (LoadAssetBundlesInEditor)
@@ -130,12 +130,12 @@ public class BossCookiesLoader : MonoBehaviour
 #if UNITY_EDITOR
         if (LoadAssetBundlesInEditor)
         {
-            LogSystem.Log("Unloading Scene " + SceneNames.bossCookiesEnvironmentRef);
+            BeanLogger.Log("Unloading Scene " + SceneNames.bossCookiesEnvironmentRef, this);
         }
         else
         {
 #endif
-            LogSystem.Log("Unloading Scene " + SceneNames.bossCookiesEnvironmentRef + " and bundle " + environmentRef.BundleName);
+            BeanLogger.Log("Unloading Scene " + SceneNames.bossCookiesEnvironmentRef + " and bundle " + environmentRef.BundleName, this);
 #if UNITY_EDITOR
         }
 #endif

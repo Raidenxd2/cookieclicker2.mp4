@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
-using LoggerSystem;
 using System.Collections.Generic;
+using SerialPackage.Runtime;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -46,7 +46,7 @@ public class AddressableLightmaps : MonoBehaviour
 
     private async UniTaskVoid LoadResearchFactoryLightmap()
     {
-        LogSystem.Log("Loading AssetBundle " + ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapABName + " and asset " + ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapAssetName);
+        BeanLogger.Log("Loading AssetBundle " + ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapABName + " and asset " + ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapAssetName, this);
 #if UNITY_WEBGL
         lightmapBundle = DownloadHandlerAssetBundle.GetContent(await UnityWebRequestAssetBundle.GetAssetBundle(Application.streamingAssetsPath + "/Bundles/" + ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapABName + ".bundle").SendWebRequest());
 #else
@@ -72,7 +72,7 @@ public class AddressableLightmaps : MonoBehaviour
     {
         if (lightmapBundle != null)
         {
-            LogSystem.Log("Unloading AssetBundle " + lightmapBundle.name);
+            BeanLogger.Log("Unloading AssetBundle " + lightmapBundle.name, this);
 
             rflTexture = null;
             lightmapBundle.Unload(true);

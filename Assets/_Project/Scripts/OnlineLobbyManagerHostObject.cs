@@ -1,5 +1,5 @@
 using Cysharp.Threading.Tasks;
-using LoggerSystem;
+using SerialPackage.Runtime;
 using Unity.Netcode;
 
 public class OnlineLobbyManagerHostObject : NetworkBehaviour
@@ -18,7 +18,7 @@ public class OnlineLobbyManagerHostObject : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     public void UpdatePlayerListRpc()
     {
-        LogSystem.Log("UpdatePlayerListRpc");
+        BeanLogger.Log("UpdatePlayerListRpc", this);
         
         OnlineLobbyManager.instance.FinishConnect();
         OnlineLobbyManager.instance.RefreshPlayerList().Forget();

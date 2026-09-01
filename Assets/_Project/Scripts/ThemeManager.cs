@@ -1,6 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
-using LoggerSystem;
+using SerialPackage.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
@@ -76,12 +76,12 @@ public class ThemeManager : MonoBehaviour
 #if UNITY_EDITOR
                 if (LoadAssetBundlesInEditor)
                 {
-                    LogSystem.Log("Unloading Scene " + CurrentSceneName + " and bundle " + CurrentThemeBundle.name);
+                    BeanLogger.Log("Unloading Scene " + CurrentSceneName + " and bundle " + CurrentThemeBundle.name, this);
                 }
                 else
                 {
 #endif
-                    LogSystem.Log("Unloading Scene " + CurrentSceneName);
+                    BeanLogger.Log("Unloading Scene " + CurrentSceneName, this);
 #if UNITY_EDITOR
                 }
 #endif
@@ -107,7 +107,7 @@ public class ThemeManager : MonoBehaviour
 
         try
         {
-            LogSystem.Log("Loading AssetBundle " + AssetBundleName + " and scene " + SceneName);
+            BeanLogger.Log("Loading AssetBundle " + AssetBundleName + " and scene " + SceneName, this);
 
 #if UNITY_EDITOR
             if (LoadAssetBundlesInEditor)
@@ -156,12 +156,12 @@ public class ThemeManager : MonoBehaviour
 #if UNITY_EDITOR
             if (!LoadAssetBundlesInEditor)
             {
-                LogSystem.Log("Unloading Scene " + CurrentSceneName);
+                BeanLogger.Log("Unloading Scene " + CurrentSceneName, this);
             }
             else
             {
 #endif
-                LogSystem.Log("Unloading Scene " + CurrentSceneName + " and bundle " + CurrentThemeBundle.name);
+                BeanLogger.Log("Unloading Scene " + CurrentSceneName + " and bundle " + CurrentThemeBundle.name, this);
 #if UNITY_EDITOR
             }
 #endif
@@ -181,7 +181,7 @@ public class ThemeManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            LogSystem.Log("Failed to unload current theme.", LogTypes.Exception);
+            BeanLogger.LogError("Failed to unload current theme.", this);
             Debug.LogException(ex);
         }
     }

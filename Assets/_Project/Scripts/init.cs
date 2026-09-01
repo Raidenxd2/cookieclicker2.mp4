@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using LoggerSystem;
 using SimpleFileBrowser;
 using System.IO;
 using UnityEngine;
@@ -13,8 +12,6 @@ public class Init : MonoBehaviour
     private static bool HasLoaded;
     private static bool HasLoadedSharedData;
     
-    [SerializeField] private GameObject AndroidWarningScreen;
-
     [SerializeField] private ThemeSO DefaultTheme;
 
     private void Start()
@@ -25,28 +22,17 @@ public class Init : MonoBehaviour
             DontDestroyOnLoad(DDOL);
         }
 
-#if UNITY_ANDROID || UNITY_EDITOR
-        if (PlayerPrefs.GetInt("GoogleAndroidWarningShownV2", 0) == 0 && !VRManager.instance.VREnabled)
-        {
-            AndroidWarningScreen.SetActive(true);
-            
-            return;
-        }
-#endif
-        
-        ContinueLoad();
+        StartAsync().Forget();
     }
 
-    public void ContinueLoad()
+    private async UniTaskVoid StartAsync()
     {
-        PlayerPrefs.SetInt("GoogleAndroidWarningShownV2", 1);
-        
-        Resources.UnloadUnusedAssets();
+        await Resources.UnloadUnusedAssets();
 
 #if !UNITY_WEBGL
         if (!HasLoadedSharedData)
         {
-            AssetBundle.LoadFromFile(Application.streamingAssetsPath + "/Bundles/shareddata.bundle");
+            await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/shareddata.bundle");
             HasLoadedSharedData = true;
         }
 #endif
@@ -54,22 +40,17 @@ public class Init : MonoBehaviour
 #if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
-            LoadVRData().Forget();
+            Instantiate(await Resources.LoadAsync("InitScene_VRPrefab") as GameObject);
         }
 #endif
+        
+        if (PlayerPrefs.GetInt("BeanLocalization_CurrentLanguage", 0) == 3)
+        {
+            await FontLoader.instance.LoadJapaneseFont();
+        }
 
-        LoadGameSceneAsync().Forget();
-    }
-
-#if !CC2_REMOVE_VR_SUPPORT
-    private async UniTask LoadVRData()
-    {
-        Instantiate(await Resources.LoadAsync("InitScene_VRPrefab") as GameObject);
-    }
-#endif
-
-    private async UniTaskVoid LoadGameSceneAsync()
-    {
+        await BeanLocalization.Init("MainLocalization");
+        
         if (!string.IsNullOrEmpty(Game.importPath))
         {
             File.Delete(Application.persistentDataPath + "/Saves/Default.cookie");

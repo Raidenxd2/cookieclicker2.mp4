@@ -2,7 +2,7 @@
 using UnityEngine;
 using TMPro;
 using BreakInfinity;
-using LoggerSystem;
+using SerialPackage.Runtime;
 
 public class DebugMenu : MonoBehaviour
 {
@@ -11,10 +11,18 @@ public class DebugMenu : MonoBehaviour
     public TMP_InputField FPSInput;
     public GameObject DEBUGButton;
 
+    public GameObject UtilsDebugRoot;
+
     // Start is called before the first frame update
     private void Start()
     {
         DEBUGButton.SetActive(true);
+
+        if (!GameObject.Find("DebugRoot(Clone)"))
+        {
+            GameObject go = Instantiate(UtilsDebugRoot);
+            DontDestroyOnLoad(go);
+        }
     }
 
     public void UpdateCookies()
@@ -25,7 +33,7 @@ public class DebugMenu : MonoBehaviour
         }
         catch
         {
-            LogSystem.Log("Failed to set Cookies.", LogTypes.Error);
+            BeanLogger.LogError("Failed to set Cookies.", this);
         }
     }
 

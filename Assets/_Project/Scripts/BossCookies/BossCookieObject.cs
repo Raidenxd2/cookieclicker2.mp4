@@ -24,7 +24,7 @@ public class BossCookieObject : MonoBehaviour
         if (Health <= 0)
         {
             Game.instance.Cookies += CookiesAmount;
-            BossCookiesGame.instance.ShowCookiesGainedNotificationAsync(CookiesAmount).Forget();
+            BossCookiesGame.instance.ShowCookiesGainedNotification(CookiesAmount);
 
             Health = StartingHealth;
         }

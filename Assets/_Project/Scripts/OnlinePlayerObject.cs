@@ -1,4 +1,4 @@
-using LoggerSystem;
+using SerialPackage.Runtime;
 using Unity.Collections;
 using Unity.Netcode;
 
@@ -18,7 +18,7 @@ public class OnlinePlayerObject : NetworkBehaviour
             instance = this;
             
             Username.Value = BetterPrefs.GetString("Online_Username", "New001");
-            LogSystem.Log(Username.Value.ToString());
+            BeanLogger.Log(Username.Value.ToString(), this);
         }
     }
 

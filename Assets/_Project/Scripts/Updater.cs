@@ -1,6 +1,6 @@
 using System.IO;
 using Cysharp.Threading.Tasks;
-using LoggerSystem;
+using SerialPackage.Runtime;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -37,8 +37,8 @@ public class Updater : MonoBehaviour
 
         int localVersion = int.Parse((await UnityWebRequest.Get(Path.Combine(Application.streamingAssetsPath, "build")).SendWebRequest()).downloadHandler.text);
 
-        LogSystem.Log("Latest version: " + version);
-        LogSystem.Log("Local version: " + localVersion);
+        BeanLogger.Log("Latest version: " + version, this);
+        BeanLogger.Log("Local version: " + localVersion, this);
 
         if (version > localVersion)
         {

@@ -433,8 +433,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Transports.UTP.UnityTransport
   m_ProtocolType: 0
-  m_UseWebSockets: 1
-  m_UseEncryption: 1
+  m_UseWebSockets: 0
+  m_UseEncryption: 0
   m_MaxPacketQueueSize: 128
   m_MaxPayloadSize: 6144
   m_HeartbeatTimeoutMS: 500
@@ -517,7 +517,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2099011410}
   - component: {fileID: 2099011411}
-  - component: {fileID: 2099011412}
   m_Layer: 0
   m_Name: PreInit
   m_TagString: Untagged
@@ -554,18 +553,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FatalErrorScreen: {fileID: 948925696}
   FatalErrorText: {fileID: 708259091}
---- !u!114 &2099011412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099011409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e07c78e63492b314590c63986f1a5c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: SerialPackage.Runtime::SerialPackage.Runtime.AndroidFPS
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
