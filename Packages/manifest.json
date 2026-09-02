@@ -2,7 +2,7 @@
   "dependencies": {
     "com.annulusgames.lit-motion": "2.0.1",
     "com.cysharp.unitask": "2.5.10",
-    "com.raiden.sharedshaders": "https://codeberg.org/Raidenxd2/SharedShaders.git#1.2.0",
+    "com.raiden.sharedshaders": "https://github.com/Raidenxd2/SharedShaders.git",
     "com.raiden.signaturealwaysfulltrustpatch": "https://github.com/Raidenxd2/UnityPackageSignatureAlwaysFullTrustPatch.git",
     "com.raiden.utils": "https://github.com/Raidenxd2/Utils.git",
     "com.unity.2d.sprite": "1.0.0",

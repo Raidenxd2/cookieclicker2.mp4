@@ -329,7 +329,10 @@ public class Game : MonoBehaviour
 #endif
         if (VRManager.instance.VREnabled)
         {
-            VRPrefabGO = Instantiate(await Resources.LoadAsync("GameScene_VRPrefab") as GameObject);
+            VRPrefabGO = Instantiate(await Resources.LoadAsync("GameScene_VRPrefab") as GameObject, transform);
+            VRPrefabGO.transform.SetParent(null);
+            VRPrefabGO.transform.position = Vector3.zero;
+            
             vrpo = VRPrefabGO.GetComponent<VRPrefabObject>();
 
             XROrigin = vrpo.XROrigin;

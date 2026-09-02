@@ -19,11 +19,11 @@
       "url": "https://package.openupm.com"
     },
     "com.raiden.sharedshaders": {
-      "version": "https://codeberg.org/Raidenxd2/SharedShaders.git#1.2.0",
+      "version": "https://github.com/Raidenxd2/SharedShaders.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "6f7527d8f52d9449c80feb0190fac11e8ecfa47f"
+      "hash": "2045efe1232e4687aac8da04ca26ea608a8fe1ff"
     },
     "com.raiden.signaturealwaysfulltrustpatch": {
       "version": "https://github.com/Raidenxd2/UnityPackageSignatureAlwaysFullTrustPatch.git",
