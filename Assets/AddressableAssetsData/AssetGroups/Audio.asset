@@ -64,5 +64,8 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 9bd8c6dc482bf244fa3a69cd62f55319, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: df8dfadf85e68b64e91764ca8393817f, type: 2}
     - {fileID: 11400000, guid: ecffc0acae60dde418ef01ab62c3eeab, type: 2}
+    m_SchemaDisplayOrder:
+    - Packed Assets_BundledAssetGroupSchema
+  m_IncludeInBuild: 1
+  m_IncludeInBuildMigrated: 1

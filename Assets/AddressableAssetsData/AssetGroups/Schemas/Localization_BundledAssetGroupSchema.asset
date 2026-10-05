@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: Packed Assets_BundledAssetGroupSchema
   m_EditorClassIdentifier: 
   m_Group: {fileID: 11400000, guid: 40813f47b4cafe54bacf39c6a0a6ef30, type: 2}
-  m_InternalBundleIdMode: 1
-  m_Compression: 2
+  m_SchemaIsEnabled: 1
+  m_InternalBundleIdMode: 0
+  m_Compression: 1
   m_IncludeAddressInCatalog: 1
   m_IncludeGUIDInCatalog: 0
   m_IncludeLabelsInCatalog: 0
-  m_InternalIdNamingMode: 0
+  m_IncludeFolderKeysInCatalog: 0
+  m_IncludeAddressesForFolderChildren: 0
+  m_InternalIdNamingMode: 1
   m_CacheClearBehavior: 0
   m_IncludeInBuild: 1
   m_BundledAssetProviderType:
@@ -28,7 +31,8 @@ MonoBehaviour:
   m_ForceUniqueProvider: 0
   m_UseAssetBundleCache: 0
   m_UseAssetBundleCrc: 0
-  m_UseAssetBundleCrcForCachedBundles: 1
+  m_UseAssetBundleCrcForCachedBundles: 0
+  m_CacheProbeMode: 0
   m_UseUWRForLocalBundles: 0
   m_Timeout: 0
   m_ChunkedTransfer: 0
@@ -44,5 +48,5 @@ MonoBehaviour:
     m_ClassName: UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider
   m_UseDefaultSchemaSettings: 0
   m_SelectedPathPairIndex: 0
-  m_BundleNaming: 1
+  m_BundleNaming: 4
   m_AssetLoadMode: 0

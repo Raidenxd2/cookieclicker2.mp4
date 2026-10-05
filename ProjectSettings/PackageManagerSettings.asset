@@ -34,9 +34,6 @@ MonoBehaviour:
     m_Name: package.openupm.com
     m_Url: https://package.openupm.com
     m_Scopes:
-    - com.cysharp.unitask
-    - com.annulusgames.lit-motion
-    - com.raiden.serial
     - com.yasirkula.simplefilebrowser
     m_IsDefault: 0
     m_Capabilities: 0
@@ -49,6 +46,6 @@ MonoBehaviour:
   m_RegistryInfoDraft:
     m_Modified: 0
     m_ErrorMessage: 
-    m_UserModificationsInstanceId: -912
-    m_OriginalInstanceId: -916
+    m_UserModificationsInstanceId: -894
+    m_OriginalInstanceId: -898
   m_LoadAssets: 0
