@@ -17,7 +17,7 @@ MonoBehaviour:
   VersionPrefix: 3.0.2-PublicRelease-OS
   ExeName: Cookieclicker2.mp4
   DedicatedServerBuild: 0
-  BuildAddressables: 1
+  BuildAddressables: 0
   RemoveManifestFilesFromAssetBundleBuild: 0
   BuildAssetBundles: 1
   DeleteBundlesBeforeBuilding: 0

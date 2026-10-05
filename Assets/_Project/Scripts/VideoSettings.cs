@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -48,8 +49,6 @@ public class VideoSettings : MonoBehaviour
         BetterPrefs.SetInt("WindowMode", 1);
         BetterPrefs.SetInt("GRAPHICS_AA", 1);
         BetterPrefs.SetBool("GRAPHICS_VSync", true);
-        
-        PlayerPrefs.SetInt("GraphicsAPI", 0);
     }
 
     private void AddOptionsToDropdown()
@@ -105,7 +104,10 @@ public class VideoSettings : MonoBehaviour
         ChangeAntiAliasing(BetterPrefs.GetInt("GRAPHICS_AA", 1));
         ChangeVSync(BetterPrefs.GetBool("GRAPHICS_VSync", true));
 
-        GraphicsAPIDropdown.value = PlayerPrefs.GetInt("GraphicsAPI", 0);
+        if (File.Exists(Application.dataPath + "/GraphicsAPI"))
+        {
+            GraphicsAPIDropdown.value = int.Parse(File.ReadAllText(Application.dataPath + "/GraphicsAPI"));
+        }
     }
 #endif
 
@@ -189,9 +191,7 @@ public class VideoSettings : MonoBehaviour
     public void ChangeGraphicsAPI(int val)
     {
 #if UNITY_STANDALONE_WIN
-        PlayerPrefs.SetInt("GraphicsAPI", val);
-
-        PlayerPrefs.Save();
+        File.WriteAllText(Application.dataPath + "/GraphicsAPI", val.ToString());
         
         GameRestartRequired.SetActive(true);
 #endif
