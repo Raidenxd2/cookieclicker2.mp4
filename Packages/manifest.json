@@ -22,6 +22,7 @@
     "com.unity.xr.management": "4.5.3",
     "com.unity.xr.openxr": "https://github.com/Raidenxd2/unitybuiltin-openxr.git",
     "com.veriorpies.parrelsync": "https://github.com/Raidenxd2/ParrelSync.git?path=/ParrelSync",
+    "com.yasirkula.assetusagedetector": "https://github.com/yasirkula/UnityAssetUsageDetector.git",
     "com.yasirkula.simplefilebrowser": "1.7.4",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",

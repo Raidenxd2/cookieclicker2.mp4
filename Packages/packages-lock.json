@@ -316,6 +316,13 @@
       "dependencies": {},
       "hash": "d9f471763db267ddb16837f2608575535655e063"
     },
+    "com.yasirkula.assetusagedetector": {
+      "version": "https://github.com/yasirkula/UnityAssetUsageDetector.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "b0bf247aa47d9fe8babbddeea6ba2f6949c63455"
+    },
     "com.yasirkula.simplefilebrowser": {
       "version": "file:com.yasirkula.simplefilebrowser",
       "depth": 0,
