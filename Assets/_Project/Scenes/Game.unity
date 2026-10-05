@@ -49599,12 +49599,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 2106446464}
   environmentRef:
-    BundleName: minigames-mine-environment
-    AssetName: MineMinigame-Environment
-    IsDirty: 1
-    Asset: {fileID: 102900000, guid: fec06291f38b89f46ba3112607b7b72a, type: 3}
-  LoadAssetBundlesInEditor: 0
-  SceneFullAssetPath: Assets/_Project/Scenes/MineMinigame-Environment.unity
+    m_AssetGUID: fec06291f38b89f46ba3112607b7b72a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!1 &1580759142 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5952271189429548484, guid: 0b25b8d29c5ffac4395ecbad5f0f5583, type: 3}
@@ -67767,12 +67766,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 2106446464}
   environmentRef:
-    BundleName: minigames-bosscookies-environment
-    AssetName: BossCookies-Environment
-    IsDirty: 1
-    Asset: {fileID: 102900000, guid: 0d3e064c5eaec22479e0bcdccda7d611, type: 3}
-  LoadAssetBundlesInEditor: 0
-  SceneFullAssetPath: Assets/_Project/Scenes/BossCookies-Environment.unity
+    m_AssetGUID: 0d3e064c5eaec22479e0bcdccda7d611
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   notificationCanvasParent: {fileID: 0}
   notificationCanvas: {fileID: 434934807}
 --- !u!1 &1504684101970676

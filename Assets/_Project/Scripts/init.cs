@@ -70,7 +70,7 @@ public class Init : MonoBehaviour
         await SceneManager.LoadSceneAsync(SceneNames.gameSceneRef, LoadSceneMode.Additive);
 
         await UniTask.WaitForEndOfFrame();
-        await ThemeManager.instance.SelectTheme(DefaultTheme.ThemeAssetBundleName, DefaultTheme.ThemeSceneName, DefaultTheme.ThemeSceneFullPath);
+        await ThemeManager.instance.SelectTheme(DefaultTheme.ThemeRef, DefaultTheme.ThemeSceneName);
 
 #if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)

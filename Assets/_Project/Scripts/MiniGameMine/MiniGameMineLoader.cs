@@ -1,26 +1,17 @@
-using raiden.utils;
 using Cysharp.Threading.Tasks;
 using SerialPackage.Runtime;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
-using UnityEngine.Networking;
-
-
-#if UNITY_EDITOR
-using UnityEditor.SceneManagement;
-#endif
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 
 public class MiniGameMineLoader : MonoBehaviour
 {
     [SerializeField] private Game game;
 
-    [SerializeField] private AssetBundleAssetReference environmentRef;
-    private AssetBundle environmentBundle;
-
-#if UNITY_EDITOR
-    [SerializeField] private bool LoadAssetBundlesInEditor;
-    [SerializeField] private string SceneFullAssetPath;
-#endif
+    [SerializeField] private AssetReference environmentRef;
+    private AsyncOperationHandle<SceneInstance> environmentHandle;
 
     public static MiniGameMineLoader instance;
 
@@ -50,25 +41,10 @@ public class MiniGameMineLoader : MonoBehaviour
 
         await SceneManager.LoadSceneAsync(SceneNames.miniGameMineRef, LoadSceneMode.Additive);
 
-        BeanLogger.Log("Loading AssetBundle " + environmentRef.BundleName + " and scene " + SceneNames.miniGameMineEnvironmentRef, this);
+        BeanLogger.Log("Loading Scene " + SceneNames.miniGameMineEnvironmentRef, this);
 
-#if UNITY_EDITOR
-        if (LoadAssetBundlesInEditor)
-        {
-#endif
-#if UNITY_WEBGL
-            environmentBundle = DownloadHandlerAssetBundle.GetContent(await UnityWebRequestAssetBundle.GetAssetBundle(Application.streamingAssetsPath + "/Bundles/" + environmentRef.BundleName + ".bundle").SendWebRequest());
-#else
-            environmentBundle = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/" + environmentRef.BundleName + ".bundle");
-#endif
-            await SceneManager.LoadSceneAsync(SceneNames.miniGameMineEnvironmentRef, LoadSceneMode.Additive);
-#if UNITY_EDITOR
-        }
-        else
-        {
-            await EditorSceneManager.LoadSceneAsyncInPlayMode(SceneFullAssetPath, new(LoadSceneMode.Additive));
-        }
-#endif
+        environmentHandle = Addressables.LoadSceneAsync(environmentRef, LoadSceneMode.Additive);
+        await environmentHandle;
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneNames.miniGameMineEnvironmentRef));
 
@@ -99,29 +75,9 @@ public class MiniGameMineLoader : MonoBehaviour
 
         await SceneManager.UnloadSceneAsync(SceneNames.miniGameMineRef);
 
-#if UNITY_EDITOR
-        if (LoadAssetBundlesInEditor)
-        {
-            BeanLogger.Log("Unloading Scene " + SceneNames.miniGameMineEnvironmentRef, this);
-        }
-        else
-        {
-#endif
-            BeanLogger.Log("Unloading Scene " + SceneNames.miniGameMineEnvironmentRef + " and bundle " + environmentRef.BundleName, this);
-#if UNITY_EDITOR
-        }
-#endif
+        BeanLogger.Log("Unloading Scene " + SceneNames.miniGameMineEnvironmentRef, this);
 
-        await SceneManager.UnloadSceneAsync(SceneNames.miniGameMineEnvironmentRef);
-
-#if UNITY_EDITOR
-        if (LoadAssetBundlesInEditor)
-        {
-#endif
-            await environmentBundle.UnloadAsync(true);
-#if UNITY_EDITOR
-        }
-#endif
+        await Addressables.UnloadSceneAsync(environmentHandle);
 
         game.researchFactory.GameCanvas.SetActive(true);
 
