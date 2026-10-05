@@ -37,7 +37,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "632f202b2f560459f3595bd17d63546c3581a108"
+      "hash": "e32a78715a0ae91d9c3b798dfbc583f1044f0597"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

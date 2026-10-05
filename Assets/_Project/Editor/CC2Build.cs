@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
@@ -36,35 +37,78 @@ public class CC2Build : IPreprocessBuildWithReport, IPostprocessBuildWithReport
                 }
             }
         }
-        
-        if (report.summary.platform is BuildTarget.StandaloneOSX)
+
+        if (report.summary.platform is BuildTarget.StandaloneWindows or BuildTarget.StandaloneWindows64 or BuildTarget.StandaloneLinux64)
         {
-            // TODO: Add modified UnityEngine.UIElementsModule.dll for macOS
-            
             string dir = Path.GetDirectoryName(report.summary.outputPath);
-            if (!report.summary.options.HasFlag(BuildOptions.Development))
+            
+            Debug.Log("Removing xrsdk-pre-init-library from " + dir + "/Cookieclicker2.mp4_Data/boot.config");
+                
+            var oldLines = File.ReadAllLines(dir + "/Cookieclicker2.mp4_Data/boot.config");
+            var newLines = oldLines.Where(line => !line.Contains("xrsdk-pre-init-library"));
+                
+            File.WriteAllLines(dir + "/Cookieclicker2.mp4_Data/boot.config", newLines);
+            
+            if (Directory.Exists(dir + "/Cookieclicker2.mp4_Data/StreamingAssets/aa/AddressablesLink"))
             {
-                // if (File.Exists(dir + "/BeanShootout_Data/Managed/UnityEngine.UIElementsModule.dll"))
-                // {
-                //     File.Delete(dir + "/BeanShootout_Data/Managed/UnityEngine.UIElementsModule.dll");
-                //     File.Copy(Application.dataPath + "/_Project/UIElementsNoInit/mac/UnityEngine.UIElementsModule.dll~", dir + "/BeanShootout_Data/Managed/UnityEngine.UIElementsModule.dll");
-                // }
+                Directory.Delete(dir + "/Cookieclicker2.mp4_Data/StreamingAssets/aa/AddressablesLink", true);
             }
+
+            if (File.Exists(dir + "/Cookieclicker2.mp4_Data/Plugins/no_plugins_were_generated.txt"))
+            {
+                File.Delete(dir + "/Cookieclicker2.mp4_Data/Plugins/no_plugins_were_generated.txt");
+            }
+            
+            File.Copy("Assets/Plugins/Newtonsoft.Json.pdb", dir + "/Cookieclicker2.mp4_Data/Managed/Newtonsoft.Json.pdb", true);
         }
 
-        if (report.summary.platform is BuildTarget.StandaloneLinux64)
+        if (report.summary.platform is BuildTarget.StandaloneOSX)
         {
-            // TODO: Add modified UnityEngine.UIElementsModule.dll for Linux
-            
             string dir = Path.GetDirectoryName(report.summary.outputPath);
-            if (!report.summary.options.HasFlag(BuildOptions.Development))
+            
+            Debug.Log("Removing xrsdk-pre-init-library from " + dir + "/Contents/Resources/Data/boot.config");
+                
+            var oldLines = File.ReadAllLines(dir + "/Contents/Resources/Data/boot.config");
+            var newLines = oldLines.Where(line => !line.Contains("xrsdk-pre-init-library"));
+                
+            File.WriteAllLines(dir + "/Contents/Resources/Data/boot.config", newLines);
+
+            if (Directory.Exists(dir + "/Contents/Resources/Data/StreamingAssets/aa/AddressablesLink"))
             {
-                // if (File.Exists(dir + "/BeanShootout_Data/Managed/UnityEngine.UIElementsModule.dll"))
-                // {
-                //     File.Delete(dir + "/BeanShootout_Data/Managed/UnityEngine.UIElementsModule.dll");
-                //     File.Copy(Application.dataPath + "/_Project/UIElementsNoInit/linux/UnityEngine.UIElementsModule.dll~", dir + "/BeanShootout_Data/Managed/UnityEngine.UIElementsModule.dll");
-                // }
+                Directory.Delete(dir + "/Contents/Resources/Data/StreamingAssets/aa/AddressablesLink", true);
             }
+            
+            File.Copy("Assets/Plugins/Newtonsoft.Json.pdb", dir + "/Contents/Resources/Data/Managed/Newtonsoft.Json.pdb", true);
         }
+        
+        // if (report.summary.platform is BuildTarget.StandaloneOSX)
+        // {
+        //     // TODO: Add modified UnityEngine.UIElementsModule.dll for macOS
+        //     
+        //     string dir = Path.GetDirectoryName(report.summary.outputPath);
+        //     if (!report.summary.options.HasFlag(BuildOptions.Development))
+        //     {
+        //         // if (File.Exists(dir + "/BeanShootout_Data/Managed/UnityEngine.UIElementsModule.dll"))
+        //         // {
+        //         //     File.Delete(dir + "/BeanShootout_Data/Managed/UnityEngine.UIElementsModule.dll");
+        //         //     File.Copy(Application.dataPath + "/_Project/UIElementsNoInit/mac/UnityEngine.UIElementsModule.dll~", dir + "/BeanShootout_Data/Managed/UnityEngine.UIElementsModule.dll");
+        //         // }
+        //     }
+        // }
+        //
+        // if (report.summary.platform is BuildTarget.StandaloneLinux64)
+        // {
+        //     // TODO: Add modified UnityEngine.UIElementsModule.dll for Linux
+        //     
+        //     string dir = Path.GetDirectoryName(report.summary.outputPath);
+        //     if (!report.summary.options.HasFlag(BuildOptions.Development))
+        //     {
+        //         // if (File.Exists(dir + "/BeanShootout_Data/Managed/UnityEngine.UIElementsModule.dll"))
+        //         // {
+        //         //     File.Delete(dir + "/BeanShootout_Data/Managed/UnityEngine.UIElementsModule.dll");
+        //         //     File.Copy(Application.dataPath + "/_Project/UIElementsNoInit/linux/UnityEngine.UIElementsModule.dll~", dir + "/BeanShootout_Data/Managed/UnityEngine.UIElementsModule.dll");
+        //         // }
+        //     }
+        // }
     }
 }

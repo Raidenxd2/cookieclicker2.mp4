@@ -15,22 +15,22 @@ public class CustomExeBuild : IPostprocessBuildWithReport
         {
             string outputPath = Path.GetDirectoryName(report.summary.outputPath);
             File.Copy(Application.dataPath + "/_Project/BuildOutput/CustomExe/x64/Cookieclicker2.mp4.exe", outputPath + "/Cookieclicker2.mp4.exe", true);
-            Directory.CreateDirectory(outputPath + "/Cookieclicker2.mp4_Data/ExecutableSourcesAndSymbols");
-            CopyFilesRecursively(Application.dataPath + "/_Project/BuildOutput/CustomExe/x64/ExecutableSourcesAndSymbols", outputPath + "/Cookieclicker2.mp4_Data/ExecutableSourcesAndSymbols");
+            Directory.CreateDirectory(outputPath + "/Cookieclicker2.mp4_Data/Sources");
+            CopyFilesRecursively(Application.dataPath + "/_Project/BuildOutput/CustomExe/x64/Sources", outputPath + "/Cookieclicker2.mp4_Data/Sources");
         }
         else if (report.summary.platform == BuildTarget.StandaloneWindows && UnityEditor.WindowsStandalone.UserBuildSettings.architecture == OSArchitecture.x86 && EditorPrefs.GetBool("CC2_CustomExeBuild", false))
         {
             string outputPath = Path.GetDirectoryName(report.summary.outputPath);
             File.Copy(Application.dataPath + "/_Project/BuildOutput/CustomExe/x86/Cookieclicker2.mp4.exe", outputPath + "/Cookieclicker2.mp4.exe", true);
-            Directory.CreateDirectory(outputPath + "/Cookieclicker2.mp4_Data/ExeeutableSourcesAndSymbols");
-            CopyFilesRecursively(Application.dataPath + "/_Project/BuildOutput/CustomExe/x86/ExecutableSourcesAndSymbols", outputPath + "/Cookieclicker2.mp4_Data/ExecutableSourcesAndSymbols");
+            Directory.CreateDirectory(outputPath + "/Cookieclicker2.mp4_Data/Sources");
+            CopyFilesRecursively(Application.dataPath + "/_Project/BuildOutput/CustomExe/x86/Sources", outputPath + "/Cookieclicker2.mp4_Data/Sources");
         }
         else if (report.summary.platform == BuildTarget.StandaloneWindows64 && UnityEditor.WindowsStandalone.UserBuildSettings.architecture == OSArchitecture.ARM64 && EditorPrefs.GetBool("CC2_CustomExeBuild", false))
         {
             string outputPath = Path.GetDirectoryName(report.summary.outputPath);
             File.Copy(Application.dataPath + "/_Project/BuildOutput/CustomExe/ARM64/Cookieclicker2.mp4.exe", outputPath + "/Cookieclicker2.mp4.exe", true);
-            Directory.CreateDirectory(outputPath + "/Cookieclicker2.mp4_Data/ExeeutableSourcesAndSymbols");
-            CopyFilesRecursively(Application.dataPath + "/_Project/BuildOutput/CustomExe/ARM64/ExecutableSourcesAndSymbols", outputPath + "/Cookieclicker2.mp4_Data/ExecutableSourcesAndSymbols");
+            Directory.CreateDirectory(outputPath + "/Cookieclicker2.mp4_Data/Sources");
+            CopyFilesRecursively(Application.dataPath + "/_Project/BuildOutput/CustomExe/ARM64/Sources", outputPath + "/Cookieclicker2.mp4_Data/Sources");
         }
 #endif
     }

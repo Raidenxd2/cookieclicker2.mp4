@@ -1,5 +1,7 @@
+using System;
 using Cysharp.Threading.Tasks;
 using System.IO;
+using System.Runtime.InteropServices;
 using SerialPackage.Runtime;
 using TMPro;
 using UnityEngine;
@@ -14,6 +16,18 @@ public class PreInitScene : MonoBehaviour
 
     private void Start()
     {
+#if UNITY_STANDALONE_WIN
+        try
+        {
+            int value = 0x01;
+            WindowsAPI.DwmSetWindowAttribute(WindowsAPI.GetWindowHandle(), DwmWindowAttribute.DWMWA_USE_IMMERSIVE_DARK_MODE, ref value, Marshal.SizeOf(typeof(int)));
+        }
+        catch (Exception ex)
+        {
+            Debug.LogException(ex);
+        }
+#endif
+        
         StartAsync().Forget();
     }
 
