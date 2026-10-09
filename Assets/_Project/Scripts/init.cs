@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using SimpleFileBrowser;
 using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -54,7 +53,7 @@ public class Init : MonoBehaviour
         if (!string.IsNullOrEmpty(Game.importPath))
         {
             File.Delete(Application.persistentDataPath + "/Saves/Default.cookie");
-            await File.WriteAllTextAsync(Application.persistentDataPath + "/Saves/Default.cookie", FileBrowserHelpers.ReadTextFromFile(Game.importPath));
+            await File.WriteAllBytesAsync(Application.persistentDataPath + "/Saves/Default.cookie", await File.ReadAllBytesAsync(Game.importPath));
             Game.importPath = null;
         }
 

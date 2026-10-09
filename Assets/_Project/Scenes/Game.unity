@@ -4905,6 +4905,160 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: CC2::BeanLocalizationText
   KeyName: JUKEBOX_BTN
+--- !u!1001 &165255229
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 83176345472579475, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 83176345472579475, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 83176345472579475, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_PlaneDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272982288923531074, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_Name
+      value: FileBrowserCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048863448440999982, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2272982288923531074, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 165255232}
+    - targetCorrespondingSourceObject: {fileID: 2272982288923531074, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 165255231}
+  m_SourcePrefab: {fileID: 100100000, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+--- !u!1 &165255230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2272982288923531074, guid: 589bd2008bb00f84289bbf3e51d9d66a, type: 3}
+  m_PrefabInstance: {fileID: 165255229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &165255231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165255230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.UI.TrackedDeviceGraphicRaycaster
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
+--- !u!114 &165255232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165255230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fedcd233387e999449a74acc15da88fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newPos: {x: 0, y: -6.2, z: 6}
+  newScale: {x: 0.005, y: 0.005, z: 0.005}
+  newRot: {x: 0, y: 0, z: 0}
 --- !u!1 &169529892 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 106894221389762987, guid: c74335471ff41c1438536edccc35ba1b, type: 3}
@@ -15778,7 +15932,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 84.05
+  m_fontSize: 84.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -48993,7 +49147,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.2
+  m_fontSize: 54.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -51693,7 +51847,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 61.6
+  m_fontSize: 61.65
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -52103,7 +52257,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 78.4
+  m_fontSize: 78.65
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -61894,6 +62048,8 @@ MonoBehaviour:
   ScreenshotOptionsBTN: {fileID: 2113006684}
   QuitBTN: {fileID: 1493900857}
   UpdateCheckerToggleGO: {fileID: 1675379964}
+  ExportBTN: {fileID: 441944042}
+  ImportBTN: {fileID: 200233083}
   CookieVFX: {fileID: 855337172176263824, guid: a9fc5eae49f09e8459d6e2cba2a914b9, type: 3}
   CookieGains: {fileID: 8907755305702998037, guid: 107fa5a46d36a3843aa0ee3e8f58ddd0, type: 3}
   CookieVFXSpot: {fileID: 1096343094}
@@ -61915,7 +62071,6 @@ MonoBehaviour:
     exponent: 0
   VRPrefabParent: {fileID: 1904203603}
   XROrigin: {fileID: 0}
-  FileBrowserUISkin: {fileID: 11400000, guid: 65bf7bc79ab6c104abaac72fe91c62e0, type: 2}
   ExportSaveFileSuccess: EXPORTSAVEFILESUCCESS
   SaveManagement: OPTIONS_SAVEMANAGEMENT_BTN
   ExportImportSaveFileDark: {fileID: 1030929062}
@@ -69810,3 +69965,4 @@ SceneRoots:
   - {fileID: 4750940147547578}
   - {fileID: 1764964458}
   - {fileID: 1904203603}
+  - {fileID: 165255229}

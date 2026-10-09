@@ -22,7 +22,6 @@
     "com.unity.xr.openxr": "https://github.com/Raidenxd2/unitybuiltin-openxr.git",
     "com.veriorpies.parrelsync": "https://github.com/Raidenxd2/ParrelSync.git?path=/ParrelSync",
     "com.yasirkula.assetusagedetector": "https://github.com/yasirkula/UnityAssetUsageDetector.git",
-    "com.yasirkula.simplefilebrowser": "1.7.4",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.assetbundle": "1.0.0",
@@ -36,14 +35,5 @@
     "com.unity.modules.ui": "1.0.0",
     "com.unity.modules.unitywebrequest": "1.0.0",
     "com.unity.modules.unitywebrequestassetbundle": "1.0.0"
-  },
-  "scopedRegistries": [
-    {
-      "name": "package.openupm.com",
-      "url": "https://package.openupm.com",
-      "scopes": [
-        "com.yasirkula.simplefilebrowser"
-      ]
-    }
-  ]
+  }
 }

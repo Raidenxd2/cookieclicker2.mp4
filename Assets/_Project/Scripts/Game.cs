@@ -1,6 +1,5 @@
 using BreakInfinity;
 using Cysharp.Threading.Tasks;
-using SimpleFileBrowser;
 using System;
 using System.Globalization;
 using System.IO;
@@ -123,6 +122,8 @@ public class Game : MonoBehaviour
     public GameObject ScreenshotOptionsBTN;
     public GameObject QuitBTN;
     public GameObject UpdateCheckerToggleGO;
+    public GameObject ExportBTN;
+    public GameObject ImportBTN;
 
     [Header("Particles")]
     public GameObject CookieVFX;
@@ -154,7 +155,6 @@ public class Game : MonoBehaviour
 #endif
     [SerializeField] private Transform VRPrefabParent;
     public GameObject XROrigin;
-    [SerializeField] private UISkin FileBrowserUISkin;
     [SerializeField] private string ExportSaveFileSuccess;
     [SerializeField] private string SaveManagement;
     [SerializeField] private GameObject ExportImportSaveFileDark;
@@ -217,6 +217,8 @@ public class Game : MonoBehaviour
         ScreenshotOptionsBTN.SetActive(false);
         QuitBTN.SetActive(false);
         UpdateCheckerToggleGO.SetActive(false);
+        ExportBTN.SetActive(false);
+        ImportBTN.SetActive(false);
 #endif
 
         if (!OnlineLobbyManager.InOnlineGame)
@@ -273,8 +275,6 @@ public class Game : MonoBehaviour
         }
 
         AllowUpdate = true;
-
-        FileBrowser.Skin = FileBrowserUISkin;
 
         UpdateAudio();
 
@@ -590,13 +590,13 @@ public class Game : MonoBehaviour
     public void ExportSaveFile()
     {
         ExportImportSaveFileDark.SetActive(true);
-        FileBrowser.SetFilters(true, ".cookie");
-        FileBrowser.ShowSaveDialog(ExportOnSuccess, ExportOnCancel, FileBrowser.PickMode.Files, false, null, "Default.cookie", "Export Default.cookie", "Export");
+        
+        BeanFileBrowser.instance.OpenSaveFileBrowser("cookie", ExportOnSuccess, ExportOnCancel);
     }
 
-    private void ExportOnSuccess(string[] paths)
+    private void ExportOnSuccess(string path)
     {
-        FileBrowserHelpers.WriteTextToFile(paths[0], File.ReadAllText(Application.persistentDataPath + "/Saves/Default.cookie"));
+        File.WriteAllBytes(path + ".cookie", File.ReadAllBytes(Application.persistentDataPath + "/Saves/Default.cookie"));
         ExportImportSaveFileDark.SetActive(false);
         notification.ShowNotification(BeanLocalization.GetString(ExportSaveFileSuccess), BeanLocalization.GetString(SaveManagement));
     }
@@ -610,18 +610,16 @@ public class Game : MonoBehaviour
     {
         ExportImportSaveFileDark.SetActive(true);
 
-        FileBrowser.SetFilters(true, ".cookie");
-        FileBrowser.ShowLoadDialog(ImportOnSuccess, ImportOnCancel, FileBrowser.PickMode.Files, false, null, null, "Import", "Import");
+        BeanFileBrowser.instance.OpenSelectFileBrowser("cookie", ImportOnSuccess, ImportOnCancel);
     }
 
     public static string importPath;
 
-    private void ImportOnSuccess(string[] paths)
+    private void ImportOnSuccess(string path)
     {
-        importPath = paths[0];
+        importPath = path;
         ExportImportSaveFileDark.SetActive(false);
         ImportSaveFileWarningScreen.SetActive(true);
-        Time.timeScale = 1;
     }
 
     public void ImportSaveFileFinish()
@@ -637,7 +635,6 @@ public class Game : MonoBehaviour
     private void ImportOnCancel()
     {
         ExportImportSaveFileDark.SetActive(false);
-        Time.timeScale = 1;
     }
 
     public void BakeCookie()

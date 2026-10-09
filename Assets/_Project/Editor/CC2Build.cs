@@ -18,7 +18,10 @@ public class CC2Build : IPreprocessBuildWithReport, IPostprocessBuildWithReport
         connectSettingsObj.FindProperty("UnityAnalyticsSettings").FindPropertyRelative("m_Enabled").boolValue = false;
         connectSettingsObj.ApplyModifiedProperties();
         
-        AssetDatabase.SaveAssets();
+        AssetDatabase.SaveAssetIfDirty(connectSettingsRes);
+        
+        File.Move("Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Resources.meta", "Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Resourcesa.meta");
+        Directory.Move("Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Resources", "Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Resourcesa");
     }
 
     public void OnPostprocessBuild(BuildReport report)
@@ -110,5 +113,8 @@ public class CC2Build : IPreprocessBuildWithReport, IPostprocessBuildWithReport
         //         // }
         //     }
         // }
+        
+        File.Move("Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Resourcesa.meta", "Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Resources.meta");
+        Directory.Move("Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Resourcesa", "Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Resources");
     }
 }

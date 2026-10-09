@@ -6,6 +6,9 @@ public static class WindowsAPI
 {
     public delegate bool EnumThreadDelegate(IntPtr hwnd, IntPtr lParam);
     
+    [DllImport("shell32.dll")]
+    public static extern int SHGetKnownFolderPath([MarshalAs(UnmanagedType.LPStruct)] Guid rfid, uint dwFlags, IntPtr hToken, out IntPtr pszPath);
+    
     [DllImport("user32.dll")]
     public static extern bool EnumThreadWindows(int dwThreadId, EnumThreadDelegate lpfn, IntPtr lParam);
 
@@ -26,6 +29,14 @@ public static class WindowsAPI
 
     [DllImport("dwmapi.dll")]
     public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttribute dwAttribute, ref int pvAttribute, int cbAttribute);
+}
+
+/// <summary>
+/// https://learn.microsoft.com/en-us/windows/win32/shell/knownfolderid
+/// </summary>
+public static class KnownFolder
+{
+    public static readonly Guid Downloads = new Guid( "374DE290-123F-4565-9164-39C4925E467B" );
 }
 
 /// <summary>
