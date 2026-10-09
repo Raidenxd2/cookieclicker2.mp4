@@ -1,17 +1,13 @@
 using Cysharp.Threading.Tasks;
-using SerialPackage.Runtime;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceProviders;
 
 public class MiniGameMineLoader : MonoBehaviour
 {
     [SerializeField] private Game game;
 
-    [SerializeField] private AssetReference environmentRef;
-    private AsyncOperationHandle<SceneInstance> environmentHandle;
+    [SerializeField] private AssetReference MineRef;
 
     public static MiniGameMineLoader instance;
 
@@ -39,14 +35,10 @@ public class MiniGameMineLoader : MonoBehaviour
         game.researchFactory.GameCanvas.SetActive(false);
         game.gameCamera.gameObject.SetActive(false);
 
-        await SceneManager.LoadSceneAsync(SceneNames.miniGameMineRef, LoadSceneMode.Additive);
+        AddressableHandles.MineHandle = Addressables.LoadSceneAsync(MineRef, LoadSceneMode.Additive);
+        await AddressableHandles.MineHandle;
 
-        BeanLogger.Log("Loading Scene " + SceneNames.miniGameMineEnvironmentRef, this);
-
-        environmentHandle = Addressables.LoadSceneAsync(environmentRef, LoadSceneMode.Additive);
-        await environmentHandle;
-
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneNames.miniGameMineEnvironmentRef));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneNames.miniGameMineRef));
 
         game.Fade.Play("FadeOut");
         game.FadeCanvasGroup.blocksRaycasts = false;
@@ -71,13 +63,9 @@ public class MiniGameMineLoader : MonoBehaviour
         }
 #endif
 
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneNames.gameSceneRef));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(ThemeManager.instance.CurrentSceneName));
 
-        await SceneManager.UnloadSceneAsync(SceneNames.miniGameMineRef);
-
-        BeanLogger.Log("Unloading Scene " + SceneNames.miniGameMineEnvironmentRef, this);
-
-        await Addressables.UnloadSceneAsync(environmentHandle);
+        await Addressables.UnloadSceneAsync(AddressableHandles.MineHandle);
 
         game.researchFactory.GameCanvas.SetActive(true);
 

@@ -15,8 +15,53 @@ MonoBehaviour:
   m_GroupName: shared-other
   m_GUID: 06203525204ebde4dac70e7a0666dcbd
   m_SerializeEntries:
-  - m_GUID: ce7b37e2cef819b4086843c75a29766d
-    m_Address: SourceSansPro-Regular SDF_ThemeScene
+  - m_GUID: 2a0d21d200573854fa3af0ba4c7af6d2
+    m_Address: ForestTheme
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 620f4f8993e3ba047b44e9ae53d0741b
+    m_Address: Fade
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f7af7f71a398bc4ebdb14f8a15c75db
+    m_Address: FadeOut
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f741f8f75d460a44bf205db8fc4792b
+    m_Address: UI_Click_01
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9a2aa327a8d30c45a14abc15d60312b
+    m_Address: Loading
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7efc7970735e7a4f9139dfb24ca57bb
+    m_Address: New Lighting Settings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c33d401f97e765743b240d3886be604f
+    m_Address: FadeIn
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c348712bda248c246b8c49b3db54643f
+    m_Address: XRI Default Input Actions
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dfe76e5753fb3214482cbe9896f1c8a6
+    m_Address: Loading
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6942149c81fd7d4a9c839ed3180c690
+    m_Address: GameInputActions
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -5,9 +5,10 @@ using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.SceneManagement;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class OnlineLobbyManager : MonoBehaviour
 {
@@ -59,6 +60,11 @@ public class OnlineLobbyManager : MonoBehaviour
 
     private bool Connecting;
     private bool Disconnecting;
+    
+    [SerializeField] private AssetReference OnlineLobbyVRPrefabRef;
+    private AsyncOperationHandle<GameObject> OnlineLobbyVRPrefabHandle;
+    
+    [SerializeField] private AssetReference InitSceneRef;
 
     public static bool InOnlineGame;
     
@@ -118,7 +124,10 @@ public class OnlineLobbyManager : MonoBehaviour
     {
         if (VRManager.instance.VREnabled)
         {
-            VRPrefabGO = Instantiate(await Resources.LoadAsync("OnlineLobby_VRPrefab") as GameObject);
+            OnlineLobbyVRPrefabHandle = Addressables.LoadAssetAsync<GameObject>(OnlineLobbyVRPrefabRef);
+            await OnlineLobbyVRPrefabHandle;
+            
+            VRPrefabGO = Instantiate(OnlineLobbyVRPrefabHandle.Result);
             vrpo = VRPrefabGO.GetComponent<VRPrefabObject>();
 
             XROrigin = vrpo.XROrigin;
@@ -355,8 +364,18 @@ public class OnlineLobbyManager : MonoBehaviour
         BetterPrefs.Save();
         
         MusicManager.instance.UnloadSong();
+
+#if !CC2_REMOVE_VR_SUPPORT
+        if (VRManager.instance.VREnabled)
+        {
+            Addressables.Release(OnlineLobbyVRPrefabHandle);
+        }
+#endif
         
-        await SceneManager.LoadSceneAsync(SceneNames.initSceneRef);
+        await Addressables.UnloadSceneAsync(AddressableHandles.OnlineLobbyHandle);
+
+        AddressableHandles.InitHandle = Addressables.LoadSceneAsync(InitSceneRef);
+        await AddressableHandles.InitHandle;
     }
 
     public void ShowNetworkError(string text)

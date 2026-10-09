@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class ThemeObject : MonoBehaviour
 {
@@ -6,6 +7,5 @@ public class ThemeObject : MonoBehaviour
     public GameObject Drill;
     public GameObject ResearchFactory;
     public GameObject ThemeParticles;
-    public string ResearchFactoryLightmapABName;
-    public string ResearchFactoryLightmapAssetName;
+    public AssetReference ResearchFactoryLightmapRef;
 }

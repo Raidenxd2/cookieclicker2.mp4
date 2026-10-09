@@ -19,7 +19,7 @@ MonoBehaviour:
   DedicatedServerBuild: 0
   BuildAddressables: 0
   RemoveManifestFilesFromAssetBundleBuild: 0
-  BuildAssetBundles: 1
+  BuildAssetBundles: 0
   DeleteBundlesBeforeBuilding: 0
   CopyPDBFiles: 1
   RemoveBurstDebugInformation: 1

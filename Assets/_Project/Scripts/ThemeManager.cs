@@ -27,7 +27,7 @@ public class ThemeManager : MonoBehaviour
     public ThemeObject FallbackTheme;
 
     private AsyncOperationHandle<SceneInstance> CurrentThemeHandle;
-    private string CurrentSceneName;
+    public string CurrentSceneName;
 
 #if UNITY_EDITOR
     [SerializeField] private bool LoadAssetBundlesInEditor;

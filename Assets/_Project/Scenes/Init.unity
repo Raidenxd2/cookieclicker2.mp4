@@ -448,17 +448,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FontLoader
   sspNormal: {fileID: 11400000, guid: e92e3add251e23f43971c7230066aa3e, type: 2}
   sspBold: {fileID: 11400000, guid: 97756a796a6d007408af39a643993837, type: 2}
-  jpNormal:
-    BundleName: fonts-japanese-regular
-    AssetName: NotoSansJP-Regular SDF
-    IsDirty: 1
-    Asset: {fileID: 11400000, guid: ab9b5c568549c5a46add3ec486cad980, type: 2}
-  jpBold:
-    BundleName: fonts-japanese-bold
-    AssetName: NotoSansJP-Bold SDF
-    IsDirty: 1
-    Asset: {fileID: 11400000, guid: 9365f1b5c8f3033409acda93e69baeca, type: 2}
-  ContentLoading: {fileID: 0}
+  jpNormalRef:
+    m_AssetGUID: ab9b5c568549c5a46add3ec486cad980
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  jpBoldRef:
+    m_AssetGUID: 9365f1b5c8f3033409acda93e69baeca
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!4 &925236201
 Transform:
   m_ObjectHideFlags: 0
@@ -923,6 +924,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DDOL: {fileID: 32888412}
   DefaultTheme: {fileID: 11400000, guid: 2a0d21d200573854fa3af0ba4c7af6d2, type: 2}
+  InitVRPrefabRef:
+    m_AssetGUID: bcf0a51b374207947aed416254ffa56b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  GameSceneRef:
+    m_AssetGUID: 8c9cfa26abfee488c85f1582747f6a02
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!4 &1710680513
 Transform:
   m_ObjectHideFlags: 0

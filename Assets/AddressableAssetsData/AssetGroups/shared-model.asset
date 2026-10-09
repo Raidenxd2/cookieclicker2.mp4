@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: shared-model
   m_GUID: 9195035cc0d665144ba8aa5e5171d05f
   m_SerializeEntries:
+  - m_GUID: 147ae308eec018b40a7b312ae58f44c7
+    m_Address: UniversalController
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 29becf1d36a65f743b1efa3ac07973e8
     m_Address: cookie_normal
     m_ReadOnly: 0

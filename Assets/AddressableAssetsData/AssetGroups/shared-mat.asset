@@ -25,6 +25,31 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 31321ba15b8f8eb4c954353edc038b1d
+    m_Address: Lit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 99685157b02e4d446bbecb015645e5e8
+    m_Address: Controller_Grey
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f12d299d16099343a3c5c0d7285822a
+    m_Address: Controller_White
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8d1fe4c2d372be44bfb6b90870d16c3
+    m_Address: CC2_UnityBuiltInShaders_UI_Default
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5ff01c20d2493e4ea676ddb2143d97c
+    m_Address: SharedShaders_UIDefaultMinimal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c99effbd8aa85754db4ae27d2572ffba
     m_Address: CommonObjectsMat
     m_ReadOnly: 0
@@ -32,6 +57,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d348f02554a005b44b07be0969bde51c
     m_Address: PaintedPlaster017
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d53d60cdef6d51747923033acc722ab4
+    m_Address: ParticleMat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d979b315771e36c448fa6f5fffbf7117
+    m_Address: VRControllerLineMat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

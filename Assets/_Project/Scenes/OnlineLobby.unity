@@ -10978,6 +10978,18 @@ MonoBehaviour:
   XROrigin: {fileID: 0}
   vrFade: {fileID: 1229362756}
   gameCamera: {fileID: 719549330}
+  OnlineLobbyVRPrefabRef:
+    m_AssetGUID: bcf212e2b2753524fb6afc126dee93a3
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  InitSceneRef:
+    m_AssetGUID: d4a7d93e3e2e49d45b9512bb488488b3
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!4 &1540280421
 Transform:
   m_ObjectHideFlags: 0

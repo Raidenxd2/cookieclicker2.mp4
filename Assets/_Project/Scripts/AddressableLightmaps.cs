@@ -2,7 +2,8 @@ using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using SerialPackage.Runtime;
 using UnityEngine;
-using UnityEngine.Networking;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class AddressableLightmaps : MonoBehaviour
 {
@@ -10,18 +11,18 @@ public class AddressableLightmaps : MonoBehaviour
     [SerializeField] private Texture2D GameLightmap;
     private Texture2D rflTexture;
 
-    private AssetBundle lightmapBundle;
+    private AsyncOperationHandle<Texture2D> lightmapHandle;
 
     [SerializeField] private bool LoadAssetBundlesInEditor;
 
     public void InitAddressableLightmaps()
     {
-        if (string.IsNullOrEmpty(ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapABName))
+        if (ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapRef == null)
         {
             return;
         }
 
-        if (lightmapBundle != null)
+        if (lightmapHandle.IsValid())
         {
             UnloadLightmaps();
         }
@@ -46,13 +47,11 @@ public class AddressableLightmaps : MonoBehaviour
 
     private async UniTaskVoid LoadResearchFactoryLightmap()
     {
-        BeanLogger.Log("Loading AssetBundle " + ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapABName + " and asset " + ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapAssetName, this);
-#if UNITY_WEBGL
-        lightmapBundle = DownloadHandlerAssetBundle.GetContent(await UnityWebRequestAssetBundle.GetAssetBundle(Application.streamingAssetsPath + "/Bundles/" + ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapABName + ".bundle").SendWebRequest());
-#else
-        lightmapBundle = await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/" + ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapABName + ".bundle");
-#endif
-        rflTexture = await lightmapBundle.LoadAssetAsync(ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapAssetName) as Texture2D;
+        BeanLogger.Log("Loading research factory lightmap", this);
+        lightmapHandle = Addressables.LoadAssetAsync<Texture2D>(ThemeManager.instance.CurrentTheme.ResearchFactoryLightmapRef);
+        await lightmapHandle;
+
+        rflTexture = lightmapHandle.Result;
 
         List<LightmapData> lightmapData = new();
 
@@ -70,13 +69,12 @@ public class AddressableLightmaps : MonoBehaviour
 
     public void UnloadLightmaps()
     {
-        if (lightmapBundle != null)
+        if (lightmapHandle.IsValid())
         {
-            BeanLogger.Log("Unloading AssetBundle " + lightmapBundle.name, this);
+            BeanLogger.Log("Unloading research factory lightmap", this);
 
             rflTexture = null;
-            lightmapBundle.Unload(true);
-            lightmapBundle = null;
+            Addressables.Release(lightmapHandle);
         }
     }
 }

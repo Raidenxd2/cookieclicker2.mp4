@@ -2,13 +2,15 @@ using BreakInfinity;
 using Cysharp.Threading.Tasks;
 using SimpleFileBrowser;
 using System;
+using System.Globalization;
 using System.IO;
 using SerialPackage.Runtime;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
 public class Game : MonoBehaviour
@@ -168,9 +170,18 @@ public class Game : MonoBehaviour
     [SerializeField] private TMP_Text NetworkErrorText;
     public GameObject TimerRanOutScreen;
 
+    public static bool StopSaving;
+    
+    [SerializeField] private AssetReference GameVRPrefabRef;
+    private AsyncOperationHandle<GameObject> GameVRPrefabHandle;
+
+    [SerializeField] private AssetReference InitSceneRef;
+    [SerializeField] private AssetReference OnlineLobbyRef;
+
     private void Awake()
     {
         instance = this;
+        StopSaving = false;
 
         if (!OnlineLobbyManager.InOnlineGame)
         {
@@ -181,6 +192,7 @@ public class Game : MonoBehaviour
     private void OnDestroy()
     {
         instance = null;
+        StopSaving = true;
     }
 
     // Start is called before the first frame update
@@ -329,7 +341,10 @@ public class Game : MonoBehaviour
 #endif
         if (VRManager.instance.VREnabled)
         {
-            VRPrefabGO = Instantiate(await Resources.LoadAsync("GameScene_VRPrefab") as GameObject, transform);
+            GameVRPrefabHandle = Addressables.LoadAssetAsync<GameObject>(GameVRPrefabRef);
+            await GameVRPrefabHandle;
+            
+            VRPrefabGO = Instantiate(GameVRPrefabHandle.Result, transform);
             VRPrefabGO.transform.SetParent(null);
             VRPrefabGO.transform.position = Vector3.zero;
             
@@ -388,7 +403,7 @@ public class Game : MonoBehaviour
     {
         await UniTask.WaitForSeconds(60);
         
-        if (!SceneManager.GetSceneByName("Game").isLoaded)
+        if (StopSaving)
         {
             return;
         }
@@ -444,11 +459,11 @@ public class Game : MonoBehaviour
         BetterPrefs.SetBool("BigCookieResearched", researchFactory.BigCookieResearched);
         BetterPrefs.SetFloat("HammerStrength", HammerStrength);
         BetterPrefs.SetFloat("HammerEnergy", HammerEnergy);
-        BetterPrefs.SetString("HammerStrengthUpgradePrice", HammerEnergyUpgradePrice.ToString());
-        BetterPrefs.SetString("Coins", Coins.ToString());
-        BetterPrefs.SetString("HammerEnergyUpgradePrice", HammerEnergyUpgradePrice.ToString());
-        BetterPrefs.SetString("CoinMultiplierUpgradePrice", CoinMultiplierUpgradePrice.ToString());
-        BetterPrefs.SetString("CoinMultiplier", CoinMultiplier.ToString());
+        BetterPrefs.SetString("HammerStrengthUpgradePrice", HammerEnergyUpgradePrice.ToString(CultureInfo.InvariantCulture));
+        BetterPrefs.SetString("Coins", Coins.ToString(CultureInfo.InvariantCulture));
+        BetterPrefs.SetString("HammerEnergyUpgradePrice", HammerEnergyUpgradePrice.ToString(CultureInfo.InvariantCulture));
+        BetterPrefs.SetString("CoinMultiplierUpgradePrice", CoinMultiplierUpgradePrice.ToString(CultureInfo.InvariantCulture));
+        BetterPrefs.SetString("CoinMultiplier", CoinMultiplier.ToString(CultureInfo.InvariantCulture));
         BetterPrefs.SetBool("VR_MirrorCamera", VRMirrorCamera);
         BetterPrefs.SetString("BossCookies_HammerStrength", BossCookies_HammerStrength.ToString());
         BetterPrefs.SetString("BossCookies_HammerStrengthUpgradePrice", BossCookies_HammerStrengthUpgradePrice.ToString());
@@ -688,10 +703,15 @@ public class Game : MonoBehaviour
         if (VRPrefabGO != null)
         {
             Destroy(VRPrefabGO);
+            
+            Addressables.Release(GameVRPrefabHandle);
         }
 #endif
 
-        await SceneManager.LoadSceneAsync(SceneNames.initSceneRef);
+        await Addressables.UnloadSceneAsync(AddressableHandles.GameHandle);
+        
+        AddressableHandles.InitHandle = Addressables.LoadSceneAsync(InitSceneRef);
+        await AddressableHandles.InitHandle;
     }
     
     public void LoadOnlineLobby()
@@ -713,10 +733,15 @@ public class Game : MonoBehaviour
         if (VRPrefabGO != null)
         {
             Destroy(VRPrefabGO);
+            
+            Addressables.Release(GameVRPrefabHandle);
         }
 #endif
 
-        await SceneManager.LoadSceneAsync(SceneNames.onlineLobbyRef);
+        await Addressables.UnloadSceneAsync(AddressableHandles.GameHandle);
+
+        AddressableHandles.OnlineLobbyHandle = Addressables.LoadSceneAsync(OnlineLobbyRef);
+        await AddressableHandles.OnlineLobbyHandle;
     }
 
     public void MirrorCameraToggle(bool Toggle)

@@ -49118,6 +49118,7 @@ MonoBehaviour:
   al: {fileID: 816785819}
   CurrentTheme: {fileID: 0}
   FallbackTheme: {fileID: 1550487520}
+  CurrentSceneName: 
   LoadAssetBundlesInEditor: 0
 --- !u!114 &1550487520
 MonoBehaviour:
@@ -49135,8 +49136,12 @@ MonoBehaviour:
   Drill: {fileID: 1764964457}
   ResearchFactory: {fileID: 1764964457}
   ThemeParticles: {fileID: 1764964457}
-  ResearchFactoryLightmapABName: 
-  ResearchFactoryLightmapAssetName: 
+  ResearchFactoryLightmapRef:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!114 &1554704516 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4941934788868535941, guid: ad97596f556d1594792b188b1a075040, type: 3}
@@ -49598,8 +49603,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 2106446464}
-  environmentRef:
-    m_AssetGUID: fec06291f38b89f46ba3112607b7b72a
+  MineRef:
+    m_AssetGUID: a0b6b36c341cf264a9c23fdb518c0195
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 
@@ -61736,16 +61741,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FontLoader
   sspNormal: {fileID: 11400000, guid: e92e3add251e23f43971c7230066aa3e, type: 2}
   sspBold: {fileID: 11400000, guid: 97756a796a6d007408af39a643993837, type: 2}
-  jpNormal:
-    BundleName: fonts-japanese-regular
-    AssetName: NotoSansJP-Regular SDF
-    IsDirty: 1
-    Asset: {fileID: 11400000, guid: ab9b5c568549c5a46add3ec486cad980, type: 2}
-  jpBold:
-    BundleName: fonts-japanese-bold
-    AssetName: NotoSansJP-Bold SDF
-    IsDirty: 1
-    Asset: {fileID: 11400000, guid: 9365f1b5c8f3033409acda93e69baeca, type: 2}
+  jpNormalRef:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  jpBoldRef:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!1 &2106446463
 GameObject:
   m_ObjectHideFlags: 0
@@ -61919,6 +61926,24 @@ MonoBehaviour:
   NetworkErrorScreen: {fileID: 149163191}
   NetworkErrorText: {fileID: 149163188}
   TimerRanOutScreen: {fileID: 1280636452}
+  GameVRPrefabRef:
+    m_AssetGUID: 4facb27151d461043a476c725d04d47d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  InitSceneRef:
+    m_AssetGUID: d4a7d93e3e2e49d45b9512bb488488b3
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  OnlineLobbyRef:
+    m_AssetGUID: 4eeaa8a97e27b944f95d4811f07596e5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!4 &2106446465
 Transform:
   m_ObjectHideFlags: 0
@@ -67765,8 +67790,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 2106446464}
-  environmentRef:
-    m_AssetGUID: 0d3e064c5eaec22479e0bcdccda7d611
+  BossCookiesRef:
+    m_AssetGUID: bcd35498a57bd5e48b07db37361f71e6
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 

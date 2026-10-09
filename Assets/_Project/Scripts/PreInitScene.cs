@@ -5,14 +5,12 @@ using System.Runtime.InteropServices;
 using SerialPackage.Runtime;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
 
 public class PreInitScene : MonoBehaviour
 {
-    public static bool SetJapaneseLanguage;
-
-    [SerializeField] private GameObject FatalErrorScreen;
-    [SerializeField] private TMP_Text FatalErrorText;
+    [SerializeField] private AssetReference TMPSettingsRef;
+    [SerializeField] private AssetReference InitSceneRef;
 
     private void Start()
     {
@@ -46,7 +44,10 @@ public class PreInitScene : MonoBehaviour
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
         }
+        
+        TMP_Settings.instance = await Addressables.LoadAssetAsync<TMP_Settings>(TMPSettingsRef);
 
-        await SceneManager.LoadSceneAsync(SceneNames.initSceneRef);
+        AddressableHandles.InitHandle = Addressables.LoadSceneAsync(InitSceneRef);
+        await AddressableHandles.InitHandle;
     }
 }

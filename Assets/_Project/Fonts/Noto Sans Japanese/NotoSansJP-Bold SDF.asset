@@ -76,8 +76,8 @@ Material:
     - _ScaleRatioA: 0.9
     - _ScaleRatioB: 1
     - _ScaleRatioC: 0.73125
-    - _ScaleX: 1
-    - _ScaleY: 1
+    - _ScaleX: 2
+    - _ScaleY: 2
     - _ShaderFlags: 0
     - _Sharpness: 0
     - _SpecularPower: 2

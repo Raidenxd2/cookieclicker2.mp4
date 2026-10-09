@@ -1,17 +1,13 @@
 using Cysharp.Threading.Tasks;
-using SerialPackage.Runtime;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceProviders;
 
 public class BossCookiesLoader : MonoBehaviour
 {
     [SerializeField] private Game game;
 
-    [SerializeField] private AssetReference environmentRef;
-    private AsyncOperationHandle<SceneInstance> environmentHandle;
+    [SerializeField] private AssetReference BossCookiesRef;
 
     [SerializeField] private Transform notificationCanvasParent;
 
@@ -48,14 +44,10 @@ public class BossCookiesLoader : MonoBehaviour
         game.researchFactory.GameCanvas.SetActive(false);
         game.gameCamera.gameObject.SetActive(false);
 
-        await SceneManager.LoadSceneAsync(SceneNames.bossCookiesRef, LoadSceneMode.Additive);
-
-        BeanLogger.Log("Loading Scene " + SceneNames.bossCookiesEnvironmentRef, this);
-
-        environmentHandle = Addressables.LoadSceneAsync(environmentRef, LoadSceneMode.Additive);
-        await environmentHandle;
+        AddressableHandles.BossCookiesHandle = Addressables.LoadSceneAsync(BossCookiesRef, LoadSceneMode.Additive);
+        await AddressableHandles.BossCookiesHandle;
         
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneNames.bossCookiesEnvironmentRef));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneNames.bossCookiesRef));
 
         Notification.instance.NotificationCanvas.worldCamera = BossCookiesGame.instance.Camera.GetComponent<Camera>();
 
@@ -100,13 +92,9 @@ public class BossCookiesLoader : MonoBehaviour
         }
 #endif
 
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(SceneNames.gameSceneRef));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(ThemeManager.instance.CurrentSceneName));
 
-        await SceneManager.UnloadSceneAsync(SceneNames.bossCookiesRef);
-
-        BeanLogger.Log("Unloading Scene " + SceneNames.bossCookiesEnvironmentRef, this);
-
-        await Addressables.UnloadSceneAsync(environmentHandle);
+        await Addressables.UnloadSceneAsync(AddressableHandles.BossCookiesHandle);
 
         game.researchFactory.GameCanvas.SetActive(true);
 

@@ -2,7 +2,8 @@ using Cysharp.Threading.Tasks;
 using SimpleFileBrowser;
 using System.IO;
 using UnityEngine;
-using UnityEngine.Networking;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 
 public class Init : MonoBehaviour
@@ -10,9 +11,13 @@ public class Init : MonoBehaviour
     public GameObject DDOL;
 
     private static bool HasLoaded;
-    private static bool HasLoadedSharedData;
     
     [SerializeField] private ThemeSO DefaultTheme;
+
+    [SerializeField] private AssetReference InitVRPrefabRef;
+    private AsyncOperationHandle<GameObject> InitVRPrefabHandle;
+    
+    [SerializeField] private AssetReference GameSceneRef;
 
     private void Start()
     {
@@ -29,18 +34,13 @@ public class Init : MonoBehaviour
     {
         await Resources.UnloadUnusedAssets();
 
-#if !UNITY_WEBGL
-        if (!HasLoadedSharedData)
-        {
-            await AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/Bundles/shareddata.bundle");
-            HasLoadedSharedData = true;
-        }
-#endif
-
 #if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
-            Instantiate(await Resources.LoadAsync("InitScene_VRPrefab") as GameObject);
+            InitVRPrefabHandle = Addressables.LoadAssetAsync<GameObject>(InitVRPrefabRef);
+            await InitVRPrefabHandle;
+            
+            Instantiate(InitVRPrefabHandle.Result);
         }
 #endif
         
@@ -58,28 +58,21 @@ public class Init : MonoBehaviour
             Game.importPath = null;
         }
 
-#if UNITY_WEBGL
-        if (!HasLoadedSharedData)
-        {
-            var sharedDataWWW = (await UnityWebRequestAssetBundle.GetAssetBundle(Application.streamingAssetsPath + "/Bundles/shareddata.bundle").SendWebRequest());
-            DownloadHandlerAssetBundle.GetContent(sharedDataWWW);
-            HasLoadedSharedData = true;
-        }
-#endif
+        AddressableHandles.GameHandle = Addressables.LoadSceneAsync(GameSceneRef, LoadSceneMode.Additive);
+        await AddressableHandles.GameHandle;
 
-        await SceneManager.LoadSceneAsync(SceneNames.gameSceneRef, LoadSceneMode.Additive);
-
-        await UniTask.WaitForEndOfFrame();
         await ThemeManager.instance.SelectTheme(DefaultTheme.ThemeRef, DefaultTheme.ThemeSceneName);
 
 #if !CC2_REMOVE_VR_SUPPORT
         if (VRManager.instance.VREnabled)
         {
             await Game.instance.InitVR();
+            
+            Addressables.Release(InitVRPrefabHandle);
         }
 #endif
 
-        await SceneManager.UnloadSceneAsync(SceneNames.initSceneRef, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+        await Addressables.UnloadSceneAsync(AddressableHandles.InitHandle, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
 
         Game.instance.PlayInitialFadeOut();
     }
@@ -89,7 +82,6 @@ public class Init : MonoBehaviour
     public static void SetHasLoaded()
     {
         HasLoaded = false;
-        HasLoadedSharedData = false;
     }
 #endif
 }
