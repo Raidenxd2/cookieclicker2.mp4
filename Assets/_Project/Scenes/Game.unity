@@ -55784,6 +55784,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Notifications
       objectReference: {fileID: 0}
+    - target: {fileID: 9192788176732555007, guid: 9bc44cae7f0dc124a9ecb487688ee9b4, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192788176992858948, guid: 9bc44cae7f0dc124a9ecb487688ee9b4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192788177258475888, guid: 9bc44cae7f0dc124a9ecb487688ee9b4, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
