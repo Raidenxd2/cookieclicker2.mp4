@@ -121,11 +121,6 @@ public class BossCookiesGame : MonoBehaviour
 
     public void ChooseVRMode()
     {
-        ChooseVRModeAsync().Forget();
-    }
-
-    private async UniTaskVoid ChooseVRModeAsync()
-    {
 #if !CC2_DISABLEBOSSCOOKIESVRMODE
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -135,8 +130,6 @@ public class BossCookiesGame : MonoBehaviour
         {
             NormalModeUI.gameObject.SetActive(false);
             Game.instance.XROrigin.SetActive(false);
-
-            await UniTask.WaitForEndOfFrame();
         }
 #endif
 
@@ -257,7 +250,7 @@ public class BossCookiesGame : MonoBehaviour
         if (Game.instance.Cookies >= Game.instance.BossCookies_HammerStrengthUpgradePrice)
         {
             Game.instance.Cookies -= Game.instance.BossCookies_HammerStrengthUpgradePrice;
-            Game.instance.BossCookies_HammerStrengthUpgradePrice *= 1.5f;
+            Game.instance.BossCookies_HammerStrengthUpgradePrice += 2000f;
             Game.instance.BossCookies_HammerStrength += 1f;
         }
         else

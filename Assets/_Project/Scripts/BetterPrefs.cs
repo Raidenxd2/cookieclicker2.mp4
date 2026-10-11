@@ -11,6 +11,7 @@ License: MIT
 
 using System.Collections.Generic;
 using System.IO;
+using BreakInfinity;
 
 public static class BetterPrefs
 {
@@ -88,6 +89,15 @@ public static class BetterPrefs
         data[key] = value;
     }
 
+    public static void SetBigDouble(string key, BigDouble value)
+    {
+        if (data == null)
+        {
+            return;
+        }
+        data[key] = value;
+    }
+
     public static bool GetBool(string key, bool fallback)
     {
         if (data == null)
@@ -149,6 +159,23 @@ public static class BetterPrefs
         if (data.ContainsKey(key))
         {
             return ((string)data[key]);
+        }
+        else
+        {
+            return fallback;
+        }
+    }
+
+    public static BigDouble GetBigDouble(string key, BigDouble fallback)
+    {
+        if (data == null)
+        {
+            return -1;
+        }
+
+        if (data.ContainsKey(key))
+        {
+            return ((BigDouble)data[key]);
         }
         else
         {
@@ -225,6 +252,23 @@ public static class BetterPrefs
             return "";
         }
     }
+    
+    public static BigDouble GetBigDouble(string key)
+    {
+        if (data == null)
+        {
+            return -1;
+        }
+
+        if (data.ContainsKey(key))
+        {
+            return ((BigDouble)data[key]);
+        }
+        else
+        {
+            return -1;
+        }
+    }
 
     public static string Save(string savePath = "default")
     {
@@ -287,6 +331,11 @@ public static class BetterPrefs
             else if (pair.Value is string)
             {
                 objectType = "string";
+                valueFormatted = pair.Value.ToString();
+            }
+            else if (pair.Value is BigDouble)
+            {
+                objectType = "bd";
                 valueFormatted = pair.Value.ToString();
             }
             else
@@ -416,6 +465,23 @@ public static class BetterPrefs
                     {
                         continue;
                     }
+
+                    // Add the value to the dictionary
+
+                    if (!data.ContainsKey(key))
+                    {
+                        data.Add(key, value);
+                    }
+                    else
+                    {
+                        data[key] = value;
+                    }
+                }
+                else if (objectType == "bd")
+                {
+                    // This is a BigDouble
+
+                    BigDouble value = BigDouble.Parse(valueFormatted);
 
                     // Add the value to the dictionary
 
