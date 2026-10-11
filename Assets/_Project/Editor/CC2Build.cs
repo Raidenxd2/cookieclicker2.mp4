@@ -61,8 +61,6 @@ public class CC2Build : IPreprocessBuildWithReport, IPostprocessBuildWithReport
             {
                 File.Delete(dir + "/Cookieclicker2.mp4_Data/Plugins/no_plugins_were_generated.txt");
             }
-            
-            File.Copy("Assets/Plugins/Newtonsoft.Json.pdb", dir + "/Cookieclicker2.mp4_Data/Managed/Newtonsoft.Json.pdb", true);
         }
 
         if (report.summary.platform is BuildTarget.StandaloneOSX)
@@ -80,8 +78,6 @@ public class CC2Build : IPreprocessBuildWithReport, IPostprocessBuildWithReport
             {
                 Directory.Delete(dir + "/Contents/Resources/Data/StreamingAssets/aa/AddressablesLink", true);
             }
-            
-            File.Copy("Assets/Plugins/Newtonsoft.Json.pdb", dir + "/Contents/Resources/Data/Managed/Newtonsoft.Json.pdb", true);
         }
         
         // if (report.summary.platform is BuildTarget.StandaloneOSX)
